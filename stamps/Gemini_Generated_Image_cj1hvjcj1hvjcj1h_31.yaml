@@ -1,0 +1,16 @@
+# Cartography stamp sidecar — schema documented in ../CLAUDE.md
+# Manually-editable fields (name, description, tags) are preserved across
+# make_sidecars.py re-runs unless --force is passed.
+
+name: null
+description: null
+tags: []
+orientation: null   # north | south | east | west | top-down | isometric
+state: null         # intact | damaged | destroyed | active | inactive
+group_id: null      # UUID linking orientation/state variants of one object
+
+source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png
+source_index: 31
+extracted_at: 2026-05-05T15:58:10+00:00
+classified_at: null
+classified_by: null

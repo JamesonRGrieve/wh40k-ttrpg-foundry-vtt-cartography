@@ -1,0 +1,34 @@
+{
+  "id": "dh-cartography",
+  "title": "Dark Heresy Cartography",
+  "description": "Stamp-tile asset library for the Solenne Dark Heresy 2e campaign. Provides ~600 transparent-PNG stamps (furniture, doors, props) intended for use with Baileywiki Mass Edit's Preset Browser.",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Jameson Grieve"
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "relationships": {
+    "recommends": [
+      {
+        "id": "multi-token-edit",
+        "type": "module",
+        "reason": "Preset Browser used to browse and place these stamps."
+      },
+      {
+        "id": "monks-active-tiles",
+        "type": "module",
+        "reason": "Image Cycle action used for runtime state cycling on placed stamps."
+      }
+    ]
+  },
+  "esmodules": [],
+  "styles": [],
+  "languages": [],
+  "packs": []
+}
