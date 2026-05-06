@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Set
+description: "A set of three rectangular frames with a decorative design, set against a plain gray background. The frames are drawn in a simple, minimalist style with a focus on texture and detail. Each frame has a unique leaf-like shape, with a smooth, glossy finish. The leaves are arranged in a symmetrical pattern, with the top frame slightly overlapping the bottom frame. The overall aesthetic of the image is elegant and sophisticated, with a focus on the textures and details of the frames."
+tags: [set, rectangular, frames, decorative, design, against, plain, background, drawn, simple, minimalist, style]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 861baff5-92ce-53c9-85c6-acf14614b71c      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 7
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T19:13:32+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

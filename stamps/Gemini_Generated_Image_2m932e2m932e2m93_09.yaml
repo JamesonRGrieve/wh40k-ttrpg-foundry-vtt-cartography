@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Set
+description: "A set of four beige-colored lockers arranged in a grid-like pattern on a gray background. Each locker has a unique design, with a simple yet elegant look. The lockers are of varying sizes, with the largest one in the center and the smallest one on the left. The doors are open, revealing the interior of the lockers. The overall aesthetic of the image is simple yet elegant, with a focus on the lockers and their contents."
+tags: [set, four, beige-colored, lockers, arranged, grid-like, pattern, background, each, locker, has, unique]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: active         # intact | damaged | destroyed | active | inactive
+group_id: 687b1b67-2bf2-5cde-a1a3-9b6baa176e61      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 9
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T19:13:37+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

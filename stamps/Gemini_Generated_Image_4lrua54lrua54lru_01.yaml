@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: "Empty Glass Jars With Rounded Corners"
+description: "The image is a 3D rendering of two empty glass jars with rounded corners of two empty glass jars with lids on the left and right sideThe image is a 3D rendering, 3D rendering of two empty glass jars with lids on a plain grey background with a simple, transparent glass bottles with rounded corners of the image is a 3D rendering of two empty glass jars with rounded corners of the image is a 3D rendering of two empty glass jars with lids and caps, set against a plain, transparent glass jars with lids on a plain, empty glass jars with rounded corners of the image is a 3D rendering of two empty glass jars with lids, set against a plain, transparent glass jars with a simple, empty glass jars with lids, rendered in a simple, minimalist illustration of two identical objects, set against a plain, minimalist design elements in a simple, minimalist illustration of two identical objects in a simple, empty glass bottles, rendered in a 3D rendering, with a simple, transparent glass jars with rounded corners, set against a plain, empty glass jars with lids, set against a plain, empty glass jars, image is"
+tags: [rendering, empty, glass, jars, rounded, corners, lids, left, right, sidethe, plain, background]
+orientation: east   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 6f4487a0-f7ff-556c-bc2b-110957981d97      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4lrua54lrua54lru.png
 source_index: 1
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T23:08:14+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

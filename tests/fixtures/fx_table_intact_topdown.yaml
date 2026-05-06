@@ -1,0 +1,13 @@
+# Cartography stamp sidecar — fixture for end-to-end Foundry validation
+name: "Stone Table"
+description: "an intact stone table viewed from above"
+tags: [furniture, table, stone]
+orientation: top-down
+state: intact
+group_id: "22222222-2222-5222-9222-222222222222"
+
+source: fixture
+source_index: 3
+extracted_at: 2026-05-05T18:30:09+00:00
+classified_at: 2026-05-05T18:30:09+00:00
+classified_by: fixture

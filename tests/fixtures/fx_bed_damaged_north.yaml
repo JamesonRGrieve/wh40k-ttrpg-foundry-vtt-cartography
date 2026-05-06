@@ -1,0 +1,13 @@
+# Cartography stamp sidecar — fixture for end-to-end Foundry validation
+name: "Wooden Bed"
+description: "a damaged wooden bed, broken slats"
+tags: [furniture, bed, wooden, broken]
+orientation: north
+state: damaged
+group_id: "11111111-1111-5111-9111-111111111111"
+
+source: fixture
+source_index: 1
+extracted_at: 2026-05-05T18:30:09+00:00
+classified_at: 2026-05-05T18:30:09+00:00
+classified_by: fixture

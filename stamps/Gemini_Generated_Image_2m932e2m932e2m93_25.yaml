@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Brown And Yellow Striped Pattern
+description: a brown and yellow striped pattern on a brown background
+tags: [striped, pattern, background]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 45180b0e-61e8-5a0a-b0f9-ddd60d1744ec      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T18:50:23+00:00"
+classified_by: microsoft/Florence-2-base

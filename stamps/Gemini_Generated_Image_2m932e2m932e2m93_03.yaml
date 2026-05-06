@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Is A Simple
+description: "The image is a simple, minimalist design with a gray background. It consists of multiple rectangular panels arranged in a grid-like pattern, each with a slightly raised edge. The panels appear to be made of metal or plastic and have a smooth, polished finish. The edges of the panels are slightly raised, giving them a 3D effect. The overall aesthetic of the image is clean and minimalistic, with no additional details or embellishments present."
+tags: [simple, minimalist, design, background, consists, multiple, rectangular, panels, arranged, grid-like, pattern, each]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 83fd8256-a4f8-5cf5-89a9-31ea66352c27      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 3
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T19:13:19+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

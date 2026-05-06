@@ -1,4 +1,8 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["Pillow"]
+# ///
 """
 Build a Baileywiki Mass Edit preset pack JSON from the stamps + sidecars.
 
@@ -37,7 +41,7 @@ except ImportError:
     HAVE_PIL = False
 
 HERE = Path(__file__).resolve().parent
-STAMPS_DIR = HERE / "stamps"
+DEFAULT_STAMPS_DIR = HERE / "stamps"
 
 DEFAULT_ASSET_PREFIX = "modules/dh-cartography/stamps"
 DEFAULT_GRID_SIZE = 100
@@ -163,6 +167,12 @@ def build_preset(stamp_path: Path, sc: Sidecar, asset_prefix: str) -> dict:
 def main(argv: list[str]) -> int:
     p = argparse.ArgumentParser()
     p.add_argument(
+        "--stamps-dir",
+        type=Path,
+        default=DEFAULT_STAMPS_DIR,
+        help="Directory containing PNG + YAML pairs to package (default: %(default)s)",
+    )
+    p.add_argument(
         "--asset-prefix",
         default=DEFAULT_ASSET_PREFIX,
         help="Path inside Foundry user-data where stamps will live (default: %(default)s)",
@@ -173,15 +183,24 @@ def main(argv: list[str]) -> int:
         default=HERE / "mass-edit-presets.json",
         help="Output JSON path (default: %(default)s)",
     )
+    p.add_argument(
+        "--source",
+        default=None,
+        help="Filter: include only PNG stems starting with this string",
+    )
     args = p.parse_args(argv)
 
-    if not STAMPS_DIR.is_dir():
-        print(f"stamps directory not found: {STAMPS_DIR}", file=sys.stderr)
+    stamps_dir: Path = args.stamps_dir
+    if not stamps_dir.is_dir():
+        print(f"stamps directory not found: {stamps_dir}", file=sys.stderr)
         return 1
 
     presets: list[dict] = []
     missing_sidecars = 0
-    for png in sorted(STAMPS_DIR.glob("*.png")):
+    pngs = sorted(stamps_dir.glob("*.png"))
+    if args.source:
+        pngs = [p for p in pngs if p.stem.startswith(args.source)]
+    for png in pngs:
         sidecar_path = png.with_suffix(".yaml")
         if not sidecar_path.exists():
             missing_sidecars += 1

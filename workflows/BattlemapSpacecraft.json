@@ -1,0 +1,655 @@
+{
+  "unet": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "chroma-unlocked-v35.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "Chroma Model"
+    }
+  },
+  "clip_loader": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux"
+    },
+    "_meta": {
+      "title": "Text Encoders (T5 + CLIP-L)"
+    }
+  },
+  "vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "_meta": {
+      "title": "FLUX VAE"
+    }
+  },
+  "load": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "layout.png"
+    },
+    "_meta": {
+      "title": "Load Semantic Layout"
+    }
+  },
+  "base_pos": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, top-down battle map, spacecraft interior cutaway, tabletop rpg, digital painting",
+      "t5xxl": "top-down overhead battle map, orthographic view, small military spacecraft interior cutaway, grimdark science fiction, warhammer 40k imperial shuttle interior, corroded gunmetal, amber lighting, oil painting style, digital illustration, tabletop RPG battle map, flat even lighting, highly detailed",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Base Positive Prompt"
+    }
+  },
+  "neg": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "bright, clean, modern, fantasy, medieval",
+      "t5xxl": "bright colors, clean, anime, cartoon, 3d render, photorealistic photograph, white background, fantasy medieval, text watermark, logo, neon, studio lighting, HDR, perspective view, side view, isometric, character, person, outdoor, landscape, sky, house, apartment, residential, domestic, spaceship exterior, hull plating, ship flying, ship in space",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "10": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ],
+      "color": 3158064
+    },
+    "_meta": {
+      "title": "Mask: wall"
+    }
+  },
+  "11": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, wall",
+      "t5xxl": "thick spacecraft hull bulkhead wall, dark gunmetal armor plating, rivets, weld seams, top-down overhead view, orthographic, grimdark sci-fi, warhammer 40k, corroded metal, rust, oil painting, tabletop RPG battle map, flat lighting",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Prompt: wall"
+    }
+  },
+  "12": {
+    "class_type": "ConditioningSetMask",
+    "inputs": {
+      "conditioning": [
+        "11",
+        0
+      ],
+      "mask": [
+        "10",
+        0
+      ],
+      "strength": 1.0,
+      "set_cond_area": "mask bounds"
+    },
+    "_meta": {
+      "title": "Region: wall"
+    }
+  },
+  "13": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ],
+      "color": 8421504
+    },
+    "_meta": {
+      "title": "Mask: floor"
+    }
+  },
+  "14": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, floor",
+      "t5xxl": "metal deck plating, floor panels with seam lines, worn grey steel, boot scuffs, oil stains, top-down overhead view, orthographic, grimdark sci-fi, warhammer 40k, corroded metal, rust, oil painting, tabletop RPG battle map, flat lighting",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Prompt: floor"
+    }
+  },
+  "15": {
+    "class_type": "ConditioningSetMask",
+    "inputs": {
+      "conditioning": [
+        "14",
+        0
+      ],
+      "mask": [
+        "13",
+        0
+      ],
+      "strength": 1.0,
+      "set_cond_area": "mask bounds"
+    },
+    "_meta": {
+      "title": "Region: floor"
+    }
+  },
+  "16": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ],
+      "color": 10526880
+    },
+    "_meta": {
+      "title": "Mask: ramp"
+    }
+  },
+  "17": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, ramp",
+      "t5xxl": "rear loading ramp, corrugated metal surface, hydraulic pistons, grip strips, weathered steel, top-down overhead view, orthographic, grimdark sci-fi, warhammer 40k, corroded metal, rust, oil painting, tabletop RPG battle map, flat lighting",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Prompt: ramp"
+    }
+  },
+  "18": {
+    "class_type": "ConditioningSetMask",
+    "inputs": {
+      "conditioning": [
+        "17",
+        0
+      ],
+      "mask": [
+        "16",
+        0
+      ],
+      "strength": 1.0,
+      "set_cond_area": "mask bounds"
+    },
+    "_meta": {
+      "title": "Region: ramp"
+    }
+  },
+  "19": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ],
+      "color": 1716304
+    },
+    "_meta": {
+      "title": "Mask: windscreen"
+    }
+  },
+  "20": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, windscreen",
+      "t5xxl": "cockpit windscreen viewport, reinforced armaglass, dark tinted glass panel, thick metal frame, top-down overhead view, orthographic, grimdark sci-fi, warhammer 40k, corroded metal, rust, oil painting, tabletop RPG battle map, flat lighting",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Prompt: windscreen"
+    }
+  },
+  "21": {
+    "class_type": "ConditioningSetMask",
+    "inputs": {
+      "conditioning": [
+        "20",
+        0
+      ],
+      "mask": [
+        "19",
+        0
+      ],
+      "strength": 1.0,
+      "set_cond_area": "mask bounds"
+    },
+    "_meta": {
+      "title": "Region: windscreen"
+    }
+  },
+  "22": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ],
+      "color": 9132587
+    },
+    "_meta": {
+      "title": "Mask: chair"
+    }
+  },
+  "23": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, chair",
+      "t5xxl": "pilot command chair, worn brown leather seat, metal armrests with controls, top-down overhead view, orthographic, grimdark sci-fi, warhammer 40k, corroded metal, rust, oil painting, tabletop RPG battle map, flat lighting",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Prompt: chair"
+    }
+  },
+  "24": {
+    "class_type": "ConditioningSetMask",
+    "inputs": {
+      "conditioning": [
+        "23",
+        0
+      ],
+      "mask": [
+        "22",
+        0
+      ],
+      "strength": 1.0,
+      "set_cond_area": "mask bounds"
+    },
+    "_meta": {
+      "title": "Region: chair"
+    }
+  },
+  "25": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ],
+      "color": 4876928
+    },
+    "_meta": {
+      "title": "Mask: locker"
+    }
+  },
+  "26": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, locker",
+      "t5xxl": "tall metal storage locker, steel blue equipment cabinet, handle, military supply storage, top-down overhead view, orthographic, grimdark sci-fi, warhammer 40k, corroded metal, rust, oil painting, tabletop RPG battle map, flat lighting",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Prompt: locker"
+    }
+  },
+  "27": {
+    "class_type": "ConditioningSetMask",
+    "inputs": {
+      "conditioning": [
+        "26",
+        0
+      ],
+      "mask": [
+        "25",
+        0
+      ],
+      "strength": 1.0,
+      "set_cond_area": "mask bounds"
+    },
+    "_meta": {
+      "title": "Region: locker"
+    }
+  },
+  "28": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ],
+      "color": 2771536
+    },
+    "_meta": {
+      "title": "Mask: console"
+    }
+  },
+  "29": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, console",
+      "t5xxl": "instrument console panel, control dials gauges switches, dark metal, glowing teal screens, top-down overhead view, orthographic, grimdark sci-fi, warhammer 40k, corroded metal, rust, oil painting, tabletop RPG battle map, flat lighting",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Prompt: console"
+    }
+  },
+  "30": {
+    "class_type": "ConditioningSetMask",
+    "inputs": {
+      "conditioning": [
+        "29",
+        0
+      ],
+      "mask": [
+        "28",
+        0
+      ],
+      "strength": 1.0,
+      "set_cond_area": "mask bounds"
+    },
+    "_meta": {
+      "title": "Region: console"
+    }
+  },
+  "31": {
+    "class_type": "ImageColorToMask",
+    "inputs": {
+      "image": [
+        "load",
+        0
+      ],
+      "color": 13934624
+    },
+    "_meta": {
+      "title": "Mask: lighting"
+    }
+  },
+  "32": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, lighting",
+      "t5xxl": "amber lumen strip light, glowing warning lamp, yellow-orange industrial illumination, top-down overhead view, orthographic, grimdark sci-fi, warhammer 40k, corroded metal, rust, oil painting, tabletop RPG battle map, flat lighting",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Prompt: lighting"
+    }
+  },
+  "33": {
+    "class_type": "ConditioningSetMask",
+    "inputs": {
+      "conditioning": [
+        "32",
+        0
+      ],
+      "mask": [
+        "31",
+        0
+      ],
+      "strength": 1.0,
+      "set_cond_area": "mask bounds"
+    },
+    "_meta": {
+      "title": "Region: lighting"
+    }
+  },
+  "34": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "base_pos",
+        0
+      ],
+      "conditioning_2": [
+        "12",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Combine 1"
+    }
+  },
+  "35": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "34",
+        0
+      ],
+      "conditioning_2": [
+        "15",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Combine 2"
+    }
+  },
+  "36": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "35",
+        0
+      ],
+      "conditioning_2": [
+        "18",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Combine 3"
+    }
+  },
+  "37": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "36",
+        0
+      ],
+      "conditioning_2": [
+        "21",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Combine 4"
+    }
+  },
+  "38": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "37",
+        0
+      ],
+      "conditioning_2": [
+        "24",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Combine 5"
+    }
+  },
+  "39": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "38",
+        0
+      ],
+      "conditioning_2": [
+        "27",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Combine 6"
+    }
+  },
+  "40": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "39",
+        0
+      ],
+      "conditioning_2": [
+        "30",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Combine 7"
+    }
+  },
+  "41": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "40",
+        0
+      ],
+      "conditioning_2": [
+        "33",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Combine 8"
+    }
+  },
+  "encode": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "load",
+        0
+      ],
+      "vae": [
+        "vae",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "VAE Encode (img2img)"
+    }
+  },
+  "sampler": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "unet",
+        0
+      ],
+      "positive": [
+        "41",
+        0
+      ],
+      "negative": [
+        "neg",
+        0
+      ],
+      "latent_image": [
+        "encode",
+        0
+      ],
+      "seed": 0,
+      "control_after_generate": "randomize",
+      "steps": 26,
+      "cfg": 3.5,
+      "sampler_name": "res_multistep",
+      "scheduler": "beta",
+      "denoise": 0.75
+    },
+    "_meta": {
+      "title": "KSampler (Chroma)"
+    }
+  },
+  "decode": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "sampler",
+        0
+      ],
+      "vae": [
+        "vae",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "save": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ],
+      "filename_prefix": "Map_Spacecraft"
+    },
+    "_meta": {
+      "title": "Save Map"
+    }
+  },
+  "preview": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Preview"
+    }
+  }
+}

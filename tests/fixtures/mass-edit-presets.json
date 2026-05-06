@@ -1,0 +1,178 @@
+[
+  {
+    "id": "fxbeddamagednorth",
+    "name": "Wooden Bed \u2014 damaged, north",
+    "documentName": "Tile",
+    "img": "modules/dh-cartography-test/stamps/fx_bed_damaged_north.png",
+    "tags": [
+      "furniture",
+      "bed",
+      "wooden",
+      "broken",
+      "facing-north",
+      "state-damaged",
+      "group:11111111-1111-5111-9111-111111111111"
+    ],
+    "gridSize": 100,
+    "data": [
+      {
+        "texture": {
+          "src": "modules/dh-cartography-test/stamps/fx_bed_damaged_north.png",
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 96,
+        "rotation": 0
+      }
+    ]
+  },
+  {
+    "id": "fxbedintactnorth",
+    "name": "Wooden Bed \u2014 intact, north",
+    "documentName": "Tile",
+    "img": "modules/dh-cartography-test/stamps/fx_bed_intact_north.png",
+    "tags": [
+      "furniture",
+      "bed",
+      "wooden",
+      "facing-north",
+      "state-intact",
+      "group:11111111-1111-5111-9111-111111111111"
+    ],
+    "gridSize": 100,
+    "data": [
+      {
+        "texture": {
+          "src": "modules/dh-cartography-test/stamps/fx_bed_intact_north.png",
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 96,
+        "rotation": 0
+      }
+    ]
+  },
+  {
+    "id": "fxbedintactsouth",
+    "name": "Wooden Bed \u2014 intact, south",
+    "documentName": "Tile",
+    "img": "modules/dh-cartography-test/stamps/fx_bed_intact_south.png",
+    "tags": [
+      "furniture",
+      "bed",
+      "wooden",
+      "facing-south",
+      "state-intact",
+      "group:11111111-1111-5111-9111-111111111111"
+    ],
+    "gridSize": 100,
+    "data": [
+      {
+        "texture": {
+          "src": "modules/dh-cartography-test/stamps/fx_bed_intact_south.png",
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 96,
+        "rotation": 0
+      }
+    ]
+  },
+  {
+    "id": "fxsololamp",
+    "name": "Brass Lamp \u2014 active, isometric",
+    "documentName": "Tile",
+    "img": "modules/dh-cartography-test/stamps/fx_solo_lamp.png",
+    "tags": [
+      "lighting",
+      "lamp",
+      "brass",
+      "isometric",
+      "state-active",
+      "group:33333333-3333-5333-9333-333333333333"
+    ],
+    "gridSize": 100,
+    "data": [
+      {
+        "texture": {
+          "src": "modules/dh-cartography-test/stamps/fx_solo_lamp.png",
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 96,
+        "rotation": 0
+      }
+    ]
+  },
+  {
+    "id": "fxtabledamagedtopdown",
+    "name": "Stone Table \u2014 damaged, top-down",
+    "documentName": "Tile",
+    "img": "modules/dh-cartography-test/stamps/fx_table_damaged_topdown.png",
+    "tags": [
+      "furniture",
+      "table",
+      "stone",
+      "cracked",
+      "top-down",
+      "state-damaged",
+      "group:22222222-2222-5222-9222-222222222222"
+    ],
+    "gridSize": 100,
+    "data": [
+      {
+        "texture": {
+          "src": "modules/dh-cartography-test/stamps/fx_table_damaged_topdown.png",
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 128,
+        "rotation": 0
+      }
+    ]
+  },
+  {
+    "id": "fxtableintacttopdown",
+    "name": "Stone Table \u2014 intact, top-down",
+    "documentName": "Tile",
+    "img": "modules/dh-cartography-test/stamps/fx_table_intact_topdown.png",
+    "tags": [
+      "furniture",
+      "table",
+      "stone",
+      "top-down",
+      "state-intact",
+      "group:22222222-2222-5222-9222-222222222222"
+    ],
+    "gridSize": 100,
+    "data": [
+      {
+        "texture": {
+          "src": "modules/dh-cartography-test/stamps/fx_table_intact_topdown.png",
+          "scaleX": 1,
+          "scaleY": 1
+        },
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 128,
+        "rotation": 0
+      }
+    ]
+  }
+]

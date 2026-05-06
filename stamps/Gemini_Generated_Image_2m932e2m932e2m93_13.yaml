@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Is a 3D rendering
+description: "The image is a 3D rendering of a square-shaped metal plate with a textured surface. The plate appears to be made of a light-colored material, possibly plastic or metal, and has a smooth, polished finish. The edges of the plate are slightly raised, giving it a realistic look. The background is a solid gray color, which contrasts nicely with the plate. The overall appearance is simple and minimalistic, with no additional details or embellishments present."
+tags: [rendering, square-shaped, metal, plate, textured, surface, light-colored, material, possibly, plastic, has, smooth]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 83fd8256-a4f8-5cf5-89a9-31ea66352c27      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 13
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T19:13:47+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

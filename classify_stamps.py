@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["Pillow"]
 # ///
 """
 Classify each extracted stamp against a remote ComfyUI server running
@@ -48,10 +48,17 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+from io import BytesIO
 from pathlib import Path
 
+from PIL import Image
+
 DEFAULT_SERVER = "http://198.51.100.11:8188"
-MODEL_NAME = "microsoft/Florence-2-base"
+# MiaoshouAI's PromptGen finetune is trained on diverse object/asset images and
+# produces clean noun-phrase captions (vs. Florence-2-base, which hallucinates
+# "a set of ..." or background-only descriptions for our cartography stamps).
+# It also unlocks the prompt_gen_tags task (base returns region tokens for it).
+MODEL_NAME = "MiaoshouAI/Florence-2-large-PromptGen-v2.0"
 SUBFOLDER = "dh_classify"  # subdirectory under ComfyUI's input/ for our uploads
 HERE = Path(__file__).resolve().parent
 STAMPS_DIR = HERE / "stamps"
@@ -129,18 +136,79 @@ def _request(server: str, path: str, *, data: bytes | None = None, headers: dict
         raise RuntimeError(f"HTTP {e.code} from {path}: {body[:600]}") from None
 
 
-def upload_image(server: str, png_path: Path) -> str:
-    """Upload a PNG to ComfyUI's input directory. Return the saved filename."""
+CLASSIFIER_RETRY_SIDE = 768
+
+
+def square_png_bytes(png_path: Path, *, retry: bool = False) -> bytes:
+    """Build the classifier-input PNG.
+
+    Two passes:
+
+    * **Default pass** (retry=False): square-pad with transparent
+      background, no upscale. This is what works for most stamps —
+      Florence-2-large-PromptGen-v2.0 captions ~80% of cells correctly
+      at native resolution (150-260px) with a transparent background.
+    * **Retry pass** (retry=True): upscale the longer edge to
+      CLASSIFIER_RETRY_SIDE (768), then square-pad and flatten on
+      white. Use this when the default pass returns empty captions.
+      Verified to recover stamps that the default misses (e.g. small
+      parchment-with-seal artwork).
+
+    Empirically the white-bg+upscale path BREAKS some stamps that the
+    default works on (verified A/B on the bowls stamp _00.png), and
+    the default BREAKS some stamps that white-bg+upscale works on
+    (parchment stamp _02.png). They are complementary, not strictly
+    better/worse — hence the two-pass retry strategy in
+    `classify_one()`.
+
+    The on-disk PNG is NEVER modified — both transforms only affect
+    the bytes uploaded to ComfyUI. Stamps stay transparent on disk for
+    compositing in Foundry.
+    """
+    with Image.open(png_path) as im:
+        rgba = im.convert("RGBA")
+        w, h = rgba.size
+        if retry:
+            scale = max(1.0, CLASSIFIER_RETRY_SIDE / max(w, h))
+            if scale > 1.0:
+                new_w, new_h = int(round(w * scale)), int(round(h * scale))
+                rgba = rgba.resize((new_w, new_h), Image.LANCZOS)
+                w, h = new_w, new_h
+            bg = (255, 255, 255, 255)
+        else:
+            bg = (0, 0, 0, 0)
+        side = max(w, h)
+        canvas = Image.new("RGBA", (side, side), bg)
+        canvas.paste(rgba, ((side - w) // 2, (side - h) // 2), rgba)
+        buf = BytesIO()
+        if retry:
+            canvas.convert("RGB").save(buf, format="PNG")
+        else:
+            canvas.save(buf, format="PNG")
+        return buf.getvalue()
+
+
+def upload_image(server: str, png_path: Path, *, retry: bool = False) -> str:
+    """Upload a square-padded PNG to ComfyUI's input directory.
+
+    `retry=True` switches `square_png_bytes` to the upscale+white-bg
+    fallback path. The server-side filename is suffixed with `__retry`
+    so the retry payload doesn't share a content hash (or a LoadImage
+    cache slot) with the default-pass upload.
+    """
     boundary = uuid.uuid4().hex
     parts: list[bytes] = []
+    upload_name = png_path.name
+    if retry:
+        upload_name = png_path.stem + "__retry" + png_path.suffix
     parts.append(
         (
             f"--{boundary}\r\n"
-            f'Content-Disposition: form-data; name="image"; filename="{png_path.name}"\r\n'
+            f'Content-Disposition: form-data; name="image"; filename="{upload_name}"\r\n'
             f"Content-Type: image/png\r\n\r\n"
         ).encode()
     )
-    parts.append(png_path.read_bytes())
+    parts.append(square_png_bytes(png_path, retry=retry))
     parts.append(b"\r\n")
     parts.append(
         (
@@ -205,8 +273,12 @@ def build_workflow(server_filename: str) -> dict:
         "image": ["loader_image", 0],
         "text_input": "",
         "fill_mask": False,
+        # 1024 tokens is the floor for our upscaled-to-768 inputs. At 256
+        # tokens the model truncates mid-generation and PromptGen returns
+        # empty text for some images (especially detailed scenes). Verified
+        # by A/B test in CLAUDE.md gotcha #9.
         "keep_model_loaded": True,
-        "max_new_tokens": 256,
+        "max_new_tokens": 1024,
         "num_beams": 3,
         "do_sample": False,
         "output_mask_select": "",
@@ -234,10 +306,9 @@ def build_workflow(server_filename: str) -> dict:
             "class_type": "Florence2Run",
             "inputs": {**common_run_inputs, "task": "prompt_gen_tags"},
         },
-        # PreviewAny is an OUTPUT_NODE that captures any input into the
-        # /history payload — Florence2Run is not an output node on its own,
-        # so without these wrappers ComfyUI rejects the workflow as having
-        # no outputs.
+        # PreviewAny is an OUTPUT_NODE that captures any input into /history.
+        # Florence2Run is not an output node on its own; without these wrappers
+        # ComfyUI rejects the workflow as having no outputs.
         "save_caption": {
             "class_type": "PreviewAny",
             "inputs": {"source": ["caption", 2]},
@@ -291,24 +362,107 @@ def extract_strings(history: dict) -> tuple[str, str]:
 # --- Caption → sidecar fields ---------------------------------------------------
 
 ARTICLE_RE = re.compile(r"^(an?\s+|the\s+|a\s+|some\s+|several\s+)", re.IGNORECASE)
-NOUN_PHRASE_RE = re.compile(r"^([A-Za-z][A-Za-z0-9\- ]{1,40}?)(?:\s+(?:is|are|that|with|on|in|at|near|featuring|made|of|sitting|standing|placed|lying|hanging|covered|painted|surrounded)\b|[.,;])", re.IGNORECASE)
+# Match a noun phrase: optionally adjectives followed by one or more nouns,
+# terminated at a clause-boundary word or punctuation. The trailing
+# words list catches "is/are/with/of/on/..." and similar relations.
+NOUN_PHRASE_RE = re.compile(
+    r"^("
+    r"(?:[A-Za-z][A-Za-z0-9\-]*[, ]+){0,4}"  # 0-4 leading adjectives/commas
+    r"[A-Za-z][A-Za-z0-9\-]*"  # head noun
+    r"(?:\s+[A-Za-z][A-Za-z0-9\-]*){0,2}"  # 0-2 trailing modifier nouns
+    r")"
+    r"(?=\s+(?:is|are|that|which|who|with|on|in|at|near|featuring|made|of|"
+    r"sitting|standing|placed|lying|hanging|covered|painted|surrounded|"
+    r"arranged|tied|attached|positioned|facing|drawn|rendered|illustrated|"
+    r"appears?|appearing|appear)\b|[.,;])",
+    re.IGNORECASE,
+)
+# Names shorter than this look like extraction failures, not real names.
+NAME_MIN_LEN = 3
+
+
+# Words that describe the medium/format rather than the subject. Florence-2
+# (especially the PromptGen finetune) prepends long chains of these:
+#   "The image is a digital illustration of two empty ceramic bowls"
+#   "A 3D rendering of a wooden bed"
+#   "A set of four rectangular frames"
+# Strip them iteratively until what remains starts with a noun phrase.
+_PREAMBLE_PHRASES = [
+    # Document/establishing clauses.
+    r"this image\s+(?:is|shows|depicts|features|contains|displays)\s+",
+    r"the image\s+(?:is|shows|depicts|features|contains|displays)\s+",
+    r"this\s+(?:is|shows|depicts|features|contains|displays)\s+",
+    r"it\s+(?:is|shows|depicts|features|contains|displays)\s+",
+    r"there (?:is|are)\s+",
+    # Medium / format words. These can chain (e.g. "a digital
+    # illustration"), so we apply repeatedly.
+    r"(?:an?\s+|the\s+)?(?:digital|stylized|simple|minimalist|colorful|"
+    r"detailed|hand[- ]drawn|hand[- ]painted|cartoon|cartoon-style|"
+    r"oil[- ]painted|watercolor|3d|two-dimensional|2d|monochrome|"
+    r"black[- ]and[- ]white|grayscale|vintage|aged|weathered|rustic|"
+    r"isometric|top[- ]down|overhead)\s+",
+    r"(?:an?\s+|the\s+)?(?:drawings?|illustrations?|pictures?|images?|"
+    r"paintings?|renders?|renderings?|sketches?|depictions?|portraits?|"
+    r"photographs?|photos?|diagrams?|graphics?|models?|figures?|"
+    r"icons?|emojis?)\s+(?:of\s+)?",
+    # Multiplicity wrappers ("a set of four ...", "a collection of ...",
+    # "a pair of ..."). These are NOT subject nouns even though they
+    # parse as such — the real subject sits after the "of".
+    r"(?:an?\s+|the\s+)?(?:set|collection|series|group|pair|stack|pile|"
+    r"row|line|cluster|bunch|assortment|variety|selection|array)\s+"
+    r"(?:of\s+(?:\w+\s+)?)?",
+    # Vague enumerators ("four ...", "various ...", "different types of ...").
+    r"(?:various|different|several|multiple|many|a few|a couple of)\s+"
+    r"(?:types?\s+of\s+|kinds?\s+of\s+)?",
+    r"(?:two|three|four|five|six|seven|eight|nine|ten)\s+",
+    # Trailing "of" connector left dangling after the above strips.
+    r"of\s+",
+    # Articles before the actual subject noun.
+    r"(?:an?\s+|the\s+)",
+]
+_PREAMBLE_RES = [re.compile("^" + p, re.IGNORECASE) for p in _PREAMBLE_PHRASES]
+
+
+def _strip_preamble(s: str) -> str:
+    """Iteratively peel medium/multiplicity/article words off the front.
+
+    Each pass tries each pattern in order; if any matches, we eat it
+    and restart from the top. This handles arbitrary chains like
+    "The image is a stylized digital illustration of a set of four ..."
+    without having to write one mega-regex.
+    """
+    prev = None
+    while s and s != prev:
+        prev = s
+        for r in _PREAMBLE_RES:
+            m = r.match(s)
+            if m:
+                s = s[m.end() :].lstrip()
+                break
+    return s
 
 
 def derive_name_from_caption(caption: str) -> str | None:
     if not caption:
         return None
-    s = ARTICLE_RE.sub("", caption.strip())
+    s = caption.strip()
+    s = _strip_preamble(s)
     m = NOUN_PHRASE_RE.match(s)
     if m:
         phrase = m.group(1).strip().rstrip(",")
     else:
-        # Take the first chunk up to the first comma/period.
+        # Take the first chunk up to the first comma/period, capped at 6 words.
         phrase = re.split(r"[.,;]", s, maxsplit=1)[0].strip()
         if len(phrase) > 60:
             phrase = " ".join(phrase.split()[:6])
-    if not phrase:
+    if not phrase or len(phrase) < NAME_MIN_LEN:
         return None
-    return phrase[:1].upper() + phrase[1:]
+    # Title-case multi-word phrases for readability ("wooden bed" → "Wooden Bed").
+    if " " in phrase and phrase.islower():
+        phrase = phrase.title()
+    else:
+        phrase = phrase[:1].upper() + phrase[1:]
+    return phrase
 
 
 def derive_orientation(caption: str) -> str | None:
@@ -334,14 +488,44 @@ def derive_state(caption: str) -> str | None:
     return matched[0]
 
 
-def derive_tags(tag_string: str, existing: list[str]) -> list[str]:
-    raw = re.split(r"[,;\n]", tag_string or "")
-    norm = [normalize_tag(t) for t in raw]
+# Words to drop from caption-derived tags (English stopwords + filler).
+CAPTION_STOPWORDS = {
+    "a", "an", "the", "of", "with", "and", "or", "in", "on", "at", "to",
+    "for", "by", "from", "is", "are", "was", "were", "be", "been", "being",
+    "this", "that", "these", "those", "it", "its", "he", "she", "they",
+    "them", "his", "her", "their", "drawing", "image", "picture", "shows",
+    "showing", "view", "one", "two", "three", "some", "many", "small",
+    "large", "big", "little", "tall", "short", "next", "another", "very",
+    "lot", "lots", "looks", "look", "appears", "appear", "seems", "seem",
+    "made", "kind", "type", "color", "colors", "colored", "coloured",
+    "black", "white", "gray", "grey", "brown", "red", "blue", "green",
+    "yellow", "orange", "purple", "pink", "tan", "metallic",
+}
+
+
+def derive_tags(_unused: str, existing: list[str], *, caption: str = "") -> list[str]:
+    """Build a tag list by tokenizing the caption.
+
+    The Florence-2-base model does not produce a clean tag list for our
+    domain (the prompt_gen_tags task only works on the PromptGen finetune),
+    so we extract content words from the more_detailed_caption itself.
+    """
     out: list[str] = list(existing)
-    for t in norm:
-        if t and t not in out and len(t) <= 32:
-            out.append(t)
-    return out[:30]
+    seen = set(out)
+    if not caption:
+        return out
+    tokens = re.findall(r"[A-Za-z][A-Za-z\-']{2,}", caption.lower())
+    for tok in tokens:
+        norm = normalize_tag(tok)
+        if not norm or len(norm) < 3 or len(norm) > 32:
+            continue
+        if norm in CAPTION_STOPWORDS or norm in seen:
+            continue
+        out.append(norm)
+        seen.add(norm)
+        if len(out) >= 12:
+            break
+    return out
 
 
 # --- Sidecar update -------------------------------------------------------------
@@ -415,11 +599,24 @@ def read_classified_at(yaml_path: Path) -> str | None:
 
 
 def classify_one(server: str, png: Path, yaml_path: Path, client_id: str) -> tuple[str, str]:
+    # First pass: native-size, transparent background. Works for most stamps.
     server_filename = upload_image(server, png)
     workflow = build_workflow(server_filename)
     prompt_id = submit_prompt(server, workflow, client_id)
     history = poll_history(server, prompt_id)
     caption, tags_raw = extract_strings(history)
+
+    # Retry pass: upscale to 768 + flatten on white. Recovers stamps where
+    # Florence-2 returns empty on the default payload (small/intricate
+    # subjects like parchment with wax seal). Complementary, not strictly
+    # better — see `square_png_bytes` docstring.
+    if not caption and not tags_raw:
+        retry_filename = upload_image(server, png, retry=True)
+        retry_workflow = build_workflow(retry_filename)
+        retry_pid = submit_prompt(server, retry_workflow, client_id)
+        retry_history = poll_history(server, retry_pid)
+        caption, tags_raw = extract_strings(retry_history)
+
     if not caption and not tags_raw:
         raise RuntimeError(f"empty Florence-2 output for {png.name}")
 
@@ -435,8 +632,17 @@ def classify_one(server: str, png: Path, yaml_path: Path, client_id: str) -> tup
         st = derive_state(caption)
         if st:
             fields["state"] = st
-    if tags_raw:
-        fields["tags"] = derive_tags(tags_raw, [])
+    if tags_raw or caption:
+        # Prefer model-emitted tags from prompt_gen_tags (PromptGen finetune)
+        # but enrich with content words from the caption so we don't lose
+        # detail like adjectives ("rusted", "wooden", "broken").
+        existing: list[str] = []
+        if tags_raw:
+            for raw in re.split(r"[,;\n]", tags_raw):
+                norm = normalize_tag(raw)
+                if norm and norm not in existing and len(norm) <= 32:
+                    existing.append(norm)
+        fields["tags"] = derive_tags("", existing, caption=caption)
     fields["classified_at"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     fields["classified_by"] = MODEL_NAME
 
@@ -449,11 +655,15 @@ def main(argv: list[str]) -> int:
     p.add_argument("--server", default=DEFAULT_SERVER)
     p.add_argument("--force", action="store_true", help="re-classify even if classified_at is set")
     p.add_argument("--limit", type=int, default=0, help="only process the first N stamps (0 = all)")
+    p.add_argument("--source", default=None,
+                   help="Limit to stamps whose filename starts with this stem")
     p.add_argument("--verbose", "-v", action="store_true")
     args = p.parse_args(argv)
 
     client_id = uuid.uuid4().hex
     pngs = sorted(STAMPS_DIR.glob("*.png"))
+    if args.source:
+        pngs = [p for p in pngs if p.stem.startswith(args.source)]
     if args.limit:
         pngs = pngs[: args.limit]
 

@@ -1,0 +1,145 @@
+{
+  "unet": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "chroma-unlocked-v35.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "Chroma Model"
+    }
+  },
+  "clip_loader": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux"
+    },
+    "_meta": {
+      "title": "Text Encoders (T5 + CLIP-L)"
+    }
+  },
+  "vae": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "_meta": {
+      "title": "FLUX VAE"
+    }
+  },
+  "pos": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "grimdark sci-fi, top-down battle map, dark industrial interior, tabletop rpg, digital painting",
+      "t5xxl": "top-down overhead orthographic view of a grimy underground bar interior, grimdark science fiction interior, warhammer 40000 aesthetic, round wooden tables with metal stools arranged across the room, long bar counter with taps and bottles along the back wall, barrel storage alcove with crates in the corner, corroded metal deck plating with seam lines and diamond plate patches, thick bulkhead walls with dark gunmetal armor plating and rivets and weld seams, selective dramatic lighting from overhead amber lumen strips and warm hanging lamps over tables, heavy shadows and darkness at edges, vignette, deep pools of shadow in corners, corroded and worn surfaces, rust and grime and oil stains, industrial pipes and conduits and cabling visible along walls and ceiling, muted color palette with teal and amber accent lighting, oil painting style, tabletop RPG battle map, highly detailed textures, no characters or people visible",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Positive Prompt (edit clip_l AND t5xxl)"
+    }
+  },
+  "neg": {
+    "class_type": "CLIPTextEncodeFlux",
+    "inputs": {
+      "clip": [
+        "clip_loader",
+        0
+      ],
+      "clip_l": "bright, clean, modern, fantasy, medieval",
+      "t5xxl": "bright colors, clean, anime, cartoon, cel shading, digital art, 3d render, photorealistic photograph, photography, smooth, airbrushed, white background, simple background, fantasy medieval, sword, magic, elf, text watermark, logo, neon, high key lighting, glamorous, studio lighting, HDR, perspective view, side view, isometric, character, person, figure, outdoor, landscape, sky",
+      "guidance": 0.0
+    },
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "latent": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "_meta": {
+      "title": "Stage 1 \u2014 Base Resolution (1024x1024 square)"
+    }
+  },
+  "sampler": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "unet",
+        0
+      ],
+      "positive": [
+        "pos",
+        0
+      ],
+      "negative": [
+        "neg",
+        0
+      ],
+      "latent_image": [
+        "latent",
+        0
+      ],
+      "seed": 0,
+      "control_after_generate": "randomize",
+      "steps": 26,
+      "cfg": 3.5,
+      "sampler_name": "res_multistep",
+      "scheduler": "beta",
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "KSampler (Chroma \u2014 26 steps, CFG 3.5)"
+    }
+  },
+  "decode": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "sampler",
+        0
+      ],
+      "vae": [
+        "vae",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "save": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ],
+      "filename_prefix": "Map_Interior"
+    },
+    "_meta": {
+      "title": "Save Map"
+    }
+  },
+  "preview": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "decode",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Preview"
+    }
+  }
+}

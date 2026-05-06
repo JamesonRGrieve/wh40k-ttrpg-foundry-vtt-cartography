@@ -1,0 +1,13 @@
+# Cartography stamp sidecar — fixture for end-to-end Foundry validation
+name: "Stone Table"
+description: "a cracked stone table viewed from above"
+tags: [furniture, table, stone, cracked]
+orientation: top-down
+state: damaged
+group_id: "22222222-2222-5222-9222-222222222222"
+
+source: fixture
+source_index: 4
+extracted_at: 2026-05-05T18:30:09+00:00
+classified_at: 2026-05-05T18:30:09+00:00
+classified_by: fixture

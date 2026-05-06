@@ -1,0 +1,512 @@
+#!/usr/bin/env -S uv run --quiet
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#   "Pillow",
+#   "numpy",
+# ]
+# ///
+"""Drive the saved Chroma-Flux battlemap workflows on the ComfyUI server.
+
+The two workflows that ship with the project (saved server-side under
+`workflows/`) are loaded here as templates and submitted via the HTTP
+API with parameter overrides. Outputs are downloaded into `battlemaps/`.
+
+Workflows:
+
+  interior   — txt2img Chroma-Flux at 1024x1024. Pure prompt-driven; no
+               spatial control. Good for first-pass exploration.
+  spacecraft — img2img with regional ConditioningSetMask per color in
+               the input layout PNG. Strong spatial control; needs a
+               hand-painted layout.
+
+The script never edits the saved workflow files. Templates are loaded
+fresh each run, mutated in memory, and submitted. Update the templates
+on the ComfyUI server and re-pull (`./pull-workflows.sh` or curl the
+`/api/userdata` endpoint) when the canonical pos/neg prompts change.
+
+Stackable layers
+----------------
+Foundry V14 scenes accept a background image AND a foreground image.
+Treating these as layers:
+
+  * Base pass — full architectural render (floor + walls). Foundry
+    background.
+  * Walls-only pass (optional, --layered with --layout) — re-runs with
+    every non-wall region prompt replaced by a "do not render anything,
+    transparent flat color" prompt, then chromakeys the result. Foundry
+    foreground.
+
+Stamps populate the tile layer on top.
+"""
+
+from __future__ import annotations
+
+import argparse
+import copy
+import json
+import sys
+import time
+import urllib.request
+import uuid
+from pathlib import Path
+from typing import Any
+
+DEFAULT_SERVER = "http://198.51.100.11:8188"
+HERE = Path(__file__).resolve().parent
+WORKFLOWS_DIR = HERE / "workflows"
+OUT_DIR = HERE / "battlemaps"
+POLL_TIMEOUT_S = 600  # Chroma at 1024² is slow on the 3090; allow plenty.
+
+
+# --- ComfyUI HTTP helpers (mirrors assign_groups.py patterns) ---------------
+
+
+def submit_prompt(server: str, workflow: dict[str, Any], client_id: str) -> str:
+    body = json.dumps({"prompt": workflow, "client_id": client_id}).encode()
+    req = urllib.request.Request(
+        f"{server}/prompt",
+        data=body,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        payload = json.loads(resp.read())
+    if "prompt_id" not in payload:
+        raise RuntimeError(f"ComfyUI rejected workflow: {payload}")
+    return payload["prompt_id"]
+
+
+def poll_history(server: str, prompt_id: str, *, timeout: float = POLL_TIMEOUT_S) -> dict[str, Any]:
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        with urllib.request.urlopen(f"{server}/history/{prompt_id}", timeout=10) as resp:
+            data = json.loads(resp.read())
+        record = data.get(prompt_id)
+        if record and (record.get("status") or {}).get("completed"):
+            return record
+        time.sleep(2.0)
+    raise TimeoutError(f"prompt {prompt_id} did not complete within {timeout}s")
+
+
+def fetch_output_image(server: str, filename: str, subfolder: str = "") -> bytes:
+    qs = f"filename={urllib.parse.quote(filename)}&type=output"
+    if subfolder:
+        qs += f"&subfolder={urllib.parse.quote(subfolder)}"
+    with urllib.request.urlopen(f"{server}/view?{qs}", timeout=30) as resp:
+        return resp.read()
+
+
+def list_server_workflows(server: str) -> list[str]:
+    with urllib.request.urlopen(f"{server}/api/userdata?dir=workflows", timeout=10) as resp:
+        return json.loads(resp.read())
+
+
+def fetch_server_workflow(server: str, name: str) -> dict[str, Any]:
+    qname = urllib.parse.quote(f"workflows/{name}", safe="")
+    with urllib.request.urlopen(f"{server}/api/userdata/{qname}", timeout=10) as resp:
+        return json.loads(resp.read())
+
+
+def write_server_workflow(server: str, name: str, body: dict[str, Any]) -> None:
+    qname = urllib.parse.quote(f"workflows/{name}", safe="")
+    req = urllib.request.Request(
+        f"{server}/api/userdata/{qname}",
+        data=json.dumps(body, indent=2).encode(),
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        resp.read()
+
+
+def upload_input_image(server: str, image_path: Path, *, subfolder: str = "battlemap_layouts") -> str:
+    """POST a local PNG to ComfyUI's /upload/image. Returns the server-side filename."""
+    boundary = f"----dhmap{uuid.uuid4().hex}"
+    image_bytes = image_path.read_bytes()
+    body = bytearray()
+    for field, value in (("subfolder", subfolder), ("type", "input"), ("overwrite", "true")):
+        body.extend(f"--{boundary}\r\nContent-Disposition: form-data; name=\"{field}\"\r\n\r\n{value}\r\n".encode())
+    body.extend(
+        f"--{boundary}\r\nContent-Disposition: form-data; name=\"image\"; filename=\"{image_path.name}\"\r\n"
+        "Content-Type: image/png\r\n\r\n".encode()
+    )
+    body.extend(image_bytes)
+    body.extend(f"\r\n--{boundary}--\r\n".encode())
+    req = urllib.request.Request(
+        f"{server}/upload/image",
+        data=bytes(body),
+        headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        info = json.loads(resp.read())
+    name = info.get("name") or image_path.name
+    sub = info.get("subfolder") or subfolder
+    return f"{sub}/{name}" if sub else name
+
+
+# --- Workflow mutation ------------------------------------------------------
+
+
+def load_template(name: str) -> dict[str, Any]:
+    path = WORKFLOWS_DIR / f"{name}.json"
+    if not path.exists():
+        raise FileNotFoundError(f"workflow template not found: {path}")
+    return json.loads(path.read_text())
+
+
+def set_prompt(workflow: dict[str, Any], node_id: str, *, t5xxl: str | None = None, clip_l: str | None = None) -> None:
+    node = workflow.get(node_id)
+    if not node or node.get("class_type") != "CLIPTextEncodeFlux":
+        raise KeyError(f"node {node_id!r} is not a CLIPTextEncodeFlux")
+    if t5xxl is not None:
+        node["inputs"]["t5xxl"] = t5xxl
+    if clip_l is not None:
+        node["inputs"]["clip_l"] = clip_l
+
+
+def set_dimensions(workflow: dict[str, Any], node_id: str, *, width: int, height: int) -> None:
+    node = workflow[node_id]
+    node["inputs"]["width"] = width
+    node["inputs"]["height"] = height
+
+
+def set_seed(workflow: dict[str, Any], node_id: str, seed: int) -> None:
+    node = workflow[node_id]
+    node["inputs"]["seed"] = seed
+    # Defeat ComfyUI's auto-randomize on subsequent submissions.
+    node["inputs"]["control_after_generate"] = "fixed"
+
+
+def set_save_prefix(workflow: dict[str, Any], node_id: str, prefix: str) -> None:
+    workflow[node_id]["inputs"]["filename_prefix"] = prefix
+
+
+def set_load_image(workflow: dict[str, Any], node_id: str, server_path: str) -> None:
+    workflow[node_id]["inputs"]["image"] = server_path
+
+
+# --- High-level driver -----------------------------------------------------
+
+
+INTERIOR_DEFAULT_T5 = (
+    "top-down overhead orthographic view of an empty grimdark sci-fi interior room, "
+    "warhammer 40000 aesthetic, "
+    "corroded metal deck plating floor with seam lines and diamond plate patches, "
+    "thick bulkhead walls around the perimeter with dark gunmetal armor plating, "
+    "rivets and weld seams, structural ribs along the walls, "
+    "selective dramatic lighting from overhead amber lumen strips, heavy shadows in corners, "
+    "muted color palette with teal and amber accent lighting, oil painting style, "
+    "tabletop RPG battle map, highly detailed floor and wall textures, "
+    "completely empty room with no furniture, no props, no objects, no tables, no chairs, "
+    "no characters or people, no decorations on the floor"
+)
+INTERIOR_DEFAULT_CLIP_L = (
+    "grimdark sci-fi, top-down battle map, empty room, bare floor, bulkhead walls, tabletop rpg"
+)
+
+
+def run_interior(
+    server: str,
+    *,
+    t5xxl: str,
+    clip_l: str,
+    width: int,
+    height: int,
+    seed: int,
+    prefix: str,
+) -> Path:
+    wf = load_template("BattlemapInteriorV1")
+    set_prompt(wf, "pos", t5xxl=t5xxl, clip_l=clip_l)
+    set_dimensions(wf, "latent", width=width, height=height)
+    set_seed(wf, "sampler", seed)
+    set_save_prefix(wf, "save", prefix)
+
+    client_id = uuid.uuid4().hex
+    print(f"[interior] submitting prompt prefix={prefix} {width}x{height} seed={seed}", file=sys.stderr)
+    pid = submit_prompt(server, wf, client_id)
+    print(f"[interior] prompt_id={pid}", file=sys.stderr)
+    record = poll_history(server, pid)
+
+    saved = _saved_images_from_history(record)
+    if not saved:
+        raise RuntimeError(f"no SaveImage outputs in history: {json.dumps(record.get('outputs'), indent=2)[:600]}")
+    return _download_first(server, saved, prefix)
+
+
+# Per-region color codes (RGB) baked into BattlemapSpacecraft.json's
+# ImageColorToMask nodes. The map is the source of truth for both the
+# regional conditioning AND the post-render alpha-extraction layer
+# pipeline below.
+SPACECRAFT_REGION_RGB: dict[str, tuple[int, int, int]] = {
+    "wall": (0x30, 0x30, 0x30),       # 3158064  — bulkhead walls
+    "floor": (0x80, 0x80, 0x80),      # 8421504  — deck plating
+    "ramp": (0xA0, 0xA0, 0xA0),       # 10526880 — loading ramp
+    "windscreen": (0x1A, 0x27, 0x50), # 1716304  — cockpit viewport
+    "chair": (0x8B, 0x5E, 0x2B),      # 9132587  — pilot chair
+    "locker": (0x4A, 0x6F, 0x40),     # 4876928  — storage locker
+    "console": (0x2A, 0x42, 0x50),    # 2771536  — instrument console
+    "lighting": (0xD4, 0xB2, 0x60),   # 13934624 — lumen strip
+}
+
+
+def run_spacecraft(
+    server: str,
+    *,
+    layout_path: Path,
+    seed: int,
+    prefix: str,
+    keep_only_role: str | None = None,
+) -> Path:
+    """Run the regional-conditioning Spacecraft workflow.
+
+    `keep_only_role`: if provided (e.g. "wall"), the workflow runs
+    normally to produce a full render, then post-processes by using
+    the layout image as an alpha mask — pixels whose layout-image
+    color is close to the requested role's color stay opaque;
+    everything else becomes transparent. This is more reliable than
+    asking Flux to render a chromakey color (Flux mutes saturated
+    out-of-gamut prompts to gray); the layout itself is the
+    deterministic source of truth for "where is the wall vs. the
+    floor."
+    """
+    wf = load_template("BattlemapSpacecraft")
+    server_path = upload_input_image(server, layout_path)
+    set_load_image(wf, "load", server_path)
+    set_seed(wf, "sampler", seed)
+    set_save_prefix(wf, "save", prefix)
+
+    client_id = uuid.uuid4().hex
+    print(f"[spacecraft] uploaded layout={server_path}", file=sys.stderr)
+    mode = f"keep_only={keep_only_role}" if keep_only_role else "full"
+    print(f"[spacecraft] submitting prompt prefix={prefix} seed={seed} mode={mode}", file=sys.stderr)
+    pid = submit_prompt(server, wf, client_id)
+    print(f"[spacecraft] prompt_id={pid}", file=sys.stderr)
+    record = poll_history(server, pid)
+
+    saved = _saved_images_from_history(record)
+    if not saved:
+        raise RuntimeError(f"no SaveImage outputs in history: {json.dumps(record.get('outputs'), indent=2)[:600]}")
+    base_path = _download_first(server, saved, prefix)
+    if keep_only_role is not None:
+        if keep_only_role not in SPACECRAFT_REGION_RGB:
+            raise ValueError(
+                f"unknown region role: {keep_only_role!r}; known: {list(SPACECRAFT_REGION_RGB)}"
+            )
+        base_path = _mask_render_by_layout(
+            base_path,
+            layout_path=layout_path,
+            target_rgb=SPACECRAFT_REGION_RGB[keep_only_role],
+        )
+    return base_path
+
+
+def _quantize_layout(
+    src: Path, dest: Path, *, force_background_black: bool = False, far_threshold: int = 25
+) -> None:
+    """Snap each pixel of `src` to the nearest canonical region color.
+
+    `far_threshold` (Chebyshev): if the closest region is farther than
+    this, the pixel is "background." With `force_background_black` it
+    becomes pure black (#000000); otherwise it's left unchanged. The
+    default keeps unrelated content (e.g. a faint sketch / annotation
+    layer in the source PNG) intact while still cleaning up the
+    anti-aliased edges between regions.
+    """
+    import numpy as np
+    from PIL import Image
+
+    palette = list(SPACECRAFT_REGION_RGB.values())
+    palette_arr = np.array(palette, dtype=np.int16)  # (R, 3)
+
+    im = Image.open(src).convert("RGB")
+    arr = np.array(im, dtype=np.int16)  # (H, W, 3)
+    h, w, _ = arr.shape
+    flat = arr.reshape(-1, 3)  # (H*W, 3)
+    # Chebyshev distance to each palette entry: max channel diff.
+    diffs = np.abs(flat[:, None, :] - palette_arr[None, :, :]).max(axis=2)  # (H*W, R)
+    nearest = diffs.argmin(axis=1)  # (H*W,)
+    nearest_dist = diffs[np.arange(diffs.shape[0]), nearest]
+    snapped = palette_arr[nearest]  # (H*W, 3)
+    far_mask = nearest_dist > far_threshold
+    if force_background_black:
+        snapped[far_mask] = (0, 0, 0)
+    else:
+        snapped[far_mask] = flat[far_mask]
+    out_arr = snapped.reshape(h, w, 3).astype(np.uint8)
+    Image.fromarray(out_arr, mode="RGB").save(dest)
+
+
+def _mask_render_by_layout(
+    render_path: Path,
+    *,
+    layout_path: Path,
+    target_rgb: tuple[int, int, int],
+    tol: int = 40,
+) -> Path:
+    """Use the layout PNG as an alpha mask over the rendered PNG.
+
+    Pixels in the layout that are within `tol` (Chebyshev distance) of
+    `target_rgb` become opaque in the output; all other pixels become
+    fully transparent. The layout is resampled to the render's
+    dimensions if they differ.
+
+    This produces a clean "<role>-only" layer — e.g. for walls it
+    yields a transparent-background PNG with just the rendered walls
+    visible, suitable for the Foundry foreground / overlay tile layer.
+    """
+    from PIL import Image  # heavy import path; lazy
+
+    render = Image.open(render_path).convert("RGBA")
+    layout = Image.open(layout_path).convert("RGB")
+    if layout.size != render.size:
+        layout = layout.resize(render.size, Image.NEAREST)
+    rw, rh = render.size
+    rpx = render.load()
+    lpx = layout.load()
+    tr, tg, tb = target_rgb
+    kept = 0
+    for y in range(rh):
+        for x in range(rw):
+            lr, lg, lb = lpx[x, y]
+            if abs(lr - tr) <= tol and abs(lg - tg) <= tol and abs(lb - tb) <= tol:
+                kept += 1
+            else:
+                r, g, b, _a = rpx[x, y]
+                rpx[x, y] = (r, g, b, 0)
+    out = render_path.with_name(render_path.stem + "_alpha.png")
+    render.save(out)
+    print(
+        f"[mask] kept {kept:,}/{rw * rh:,} px ({100 * kept / (rw * rh):.1f}%) → {out.name}",
+        file=sys.stderr,
+    )
+    return out
+
+
+def _saved_images_from_history(record: dict[str, Any]) -> list[dict[str, str]]:
+    out: list[dict[str, str]] = []
+    for node_out in (record.get("outputs") or {}).values():
+        for img in node_out.get("images") or []:
+            if img.get("type") == "output":
+                out.append(img)
+    return out
+
+
+def _download_first(server: str, saved: list[dict[str, str]], prefix: str) -> Path:
+    chosen = saved[0]
+    blob = fetch_output_image(server, chosen["filename"], chosen.get("subfolder", ""))
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    dest = OUT_DIR / chosen["filename"]
+    dest.write_bytes(blob)
+    print(f"[ok] {dest} ({len(blob):,} bytes)", file=sys.stderr)
+    return dest
+
+
+# --- CLI -------------------------------------------------------------------
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--server", default=DEFAULT_SERVER)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+
+    pi = sub.add_parser("interior", help="txt2img Chroma-Flux battlemap")
+    pi.add_argument("--t5xxl", default=INTERIOR_DEFAULT_T5)
+    pi.add_argument("--clip-l", default=INTERIOR_DEFAULT_CLIP_L)
+    pi.add_argument("--width", type=int, default=1024)
+    pi.add_argument("--height", type=int, default=1024)
+    pi.add_argument("--seed", type=int, default=0)
+    pi.add_argument("--prefix", default="map_interior")
+
+    ps = sub.add_parser("spacecraft", help="img2img regional-conditioning battlemap")
+    ps.add_argument("--layout", type=Path, required=True, help="path to color-coded layout PNG")
+    ps.add_argument("--seed", type=int, default=0)
+    ps.add_argument("--prefix", default="map_spacecraft")
+    ps.add_argument(
+        "--walls-only",
+        action="store_true",
+        help="render only the wall region; everything else becomes transparent. "
+        "Output PNG has alpha; suitable for Foundry foreground/overlay layer.",
+    )
+
+    pp = sub.add_parser("pull", help="sync workflows/ from the ComfyUI server")
+    pp.add_argument("--names", nargs="*", help="specific workflow filenames; default = all")
+
+    pc = sub.add_parser("clone", help="clone a server workflow under a new name (e.g. V2)")
+    pc.add_argument("source", help="existing workflow name on server, e.g. BattlemapSpacecraft.json")
+    pc.add_argument("dest", help="new workflow name, e.g. BattlemapSpacecraftV2.json")
+
+    pq = sub.add_parser(
+        "quantize-layout",
+        help="snap a hand-painted layout PNG to the canonical region colors. "
+        "Removes anti-aliased edges that ComfyUI's ImageColorToMask misses "
+        "and that the walls-only alpha mask passes through as transparent.",
+    )
+    pq.add_argument("input", type=Path, help="path to the layout PNG to quantize")
+    pq.add_argument(
+        "--output",
+        type=Path,
+        help="path to write the quantized PNG; defaults to <stem>_quantized.png",
+    )
+    pq.add_argument(
+        "--background",
+        choices=["unchanged", "black"],
+        default="unchanged",
+        help="how to treat pixels far from any region color: keep them as-is "
+        "(default) or force to black (the layout's natural negative space).",
+    )
+
+    args = ap.parse_args()
+
+    if args.cmd == "interior":
+        run_interior(
+            args.server,
+            t5xxl=args.t5xxl,
+            clip_l=args.clip_l,
+            width=args.width,
+            height=args.height,
+            seed=args.seed,
+            prefix=args.prefix,
+        )
+    elif args.cmd == "spacecraft":
+        if not args.layout.exists():
+            print(f"layout not found: {args.layout}", file=sys.stderr)
+            return 2
+        run_spacecraft(
+            args.server,
+            layout_path=args.layout,
+            seed=args.seed,
+            prefix=args.prefix,
+            keep_only_role="wall" if args.walls_only else None,
+        )
+    elif args.cmd == "pull":
+        WORKFLOWS_DIR.mkdir(parents=True, exist_ok=True)
+        names = args.names or list_server_workflows(args.server)
+        for name in names:
+            body = fetch_server_workflow(args.server, name)
+            (WORKFLOWS_DIR / name).write_text(json.dumps(body, indent=2))
+            print(f"[pull] {name}", file=sys.stderr)
+    elif args.cmd == "quantize-layout":
+        if not args.input.exists():
+            print(f"layout not found: {args.input}", file=sys.stderr)
+            return 2
+        out = args.output or args.input.with_name(args.input.stem + "_quantized.png")
+        _quantize_layout(args.input, out, force_background_black=(args.background == "black"))
+        print(f"[quantize] {args.input.name} -> {out}", file=sys.stderr)
+    elif args.cmd == "clone":
+        body = fetch_server_workflow(args.server, args.source)
+        existing = list_server_workflows(args.server)
+        if args.dest in existing:
+            print(f"refusing to overwrite existing server workflow: {args.dest}", file=sys.stderr)
+            return 2
+        write_server_workflow(args.server, args.dest, body)
+        # Mirror locally so subsequent --workflow flags work without a re-pull.
+        WORKFLOWS_DIR.mkdir(parents=True, exist_ok=True)
+        (WORKFLOWS_DIR / args.dest).write_text(json.dumps(body, indent=2))
+        print(f"[clone] {args.source} -> {args.dest}", file=sys.stderr)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

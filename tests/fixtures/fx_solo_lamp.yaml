@@ -1,0 +1,13 @@
+# Cartography stamp sidecar — fixture for end-to-end Foundry validation
+name: "Brass Lamp"
+description: "a small brass lamp, lit"
+tags: [lighting, lamp, brass]
+orientation: isometric
+state: active
+group_id: "33333333-3333-5333-9333-333333333333"
+
+source: fixture
+source_index: 5
+extracted_at: 2026-05-05T18:30:09+00:00
+classified_at: 2026-05-05T18:30:09+00:00
+classified_by: fixture

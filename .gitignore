@@ -1,0 +1,6 @@
+# Derived caches; regenerated on demand.
+embeddings/
+
+# Stamp PNGs that aren't tracked stamps yet (working scratch). The
+# actual stamp set under stamps/ is tracked via individual additions.
+__pycache__/

@@ -1,0 +1,291 @@
+# Battlemap generation — operator's notebook
+
+This is the running record of what works and what doesn't when driving
+the ComfyUI battlemap workflows. Update it after every successful or
+failed run; freeze nothing. The working hypothesis at any moment is
+whatever this file currently says.
+
+The goal: **bare top-down architectural battlemaps** (floor + walls,
+maybe doors / ramps / windows) suitable for Foundry V14 scene
+backgrounds. Props are NOT generated here — they're stamped on top
+later via the `multi-token-edit` Mass Edit pipeline. A second
+foreground/walls-only pass for stackable layered scenes is in scope as
+an optional step but is NOT implemented yet.
+
+---
+
+## What's saved on the ComfyUI server
+
+Pulled into `workflows/` from the server's `userdata/workflows/`:
+
+| File | Type | Notes |
+| --- | --- | --- |
+| `BattlemapInteriorV1.json` | txt2img | Chroma-unlocked-v35, 1024² EmptyLatent, single pos/neg pair. No spatial control. |
+| `BattlemapSpacecraft.json` | img2img | Same Chroma model, but loads `layout.png` and runs 8 `ImageColorToMask` + `CLIPTextEncodeFlux` + `ConditioningSetMask` chains for per-region conditioning. Strong spatial control. |
+
+Re-pull when the canonical prompts on the server are edited:
+
+```sh
+for f in BattlemapSpacecraft.json BattlemapInteriorV1.json; do
+  curl -s -o "workflows/$f" "http://198.51.100.11:8188/api/userdata/workflows%2F$f"
+done
+```
+
+The driver loads these as templates and never edits them. Local
+overrides happen in memory.
+
+## How `generate_battlemap.py` drives them
+
+`uv run generate_battlemap.py interior` — overrides `pos.t5xxl` and
+`pos.clip_l`, EmptyLatentImage dimensions, KSampler seed, and
+SaveImage prefix on `BattlemapInteriorV1`, then submits and downloads.
+
+`uv run generate_battlemap.py spacecraft --layout layouts/foo.png` —
+uploads the layout PNG to ComfyUI's `input/battlemap_layouts/`,
+rewrites the `LoadImage` node to point at it, sets seed and prefix,
+submits.
+
+Outputs land in `battlemaps/`.
+
+## Color codes used by `BattlemapSpacecraft.json`
+
+The eight color->prompt regions baked into the saved workflow (decimal
+values match the `color` input on each `ImageColorToMask` node):
+
+| Color (dec) | Hex | Region | Default t5xxl prompt |
+| --- | --- | --- | --- |
+| 3158064 | `#303030` | walls | thick spacecraft hull bulkhead wall |
+| 8421504 | `#808080` | floor | metal deck plating, floor panels with seams |
+| 10526880 | `#A0A0A0` | ramp | rear loading ramp, corrugated metal surface |
+| 1716304 | `#1A2750` | windscreen | cockpit windscreen viewport, reinforced |
+| 9132587 | `#8B5E2B` | chair | pilot command chair, worn brown leather |
+| 4876928 | `#4A6F40` | locker | tall metal storage locker, steel blue |
+| 2771536 | `#2A4250` | console | instrument console panel, control dials |
+| 13934624 | `#D4B260` | lighting | amber lumen strip light, glowing warning |
+
+**Important**: the color match is exact. Anti-aliased edges between
+regions in your layout PNG won't match any color and will fall through
+to the unmasked base prompt. Either paint with hard edges (Krita →
+Pixel Art brush, GIMP → no-AA pencil), or post-process the layout
+through nearest-neighbor color quantization to the eight colors above.
+
+## Successes
+
+### 2026-05-05 — Interior workflow, bare room (1024²)
+
+Command:
+
+```sh
+uv run generate_battlemap.py interior --seed 42 --prefix map_interior_bareroom
+```
+
+Result: `battlemaps/map_interior_bareroom_00001_.png` (1.9 MB, 1024²).
+
+The driver's bare-architecture default prompt (no tables / chairs /
+counters / barrels — explicit "completely empty room with no
+furniture, no props" in the positive prompt because Flux ignores
+negative-prompt furniture exclusions) produced exactly the target
+deliverable: top-down orthographic empty room, bulkhead walls around
+the perimeter with rivets and weld seams, corroded deck plating with
+visible seam lines and rust, amber lumen lights at the corners. No
+props, no characters, no decorations on the floor. Drop a Foundry
+scene background underneath this and stamp props on top.
+
+The image isn't a perfect orthographic projection — there's a slight
+parallax tilt (corners appear higher than the center) — but it's
+close enough that tokens placed on it read as "in the room". Pure
+orthographic would require ControlNet depth conditioning, not in
+scope yet.
+
+### 2026-05-05 — Interior workflow, first end-to-end run
+
+Command:
+
+```sh
+uv run generate_battlemap.py interior --seed 42 --prefix map_interior_smoketest --width 768 --height 768
+```
+
+Result: `battlemaps/map_interior_smoketest_00001_.png` (1.1 MB, 768²).
+
+The HTTP plumbing works: workflow loaded, prompts mutated, dimensions
+overridden, seed fixed, prompt submitted, history polled,
+`SaveImage` output downloaded. Visual quality on the saved
+canonical prompt was good — recognizable top-down grimdark sci-fi
+interior with bulkhead walls, deck plating, amber/teal lighting, slight
+isometric tilt rather than pure orthographic.
+
+### 2026-05-05 — Stamp pipeline (4lrua5 sheet)
+
+Not battlemaps, but the same ComfyUI plumbing — recording here so the
+gotchas don't get lost when this file is the canonical operator's
+notebook.
+
+**Two-pass classifier**. Florence-2-large-PromptGen-v2.0 succeeds at
+captioning native-size transparent stamps for ~80% of cells and
+upscaled-to-768 white-bg stamps for a different ~80% — they're
+complementary, not strictly better/worse. `classify_stamps.classify_one`
+now runs the default native-transparent pass first; on empty caption,
+retries with the upscale + white-bg payload uploaded under a
+`__retry`-suffixed filename. Result on the 4lrua5 sheet: 12/15 vs
+9/15 with single-pass.
+
+**Token floor**. The dual-task workflow (`more_detailed_caption` +
+`prompt_gen_tags` simultaneously) returns empty text for some images
+when `max_new_tokens<1024`. Single-task workflows are fine at 256.
+Codified at 1024 in `build_workflow()`.
+
+**Caption-preamble stripping**. PromptGen reliably emits captions
+like "The image is a digital illustration of [subject]". A
+single-regex extractor lands on garbage ("Is A Digital Illustration",
+"Set", "Collection"). `_strip_preamble()` peels
+medium/multiplicity/article words iteratively until what remains
+starts with the actual subject noun. Names went from "Stack" →
+"Papers Tied Together With Twine"; from "Is A Digital Illustration"
+→ "Empty Ceramic Bowls With Handles".
+
+**CLIP-ViT-H rescues Florence-2 failures**. Stamps 08/09 of the
+4lrua5 sheet (battered office chairs) caption empty on every
+Florence-2 path tried. Phase-2 image embedding clustered them
+together correctly anyway — visual similarity carries when language
+fails. The Phase 1 / Phase 2 split is load-bearing; don't collapse
+either side into the other.
+
+**Extraction fix landed**: `extract_stamps.MIN_FILL_RATIO = 0.15`
+rejects sparse components. Real stamps fill 0.55-0.82 of their
+bbox; grid-line networks captured as a single huge component fill
+~0.011. The filter logs `[reject] <file> label=N: fill=X.YYY <
+0.15` for visibility. Verified on the 4lrua5 sheet — gutter
+artifact rejected, 14 real stamps extracted (down from 15 with
+the gutter inflating the count). Re-extracting an already-
+processed sheet renumbers, so don't `--force` re-extract on
+already-classified sheets — manually delete the offending
+`_NN.{png,yaml}` pair instead. Done for 4lrua5 — gap at index 05
+is intentional and harmless to downstream tools.
+
+## Failures and gotchas
+
+### Saved canonical prompt embeds props
+
+The `BattlemapInteriorV1` template's pos.t5xxl describes "round wooden
+tables with metal stools, long bar counter with taps, barrel storage
+alcove with crates" — i.e., a furnished bar. The first smoketest
+faithfully rendered all of those.
+
+For our use case (bare maps, props via stamp), the script's
+`INTERIOR_DEFAULT_T5` is now overridden to an architecture-only
+prompt with explicit negative-of-furniture in positive ("completely
+empty room with no furniture, no props, no objects, no tables, no
+chairs"). Flux's t5xxl ignores `neg.t5xxl` instructions like "no
+chairs", so the avoidance has to live in the positive prompt. We have
+not yet validated this works — pending a second smoketest.
+
+The saved server template was left untouched (it's the canonical
+"furnished bar" exemplar). Stripped-architecture variants live in the
+script's defaults; if they prove out, they should be cloned to the
+server as `BattlemapInteriorV2_BareRoom.json` via:
+
+```sh
+uv run generate_battlemap.py clone BattlemapInteriorV1.json BattlemapInteriorV2_BareRoom.json
+```
+
+then edited in the ComfyUI web UI.
+
+### Filename prefix double-printed
+
+The first download landed as `map_interior_smoketest_map_interior_smoketest_00001_.png`
+because `_download_first()` prepended our prefix to ComfyUI's saved
+name (which already starts with the SaveImage prefix). Fixed: the
+saved filename is used verbatim. `--prefix` only sets the SaveImage
+node's `filename_prefix`, which becomes the saved name's stem.
+
+### GPU contention with classify_stamps
+
+Running `generate_battlemap.py interior` while
+`classify_stamps.py` was iterating over the 4lrua5 sheet caused
+multiple Florence-2 prompts to time out at 300s and several to come
+back with empty captions. CLAUDE.md's "Never run two classify or
+assign processes concurrently" rule extends to battlemap generation —
+the 3090 is one queue, all jobs are siblings. **Serialize.** Don't
+launch a battlemap render while a classify or assign run is in
+progress, and vice versa.
+
+## Layered foreground pass
+
+`uv run generate_battlemap.py spacecraft --layout … --walls-only`
+produces a transparent-background walls layer suitable for Foundry's
+scene foreground / overlay tile.
+
+### Implementation
+
+The driver runs the canonical spacecraft workflow unchanged (no
+prompt overrides, no chromakey shenanigans). Post-render, it uses
+**the original layout PNG as an alpha mask over the rendered PNG**:
+pixels whose layout-image color is within tolerance of the target
+region's color stay opaque; everything else gets `alpha=0`. The
+output goes to `<prefix>_alpha.png`.
+
+This is deterministic in a way the chromakey approach was not — the
+layout is the source of truth for "where is the wall," not Flux's
+attempt to render a magenta region. See the failure log below for
+what didn't work.
+
+### What didn't work (recorded so we don't redo it)
+
+**Magenta-prompt chromakey**: first attempt overrode every non-wall
+region's `CLIPTextEncodeFlux` to "solid pure magenta `#FF00FF`,
+featureless flat color, no detail" and tried to chromakey magenta
+out post-render. Flux's t5xxl encoder mutes saturated out-of-gamut
+prompts to a neutral mid-tone — the rendered output had ~zero
+magenta pixels, so the chromakey filter ate nothing. Confirmed by
+running the full pipeline with `--walls-only` (chromakey variant)
+on the spacecraft layout: 0/2,073,600 pixels keyed. Walls-only mode
+now uses the layout-as-mask approach instead.
+
+### Edge artifacts (open improvement)
+
+Hand-painted layouts have anti-aliased edges between regions. Those
+mid-tone pixels don't match any region's exact color, so the alpha
+mask passes them through as transparent — leaving thin gaps in the
+walls outline of the produced layer. Two ways to fix:
+
+1. **Pre-process the layout** through nearest-neighbor color
+   quantization to the eight canonical region colors before feeding
+   it to the script. Krita / Photoshop / GIMP all support this.
+2. **Increase the mask tolerance** (currently `tol=40` Chebyshev) but
+   that risks bleeding into adjacent regions. Per-role tolerance
+   would be needed.
+
+Option 1 is the cleaner fix because it also improves the input to
+ComfyUI's `ImageColorToMask` nodes (which require exact match);
+the regional conditioning becomes more reliable AND the alpha mask
+becomes pixel-perfect at the same time.
+
+`generate_battlemap.py quantize-layout <input>` snaps each pixel of
+the layout to the nearest canonical region color (within a tight
+Chebyshev tolerance) and forces background to black. Known
+limitation as of 2026-05-05: works only when the input layout's
+sampled colors are within ~25 channel distance of the canonical
+palette. The shipped reference layout (`spacecraft_default.png`,
+pulled from the ComfyUI server) is hand-painted with approximate
+colors that drift further than that — windscreen and lighting
+regions get swept to background. Two workable paths going forward:
+
+1. Paint future layouts with the exact canonical colors (an
+   eyedropper-snap palette in your image tool, or a fresh layout
+   built from colored rectangles directly in Python).
+2. Extend the quantizer with a per-region tolerance map or a
+   clustering pass that learns the layout's actual region colors
+   and maps them to the canonical palette by proximity.
+
+For the current `spacecraft_default.png` layout, the
+unmodified-layout-as-mask path in `--walls-only` is sufficient —
+the thin anti-alias gaps in the wall outline are cosmetic and
+don't break the layered scene.
+
+## Source-of-truth contract
+
+The saved workflows are authoritative. Don't edit `workflows/*.json`
+in this repo by hand — those are pulls. Edit on the ComfyUI server
+(via the web UI, save, then re-pull). The driver script asserts
+nothing about node ids; if a node is renamed on the server, the
+script fails loudly with `KeyError`.

@@ -33,6 +33,11 @@ GUTTER_TOL_CANDIDATES = (16, 22, 30, 40, 55, 75)
 # Minimum component area (pixels) to count as a stamp. Anything smaller is
 # noise (stray bright dots inside a stamp, isolated grid junctions, etc.).
 MIN_COMPONENT_AREA = 1500
+# Minimum fraction of the component's bbox that must be opaque pixels.
+# Real stamps fill 0.55-0.82 of their bbox in our reference data; grid-line
+# networks that get accidentally captured as a single huge component fill
+# ~0.01. A floor of 0.15 rejects gutter artifacts with massive headroom.
+MIN_FILL_RATIO = 0.15
 # Morphological closing radius applied to the non-gutter mask before labeling.
 # Closing bridges hairline gaps in stamp outlines but ALSO merges adjacent
 # stamps when gutters are only 1 px wide. Default off; rely on hole-filling
@@ -287,6 +292,18 @@ def process_image(path: Path, out_dir: Path) -> int:
         if bbox is None:
             continue
         if int(areas[label_idx]) < MIN_COMPONENT_AREA:
+            continue
+        y0, x0, y1, x1 = bbox
+        bbox_area = (y1 - y0) * (x1 - x0)
+        if bbox_area > 0 and (int(areas[label_idx]) / bbox_area) < MIN_FILL_RATIO:
+            # Sparse component — almost certainly grid lines or another
+            # network of thin features that got captured because their
+            # color sat just outside the gutter tolerance.
+            print(
+                f"[reject] {path.name} label={label_idx}: "
+                f"fill={int(areas[label_idx]) / bbox_area:.3f} < {MIN_FILL_RATIO}",
+                file=sys.stderr,
+            )
             continue
         keep.append((label_idx, bbox))
 

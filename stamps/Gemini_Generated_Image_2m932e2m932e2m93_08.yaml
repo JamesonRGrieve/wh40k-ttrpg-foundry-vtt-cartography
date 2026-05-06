@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Is A Digital Illustration
+description: "The image is a digital illustration of three handheld devices arranged in a grid-like pattern on a transparent background. The devices are rectangular in shape and have a simple, minimalist design with rounded edges. Each device has a small screen and a few buttons and dials on the front panel. The devices appear to be made of a light-colored material, possibly plastic or metal, and have a glossy finish. The background is a solid gray color, providing a subtle contrast to the devices. The image has a clean and modern look, with no visible imperfections or embellishments."
+tags: [digital, illustration, handheld, devices, arranged, grid-like, pattern, transparent, background, rectangular, shape, have]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: fbdc4f25-bd06-5d4e-bbc5-4522aff3d478      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 8
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T19:13:34+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

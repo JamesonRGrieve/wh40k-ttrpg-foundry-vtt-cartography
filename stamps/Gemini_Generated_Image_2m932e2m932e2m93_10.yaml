@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Is A Seamless Pattern
+description: "The image is a seamless pattern of rectangular, beige-colored objects arranged in a grid-like pattern on a gray background. The objects appear to be made of plastic or a similar material and have a smooth, glossy finish. They are arranged in two rows, with the top row slightly overlapping the bottom row. Each object has a rectangular shape with a flat top and a flat bottom, resembling a door or a window. The objects have a simple, minimalist design with no additional details or embellishments. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple and clean lines of the objects."
+tags: [seamless, pattern, rectangular, beige-colored, objects, arranged, grid-like, background, plastic, similar, material, have]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 83fd8256-a4f8-5cf5-89a9-31ea66352c27      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 10
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T19:13:39+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0
