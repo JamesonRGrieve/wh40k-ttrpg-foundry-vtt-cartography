@@ -535,6 +535,63 @@ def _make_rectangular_room(
     Image.fromarray(arr, mode="RGB").save(output)
 
 
+def _make_corridor(
+    output: Path,
+    *,
+    length: int,
+    width: int,
+    wall_thickness: int,
+    orientation: str,
+    light_count: int,
+) -> None:
+    """Paint a canonical-color corridor layout PNG.
+
+    A corridor is a long rectangular floor with walls on the two long
+    sides only — the short ends extend off-canvas (or open to other
+    rooms in larger composites). Lights are placed evenly along both
+    long walls, alternating between the inside edges of each wall.
+    """
+    import numpy as np
+    from PIL import Image
+
+    if orientation == "horizontal":
+        w, h = length, width
+    else:
+        w, h = width, length
+
+    arr = np.zeros((h, w, 3), dtype=np.uint8)
+    wall = SPACECRAFT_REGION_RGB["wall"]
+    floor = SPACECRAFT_REGION_RGB["floor"]
+    light = SPACECRAFT_REGION_RGB["lighting"]
+
+    if orientation == "horizontal":
+        arr[0:wall_thickness, :] = wall
+        arr[h - wall_thickness:h, :] = wall
+        arr[wall_thickness:h - wall_thickness, :] = floor
+    else:
+        arr[:, 0:wall_thickness] = wall
+        arr[:, w - wall_thickness:w] = wall
+        arr[:, wall_thickness:w - wall_thickness] = floor
+
+    if light_count > 0:
+        radius = max(8, wall_thickness // 2)
+        ys, xs = np.ogrid[0:h, 0:w]
+        if orientation == "horizontal":
+            for i in range(light_count):
+                cx = int(w * (i + 1) / (light_count + 1))
+                cy = wall_thickness // 2 if i % 2 == 0 else h - wall_thickness // 2
+                mask = (xs - cx) ** 2 + (ys - cy) ** 2 <= radius * radius
+                arr[mask] = light
+        else:
+            for i in range(light_count):
+                cy = int(h * (i + 1) / (light_count + 1))
+                cx = wall_thickness // 2 if i % 2 == 0 else w - wall_thickness // 2
+                mask = (xs - cx) ** 2 + (ys - cy) ** 2 <= radius * radius
+                arr[mask] = light
+
+    Image.fromarray(arr, mode="RGB").save(output)
+
+
 def _quantize_layout(
     src: Path,
     dest: Path,
@@ -768,6 +825,27 @@ def main() -> int:
         help="number of light fixtures around the perimeter (0 to disable)",
     )
 
+    pmc = sub.add_parser(
+        "make-corridor",
+        help="emit a canonical-color corridor layout PNG. Long thin shape with "
+        "walls on both long sides; useful for tunnel locations.",
+    )
+    pmc.add_argument("output", type=Path)
+    pmc.add_argument("--length", type=int, default=2048, help="corridor length (px)")
+    pmc.add_argument("--width", type=int, default=512, help="corridor cross-section width (px)")
+    pmc.add_argument("--wall-thickness", type=int, default=24)
+    pmc.add_argument(
+        "--orientation",
+        choices=["horizontal", "vertical"],
+        default="horizontal",
+    )
+    pmc.add_argument(
+        "--lights",
+        type=int,
+        default=8,
+        help="number of light fixtures evenly spaced along the corridor walls",
+    )
+
     pq = sub.add_parser(
         "quantize-layout",
         help="snap a hand-painted layout PNG to the canonical region colors. "
@@ -844,6 +922,16 @@ def main() -> int:
             light_count=args.lights,
         )
         print(f"[make-room] -> {args.output}", file=sys.stderr)
+    elif args.cmd == "make-corridor":
+        _make_corridor(
+            args.output,
+            length=args.length,
+            width=args.width,
+            wall_thickness=args.wall_thickness,
+            orientation=args.orientation,
+            light_count=args.lights,
+        )
+        print(f"[make-corridor] -> {args.output}", file=sys.stderr)
     elif args.cmd == "quantize-layout":
         if not args.input.exists():
             print(f"layout not found: {args.input}", file=sys.stderr)
