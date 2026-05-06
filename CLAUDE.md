@@ -3,21 +3,46 @@
 This directory turns Gemini-generated stamp-grid PNGs into a Foundry V14
 tile/asset library for the Solenne campaign.
 
-End-to-end flow:
+End-to-end stamp pipeline:
 
 ```
 PNG grids ─►  extract_stamps.py     ─►  stamps/<stem>_NN.png
               make_sidecars.py      ─►  stamps/<stem>_NN.yaml
               classify_stamps.py    ─►  populates name/description/tags/orientation/state
               assign_groups.py      ─►  populates group_id (variant clustering)
-              build_mass_edit_pack  ─►  mass-edit-presets.json
-              stage_module.py       ─►  dh-cartography/stamps/  (hardlinks)
+              build_mass_edit_pack  ─►  dh-cartography/mass-edit-presets.json
+              stage_module.py       ─►  dh-cartography/stamps/  (hardlinks, prunes orphans)
+              validate_preset_pack  ─►  pre-deploy contract check
               deploy.sh cartography ─►  rsync to Foundry server
               (manual)              ─►  Mass Edit Preset Browser → Import
 ```
 
+`pipeline_run.py` chains all stages serially; `pipeline_status.py`
+gives an at-a-glance health snapshot.
+
+Battlemap rendering pipeline (orthogonal to stamps):
+
+```
+make-room / make-corridor / hand-paint  ─►  layouts/<slug>.png  (canonical region colors)
+quantize-layout (optional)              ─►  snaps hand-painted colors to canonical palette
+generate_battlemap.py interior --style  ─►  txt2img map for an empty interior at any scale
+generate_battlemap.py spacecraft        ─►  img2img map driven by region-colored layout
+generate_battlemap.py …  --keep-only    ─►  alpha-mask the render to one role; foreground layer
+generate_battlemap.py mask-by-layout    ─►  generic alpha-mask helper (e.g. txt2img scaffold → floor-only)
+generate_battlemap.py compose           ─►  preview the layered stack before Foundry import
+```
+
 Every script has an inline `# /// script` block declaring its uv
 dependencies; run with `uv run <script>.py`.
+
+**Architecture-only by default.** The driver renders **only**
+walls / floor / ramps / viewports / lighting in the base map. Chairs,
+lockers, consoles, beds, tables, and other furniture belong on
+Foundry's stamp/tile layer (placed via Mass Edit), NOT on the base
+map. The saved `BattlemapSpacecraft.json` includes furniture region
+nodes for backward compat, but the driver auto-neutralizes them
+(prompt rewritten to "empty deck plating") unless the operator opts
+in with `--render-furniture chair|locker|console`.
 
 ---
 
@@ -185,7 +210,22 @@ drop). Default extension `.json`.
     mid-sequence and PromptGen returns empty text for some stamps —
     interaction unique to the dual-task graph; single-task workflows
     work fine at 256. Always 1024+ in this codebase.
-11. **PromptGen captions need preamble stripping for usable names.**
+11. **Layout regions for the spacecraft workflow are
+    architecture-only.** Five canonical region colors:
+    `wall #303030`, `floor #808080`, `ramp #A0A0A0`,
+    `windscreen #1A2750`, `lighting #D4B260`. The saved workflow
+    file *also* declares `chair`/`locker`/`console` color codes for
+    backward compat, but the driver auto-rewrites those region
+    prompts to "empty deck plating" by default. Hand-painted
+    layouts should not paint chair/locker/console colors —
+    furniture goes on the stamp layer.
+12. **Wide-scale archetypes use the same Chroma-Flux txt2img path
+    as interior renders.** `--style district|region|planet|system`
+    are just different prompts; no separate workflow needed.
+    Quality varies: district + system render convincingly, region
+    + planet currently mediocre on the saved seeds — iterate
+    prompts and seeds before declaring deploy-ready.
+13. **PromptGen captions need preamble stripping for usable names.**
     PromptGen-v2.0 reliably emits captions like "The image is a
     digital illustration of [subject]" or "A set of three 3D
     rendering illustrations of [subject]". A naive head-noun
@@ -258,8 +298,13 @@ authority over it (e.g. `assign_groups.py` owns `group_id` only).
   filename.
 - **Never deploy stamps from this directory directly.** Use
   `../../deploy.sh cartography`. The deploy script is authoritative.
-- **Never run two classify or assign processes concurrently.** They
-  collide on the ComfyUI queue.
+- **Never run two GPU jobs concurrently.** Classify, assign, and any
+  battlemap render all share the 3090's ComfyUI queue. Serialize.
+- **Never render furniture into a base battlemap by default.** The
+  driver enforces architecture-only output; opt in via
+  `--render-furniture` only when you intentionally want the base to
+  include those features (rare — Foundry's tile layer is the right
+  place for furniture).
 - **Never edit a sidecar by hand and then re-run `classify_stamps.py
   --force`** — `--force` overwrites the script-owned fields. Use
   `--force` only when you intend to re-classify.

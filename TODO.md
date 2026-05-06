@@ -1,91 +1,119 @@
 # Cartography TODO
 
 Open work, in priority order. Items are removed from this file as they
-are completed (not merely struck through).
+are completed (not merely struck through). Last refreshed 2026-05-05.
 
-## 1. ComfyUI image-classification driver
+## Priority — block the next deploy
 
-Server reachable at `http://198.51.100.11:8188` (ComfyUI 0.18.1, RTX 3090,
-~23 GB VRAM free). 989 nodes installed but **no captioner / VLM custom
-nodes** — the install is currently configured for image *generation*, not
-classification. Available vision nodes are limited to CLIPVisionEncode /
-CLIPVisionLoader (zero-shot via cosine similarity, but no prebuilt
-similarity-scoring node).
+- [ ] **Complete the long classify pass.** Of 632 stamps, only ~50
+  have descriptions. Florence-2 dual-task at fp16 runs ~1 stamp/min
+  on the 3090, so the remaining ~580 take ~10 hours wall-clock.
+  Run as `nohup env PYTHONUNBUFFERED=1 uv run --quiet
+  classify_stamps.py > /tmp/full_classify.log 2>&1 &`. No
+  concurrent GPU jobs.
+- [ ] **Re-run `assign_groups.py` after classify completes.** The
+  Phase 2 image-embedding clustering only runs over stamps that
+  have descriptions; new groups will form once the captions land.
+- [ ] **Re-run the group sanity audit.** This session inspected the
+  9 multi-member groups in the current vault: 5 confirmed true
+  variants (chair pair, dossier pair, locker pair, paperwork pile,
+  cogitator console active/inactive/destroyed), 1 same-family
+  cluster (pipe fittings), 3 false-positive merges cleared.
+  Findings + actions in `docs/battlemap-workflow.md`. Repeat after
+  the long classify, with `tools/group_audit.py` if built.
+- [ ] **Render production-quality battlemaps for two reference
+  Solenne locations** (e.g. Block 9 Unit 14 + Section 7 Maintenance
+  Tunnels). Pick seeds, dimensions, archetype per
+  `docs/campaign-locations.md`. Visual approval required before
+  declaring deploy-ready.
 
-### Step 1a — install a captioner custom node on the ComfyUI server
+## Stamp metadata gaps
 
-Pick one. In order of recommendation:
+- [ ] **Orientation populated on only ~16% of classified stamps.**
+  Florence-2-PromptGen rarely emits directional words. Two paths:
+  (a) build a manual-annotation TUI that displays each stamp PNG
+  and prompts for orientation; (b) drop the per-stamp orientation
+  field — Foundry tile rotation is freeform, the field only
+  matters when N/S/E/W variants are pre-committed at art-creation
+  time. Path (b) is what most VTT modules do.
+- [ ] **Florence-2 fully fails on certain art styles** — verified
+  on 4lrua5 stamps 08/09 (battered office chairs). Manually
+  labeled. Expect more hits when the long classify reaches new
+  sheets; build a `pipeline_status` flag for "stamps with
+  group_id but no description".
+- [ ] **Group-merge threshold 0.92 is too generous** for stamps
+  sharing common art-style background. Either lower
+  `MERGE_THRESHOLD` in `assign_groups.py` or add a sanity check
+  that flags groups whose member captions share <50% content
+  tokens.
 
-- **`ComfyUI-Florence2`** — Microsoft Florence-2 base/large; supports
-  `<MORE_DETAILED_CAPTION>` and `<DENSE_REGION_CAPTION>` plus
-  classification via `<OD>`. Small (~1 GB), fast, runs comfortably on a
-  3090. Repo: <https://github.com/kijai/ComfyUI-Florence2>.
-- **`ComfyUI-WD14-Tagger`** — booru-style multi-label tagger; great for
-  category tags but irrelevant for our domain (anime-trained), skip.
-- **`ComfyUI-Janus-Pro`** or **`ComfyUI-LLM-API`** — heavier VLMs; only
-  worth it if Florence-2 accuracy is insufficient.
+## Battlemap workflow gaps
 
-Install Florence-2, restart ComfyUI, confirm via `/object_info` that
-`Florence2Run` (or similar) appears.
+- [ ] **Architecture-only is enforced via prompt neutralization,
+  not workflow surgery.** The saved `BattlemapSpacecraft.json` on
+  the ComfyUI server still has `chair`/`locker`/`console` region
+  nodes. The driver overrides their prompts to "empty deck
+  plating" by default; opt-in via `--render-furniture chair locker
+  console`. Cleaner long-term: clone server-side as
+  `BattlemapSpacecraftV2_Architecture.json` with the furniture
+  region nodes removed.
+- [ ] **Wide-scale archetype quality varies.**
+  - `district` — convincing top-down hive city ✓
+  - `system` — convincing imperial cartographic chart ✓
+  - `region` — passable; reads as wastes-with-clusters but lacks
+    clear hive identification. Iterate prompt + seed.
+  - `planet` — passable; reads as continental landmass without
+    clear orbital perspective. Iterate prompt + seed.
+- [ ] **Multi-deck UX**: operator must hand-paint two layouts that
+  share the wall band. Helper that takes one base layout PNG and
+  emits N variants with the same hull but different interior
+  region masks would be useful.
+- [ ] **Deterministic system maps.** Chroma-Flux randomizes
+  orbital geometry per seed; for a consistent Solenne system chart
+  (always 4 planets at the right relative positions), a
+  programmatic PIL-based generator would be more reliable than
+  diffusion.
+- [ ] **Layered/stackable wide-scale maps**: faction control
+  overlays, hex grids, jurisdiction zones — all useful at the
+  strategic scale, none implemented. Pattern would mirror
+  architectural walls-only: render the base, render an overlay
+  separately, mask, composite.
+- [ ] **Foundry V14 stackable scene verification**: walls-only
+  alpha PNG drops in as foreground image — verified the layer
+  produces correctly. Not yet verified end-to-end inside Foundry
+  with a live scene + token movement above/below the foreground.
 
-### Step 1b — author the workflow
+## Pre-deploy checklist
 
-A workflow JSON that, given a single image, runs Florence-2 with three
-prompts:
+Before running `deploy.sh cartography`:
 
-1. Region/orientation prompt → maps Florence-2's spatial reasoning to one
-   of {north, south, east, west, top-down, isometric, null}.
-2. Damage/activation prompt → maps text response to one of {intact,
-   damaged, destroyed, active, inactive, null}.
-3. Category prompt → free-text caption parsed into our tag vocabulary
-   (furniture, weapon, container, document, machinery, ...).
+1. `uv run pipeline_status.py` — confirm stamp counts, classify
+   coverage, preset count, staged count.
+2. `uv run validate_preset_pack.py` — must report 0 errors / 0
+   warnings.
+3. SSH-spot-check one stamp on the Foundry server post-deploy:
+   `ls /opt/foundry-vtt/data/Data/modules/dh-cartography/stamps/`
+   should match the local count.
 
-Save the JSON in this directory as `comfy_classify_workflow.json`.
+## Done in current sessions
 
-### Step 1c — write `classify_stamps.py`
+(Trimmed; see git log + `docs/battlemap-workflow.md` for full record.)
 
-For each `stamps/*.png` whose sidecar's `classified_at` is null (or
-`--force`), POST the workflow with the image to `/prompt`, poll
-`/history/<id>` for completion, parse the outputs, and write the three
-classification fields back into the sidecar plus `classified_at` /
-`classified_by`. Must be idempotent and resumable.
-
-### Step 1d — variant `group_id` assignment
-
-Same in-fiction object across orientations / states should share
-`group_id`. Approach: run Florence-2's CLIPVision embedding over every
-stamp, cluster by cosine similarity above a tunable threshold, assign a
-UUID per cluster. Manual override remains possible by editing sidecars
-(the writer skips already-set fields).
-
-## 3. Deploy stamps as a Foundry module
-
-`build_mass_edit_pack.py` emits `mass-edit-presets.json` referencing
-asset paths under `modules/dh-cartography/stamps/`. The corresponding
-module needs to exist on the Foundry server. Plan:
-
-- Create a tiny module shell `dh-cartography/` with a minimal
-  `module.json` (id, version, V14 compatibility, no scripts/styles, just
-  a static asset directory).
-- Stage the 633 PNGs under `dh-cartography/stamps/`.
-- Either zip + install via Foundry UI, or push directly into
-  `Data/modules/dh-cartography/` on the VTT CT (path is in
-  `../../VTT_WIKI.md`).
-- After install, import `mass-edit-presets.json` via Mass Edit's Preset
-  Browser → Import.
-
-Acceptance: a stamp is browseable in Mass Edit's Preset Browser, draggable
-onto a scene, and renders correctly.
-
-## 4. Install Baileywiki Mass Edit on the VTT
-
-Audit complete — server reachable at V14.359 with world `dark-heresy`,
-system `wh40k-rpg`. `lib-wrapper` is already installed (per
-`../../VTT_WIKI.md`); `multi-token-edit` is NOT. Install it:
-
-- Manifest URL: `https://github.com/Aedif/multi-token-edit/releases/latest/download/module.json`
-- Install via Foundry's Add-on Modules → Install Module → paste manifest URL.
-- Requires the world to be shut down or the install must happen via
-  /setup; do NOT do this during a live session.
-- After install, verify `compatibility.verified` and that the module
-  loads without console errors on world boot.
+- Stamp pipeline reliability (extract fill-ratio filter, classify
+  two-pass retry, name preamble stripping, ASCII-art rejection,
+  category-tag enricher, manual fills for unclassifiable stamps).
+- Battlemap driver with 14 archetypes (10 interior + 4 wide-scale),
+  layout-as-mask layered output, programmatic make-room /
+  make-corridor / quantize-layout helpers, server pull/clone for
+  workflow versioning.
+- Architecture-only base maps by default; furniture opt-in via flag.
+- End-to-end orchestrator (`pipeline_run.py`), validator
+  (`validate_preset_pack.py`), status reporter
+  (`pipeline_status.py`).
+- Multi-deck shared-footprint verification (94.6% IoU exact-color);
+  layered scaffold-over-base verification (pixel-perfect alignment).
+- Visual group-membership audit; 6 stamps' state values manually
+  filled where Florence-2 captions missed them.
+- Top-level `README.md`, ops notebook
+  `docs/battlemap-workflow.md`, location recipe
+  `docs/campaign-locations.md`.

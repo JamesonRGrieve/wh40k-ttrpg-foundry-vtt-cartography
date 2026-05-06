@@ -315,6 +315,51 @@ INTERIOR_STYLES: dict[str, str] = {
         "tabletop RPG battle map, highly detailed floor and machine-wall textures, "
         "completely empty shrine with no machinery, no servitors, no characters"
     ),
+    # ── Wide-scale archetypes (above interior scale) ─────────────────
+    # These render city/region/planet/system views as base maps. Stamps
+    # placed on top represent locations, factions, or fleets at scale.
+    "district": (
+        "top-down overhead orthographic satellite view of a grimdark hive city district, "
+        "warhammer 40000 aesthetic, "
+        "dense ferrocrete hab-spires and manufactorum blocks arranged in irregular grids, "
+        "narrow alleyways and processional avenues between blocks, "
+        "rooftop structures including chimneys and antenna arrays and crane gantries, "
+        "smog-filled air with patches of orange-amber industrial light leaking up from streets, "
+        "muted brown and gray palette with warm sodium-light accents, oil painting style, "
+        "tabletop RPG strategic map, highly detailed rooftop textures, "
+        "completely empty district with no characters, no vehicles"
+    ),
+    "region": (
+        "top-down overhead aerial view of a vast hive world surface region, "
+        "warhammer 40000 aesthetic, "
+        "multiple hive cities visible as dense gray-brown clusters connected by maglev rails and processional roads, "
+        "open wastes between hives — toxic flats, pollution lakes, ash deserts, slag heaps, "
+        "imperial fortifications and mining operations dotting the wastes, "
+        "muted earth-tone palette with toxic green-yellow accents, oil painting style, "
+        "tabletop RPG strategic regional map, highly detailed terrain textures, "
+        "no characters, no vehicles, hand-drawn cartographic style"
+    ),
+    "planet": (
+        "top-down orbital satellite view of a hive world planet, "
+        "warhammer 40000 aesthetic, "
+        "continental landmasses crusted with hive city sprawl and industrial scarring, "
+        "polluted oceans with toxic algal blooms and shipping lanes, "
+        "polar ice caps and equatorial wastes visible, "
+        "thin haze of orbital pollution layer, "
+        "muted brown and gray-green palette with imperial red highlights, "
+        "tabletop RPG strategic planetary map, highly detailed terrain, no characters"
+    ),
+    "system": (
+        "top-down stylized cartographic chart of a solar system, "
+        "warhammer 40000 aesthetic, dark void background with star field, "
+        "central yellow-white star, multiple planets at varying orbital distances each shown as a small disc, "
+        "thin orbital ring lines connecting planets to the star, "
+        "asteroid belts as scattered specks, gas giant rings, "
+        "Imperial Navy patrol routes as dashed amber lines, "
+        "imperial gothic typography labels for each body, parchment overlay borders, "
+        "muted cosmic palette with imperial gold accents, hand-illuminated chart style, "
+        "tabletop RPG strategic system chart, no ships, no characters"
+    ),
 }
 
 INTERIOR_STYLE_TAGS: dict[str, str] = {
@@ -328,6 +373,10 @@ INTERIOR_STYLE_TAGS: dict[str, str] = {
     "medicae": "medicae bay, white tile, sterile examination",
     "archive": "Munitorum archive, parchment, brass lumen",
     "mechanicus": "Mechanicus shrine, brass piping, red lumen",
+    "district": "hive city district, top-down satellite, manufactorum",
+    "region": "hive world region, aerial wastes, multiple hives",
+    "planet": "hive world orbital, planetary continents",
+    "system": "system chart, orbital diagram, imperial cartography",
 }
 
 
@@ -364,31 +413,48 @@ def run_interior(
 
 
 # Per-region color codes (RGB) baked into BattlemapSpacecraft.json's
-# ImageColorToMask nodes. The map is the source of truth for both the
-# regional conditioning AND the post-render alpha-extraction layer
-# pipeline below.
+# ImageColorToMask nodes. ARCHITECTURE-ONLY by design — the saved
+# workflow includes chair/locker/console regions but those are
+# *furniture* and belong on the stamp layer, not in the rendered base
+# map. The driver auto-overrides chair/locker/console prompts to
+# "empty floor" so layouts which accidentally paint those colors don't
+# leak furniture into the architectural map. See SPACECRAFT_NEUTRALIZED.
 SPACECRAFT_REGION_RGB: dict[str, tuple[int, int, int]] = {
     "wall": (0x30, 0x30, 0x30),       # 3158064  — bulkhead walls
     "floor": (0x80, 0x80, 0x80),      # 8421504  — deck plating
     "ramp": (0xA0, 0xA0, 0xA0),       # 10526880 — loading ramp
     "windscreen": (0x1A, 0x27, 0x50), # 1716304  — cockpit viewport
-    "chair": (0x8B, 0x5E, 0x2B),      # 9132587  — pilot chair
-    "locker": (0x4A, 0x6F, 0x40),     # 4876928  — storage locker
-    "console": (0x2A, 0x42, 0x50),    # 2771536  — instrument console
     "lighting": (0xD4, 0xB2, 0x60),   # 13934624 — lumen strip
 }
 
+# Roles that are architecturally meaningful (wall/floor/ramp/lighting/
+# viewport openings) and which the driver actively conditions on.
+SPACECRAFT_ARCHITECTURAL_ROLES = set(SPACECRAFT_REGION_RGB)
+
+# Roles preserved for backward-compat with the saved workflow file but
+# which the driver actively NEUTRALIZES — overriding their prompts to
+# "empty deck plating" so accidental paint of these colors in a layout
+# doesn't render furniture into the architectural base map. Furniture
+# belongs on the stamp/tile layer in Foundry, not on the base.
+SPACECRAFT_NEUTRALIZED: dict[str, tuple[int, int, int]] = {
+    "chair": (0x8B, 0x5E, 0x2B),      # 9132587  — was pilot chair
+    "locker": (0x4A, 0x6F, 0x40),     # 4876928  — was storage locker
+    "console": (0x2A, 0x42, 0x50),    # 2771536  — was instrument console
+}
+NEUTRAL_PROMPT_T5 = "corroded metal deck plating, empty floor, seam lines, rust patches"
+NEUTRAL_PROMPT_CLIP = "deck plating, empty floor"
+
 # Mapping role -> CLIPTextEncodeFlux node id in BattlemapSpacecraft.json.
-# The saved workflow's per-region nodes are numbered; this lookup keeps
-# the rest of the code readable and lets --override talk in role names.
+# Includes both architectural and neutralized roles so the driver can
+# rewrite all 8 region prompts deterministically on every render.
 SPACECRAFT_REGION_NODE_FOR: dict[str, str] = {
     "wall": "11",
     "floor": "14",
     "ramp": "17",
     "windscreen": "20",
-    "chair": "23",
-    "locker": "26",
-    "console": "29",
+    "chair": "23",      # neutralized
+    "locker": "26",     # neutralized
+    "console": "29",    # neutralized
     "lighting": "32",
 }
 
@@ -401,6 +467,7 @@ def run_spacecraft(
     prefix: str,
     keep_only_role: str | None = None,
     prompt_overrides: dict[str, str] | None = None,
+    render_furniture: tuple[str, ...] = (),
 ) -> Path:
     """Run the regional-conditioning Spacecraft workflow.
 
@@ -419,6 +486,17 @@ def run_spacecraft(
     set_load_image(wf, "load", server_path)
     set_seed(wf, "sampler", seed)
     set_save_prefix(wf, "save", prefix)
+
+    # Architecture-by-default: every neutralized (furniture) role gets its
+    # prompt blanked unless the caller explicitly opts in via
+    # render_furniture. Furniture belongs on the stamp/tile layer; we
+    # don't want the diffusion model leaking chairs/lockers/consoles
+    # into the base map.
+    for role in SPACECRAFT_NEUTRALIZED:
+        if role in render_furniture:
+            continue
+        node_id = SPACECRAFT_REGION_NODE_FOR[role]
+        set_prompt(wf, node_id, t5xxl=NEUTRAL_PROMPT_T5, clip_l=NEUTRAL_PROMPT_CLIP)
 
     if prompt_overrides:
         for role, t5 in prompt_overrides.items():
@@ -813,6 +891,16 @@ def main() -> int:
         "Combine with --keep-only floor to produce a scaffolding overlay "
         "over a separately-rendered base map.",
     )
+    ps.add_argument(
+        "--render-furniture",
+        nargs="*",
+        default=[],
+        choices=sorted(SPACECRAFT_NEUTRALIZED),
+        help="opt-in: render selected furniture roles (chair/locker/console) "
+        "as part of the base map. By DEFAULT all furniture roles are "
+        "neutralized and rendered as empty floor — furniture belongs on "
+        "the stamp/tile layer in Foundry, not in the architectural base.",
+    )
 
     pp = sub.add_parser("pull", help="sync workflows/ from the ComfyUI server")
     pp.add_argument("--names", nargs="*", help="specific workflow filenames; default = all")
@@ -975,6 +1063,7 @@ def main() -> int:
             prefix=args.prefix,
             keep_only_role=keep_only,
             prompt_overrides=overrides,
+            render_furniture=tuple(args.render_furniture),
         )
     elif args.cmd == "pull":
         WORKFLOWS_DIR.mkdir(parents=True, exist_ok=True)
