@@ -274,6 +274,47 @@ INTERIOR_STYLES: dict[str, str] = {
         "tabletop RPG battle map, highly detailed floor and wall textures, "
         "completely empty barracks with no bunks, no furniture, no equipment, no characters"
     ),
+    "lair": (
+        "top-down overhead orthographic view of an empty biomorphic genestealer cult lair chamber, "
+        "warhammer 40000 aesthetic, alien xenos brood-nest interior, "
+        "irregular organic floor surface with chitinous ridges and dried mucous patches and bone fragments, "
+        "fleshy biological wall growths with pulsing veins and cartilaginous formations, "
+        "phosphorescent bioluminescent patches casting sickly green-yellow light, "
+        "deep wet shadows in alcove cavities, "
+        "muted purple and bile-yellow palette, oil painting style, horror atmosphere, "
+        "tabletop RPG battle map, highly detailed organic floor and biological wall textures, "
+        "completely empty chamber with no creatures, no eggs, no characters"
+    ),
+    "medicae": (
+        "top-down overhead orthographic view of an empty Imperial medicae examination room interior, "
+        "warhammer 40000 aesthetic, sterile medical bay, "
+        "polished white ceramic tile floor with grout lines and faint blood stains long-scrubbed, "
+        "smooth pale-green walls with medicae symbols and cabinetry outlines, "
+        "harsh white examination lights overhead with surgical brightness, "
+        "muted white and pale green palette with cold blue accent, oil painting style, "
+        "tabletop RPG battle map, highly detailed tile floor and wall textures, "
+        "completely empty room with no examination tables, no equipment, no characters"
+    ),
+    "archive": (
+        "top-down overhead orthographic view of an empty Munitorum records archive interior, "
+        "warhammer 40000 aesthetic, Imperial document repository, "
+        "dust-covered wooden plank floor with dropped paper fragments and ink stains, "
+        "tall stone walls lined with empty record-shelf alcoves and the Aquila in relief, "
+        "single dim brass lumen fixtures casting yellow warmth between deep shadows, "
+        "muted brown and parchment palette with brass accent, oil painting style, "
+        "tabletop RPG battle map, highly detailed floor and shelving wall textures, "
+        "completely empty archive with no books, no shelves filled, no characters"
+    ),
+    "mechanicus": (
+        "top-down overhead orthographic view of an empty Adeptus Mechanicus shrine interior, "
+        "warhammer 40000 aesthetic, sanctified machine-cult chamber, "
+        "polished black metal floor with engraved cog-iconography and mechanicus runes, "
+        "tall walls of brass piping and exposed cogitator banks with Aquila Mechanicus reliefs, "
+        "ritual red lumen pendants casting blood-red light, deep shadow between fixtures, "
+        "muted black and blood-red palette with brass accent, oil painting style, "
+        "tabletop RPG battle map, highly detailed floor and machine-wall textures, "
+        "completely empty shrine with no machinery, no servitors, no characters"
+    ),
 }
 
 INTERIOR_STYLE_TAGS: dict[str, str] = {
@@ -283,6 +324,10 @@ INTERIOR_STYLE_TAGS: dict[str, str] = {
     "chapel": "Imperial chapel, mosaic floor, stone walls",
     "bar": "underground bar, wood floor, dim hanging lights",
     "garrison": "Imperial Guard barracks, military",
+    "lair": "biomorphic xenos lair, organic walls, alien horror",
+    "medicae": "medicae bay, white tile, sterile examination",
+    "archive": "Munitorum archive, parchment, brass lumen",
+    "mechanicus": "Mechanicus shrine, brass piping, red lumen",
 }
 
 
