@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Circular Icons With A Simple
+description: "A set of four circular icons with a simple, minimalist design. The icons are arranged in a grid-like pattern, with each icon having a distinct shape and size. The background is a plain, light grey color, providing a subtle contrast to the icons. The icons appear to be made of a smooth, glossy material, giving them a polished and polished appearance. The overall style of the image is simple and minimalistic, with no additional embellishments or details."
+tags: [set, four, circular, icons, simple, minimalist, design, arranged, grid-like, pattern, each, icon, decor, decor-statue]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: ede3f1b1-99fa-5a33-94a1-c8a181ff047e      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png
 source_index: 20
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:55:14+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

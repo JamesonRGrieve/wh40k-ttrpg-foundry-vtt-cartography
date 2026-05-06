@@ -2,15 +2,19 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Room Divider With A Simple
+description: "A hand-drawn illustration of a room divider with a simple, minimalist design. The divider is divided into four sections, each with a different pattern and color. The panels are drawn in a sketch-like style, with thin lines and shading to give them a realistic look. The background is a plain, light grey color, providing a subtle contrast to the divider. The overall style of the image is simple and minimalistic, with no additional details or embellishments present.
+
+The image is a stock photo with a resolution of 1024x1024 pixels, featuring a simple, minimalist design with a focus on the dividers. The dividers are arranged in a way that creates a sense of depth and dimensionality, with each panel having its own unique pattern and color. The panels are separated by thin lines, creating a visually pleasing composition. the overall effect is one of sophistication and elegance, making the image a timeless piece of art.
+
+Overall, the image conveys a sense of timelessness and sophistication, perfect for any room divider."
+tags: [hand-drawn, illustration, room, divider, simple, minimalist, design, divided, into, four, sections, each]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 343ed5bc-ec2b-5e85-91bb-bed57d168449      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 19
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:10:57+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

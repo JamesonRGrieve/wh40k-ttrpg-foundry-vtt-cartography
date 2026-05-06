@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Circular Frames With A Simple
+description: "A set of four circular frames with a simple, minimalist design. The frames are arranged in a grid-like pattern, with each frame having a unique shape and size. The background is a solid, neutral gray color, providing a subtle contrast to the frames. The frames are outlined in a thin line, giving them a clean and polished look. The overall style of the image is minimalistic and contemporary, with clean lines and a minimalistic aesthetic."
+tags: [set, four, circular, frames, simple, minimalist, design, arranged, grid-like, pattern, each, frame]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 70dff0e3-cb7d-5dca-9328-9d0b2efcfc63      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png
 source_index: 1
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:15:37+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

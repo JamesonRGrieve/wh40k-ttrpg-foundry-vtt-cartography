@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Objects Arranged In A Grid-Like Pattern
+description: "A set of four rectangular objects arranged in a grid-like pattern on a plain, light brown background. The objects appear to be made of a smooth, glossy material and have a simple, minimalist design. Each object has a rectangular shape with a flat top and a flat bottom, creating a symmetrical composition. The objects are arranged in two rows, with the top row slightly higher than the bottom row. The background is a solid, light brown color, providing a subtle contrast to the objects. The overall aesthetic of the image is simple and minimalistic."
+tags: [set, four, rectangular, objects, arranged, grid-like, pattern, plain, light, background, smooth, glossy]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 16
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:18:26+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

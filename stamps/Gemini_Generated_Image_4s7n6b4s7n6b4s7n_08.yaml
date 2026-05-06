@@ -7,7 +7,7 @@ description: "The image is a digital illustration of three empty glass bottles w
 tags: [digital, illustration, empty, glass, bottles, stoppers, arranged, triangular, formation, largest, bottle, center, container, container-vessel]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 8

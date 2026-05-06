@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+name: "With A Simple, Minimalist Design"
+description: "The image is a digital illustration with a simple, minimalist design. It features a plain, light brown background with a rough, textured surface. On the left side of the image, there is a rectangular frame with a small, square-shaped indentation in the center. The frame is slightly tilted to the right, giving it a sense of depth and dimension. The edges of the frame are slightly frayed, adding texture and depth to the image. The overall style is simple and minimalistic, with a focus on the texture and depth of the background."
+tags: [digital, illustration, simple, minimalist, design, features, plain, light, background, rough, textured, surface]
+orientation: west   # north | south | east | west | top-down | isometric
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: null
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 15
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:09:23+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

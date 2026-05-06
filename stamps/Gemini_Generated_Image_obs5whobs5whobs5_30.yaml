@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Lockers On A Plain, Light Brown Background"
+description: "A line drawing of a row of metal lockers on a plain, light brown background. The lockers are arranged in a symmetrical pattern, with each one slightly overlapping the one below it. The lockers have a simple, minimalist design with clean lines and a slightly rough texture. The image has a minimalist aesthetic, with no additional details or embellishments present. The overall color scheme is neutral, with the lockers being the main focus of the image."
+tags: [line, row, metal, lockers, plain, light, background, arranged, symmetrical, pattern, each, slightly, container, container-locker]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: a0937a79-b9ab-5b7b-a303-b0954a8ad1ff      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 30
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:32:55+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Circular Objects Arranged In A Symmetrical Pattern
+description: "A set of three circular objects arranged in a symmetrical pattern on a plain grey background. The objects appear to be made of plastic and are of varying sizes and shapes. On the left side of the image, there is a small, cylindrical object that looks like a cup, while on the right side, there are smaller, more circular objects that look like cups. The objects are arranged in a way that they are overlapping each other, creating a sense of depth and dimensionality. The image has a minimalist design with clean lines and a minimalist aesthetic."
+tags: [set, circular, objects, arranged, symmetrical, pattern, plain, background, plastic, varying, sizes, shapes, container, container-tableware]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 2ef61dee-a02d-5fc5-a5e9-a5de21e3c4d4      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 1
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:42:37+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

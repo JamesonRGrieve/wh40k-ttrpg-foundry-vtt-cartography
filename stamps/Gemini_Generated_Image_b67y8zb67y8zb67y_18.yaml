@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Square-Shaped Devices Arranged In A Grid-Like Pattern
+description: "The image is a digital illustration of a set of four square-shaped devices arranged in a grid-like pattern on a plain, light grey background. Each device has a unique design with a grid pattern on the screen and a small screen at the top. The devices are arranged in a symmetrical manner, with the largest one in the center and two smaller ones on either side. The screens are connected by thin lines, creating a sense of depth and dimensionality. The overall aesthetic of the image is minimalistic and modern, with a focus on the intricate details of the devices."
+tags: [digital, illustration, set, four, square-shaped, devices, arranged, grid-like, pattern, plain, light, background, tech, tech-screen]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 9e22b5a1-3dba-5c43-b6d1-3c3523db36e7      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T06:16:30+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

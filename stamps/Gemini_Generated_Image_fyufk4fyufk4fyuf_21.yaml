@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+name: Square Frame With A Chain-Like Pattern
+description: "A square frame with a chain-like pattern in the center. The frame is made of a light-colored material, possibly stone or concrete, and has a textured surface with visible cracks and crevices. On the left side of the frame, there is a larger chain-like pattern that extends from the top left corner to the bottom right corner. The chain appears to be made of metal and has a smooth, polished finish. The background of the image is a plain, light beige color. The overall effect is a simple and elegant design that could be used as a background or wallpaper."
+tags: [square, frame, chain-like, pattern, center, light-colored, material, possibly, stone, concrete, has, textured]
+orientation: west   # north | south | east | west | top-down | isometric
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 59e88302-458f-5c37-ab10-11ff725b6a9c      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 21
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:49:18+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

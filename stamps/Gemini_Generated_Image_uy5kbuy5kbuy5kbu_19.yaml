@@ -2,15 +2,19 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Ornamental Designs In A Simple
+description: "The image is a collection of four ornamental designs in a simple, minimalist style. The background is a solid, dark grey color, and the designs are arranged in a grid-like pattern. Each design is symmetrical and has a distinct, ornate shape with intricate details and patterns. The designs are predominantly beige in color, with some variations in the style reminiscent of traditional oriental ornaments. 
+
+The first design on the top left is a simple, ornate urn with a lid, while the second design is a larger, more ornate urn with a similar design. The urn has a round base and a flat top, with a wide opening at the top and a narrow opening at the bottom. The top of the urn is decorated with a floral pattern, while the bottom of the urn has a more ornate pattern with a similar floral pattern.
+
+The overall aesthetic of the image is elegant and sophisticated, with a focus on the intricate details and patterns of the designs. The overall effect is one of sophistication and elegance."
+tags: [collection, four, ornamental, designs, simple, minimalist, style, background, solid, dark, arranged, grid-like]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 10fc5d7f-43a5-5b48-8c1a-397d8a5f1775      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 19
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:09:01+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

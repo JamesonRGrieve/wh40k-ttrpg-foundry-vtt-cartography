@@ -2,15 +2,17 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Circular Pouches With A Simple
+description: "A set of four circular pouches with a simple, minimalist design. The pouches are arranged in a grid-like pattern, with each one slightly overlapping the one below it. The background is a plain, light grey color, providing a subtle contrast to the dark brown color of the pouches. Each pouch has a rectangular shape with a flat top and a flat bottom, creating a symmetrical composition. The overall style of the image is simple and minimalistic, with no additional details or embellishments present.
+
+The pouches are of varying sizes, with the largest one in the center and the smallest one on the left being larger than the others. The largest one is round and has a smooth texture, while the smallest one is flat and has a smooth surface. The smallest one is rectangular and has a smooth texture. The smallest one is square and has a smooth surface. The smallest one is rectangular and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and has a smooth surface. The smallest one is square and"
+tags: [set, four, circular, pouches, simple, minimalist, design, arranged, grid-like, pattern, each, slightly]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 5476b26d-9698-5b62-8465-b83a153a3be5      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png
 source_index: 9
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T06:52:33+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -7,7 +7,7 @@ description: The image is a simpleThe image is a simpleThe image is a simpleThe 
 tags: [simplethe, simple, illustration, four, rectangular]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: e5344f06-8c6c-5f84-bacd-e8d8b61ef5a5      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 5

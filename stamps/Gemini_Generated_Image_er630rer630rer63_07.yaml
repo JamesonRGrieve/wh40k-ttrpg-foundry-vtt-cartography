@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Stylized, Geometric Structure Consisting Of Multiple Towers"
+description: "A line drawing of a stylized, geometric structure consisting of multiple towers. The towers are arranged in a symmetrical pattern, with each tower having a distinct shape and size. The background is a plain, light grey color, providing a subtle contrast to the intricate details of the towers. The image is a simple, minimalist design, with no additional text or images present. The overall effect is one of sophistication and elegance, with the towers standing out against the plain background."
+tags: [line, stylized, geometric, structure, consisting, multiple, towers, arranged, symmetrical, pattern, each, tower]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 7af792d3-0cde-5175-bf36-cccea4680ebb      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 7
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:27:29+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

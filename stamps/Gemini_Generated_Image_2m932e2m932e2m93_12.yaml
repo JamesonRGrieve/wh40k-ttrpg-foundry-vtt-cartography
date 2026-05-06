@@ -7,7 +7,7 @@ description: "A 3D rendering of a set of cylindrical containers arranged in a gr
 tags: [rendering, set, cylindrical, containers, arranged, grid-like, pattern, background, plastic, have, smooth, glossy]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 7bd42241-8957-5493-85db-b363bbdbaab2
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 12

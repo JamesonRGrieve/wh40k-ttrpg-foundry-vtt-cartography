@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Doors In A Plain
+description: "A 3D rendering of a set of four rectangular doors in a plain, light grey color. The doors are arranged in a symmetrical pattern, with each door having a unique design and shape. The doors appear to be made of a smooth, textured material, giving them a realistic look. The background is a solid, neutral grey color, providing a subtle contrast to the doors. The overall effect is a simple yet elegant design that could be used as a background or wallpaper."
+tags: [rendering, set, four, rectangular, doors, plain, light, arranged, symmetrical, pattern, each, door]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 3
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:07:15+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

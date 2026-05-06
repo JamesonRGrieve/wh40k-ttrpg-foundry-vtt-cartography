@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Circular Frames Arranged In A Symmetrical Pattern
+description: "The image shows a set of six circular frames arranged in a symmetrical pattern on a plain, light grey background. Each frame is made of a thin, beige material and has a smooth, polished finish. The frames are evenly spaced and have a simple, minimalist design. The edges of each frame are slightly curved, giving them a sense of depth and dimension. The overall aesthetic of the image is simple and minimalistic, with no additional embellishments or details present."
+tags: [set, six, circular, frames, arranged, symmetrical, pattern, plain, light, background, each, frame]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 09302985-9e4c-5c68-8c1c-2a3be8b868f0      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 11
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:01:11+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Folding Table
+description: "The image is a simple line drawing of a folding table with a rectangular top and four legs. The table is set against a plain, light brown background. The top of the table has a rectangular shape with a flat surface, while the legs are straight and tapered. The table appears to be made of a sturdy material, possibly canvas or plastic, and has a smooth, polished finish. The overall design is simple and minimalistic, with no additional details or embellishments."
+tags: [simple, line, folding, table, rectangular, top, four, legs, set, against, plain, light, furniture, furniture-table]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 513b55b3-f9f3-50e0-9d5d-f3d312fdded7      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 22
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:11:56+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

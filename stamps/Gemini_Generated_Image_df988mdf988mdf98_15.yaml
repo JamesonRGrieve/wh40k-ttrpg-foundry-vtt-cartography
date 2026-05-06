@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Frames With A Simple
+description: "A set of four rectangular frames with a simple, minimalist design. The frames are drawn in a sketch-like style with thin lines and have a neutral color palette. Each frame has a rectangular shape with a flat top and a flat bottom, creating a simple yet elegant look. The frames are arranged in a symmetrical pattern, with each frame slightly overlapping the one below it. The background is a simple, neutral color, allowing the frames to stand out. The overall aesthetic of the image is minimalistic and contemporary."
+tags: [set, four, rectangular, frames, simple, minimalist, design, drawn, sketch-like, style, thin, lines]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 15
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:18:08+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

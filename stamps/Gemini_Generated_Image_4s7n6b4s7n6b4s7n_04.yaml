@@ -7,7 +7,7 @@ description: "A line drawing of a rectangular table with two drawers on either s
 tags: [line, rectangular, table, drawers, either, side, light-colored, material, possibly, wood, metal, has, furniture, furniture-table]
 orientation: null   # north | south | east | west | top-down | isometric
 state: intact
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: e3b5334f-7eb4-5f1e-a66f-1bca4a5e736f      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 4

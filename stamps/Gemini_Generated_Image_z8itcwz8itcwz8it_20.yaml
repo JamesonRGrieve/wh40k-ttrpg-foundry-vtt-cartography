@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Ladders On A Plain, Light Brown Background"
+description: "A set of four simple line drawings of ladders on a plain, light brown background. The ladders are arranged in a symmetrical pattern, with each one slightly overlapping the one below it. Each ladder has a rectangular shape with a flat top and a flat bottom, creating a simple yet elegant design. The ladders appear to be made of wood and have a smooth, polished finish. The overall aesthetic of the image is minimalistic and contemporary."
+tags: [set, four, simple, line, drawings, ladders, plain, light, background, arranged, symmetrical, pattern, architecture, architecture-step]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 7933c81d-5c3a-52e9-ba51-fc373444f95b      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png
 source_index: 20
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:27:12+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

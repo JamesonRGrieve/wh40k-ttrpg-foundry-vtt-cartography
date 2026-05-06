@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+name: "Simple, Rectangular Frame With A Gray Background"
+description: "The image is a simple, rectangular frame with a gray background. The frame is made up of multiple rectangular panels, arranged in a grid-like pattern. The panels are evenly spaced and have a smooth, polished finish. The edges of the frames are slightly raised, giving them a textured appearance. The overall design is simple and minimalistic, with no additional embellishments or details. The image appears to be taken from a top-down perspective, looking down on the frame."
+tags: [simple, rectangular, frame, background, multiple, panels, arranged, grid-like, pattern, evenly, spaced, have]
+orientation: top-down   # north | south | east | west | top-down | isometric
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 9a73a331-85cc-5c6b-b06c-89ded539a72b      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 0
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T04:51:36+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

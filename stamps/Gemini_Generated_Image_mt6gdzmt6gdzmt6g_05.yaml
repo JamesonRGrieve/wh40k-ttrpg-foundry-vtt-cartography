@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Boxes With A Cross-Shaped Design
+description: "The image is a simple line drawing of three rectangular boxes with a cross-shaped design, set against a plain, light brown background. The boxes are arranged in a symmetrical pattern, with each box having a different size and shape. The first box on the left is slightly larger than the one on the right, and the second box is slightly smaller than the third box. All three boxes have a simple, minimalist design with clean lines and minimal details. The overall aesthetic of the image is minimalistic and contemporary, with a focus on the simple lines and shapes of the boxes."
+tags: [simple, line, rectangular, boxes, cross-shaped, design, set, against, plain, light, background, arranged, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 08bc5b09-995e-5e03-8b9b-163ced97f7c2      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:59:26+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

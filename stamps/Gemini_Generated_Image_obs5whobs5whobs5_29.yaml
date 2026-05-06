@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Small, Rectangular Box With A Lid"
+description: "A set of three 3D rendering illustrations of a small, rectangular box with a lid on top. The box is drawn in a sketch-like style with a simple, minimalist design. The background is a plain, light grey color, providing a neutral backdrop for the illustrations. The illustrations are arranged in a symmetrical pattern, with each box slightly overlapping the one below it. The boxes have a smooth, polished finish and appear to be made of a light-colored material, possibly wood or metal. The overall aesthetic of the image is simple and minimalistic, with a focus on the simple lines and shapes of the boxes."
+tags: [set, rendering, illustrations, rectangular, box, lid, top, drawn, sketch-like, style, simple, minimalist, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 6c9fa8a3-013b-5c8a-95a4-674abc75a6b1      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 29
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:32:35+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

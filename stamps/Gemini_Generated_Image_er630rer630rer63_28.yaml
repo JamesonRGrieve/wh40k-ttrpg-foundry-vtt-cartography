@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Grid Of Small, Rectangular Structures Arranged"
+description: "A 3D rendering of a grid of small, rectangular structures arranged in a symmetrical pattern. The structures appear to be made of a light-colored material, possibly plastic or metal, and have a smooth, polished finish. The background is a plain, light grey color, providing a subtle contrast to the intricate details of the structures. The image is centered in the image, with no other objects or objects in the frame. The overall effect is a visually pleasing and minimalist representation of a complex network of interconnected structures."
+tags: [rendering, grid, rectangular, structures, arranged, symmetrical, pattern, light-colored, material, possibly, plastic, metal]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 0eb89919-6299-5249-acd4-4d6435f808a4      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 28
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:41:18+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

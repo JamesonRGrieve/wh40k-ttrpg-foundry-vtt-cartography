@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: SimpleThe image isThe image isThe image
+description: "The image is a simpleThe image isThe image isThe image is a simple andThe image is a simple illustration ofThe image is a simple, minimalist design with multiple empty empty beer bottles arranged arranged inThe image is a simple, minimalist background with a plain, light grey color scheme, featuring multiple empty glass bottles of different sizes and shapes. The bottles are arrangedThe image is a 3D rendering of multiple empty bottles of different sizes and shapes, arranged inThe image is a simple, minimalThe image is a simple, minimalistic representation of multiple empty bottles of different sizes and shapes, arranged horizontally across a plain, light grey background. The bottles are arrangedThe image has a minimalistic, minimalist design with a simple, minimalistic style, with the bottles arranged in parallel lines, creating a simple, minimalist aesthetic. The bottles are arranged horizontally across the image, with no other objects in the image. The bottles are arranged in a grid-like pattern, with no other objects in the image. The bottles are arranged in a grid-like pattern, with each bottle positioned in a grid-like pattern, with each bottle facing the same direction and positioned in a symmetrical composition, creating a continuous line of identical identical size and shape, creating a continuous line of identical identical images, but they are identical in size and shape, but they are identical in size and shape, but they are identical in size and shape, with no other objects in the image. The background is a solid, plain, light grey color scheme, but they are identical in size and shape, but they are identical in size and shape, but they are identical in size and shape, but they are identical in size and shape, but they are identical in size and shape, but they are identical in size and shape, but they are identical in size and shape, with the same size and shape, but they are identical in size and shape, but they are identical in size and shape, but they are identical in size and shape, but they are all identical in size and shape, but they are identical in size and shape, but they are identical in size and shape. The bottles are all facing the same direction, but they are identical in size and shape, but they are all facing different directions, with the same size and shape, but they are all facing the same direction of the same direction, but they are all facing the same direction, with the same size and shape, but they are identical in the image"
+tags: [simplethe, isthe, simple, andthe, illustration, ofthe, minimalist, design, multiple, empty, beer, bottles, container, container-vessel]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: abd844e3-b1d3-578a-b664-e8c17353e0df      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 14
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:03:22+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

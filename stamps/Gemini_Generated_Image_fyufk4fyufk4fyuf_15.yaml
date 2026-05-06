@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Circular Objects Arranged In A Grid-Like Pattern
+description: "A set of four circular objects arranged in a grid-like pattern on a plain grey background. The objects appear to be made of a light-colored material, possibly paper or cardboard, with a slightly rough texture. Each object has a distinct shape and size, with some having a slightly darker color than others. The overall appearance of the objects is simple and minimalistic, with no additional details or embellishments."
+tags: [set, four, circular, objects, arranged, grid-like, pattern, plain, background, light-colored, material, possibly, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 09cab2fd-6639-5b03-a75d-d33e8cbd2fc6      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 15
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:47:19+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

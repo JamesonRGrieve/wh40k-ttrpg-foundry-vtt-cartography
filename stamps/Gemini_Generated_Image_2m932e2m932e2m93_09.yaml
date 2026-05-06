@@ -7,7 +7,7 @@ description: "A set of four beige-colored lockers arranged in a grid-like patter
 tags: [set, four, beige-colored, lockers, arranged, grid-like, pattern, background, each, locker, has, unique, container, container-locker, door]
 orientation: null   # north | south | east | west | top-down | isometric
 state: active         # intact | damaged | destroyed | active | inactive
-group_id: 687b1b67-2bf2-5cde-a1a3-9b6baa176e61      # UUID linking orientation/state variants of one object
+group_id: 808a38d1-c9de-5b50-a3c0-a2dc48137a31      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 9

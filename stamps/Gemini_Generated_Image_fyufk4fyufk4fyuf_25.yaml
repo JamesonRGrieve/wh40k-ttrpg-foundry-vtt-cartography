@@ -7,7 +7,7 @@ description: null
 tags: []
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: c579aca3-fd67-52a2-a797-3045c2a69252      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 25

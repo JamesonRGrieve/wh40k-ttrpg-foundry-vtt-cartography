@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Geometric Pattern Composed
+description: "A 3D rendering of a geometric pattern composed of intersecting squares and rectangles. The patterns are arranged in a symmetrical manner, with each square having a distinct shape and texture. The background is a solid gray color, providing a subtle contrast to the intricate details of the patterns. The overall effect is a visually pleasing and sophisticated representation of a complex and intricate design."
+tags: [rendering, geometric, pattern, composed, intersecting, squares, rectangles, patterns, arranged, symmetrical, manner, each]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: fbc06725-2796-5b6b-b8d8-b6fa79219533      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 24
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:39:58+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

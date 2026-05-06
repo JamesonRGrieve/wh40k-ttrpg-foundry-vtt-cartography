@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: SimpleThe image is a simpleThe image
+description: "The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a 3D rendering of a simple, minimalistThe image has a simpleThe image is a simple, minimalist minimalist design with a gray background with a textured, textured surface with a textured, textured surface texture, giving itThe image is a simple, rectangular shape that resembles a simpleThe image has a minimalist, minimalist design element in the center of the image with a neutral-colored background with a grayish-toned, textured, textured, textured, textured surface with a neutral-colored background that resembles a simple, textured, textured surface with a neutral-colored, textured surface with a textured, textured surface with a subtle, textured surface with a neutral color scheme, giving the impression of a plain, textured pattern. The texture of the image is reminiscent of a plain, textured surface, giving the image a rustic, textured appearance. The background is a simple, textured, textured appearance, with a neutral color palette with a neutral color palette with a neutral gray color scheme, creating a simple, neutral-colored background that contrasts nicely with the rest of the image has a neutral-colored background that contrasts nicely with the neutral gray color scheme, creating a simple, neutral-colored background that contrasts nicely with the neutral color scheme, creating a subtle, textured appearance. The texture of the image is reminiscent of a plain, textured appearance, with no other objects in the image is similar to beige color palette with a neutral color palette with a neutral color palette with a neutral color palette with a neutral color palette, creating a simple, minimalist aesthetic. The image is a simple, minimalist design element in the image. The image is composed of four square-toned background that contrasts nicely with the rest of the image is composed of four square-toned gray color scheme. The image is composed of four square-toned gray color scheme, creating a simple, minimalist design element of the"
+tags: [simplethe, rendering, simple, minimalistthe, has, minimalist, design, background, textured, surface, texture, giving]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 34
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:19:27+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,19 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Architectural Models In A Simple
+description: "A set of four 3D architectural models in a simple, minimalist style. The models are arranged in a grid-like pattern, with each model having a distinct shape and texture. The models appear to be made of a light-colored material, possibly wood or metal, and have a smooth, polished finish. The background is a plain, neutral gray color, which contrasts nicely with the models. The overall aesthetic of the image is clean and minimalistic, with a focus on the intricate details of the models.
+
+The models are of varying sizes and shapes, with some being larger than others, creating a sense of depth and dimensionality. Each model has a unique architectural feature, such as a small, rectangular structure with a flat top and a flat bottom, which could be used as a base for a larger structure. The models are drawn in a realistic style, with detailed lines and shading that give them a lifelike appearance. Overall, the image conveys a sense of sophistication and elegance, making it a perfect representation of a modern, minimalist landscape.
+
+Overall, the image is a minimalist representation of a complex architectural structure, with a focus on the different types of structures and textures."
+tags: [set, four, architectural, models, simple, minimalist, style, arranged, grid-like, pattern, each, model]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 0d31628b-fd1c-5098-a5e0-9fe6351b1857      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 27
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:40:59+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: SimpleThe image is a simpleThe image
+description: "The image is a simpleThe image is a simpleThe image is a simple, rectangular frame withThe image is a simple, minimalist design with a cheThe image is a simple, rectangular frame withThe image is a simple, rectangular shape with four square-shaped rectangles containing four square frames with a beige background with a cheThe image is divided into four square frames containing four identical identical identical identical squares arranged in a grid-like pattern, eachThe image has a simple, rectangular shape with a beige color scheme, eachThe image has a simple, rectangular shape with a cross-shaped border around the edges, creating a simple, rectangular shape with a cross pattern on the left and right sides. The squares are arranged in a grid-like pattern on the left and right sides of the image, creating a simple, minimalist design, with a checkered pattern on the left side of the image. The squares are arranged in a grid-like pattern, creating a simple, clean and minimalistic design with a neutral-colored background. The squares are arranged in a grid-like pattern, with each square containing four distinct cross-shaped border around the edges of the image. The squares are evenly spaced rectangles, each containing a different color scheme, creating a simple, neutral-colored border around the edges of the image. The squares are evenly spaced evenly spaced rectangles, creating a symmetrical composition with a checkerboard-like design, creating a simple, clean and clean lines that create a simple, clean, neutral-colored background with a checkerboard-like texture with a checkerboard-like appearance. The squares are arranged in a grid-like texture, giving the image has a neutral-colored background with a checkerboard-like texture, giving it a neutral color scheme with a checkerboard-like appearance. The squares are evenly spaced and have a neutral color scheme with a checkerboard texture, creating a simple, neutral color scheme, with a checkerboard pattern. The squares are evenly spaced and have a neutral color scheme, with each square in the center of the image, creating a simple, clean and minimalistic design, and the image has a neutral color scheme with a checkerboard-like appearance. The squares are arranged in a symmetrical composition"
+tags: [simplethe, simple, rectangular, frame, withthe, minimalist, design, chethe, shape, four, square-shaped, rectangles]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 17
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:10:11+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

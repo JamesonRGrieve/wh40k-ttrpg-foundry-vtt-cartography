@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Seamless Pattern With A Square Shape
+description: "A seamless pattern with a square shape in the center. The pattern is made up of small, evenly spaced rectangles in a light brown color. The rectangles are arranged in a symmetrical manner, creating a sense of balance and harmony. The background is a checkered pattern in shades of gray and beige, giving the image a classic and timeless feel. The overall effect is one of sophistication and elegance."
+tags: [seamless, pattern, square, shape, center, evenly, spaced, rectangles, light, arranged, symmetrical, manner]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png
 source_index: 13
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:48:11+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

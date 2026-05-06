@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Plain, Light Grey Background"
+description: "The image is a photograph of a plain, light grey background with a subtle texture. The image is taken from a slightly angled perspective, looking up at the top of the frame. The background has a smooth, even surface with no visible imperfections or patterns. The texture of the background is smooth and even, with no visible gaps or crevices. The overall mood of the image is minimalistic and clean, with a focus on the simple yet elegant design of the background."
+tags: [photograph, plain, light, background, subtle, texture, taken, slightly, angled, perspective, looking, top]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: cb77c38d-d784-56e1-8d01-671b70091e02      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_5ump9o5ump9o5ump.png
 source_index: 1
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:23:34+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Rectangular Metal Lockers Arranged
+description: "A set of four rectangular metal lockers arranged in a grid-like pattern on a gray background. The lockers are of varying sizes and shapes, with the largest one in the center and the smallest one on the left. Each locker has a handle and a lock, and the overall appearance is simple and minimalistic. The image appears to be taken from a top-down perspective, looking down on the lockers."
+tags: [set, four, rectangular, metal, lockers, arranged, grid-like, pattern, background, varying, sizes, shapes, container, container-locker]
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 6e373f9e-a91d-5316-87fd-b6e0d9f72bcd      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:19:06+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

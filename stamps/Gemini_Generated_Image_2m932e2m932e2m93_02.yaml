@@ -7,7 +7,7 @@ description: "Two-door beige metal storage lockers with ventilation slots at the
 tags: [rendering, set, four, identical, beige-colored, metal, lockers, arranged, grid-like, pattern, plain, background, container, container-locker, door]
 orientation: null   # north | south | east | west | top-down | isometric
 state: intact
-group_id: 7e090f37-1fdb-5336-805f-dc30e8a2af90      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 2

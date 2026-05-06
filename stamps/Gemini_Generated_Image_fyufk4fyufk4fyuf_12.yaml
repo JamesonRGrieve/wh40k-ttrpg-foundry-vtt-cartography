@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Square, Beige-Colored Plates Arranged"
+description: "A set of four square, beige-colored plates arranged in a symmetrical pattern on a plain, light brown background. The plates appear to be made of ceramic or porcelain and have a smooth, glossy finish. Each plate has a slightly raised edge, giving them a decorative appearance. The plates are arranged in two rows, with the top row slightly higher than the bottom row, creating a sense of depth and dimensionality. The overall aesthetic of the image is simple yet elegant, with a focus on the textures and patterns of the plates."
+tags: [set, four, square, beige-colored, plates, arranged, symmetrical, pattern, plain, light, background, ceramic, container, container-tableware]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: c54bddb1-0957-5edd-b39c-8d949b8885c3      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 12
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:46:20+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

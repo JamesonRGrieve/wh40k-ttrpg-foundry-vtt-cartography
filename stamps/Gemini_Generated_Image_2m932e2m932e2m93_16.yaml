@@ -7,7 +7,7 @@ description: "A cogitator/auspex console terminal with a shattered CRT screen, b
 tags: [set, different, types, electronic, devices, background]
 orientation: null   # north | south | east | west | top-down | isometric
 state: destroyed
-group_id: fbdc4f25-bd06-5d4e-bbc5-4522aff3d478      # UUID linking orientation/state variants of one object
+group_id: 4325bfec-db34-5426-afd6-54e30220b3ad      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 16

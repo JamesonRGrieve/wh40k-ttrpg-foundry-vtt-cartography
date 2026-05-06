@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: SimpleThe image is a simpleThe image
+description: "The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simple, minimalist minimalist design with a plain, simpleThe image is a simple, minimalistic representation of a simple, simple, minimalist design with a simple, minimalist style, featuring a simple, minimalist background with a plain, plain, light grey color scheme. The background is a solid gray color, and the image is a simple, neutral-colored background with a simple, plain, plain grey color scheme. On the left side of the image, there areThe image is a simple, plain, rectangular shape, and on the left side of the image, there are six identical images of a set of four identical chairs arranged in a grid-like pattern of four identical chairs arranged in a grid-like pattern, each chair silhouettes of different angles of the image, each chair in a row of four identical chairs arranged in a symmetrical composition, each chair, each chair with a simple, rectangular shape, creating a symmetrical composition, creating a continuous line drawing of a single chair with a simple, rectangular shape that resembles a simple, rectangular shape that resembles a simple, minimalist design, with no other objects arranged in a grid-like pattern. The chairs are arranged in a grid-like pattern. The chairs are arranged in a grid-like pattern, with each chair positioned in a symmetrical composition, with each chair positioned in a grid-like pattern, creating a symmetrical composition, with each chair positioned in a symmetrical composition, creating a continuous line drawing of a single chair in a symmetrical composition, with each chair positioned in a grid-like shape, with each chair positioned in a symmetrical composition, with the chairs facing the same direction from the left and right side of the image. The chairs are arranged in a grid-like pattern. The chairs are arranged in a symmetrical layout, creating a sense of depth and dimensionality, with each chair positioned in a grid-like pattern, creating a sense of depth and dimensionality, with each chair positioned in a symmetrical composition, with the chairs facing different angles of the image, creating a continuous line drawing of a simple, straight line drawing of a set"
+tags: [simplethe, simple, minimalist, design, plain, minimalistic, representation, style, featuring, background, light, scheme, furniture, furniture-chair]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 3
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:26:32+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

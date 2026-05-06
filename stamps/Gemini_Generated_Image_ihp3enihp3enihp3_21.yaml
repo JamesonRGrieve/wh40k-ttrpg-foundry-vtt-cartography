@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: MinimalA minimal
+description: A minimalA minimal
+tags: [minimala, minimal]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 3b7dfce8-df00-5d30-b35b-78fad8dfcd34      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 21
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:23:37+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

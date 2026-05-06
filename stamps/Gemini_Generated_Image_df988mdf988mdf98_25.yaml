@@ -2,15 +2,17 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Seamless Pattern With A Minimalist Design
+description: "The image is a seamless pattern with a minimalist design. It features a plain, light brown background with a subtle texture. On the left side of the image, there are six square-shaped panels arranged in a grid-like pattern, each with a unique design. The panels are outlined in a darker shade of brown, creating a contrast with the lighter tones of the background. Each panel has a small, intricate design with a repeating pattern of lines and shapes. The overall effect is elegant and sophisticated, with a focus on the geometric shapes and lines that create a sense of depth and dimensionality.
+
+The image has a high resolution, making it suitable for use as a background or wallpaper. The image also has a watermark in the bottom right corner, adding a subtle touch to the overall design. Overall, the image has a clean and modern look, perfect for any project."
+tags: [seamless, pattern, minimalist, design, features, plain, light, background, subtle, texture, left, side]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:22:31+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

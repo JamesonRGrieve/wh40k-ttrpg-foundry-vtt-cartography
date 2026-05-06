@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: StackThe image is a stack
+description: "A stackThe image is a stack of blank certificates with a simple, minimalist design elements, consisting of a stack of blank certificates or certificates with a light beige background, consisting of multiple copies of a certificate or diploma or certificate template with a certificate or certificate template in a stack of certificates or certificates stacked on top ofA stack of documents with a light brown paper with a wax seal stamp on top of a stack of documents. The certificates are neatly arranged in a neat stack of documents, with a simple, minimalist design elements. The certificates are arranged in a neat stack of documents with a simple, minimalist design elements, with a simple, plain beige background in a simple, plain, light brown color scheme, featuring a simple, plain, light beige color scheme and a simple, minimalist background with a simple, minimalist background. The certificates are neatly stacked on top of each document in a stack of documents with a simple, minimalist style, with a simple, plain, light beige background. The certificates are arranged in a neat stack of documents with a simple, minimalist design, featuring a simple, minimalist illustration of a stack of documents with a few pages of varying sizes and a wax seal on top of each document. The certificates are neatly stacked on top of each document, with a few pages of paper with a decorative border around the edges of the stack of documents with a simple, plain, light brown color scheme, featuring a simple, minimalist design, featuring a simple, minimalist background with a simple, minimalist illustration of a stack of documents in the center of the stack of documents with a simple, minimalist background."
+tags: [stackthe, stack, blank, certificates, simple, minimalist, design, elements, consisting, light, beige, background, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: e3e6708f-f50f-580b-8b12-e46712a0325b      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png
 source_index: 3
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T06:26:27+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

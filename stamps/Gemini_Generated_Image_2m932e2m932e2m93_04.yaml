@@ -7,7 +7,7 @@ description: "A set of four rectangular objects arranged in a symmetrical patter
 tags: [set, four, rectangular, objects, arranged, symmetrical, pattern, plain, light, background, smooth, textured]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 309afa52-9a01-5989-a411-f43c09d88d10      # UUID linking orientation/state variants of one object
+group_id: c9dacb1b-8dbc-5613-9293-0a0c52ea1281      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 4

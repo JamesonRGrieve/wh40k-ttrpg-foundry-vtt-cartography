@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: SimpleThe image is a simpleThe image
+description: "The image is a simpleThe image is a simpleThe image is a simpleThe image is a simple, minimalistThe image is a simpleThe image is a simple, minimalist minimalist design with a simpleThe image is a simple, minimalist illustration of a simple, rectangular shape with a simple, minimalist design element in the center of the image is a setThe image is a simple, simple, minimalist design with a plain, plain, light grey background with a simple, minimalist, minimalist design element, consisting of multiple rectangular frames arranged in a grid-like pattern, consisting of multiple rectangular shapes that are arranged in a grid-like pattern, consisting of multiple rectangular frames in a simple, rectangular shape with a simple, minimalist style with a simple, simple, minimalist style with a simple, minimalist, minimalist design with a simple, minimalist design, featuring a light brown color scheme. The frames are arranged in a grid-like pattern. The frames are arranged in a grid-like pattern, with no other objects arranged in a grid-like structure that resembles a simple, rectangular shape that resembles a simple, rectangular shape that resembles a simple, minimalist design with a plain, rectangular shape that resembles a simple, rectangular shape that resembles a simple, minimalist background with a simple, minimalist background with a plain, plain, light brown color scheme with a simple, minimalist background with a neutral-colored background. The frames are arranged in a grid-like pattern. The frames are arranged in a grid-like pattern, with no other objects in a grid-like pattern, creating a simple, minimalist style, with no other objects arranged in a grid-like design, with no other objects arranged in a symmetrical composition with a simple, minimalist design, with no other objects arranged in a symmetrical composition with a neutral color scheme, and the image has a simple, minimalist, with"
+tags: [simplethe, simple, minimalistthe, minimalist, design, illustration, rectangular, shape, element, center, setthe, plain]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 5bdfd42c-ac77-5062-be22-831e1e48b0db      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 2
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:36:52+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

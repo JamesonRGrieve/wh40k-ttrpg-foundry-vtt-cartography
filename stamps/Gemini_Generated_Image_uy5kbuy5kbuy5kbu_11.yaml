@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Simple, Minimalist Illustration With A Plain"
+description: "The image is a simple, minimalist illustration with a plain, light brown background. It features three identical line drawings of cylindrical objects, each with a unique design and pattern. The objects are arranged in a triangular formation, with the largest object in the center and two smaller ones on either side. Each object has a circular shape with a flat top and a flat bottom, and each object is intricately detailed with a repeating pattern of lines and curves. The lines are thin and precise, creating a sense of depth and dimensionality. The overall style of the image is simple and minimalistic, with a focus on the intricate details of the objects."
+tags: [simple, minimalist, illustration, plain, light, background, features, identical, line, drawings, cylindrical, objects]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 4beb6dd6-e054-5e39-bb21-f1b4459d8ecd      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 11
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:59:38+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

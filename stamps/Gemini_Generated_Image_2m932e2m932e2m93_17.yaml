@@ -7,7 +7,7 @@ description: "Same two-door beige metal storage lockers — slightly weathered w
 tags: []
 orientation: null   # north | south | east | west | top-down | isometric
 state: damaged
-group_id: 7e090f37-1fdb-5336-805f-dc30e8a2af90      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 17

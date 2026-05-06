@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: OfA stack ofThe imageThe imageA stack
+description: A stack ofA stack ofThe imageThe imageA stack of blank postage stamps onA stack of blank postage stamps onA stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of blank postage stamps on a stack of postage stamps on a stack of blank postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of postage stamps on a stack of certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates or certificates with a plain beige paper with a plain light brown paper with a plain light brown paper with a plain light brown paper with a plain light brown paper with a plain beige background in a
+tags: [stack, ofa, ofthe, imagethe, imagea, blank, postage, stamps, ona, certificates, plain, beige, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 4d9b7ded-b820-5c99-980b-8c7fc794c828      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T04:49:21+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

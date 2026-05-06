@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Human Figures In A Simple
+description: "The image shows a set of three line drawings of human figures in a simple, minimalist style, set against a plain, light grey background. The figures are arranged in a symmetrical pattern, with each figure standing upright and facing the same direction. They appear to be made of a sturdy material, possibly wood or metal, and have a smooth, polished finish. Each figure has a unique design, with a distinct shape and texture, and they are all facing the same direction, creating a sense of balance and symmetry. The overall aesthetic of the image is simple and minimalistic, with no additional details or embellishments present."
+tags: [set, line, drawings, human, figures, simple, minimalist, style, against, plain, light, background]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 3e39c3a4-b169-5566-a74c-021713274cb6      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 17
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:46:38+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

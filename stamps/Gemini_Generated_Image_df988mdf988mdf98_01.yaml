@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Simple, Minimalist Car Silhouettes Arranged"
+description: "The image is a set of four simple, minimalist car silhouettes arranged in a grid-like pattern on a plain, light brown background. Each car has a rectangular shape with a flat roof and four wheels, giving it a sleek and modern look. The silhouettes are drawn in a simple, minimalist style with no additional details or shading, making them stand out against the plain background. The cars are arranged in two rows, with the top row slightly higher than the bottom row, creating a sense of depth and dimensionality. The overall aesthetic of the image is minimalistic and minimalistic, with a focus on the car silhouettes."
+tags: [set, four, simple, minimalist, car, silhouettes, arranged, grid-like, pattern, plain, light, background]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: ba978b49-4e79-5b4f-89b9-c18e37c4d246      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 1
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:06:36+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

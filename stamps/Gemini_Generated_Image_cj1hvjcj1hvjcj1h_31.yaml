@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Simple, Minimalist Design Element In The Image"
+description: "The image is a simple, minimalist design element in the image is a simple, transparent background with a gray background with a transparent background with a checkered pattern, which is a simple, transparent background with a checkerboard texture, which is a simple, transparent background with a checkerboard texture, which is a simple, transparent background with a checkerboard pattern in the middle of the image is a simple, transparent background with a checkerboard pattern, which is a simple, minimalist design element in the image is a simple, minimalist design element in the image is a simple, transparent background with a light grey color scheme of light grey color scheme, which is a simple, transparent background with a grayish-colored background with a checkerboard texture, creating a simple, transparent background with a grid-like texture. The image is a simple, transparent background with a checkerboard texture, giving the image is a simple, transparent background with a grid-like texture, giving it a clean and minimalistic design that allows for easy-to-checkerboard pattern. The image is a simple, clean and minimalistic design element in the middle of the image is a simple, clean and clean lines of varying shades of grey color scheme, creating a simple, clean and minimalistic illustration with a transparent background with a simple, clean and minimalistic design element in the image"
+tags: [simple, minimalist, design, element, transparent, background, checkered, pattern, which, checkerboard, texture, middle]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 87a3baf1-901a-544a-b63d-b1c48c9cb2c5      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png
 source_index: 31
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T06:48:10+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Wooden Bench With A Beige Cushion
+description: "A set of three isometric illustrations of a wooden bench with a beige cushion. The benches are arranged in a triangular formation, with the first bench on the left, the second bench in the middle, and the third bench on the right. The benches have a simple, minimalist design with clean lines and a smooth finish. The background is a simple, transparent gray color, allowing the benches to stand out. The image is a 3D rendering, giving it a realistic look and feel."
+tags: [set, isometric, illustrations, wooden, bench, beige, cushion, benches, arranged, triangular, formation, first, furniture, furniture-chair]
+orientation: isometric   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 52fb70a2-5911-5bf1-af2e-b737fd58d710      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 15
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:06:45+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -7,7 +7,7 @@ description: a set of three different types of boxes on a gray background
 tags: [set, different, types, boxes, background]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 4eb5c4ab-e842-5256-92d3-d79fed516ad1
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 20

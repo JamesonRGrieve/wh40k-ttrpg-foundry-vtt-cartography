@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: CollectionThe image is a collectionThe image
+description: "A collectionThe image is a collectionThe image is a collectionThe image is a collection ofThe image is a collection ofThe image shows a collection ofThe image is a collection ofThe image is a collection ofThe image shows a collection ofThe image shows a collection ofThe image is a collection ofThe image is a flat lay ofThe image is composed ofThe image is an illustration ofThe image is a flat lay ofThe image shows a collection of folded brown paper with a simple, minimalist design elements arranged in a neat stack of small, square-shaped boxes stacked on top ofThe image, with a light grey background. The boxes are arranged in stacks of stacks of small, rectangular boxes with a simple, rectangular shape, arranged in a neat and orderly fashion, arranged inThe image is a simple, minimalist style with a light grey color scheme. The boxes are arranged in a neat and orderly fashion, with each box containing multiple layers of paper with a unique design element. The boxes are neatly arranged in a scattered manner, creating a neat and organized manner, creating a neat and orderly fashion. The boxes are of varying sizes and shapes, with some overlapping each other, creating a neat and orderly fashion, creating a neat and orderly fashion. The boxes are of varying sizes and sizes, with some overlapping each other, creating a neat and orderly fashion. The boxes are arranged in a scattered manner, with some overlapping each other in a way that creates a sense of depth depth and dimensionality, with the boxes overlapping each other, creating a sense of depth and dimensionality. The boxes are drawn in a way that creates a sense of depth and dimensionality, with each box having a unique and organized manner, creating a sense of depth and dimensionality, with the edges of the image. The boxes are drawn in a way that creates a sense of depth and dimensionality, with the boxes overlapping each other, creating a sense of depth and dimensionality, and the overall composition of the image conveys a sense of depth and dimensionality. The boxes are drawn in a way that creates a sense of depth and dimensionality and dimensionality, with a focus on the texture of the image, with a focus on the edges of the image. The boxes are drawn in a way that creates a sense of depth and dimensionality, with a focus on the texture of the image, with each box in the image. The boxes are drawn in a way that creates a sense of depth and dimensionality, with a focus on the edges of the image, with the boxes appearing to be a"
+tags: [collectionthe, collection, ofthe, flat, lay, composed, illustration, folded, paper, simple, minimalist, design, container, container-crate, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 295a5179-5644-555d-835a-7982d124dc65      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png
 source_index: 16
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:49:32+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

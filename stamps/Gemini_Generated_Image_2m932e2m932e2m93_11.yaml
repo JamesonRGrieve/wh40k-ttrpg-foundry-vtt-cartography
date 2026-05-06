@@ -7,7 +7,7 @@ description: "A set of four cross-shaped objects arranged in a symmetrical patte
 tags: [set, four, cross-shaped, objects, arranged, symmetrical, pattern, plain, background, light-colored, material, possibly]
 orientation: null   # north | south | east | west | top-down | isometric
 state: intact
-group_id: 309afa52-9a01-5989-a411-f43c09d88d10      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 11

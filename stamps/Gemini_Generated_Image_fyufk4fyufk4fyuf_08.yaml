@@ -2,15 +2,17 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Circular Icons Representing Different Types
+description: "A set of four circular icons representing different types of paper cups. The icons are arranged in a grid-like pattern, with each icon representing a different type of cup. 
+
+The first icon on the top left is of a paper cup, which is empty and has a rectangular shape with a flat top. The second icon is of a document, which is blank and has a rectangular shape. The third icon is of an empty paper cup. The fourth icon is of an empty paper cup. The fifth icon is of an empty paper cup. The sixth icon is of an empty paper cup. The seventh icon is of an empty paper cup. The eighth icon is of an empty paper cup. The ninth icon is of an empty paper cup. The tenth icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The tenth icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an empty paper cup. The eleventh icon is of an"
+tags: [set, four, circular, icons, representing, different, types, paper, cups, arranged, grid-like, pattern, container, container-tableware, prop, prop-document, decor, decor-statue]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 430badd9-967a-53c8-b35d-c6fb1e866748      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 8
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:45:01+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

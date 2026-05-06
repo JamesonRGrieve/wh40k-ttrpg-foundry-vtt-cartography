@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Seamless Pattern With A Minimalist Design
+description: "The image is a seamless pattern with a minimalist design. It consists of two rectangular panels, each with a different color and pattern. The panels are arranged in a symmetrical manner, with the top panel being slightly larger than the bottom panel. The colors range from light beige to dark grey, creating a subtle contrast. The pattern is symmetrical, with each panel having a distinct shape and texture. The overall effect is one of sophistication and elegance. The image has a clean and polished look, perfect for any project."
+tags: [seamless, pattern, minimalist, design, consists, rectangular, panels, each, different, arranged, symmetrical, manner]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: null
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png
 source_index: 17
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:54:16+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

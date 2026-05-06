@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: "Simple, Minimalist Design With A Plain"
+description: "The image is a simple, minimalist design with a plain, light grey background. In the center of the image, there is a rectangular frame with a gun inside it. The gun appears to be a modern assault rifle with a long barrel and a scope. The frame is outlined in black and has a simple, minimalist style. The gun is positioned in the center of the frame, with the barrel pointing towards the right side of the image. The background is a solid, light grey color, providing a subtle contrast to the gun and frame. The overall aesthetic is simple and minimalistic, with a focus on the gun and the background."
+tags: [simple, minimalist, design, plain, light, background, center, there, rectangular, frame, gun, inside, container, container-barrel, weapon, weapon-ranged]
+orientation: east   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 3
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:37:12+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

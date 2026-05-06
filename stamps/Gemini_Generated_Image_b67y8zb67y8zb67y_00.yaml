@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Identical Objects, Each"
+description: "The image is a simple line drawing of three identical objects, each with a rectangular shape and a flat surface. The objects are arranged in a horizontal line, with the top object being the largest and the bottom two being the smallest. The objects appear to be made of a light-colored fabric, possibly linen or cotton, and have a smooth texture. The background is a plain, dark grey color, which contrasts nicely with the light-colored objects. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
+tags: [simple, line, identical, objects, each, rectangular, shape, flat, surface, arranged, horizontal, top]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png
 source_index: 0
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:59:29+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

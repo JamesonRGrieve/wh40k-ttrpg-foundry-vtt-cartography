@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Views Of Disposable Cups Arranged
+description: "A set of four different views of disposable cups arranged in a grid-like pattern on a plain, light brown background. The cups are of varying sizes and shapes, with some being empty and others still in their original packaging. The cups are arranged in two rows, with the top row slightly higher than the bottom row, and the bottom row slightly lower than the middle row. The cups appear to be made of plastic and have a smooth, cylindrical shape with rounded edges. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall color scheme is neutral, with the cups being the main focus of the image."
+tags: [set, four, different, views, disposable, cups, arranged, grid-like, pattern, plain, light, background, container, container-tableware]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 700756c6-43c6-5b49-9928-ce8320c2f8b9      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 15
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:03:42+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

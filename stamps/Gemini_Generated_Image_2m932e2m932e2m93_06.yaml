@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist illustration with a neutral colo
 tags: [simple, minimalist, illustration, neutral, palette, features, rectangular, frames, ladders, either, side, set, architecture, architecture-step]
 orientation: null   # north | south | east | west | top-down | isometric
 state: intact
-group_id: b9b59f4a-429f-5ed8-8bf8-98c5742dd74d      # UUID linking orientation/state variants of one object
+group_id: d66f2434-eed5-5b35-bb9c-4c35b42fc852      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 6

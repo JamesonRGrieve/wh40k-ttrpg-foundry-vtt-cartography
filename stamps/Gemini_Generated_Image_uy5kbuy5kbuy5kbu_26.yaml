@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "With A Simple, Minimalist Design"
+description: "The image is a digital illustration with a simple, minimalist design. It features two rectangular boxes made of paper, each with a different pattern and color. The boxes are placed on a plain, light grey background. The paper appears to be folded in a way that creates a sense of depth and dimension, with the edges of the boxes overlapping each other. The overall style of the image is simple and minimalistic, with a focus on the intricate details of the paper and the boxes. The image has a clean and polished look, with no visible signs of wear or tear."
+tags: [digital, illustration, simple, minimalist, design, features, rectangular, boxes, paper, each, different, pattern, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: bddededa-b0fa-5703-928b-412fd3ad0ed8      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 26
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:13:39+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

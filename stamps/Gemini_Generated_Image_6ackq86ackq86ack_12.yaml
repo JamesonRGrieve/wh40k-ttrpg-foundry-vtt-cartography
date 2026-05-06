@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Circular Objects Arranged In A Symmetrical Pattern
+description: "A set of four circular objects arranged in a symmetrical pattern on a plain grey background. The objects appear to be made of a light-colored material, possibly plastic or metal, and have a smooth, polished finish. Each object has a unique shape and size, with some having a slightly raised edge, while others have a more rounded shape. The overall appearance of the objects is simple and minimalistic, with no additional details or embellishments."
+tags: [set, four, circular, objects, arranged, symmetrical, pattern, plain, background, light-colored, material, possibly]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: bc4b4f77-96e9-5853-b53d-0c4495c9c02c      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png
 source_index: 12
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:47:51+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

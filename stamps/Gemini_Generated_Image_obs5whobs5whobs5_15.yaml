@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Rectangular Object With A Textured Surface
+description: "The image is a line drawing of a rectangular object with a textured surface. The object appears to be made of a light-colored fabric with a subtle sheen, and it has a rectangular shape with rounded edges. On the left side of the image, there is a rectangular object with a flat top and a flat bottom, and on the right side, there are two rectangular objects with flat top and flat bottom. The objects are drawn in a simple, minimalist style, with no additional details or shading. The background is a plain, light gray color, which contrasts nicely with the neutral tones of the objects."
+tags: [line, rectangular, object, textured, surface, light-colored, fabric, subtle, sheen, has, shape, rounded]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 15
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:25:21+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

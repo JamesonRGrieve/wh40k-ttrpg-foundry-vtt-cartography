@@ -2,15 +2,17 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Ornamental Objects Hanging From Chains
+description: "A set of four hand-drawn ornamental objects hanging from chains on a plain, light brown background. The objects are arranged in a triangular formation, with the largest object at the top left corner and the smallest at the bottom right corner. Each object has a unique design, with intricate details and a delicate, ornate appearance. The colors used in the image are mostly shades of brown, with some hints of white, creating a subtle contrast. The overall style of the image is simple and elegant, with a focus on the intricate details of the objects.
+
+The objects appear to be of different sizes and shapes, with each one having a unique, ornate design. The first object is a small, cylindrical object with a pointed top and a flat base, while the second is a larger, more ornate object with a flat base. The third object is smaller, with a curved top and a flat base. The fourth object is larger, with a flat base and a flat base. The fifth object is smaller, with a curved top and a flat base. The sixth object is larger, with a flat base and a flat base. The seventh object is smaller, with a curved top and a flat base. The eighth object is smaller, with a flat base and a flat base. The ninth object is larger, with a flat base and a flat base. The tenth object is smaller, with a flat base and a flat base. The eleventh object is smaller, with a flat base and a flat base. The tenth object is larger, with a flat base and a flat base. The eleventh object is smaller, with a flat base. The eleventh object is larger, with a flat base and a flat base. The tenth object is smaller, with a flat base. The eleventh object is smaller, with a flat base and a flat base. The eleventh object is larger, with a flat base. The eleventh object is smaller, with a flat base and a flat base. The tenth object is smaller, with a flat base. The eleventh object is larger, with a flat base and a flat base. The eleventh object is smaller, with a flat base. The eleventh object is smaller, with a flat base and a flat base. The tenth object is smaller, with a flat base. The eleventh object is larger, with a flat base. The eleventh object is smaller, with a flat base and a flat base. The eleventh object is larger, with a flat base. The eleventh object is smaller, with a flat base. The eleventh object is smaller, with a flat base and a flat base. The eighth object is smaller, with a flat base. The ninth object is smaller, with a flat base. The tenth object is larger, with a flat base and a flat base. The eleventh object. The eleventh object is smaller, with a flat base. The eleventh object is smaller, with a flat base. The"
+tags: [set, four, hand-drawn, ornamental, objects, hanging, chains, plain, light, background, arranged, triangular]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 6e886c8c-93ac-58b2-847f-41eaaf53318a      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 4
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:55:46+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

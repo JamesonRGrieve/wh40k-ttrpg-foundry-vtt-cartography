@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Identical, Plain, Light Grey Backgrounds Arranged"
+description: "The image is a set of six identical, plain, light grey backgrounds arranged in a grid-like pattern. Each background has a unique, intricate design with a repeating pattern of geometric shapes and lines. The shapes vary in size and shape, with some being larger than others, while others are smaller and more compact. The designs are symmetrical and have a smooth, polished finish. The overall aesthetic of the image is minimalistic and contemporary."
+tags: [set, six, identical, plain, light, backgrounds, arranged, grid-like, pattern, each, background, has]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: e0f6f4e0-fee9-5ffd-8124-b302fe4ec44b      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:54:35+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,19 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Frames With A Beige
+description: "A set of four rectangular frames with a beige, textured surface. The frames are arranged in a symmetrical pattern, with each frame slightly overlapping the one below it. The background is a solid, light brown color, providing a subtle contrast to the neutral tones of the frames. The texture of the surface appears to be rough and uneven, with visible cracks and crevices throughout. The overall style of the image is simple and minimalistic, with a focus on the textures and patterns of the frames.
+
+The frames are empty, with no text or images on them, giving a sense of depth and dimension to the overall composition. The overall effect is one of sophistication and elegance.
+
+Overall, the image conveys a sense of timelessness and sophistication, perfect for any occasion. The frames are simple yet elegant, with a focus on texture and design, making them a timeless piece of art. Overall, the image is a beautiful representation of a timeless piece of art that will never go out of style."
+tags: [set, four, rectangular, frames, beige, textured, surface, arranged, symmetrical, pattern, each, frame]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 27
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:52:15+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

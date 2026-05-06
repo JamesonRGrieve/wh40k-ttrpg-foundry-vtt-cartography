@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Plain, Light Grey Background With A Simple"
+description: "The image is a photograph of a plain, light grey background with a simple, minimalist design. The image is centered in the frame and has a smooth, glossy texture. The background is a solid, light grey color with a subtle gradient effect. On the top left corner of the image, there is a small, rectangular frame with a decorative border. The frame appears to be made up of multiple overlapping rectangles, creating a symmetrical pattern. The rectangles are evenly spaced and have a slightly raised edge, giving the image a sense of depth and dimension. The overall aesthetic of the image is simple and minimalistic, with no other elements present in the image."
+tags: [photograph, plain, light, background, simple, minimalist, design, centered, frame, has, smooth, glossy]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: fb91ab65-d271-5e21-8c1f-759c23ca8f0f      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 36
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:20:12+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

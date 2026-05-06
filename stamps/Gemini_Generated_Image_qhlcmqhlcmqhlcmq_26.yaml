@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: SimpleThe image is a simpleThe image
+description: "The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image shows a setThe image is a setThe image is a setThe image is a simple, minimalist illustration of four identical rectangular frames with a simpleThe image is a setThe image is a setThe image is a set of four identical identical rectangular frames, eachThe image is a simple, minimalist design elements arranged in a row of four identical identical rectangular mirrors with a simple, rectangular shape, eachThe image is a set of four identical rectangular frames in a plain, rectangular shape, eachThe image is a simple, rectangular shape with a simple, minimalist illustration with a simple, minimalist design elements arranged in a symmetrical composition with a plain, plain, light brown background with a neutral-colored background in a plain, plain, light brown color scheme with a neutral-colored background. The frames are arranged in a grid-like pattern, each frame, each frame is a simple, rectangular shape with a simple, rectangular shape, each frame is a simple, rectangular shape and has a simple, rectangular shape, with a simple, minimalist design, each frame has a simple, minimalist style with a simple, minimalist design, with a simple, minimalist design, featuring a simple, minimalist design, featuring four identical rectangular shape and a simple, minimalist style with a simple, minimalist background with a neutral-colored background. The frames are arranged in a row of four identical identical rectangular shape, with a simple, minimalist design, arranged in a row of four identical identical rectangular shape, each frame in a row of four identical identical identical rectangular shape, each with a similar appearance. Each frame is drawn in a symmetrical composition with a similar design, each frame is shown in a simple, minimalist illustration of three identical rectangular shape, each frame is drawn in a simple, minimalist style, with a simple,"
+tags: [simplethe, setthe, simple, minimalist, illustration, four, identical, rectangular, frames, set, eachthe, design]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 26
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:50:13+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

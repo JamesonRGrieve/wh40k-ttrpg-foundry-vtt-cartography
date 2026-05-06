@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+name: "Elements In A Plain, Light Brown Color"
+description: "The image is a 3D rendering of a set of architectural elements in a plain, light brown color. The elements are arranged in a symmetrical pattern, with each element having a unique design. On the left side of the image, there is a tall, rectangular structure with a lattice-like pattern on the top, while on the right side, there are two smaller, rectangular structures with a similar lattice pattern. The structures appear to be made of a similar material, possibly wood or metal, and have a smooth, polished finish. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
+tags: [rendering, set, architectural, elements, plain, light, arranged, symmetrical, pattern, each, element, having]
+orientation: west   # north | south | east | west | top-down | isometric
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 2565166c-c083-5284-9be7-f61df4435b53      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 9
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:10:04+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

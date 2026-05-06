@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: 3DThe image is a 3DThe image
+description: "The image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a 3D rendering of a set of four different views of a set of four different views of a set of three identical line drawings of three identical line drawings of a set of three identical 3D rendering of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of three identical 3D rendering of a simple, minimalist design elements arranged in a grid-like objects arranged in a grid-like objects arranged in a symmetrical composition with a gray background with a grayish-colored background with a grayish-grey gradient background with a grid-like objects arranged in a symmetrical composition with a simple, minimalist design elements arranged in a grid-like pattern on a plain grey background with a simple, minimalist design elements of a"
+tags: [dthe, rendering, set, four, different, views, identical, line, drawings, simple, minimalist, design]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 7bf28e1a-1739-510d-b0ee-370417d4f611      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:13:19+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

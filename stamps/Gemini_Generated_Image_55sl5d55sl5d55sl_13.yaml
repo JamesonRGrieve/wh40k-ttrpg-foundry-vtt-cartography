@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Rectangular Tray With Four Compartments
+description: "The image is a 3D rendering of a rectangular tray with four compartments, each containing a different type of food item. The tray is set against a plain, light brown background with a subtle gradient effect. The food items are arranged in a grid-like pattern, with each compartment having a different shape and size. On the left side of the tray, there is a small portion of the food item, while on the right side, there are two smaller portions of the same food item. The food items appear to be empty, with no labels or designs on them. The overall aesthetic of the image is minimalistic and clean, with a focus on the textures of the food items."
+tags: [rendering, rectangular, tray, four, compartments, each, containing, different, food, item, set, against]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 13
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T04:59:24+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

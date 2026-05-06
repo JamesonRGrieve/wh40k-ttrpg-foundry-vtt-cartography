@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Boxes Filled With Old
+description: "A set of three rectangular boxes filled with old, handwritten documents. The boxes are arranged in a triangular formation, with the top box slightly higher than the bottom one. The documents appear to be of various sizes and colors, with some overlapping each other. The background is a plain, light grey color. The image has a minimalist design, with no other elements present. The overall aesthetic is simple and minimalistic."
+tags: [set, rectangular, boxes, filled, old, handwritten, documents, arranged, triangular, formation, top, box, container, container-crate, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: a4acc0f6-4fe7-5a8d-8183-bd55e9666629      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T06:27:05+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

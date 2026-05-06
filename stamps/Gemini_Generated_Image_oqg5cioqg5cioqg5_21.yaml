@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Blueprint Of A Computer System
+description: "The image is a digital illustration of a detailed blueprint of a computer system. The background is a plain beige color, and the blueprint is in the center of the image. The blueprint is composed of various lines and shapes that represent different components of the system, such as resistors, capacitors, transistors, and diodes. The lines are arranged in a grid-like pattern, with some overlapping each other, creating a sense of depth and dimensionality. The overall design is simple and minimalistic, with a focus on the intricate details of the circuit board. The image has a minimalist aesthetic, with no other elements present in the background."
+tags: [digital, illustration, detailed, blueprint, computer, system, background, plain, beige, center, composed, various]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: e344d9c8-116e-5282-91f7-0e8c09657072      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png
 source_index: 21
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:51:09+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

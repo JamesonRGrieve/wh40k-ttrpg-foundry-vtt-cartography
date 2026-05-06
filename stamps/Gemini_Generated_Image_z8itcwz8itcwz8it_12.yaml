@@ -2,15 +2,19 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Ornate Wooden Doors With A Simple
+description: "A set of three ornate wooden doors with a simple, minimalist design. The doors are set against a plain, light brown background, creating a simple yet elegant look. Each door has a unique shape and texture, with intricate details and patterns that give them a classic, timeless feel. The doors are arranged in a symmetrical pattern, with the top door slightly higher than the bottom one, creating a sense of balance and symmetry. The overall effect is one of sophistication and timelessness, evoking a sense of timelessness and elegance.
+
+The image is a minimalist representation of a prison or jail, with a focus on the intricate details of the doors and the simple, minimalist design that makes them stand out. The doors are symmetrical, with each door having its own unique shape and texture, adding to the overall aesthetic of the image. The overall effect is one of timelessness and sophistication, making it a timeless piece of art that will never go out of style.
+
+Overall, the image conveys a sense of timelessness and elegance, with the simple yet elegant design that will never go out of style."
+tags: [set, ornate, wooden, doors, simple, minimalist, design, against, plain, light, background, creating, door]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 9d93875d-1609-5dc9-9f94-accbdd2302b8      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png
 source_index: 12
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:24:12+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

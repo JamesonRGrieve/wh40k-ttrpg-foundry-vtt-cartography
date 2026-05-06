@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+name: Square-Shaped Metal Plate With A Beige Background
+description: "The image is a digital illustration of a square-shaped metal plate with a beige background. The plate has a smooth, polished surface with small, evenly spaced rivets running along its length. The edges of the plate are slightly raised, giving it a textured appearance. The overall design is simple and minimalistic, with no additional embellishments or details. The image is taken from a top-down perspective, looking down on the plate."
+tags: [digital, illustration, square-shaped, metal, plate, beige, background, has, smooth, polished, surface, evenly, container, container-tableware]
+orientation: top-down   # north | south | east | west | top-down | isometric
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: null
 
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png
 source_index: 11
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T06:53:29+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

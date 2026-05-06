@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: "Simple, Minimalist Design"
+description: "The image is a simple, minimalist design with a neutral color palette. It features a plain, light grey background with a subtle texture. On the left side of the image, there is a rectangular frame with a slightly raised edge, giving it a modern and sophisticated look. The frame is made up of thin, evenly spaced rectangles, creating a symmetrical pattern. The overall design is simple yet elegant, with no additional embellishments or details. The image is taken from a top-down perspective, looking down on the frame, giving a sense of depth and dimensionality."
+tags: [simple, minimalist, design, neutral, palette, features, plain, light, background, subtle, texture, left]
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 23
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:12:16+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

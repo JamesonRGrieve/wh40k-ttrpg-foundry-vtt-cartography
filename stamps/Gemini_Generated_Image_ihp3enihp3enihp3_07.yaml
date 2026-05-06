@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Modern Office Chair With A Sleek Design
+description: "A line drawing of a modern office chair with a sleek design. The chair has a rectangular base with four legs and a curved backrest. The seat and backrest are made of woven material, giving the chair a textured look. The background is a plain, light grey color, which contrasts nicely with the chair's design. The image is a minimalist representation of the chair, with no additional details or embellishments present. The overall style is minimalistic and contemporary, with clean lines and a minimalist aesthetic."
+tags: [line, modern, office, chair, sleek, design, has, rectangular, base, four, legs, curved, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 0e244c1d-948b-5bf5-9526-e3cfdd4f8936      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 7
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:09:24+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

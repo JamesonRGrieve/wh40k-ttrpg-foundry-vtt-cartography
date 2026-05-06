@@ -7,7 +7,7 @@ description: "A collection of hand-drawn documents arranged in a scattered manne
 tags: [collection, hand-drawn, documents, arranged, scattered, manner, plain, background, various, sizes, shapes, overlapping, prop, prop-document]
 orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 8e0bc1d9-7b48-550d-88ce-61b54ca57dae      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 10

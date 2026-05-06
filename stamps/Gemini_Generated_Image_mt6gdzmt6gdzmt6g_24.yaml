@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Wooden Shelves With Various Objects On Them
+description: "A line drawing of three wooden shelves with various objects on them. The shelves are arranged in a triangular formation, with the top shelf slightly higher than the bottom shelf. The objects on the shelves include a bottle, a box, and a few other items. The background is a plain, light brown color. The image has a minimalist design with clean lines and a simple, clean look. The overall aesthetic is simple and minimalistic."
+tags: [line, wooden, shelves, various, objects, arranged, triangular, formation, top, shelf, slightly, higher, furniture, furniture-shelf, container, container-crate, container-vessel]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: db201981-9271-5678-a16b-4f2742a83b60      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 24
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:12:35+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

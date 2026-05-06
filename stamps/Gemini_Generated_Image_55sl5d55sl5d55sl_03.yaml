@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: "Simple, Minimalist Composition With A Plain"
+description: "The image is a simple, minimalist composition with a plain, light grey background. The texture of the image is smooth and uneven, creating a sense of depth and dimension. On the left side of the image, there is a rectangular shape that appears to be slightly larger than the right side, giving it a more prominent appearance. The shape is outlined in a darker grey color, making it stand out against the lighter grey background. The overall effect is a clean and minimalistic design that could be used as a background or wallpaper."
+tags: [simple, minimalist, composition, plain, light, background, texture, smooth, uneven, creating, sense, depth]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 4fd24d61-f565-5b42-ba5e-20ce11953a85      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 3
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T04:52:36+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Simple, Minimalist Ladders In A Plain"
+description: "The image is a simple illustration of three simple, minimalist ladders in a plain, light brown color. The ladders are arranged in a triangular formation, with the topmost ladder on the left and the bottommost on the right. Each ladder has a rectangular shape with rounded edges and a flat, rectangular base. The ladders appear to be made of wood and have a smooth, polished finish. The background is a solid, light brown color, providing a neutral backdrop for the ladders. The image has a minimalist design, with no additional details or embellishments present."
+tags: [simple, illustration, minimalist, ladders, plain, light, arranged, triangular, formation, topmost, ladder, left, architecture, architecture-step]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: null
 
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:03:41+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

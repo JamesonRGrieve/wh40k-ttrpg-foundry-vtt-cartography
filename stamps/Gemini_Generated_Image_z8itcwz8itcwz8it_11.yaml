@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+name: "Plain, Light Grey Background"
+description: "The image is a 3D rendering of a plain, light grey background with a grid-like pattern. On the left side of the image, there are two rectangular panels with a slightly raised edge, each panel having a distinct shape and texture. The panels are arranged in a symmetrical pattern, with the top panel being slightly larger than the bottom panel. The panels appear to be made of wood or a similar material, with a smooth, polished finish. The overall appearance is simple and minimalistic, with no additional details or embellishments present."
+tags: [rendering, plain, light, background, grid-like, pattern, left, side, there, rectangular, panels, slightly]
+orientation: west   # north | south | east | west | top-down | isometric
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 7cb23a38-a572-5955-b0f1-80571a7ea526      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png
 source_index: 11
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:23:52+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: SimpleThe image is a simpleThe image
+description: "The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simple illustration of sixThe image is a simpleThe image is a simple illustration of six smallThe image is a simple, minimalThe image is a simple illustration of six smallThe image is a simple, minimalThe image is a simple, minimalistic illustration of six smallThe image is a digital illustration of six smallThe image is a simple, minimalistic illustration with a simple, minimalist design featuring a simple, minimalist design with a simple, minimalist style with a plain, plain, light grey background with a neutral-colored background in a plain, light grey color scheme with a simple, minimalist style, featuring six small, light brown color scheme. The image is a digital illustration of six small, light brown color scheme with a simple, minimalist design featuring six small, simple, minimalistic illustrations of small, simple, minimalistic illustrations of small, light green flowers arranged in a symmetrical pattern of small, light green flowers arranged in a symmetrical composition, featuring a few simple, hand-drawn illustrations of six small, simple, minimalist design elements arranged in a symmetrical composition of six small, repeating pattern of small, delicate flower-like shapes that resemble small, delicate flower-like flowers in a repeating pattern of small, delicate flower-like flowers on a plain, simple lines of light green flowers on a plain, minimalist design elements arranged in a symmetrical composition with a simple, minimalist style with a simple, minimalist style with a neutral-colored background. The flowers are arranged in a symmetrical pattern. The flowers are arranged in a symmetrical pattern, creating a symmetrical composition, with each flower-like shapes, each flower-like shapes, each flower-like shapes, each flower-like shapes that resemble small, symmetrical composition, creating a symmetrical composition of six small, symmetrical composition, the image"
+tags: [simplethe, simple, illustration, sixthe, six, smallthe, minimalthe, minimalistic, digital, minimalist, design, featuring]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 33
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:19:13+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

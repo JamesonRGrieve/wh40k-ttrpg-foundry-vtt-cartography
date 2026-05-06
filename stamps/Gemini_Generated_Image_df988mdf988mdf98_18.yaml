@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Panels With Intricate Gears And Cogs
+description: "A set of four rectangular panels with intricate gears and cogs on a plain, light grey background. The panels are arranged in a symmetrical pattern, with each panel having a unique design. The gears are intricately detailed and vary in size and shape, with some having larger teeth and others having smaller teeth. The panels appear to be made of metal or plastic and have a smooth, polished finish. The overall aesthetic of the image is minimalistic and modern, with a focus on the intricate details of the panels."
+tags: [set, four, rectangular, panels, intricate, gears, cogs, plain, light, background, arranged, symmetrical]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: bfa4f483-d623-590e-9d43-ac7ac8cf8e45      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:19:05+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

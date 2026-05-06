@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Identical Images Of A Robot-Like Structure
+description: "A set of four identical images of a robot-like structure with a simple, minimalist design. The robots are arranged in a symmetrical pattern, with each robot having a distinct shape and size. The background is a plain, light grey color, providing a subtle contrast to the robots. The robots appear to be made of a light-colored material, possibly plastic or metal, and have a smooth, polished finish. Each robot has a cylindrical shape with multiple arms extending from the center, giving it a sense of movement and energy. The image has a minimalist aesthetic, with no additional details or embellishments present."
+tags: [set, four, identical, images, robot-like, structure, simple, minimalist, design, robots, arranged, symmetrical]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: fd0f5267-9c3b-5a8d-84dd-8560a6477496      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 9
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:28:08+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Humanoid Figure Standing On A Pedestal
+description: "A set of three 3D models of a humanoid figure standing on a pedestal. The figures are rendered in a realistic style with smooth lines and shading, giving them a lifelike appearance. The figures are positioned in a symmetrical manner, with the tallest figure on the left and the smallest on the right. They are all facing the same direction, with their arms at their sides and their heads slightly tilted upwards. The background is a plain, light grey color, providing a subtle contrast to the figures. The overall aesthetic of the image is minimalistic and contemporary."
+tags: [set, models, humanoid, figure, standing, pedestal, figures, rendered, realistic, style, smooth, lines, furniture, furniture-table]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 26
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:51:08+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

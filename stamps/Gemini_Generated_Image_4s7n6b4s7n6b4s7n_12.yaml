@@ -11,7 +11,7 @@ Overall, the image is a minimalist representation of modern office furniture, wi
 tags: [set, four, line, drawings, modern, office, chair, simple, minimalist, style, chairs, arranged, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: inactive         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 908f13e2-ab2f-5113-9575-c742cf316fc4      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 12

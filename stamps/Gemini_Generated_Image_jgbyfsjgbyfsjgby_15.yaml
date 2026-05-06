@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Boxes With A Simple
+description: "The image is a digital illustration of a set of three rectangular boxes with a simple, minimalist design. The boxes are arranged in a grid-like pattern, with each box having a unique shape and texture. The first box has a rectangular shape with rounded edges, while the second box has a rectangular shape with rounded edges. All three boxes have a simple, minimalist design with clean lines and a neutral color palette. The background is a solid gray color, providing a subtle contrast to the boxes. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple shapes and textures of the boxes."
+tags: [digital, illustration, set, rectangular, boxes, simple, minimalist, design, arranged, grid-like, pattern, each, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 0da996c9-ac84-5d6e-ae71-824ca9d16ffb      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 15
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:41:17+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -7,7 +7,7 @@ description: "A cogitator/auspex console terminal with a large green CRT scope d
 tags: [digital, illustration, set, vintage, televisions, arranged, grid-like, pattern, background, drawn, simple, minimalist, tech, tech-screen]
 orientation: null   # north | south | east | west | top-down | isometric
 state: active
-group_id: fbdc4f25-bd06-5d4e-bbc5-4522aff3d478      # UUID linking orientation/state variants of one object
+group_id: 4325bfec-db34-5426-afd6-54e30220b3ad      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 1

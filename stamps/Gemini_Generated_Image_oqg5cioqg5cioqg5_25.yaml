@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Desk
+description: "A line drawing of a rectangular desk with two drawers and a flat top surface. The desk appears to be made of wood and has a smooth, polished finish. On the top of the desk, there is a piece of paper with some text written on it. The paper is slightly crumpled, suggesting that it has been handled multiple times. The drawers are slightly open, revealing the contents inside. The overall style of the image is simple and minimalistic, with a focus on the desk and its contents."
+tags: [line, rectangular, desk, drawers, flat, top, surface, wood, has, smooth, polished, finish, furniture, furniture-table, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 9133d094-fb93-5760-ae25-d4dba27ad41b      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:52:27+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

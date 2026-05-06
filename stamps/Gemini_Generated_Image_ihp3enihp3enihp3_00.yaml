@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Chairs Arranged In A Symmetrical Pattern
+description: "The image is a simple line drawing of a group of empty chairs arranged in a symmetrical pattern on a plain, light grey background. The chairs are drawn in a simple, minimalist style with clean lines and minimalistic details. Each chair has a rectangular shape with a flat top and four legs, creating a balanced and symmetrical composition. The overall aesthetic of the image is minimalistic and contemporary."
+tags: [simple, line, group, empty, chairs, arranged, symmetrical, pattern, plain, light, background, drawn, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 3722f116-7622-5909-84aa-6a25b60400bc      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 0
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:52:54+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

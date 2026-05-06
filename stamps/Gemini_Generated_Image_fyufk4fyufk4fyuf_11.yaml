@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Transparent Glasses Arranged
+description: "The image shows a collection of empty transparent glasses arranged in a neat and orderly manner on a plain grey background. The glasses are of varying sizes and shapes, with some being tall and others being short. They appear to be made of glass and have a smooth, cylindrical shape with rounded edges. The background is a solid, light grey color, providing a subtle contrast to the empty glasses. The image is a simple and minimalistic representation of the empty glasses, with no other objects or decorations in sight."
+tags: [collection, empty, transparent, glasses, arranged, neat, orderly, manner, plain, background, varying, sizes]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 38e1d340-7f51-5384-a2e6-d93c1c4ab6df      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 11
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:46:00+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

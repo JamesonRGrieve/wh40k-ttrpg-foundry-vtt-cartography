@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Beige Mugs Arranged
+description: "The image is a 3D rendering of a collection of empty beige mugs arranged in a neat and orderly manner on a plain grey background. The mugs are of varying sizes and shapes, with some being larger than others. They appear to be made of ceramic or porcelain and have a smooth, polished finish. The cups are arranged in two rows, with the largest one at the top and the smallest at the bottom. The image has a simple, minimalist design with clean lines and shading, giving it a clean and polished look."
+tags: [rendering, collection, empty, beige, mugs, arranged, neat, orderly, manner, plain, background, varying, container, container-tableware]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 4776a9d2-6288-52ec-8e54-65b0c8e4b4b8      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:48:19+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

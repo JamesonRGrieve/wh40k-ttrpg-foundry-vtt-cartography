@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Lockers On A Plain Gray Background
+description: "A 3D rendering of a row of metal lockers on a plain gray background. The lockers are arranged in a symmetrical pattern, with each one slightly overlapping the one below it. The metal has a smooth, polished finish and appears to be aged and weathered, with visible signs of wear and tear. The doors are slightly ajar, revealing the interior of the lockers. The overall aesthetic of the image is simple and minimalistic, with no additional details or embellishments present."
+tags: [rendering, row, metal, lockers, plain, background, arranged, symmetrical, pattern, each, slightly, overlapping, container, container-locker, door]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: 6e373f9e-a91d-5316-87fd-b6e0d9f72bcd      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 12
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:24:22+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

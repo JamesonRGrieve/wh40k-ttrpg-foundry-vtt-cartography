@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Identical Beige Metal Lockers Arranged
+description: "The image shows a set of six identical beige metal lockers arranged in a grid-like pattern on a plain grey background. The lockers are of varying sizes and shapes, with the largest one in the center and two smaller ones on either side. Each locker has a single door with a handle, and the doors appear to be closed. The image has a minimalist design with clean lines and a neutral color palette. The lockers are arranged in a symmetrical pattern, with the largest one on the left and the smallest one on the right. The overall aesthetic of the image is simple and minimalistic, with a focus on the lockers."
+tags: [set, six, identical, beige, metal, lockers, arranged, grid-like, pattern, plain, background, varying, container, container-locker, door]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 4
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:07:35+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

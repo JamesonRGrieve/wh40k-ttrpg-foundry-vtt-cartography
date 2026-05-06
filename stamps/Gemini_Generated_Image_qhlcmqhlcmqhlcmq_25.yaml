@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: "Simple, Minimalist Design With A Plain"
+description: "The image is a simple, minimalist design with a plain, light grey background. It features a set of four square-shaped objects arranged in a grid-like pattern, each with a distinct shape and size, arranged in a symmetrical layout. The objects are drawn in a simple, minimalist style with a smooth, straight line drawing style, giving them a clean and clean look. The objects are arranged in a symmetrical pattern, with each object having a rectangular shape and a simple, rectangular shape. The background is a solid, plain, light grey color, providing a neutral backdrop for the objects. The image appears to be taken from a top-down perspective, with no other objects or objects in the frame. The overall aesthetic is simple and minimalistic, with no additional details or embellishments present."
+tags: [simple, minimalist, design, plain, light, background, features, set, four, square-shaped, objects, arranged]
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 3073cd6d-13ec-56ca-965e-666d9fb95ce3      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:49:36+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

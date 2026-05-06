@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Small, Rectangular Objects Arranged"
+description: "The image is a 3D rendering of a collection of small, rectangular objects arranged in a grid-like pattern on a plain, light brown background. The objects appear to be made of wood or a similar material, with a smooth, polished finish. They are of varying sizes and shapes, with some being larger than others, and some being smaller than others. The objects are arranged in an irregularly arranged manner, creating a sense of depth and dimensionality. The overall aesthetic of the image is minimalistic and contemporary, with a focus on the textures and details of the objects."
+tags: [rendering, collection, rectangular, objects, arranged, grid-like, pattern, plain, light, background, wood, similar]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 3ce2d1da-74a8-56d9-83ba-f464690c73ef      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 28
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:51:09+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

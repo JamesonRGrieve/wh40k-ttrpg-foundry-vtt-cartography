@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Snowflake-Like Structure Made Up Of Small
+description: "A 3D rendering of a snowflake-like structure made up of small, irregularly shaped structures arranged in a symmetrical pattern. The structures appear to be made of a light-colored material, possibly cardboard or plastic, and have a smooth, glossy finish. The background is a plain, light grey color, which contrasts nicely with the intricate details of the snowflake structure. The snowflake shape is symmetrical, with each structure having a distinct shape and size, creating a sense of depth and dimensionality. The overall effect is a beautiful and intricate representation of a winter landscape."
+tags: [rendering, snowflake-like, structure, irregularly, shaped, structures, arranged, symmetrical, pattern, light-colored, material, possibly]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: c230e800-4f8c-5b6a-a8bf-0df998e82272      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 14
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:31:46+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

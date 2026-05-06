@@ -3,14 +3,14 @@
 # make_sidecars.py re-runs unless --force is passed.
 
 name: null
-description: null
+description: A 3
 tags: []
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: baaac365-0e34-5e37-812a-ca5fd3185784      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 4
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:59:06+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

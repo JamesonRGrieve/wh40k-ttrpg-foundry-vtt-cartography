@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: SetThe image is a simple
+description: "The image is a setThe image is a simple, rectangular shape withThe image is a simple, minimalist design element, which appears to be a simple, minimalist illustration ofU0027s empty plastic container with a simple, rectangular shape and rectangular shape, set against aThe image is a 3D rendering of three identical rectangular shapes that areThe image is a simple, minimalist design with a plain, light brown color scheme. The background is a solid gray color, and the image has a simple, minimalist style with a simple, minimalist aesthetic. On the left side of the image, there are three identical rectangular shapes that appear to be empty, rectangular shape with rounded corners and a flat, rectangular shape that resembles a simple, empty space between the two sides. The shapes are arranged in a grid-like pattern, with no additional details about the edges of the image. The shapes are outlined in a light brown color, giving the image a simple, clean and minimalistic look. The shapes are arranged in a grid-like pattern, with each shape having a smooth, minimalist design, with no additional details such as a border around the edges of the image, but they are outlined in a light brown color. The shapes are symmetrical and have a smooth, smooth texture, with no additional details such as lines and curves that give the impression of a rectangular shape, giving the image a clean and clean, minimalist design. The image has a simple, minimalist aesthetic. The overall aesthetic is simple and minimalistic, with a minimalist, minimalist aesthetic, with a focus on minimalistic design, with no other elements present in the image."
+tags: [setthe, simple, rectangular, shape, withthe, minimalist, design, element, which, illustration, ofu, empty]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 12
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:40:18+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

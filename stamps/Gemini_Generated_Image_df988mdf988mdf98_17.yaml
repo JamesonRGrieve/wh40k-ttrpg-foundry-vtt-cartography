@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Control Panel
+description: "A line drawing of a control panel with multiple screens and a keyboard. The panel is divided into four sections, each with a different layout and color scheme. The panels are arranged in a symmetrical manner, with the top panel being the largest and the bottom panels being the smallest. The background is a plain, light grey color, providing a subtle contrast to the panel. The panel appears to be made of a sturdy material, likely wood or metal, and has a smooth, polished finish. The overall style of the panel is simple and minimalistic, with clean lines and a minimalist aesthetic."
+tags: [line, control, panel, multiple, screens, keyboard, divided, into, four, sections, each, different, tech, tech-screen]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: a9caeff0-55aa-5fa5-945a-1381fd460ac3      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 17
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:18:46+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: 3DThe image is a 3DThe image
+description: "The image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a digitalThe image is a digitalThe image is a 3D rendering of a collection of smallThe image is a digitalThe image is a digitalThe image is a digital illustration of a collection of small square-shaped objects arranged in a grid-like pattern of smallThe image is a seamless pattern of small rectangular boxes arranged in a grid-like structure composed of multiple rows of small, square-shaped objects arranged in a grid-like pattern of small, rectangular boxes arranged in a grid-like structure composed of multiple rows of small, square-shaped objects arranged in a grid-like pattern on a plain, rectangular boxes arranged in a grid-like pattern on a plain, light grey background with a grayish-colored background, creating a grid-like structure with a simple, rectangular shape, with a grid-like structure composed of multiple rows of small, square-shaped objects arranged in a grid-like pattern, with a grayish-colored background with a grayish-colored squares of varying sizes of small, square-shaped objects arranged in a grid-like shapes, creating a grid-like structure, creating a grid-like structure, creating a grid-like structure, with a grid-like pattern, creating a grid-like structure, with a grid-like pattern, with a simple, minimalist design that resembles a grid of small, rectangular boxes scattered across the image. The objects are arranged in a grid-like pattern, with a simple, rectangular shape, with a simple, minimalist design, with a simple, rectangular shape, creating a grid-like texture, with a grid-like structure that resembles a grid-like texture of"
+tags: [dthe, digitalthe, rendering, collection, smallthe, digital, illustration, square-shaped, objects, arranged, grid-like, pattern]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: f1992653-7552-54fa-a692-c45d0a2aed56      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 21
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:48:17+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

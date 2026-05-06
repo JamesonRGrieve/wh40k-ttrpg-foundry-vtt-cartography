@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+name: Square Frames With A Textured
+description: "A set of four square frames with a textured, vintage look. The frames are arranged in a symmetrical pattern, with each frame slightly overlapping the one below it. The background is a solid, light grey color, and the frames have a slightly worn, aged appearance. The overall style of the image is simple and minimalistic, with a focus on the textures and patterns of the frames. The image appears to be taken from a top-down perspective, looking down on the frames."
+tags: [set, four, square, frames, textured, vintage, arranged, symmetrical, pattern, each, frame, slightly]
+orientation: top-down   # north | south | east | west | top-down | isometric
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: null
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:43:56+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

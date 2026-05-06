@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Medieval Castle, Each"
+description: "A set of three 3D models of a medieval castle, each with a unique architectural design. The castles are arranged in a triangular formation, with the tallest one in the center and the two smaller ones on either side. The castles have spires, towers, and arches, with intricate details and shading that give them a realistic look. The background is a plain, light grey color, providing a subtle contrast to the detailed architecture of the castles. The image has a minimalist aesthetic, with no other elements present in the overall composition."
+tags: [set, models, medieval, castle, each, unique, architectural, design, castles, arranged, triangular, formation]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 03b4faf0-4f04-55e2-8119-a9b7c867200a      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:37:44+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

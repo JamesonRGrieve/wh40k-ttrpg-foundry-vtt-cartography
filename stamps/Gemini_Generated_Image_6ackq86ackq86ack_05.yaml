@@ -2,15 +2,19 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+name: "Round, Beige-Colored Manhole Covers Arranged"
+description: "A set of four round, beige-colored manhole covers arranged in a grid-like pattern on a plain, light grey background. Each cover has a unique design, with a rectangular shape and a flat surface. The covers appear to be made of a similar material, possibly plastic or metal, and have a smooth, polished finish. The edges of the covers are slightly raised, giving them a 3D effect. The overall appearance is simple and minimalistic, with no additional details or embellishments present.
+
+The image appears to be taken from a top-down perspective, looking down on the covers. The covers are arranged in two rows, with the top row slightly higher than the bottom row. The top row has a rectangular shape with a flat surface, while the bottom row has a flat surface with rounded edges. The edges of the covers are slightly raised, giving them a more polished look.
+
+Overall, the image has a minimalist design, with a focus on the different types of manhole covers."
+tags: [set, four, round, beige-colored, manhole, covers, arranged, grid-like, pattern, plain, light, background]
+orientation: top-down   # north | south | east | west | top-down | isometric
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: ede3f1b1-99fa-5a33-94a1-c8a181ff047e      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:44:33+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

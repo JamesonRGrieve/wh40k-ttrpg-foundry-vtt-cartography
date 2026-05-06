@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Simple, Minimalist Illustration With A Plain"
+description: "The image is a simple, minimalist illustration with a plain, light brown background. It features three rectangular objects arranged in a horizontal line, each with a distinct shape and texture. The objects appear to be made of a soft, textured material, possibly linen or cotton, and have a smooth, even finish. The shapes vary in size and shape, with some being larger than others, while others are smaller and more compact. The overall style of the image is simple and minimalistic, with clean lines and a minimalistic aesthetic."
+tags: [simple, minimalist, illustration, plain, light, background, features, rectangular, objects, arranged, horizontal, line]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 0
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:56:31+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

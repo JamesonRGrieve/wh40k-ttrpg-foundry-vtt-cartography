@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Square Tiles With A Geometric Pattern
+description: "A set of four square tiles with a geometric pattern in a light beige color. The tiles are arranged in a grid-like pattern, with each tile having a different size and shape. The background is a solid gray color, providing a subtle contrast to the neutral tones of the tiles. The image has a clean and minimalistic design, with no visible imperfections or embellishments. The overall effect is one of sophistication and elegance."
+tags: [set, four, square, tiles, geometric, pattern, light, beige, arranged, grid-like, each, tile]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 0a3f31b0-d153-584c-a2d3-bdf3e9032637      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 13
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T07:31:25+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

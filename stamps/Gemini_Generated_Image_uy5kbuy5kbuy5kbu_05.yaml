@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Seamless Pattern Of Wooden Crates
+description: "The image is a digital illustration of a seamless pattern of wooden crates on a gray background. The crates are arranged in a grid-like pattern, with each crate having a rectangular shape and a handle on the top. The wood appears to be aged and weathered, with visible signs of wear and tear. The texture of the wood is rough and uneven, with some areas having a slightly raised edge. The overall style of the image is simple and minimalistic, with a focus on the textures of the wooden crates. The image has a minimalist aesthetic, with no other elements present in the background."
+tags: [digital, illustration, seamless, pattern, wooden, crates, background, arranged, grid-like, each, crate, having, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: 54e839ed-6571-528a-911a-2383b5edb28a      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:56:06+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

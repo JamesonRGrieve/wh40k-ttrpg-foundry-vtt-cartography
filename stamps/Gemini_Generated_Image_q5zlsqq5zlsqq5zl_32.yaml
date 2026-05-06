@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Cylindrical Objects Arranged In A Row
+description: "The image is a simple illustration of three cylindrical objects arranged in a row on a plain, light grey background. The objects appear to be made of metal and have a smooth, polished finish. Each object has a unique shape and size, with a pointed end and a flat base. The objects are arranged in a symmetrical pattern, with the largest object in the center and two smaller ones on either side. The background is a solid, light grey color, providing a subtle contrast to the objects. The overall aesthetic of the image is minimalistic and contemporary."
+tags: [simple, illustration, cylindrical, objects, arranged, row, plain, light, background, metal, have, smooth]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+state: intact         # intact | damaged | destroyed | active | inactive
+group_id: 4688b1bf-06bd-503a-8c55-1e81e46c769a      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 32
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:18:36+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

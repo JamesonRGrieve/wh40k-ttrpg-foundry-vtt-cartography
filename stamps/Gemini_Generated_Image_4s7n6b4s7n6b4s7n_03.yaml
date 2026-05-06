@@ -7,7 +7,7 @@ description: "A stackA stackA stackA stackA stackA stackA stackA stackA stack of
 tags: [stacka, stack, papers, stacked, top, ofa, paper, documents, each, other, simple, background, prop, prop-document]
 orientation: isometric   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 38837862-b9c8-5359-b86e-a465447b6782      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 3

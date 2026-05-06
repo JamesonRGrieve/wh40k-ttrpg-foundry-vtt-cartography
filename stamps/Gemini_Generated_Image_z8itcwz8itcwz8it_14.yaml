@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: SimpleThe image is a digitalThe image
+description: "The image is a simpleThe image is a digitalThe image is a digitalThe image is a digitalThe image is a digitalThe image is a digitalThe image is a digitalThe image is a digitalThe image is a digital illustration of twoThe image is a digitalThe image is a digital illustration of two rectangular frames with rectangular frames with a vintageThe image is a 3D rendering of two rectangular panels with a simple, minimalist design elements, featuring two identical rectangular frames with intricate patterns in a simple, minimalist interior design elements arranged in a symmetrical patterned background with a beige color scheme, featuring two identical rectangular frames with a geometric patterned background featuring two identical rectangular panels, each panel design in a square frame with a beige color scheme with a neutral color scheme, featuring two identical rectangular frames containing two identical rectangular frames containing two identical rectangular panels, each with a similar design elements, each with a similar design, each with a similar pattern of light brown color scheme. The panels are arranged in a symmetrical design, each panel of varying shades of beige color scheme, creating a symmetrical pattern, each panel has a similar pattern of light brown color scheme. The panels are arranged in a symmetrical design, each panel has a similar design with a similar design, creating a symmetrical composition, with a repeating pattern on the left and right side of the image. The panels are arranged in a symmetrical pattern, with a square shape and a simple, rectangular shape, with two identical rectangular shape, with two identical rectangular shape, each panel featuring two identical rectangular shape, each panel has a similar design that resembles a square frame with two identical rectangular shape, each panel has a similar design element in the image, creating a symmetrical composition with a similar design element in the middle of the image. The panels are arranged in a symmetrical composition with two identical rectangular shape, each panel has a simple, minimalist, image is"
+tags: [simplethe, digitalthe, digital, illustration, twothe, rectangular, frames, vintagethe, rendering, panels, simple, minimalist]
+orientation: east   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 0dbf2152-1df0-5ef1-8b5b-0b7baad9e396      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png
 source_index: 14
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T13:25:15+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

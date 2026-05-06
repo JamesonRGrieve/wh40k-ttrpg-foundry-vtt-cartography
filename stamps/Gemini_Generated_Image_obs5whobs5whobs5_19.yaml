@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Small, Rectangular Box"
+description: "A set of four line drawings of a small, rectangular box with a lid and a handle. The boxes are drawn in a simple, minimalist style with a light brown background. Each box has a unique design, with a different color scheme and texture. The first box has a label with the words \"shutterfly\" written on it, followed by a description of the contents inside. The second box has an image of a gift box with a ribbon tied around it, and the third box has a description of the contents inside. The fourth box has an illustration of a box with a ribbon tied around it. The fifth box has an illustration of a box with a ribbon tied around it, and the sixth box has an illustration of a box with a ribbon tied around it. The seventh box has an illustration of a box with a ribbon tied around it, and the eighth box has an illustration of a box with a ribbon tied around it. The ninth box has an illustration of a box with a ribbon tied around it. The tenth box has an illustration of a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The tenth box has an illustration of a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it. The eleventh box has an illustration of a box with a ribbon tied around it, and the eleventh box with a ribbon tied around it. The eleventh box has a box with a ribbon tied around it. The eleventh box has a box with a ribbon tied around it. The eleventh box has a box with a ribbon tied around it, and the eleventh box has an illustration of a box with a ribbon tied around it. The"
+tags: [set, four, line, drawings, rectangular, box, lid, handle, boxes, drawn, simple, minimalist, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 3fb69480-d53b-52c1-9bdb-ea28f640b5de      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 19
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:27:45+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

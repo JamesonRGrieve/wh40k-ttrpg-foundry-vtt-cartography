@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: "Simple, Minimalist Design With A Gray Background"
+description: "The image is a simple, minimalist design with a gray background. It consists of three rectangular boxes arranged in a grid-like pattern, each with a unique shape and size. The boxes are evenly spaced and have a smooth, glossy finish. Each box has a small, circular indentation in the center, creating a symmetrical pattern. The overall design is simple yet elegant, with no additional details or embellishments present. The image appears to be taken from a top-down perspective, looking down on the boxes."
+tags: [simple, minimalist, design, background, consists, rectangular, boxes, arranged, grid-like, pattern, each, unique, container, container-crate]
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: d66f2434-eed5-5b35-bb9c-4c35b42fc852      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 33
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:19:02+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

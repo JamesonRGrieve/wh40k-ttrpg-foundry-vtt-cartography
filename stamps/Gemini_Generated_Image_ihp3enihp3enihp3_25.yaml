@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: SimpleThe image is a simpleThe image
+description: "The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a collection of six identical images of differentThe image is a collection of six identical images of smallThe image is a setThe image is a simple, minimalThe image is a setThe image is a simple, minimalThe image is a collection of six identical images of empty cylindrical objects arranged in a grid-like pattern of small, rectangular objects arranged in a grid-like pattern of small, empty containers, arranged in a symmetrical composition with a gray background with a simple, minimalist design with a gray background with a simple, minimalist illustration of six identical images of small, empty containers, arranged in a grid-like pattern, arranged in a grid-like pattern, each container-like shapes that are identical in size and shape, arranged in a symmetrical pattern, each container-like shape, each container-like shapes that are identical in size and shape, arranged in a symmetrical composition, creating a continuous line drawing of a cylindrical objects, each container-like objects, each container-like shape, with a simple, rectangular shape, resembling a simple, rectangular shape with rounded corners of varying sizes and shapes that resemble a cylindrical objects that appear to be empty, with a simple, minimalist design, arranged in a symmetrical composition, arranged in a symmetrical composition, with a simple, minimalist style, with no other objects that are identical in size and shape, resembling a simple, minimalist design, with no other objects in a symmetrical composition. The containers are drawn in a grid-like pattern. The containers are drawn in a symmetrical composition, with no other objects in a grid-like shape, with no other objects in a symmetrical composition, creating a symmetrical composition of six identical images of empty containers, each container-shaped"
+tags: [simplethe, collection, six, identical, images, differentthe, smallthe, setthe, simple, minimalthe, empty, cylindrical]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 72d08e9f-d9f1-5fba-b586-b30b1539caaa      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:27:00+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

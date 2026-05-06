@@ -2,15 +2,20 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Simplecirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccircuitboard, A Computer Circuit Board"
+description: "A simplecirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccirccircuitboard, a computer circuit board with various electronic components arranged in a symmetrical pattern on a plain grey background. The image is a simple, minimalist design with a minimalist, minimalist style, featuring a simple, minimalist aesthetic. The image is a simple, minimalist representation of a computer circuit board layout in a simple, minimalist style with a simple, minimalist design, featuring a simple, minimalist design with a neutral color scheme. The image is composed of multiple layers of electronic components arranged in a symmetrical pattern, creating a symmetrical layout with a simple yet intricate design that resembles a simple, abstract background. The main focus is centered in the center of the image, with the main focus being the main focus of the image, and the background is a simple, minimalist design element in the middle of the image. The image is a simple, minimalist representation of a computer circuit board, with no other objects in the image. The image has a simple, minimalist design with a neutral color palette of light brown tones, giving it a clean and clean look, with no additional details about the intricate details of the circuit board, including the various components, such as well-defined lines and shapes that make it look like a computer circuit board layout.
+
+
+
+
+The image is a simple, minimalist representation of a computer circuit board design, with a simple, minimalist style with a simple, minimalist design, with a focus on the intricate details of a computer chip pattern in a simple, minimalist design that is reminiscent of a computer circuit board layout. The image is a simple, minimalist design, with a focus on the various components of a computer motherboard layout in a simple, minimalist style, with a focus on the various electronic components, with a focus on the intricate details of the electronic circuit board design. The main focus of the image, with no additional information about the various components, including the various components and their connections and connections between the main components in the image. The background is a solid state of mind-blurred lines and shapes, creating a sense of depth and dimensionality, with a focus on the intricate details of the circuit board design. The image is a simple, minimalist design, with a focus on the various shapes and textures of the circuit board, with a focus on the various shapes and lines that create a sense of depth and dimensionality of the circuit board, with a focus on the intricate details of the electronic components, creating a sense of depth and dimensionality in the image is a"
+tags: [computer, circuit, board, various, electronic, components, arranged, symmetrical, pattern, plain, background, simple]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: e3971179-b582-5ea7-824d-c93ad32ff4ec      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png
 source_index: 27
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T05:58:50+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: "Simple, Minimalist Illustration With A Plain"
+description: "The image is a simple, minimalist illustration with a plain, light brown background. It features multiple rectangular shapes arranged in a grid-like pattern, each with a distinct shape and size. The shapes vary in size and color, with some being larger than others, creating a sense of depth and dimension. The overall style is minimalistic and minimalistic, with clean lines and a minimalist aesthetic. The image appears to be taken from a top-down perspective, looking down on the shapes."
+tags: [simple, minimalist, illustration, plain, light, background, features, multiple, rectangular, shapes, arranged, grid-like]
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 27
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:15:52+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

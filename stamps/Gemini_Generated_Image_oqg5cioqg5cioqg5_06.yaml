@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Empty Cups With A Simple
+description: "A set of three empty cups with a simple, minimalist design. The cups are drawn in a light brown color with a slightly rough texture, giving them a vintage look. Each cup has a handle on each side and a small indentation in the center. The cups are arranged in a symmetrical pattern, with the largest cup on the left and the smallest on the right. The background is a plain, light grey color, providing a subtle contrast to the cups. The overall style of the image is simple and minimalistic, with clean lines and a focus on the cups."
+tags: [set, empty, cups, simple, minimalist, design, drawn, light, slightly, rough, texture, giving, container, container-tableware]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 65e4c994-7098-50cb-9c35-3b8861b8d096      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png
 source_index: 6
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:40:29+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

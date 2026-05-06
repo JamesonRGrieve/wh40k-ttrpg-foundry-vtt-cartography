@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: SimpleThe image is a simpleThe image
+description: "The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a 3The image is a 3The image is a 3The image is a 3The image is a 3The image is a 3The image is a 3D rendering of a setThe image is a simple, minimalist illustration of a setThe image is a 3D rendering of a setThe image is a 3D rendering of a setThe image is a 3D rendering of a setThe image is an illustration of a setThe image is a simple, rectangular shape with a gray background with a gray background with a grid-like structure composed of multiple rectangular boxes arranged in a grid-like pattern of multiple rectangular boxes arranged in a grid-like structure composed of small, rectangular boxes arranged in a symmetrical pattern, consisting of multiple rectangular boxes arranged in a grid-like structure composed of multiple rectangular boxes arranged in a grid-like structure composed of multiple rows of small, rectangular boxes stacked on top of each box-like structure, consisting of multiple rectangular boxes arranged in a grid-like structure made up of multiple rows of small, rectangular boxes stacked on top of each box-like structures made up of multiple rows of identical rectangular boxes, arranged in a symmetrical pattern, each box-like structures made up of multiple rows of small, square-shaped objects arranged in a grid-like structures, each box-like structures that appear to be stacked on top of each other, arranged in a symmetrical pattern, creating a grid-like structures, each box-like structure, with a simple, rectangular boxes, arranged in a grid-like structure, with a simple, minimalist design, with a simple, rectangular shape with a simple, rectangular shape, image is"
+tags: [simplethe, rendering, setthe, simple, minimalist, illustration, rectangular, shape, background, grid-like, structure, composed, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T10:20:39+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Rectangular Tables With A Simple
+description: "A set of six rectangular tables with a simple, minimalist design. The tables are arranged in a grid-like pattern, with each table having a unique shape and texture. The background is a plain, light grey color, providing a subtle contrast to the neutral tones of the tables. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic. The image appears to be taken from a top-down perspective, looking down on the tables, giving a sense of depth and dimensionality."
+tags: [set, six, rectangular, tables, simple, minimalist, design, arranged, grid-like, pattern, each, table, furniture, furniture-table]
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: 7ee2d12c-1fc8-59b5-8c0b-473c36521a2e      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 9
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T11:21:25+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

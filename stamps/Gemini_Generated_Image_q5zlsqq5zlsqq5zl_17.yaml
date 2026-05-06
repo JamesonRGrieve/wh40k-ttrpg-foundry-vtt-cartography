@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: "Simple, Minimalist Design With A Plain"
+description: "The image is a simple, minimalist design with a plain, light brown background. On the left side of the image, there are three identical rectangular boxes arranged in a grid-like pattern, each with a different size and shape. The boxes are drawn in a simple, minimalist style with thin lines, giving them a clean and minimalistic look. The boxes are arranged in two rows, with the top row slightly higher than the bottom row, creating a sense of depth and dimensionality. The top row has a rectangular shape with a flat top and a flat bottom, while the bottom row has a rectangular shape with a flat top and a flat bottom. Each box has a small opening at the top, which could be used as a door or a window. The overall design is simple and minimalistic, with no additional details or embellishments present in the image."
+tags: [simple, minimalist, design, plain, light, background, left, side, there, identical, rectangular, boxes, container, container-crate, door, architecture, architecture-window]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 17
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T12:04:21+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0
