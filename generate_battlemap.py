@@ -302,6 +302,94 @@ def run_spacecraft(
     return base_path
 
 
+def _make_rectangular_room(
+    output: Path,
+    *,
+    width: int,
+    height: int,
+    wall_thickness: int,
+    ramp_side: str | None,
+    light_count: int,
+) -> None:
+    """Paint a canonical-color rectangular-room layout PNG.
+
+    Layout:
+      * Black background everywhere outside the room footprint.
+      * Wall color (#303030) around the perimeter at `wall_thickness`.
+      * Floor color (#808080) filling the interior.
+      * Optional `ramp_side` extends a 1/3-width ramp out from that wall.
+      * Optional `light_count` evenly-spaced amber fixtures inset from
+        each side of the perimeter.
+
+    Output is ready to feed directly to `spacecraft` mode without
+    needing a quantize pass — colors are painted with hard edges at
+    exact canonical values.
+    """
+    import numpy as np
+    from PIL import Image
+
+    arr = np.zeros((height, width, 3), dtype=np.uint8)
+    wall = SPACECRAFT_REGION_RGB["wall"]
+    floor = SPACECRAFT_REGION_RGB["floor"]
+    ramp = SPACECRAFT_REGION_RGB["ramp"]
+    light = SPACECRAFT_REGION_RGB["lighting"]
+
+    # Frame everything in walls, then overpaint the interior with floor.
+    arr[:, :] = wall
+    arr[wall_thickness:height - wall_thickness, wall_thickness:width - wall_thickness] = floor
+    # Carve the area outside the room (i.e. before walls) back to black.
+    # In this rectangular form, the room fills the whole canvas — no
+    # carve-out needed unless `ramp_side` is set, in which case we extend
+    # outside on that side and want the rest still black on the same axis.
+    # For simplicity we keep the layout to-the-edges; the BattlemapSpacecraft
+    # workflow expects black around the spacecraft outline only when there's
+    # a ramp protrusion. Adjust the framing if that matters for your prompt.
+
+    if ramp_side is not None:
+        ramp_len = max(wall_thickness * 4, min(width, height) // 6)
+        if ramp_side in ("north", "south"):
+            ramp_w = width // 3
+            x0 = (width - ramp_w) // 2
+            x1 = x0 + ramp_w
+            if ramp_side == "north":
+                # Extend the ramp into the wall and through (so it reads as a
+                # ramp connecting through the bulkhead, not a notch).
+                arr[0:ramp_len, x0:x1] = ramp
+            else:
+                arr[height - ramp_len:height, x0:x1] = ramp
+        else:
+            ramp_h = height // 3
+            y0 = (height - ramp_h) // 2
+            y1 = y0 + ramp_h
+            if ramp_side == "west":
+                arr[y0:y1, 0:ramp_len] = ramp
+            else:
+                arr[y0:y1, width - ramp_len:width] = ramp
+
+    # Lighting fixtures: small disks evenly spaced inside the wall band.
+    if light_count > 0:
+        radius = max(8, wall_thickness // 2)
+        cx_inset = wall_thickness // 2
+        per_side = max(1, light_count // 4)
+        positions: list[tuple[int, int]] = []
+        # Top + bottom rows
+        for i in range(per_side):
+            x = int(width * (i + 1) / (per_side + 1))
+            positions.append((x, cx_inset))
+            positions.append((x, height - cx_inset))
+        # Left + right columns
+        for j in range(per_side):
+            y = int(height * (j + 1) / (per_side + 1))
+            positions.append((cx_inset, y))
+            positions.append((width - cx_inset, y))
+        ys, xs = np.ogrid[0:height, 0:width]
+        for cx, cy in positions:
+            mask = (xs - cx) ** 2 + (ys - cy) ** 2 <= radius * radius
+            arr[mask] = light
+
+    Image.fromarray(arr, mode="RGB").save(output)
+
+
 def _quantize_layout(
     src: Path,
     dest: Path,
@@ -477,6 +565,33 @@ def main() -> int:
     pc.add_argument("source", help="existing workflow name on server, e.g. BattlemapSpacecraft.json")
     pc.add_argument("dest", help="new workflow name, e.g. BattlemapSpacecraftV2.json")
 
+    pmr = sub.add_parser(
+        "make-room",
+        help="emit a canonical-color rectangular-room layout PNG. Useful as a "
+        "starting template for new battlemap locations without hand-painting.",
+    )
+    pmr.add_argument("output", type=Path)
+    pmr.add_argument("--width", type=int, default=1024, help="image width in px")
+    pmr.add_argument("--height", type=int, default=1024, help="image height in px")
+    pmr.add_argument(
+        "--wall-thickness",
+        type=int,
+        default=32,
+        help="thickness of the perimeter wall in px",
+    )
+    pmr.add_argument(
+        "--ramp-side",
+        choices=["none", "north", "south", "east", "west"],
+        default="none",
+        help="add a loading ramp protruding from one wall",
+    )
+    pmr.add_argument(
+        "--lights",
+        type=int,
+        default=4,
+        help="number of light fixtures around the perimeter (0 to disable)",
+    )
+
     pq = sub.add_parser(
         "quantize-layout",
         help="snap a hand-painted layout PNG to the canonical region colors. "
@@ -527,6 +642,16 @@ def main() -> int:
             body = fetch_server_workflow(args.server, name)
             (WORKFLOWS_DIR / name).write_text(json.dumps(body, indent=2))
             print(f"[pull] {name}", file=sys.stderr)
+    elif args.cmd == "make-room":
+        _make_rectangular_room(
+            args.output,
+            width=args.width,
+            height=args.height,
+            wall_thickness=args.wall_thickness,
+            ramp_side=args.ramp_side if args.ramp_side != "none" else None,
+            light_count=args.lights,
+        )
+        print(f"[make-room] -> {args.output}", file=sys.stderr)
     elif args.cmd == "quantize-layout":
         if not args.input.exists():
             print(f"layout not found: {args.input}", file=sys.stderr)
