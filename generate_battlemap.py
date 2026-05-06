@@ -378,6 +378,20 @@ SPACECRAFT_REGION_RGB: dict[str, tuple[int, int, int]] = {
     "lighting": (0xD4, 0xB2, 0x60),   # 13934624 — lumen strip
 }
 
+# Mapping role -> CLIPTextEncodeFlux node id in BattlemapSpacecraft.json.
+# The saved workflow's per-region nodes are numbered; this lookup keeps
+# the rest of the code readable and lets --override talk in role names.
+SPACECRAFT_REGION_NODE_FOR: dict[str, str] = {
+    "wall": "11",
+    "floor": "14",
+    "ramp": "17",
+    "windscreen": "20",
+    "chair": "23",
+    "locker": "26",
+    "console": "29",
+    "lighting": "32",
+}
+
 
 def run_spacecraft(
     server: str,
@@ -386,6 +400,7 @@ def run_spacecraft(
     seed: int,
     prefix: str,
     keep_only_role: str | None = None,
+    prompt_overrides: dict[str, str] | None = None,
 ) -> Path:
     """Run the regional-conditioning Spacecraft workflow.
 
@@ -404,6 +419,12 @@ def run_spacecraft(
     set_load_image(wf, "load", server_path)
     set_seed(wf, "sampler", seed)
     set_save_prefix(wf, "save", prefix)
+
+    if prompt_overrides:
+        for role, t5 in prompt_overrides.items():
+            node_id = SPACECRAFT_REGION_NODE_FOR[role]
+            set_prompt(wf, node_id, t5xxl=t5)
+            print(f"[spacecraft] override role={role}: {t5[:60]!r}", file=sys.stderr)
 
     client_id = uuid.uuid4().hex
     print(f"[spacecraft] uploaded layout={server_path}", file=sys.stderr)
@@ -772,8 +793,25 @@ def main() -> int:
     ps.add_argument(
         "--walls-only",
         action="store_true",
-        help="render only the wall region; everything else becomes transparent. "
-        "Output PNG has alpha; suitable for Foundry foreground/overlay layer.",
+        help="alias for --keep-only wall.",
+    )
+    ps.add_argument(
+        "--keep-only",
+        choices=sorted(SPACECRAFT_REGION_RGB),
+        default=None,
+        help="render normally then alpha-mask the output to keep ONLY pixels "
+        "whose layout color matches this role (wall, floor, ramp, etc.). "
+        "Produces a transparent-bg layer suitable for Foundry foreground.",
+    )
+    ps.add_argument(
+        "--override",
+        action="append",
+        default=[],
+        metavar="ROLE=TEXT",
+        help="override a region's t5xxl prompt. Example: "
+        "--override floor='metal catwalk grating, scaffold flooring'. "
+        "Combine with --keep-only floor to produce a scaffolding overlay "
+        "over a separately-rendered base map.",
     )
 
     pp = sub.add_parser("pull", help="sync workflows/ from the ComfyUI server")
@@ -782,6 +820,28 @@ def main() -> int:
     pc = sub.add_parser("clone", help="clone a server workflow under a new name (e.g. V2)")
     pc.add_argument("source", help="existing workflow name on server, e.g. BattlemapSpacecraft.json")
     pc.add_argument("dest", help="new workflow name, e.g. BattlemapSpacecraftV2.json")
+
+    pml = sub.add_parser(
+        "mask-by-layout",
+        help="apply a layout's region mask to an arbitrary rendered image, "
+        "producing a transparent-bg layer where only the named role's "
+        "pixels are kept. Use to overlay an independent texture (e.g. "
+        "txt2img scaffold) onto a layout-driven base map without "
+        "relying on the spacecraft workflow's regional conditioning.",
+    )
+    pml.add_argument("render", type=Path, help="rendered image (RGB or RGBA)")
+    pml.add_argument("layout", type=Path, help="canonical-color layout PNG")
+    pml.add_argument(
+        "--role",
+        choices=sorted(SPACECRAFT_REGION_RGB),
+        required=True,
+        help="region role to keep (others become transparent)",
+    )
+    pml.add_argument(
+        "--output",
+        type=Path,
+        help="output path (default: <render-stem>_<role>_only.png)",
+    )
 
     pco = sub.add_parser(
         "compose",
@@ -891,12 +951,30 @@ def main() -> int:
         if not args.layout.exists():
             print(f"layout not found: {args.layout}", file=sys.stderr)
             return 2
+        keep_only = args.keep_only
+        if args.walls_only:
+            if keep_only and keep_only != "wall":
+                print("--walls-only conflicts with --keep-only", file=sys.stderr)
+                return 2
+            keep_only = "wall"
+        overrides: dict[str, str] = {}
+        for spec in args.override:
+            if "=" not in spec:
+                print(f"--override expects ROLE=TEXT, got {spec!r}", file=sys.stderr)
+                return 2
+            role, _, text = spec.partition("=")
+            role = role.strip()
+            if role not in SPACECRAFT_REGION_NODE_FOR:
+                print(f"unknown role for --override: {role!r}; known: {list(SPACECRAFT_REGION_NODE_FOR)}", file=sys.stderr)
+                return 2
+            overrides[role] = text
         run_spacecraft(
             args.server,
             layout_path=args.layout,
             seed=args.seed,
             prefix=args.prefix,
-            keep_only_role="wall" if args.walls_only else None,
+            keep_only_role=keep_only,
+            prompt_overrides=overrides,
         )
     elif args.cmd == "pull":
         WORKFLOWS_DIR.mkdir(parents=True, exist_ok=True)
@@ -905,6 +983,22 @@ def main() -> int:
             body = fetch_server_workflow(args.server, name)
             (WORKFLOWS_DIR / name).write_text(json.dumps(body, indent=2))
             print(f"[pull] {name}", file=sys.stderr)
+    elif args.cmd == "mask-by-layout":
+        if not args.render.exists() or not args.layout.exists():
+            print(f"missing input: render={args.render.exists()} layout={args.layout.exists()}", file=sys.stderr)
+            return 2
+        out = args.output or args.render.with_name(args.render.stem + f"_{args.role}_only.png")
+        # Mask returns dest path; reuse the existing helper.
+        # `_mask_render_by_layout` wants the dest naming "<stem>_alpha.png"
+        # by default — we override by running it then renaming.
+        import shutil
+        tmp = _mask_render_by_layout(
+            args.render,
+            layout_path=args.layout,
+            target_rgb=SPACECRAFT_REGION_RGB[args.role],
+        )
+        shutil.move(str(tmp), str(out))
+        print(f"[mask-by-layout] -> {out}", file=sys.stderr)
     elif args.cmd == "compose":
         if not args.base.exists() or not args.overlay.exists():
             print(f"missing input(s): base={args.base.exists()} overlay={args.overlay.exists()}", file=sys.stderr)

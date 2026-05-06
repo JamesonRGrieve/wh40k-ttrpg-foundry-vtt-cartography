@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+name: Battered Office Chair
+description: "A worn pedestal office chair on a five-pointed caster base, viewed at a slight three-quarter angle from above. Variant of stamp 08 — slightly different scuff pattern, otherwise the same chair."
+tags: [chair, office-chair, caster, pedestal, worn, dented, scuffed, furniture, furniture-chair]
+orientation: isometric   # north | south | east | west | top-down | isometric
+state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: 3380ef7e-837d-522c-b39f-e5fdba614a4a      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4lrua54lrua54lru.png
 source_index: 9
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-05T19:30:00+00:00"
+classified_by: manual
