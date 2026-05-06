@@ -180,7 +180,11 @@ def main(argv: list[str]) -> int:
     p.add_argument(
         "--out",
         type=Path,
-        default=HERE / "mass-edit-presets.json",
+        # Write directly into the staged module by default so dev runs
+        # produce the same artifact deploy.sh deploys. Override with
+        # `--out mass-edit-presets.json` to write to the repo root for
+        # inspection without affecting the staged module.
+        default=HERE / "dh-cartography" / "mass-edit-presets.json",
         help="Output JSON path (default: %(default)s)",
     )
     p.add_argument(

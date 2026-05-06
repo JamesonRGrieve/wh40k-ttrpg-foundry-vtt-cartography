@@ -1,10 +1,24 @@
 [
   {
     "id": "generatedimage2m932e2m932e2m9300",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_00",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_00.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "four",
+      "rectangular",
+      "frames",
+      "simple",
+      "minimalist",
+      "design",
+      "arranged",
+      "horizontal",
+      "line",
+      "top",
+      "frame",
+      "group:861baff5-92ce-53c9-85c6-acf14614b71c"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -23,10 +37,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9301",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_01",
+    "name": "Is A Digital Illustration",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_01.png",
-    "tags": [],
+    "tags": [
+      "digital",
+      "illustration",
+      "set",
+      "vintage",
+      "televisions",
+      "arranged",
+      "grid-like",
+      "pattern",
+      "background",
+      "drawn",
+      "simple",
+      "minimalist",
+      "group:fbdc4f25-bd06-5d4e-bbc5-4522aff3d478"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -45,10 +73,25 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9302",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_02",
+    "name": "Is a 3D rendering \u2014 inactive",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_02.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "set",
+      "four",
+      "identical",
+      "beige-colored",
+      "metal",
+      "lockers",
+      "arranged",
+      "grid-like",
+      "pattern",
+      "plain",
+      "background",
+      "state-inactive",
+      "group:7e090f37-1fdb-5336-805f-dc30e8a2af90"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -67,10 +110,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9303",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_03",
+    "name": "Is A Simple",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_03.png",
-    "tags": [],
+    "tags": [
+      "simple",
+      "minimalist",
+      "design",
+      "background",
+      "consists",
+      "multiple",
+      "rectangular",
+      "panels",
+      "arranged",
+      "grid-like",
+      "pattern",
+      "each",
+      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -89,10 +146,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9304",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_04",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_04.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "four",
+      "rectangular",
+      "objects",
+      "arranged",
+      "symmetrical",
+      "pattern",
+      "plain",
+      "light",
+      "background",
+      "smooth",
+      "textured",
+      "group:309afa52-9a01-5989-a411-f43c09d88d10"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -111,10 +182,17 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9305",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_05",
+    "name": "Is a simpleThe image",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_05.png",
-    "tags": [],
+    "tags": [
+      "simplethe",
+      "simple",
+      "illustration",
+      "four",
+      "rectangular",
+      "group:e5344f06-8c6c-5f84-bacd-e8d8b61ef5a5"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -133,10 +211,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9306",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_06",
+    "name": "Is A Simple",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_06.png",
-    "tags": [],
+    "tags": [
+      "simple",
+      "minimalist",
+      "illustration",
+      "neutral",
+      "palette",
+      "features",
+      "rectangular",
+      "frames",
+      "ladders",
+      "either",
+      "side",
+      "set",
+      "group:b9b59f4a-429f-5ed8-8bf8-98c5742dd74d"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -155,10 +247,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9307",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_07",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_07.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "rectangular",
+      "frames",
+      "decorative",
+      "design",
+      "against",
+      "plain",
+      "background",
+      "drawn",
+      "simple",
+      "minimalist",
+      "style",
+      "group:861baff5-92ce-53c9-85c6-acf14614b71c"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -177,10 +283,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9308",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_08",
+    "name": "Is A Digital Illustration",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_08.png",
-    "tags": [],
+    "tags": [
+      "digital",
+      "illustration",
+      "handheld",
+      "devices",
+      "arranged",
+      "grid-like",
+      "pattern",
+      "transparent",
+      "background",
+      "rectangular",
+      "shape",
+      "have",
+      "group:fbdc4f25-bd06-5d4e-bbc5-4522aff3d478"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -199,10 +319,25 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9309",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_09",
+    "name": "Set \u2014 active",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_09.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "four",
+      "beige-colored",
+      "lockers",
+      "arranged",
+      "grid-like",
+      "pattern",
+      "background",
+      "each",
+      "locker",
+      "has",
+      "unique",
+      "state-active",
+      "group:687b1b67-2bf2-5cde-a1a3-9b6baa176e61"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -221,10 +356,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9310",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_10",
+    "name": "Is A Seamless Pattern",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_10.png",
-    "tags": [],
+    "tags": [
+      "seamless",
+      "pattern",
+      "rectangular",
+      "beige-colored",
+      "objects",
+      "arranged",
+      "grid-like",
+      "background",
+      "plastic",
+      "similar",
+      "material",
+      "have",
+      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -243,10 +392,25 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9311",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_11",
+    "name": "Set \u2014 active",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_11.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "four",
+      "cross-shaped",
+      "objects",
+      "arranged",
+      "symmetrical",
+      "pattern",
+      "plain",
+      "background",
+      "light-colored",
+      "material",
+      "possibly",
+      "state-active",
+      "group:309afa52-9a01-5989-a411-f43c09d88d10"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -265,10 +429,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9312",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_12",
+    "name": "3D rendering of a set of",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_12.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "set",
+      "cylindrical",
+      "containers",
+      "arranged",
+      "grid-like",
+      "pattern",
+      "background",
+      "plastic",
+      "have",
+      "smooth",
+      "glossy",
+      "group:861baff5-92ce-53c9-85c6-acf14614b71c"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -287,10 +465,24 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9313",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_13",
+    "name": "Is a 3D rendering",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_13.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "square-shaped",
+      "metal",
+      "plate",
+      "textured",
+      "surface",
+      "light-colored",
+      "material",
+      "possibly",
+      "plastic",
+      "has",
+      "smooth",
+      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -312,7 +504,9 @@
     "name": "Gemini_Generated_Image_2m932e2m932e2m93_14",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_14.png",
-    "tags": [],
+    "tags": [
+      "group:a912662a-5dc3-5f79-a9bd-2a87701b963f"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -331,10 +525,18 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9315",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_15",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_15.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "four",
+      "different",
+      "types",
+      "luggage",
+      "background",
+      "group:4bd3e488-be51-5141-a6f4-27bdafe63058"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -353,10 +555,18 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9316",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_16",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_16.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "different",
+      "types",
+      "electronic",
+      "devices",
+      "background",
+      "group:fbdc4f25-bd06-5d4e-bbc5-4522aff3d478"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -375,10 +585,12 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9317",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_17",
+    "name": "______________________________________________________________________________________________________________________________________________________________________________________________________________________________",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_17.png",
-    "tags": [],
+    "tags": [
+      "group:7e090f37-1fdb-5336-805f-dc30e8a2af90"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -397,10 +609,16 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9318",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_18",
+    "name": "Brown Background",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_18.png",
-    "tags": [],
+    "tags": [
+      "background",
+      "pattern",
+      "squares",
+      "rectangles",
+      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -419,10 +637,15 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9319",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_19",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_19.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "crosses",
+      "background",
+      "group:309afa52-9a01-5989-a411-f43c09d88d10"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -441,10 +664,17 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9320",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_20",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_20.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "different",
+      "types",
+      "boxes",
+      "background",
+      "group:f3df525c-c7b5-5910-954f-f93a40df6b07"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -463,10 +693,16 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9321",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_21",
+    "name": "Brown Background",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_21.png",
-    "tags": [],
+    "tags": [
+      "background",
+      "pattern",
+      "circles",
+      "lines",
+      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -485,10 +721,15 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9322",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_22",
+    "name": "Couch",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_22.png",
-    "tags": [],
+    "tags": [
+      "couch",
+      "pillow",
+      "top",
+      "group:861baff5-92ce-53c9-85c6-acf14614b71c"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -507,10 +748,15 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9323",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_23",
+    "name": "Gray And White Photo",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_23.png",
-    "tags": [],
+    "tags": [
+      "photo",
+      "building",
+      "windows",
+      "group:01a7bb01-9b76-57e9-b73e-26cafe8fa54d"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -529,10 +775,17 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9324",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_24",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_24.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "different",
+      "types",
+      "ceiling",
+      "tiles",
+      "group:f3df525c-c7b5-5910-954f-f93a40df6b07"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -551,10 +804,15 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9325",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_25",
+    "name": "Brown And Yellow Striped Pattern",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_25.png",
-    "tags": [],
+    "tags": [
+      "striped",
+      "pattern",
+      "background",
+      "group:45180b0e-61e8-5a0a-b0f9-ddd60d1744ec"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -573,10 +831,17 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9326",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_26",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_26.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "four",
+      "different",
+      "types",
+      "valves",
+      "group:309afa52-9a01-5989-a411-f43c09d88d10"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -595,10 +860,17 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9327",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_27",
+    "name": "Set",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_27.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "different",
+      "types",
+      "boxes",
+      "background",
+      "group:f3df525c-c7b5-5910-954f-f93a40df6b07"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -617,10 +889,12 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9328",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_28",
+    "name": "__________________________________________________________________________________________________________________________________ _ _ _ _ _",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_28.png",
-    "tags": [],
+    "tags": [
+      "group:fcd765d3-979f-533f-9343-dcf64daeb4ad"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -639,10 +913,24 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru00",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_00",
+    "name": "Empty Ceramic Bowls With Handles",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_00.png",
-    "tags": [],
+    "tags": [
+      "digital",
+      "illustration",
+      "empty",
+      "ceramic",
+      "bowls",
+      "handles",
+      "drawn",
+      "simple",
+      "minimalist",
+      "style",
+      "light",
+      "smooth",
+      "group:619ec624-4254-5ea8-bf23-4cd42dda0159"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -661,10 +949,25 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru01",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_01",
+    "name": "Empty Glass Jars With Rounded Corners \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_01.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "empty",
+      "glass",
+      "jars",
+      "rounded",
+      "corners",
+      "lids",
+      "left",
+      "right",
+      "sidethe",
+      "plain",
+      "background",
+      "facing-east",
+      "group:6f4487a0-f7ff-556c-bc2b-110957981d97"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -683,10 +986,25 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru02",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_02",
+    "name": "Papers Tied Together With Twine And Secured \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_02.png",
-    "tags": [],
+    "tags": [
+      "stack",
+      "parchment",
+      "papers",
+      "tied",
+      "together",
+      "twine",
+      "secured",
+      "wax",
+      "seal",
+      "arranged",
+      "neat",
+      "topmost",
+      "facing-east",
+      "group:dfc31721-1d3a-510b-8d57-dff5401b89d8"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -705,10 +1023,26 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru03",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_03",
+    "name": "CollectionThe image is a digital illustration \u2014 active, west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_03.png",
-    "tags": [],
+    "tags": [
+      "collectionthe",
+      "digital",
+      "illustration",
+      "collection",
+      "old",
+      "vintage-looking",
+      "sepia-toned",
+      "hand-drawn",
+      "illustrations",
+      "stack",
+      "blank",
+      "old-fashioned",
+      "facing-west",
+      "state-active",
+      "group:b00219a2-75f0-5d72-8e96-0e4492f06481"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -727,10 +1061,12 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru04",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_04",
+    "name": "Is A",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_04.png",
-    "tags": [],
+    "tags": [
+      "group:b00219a2-75f0-5d72-8e96-0e4492f06481"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -748,33 +1084,26 @@
     ]
   },
   {
-    "id": "generatedimage4lrua54lrua54lru05",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_05",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_05.png",
-    "tags": [],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_05.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimage4lrua54lrua54lru06",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_06",
+    "name": "Rugged Smartphone \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_06.png",
-    "tags": [],
+    "tags": [
+      "line",
+      "rugged",
+      "smartphone",
+      "rectangular",
+      "shape",
+      "handle",
+      "top",
+      "phone",
+      "placed",
+      "plain",
+      "light",
+      "background",
+      "facing-west",
+      "group:c843634f-66b5-5320-8930-cf6cee897261"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -793,10 +1122,24 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru07",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_07",
+    "name": "Desk With A Minimalist Design",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_07.png",
-    "tags": [],
+    "tags": [
+      "digital",
+      "illustration",
+      "desk",
+      "minimalist",
+      "design",
+      "light-colored",
+      "wood",
+      "smooth",
+      "finish",
+      "has",
+      "drawers",
+      "either",
+      "group:865e7fee-cb31-5cb4-a061-b2670c66ee89"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -818,7 +1161,9 @@
     "name": "Gemini_Generated_Image_4lrua54lrua54lru_08",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_08.png",
-    "tags": [],
+    "tags": [
+      "group:3380ef7e-837d-522c-b39f-e5fdba614a4a"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -840,7 +1185,9 @@
     "name": "Gemini_Generated_Image_4lrua54lrua54lru_09",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_09.png",
-    "tags": [],
+    "tags": [
+      "group:3380ef7e-837d-522c-b39f-e5fdba614a4a"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -859,10 +1206,25 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru10",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_10",
+    "name": "Futuristic, Cylindrical Object \u2014 active",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_10.png",
-    "tags": [],
+    "tags": [
+      "models",
+      "futuristic",
+      "cylindrical",
+      "object",
+      "flat",
+      "top",
+      "bottom",
+      "light-colored",
+      "material",
+      "possibly",
+      "stone",
+      "concrete",
+      "state-active",
+      "group:0b54703c-f189-5d37-9cc1-22f555700f31"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -881,10 +1243,25 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru11",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_11",
+    "name": "Industrial Lamps In A Simple \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_11.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "rendering",
+      "illustrations",
+      "industrial",
+      "lamps",
+      "simple",
+      "minimalist",
+      "style",
+      "arranged",
+      "triangular",
+      "formation",
+      "left",
+      "facing-west",
+      "group:73b455f0-c8ab-5833-b0bb-db9696dddaac"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -903,10 +1280,25 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru12",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_12",
+    "name": "Quill Pens And Inkwells \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_12.png",
-    "tags": [],
+    "tags": [
+      "collection",
+      "stylized",
+      "illustrations",
+      "various",
+      "quill",
+      "pens",
+      "inkwells",
+      "background",
+      "simple",
+      "minimalist",
+      "design",
+      "elements",
+      "facing-west",
+      "group:e57ed71b-ee14-514b-a093-585c7f02008a"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -925,10 +1317,24 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru13",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_13",
+    "name": "Documents Arranged In A Scattered Manner",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_13.png",
-    "tags": [],
+    "tags": [
+      "collection",
+      "various",
+      "documents",
+      "arranged",
+      "scattered",
+      "manner",
+      "plain",
+      "light",
+      "background",
+      "old",
+      "worn",
+      "overlapping",
+      "group:3b58afaa-b4ae-5917-859f-df7dc8a14d62"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -947,10 +1353,24 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru14",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_14",
+    "name": "Old, Handwritten Documents Arranged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_14.png",
-    "tags": [],
+    "tags": [
+      "collection",
+      "old",
+      "handwritten",
+      "documents",
+      "arranged",
+      "scattered",
+      "manner",
+      "plain",
+      "light",
+      "background",
+      "various",
+      "sizes",
+      "group:3b58afaa-b4ae-5917-859f-df7dc8a14d62"
+    ],
     "gridSize": 100,
     "data": [
       {

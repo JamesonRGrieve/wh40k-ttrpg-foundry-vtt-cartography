@@ -60,7 +60,18 @@ def main(argv: list[str]) -> int:
                 shutil.copy2(png, target)
                 copied += 1
 
-    print(f"staged: linked={linked} copied={copied} skipped={skipped} → {DST}")
+    # Prune stamps that exist in DST but no longer have a source. Source is
+    # authoritative — extracted stamps can be removed (gutter artifacts,
+    # superseded sheets) and the module should reflect that without manual
+    # cleanup.
+    src_names = {p.name for p in SRC.glob("*.png")}
+    pruned = 0
+    for staged in sorted(DST.glob("*.png")):
+        if staged.name not in src_names:
+            staged.unlink()
+            pruned += 1
+
+    print(f"staged: linked={linked} copied={copied} skipped={skipped} pruned={pruned} → {DST}")
     return 0
 
 

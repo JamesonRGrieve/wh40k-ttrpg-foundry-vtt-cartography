@@ -71,6 +71,21 @@ through nearest-neighbor color quantization to the eight colors above.
 
 ## Successes
 
+### 2026-05-05 — End-to-end pipeline aligned with deploy.sh
+
+`stage_module.py` now prunes orphaned staged stamps (those whose
+source has been deleted, like the gutter artifact `_05.png` from
+4lrua5). `build_mass_edit_pack.py`'s default `--out` writes to
+`dh-cartography/mass-edit-presets.json` so dev runs produce the
+same artifact `deploy.sh cartography` ships. After running both:
+632 presets across all sheets, 14 for the 4lrua5 sheet (gutter
+gone), names like "Empty Ceramic Bowls With Handles" with
+orientation/state suffixes ("— east", "— active, west") and
+populated tag arrays. Pipeline is ready to deploy on user
+instruction.
+
+
+
 ### 2026-05-05 — Interior workflow, bare room (1024²)
 
 Command:
