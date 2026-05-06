@@ -71,6 +71,23 @@ through nearest-neighbor color quantization to the eight colors above.
 
 ## Successes
 
+### 2026-05-05 — Quantizer v2 (modal-background detection)
+
+The first quantizer needed the input layout's region colors to be
+within ~25 channels of canonical, which the hand-painted reference
+layout violated (windscreen / lighting got swept to background).
+v2 splits the work into two stages: detect the modal color via
+16-step binning and treat that as background; then force-snap every
+non-background pixel to the nearest canonical color WITHOUT a
+distance cap. Result on `spacecraft_default.png`: 69.4% of pixels
+detected as background, all 7 painted regions snapped cleanly to
+canonical colors. The walls-only render against the quantized
+layout produces a continuous bulkhead outline (10.1% kept) vs. the
+raw layout's gappy antialiased outline (7.6% kept).
+
+Use this to pre-process any hand-painted layout before feeding it
+to ComfyUI's `ImageColorToMask` regional-conditioning nodes.
+
 ### 2026-05-05 — End-to-end pipeline aligned with deploy.sh
 
 `stage_module.py` now prunes orphaned staged stamps (those whose

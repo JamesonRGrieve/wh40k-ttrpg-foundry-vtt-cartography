@@ -303,16 +303,31 @@ def run_spacecraft(
 
 
 def _quantize_layout(
-    src: Path, dest: Path, *, force_background_black: bool = False, far_threshold: int = 25
+    src: Path,
+    dest: Path,
+    *,
+    force_background_black: bool = False,
+    far_threshold: int = 25,
 ) -> None:
     """Snap each pixel of `src` to the nearest canonical region color.
 
-    `far_threshold` (Chebyshev): if the closest region is farther than
-    this, the pixel is "background." With `force_background_black` it
-    becomes pure black (#000000); otherwise it's left unchanged. The
-    default keeps unrelated content (e.g. a faint sketch / annotation
-    layer in the source PNG) intact while still cleaning up the
-    anti-aliased edges between regions.
+    Two-stage strategy:
+
+    1. **Modal-background detection.** The most common color in the
+       image (computed in 16-step bins to absorb anti-aliasing) is
+       declared "background." Pixels close to that color (within a
+       loose Chebyshev tolerance) are removed from the quantization
+       step entirely and emitted as either pure black (when
+       `force_background_black=True`) or unchanged.
+    2. **Force-snap to canonical palette.** Every remaining pixel is
+       snapped to the nearest canonical region color WITHOUT a
+       distance cap. This handles hand-painted layouts where the
+       painter approximated the canonical colors — a teal blob the
+       painter intended as "windscreen" still snaps to the canonical
+       windscreen color even if it drifted 60+ channels.
+
+    `far_threshold` is now only used for the background-detection
+    radius, not for the palette-snap cutoff.
     """
     import numpy as np
     from PIL import Image
@@ -323,17 +338,42 @@ def _quantize_layout(
     im = Image.open(src).convert("RGB")
     arr = np.array(im, dtype=np.int16)  # (H, W, 3)
     h, w, _ = arr.shape
-    flat = arr.reshape(-1, 3)  # (H*W, 3)
-    # Chebyshev distance to each palette entry: max channel diff.
-    diffs = np.abs(flat[:, None, :] - palette_arr[None, :, :]).max(axis=2)  # (H*W, R)
-    nearest = diffs.argmin(axis=1)  # (H*W,)
-    nearest_dist = diffs[np.arange(diffs.shape[0]), nearest]
-    snapped = palette_arr[nearest]  # (H*W, 3)
-    far_mask = nearest_dist > far_threshold
+    flat = arr.reshape(-1, 3)  # (N, 3)
+    n_px = flat.shape[0]
+
+    # Stage 1: find the modal color via 16-step binning. The bin with
+    # the most pixels (regardless of palette membership) is background.
+    binned = (flat // 16).astype(np.int32)
+    keys = binned[:, 0] * 256 * 256 + binned[:, 1] * 256 + binned[:, 2]
+    unique_keys, counts = np.unique(keys, return_counts=True)
+    top_key = unique_keys[counts.argmax()]
+    bg_bin = np.array(
+        [(top_key >> 16) & 0xFF, (top_key >> 8) & 0xFF, top_key & 0xFF],
+        dtype=np.int16,
+    )
+    bg_color = bg_bin * 16 + 8  # bin centroid
+
+    # Background mask: pixels close to the modal color.
+    dist_to_bg = np.abs(flat - bg_color[None, :]).max(axis=1)
+    bg_mask = dist_to_bg <= far_threshold
+
+    # Stage 2: every non-background pixel snaps to nearest canonical color.
+    diffs = np.abs(flat[:, None, :] - palette_arr[None, :, :]).max(axis=2)  # (N, R)
+    nearest = diffs.argmin(axis=1)
+    snapped = palette_arr[nearest]  # (N, 3)
+
+    # Compose output.
     if force_background_black:
-        snapped[far_mask] = (0, 0, 0)
+        snapped[bg_mask] = (0, 0, 0)
     else:
-        snapped[far_mask] = flat[far_mask]
+        snapped[bg_mask] = flat[bg_mask]
+
+    print(
+        f"[quantize] modal-bg={tuple(int(c) for c in bg_color)} "
+        f"covers {bg_mask.sum() / n_px * 100:.1f}% of pixels; "
+        f"snapped {(~bg_mask).sum():,} px to canonical palette",
+        file=sys.stderr,
+    )
     out_arr = snapped.reshape(h, w, 3).astype(np.uint8)
     Image.fromarray(out_arr, mode="RGB").save(dest)
 
