@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Is A
+name: null
 description: The image is a
 tags: []
 orientation: null   # north | south | east | west | top-down | isometric

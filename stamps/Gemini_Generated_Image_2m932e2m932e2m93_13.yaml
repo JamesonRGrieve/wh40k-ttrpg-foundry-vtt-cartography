@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Is a 3D rendering
+name: "Square-Shaped Metal Plate With A Textured Surface"
 description: "The image is a 3D rendering of a square-shaped metal plate with a textured surface. The plate appears to be made of a light-colored material, possibly plastic or metal, and has a smooth, polished finish. The edges of the plate are slightly raised, giving it a realistic look. The background is a solid gray color, which contrasts nicely with the plate. The overall appearance is simple and minimalistic, with no additional details or embellishments present."
 tags: [rendering, square-shaped, metal, plate, textured, surface, light-colored, material, possibly, plastic, has, smooth]
 orientation: null   # north | south | east | west | top-down | isometric

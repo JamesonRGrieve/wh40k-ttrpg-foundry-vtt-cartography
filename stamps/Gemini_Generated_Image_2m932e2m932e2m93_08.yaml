@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Is A Digital Illustration
+name: "Handheld Devices Arranged In A Grid-Like Pattern"
 description: "The image is a digital illustration of three handheld devices arranged in a grid-like pattern on a transparent background. The devices are rectangular in shape and have a simple, minimalist design with rounded edges. Each device has a small screen and a few buttons and dials on the front panel. The devices appear to be made of a light-colored material, possibly plastic or metal, and have a glossy finish. The background is a solid gray color, providing a subtle contrast to the devices. The image has a clean and modern look, with no visible imperfections or embellishments."
 tags: [digital, illustration, handheld, devices, arranged, grid-like, pattern, transparent, background, rectangular, shape, have]
 orientation: null   # north | south | east | west | top-down | isometric

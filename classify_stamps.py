@@ -457,6 +457,13 @@ def derive_name_from_caption(caption: str) -> str | None:
             phrase = " ".join(phrase.split()[:6])
     if not phrase or len(phrase) < NAME_MIN_LEN:
         return None
+    # Reject names that are mostly non-letter characters (underscores,
+    # whitespace, punctuation). Florence-2 occasionally returns
+    # ASCII-art lines for stamps it can't caption; those leak through
+    # the regex chain as long strings of underscores.
+    letter_count = sum(1 for c in phrase if c.isalpha())
+    if letter_count < NAME_MIN_LEN or letter_count / len(phrase) < 0.5:
+        return None
     # Title-case multi-word phrases for readability ("wooden bed" → "Wooden Bed").
     if " " in phrase and phrase.islower():
         phrase = phrase.title()

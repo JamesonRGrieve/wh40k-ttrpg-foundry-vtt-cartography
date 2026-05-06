@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Set
+name: "Cross-Shaped Objects Arranged In A Symmetrical Pattern"
 description: "A set of four cross-shaped objects arranged in a symmetrical pattern on a plain gray background. The objects appear to be made of a light-colored material, possibly plastic or metal, and have a smooth, polished finish. Each object has a unique shape and size, with a cross-like design in the center. The objects are arranged in two rows, with the top row slightly higher than the bottom row, creating a sense of depth and dimensionality. The overall aesthetic of the image is simple and minimalistic, with a focus on the textures and patterns of the objects."
 tags: [set, four, cross-shaped, objects, arranged, symmetrical, pattern, plain, background, light-colored, material, possibly]
 orientation: null   # north | south | east | west | top-down | isometric

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Gray And White Photo
+name: "Gray And White Photo Of A Building"
 description: a gray and white photo of a building with a lot of windows
 tags: [photo, building, windows]
 orientation: null   # north | south | east | west | top-down | isometric

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Set
+name: "Ceiling Tiles"
 description: a set of three different types of ceiling tiles
 tags: [set, different, types, ceiling, tiles]
 orientation: null   # north | south | east | west | top-down | isometric

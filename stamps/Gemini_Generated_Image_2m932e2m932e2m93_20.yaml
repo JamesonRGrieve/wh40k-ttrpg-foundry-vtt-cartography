@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Set
+name: "Boxes"
 description: a set of three different types of boxes on a gray background
 tags: [set, different, types, boxes, background]
 orientation: null   # north | south | east | west | top-down | isometric

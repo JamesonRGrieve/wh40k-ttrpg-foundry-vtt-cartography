@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Set
+name: "Rectangular Frames With A Decorative Design"
 description: "A set of three rectangular frames with a decorative design, set against a plain gray background. The frames are drawn in a simple, minimalist style with a focus on texture and detail. Each frame has a unique leaf-like shape, with a smooth, glossy finish. The leaves are arranged in a symmetrical pattern, with the top frame slightly overlapping the bottom frame. The overall aesthetic of the image is elegant and sophisticated, with a focus on the textures and details of the frames."
 tags: [set, rectangular, frames, decorative, design, against, plain, background, drawn, simple, minimalist, style]
 orientation: null   # north | south | east | west | top-down | isometric

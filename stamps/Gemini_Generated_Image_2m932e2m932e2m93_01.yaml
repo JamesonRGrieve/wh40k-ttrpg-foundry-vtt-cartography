@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Is A Digital Illustration
+name: "Televisions Arranged In A Grid-Like Pattern"
 description: "The image is a digital illustration of a set of three vintage televisions arranged in a grid-like pattern on a gray background. The televisions are drawn in a simple, minimalist style with thin lines and minimalistic design elements. Each television has a rectangular shape with rounded edges and a small screen in the center. The screens are labeled with various buttons and dials, giving a clear view of the various functions of the televisions. The overall aesthetic of the image is minimalistic and modern, with a focus on the classic design elements."
 tags: [digital, illustration, set, vintage, televisions, arranged, grid-like, pattern, background, drawn, simple, minimalist]
 orientation: null   # north | south | east | west | top-down | isometric

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Couch
+name: "Couch With A Pillow On Top"
 description: a drawing of a couch with a pillow on top of it
 tags: [couch, pillow, top]
 orientation: null   # north | south | east | west | top-down | isometric

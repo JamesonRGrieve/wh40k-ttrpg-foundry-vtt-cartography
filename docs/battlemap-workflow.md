@@ -71,6 +71,37 @@ through nearest-neighbor color quantization to the eight colors above.
 
 ## Successes
 
+### 2026-05-05 — Florence-2 unrecoverable failures (some stamps)
+
+A small fraction of stamps (`_08.png`, `_09.png` in 4lrua5 — both
+battered office chairs in a slightly cartoonish 3/4-from-above
+style) consistently caption empty across every Florence-2-
+PromptGen-v2.0 configuration tried: native+transparent,
+native+white-bg, 768+white-bg, multiple tasks (caption,
+detailed_caption, more_detailed_caption, prompt_gen_tags), and
+single-task vs dual-task workflows. Confirmed reproducible.
+
+The grouping pipeline RECOVERS these stamps via CLIP-ViT-H image
+embedding — the two chairs landed in the same Phase 2 cluster
+even though both have empty descriptions. Operationally:
+
+* For visually-similar variants of the same object, the embedding
+  step produces correct group ids regardless of caption.
+* For names/tags on these stamps, the operator can edit the yaml
+  manually. The pipeline preserves manual yaml edits across re-
+  runs (classify_stamps only writes script-owned fields when
+  --force is passed and the script can produce text).
+
+Non-leverage paths attempted (don't retry):
+* Bigger upscale (1024, 1536) — same empty result.
+* Gray background instead of white — same.
+* Model swap to base Florence-2 — produces hallucinations on
+  unrelated stamps; net regression.
+
+Possible future improvement: fall back to a different VLM (e.g. a
+small LLaVA or Qwen-VL) on Florence-2 empty-output retries. Out
+of scope for now; Phase-2 embedding rescue is sufficient.
+
 ### 2026-05-05 — Quantizer v2 (modal-background detection)
 
 The first quantizer needed the input layout's region colors to be
