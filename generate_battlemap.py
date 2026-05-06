@@ -430,6 +430,23 @@ def run_spacecraft(
     return base_path
 
 
+def _compose_layers(base: Path, overlay: Path, out: Path) -> None:
+    """Alpha-composite `overlay` onto `base` and save to `out`.
+
+    The overlay must be RGBA (transparent background). The base may be
+    RGB or RGBA. If sizes differ, the overlay is resampled to the base's
+    dimensions with NEAREST (preserves pixel-perfect alpha edges).
+    """
+    from PIL import Image
+
+    bg = Image.open(base).convert("RGBA")
+    ov = Image.open(overlay).convert("RGBA")
+    if ov.size != bg.size:
+        ov = ov.resize(bg.size, Image.NEAREST)
+    composed = Image.alpha_composite(bg, ov)
+    composed.save(out)
+
+
 def _make_rectangular_room(
     output: Path,
     *,
@@ -709,6 +726,21 @@ def main() -> int:
     pc.add_argument("source", help="existing workflow name on server, e.g. BattlemapSpacecraft.json")
     pc.add_argument("dest", help="new workflow name, e.g. BattlemapSpacecraftV2.json")
 
+    pco = sub.add_parser(
+        "compose",
+        help="alpha-overlay a transparent layer (e.g. walls-only) onto a base "
+        "battlemap. Produces a single PNG showing what the stacked scene "
+        "looks like before placing it in Foundry. Useful for previewing "
+        "without spinning up Foundry to verify alignment.",
+    )
+    pco.add_argument("base", type=Path, help="opaque base map PNG")
+    pco.add_argument("overlay", type=Path, help="transparent overlay PNG (e.g. *_alpha.png)")
+    pco.add_argument(
+        "--output",
+        type=Path,
+        help="output path (default: <base-stem>_composed.png in the same dir)",
+    )
+
     pmr = sub.add_parser(
         "make-room",
         help="emit a canonical-color rectangular-room layout PNG. Useful as a "
@@ -795,6 +827,13 @@ def main() -> int:
             body = fetch_server_workflow(args.server, name)
             (WORKFLOWS_DIR / name).write_text(json.dumps(body, indent=2))
             print(f"[pull] {name}", file=sys.stderr)
+    elif args.cmd == "compose":
+        if not args.base.exists() or not args.overlay.exists():
+            print(f"missing input(s): base={args.base.exists()} overlay={args.overlay.exists()}", file=sys.stderr)
+            return 2
+        out = args.output or args.base.with_name(args.base.stem + "_composed.png")
+        _compose_layers(args.base, args.overlay, out)
+        print(f"[compose] -> {out}", file=sys.stderr)
     elif args.cmd == "make-room":
         _make_rectangular_room(
             args.output,
