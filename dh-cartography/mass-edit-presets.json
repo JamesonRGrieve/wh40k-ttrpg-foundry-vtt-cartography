@@ -53,6 +53,8 @@
       "drawn",
       "simple",
       "minimalist",
+      "tech",
+      "tech-screen",
       "group:fbdc4f25-bd06-5d4e-bbc5-4522aff3d478"
     ],
     "gridSize": 100,
@@ -89,6 +91,9 @@
       "pattern",
       "plain",
       "background",
+      "container",
+      "container-locker",
+      "door",
       "state-inactive",
       "group:7e090f37-1fdb-5336-805f-dc30e8a2af90"
     ],
@@ -227,6 +232,8 @@
       "either",
       "side",
       "set",
+      "architecture",
+      "architecture-step",
       "group:b9b59f4a-429f-5ed8-8bf8-98c5742dd74d"
     ],
     "gridSize": 100,
@@ -299,6 +306,9 @@
       "rectangular",
       "shape",
       "have",
+      "tech",
+      "tech-screen",
+      "tech-device",
       "group:fbdc4f25-bd06-5d4e-bbc5-4522aff3d478"
     ],
     "gridSize": 100,
@@ -335,6 +345,9 @@
       "locker",
       "has",
       "unique",
+      "container",
+      "container-locker",
+      "door",
       "state-active",
       "group:687b1b67-2bf2-5cde-a1a3-9b6baa176e61"
     ],
@@ -372,6 +385,9 @@
       "similar",
       "material",
       "have",
+      "door",
+      "architecture",
+      "architecture-window",
       "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
     ],
     "gridSize": 100,
@@ -481,6 +497,8 @@
       "plastic",
       "has",
       "smooth",
+      "container",
+      "container-tableware",
       "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
     ],
     "gridSize": 100,
@@ -535,6 +553,8 @@
       "types",
       "luggage",
       "background",
+      "container",
+      "container-bag",
       "group:4bd3e488-be51-5141-a6f4-27bdafe63058"
     ],
     "gridSize": 100,
@@ -728,6 +748,8 @@
       "couch",
       "pillow",
       "top",
+      "furniture",
+      "furniture-couch",
       "group:861baff5-92ce-53c9-85c6-acf14614b71c"
     ],
     "gridSize": 100,
@@ -755,6 +777,8 @@
       "photo",
       "building",
       "windows",
+      "architecture",
+      "architecture-window",
       "group:01a7bb01-9b76-57e9-b73e-26cafe8fa54d"
     ],
     "gridSize": 100,
@@ -784,6 +808,8 @@
       "types",
       "ceiling",
       "tiles",
+      "architecture",
+      "architecture-surface",
       "group:f3df525c-c7b5-5910-954f-f93a40df6b07"
     ],
     "gridSize": 100,
@@ -840,6 +866,8 @@
       "different",
       "types",
       "valves",
+      "tech",
+      "tech-utility",
       "group:309afa52-9a01-5989-a411-f43c09d88d10"
     ],
     "gridSize": 100,
@@ -929,6 +957,8 @@
       "style",
       "light",
       "smooth",
+      "container",
+      "container-tableware",
       "group:619ec624-4254-5ea8-bf23-4cd42dda0159"
     ],
     "gridSize": 100,
@@ -965,6 +995,8 @@
       "sidethe",
       "plain",
       "background",
+      "container",
+      "container-vessel",
       "facing-east",
       "group:6f4487a0-f7ff-556c-bc2b-110957981d97"
     ],
@@ -1002,6 +1034,8 @@
       "arranged",
       "neat",
       "topmost",
+      "prop",
+      "prop-document",
       "facing-east",
       "group:dfc31721-1d3a-510b-8d57-dff5401b89d8"
     ],
@@ -1039,6 +1073,8 @@
       "stack",
       "blank",
       "old-fashioned",
+      "prop",
+      "prop-document",
       "facing-west",
       "state-active",
       "group:b00219a2-75f0-5d72-8e96-0e4492f06481"
@@ -1101,6 +1137,8 @@
       "plain",
       "light",
       "background",
+      "tech",
+      "tech-device",
       "facing-west",
       "group:c843634f-66b5-5320-8930-cf6cee897261"
     ],
@@ -1138,6 +1176,10 @@
       "has",
       "drawers",
       "either",
+      "furniture",
+      "furniture-table",
+      "prop",
+      "prop-document",
       "group:865e7fee-cb31-5cb4-a061-b2670c66ee89"
     ],
     "gridSize": 100,
@@ -1259,6 +1301,8 @@
       "triangular",
       "formation",
       "left",
+      "light",
+      "light-fixture",
       "facing-west",
       "group:73b455f0-c8ab-5833-b0bb-db9696dddaac"
     ],
@@ -1296,6 +1340,8 @@
       "minimalist",
       "design",
       "elements",
+      "prop",
+      "prop-writing",
       "facing-west",
       "group:e57ed71b-ee14-514b-a093-585c7f02008a"
     ],
@@ -1333,6 +1379,8 @@
       "old",
       "worn",
       "overlapping",
+      "prop",
+      "prop-document",
       "group:3b58afaa-b4ae-5917-859f-df7dc8a14d62"
     ],
     "gridSize": 100,
@@ -1369,6 +1417,8 @@
       "background",
       "various",
       "sizes",
+      "prop",
+      "prop-document",
       "group:3b58afaa-b4ae-5917-859f-df7dc8a14d62"
     ],
     "gridSize": 100,

@@ -511,27 +511,101 @@ CAPTION_STOPWORDS = {
 
 
 def derive_tags(_unused: str, existing: list[str], *, caption: str = "") -> list[str]:
-    """Build a tag list by tokenizing the caption.
+    """Build a tag list by tokenizing the caption + adding category tags.
 
-    The Florence-2-base model does not produce a clean tag list for our
-    domain (the prompt_gen_tags task only works on the PromptGen finetune),
-    so we extract content words from the more_detailed_caption itself.
+    Two layers:
+    1. Content words from the caption (preserved for keyword search).
+    2. Category tags emitted by `derive_category_tags()` for Foundry's
+       Mass Edit Preset Browser to filter on (chairs, lamps, doors, etc.).
     """
     out: list[str] = list(existing)
     seen = set(out)
+    if caption:
+        tokens = re.findall(r"[A-Za-z][A-Za-z\-']{2,}", caption.lower())
+        for tok in tokens:
+            norm = normalize_tag(tok)
+            if not norm or len(norm) < 3 or len(norm) > 32:
+                continue
+            if norm in CAPTION_STOPWORDS or norm in seen:
+                continue
+            out.append(norm)
+            seen.add(norm)
+            if len(out) >= 12:
+                break
+    # Categories are emitted AFTER the content-word cap so they always
+    # land in the tag list even on long captions.
+    for cat in derive_category_tags(caption):
+        if cat not in seen:
+            out.append(cat)
+            seen.add(cat)
+    return out
+
+
+# Category dictionary: maps subject keywords (lowercase) found in
+# captions to one or more category tags. The first match per category
+# wins; multiple categories can fire on one stamp ("a metal chair near
+# a desk" → furniture-chair AND furniture-table). Extend by adding new
+# (regex-pattern, [tags]) entries; ordering is significant only for
+# observability.
+_CATEGORY_RULES: list[tuple[re.Pattern[str], list[str]]] = [
+    # Seating
+    (re.compile(r"\b(chair|stool|seat|bench|throne)s?\b"), ["furniture", "furniture-chair"]),
+    (re.compile(r"\b(couch|sofa|settee)s?\b"), ["furniture", "furniture-couch"]),
+    (re.compile(r"\b(bed|cot|bunk|hammock)s?\b"), ["furniture", "furniture-bed"]),
+    # Surfaces
+    (re.compile(r"\b(desk|table|workbench|counter|console|altar|pedestal)s?\b"), ["furniture", "furniture-table"]),
+    (re.compile(r"\b(shelf|shelving|bookshelf|rack)s?\b"), ["furniture", "furniture-shelf"]),
+    # Containers
+    (re.compile(r"\b(locker|cabinet|wardrobe|cupboard|storage unit)s?\b"), ["container", "container-locker"]),
+    (re.compile(r"\b(crate|chest|trunk|box|case|coffer)s?\b"), ["container", "container-crate"]),
+    (re.compile(r"\b(barrel|drum|cask|keg)s?\b"), ["container", "container-barrel"]),
+    (re.compile(r"\b(jar|bottle|flask|vial|canister|jug)s?\b"), ["container", "container-vessel"]),
+    (re.compile(r"\b(bowl|cup|mug|tankard|chalice|goblet|plate|dish)s?\b"), ["container", "container-tableware"]),
+    (re.compile(r"\b(luggage|suitcase|bag|backpack|pack|satchel)s?\b"), ["container", "container-bag"]),
+    # Lighting
+    (re.compile(r"\b(lamp|lantern|sconce|candle|torch|chandelier|lumen|light fixture)s?\b"), ["light", "light-fixture"]),
+    # Doors / portals
+    (re.compile(r"\b(door|hatch|gate|portal|airlock|bulkhead door)s?\b"), ["door"]),
+    # Documents / props
+    (re.compile(r"\b(parchment|scroll|paper|document|tome|book|ledger|dossier|file)s?\b"), ["prop", "prop-document"]),
+    (re.compile(r"\b(quill|pen|stylus|pencil|brush)s?\b"), ["prop", "prop-writing"]),
+    (re.compile(r"\b(inkwell|inkpot)s?\b"), ["prop", "prop-writing"]),
+    (re.compile(r"\b(seal|wax seal|sigil|emblem)s?\b"), ["prop", "prop-document"]),
+    # Tech / electronics
+    (re.compile(r"\b(television|monitor|screen|display|hololith|cogitator|terminal|workstation)s?\b"), ["tech", "tech-screen"]),
+    (re.compile(r"\b(handheld|smartphone|dataslate|tablet|auspex)s?\b"), ["tech", "tech-device"]),
+    (re.compile(r"\b(valve|pipe|conduit|cable|duct)s?\b"), ["tech", "tech-utility"]),
+    # Architecture
+    (re.compile(r"\b(window|viewport|porthole|windscreen)s?\b"), ["architecture", "architecture-window"]),
+    (re.compile(r"\b(stair|staircase|step|ladder|ramp)s?\b"), ["architecture", "architecture-step"]),
+    (re.compile(r"\b(wall|bulkhead|partition)s?\b"), ["architecture", "architecture-wall"]),
+    (re.compile(r"\b(ceiling tile|deck plate|floor panel|grating)s?\b"), ["architecture", "architecture-surface"]),
+    # Weapons / tools (for setting authenticity, not for combat use here)
+    (re.compile(r"\b(sword|knife|dagger|blade|axe)s?\b"), ["weapon", "weapon-melee"]),
+    (re.compile(r"\b(gun|pistol|rifle|lasgun|bolter|firearm|weapon)s?\b"), ["weapon", "weapon-ranged"]),
+    (re.compile(r"\b(hammer|wrench|spanner|tool|toolbox)s?\b"), ["tool"]),
+    # Decor
+    (re.compile(r"\b(banner|flag|tapestry|standard|pennant)s?\b"), ["decor", "decor-banner"]),
+    (re.compile(r"\b(statue|bust|sculpture|relief|icon)s?\b"), ["decor", "decor-statue"]),
+    (re.compile(r"\b(rug|carpet|mat)s?\b"), ["decor", "decor-floor"]),
+]
+
+
+def derive_category_tags(caption: str) -> list[str]:
+    """Match `caption` against the category dictionary and return the
+    union of matched category tags. Returns [] if nothing matches.
+    """
     if not caption:
-        return out
-    tokens = re.findall(r"[A-Za-z][A-Za-z\-']{2,}", caption.lower())
-    for tok in tokens:
-        norm = normalize_tag(tok)
-        if not norm or len(norm) < 3 or len(norm) > 32:
-            continue
-        if norm in CAPTION_STOPWORDS or norm in seen:
-            continue
-        out.append(norm)
-        seen.add(norm)
-        if len(out) >= 12:
-            break
+        return []
+    haystack = caption.lower()
+    out: list[str] = []
+    seen: set[str] = set()
+    for rx, tags in _CATEGORY_RULES:
+        if rx.search(haystack):
+            for t in tags:
+                if t not in seen:
+                    out.append(t)
+                    seen.add(t)
     return out
 
 

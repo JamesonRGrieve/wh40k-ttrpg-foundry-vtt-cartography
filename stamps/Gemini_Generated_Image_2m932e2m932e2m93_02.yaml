@@ -4,7 +4,7 @@
 
 name: "Identical Beige-Colored Metal Lockers Arranged"
 description: "The image is a 3D rendering of a set of four identical beige-colored metal lockers arranged in a grid-like pattern on a plain grey background. The lockers are of varying sizes and shapes, with the largest one on the left and two smaller ones on the right. Each locker has a rectangular shape with a handle on the top and two doors on the sides. The doors are closed, and the lockers appear to be empty. The image has a minimalist design with clean lines and a simple, minimalist aesthetic. The overall color scheme is neutral, with no other elements present in the image."
-tags: [rendering, set, four, identical, beige-colored, metal, lockers, arranged, grid-like, pattern, plain, background]
+tags: [rendering, set, four, identical, beige-colored, metal, lockers, arranged, grid-like, pattern, plain, background, container, container-locker, door]
 orientation: null   # north | south | east | west | top-down | isometric
 state: inactive         # intact | damaged | destroyed | active | inactive
 group_id: 7e090f37-1fdb-5336-805f-dc30e8a2af90      # UUID linking orientation/state variants of one object

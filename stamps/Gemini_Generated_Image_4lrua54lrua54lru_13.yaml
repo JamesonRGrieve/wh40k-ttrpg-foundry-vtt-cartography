@@ -4,7 +4,7 @@
 
 name: "Documents Arranged In A Scattered Manner"
 description: "The image shows a collection of various documents arranged in a scattered manner on a plain, light grey background. The documents appear to be old and worn, with some of them overlapping each other. Some of the documents have text written on them, while others are plain and unadorned. The image has a minimalist design with clean lines and a minimalistic aesthetic. The focus is on the documents, which are arranged in an orderly fashion, creating a sense of depth and dimension."
-tags: [collection, various, documents, arranged, scattered, manner, plain, light, background, old, worn, overlapping]
+tags: [collection, various, documents, arranged, scattered, manner, plain, light, background, old, worn, overlapping, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 3b58afaa-b4ae-5917-859f-df7dc8a14d62      # UUID linking orientation/state variants of one object

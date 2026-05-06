@@ -4,7 +4,7 @@
 
 name: "Ceiling Tiles"
 description: a set of three different types of ceiling tiles
-tags: [set, different, types, ceiling, tiles]
+tags: [set, different, types, ceiling, tiles, architecture, architecture-surface]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: f3df525c-c7b5-5910-954f-f93a40df6b07      # UUID linking orientation/state variants of one object

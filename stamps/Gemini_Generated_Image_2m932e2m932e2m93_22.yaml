@@ -4,7 +4,7 @@
 
 name: "Couch With A Pillow On Top"
 description: a drawing of a couch with a pillow on top of it
-tags: [couch, pillow, top]
+tags: [couch, pillow, top, furniture, furniture-couch]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 861baff5-92ce-53c9-85c6-acf14614b71c      # UUID linking orientation/state variants of one object

@@ -4,7 +4,7 @@
 
 name: "Desk With A Minimalist Design"
 description: "The image is a digital illustration of a desk with a minimalist design. The desk is made of a light-colored wood with a smooth finish, and it has two drawers on either side for storage. On top of the desk, there are several pieces of paper scattered across the surface, some of which appear to be blank. The paper is slightly crumpled, giving it a worn and aged look. The background is a plain, light brown color, which contrasts nicely with the desk. The overall style of the image is simple and minimalistic, with a focus on the desk and its contents."
-tags: [digital, illustration, desk, minimalist, design, light-colored, wood, smooth, finish, has, drawers, either]
+tags: [digital, illustration, desk, minimalist, design, light-colored, wood, smooth, finish, has, drawers, either, furniture, furniture-table, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 865e7fee-cb31-5cb4-a061-b2670c66ee89      # UUID linking orientation/state variants of one object

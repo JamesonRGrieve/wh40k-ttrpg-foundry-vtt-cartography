@@ -4,7 +4,7 @@
 
 name: "Handheld Devices Arranged In A Grid-Like Pattern"
 description: "The image is a digital illustration of three handheld devices arranged in a grid-like pattern on a transparent background. The devices are rectangular in shape and have a simple, minimalist design with rounded edges. Each device has a small screen and a few buttons and dials on the front panel. The devices appear to be made of a light-colored material, possibly plastic or metal, and have a glossy finish. The background is a solid gray color, providing a subtle contrast to the devices. The image has a clean and modern look, with no visible imperfections or embellishments."
-tags: [digital, illustration, handheld, devices, arranged, grid-like, pattern, transparent, background, rectangular, shape, have]
+tags: [digital, illustration, handheld, devices, arranged, grid-like, pattern, transparent, background, rectangular, shape, have, tech, tech-screen, tech-device]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: fbdc4f25-bd06-5d4e-bbc5-4522aff3d478      # UUID linking orientation/state variants of one object
