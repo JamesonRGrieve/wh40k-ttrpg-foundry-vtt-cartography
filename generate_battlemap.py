@@ -206,6 +206,89 @@ INTERIOR_DEFAULT_CLIP_L = (
     "grimdark sci-fi, top-down battle map, empty room, bare floor, bulkhead walls, tabletop rpg"
 )
 
+# Per-archetype prompt overrides for typical Solenne campaign locations.
+# Each entry maps to a t5xxl string. The clip_l is synthesized via
+# `_clip_l_for_style()` from a small style-specific tag prepended to a
+# common base. The negative prompt and the empty-room invariant are
+# unchanged across styles — every archetype produces a BARE map without
+# props, suitable for stamp overlay.
+INTERIOR_STYLES: dict[str, str] = {
+    "hab": (
+        "top-down overhead orthographic view of an empty hive-world hab apartment interior, "
+        "warhammer 40000 aesthetic, "
+        "stained ferrocrete floor with cracks and oil stains and grime patches, "
+        "low cinderblock and rebar walls with peeling paint and water damage, "
+        "exposed conduit and pipework along the walls, "
+        "single bare lumen panel on the ceiling casting harsh cold light, "
+        "muted brown and gray palette with a single sickly yellow accent, oil painting style, "
+        "tabletop RPG battle map, highly detailed cracked floor and water-stained wall textures, "
+        "completely empty room with no furniture, no props, no objects, no characters"
+    ),
+    "tunnel": (
+        "top-down overhead orthographic view of an empty narrow underground maintenance tunnel, "
+        "warhammer 40000 aesthetic, grimy hive sub-level, "
+        "corrugated steel floor grating with seam lines and rust patches, "
+        "thick concrete and steel walls with bundles of cable and pipework along both sides, "
+        "occasional emergency lumen strip glowing red, deep darkness between lights, "
+        "muted gray and rust palette with single red accent, oil painting style, "
+        "tabletop RPG battle map, highly detailed grating floor and cabled wall textures, "
+        "completely empty corridor with no furniture, no props, no characters"
+    ),
+    "industrial": (
+        "top-down overhead orthographic view of an empty grimdark sci-fi industrial processing bay, "
+        "warhammer 40000 aesthetic, ore processor facility interior, "
+        "heavy plate steel floor with hazard stripes and grime stains and oil splatter, "
+        "thick reinforced bulkhead walls with massive structural beams and pressure conduits, "
+        "overhead crane rails visible at the ceiling, deep shadows between work zones, "
+        "selective amber industrial lighting, muted gray and orange palette, oil painting style, "
+        "tabletop RPG battle map, highly detailed floor and wall textures, "
+        "completely empty bay with no machinery, no props, no objects, no characters"
+    ),
+    "chapel": (
+        "top-down overhead orthographic view of an empty Imperial chapel interior, "
+        "warhammer 40000 aesthetic, hive ministorum chapel, "
+        "polished stone floor with mosaic Aquila pattern, candle wax and grime accumulated at edges, "
+        "tall stone walls with carved Imperial iconography and brass relief panels, "
+        "stained-glass slit windows casting colored light, votive candles in alcoves, "
+        "muted earth-tone palette with golden accent, oil painting style, "
+        "tabletop RPG battle map, highly detailed mosaic floor and stonework wall textures, "
+        "completely empty nave with no pews, no furniture, no characters"
+    ),
+    "bar": (
+        "top-down overhead orthographic view of an empty grimy underground bar interior, "
+        "warhammer 40000 aesthetic, sub-level hive watering hole, "
+        "scuffed wood plank floor with stains and burn marks and old blood, "
+        "low brick walls with peeling posters and dim hanging lights, "
+        "amber lumen pendants over where tables would be, deep shadows in corners, "
+        "muted brown and amber palette, oil painting style, "
+        "tabletop RPG battle map, highly detailed floor and wall textures, "
+        "completely empty room with no tables, no chairs, no bar counter, no props, no characters"
+    ),
+    "garrison": (
+        "top-down overhead orthographic view of an empty Imperial Guard garrison barracks interior, "
+        "warhammer 40000 aesthetic, regimental quarters, "
+        "scuffed concrete floor with painted hazard markings and dirt drag patterns, "
+        "spartan reinforced walls with regimental banners and weapon racks bare of weapons, "
+        "harsh overhead fluorescent strip lighting, deep shadow gaps between fixtures, "
+        "muted gray and military-green palette, oil painting style, "
+        "tabletop RPG battle map, highly detailed floor and wall textures, "
+        "completely empty barracks with no bunks, no furniture, no equipment, no characters"
+    ),
+}
+
+INTERIOR_STYLE_TAGS: dict[str, str] = {
+    "hab": "hab apartment, ferrocrete floor, hive sub-level",
+    "tunnel": "maintenance tunnel, narrow corridor, cabled walls",
+    "industrial": "industrial bay, ore processor, hazard stripes",
+    "chapel": "Imperial chapel, mosaic floor, stone walls",
+    "bar": "underground bar, wood floor, dim hanging lights",
+    "garrison": "Imperial Guard barracks, military",
+}
+
+
+def _clip_l_for_style(style: str) -> str:
+    return f"grimdark sci-fi, top-down battle map, empty room, {INTERIOR_STYLE_TAGS[style]}, tabletop rpg"
+
 
 def run_interior(
     server: str,
@@ -540,8 +623,24 @@ def main() -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     pi = sub.add_parser("interior", help="txt2img Chroma-Flux battlemap")
-    pi.add_argument("--t5xxl", default=INTERIOR_DEFAULT_T5)
-    pi.add_argument("--clip-l", default=INTERIOR_DEFAULT_CLIP_L)
+    pi.add_argument(
+        "--style",
+        choices=sorted(INTERIOR_STYLES) + ["default"],
+        default="default",
+        help="archetype prompt for typical campaign locations. 'default' is "
+        "a generic empty grimdark sci-fi room. Each style produces a bare "
+        "(no-prop) map suitable for stamp overlay.",
+    )
+    pi.add_argument(
+        "--t5xxl",
+        default=None,
+        help="override t5xxl prompt; mutually-exclusive with --style",
+    )
+    pi.add_argument(
+        "--clip-l",
+        default=None,
+        help="override clip_l prompt; mutually-exclusive with --style",
+    )
     pi.add_argument("--width", type=int, default=1024)
     pi.add_argument("--height", type=int, default=1024)
     pi.add_argument("--seed", type=int, default=0)
@@ -615,10 +714,19 @@ def main() -> int:
     args = ap.parse_args()
 
     if args.cmd == "interior":
+        if args.style != "default" and (args.t5xxl is not None or args.clip_l is not None):
+            print("--style and --t5xxl/--clip-l are mutually exclusive", file=sys.stderr)
+            return 2
+        if args.style != "default":
+            t5 = INTERIOR_STYLES[args.style]
+            clip = _clip_l_for_style(args.style)
+        else:
+            t5 = args.t5xxl if args.t5xxl is not None else INTERIOR_DEFAULT_T5
+            clip = args.clip_l if args.clip_l is not None else INTERIOR_DEFAULT_CLIP_L
         run_interior(
             args.server,
-            t5xxl=args.t5xxl,
-            clip_l=args.clip_l,
+            t5xxl=t5,
+            clip_l=clip,
             width=args.width,
             height=args.height,
             seed=args.seed,
