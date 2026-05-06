@@ -71,6 +71,67 @@ through nearest-neighbor color quantization to the eight colors above.
 
 ## Successes
 
+### 2026-05-05 — Layered/multi-deck stacking VERIFIED
+
+**Same-footprint multi-deck**: painted two layouts (engineering
+deck + bridge deck) sharing the same outer hull region. Walls
+coincide pixel-perfectly: exact-color IoU = 0.946 (deck1 walls are
+a complete subset of deck2 walls; the 5% delta is deck1's
+loading-ramp opening punching through the hull on purpose). A
+token at (x,y) on deck1 lands at the same (x,y) on deck2. Foundry
+multi-deck scenes can use either deck as the active scene without
+re-positioning.
+
+**Independent-render layered overlay**: rendered a metal-grate
+scaffold via interior txt2img, masked it to the floor region
+using the layout PNG as the alpha source, alpha-composited over a
+separately-rendered base map. Walls + lights from base show
+through the perimeter; scaffold occupies the floor area exactly.
+Pixel-perfect alignment because both renders share the same
+layout, and the layout drives the alpha mask deterministically.
+
+The walls-only mode (`spacecraft --walls-only` / `--keep-only
+wall`) is the simplest case of this pattern. The new
+`mask-by-layout` subcommand generalizes it to any role and any
+input render — letting you produce arbitrary stackable layers
+(scaffolding, water, fog, second-floor cutaways) by rendering them
+independently and masking.
+
+### 2026-05-05 — Group-membership audit (visual inspection)
+
+Manually inspected all 9 multi-member groups in the current vault:
+
+| group | members | verdict |
+| --- | --- | --- |
+| `3380ef7e` | 2 | ✅ TRUE variants — battered office chair pair |
+| `3b58afaa` | 2 | ✅ TRUE variants — paperwork pile (intact / aged) |
+| `7e090f37` | 2 | ✅ TRUE variants — locker pair (intact / weathered) |
+| `b00219a2` | 2 | ✅ TRUE variants — sealed dossier (intact / bloodied) |
+| `fbdc4f25` | 3 | ✅ TRUE state-variants — cogitator console (active / inactive / destroyed) |
+| `309afa52` | 4 | ⚠ same family (pipe fittings) but different junction shapes — not strict variants |
+| `861baff5` | 4 | ⚠ partially correct: 3 bed variants + 1 false-positive locker pair (cleared) |
+| `f3df525c` | 3 | ❌ FALSE-POSITIVE merge: 3 distinct container types (case/locker-door/footlocker) — cleared |
+| `83fd8256` | 5 | ❌ FALSE-POSITIVE merge: 5 distinct bulkhead panels — cleared |
+
+Took action:
+- Cleared `group_id` to null on 9 stamps confirmed as
+  false-positive merges.
+- Manually filled name/description/state on 6 yamls where visual
+  inspection revealed information missing from captions
+  (e.g. cogitator console state — captions said "televisions
+  arranged" but the images clearly show active/inactive/destroyed
+  CRT terminal variants).
+
+The Phase 2 merge threshold (`MERGE_THRESHOLD = 0.92` in
+`assign_groups.py`) is too generous for stamps that share a
+common art-style background (beige/grimdark palette pulls
+unrelated subjects close in CLIP-ViT-H embedding space).
+Operationally, manual yaml inspection is required for any group
+the operator wants to use as a strict state-variant cluster.
+Future: extend `pipeline_status.py` with a "group sanity check"
+that flags suspicious merges (e.g. groups whose member captions
+share <50% of content tokens).
+
 ### 2026-05-05 — Florence-2 unrecoverable failures (some stamps)
 
 A small fraction of stamps (`_08.png`, `_09.png` in 4lrua5 — both

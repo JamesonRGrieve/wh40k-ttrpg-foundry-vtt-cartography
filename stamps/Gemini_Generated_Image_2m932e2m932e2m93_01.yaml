@@ -2,11 +2,11 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Televisions Arranged In A Grid-Like Pattern"
-description: "The image is a digital illustration of a set of three vintage televisions arranged in a grid-like pattern on a gray background. The televisions are drawn in a simple, minimalist style with thin lines and minimalistic design elements. Each television has a rectangular shape with rounded edges and a small screen in the center. The screens are labeled with various buttons and dials, giving a clear view of the various functions of the televisions. The overall aesthetic of the image is minimalistic and modern, with a focus on the classic design elements."
+name: "Cogitator Console"
+description: "A cogitator/auspex console terminal with a large green CRT scope display showing radar/sensor readouts, full keypad with control switches and knobs."
 tags: [digital, illustration, set, vintage, televisions, arranged, grid-like, pattern, background, drawn, simple, minimalist, tech, tech-screen]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: active
 group_id: fbdc4f25-bd06-5d4e-bbc5-4522aff3d478      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

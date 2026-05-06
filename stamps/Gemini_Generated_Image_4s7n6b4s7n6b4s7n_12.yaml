@@ -2,15 +2,19 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Modern Office Chair In A Simple
+description: "A set of four line drawings of a modern office chair in a simple, minimalist style. The chairs are arranged in a grid-like pattern, with each chair having a unique design and color scheme. The background is a solid, neutral gray color, providing a subtle contrast to the sleek, minimalist design of the chairs. Each chair has a high backrest and armrests, giving it a comfortable and ergonomic feel. The overall aesthetic of the image is minimalistic and contemporary, with clean lines and a minimalist aesthetic.
+
+The chairs are drawn in a simple, minimalist style, with no additional details or embellishments, making them stand out from the rest of the image. Each chair is positioned in a symmetrical manner, creating a sense of balance and symmetry. The chair has a sleek, modern design with clean lines and a neutral color palette, making it a perfect choice for any modern office setting.
+
+Overall, the image is a minimalist representation of modern office furniture, with a focus on simplicity and sophistication. The chairs are arranged in a grid-like pattern, with each chair having its own unique design and color scheme, making them stand out from the rest of the image. Overall, the image conveys a sense of timelessness and sophistication, perfect for any modern office setting."
+tags: [set, four, line, drawings, modern, office, chair, simple, minimalist, style, chairs, arranged, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive         # intact | damaged | destroyed | active | inactive
 group_id: null      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 12
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T01:28:51+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

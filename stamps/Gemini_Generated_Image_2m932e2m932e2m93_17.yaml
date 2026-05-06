@@ -2,11 +2,11 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: ______________________________________________________________________________________________________________________________________________________________________________________________________________________________
+name: "Beige Metal Locker Pair"
+description: "Same two-door beige metal storage lockers — slightly weathered with scuff marks and edge wear. Damaged variant."
 tags: []
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 7e090f37-1fdb-5336-805f-dc30e8a2af90      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

@@ -7,7 +7,7 @@ description: a brown background with a pattern of circles and lines
 tags: [background, pattern, circles, lines]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 83fd8256-a4f8-5cf5-89a9-31ea66352c27      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png
 source_index: 21

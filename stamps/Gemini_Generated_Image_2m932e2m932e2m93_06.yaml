@@ -6,7 +6,7 @@ name: "Simple, Minimalist Illustration"
 description: "The image is a simple, minimalist illustration with a neutral color palette. It features two rectangular frames with ladders on either side, set against a plain, light grey background. The frames are symmetrical and have a smooth, polished finish. The ladders are positioned in the center of the image, with the top frame slightly higher than the bottom frame. The overall design is simple and minimalistic, with no additional details or embellishments present."
 tags: [simple, minimalist, illustration, neutral, palette, features, rectangular, frames, ladders, either, side, set, architecture, architecture-step]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: b9b59f4a-429f-5ed8-8bf8-98c5742dd74d      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

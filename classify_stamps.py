@@ -91,6 +91,7 @@ ORIENTATION_KEYWORDS: dict[str, str] = {
 }
 
 STATE_KEYWORDS: dict[str, str] = {
+    # severity (most specific to least)
     "destroyed": "destroyed",
     "shattered": "destroyed",
     "wreckage": "destroyed",
@@ -99,18 +100,35 @@ STATE_KEYWORDS: dict[str, str] = {
     "broken": "damaged",
     "cracked": "damaged",
     "rusted": "damaged",
+    "rusty": "damaged",
     "dented": "damaged",
-    "active": "active",
-    "lit": "active",
-    "glowing": "active",
-    "powered": "active",
+    "scuffed": "damaged",
+    "scratched": "damaged",
+    "scorched": "damaged",
+    "stained": "damaged",
+    "weathered": "damaged",
+    "worn": "damaged",
+    "aged": "damaged",
+    "tattered": "damaged",
+    "frayed": "damaged",
+    # active/inactive — keep these specific so we don't false-positive
+    # on common prepositions ("on top of", "on the left").
     "switched on": "active",
-    "open": "active",
-    "inactive": "inactive",
-    "off": "inactive",
+    "powered on": "active",
+    "lit up": "active",
+    "glowing": "active",
+    "illuminated": "active",
+    "switched off": "inactive",
     "powered off": "inactive",
-    "closed": "inactive",
+    "turned off": "inactive",
+    "unlit": "inactive",
+    "darkened": "inactive",
+    # intact / pristine
     "intact": "intact",
+    "pristine": "intact",
+    "polished": "intact",
+    "brand new": "intact",
+    "spotless": "intact",
 }
 
 # Lowercase-hyphenated transformer for raw Florence-2 tags

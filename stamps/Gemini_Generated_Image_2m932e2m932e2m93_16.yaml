@@ -2,11 +2,11 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Electronic Devices"
-description: a set of three different types of electronic devices on a gray background
+name: "Cogitator Console"
+description: "A cogitator/auspex console terminal with a shattered CRT screen, broken glass, electrical sparks. Damaged variant of the same console."
 tags: [set, different, types, electronic, devices, background]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: fbdc4f25-bd06-5d4e-bbc5-4522aff3d478      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

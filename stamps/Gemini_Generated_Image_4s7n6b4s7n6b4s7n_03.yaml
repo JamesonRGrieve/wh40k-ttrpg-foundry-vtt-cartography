@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: StackA stackA stackA stackA stackA stackA
+description: "A stackA stackA stackA stackA stackA stackA stackA stackA stack of papers stacked on top ofA stack of paper documents in a stack of papers, with a stack of papers in a stack of papers on top of each other, with a simple gray background. The papers are neatly stacked on top ofA stack of papers with thin lines, stacked neatly stacked on top of each other, creating a stack of papers, with a light brown paper with horizontal lines on a plain beige background. The image is an isometric illustration of a stack of documents, with a simple, minimalist, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome style, with a simple gray background with a simple gray background."
+tags: [stacka, stack, papers, stacked, top, ofa, paper, documents, each, other, simple, background, prop, prop-document]
+orientation: isometric   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 3
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T01:23:11+00:00"
+classified_by: MiaoshouAI/Florence-2-large-PromptGen-v2.0

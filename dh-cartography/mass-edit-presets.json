@@ -37,7 +37,7 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9301",
-    "name": "Televisions Arranged In A Grid-Like Pattern",
+    "name": "Cogitator Console \u2014 active",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_01.png",
     "tags": [
@@ -55,6 +55,7 @@
       "minimalist",
       "tech",
       "tech-screen",
+      "state-active",
       "group:fbdc4f25-bd06-5d4e-bbc5-4522aff3d478"
     ],
     "gridSize": 100,
@@ -75,7 +76,7 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9302",
-    "name": "Identical Beige-Colored Metal Lockers Arranged \u2014 inactive",
+    "name": "Beige Metal Locker Pair \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_02.png",
     "tags": [
@@ -94,7 +95,7 @@
       "container",
       "container-locker",
       "door",
-      "state-inactive",
+      "state-intact",
       "group:7e090f37-1fdb-5336-805f-dc30e8a2af90"
     ],
     "gridSize": 100,
@@ -115,7 +116,7 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9303",
-    "name": "Simple, Minimalist Design With A Gray Background",
+    "name": "Simple, Minimalist Design With A Gray Background \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_03.png",
     "tags": [
@@ -131,7 +132,7 @@
       "grid-like",
       "pattern",
       "each",
-      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+      "state-intact"
     ],
     "gridSize": 100,
     "data": [
@@ -216,7 +217,7 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9306",
-    "name": "Simple, Minimalist Illustration",
+    "name": "Simple, Minimalist Illustration \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_06.png",
     "tags": [
@@ -234,6 +235,7 @@
       "set",
       "architecture",
       "architecture-step",
+      "state-intact",
       "group:b9b59f4a-429f-5ed8-8bf8-98c5742dd74d"
     ],
     "gridSize": 100,
@@ -290,7 +292,7 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9308",
-    "name": "Handheld Devices Arranged In A Grid-Like Pattern",
+    "name": "Cogitator Console \u2014 inactive",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_08.png",
     "tags": [
@@ -309,6 +311,7 @@
       "tech",
       "tech-screen",
       "tech-device",
+      "state-inactive",
       "group:fbdc4f25-bd06-5d4e-bbc5-4522aff3d478"
     ],
     "gridSize": 100,
@@ -387,8 +390,7 @@
       "have",
       "door",
       "architecture",
-      "architecture-window",
-      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+      "architecture-window"
     ],
     "gridSize": 100,
     "data": [
@@ -408,7 +410,7 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9311",
-    "name": "Cross-Shaped Objects Arranged In A Symmetrical Pattern \u2014 active",
+    "name": "Cross-Shaped Objects Arranged In A Symmetrical Pattern \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_11.png",
     "tags": [
@@ -424,7 +426,7 @@
       "light-colored",
       "material",
       "possibly",
-      "state-active",
+      "state-intact",
       "group:309afa52-9a01-5989-a411-f43c09d88d10"
     ],
     "gridSize": 100,
@@ -460,8 +462,7 @@
       "plastic",
       "have",
       "smooth",
-      "glossy",
-      "group:861baff5-92ce-53c9-85c6-acf14614b71c"
+      "glossy"
     ],
     "gridSize": 100,
     "data": [
@@ -481,7 +482,7 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9313",
-    "name": "Square-Shaped Metal Plate With A Textured Surface",
+    "name": "Square-Shaped Metal Plate With A Textured Surface \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_13.png",
     "tags": [
@@ -499,7 +500,7 @@
       "smooth",
       "container",
       "container-tableware",
-      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+      "state-intact"
     ],
     "gridSize": 100,
     "data": [
@@ -575,7 +576,7 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9316",
-    "name": "Electronic Devices",
+    "name": "Cogitator Console \u2014 destroyed",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_16.png",
     "tags": [
@@ -585,6 +586,7 @@
       "electronic",
       "devices",
       "background",
+      "state-destroyed",
       "group:fbdc4f25-bd06-5d4e-bbc5-4522aff3d478"
     ],
     "gridSize": 100,
@@ -605,10 +607,11 @@
   },
   {
     "id": "generatedimage2m932e2m932e2m9317",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_17",
+    "name": "Beige Metal Locker Pair \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_17.png",
     "tags": [
+      "state-damaged",
       "group:7e090f37-1fdb-5336-805f-dc30e8a2af90"
     ],
     "gridSize": 100,
@@ -636,8 +639,7 @@
       "background",
       "pattern",
       "squares",
-      "rectangles",
-      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+      "rectangles"
     ],
     "gridSize": 100,
     "data": [
@@ -692,8 +694,7 @@
       "different",
       "types",
       "boxes",
-      "background",
-      "group:f3df525c-c7b5-5910-954f-f93a40df6b07"
+      "background"
     ],
     "gridSize": 100,
     "data": [
@@ -720,8 +721,7 @@
       "background",
       "pattern",
       "circles",
-      "lines",
-      "group:83fd8256-a4f8-5cf5-89a9-31ea66352c27"
+      "lines"
     ],
     "gridSize": 100,
     "data": [
@@ -809,8 +809,7 @@
       "ceiling",
       "tiles",
       "architecture",
-      "architecture-surface",
-      "group:f3df525c-c7b5-5910-954f-f93a40df6b07"
+      "architecture-surface"
     ],
     "gridSize": 100,
     "data": [
@@ -896,8 +895,7 @@
       "different",
       "types",
       "boxes",
-      "background",
-      "group:f3df525c-c7b5-5910-954f-f93a40df6b07"
+      "background"
     ],
     "gridSize": 100,
     "data": [
@@ -1018,7 +1016,7 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru02",
-    "name": "Papers Tied Together With Twine And Secured \u2014 east",
+    "name": "Papers Tied Together With Twine And Secured \u2014 damaged, east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_02.png",
     "tags": [
@@ -1037,6 +1035,7 @@
       "prop",
       "prop-document",
       "facing-east",
+      "state-damaged",
       "group:dfc31721-1d3a-510b-8d57-dff5401b89d8"
     ],
     "gridSize": 100,
@@ -1057,7 +1056,7 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru03",
-    "name": "CollectionThe image is a digital illustration \u2014 active, west",
+    "name": "Sealed Dossier \u2014 intact, west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_03.png",
     "tags": [
@@ -1076,7 +1075,7 @@
       "prop",
       "prop-document",
       "facing-west",
-      "state-active",
+      "state-intact",
       "group:b00219a2-75f0-5d72-8e96-0e4492f06481"
     ],
     "gridSize": 100,
@@ -1097,10 +1096,11 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru04",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_04",
+    "name": "Sealed Dossier \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_04.png",
     "tags": [
+      "state-damaged",
       "group:b00219a2-75f0-5d72-8e96-0e4492f06481"
     ],
     "gridSize": 100,
@@ -1160,7 +1160,7 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru07",
-    "name": "Desk With A Minimalist Design",
+    "name": "Desk With A Minimalist Design \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_07.png",
     "tags": [
@@ -1180,6 +1180,7 @@
       "furniture-table",
       "prop",
       "prop-document",
+      "state-damaged",
       "group:865e7fee-cb31-5cb4-a061-b2670c66ee89"
     ],
     "gridSize": 100,
@@ -1200,10 +1201,21 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru08",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_08",
+    "name": "Battered Office Chair \u2014 damaged, isometric",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_08.png",
     "tags": [
+      "chair",
+      "office-chair",
+      "caster",
+      "pedestal",
+      "worn",
+      "dented",
+      "scuffed",
+      "furniture",
+      "furniture-chair",
+      "isometric",
+      "state-damaged",
       "group:3380ef7e-837d-522c-b39f-e5fdba614a4a"
     ],
     "gridSize": 100,
@@ -1224,10 +1236,21 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru09",
-    "name": "Gemini_Generated_Image_4lrua54lrua54lru_09",
+    "name": "Battered Office Chair \u2014 damaged, isometric",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_09.png",
     "tags": [
+      "chair",
+      "office-chair",
+      "caster",
+      "pedestal",
+      "worn",
+      "dented",
+      "scuffed",
+      "furniture",
+      "furniture-chair",
+      "isometric",
+      "state-damaged",
       "group:3380ef7e-837d-522c-b39f-e5fdba614a4a"
     ],
     "gridSize": 100,
@@ -1248,7 +1271,7 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru10",
-    "name": "Futuristic, Cylindrical Object \u2014 active",
+    "name": "Futuristic, Cylindrical Object \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_10.png",
     "tags": [
@@ -1264,7 +1287,7 @@
       "possibly",
       "stone",
       "concrete",
-      "state-active",
+      "state-intact",
       "group:0b54703c-f189-5d37-9cc1-22f555700f31"
     ],
     "gridSize": 100,
@@ -1363,7 +1386,7 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru13",
-    "name": "Documents Arranged In A Scattered Manner",
+    "name": "Imperial Paperwork \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_13.png",
     "tags": [
@@ -1381,6 +1404,7 @@
       "overlapping",
       "prop",
       "prop-document",
+      "state-intact",
       "group:3b58afaa-b4ae-5917-859f-df7dc8a14d62"
     ],
     "gridSize": 100,
@@ -1401,7 +1425,7 @@
   },
   {
     "id": "generatedimage4lrua54lrua54lru14",
-    "name": "Old, Handwritten Documents Arranged",
+    "name": "Imperial Paperwork \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4lrua54lrua54lru_14.png",
     "tags": [
@@ -1419,6 +1443,7 @@
       "sizes",
       "prop",
       "prop-document",
+      "state-damaged",
       "group:3b58afaa-b4ae-5917-859f-df7dc8a14d62"
     ],
     "gridSize": 100,
@@ -1483,10 +1508,23 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n02",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_02",
+    "name": "SimpleThe image is a simpleThe image",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_02.png",
-    "tags": [],
+    "tags": [
+      "simplethe",
+      "rendering",
+      "rectangular",
+      "shapes",
+      "shape",
+      "sizethe",
+      "simple",
+      "blank",
+      "minimalistthe",
+      "minimalist",
+      "illustration",
+      "eachthe"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1505,10 +1543,26 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n03",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_03",
+    "name": "StackA stackA stackA stackA stackA stackA \u2014 isometric",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_03.png",
-    "tags": [],
+    "tags": [
+      "stacka",
+      "stack",
+      "papers",
+      "stacked",
+      "top",
+      "ofa",
+      "paper",
+      "documents",
+      "each",
+      "other",
+      "simple",
+      "background",
+      "prop",
+      "prop-document",
+      "isometric"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1527,10 +1581,26 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n04",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_04",
+    "name": "Rectangular Table With Two Drawers \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_04.png",
-    "tags": [],
+    "tags": [
+      "line",
+      "rectangular",
+      "table",
+      "drawers",
+      "either",
+      "side",
+      "light-colored",
+      "material",
+      "possibly",
+      "wood",
+      "metal",
+      "has",
+      "furniture",
+      "furniture-table",
+      "state-intact"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1549,7 +1619,7 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n05",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_05",
+    "name": "Image",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_05.png",
     "tags": [],
@@ -1593,10 +1663,25 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n07",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_07",
+    "name": "3DThe image is a 3DThe image",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_07.png",
-    "tags": [],
+    "tags": [
+      "dthe",
+      "rendering",
+      "empty",
+      "cups",
+      "saucers",
+      "arranged",
+      "grid",
+      "transparent",
+      "background",
+      "grayish-colored",
+      "which",
+      "simple",
+      "container",
+      "container-tableware"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1615,10 +1700,25 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n08",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_08",
+    "name": "Empty Glass Bottles With Stoppers",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_08.png",
-    "tags": [],
+    "tags": [
+      "digital",
+      "illustration",
+      "empty",
+      "glass",
+      "bottles",
+      "stoppers",
+      "arranged",
+      "triangular",
+      "formation",
+      "largest",
+      "bottle",
+      "center",
+      "container",
+      "container-vessel"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1659,10 +1759,26 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n10",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_10",
+    "name": "Documents Arranged In A Scattered Manner \u2014 top-down",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_10.png",
-    "tags": [],
+    "tags": [
+      "collection",
+      "hand-drawn",
+      "documents",
+      "arranged",
+      "scattered",
+      "manner",
+      "plain",
+      "background",
+      "various",
+      "sizes",
+      "shapes",
+      "overlapping",
+      "prop",
+      "prop-document",
+      "top-down"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1681,10 +1797,29 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n11",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_11",
+    "name": "Sketch Of A Desk \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_11.png",
-    "tags": [],
+    "tags": [
+      "detailed",
+      "sketch",
+      "desk",
+      "various",
+      "stationery",
+      "items",
+      "scattered",
+      "across",
+      "surface",
+      "wood",
+      "has",
+      "rectangular",
+      "furniture",
+      "furniture-table",
+      "prop",
+      "prop-document",
+      "prop-writing",
+      "state-damaged"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1703,10 +1838,26 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n12",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_12",
+    "name": "Modern Office Chair In A Simple \u2014 inactive",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_12.png",
-    "tags": [],
+    "tags": [
+      "set",
+      "four",
+      "line",
+      "drawings",
+      "modern",
+      "office",
+      "chair",
+      "simple",
+      "minimalist",
+      "style",
+      "chairs",
+      "arranged",
+      "furniture",
+      "furniture-chair",
+      "state-inactive"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1725,10 +1876,13 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n13",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_13",
+    "name": "ImageA setThe image",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_13.png",
-    "tags": [],
+    "tags": [
+      "imagea",
+      "setthe"
+    ],
     "gridSize": 100,
     "data": [
       {
