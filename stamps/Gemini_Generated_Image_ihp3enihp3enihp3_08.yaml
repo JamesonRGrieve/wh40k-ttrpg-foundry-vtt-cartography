@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist illustration with a plain, light
 tags: [simple, minimalist, illustration, plain, light, background, left, side, there, identical, cylindrical, objects]
 orientation: west   # north | south | east | west | top-down | isometric
 state: intact         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 7f510dd9-d9ba-5935-a66f-e9d7b753e35c
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 8

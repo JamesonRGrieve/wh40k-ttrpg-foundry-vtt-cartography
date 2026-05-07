@@ -7,7 +7,7 @@ description: "A set of four rectangular doors with a simple, minimalist design. 
 tags: [set, four, rectangular, doors, simple, minimalist, design, painted, light, beige, have, smooth, door, architecture, architecture-window]
 orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 4adb8af2-451b-5000-9c81-a13bb965d9bb
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 10

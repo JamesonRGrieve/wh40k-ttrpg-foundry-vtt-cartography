@@ -7,7 +7,7 @@ description: "A line drawing of three empty glass bottles with stoppers. The bot
 tags: [line, empty, glass, bottles, stoppers, arranged, row, largest, bottle, left, smallest, right, container, container-vessel]
 orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: a5323235-88f5-5781-895f-f1f9d3d83d15
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png
 source_index: 8

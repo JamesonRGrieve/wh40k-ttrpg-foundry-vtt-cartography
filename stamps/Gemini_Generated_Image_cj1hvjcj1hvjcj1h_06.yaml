@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist design with a plain, light grey 
 tags: [simple, minimalist, design, plain, light, background, divided, into, sections, top, section, slightly]
 orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: a88888ca-ed2f-59c7-8f80-69d14e239b88
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png
 source_index: 6

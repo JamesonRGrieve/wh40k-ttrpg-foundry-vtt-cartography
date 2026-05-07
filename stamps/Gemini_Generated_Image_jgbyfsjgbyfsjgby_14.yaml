@@ -7,7 +7,7 @@ description: "The image is a 3D rendering of a set of four rectangular objects a
 tags: [rendering, set, four, rectangular, objects, arranged, grid-like, pattern, plain, light, background, smooth]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: dc5e4087-c453-5ca0-9e70-56cd25c72c41
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 14

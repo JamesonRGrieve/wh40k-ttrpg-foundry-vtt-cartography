@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist design with a plain, light grey 
 tags: [simple, minimalist, design, plain, light, background, center, there, rectangular, frame, gun, inside, container, container-barrel, weapon, weapon-ranged]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: a88888ca-ed2f-59c7-8f80-69d14e239b88
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 3

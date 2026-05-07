@@ -7,7 +7,7 @@ description: "The image is a simple line drawing of three identical objects, eac
 tags: [simple, line, identical, objects, each, rectangular, shape, flat, surface, arranged, horizontal, top]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 840e639e-9dca-53b8-b00b-25b84a2b4247
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png
 source_index: 0

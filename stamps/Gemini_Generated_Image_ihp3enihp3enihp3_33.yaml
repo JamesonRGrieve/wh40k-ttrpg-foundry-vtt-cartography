@@ -7,7 +7,7 @@ description: The image is a line drawing of a folding chair. The chair is made o
 tags: [line, folding, chair, metal, has, rectangular, shape, curved, backrest, armrests, seat, slightly, furniture, furniture-chair]
 orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: a2457b10-a6bc-5e5f-8669-1ee198930e7a
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 33

@@ -7,7 +7,7 @@ description: "A set of three empty glass bottles with stoppers. The bottles are 
 tags: [set, empty, glass, bottles, stoppers, arranged, triangular, formation, largest, bottle, left, smallest, container, container-vessel]
 orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: a5323235-88f5-5781-895f-f1f9d3d83d15
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png
 source_index: 25

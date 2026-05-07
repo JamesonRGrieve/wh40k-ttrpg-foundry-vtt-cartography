@@ -7,7 +7,7 @@ description: "The image is a sketch of a desk with a few papers and a cup of cof
 tags: [sketch, desk, few, papers, cup, coffee, rectangular, shape, has, drawer, left, side, furniture, furniture-table, container, container-tableware, prop, prop-document, prop-writing]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: ac3a7c24-298d-53e0-bd33-6cbbc7e7c5e2
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 9

@@ -7,7 +7,7 @@ description: "The image is a 3D rendering of an old, rectangular box with a lock
 tags: [rendering, old, rectangular, box, lock, front, metal, has, weathered, aged, appearance, shape, container, container-crate]
 orientation: north
 state: damaged         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 8b1bedf4-c933-5793-aa49-7dfc62e1a62c
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 4

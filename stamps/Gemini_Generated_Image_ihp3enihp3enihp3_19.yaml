@@ -7,7 +7,7 @@ description: "The image is a 3D illustration of a pile of luggage. There are six
 tags: [illustration, pile, luggage, there, six, bags, total, arranged, pyramid-like, formation, different, sizes, container, container-crate, container-bag]
 orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 9ca5be9b-8ba0-5f53-87e0-7b24dda2e3a8
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 19

@@ -7,7 +7,7 @@ description: "The image is a 3D model of a bench or seat. It is a simple, minima
 tags: [model, bench, seat, simple, minimalist, design, rectangular, shape, four, legs, light-colored, material, furniture, furniture-chair]
 orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 5e42e594-7029-5695-9332-2a19d1092166
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 26

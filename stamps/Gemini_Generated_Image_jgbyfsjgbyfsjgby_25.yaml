@@ -7,7 +7,7 @@ description: "A 3D rendering of three mannequins standing on stools, each wearin
 tags: [rendering, mannequins, standing, stools, each, wearing, knitted, sweater, mannequin, left, upright, while, furniture, furniture-chair]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: cc2ba6e9-fa29-5903-8a89-a4099692cda6
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 25

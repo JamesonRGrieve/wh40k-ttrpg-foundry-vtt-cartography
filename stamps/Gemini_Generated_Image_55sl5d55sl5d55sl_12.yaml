@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist design with a light brown backgr
 tags: [simple, minimalist, design, light, background, left, side, there, rectangular, grid, six, equal]
 orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 9ccb4a18-ea8a-5eeb-a06e-f2bb044fc993
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 12

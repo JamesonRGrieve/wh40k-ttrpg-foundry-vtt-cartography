@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist design with a neutral color pale
 tags: [simple, minimalist, design, neutral, palette, features, plain, light, background, subtle, texture, left]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 9ccb4a18-ea8a-5eeb-a06e-f2bb044fc993
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 23

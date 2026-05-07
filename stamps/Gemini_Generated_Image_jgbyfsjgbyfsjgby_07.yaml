@@ -7,7 +7,7 @@ description: "The image is a 3D rendering of a simple, minimalist composition wi
 tags: [rendering, simple, minimalist, composition, plain, light, background, center, there, identical, mannequin, heads]
 orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 2af6ffaf-f316-58da-8e60-0b842da9c5a3
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png
 source_index: 7

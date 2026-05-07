@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist design with a gray background. I
 tags: [simple, minimalist, design, background, consists, rectangular, boxes, arranged, grid-like, pattern, each, unique, container, container-crate]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: d66f2434-eed5-5b35-bb9c-4c35b42fc852      # UUID linking orientation/state variants of one object
+group_id: 88b092b2-9f3c-59e7-ac1d-d23484a14e4c      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 33

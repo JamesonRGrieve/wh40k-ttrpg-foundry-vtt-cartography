@@ -7,7 +7,7 @@ description: "The image is a 3D rendering of a rectangular tray with four compar
 tags: [rendering, rectangular, tray, four, compartments, each, containing, different, food, item, set, against]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: c6d2d8a8-d780-5a76-a4e6-c2cb638f0f66
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 13

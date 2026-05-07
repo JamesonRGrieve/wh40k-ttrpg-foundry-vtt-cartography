@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist composition with a plain, light 
 tags: [simple, minimalist, composition, plain, light, background, composed, multiple, overlapping, circles, varying, sizes]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 2af6ffaf-f316-58da-8e60-0b842da9c5a3
 
 source: Gemini_Generated_Image_5ump9o5ump9o5ump.png
 source_index: 16

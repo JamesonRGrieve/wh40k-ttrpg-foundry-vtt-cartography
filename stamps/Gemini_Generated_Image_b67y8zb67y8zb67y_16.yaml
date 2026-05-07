@@ -7,7 +7,7 @@ description: "The image is a rectangular tray with a set of surgical instruments
 tags: [rectangular, tray, set, surgical, instruments, plastic, similar, material, has, smooth, surface, left, tool]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: a864d6a5-bb7b-5af8-adb3-0747f42545c1
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png
 source_index: 16

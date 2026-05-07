@@ -7,7 +7,7 @@ description: The image is a 3D rendering of a chair. The chair has a rectangular
 tags: [rendering, chair, has, rectangular, frame, four, legs, seat, upholstered, light, fabric, backrest, furniture, furniture-chair]
 orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 2ec328b1-ea46-5f6e-b8a5-bb0c1eac817a
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 18

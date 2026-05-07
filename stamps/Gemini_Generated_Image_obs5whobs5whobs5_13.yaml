@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist composition with a plain, light 
 tags: [simple, minimalist, composition, plain, light, background, left, side, there, several, square-shaped, objects, prop, prop-document]
 orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 2af6ffaf-f316-58da-8e60-0b842da9c5a3
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 13

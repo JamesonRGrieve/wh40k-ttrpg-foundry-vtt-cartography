@@ -7,7 +7,7 @@ description: "The image is a square-shaped object with a flat base. It appears t
 tags: [square-shaped, object, flat, base, light-colored, material, possibly, plastic, metal, has, rectangular, shape]
 orientation: west
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 013f41f3-bc20-553d-af39-db2a4d69344e
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 27

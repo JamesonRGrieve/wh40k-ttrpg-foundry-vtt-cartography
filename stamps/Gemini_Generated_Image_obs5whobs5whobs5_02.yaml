@@ -7,7 +7,7 @@ description: "A set of four rectangular tables with a simple, minimalist design.
 tags: [set, four, rectangular, tables, simple, minimalist, design, arranged, triangular, formation, largest, table, furniture, furniture-table]
 orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 911a7d85-e186-5216-89bb-aca7a8e1f425
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 2

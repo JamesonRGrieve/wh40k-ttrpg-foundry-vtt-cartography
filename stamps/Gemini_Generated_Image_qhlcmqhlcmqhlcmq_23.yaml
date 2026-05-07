@@ -7,7 +7,7 @@ description: "A set of three rectangular boxes with lids, arranged in a symmetri
 tags: [set, rectangular, boxes, lids, arranged, symmetrical, pattern, plain, light, background, metal, have, container, container-crate]
 orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 8b1bedf4-c933-5793-aa49-7dfc62e1a62c
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 23

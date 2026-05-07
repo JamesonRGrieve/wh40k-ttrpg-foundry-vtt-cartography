@@ -7,7 +7,7 @@ description: "A set of six rectangular tables with a simple, minimalist design. 
 tags: [set, six, rectangular, tables, simple, minimalist, design, arranged, grid-like, pattern, each, table, furniture, furniture-table]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 911a7d85-e186-5216-89bb-aca7a8e1f425
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 9

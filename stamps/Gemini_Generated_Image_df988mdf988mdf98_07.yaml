@@ -7,7 +7,7 @@ description: "A set of four rectangular frames with a simple, minimalist design.
 tags: [set, four, rectangular, frames, simple, minimalist, design, drawn, light, beige, have, smooth]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 7bc9efba-f00e-5629-a80d-46157e6096b5
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 7

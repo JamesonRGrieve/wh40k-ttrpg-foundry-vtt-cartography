@@ -93,7 +93,13 @@ POLL_INTERVAL_S = 1.0
 POLL_TIMEOUT_S = 180
 
 SPLIT_THRESHOLD = 0.78  # below this, captioned-same images get split
-MERGE_THRESHOLD = 0.92  # above this, differently-captioned images get merged
+# MERGE uses MEDIAN cross-pair similarity (was BEST). Best-pair chained
+# unrelated clusters into superclusters of 100+ members because a
+# single coincidentally-similar pair triggered a merge. Median forces
+# the bulk of the clusters to be similar — if a 99-stamp candidate
+# cluster only has 5 stamps similar to a target cluster, the median
+# stays below threshold and the merge doesn't happen.
+MERGE_THRESHOLD = 0.92
 
 # Stable namespace for deterministic group_id generation. Any fixed UUID
 # works; the value is opaque to consumers — they only need it to remain
@@ -400,28 +406,31 @@ def refine_clusters(
             groups[uf.find(idx_map[m])].add(m)
         post_split.extend(groups.values())
 
-    # Step B — cross-cluster merge.
+    # Step B — cross-cluster merge using MEDIAN cross-pair similarity.
+    # Best-pair similarity (the previous heuristic) chained unrelated
+    # clusters: a single coincidentally-similar pair would trigger a
+    # merge, snowballing into 100+ member superclusters. Median requires
+    # the bulk of the cross-pair distribution to exceed the threshold,
+    # not just one outlier.
     if len(post_split) < 2:
         return post_split
     n = len(post_split)
     uf = UnionFind(n)
     for i in range(n):
         for j in range(i + 1, n):
-            best = 0.0
+            sims: list[float] = []
             for a in post_split[i]:
                 if a not in embeddings:
                     continue
                 for b in post_split[j]:
                     if b not in embeddings:
                         continue
-                    sim = cosine(embeddings[a], embeddings[b])
-                    if sim > best:
-                        best = sim
-                        if best >= MERGE_THRESHOLD:
-                            break
-                if best >= MERGE_THRESHOLD:
-                    break
-            if best >= MERGE_THRESHOLD:
+                    sims.append(cosine(embeddings[a], embeddings[b]))
+            if not sims:
+                continue
+            sims.sort()
+            median = sims[len(sims) // 2]
+            if median >= MERGE_THRESHOLD:
                 uf.union(i, j)
     final: dict[int, set[int]] = defaultdict(set)
     for i in range(n):

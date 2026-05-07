@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist composition with a plain, light 
 tags: [simple, minimalist, composition, plain, light, background, left, side, there, rectangular, frames, arranged, prop, prop-document]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: 2af6ffaf-f316-58da-8e60-0b842da9c5a3
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 28

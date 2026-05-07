@@ -7,7 +7,7 @@ description: "The image is a line drawing of a rectangular object with a texture
 tags: [line, rectangular, object, textured, surface, light-colored, fabric, subtle, sheen, has, shape, rounded]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: f8aae481-721e-56b9-981a-a86eeac7938b
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 15

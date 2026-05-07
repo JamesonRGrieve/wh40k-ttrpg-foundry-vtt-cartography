@@ -7,7 +7,7 @@ description: "A set of four rectangular objects arranged in a grid-like pattern 
 tags: [set, four, rectangular, objects, arranged, grid-like, pattern, plain, background, light-colored, material, possibly]
 orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: dc5e4087-c453-5ca0-9e70-56cd25c72c41
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 7

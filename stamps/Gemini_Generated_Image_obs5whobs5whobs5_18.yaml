@@ -7,7 +7,7 @@ description: "The image is a 3D rendering of a wooden chair. The chair has a sim
 tags: [rendering, wooden, chair, has, simple, design, four, legs, curved, backrest, seat, upholstered, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: null
+group_id: ce88935d-5473-5231-b06a-ee8633093b49
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 18
