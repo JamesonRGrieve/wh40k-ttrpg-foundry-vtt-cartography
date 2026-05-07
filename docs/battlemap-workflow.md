@@ -132,6 +132,61 @@ Future: extend `pipeline_status.py` with a "group sanity check"
 that flags suspicious merges (e.g. groups whose member captions
 share <50% of content tokens).
 
+### 2026-05-06 — Tertiary fallback recovers 111/128 PromptGen empties
+
+After the long classify pass left 128 stamps with empty captions,
+diagnostic showed PromptGen-v2.0 SILENTLY emits "" for certain art
+styles (arcade-cabinet kiosks, plain metal desks, drink trays, white
+canisters). Florence-2-large (base) captions the same images
+correctly. Added a tertiary pass to `classify_one()`:
+
+1. PromptGen v2.0 / native + transparent
+2. PromptGen v2.0 / 768 + white (retry)
+3. **Florence-2-large / 768 + white** (NEW fallback)
+
+Re-running classify after this fix: 111 of 128 recovered. 17
+genuinely abstract / near-empty images empty across all paths and
+require manual annotation.
+
+`classified_by` field now records which model produced the caption.
+`grep -l "classified_by: microsoft" stamps/*.yaml | wc -l` shows the
+fallback recovery count after a run.
+
+### 2026-05-06 — assign_groups regenerates group_id from name+members
+
+When stamp names changed (e.g. manual fills), the resulting
+`uuid5(GROUP_NAMESPACE, "<canonical_name>:<sha1(sorted_members)>")`
+hash also changes, so the same conceptual cluster gets a fresh
+group_id on the next assign_groups run. This is correct (uuid5 is
+deterministic), but means: don't reference a specific group_id in
+code/docs as stable. After a re-classify-then-reassign cycle,
+re-import the preset pack into Mass Edit so the `group:` tags align
+with the new ids.
+
+### 2026-05-06 — Phase 2 over-merges scale superclusters
+
+With 600+ classified stamps, the default `MERGE_THRESHOLD = 0.92` in
+`assign_groups.py` produces 97- to 121-member superclusters of
+unrelated subjects that happen to share art-style background. Two
+audit-and-clear cycles ran in this session; the second cycle still
+found 22 flagged groups requiring manual clearing.
+
+Recommended permanent fix: lower the threshold to ~0.96 or cap
+cluster size at ~6 members at the source. Until then, run
+`group_audit.py` after every assign and clear flagged groups with:
+
+```python
+import json, re, subprocess, yaml, glob
+result = subprocess.run(['uv','run','--quiet','group_audit.py','--json'],
+                        capture_output=True, text=True)
+flagged = {r['group_id'] for r in json.loads(result.stdout)['flagged']}
+for f in glob.glob('stamps/*.yaml'):
+    text = open(f).read()
+    if (yaml.safe_load(text) or {}).get('group_id') in flagged:
+        open(f,'w').write(re.sub(r'^group_id:.*$', 'group_id: null',
+                                  text, count=1, flags=re.MULTILINE))
+```
+
 ### 2026-05-05 — Florence-2 unrecoverable failures (some stamps)
 
 A small fraction of stamps (`_08.png`, `_09.png` in 4lrua5 — both

@@ -225,7 +225,36 @@ drop). Default extension `.json`.
     Quality varies: district + system render convincingly, region
     + planet currently mediocre on the saved seeds — iterate
     prompts and seeds before declaring deploy-ready.
-13. **PromptGen captions need preamble stripping for usable names.**
+13. **PromptGen v2.0 has a silent-fail mode on certain art styles.**
+    Clean line-drawn isometric subjects — arcade-cabinet kiosks,
+    plain metal desks, drink trays, white canisters — return EMPTY
+    captions across `caption`/`detailed_caption`/`more_detailed_caption`/
+    `prompt_gen_tags` regardless of payload (native+transparent OR
+    768+white). The base `microsoft/Florence-2-large` captions the
+    same images correctly with its "image is a 3D rendering of …"
+    preamble. `classify_one()` now does three passes: default →
+    retry → tertiary fallback to base Florence-2. Recovered 111 of
+    128 silent-fail stamps in one verification run. The remaining 17
+    are genuinely caption-resistant (abstract patterns, near-empty
+    images) — both models empty.
+14. **`assign_groups` regenerates group_id deterministically from
+    canonical_name + sorted member set.** If you manually edit a
+    member's name and re-run assign_groups, the group's uuid5 hash
+    changes and so do all its members' group_id values. This is OK
+    because uuid5 is idempotent on identical inputs, but it means:
+    (a) don't quote a specific group_id in code or docs as a stable
+    identifier; (b) Foundry's Mass Edit Preset Browser may show
+    "broken variant link" warnings after a re-classify if a stamp
+    moved to a new group. Importing a fresh preset pack resolves it.
+15. **Phase 2 grouping over-merges at scale.** With 600+ stamps the
+    default `MERGE_THRESHOLD = 0.92` produces large false-positive
+    superclusters (97- to 121-member clusters of unrelated subjects
+    that share art-style background). `group_audit.py` flags
+    clusters with low pairwise caption overlap AND no shared
+    concrete subject token; the operator clears their group_ids
+    via the snippet in `docs/battlemap-workflow.md`. Lower the
+    threshold or cap cluster size at the source for a permanent fix.
+16. **PromptGen captions need preamble stripping for usable names.**
     PromptGen-v2.0 reliably emits captions like "The image is a
     digital illustration of [subject]" or "A set of three 3D
     rendering illustrations of [subject]". A naive head-noun
