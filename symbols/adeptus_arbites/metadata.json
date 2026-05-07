@@ -1,0 +1,19 @@
+{
+  "name": "adeptus_arbites",
+  "display_name": "Adeptus Arbites",
+  "default_size_px": 256,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "arbites_uniform_chest",
+    "courthouse_entrance",
+    "patrol_vehicle_door",
+    "warrant_seal"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Skull above raised fist, flanked by scales of Imperial justice. Adeptus Arbites — the Imperium's police force. Asymmetric internal detail (fingers, scale tilt) makes mirror unsafe."
+}

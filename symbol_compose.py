@@ -276,7 +276,12 @@ def cmd_validate(args: argparse.Namespace) -> int:
 
 
 def cmd_validate_all(args: argparse.Namespace) -> int:
-    names = sorted(p.name for p in SYMBOLS_DIR.iterdir() if p.is_dir())
+    # Skip leading-underscore folders (e.g. _source/ holds upstream
+    # SVG masters and license docs, not symbol data).
+    names = sorted(
+        p.name for p in SYMBOLS_DIR.iterdir()
+        if p.is_dir() and not p.name.startswith("_")
+    )
     if not names:
         print("no symbols found", file=sys.stderr)
         return 1

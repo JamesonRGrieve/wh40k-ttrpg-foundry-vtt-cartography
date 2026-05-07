@@ -1,0 +1,19 @@
+{
+  "name": "palatine_aquila",
+  "display_name": "Palatine Aquila",
+  "default_size_px": 384,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "inquisitorial_chamber_back",
+    "high_lord_throne",
+    "honorific_banner",
+    "ancient_relic_seal"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Larger, more elaborate Aquila with downward wings — used on high-honor surfaces (inquisitorial sanctuaries, palatine guard banners, ancient seals). Reserve for narratively significant placements; the regular 'aquila' is the everyday version."
+}

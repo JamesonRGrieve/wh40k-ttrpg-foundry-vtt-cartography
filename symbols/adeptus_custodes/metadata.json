@@ -1,0 +1,18 @@
+{
+  "name": "adeptus_custodes",
+  "display_name": "Adeptus Custodes",
+  "default_size_px": 256,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "throne_room_archway",
+    "custodes_pauldron",
+    "imperial_palace_seal"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Stylized Aquila wings over a central medallion bearing the lightning-bolt of the Custodes. Reserved for the Imperial Palace and its appointed guardians."
+}

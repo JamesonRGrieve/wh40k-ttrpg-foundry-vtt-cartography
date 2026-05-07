@@ -1,0 +1,19 @@
+{
+  "name": "astra_militarum",
+  "display_name": "Astra Militarum (Imperial Guard)",
+  "default_size_px": 256,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "regimental_banner",
+    "guardsman_helm_front",
+    "barracks_entrance",
+    "vehicle_hull_marking"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Aquila-style outstretched wings flanking a central skull. The Astra Militarum sigil — Imperial Guard rank-and-file. Distinct from the Imperial Aquila proper (no central torso/sword) but visually adjacent."
+}

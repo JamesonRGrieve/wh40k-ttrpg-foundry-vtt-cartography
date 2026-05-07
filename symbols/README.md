@@ -86,6 +86,57 @@ the symbol." This is enforced in `symbol_compose.py`.
 4. **Aspect / rotation / mirror policy is metadata-driven.** Don't
    freely transform a canonical without consulting `metadata.json`.
 
+## Attribution
+
+The canonical PNGs in this library are rasterized from SVG sources
+under `_source/`. Each subfolder there is a separate upstream:
+
+### `_source/wh40k-icon/`
+
+Source: <https://github.com/Certseeds/wh40k-icon>
+License: **CC-BY-NC-SA 4.0** — Creative Commons Attribution-NonCommercial-
+ShareAlike 4.0 International. Full license at
+`_source/wh40k-icon/LICENSE_CC_BY_NC_SA_V4_0.md`.
+
+This campaign vault is a **personal, non-commercial** Dark Heresy 2e
+home game and meets the NC clause. If the vault is ever distributed
+commercially, these symbols must be removed or re-licensed.
+
+The Warhammer 40,000 names, symbols, and trademarks belong to
+Games Workshop. The wh40k-icon project's README explicitly notes
+this; we operate under the same fair-use understanding.
+
+Symbols sourced from this set:
+
+| Symbol slot | upstream SVG |
+| --- | --- |
+| `aquila` | `imperial-aquila.svg` |
+| `palatine_aquila` | `palatine-aquila.svg` |
+| `inquisition_i` | `inquisition-03.svg` |
+| `inquisition_rosette` | `inquisition-ordo-malleus.svg` |
+| `mechanicus_cog` | `adeptus-mechanicus.svg` |
+| `adeptus_arbites` | `adeptus-arbites.svg` |
+| `adepta_sororitas` | `adepta-sororitas.svg` |
+| `adeptus_custodes` | `adeptus-custodes.svg` |
+| `astra_militarum` | `astra-militarum.svg` |
+| `adeptus_ministorum` | `adeptus-ministorum.svg` |
+| `adeptus_terra` | `adeptus-terra.svg` |
+
+Each `symbols/<name>/source.svg` is the unmodified upstream file;
+`canonical.png` is rasterized at 512px via Inkscape. To update,
+re-download the upstream SVG into `source.svg`, run:
+
+    inkscape source.svg --export-type=png --export-filename=canonical.png \
+                        --export-width=512 --export-background-opacity=0
+
+Pending symbols (metadata declared but no canonical sourced yet):
+
+- `cult_imperialis_flame` — no direct match in the wh40k-icon set.
+  Operator option: drop in a custom flame SVG, or use
+  `game-icons.net/flame.svg` (CC-BY 3.0) as an interim canonical.
+- `skull_laurel` — no direct match. Could be composed from
+  game-icons `crowned-skull.svg` + `laurels.svg`.
+
 ## Adding a new symbol
 
 1. Create `symbols/<new_name>/`.

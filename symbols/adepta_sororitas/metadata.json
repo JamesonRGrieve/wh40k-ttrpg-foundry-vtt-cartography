@@ -1,0 +1,19 @@
+{
+  "name": "adepta_sororitas",
+  "display_name": "Adepta Sororitas (Sisters of Battle)",
+  "default_size_px": 256,
+  "allowed_rotations": [0],
+  "allowed_mirror": true,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "sororitas_pauldron",
+    "convent_archway",
+    "shield_face",
+    "banner_field"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Stylized fleur-de-lys — the militant arm of the Ecclesiarchy. Roughly bilaterally symmetric, mirror permitted."
+}

@@ -1,0 +1,19 @@
+{
+  "name": "adeptus_terra",
+  "display_name": "Adeptus Terra",
+  "default_size_px": 384,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "high_lord_chamber",
+    "imperial_decree_seal",
+    "administratum_chief_office",
+    "throneworld_court"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.82
+  },
+  "notes": "The grand sigil of the Adeptus Terra — Imperial bureaucratic apparatus governing Holy Terra. Highly elaborate; reserve for narratively significant placements (Imperial decrees, throneworld depictions). Threshold 0.82 to accommodate fine internal lines."
+}

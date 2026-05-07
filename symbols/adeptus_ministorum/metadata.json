@@ -1,0 +1,20 @@
+{
+  "name": "adeptus_ministorum",
+  "display_name": "Adeptus Ministorum (Ecclesiarchy)",
+  "default_size_px": 256,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "chapel_apse_back",
+    "altar_face",
+    "preacher_robe",
+    "votive_panel",
+    "cathedral_door_keystone"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.82
+  },
+  "notes": "Stylized I-pillar with a central skull medallion and Aquila wings — the formal Ecclesiarchy sigil. Distinct from cult_imperialis_flame which is a more generic Imperial Cult flame motif. Threshold 0.82 because the central skull's fine detail drifts under scaling."
+}

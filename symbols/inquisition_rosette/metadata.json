@@ -1,0 +1,19 @@
+{
+  "name": "inquisition_rosette",
+  "display_name": "Inquisitorial Rosette",
+  "default_size_px": 256,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "rosette_badge",
+    "warrant_seal",
+    "inquisitor_chest_centerpiece",
+    "warrant_document_header"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.82
+  },
+  "notes": "The elaborate Inquisitorial seal — central skull medallion flanked by Aquila wings, mounted on the stylized I, with Ordo (here Malleus) sub-iconography. This is the ROSETTE proper — distinct from inquisition_i which is the bare I-glyph. Threshold 0.82 because the canonical has many fine internal lines that drift slightly under JPEG/scaling."
+}
