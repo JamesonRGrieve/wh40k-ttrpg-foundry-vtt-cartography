@@ -463,6 +463,395 @@ full-body. Output naming: `<name>.png` for portrait,
 
 ---
 
+## 2026-05-07 — Session checkpoint (descriptive)
+
+End-of-session state. The next operator picks up here. Wins and
+fails enumerated in detail; do not assume anything is "obviously
+working" without re-running it.
+
+### Where we are
+
+Three asset-generation pipelines are wired end-to-end and produce
+real artifacts on the ComfyUI server, but **the symbology approach
+underneath them is architecturally wrong** and needs to be replaced
+before any of the rendered output is shipped to players. Specifically,
+the symbol-compose pipeline pastes flat black SVG canonicals on top
+of the diffusion render (literal compositing), which is acceptable
+for diagrammatic / quick-reference output but visually wrong for the
+intended use case: the canonical is supposed to GUIDE the diffusion
+to render iconography as scene-integrated material (brass relief on
+stone, embroidered banner, painted insignia on armor). The fix is
+ControlNet structural guidance — all required ComfyUI nodes are
+installed on the server (`ControlNetLoader`, `CannyEdgePreprocessor`,
+`LineArtPreprocessor`, `ControlNetApplyAdvanced`, `Canny`,
+`InpaintModelConditioning`, `VAEEncodeForInpaint`,
+`DifferentialDiffusion`, `SetLatentNoiseMask` — verified) but the
+workflow JSON is not built and the driver's compose step is not
+rewired. This is the single most important remaining task.
+
+The multi-deck UX helper is also in a bad state: the input it expects
+is a fully-detailed hand-painted ship layout (the operator's existing
+`spacecraft_default_quantized_v2.png`), and the script adds openings
+to it. The shipped deliverables under
+`_deliverables/08_multi_deck/` are accordingly MS-Paint-quality
+doodles (the operator's words, but accurate). The right design is
+to start from a clean SHELL (outer wall + bare floor) and add
+deck-specific architecture programmatically.
+
+### Pipeline state, line by line
+
+**Pipeline 0 — battlemap base layer (LANDED, deploy-ready).**
+Floor-only mode (`interior --style <archetype> --floor-only`)
+produces clean tileable floor textures across 10/10 archetypes at
+seed 42. Round 3 + 4 of the iteration log above documents the
+findings. The operator's "all single rooms / all square" critique
+was answered by the multi-room floor-plan pivot: `make-floorplan`
+generates layouts with multiple rooms + corridors + doorways at any
+aspect ratio, and `spacecraft --style <archetype>` flows archetype
+floor textures through the regional-conditioning workflow. POC
+`hab-3room-corridor` rendered at 1792×1024 with three rooms,
+central corridor, three doorways, and pixel-aligned walls-only
+foreground. The multi-room POC is **the strongest deliverable in
+this session** — open `_deliverables/03_battlemap_multi_room/` for
+the layout → base → walls → composed walkthrough.
+
+**Pipeline 1 — stamp variants (LANDED, two paths).**
+- Geometric rotation (`rotate --method geometric`): pure PIL, no GPU.
+  Tested on the 2m932e radar console for south/east/west. Pixel-
+  perfect, deterministic, alpha preserved, bbox trimmed to match
+  extractor tightness. Use this path for any top-down stamp.
+- Condition variants (`condition --variants damaged …`): Flux img2img
+  via a CLIENT-PATCHED template. Successfully produced a damaged
+  radar console (rust streaks, cracked screen, same subject). Two
+  failure modes burned along the way are documented below; the
+  current code applies both fixes.
+
+**Pipeline 2 — character portraits (LANDED, but symbol step BROKEN).**
+The 8 class profiles (Inquisitor / Acolyte / Tech-priest / Guardsman
+/ Preacher / Astropath / Hive-ganger / Civilian) each declare a
+prompt template plus per-class symbol placements
+(Inquisitor → rosette on chest, Tech-priest → cog, etc).
+Per-slot dimensions render at 768×1024 / 768×1280 / 768×1536. The
+**token output works** — every portrait emits a 1:1 512×512 crop
+from the head/shoulders region using TOKEN_CY_FRAC = 0.30 / 0.20 /
+0.13 for bust / three-quarter / full-body, naming convention
+`<name>.png` + `<name>_token.png`, sidecar JSON records the crop
+box.
+
+**The Inquisitor POC portrait does NOT visibly show a rosette.**
+The driver's compose step pasted the rosette canonical at the
+declared chest anchor, but on the actual rendered image the result
+is a small dark blot on the lower armor that does not read as an
+Inquisitorial seal. Two things broke at once: (a) the symbol size
+default is too small for a chest-centerpiece role (size_label
+`medium` produces a 138-px rosette on a 768-wide canvas — probably
+needs `large` or `xlarge`), and (b) the literal-paste approach
+itself is wrong (the rosette should appear AS METAL ARMOR RELIEF or
+EMBROIDERED ROBE EMBLEM with proper light/shadow integration, not
+as a 2D black silhouette glued onto the painting). Fix (a) tunes
+sizing; fix (b) is the ControlNet rebuild.
+
+**Pipeline 3 — scene pictures (LANDED, same broken symbol step).**
+The chapel POC (`_deliverables/05_scene_pictures/district_4_chapel.png`)
+is recognizable as a 40K chapel — pews, candles, arches, dramatic
+lighting, painterly oil-painting style. The diffusion render itself
+is operator-acceptable. The compose step pasted a literal black-and-
+white Aquila on the apse wall and a literal black-and-white
+Adeptus Ministorum sigil on the lectern. They are flat SVGs, not
+brass reliefs or banners. Same fix as portraits: ControlNet
+structural guidance. Until that's done, the symbology path of this
+pipeline is unfit for player-facing handouts.
+
+**Pipeline X — multi-deck UX helper (LANDED, BAD DESIGN).**
+`make_deck_variants.py` takes a layout PNG and emits N copies with
+optional openings. The current script adds without removing, and
+the only test input in the vault is the already-fully-detailed
+`spacecraft_default_quantized_v2.png` (cockpit windscreen + ramp +
+chair + viewport, all hand-painted). The "decks" therefore all
+contain the source's interior architecture plus an extra colored
+rectangle each. Outputs in `_deliverables/08_multi_deck/` are
+accurately described as MS Paint doodles. The right design has
+two changes:
+1. A `strip-to-shell` mode that takes any layout PNG and outputs
+   only the outer hull (wall + bare floor, all interior detail
+   removed).
+2. Deck-specific architectural builders (programmatic, like the
+   `make-floorplan` presets but for ship hulls) — proposed names
+   `ship-bridge`, `ship-engineering`, `ship-barracks`,
+   `ship-cargo`. Each starts from the canonical shell, paints in
+   its specific interior (reactor well, bunk rows, console
+   horseshoe, container grid), and shares the outer wall pixel-
+   perfect across decks.
+3. Render each deck through `spacecraft --style <texture>` to
+   produce actual rendered battlemaps, and ship THOSE as the
+   deliverable — not the raw doodle inputs.
+
+### Symbology — what's wrong and what's right
+
+**Wrong (current):**
+1. Driver renders the scene with anti-symbol negatives — Flux is
+   forbidden from drawing Aquila / Inquisition / Mechanicus etc.
+2. Driver pastes the canonical PNG onto the rendered image at the
+   declared anchor with full alpha.
+3. Validator runs canny-IoU between the cropped composite region
+   and the canonical (now alpha-masked, so scene edges through the
+   canonical's transparent regions don't pollute the score).
+
+The output: a flat 2D black silhouette of the canonical sitting on
+top of the diffusion render. Visually wrong: the Aquila on a chapel
+apse should look like cast brass relief with light catching the
+high points; the Inquisitorial rosette on armor should look like
+forged metal inset into the carapace, not a sticker.
+
+**Right (to build):**
+1. Driver renders the scene with anti-symbol negatives (same as
+   today).
+2. For each declared symbol anchor, driver emits a GUIDE IMAGE: a
+   black-on-white outline of the canonical at the anchor's
+   bounding-box position on a transparent canvas matching the
+   render's dimensions.
+3. New ComfyUI workflow `ScenePictureControlNetV1.json` runs
+   img2img on the rendered scene with the guide image fed through
+   `CannyEdgePreprocessor` (or `LineArtPreprocessor` for cleaner
+   outlines) → `ControlNetApplyAdvanced` to a Flux-compatible
+   ControlNet model.
+4. Per-anchor prompt augmentation: "brass relief sculpture of an
+   Imperial Aquila on the chapel apse wall, weathered patina,
+   candlelight catching the high points" — the prompt drives the
+   MATERIAL, the ControlNet locks the SHAPE.
+5. Re-validation: canny-IoU between the rendered region and the
+   canonical (alpha-masked). Should be HIGHER than the literal-
+   paste version because ControlNet preserves topology while the
+   diffusion fills in proper material integration.
+
+This needs (a) a new workflow JSON, (b) driver changes to emit
+guide images per anchor, (c) replacement of `compose_symbols()` in
+the symbol-rendering path of generate_scene_picture.py and
+generate_character_portrait.py.
+
+The raw paste path is still useful for diagrammatic output (sidebar
+faction badges, journal entry icons, quick-reference handouts) and
+should be kept as a separate `--symbol-style flat` mode. The
+default for scenes/portraits should be `--symbol-style integrated`
+(the new ControlNet path).
+
+### Wins (concrete and verifiable)
+
+1. **Floor-only canonical interior recipe shipped.** 10/10 archetypes
+   render clean tileable floors at seed 42. Documented in
+   `_deliverables/02_battlemap_floor_only/` with 5 representative
+   samples; the full sweep is at `battlemaps/qa/round3_floor/`.
+2. **Multi-room floor plans work end-to-end.** 6 presets
+   (`hab-2room`, `hab-3room-corridor`, `tunnel-junction`,
+   `chapel-nave-with-apse`, `industrial-bay`, `archive-stacks-grid`)
+   all produce correct canonical-color layouts. POC hab rendered
+   through spacecraft workflow with archetype floor texture and
+   walls-only foreground; pixel-aligned for Foundry stack use.
+   Open `_deliverables/03_battlemap_multi_room/` to see the
+   layout → base → walls → composed walkthrough.
+3. **Symbol library (11 canonicals) sourced + validated.** All 11
+   load via `symbol_compose.load_symbol()`, rasterize correctly at
+   512px, and pass the validate-all sanity check. End-to-end
+   smoke test composited Aquila + Rosette + Mechanicus Cog with
+   IoU 0.996 / 0.974 / 0.984. Source: Certseeds/wh40k-icon under
+   CC-BY-NC-SA 4.0; bundled at
+   `symbols/_source/wh40k-icon/LICENSE_CC_BY_NC_SA_V4_0.md`.
+4. **State classifier.** CLIP-ViT-L-14 zero-shot with strict
+   damage+activation gating lifted vault state coverage from 25%
+   to 78.5% across 615 stamps. 326 new state values written, 157
+   existing preserved, 132 left null on low confidence. Spot-check
+   accuracy ~75-85% on the 4 samples reviewed.
+5. **Stamp rotational variants — geometric path.** Pure PIL, no
+   GPU. South / east / west of the radar console produced cleanly
+   with alpha preservation and bbox trim.
+6. **Stamp condition variant — img2img path.** Damaged radar
+   console rendered correctly after two failed iterations (root
+   causes documented in fails section).
+7. **Token cropping for actor portraits.** Foundry actor-token
+   convention working; 1:1 512×512 crop from head/shoulders region
+   per-slot. Sidecar JSON records crop box for reproducibility.
+8. **Anti-symbol negatives in diffusion prompts WORK.** Flux did
+   NOT draw mangled Aquilae / cogs / fleur-de-lys in any of the
+   chapel / inquisitor renders. The negative prompt list at
+   `SCENE_NEG_T5` / `PORTRAIT_NEG_T5` is effective. This is a
+   prerequisite for the ControlNet rebuild — the diffusion stays
+   "blank" where we want to stamp/composite the canonical.
+
+### Fails (concrete, with root cause)
+
+1. **Symbology pasted instead of integrated.** This is THE failure
+   of the session, called out explicitly by the operator. The
+   chapel Aquila is a flat black SVG glued onto stained glass.
+   The Inquisitor's rosette is a small dark blot on lower armor
+   that doesn't read as an Inquisitorial seal. Root cause: I built
+   the simplest thing (literal alpha-composite of canonical) when
+   the spec required structural guidance to render iconography in
+   scene material. Fix: ControlNet pipeline (described above).
+
+2. **Multi-deck deliverables are MS Paint doodles.** The "decks"
+   in `_deliverables/08_multi_deck/` are the same fully-detailed
+   hand-painted spacecraft layout with one extra colored rectangle
+   added per deck. Not real deck-specific architecture. The
+   operator was direct about this, accurately. Root cause: the
+   `make_deck_variants.py` script takes a layout PNG and adds
+   openings; the only test input was a fully-detailed single-deck
+   layout, and the script adds without removing. Fix: programmatic
+   ship-deck presets (build to come) + run them through the
+   spacecraft workflow before shipping. Tasks 23, 24 are queued
+   for this work.
+
+3. **Inquisitor portrait does not visibly show the rosette.** The
+   compose step ran (sidecar JSON records the placement at
+   x=315, y=565, size=138, IoU 0.632 FLAG), but on the actual
+   image the rosette is a small dark blot on the lower armor — not
+   visually a seal. Two interacting causes: (a) symbol size too
+   small for a chest centerpiece role on a 768×1024 portrait, and
+   (b) the literal-paste approach doesn't read as armor inlay even
+   when the silhouette is correct.
+
+4. **Symbol IoU validator over-flags symbols with sparse internal
+   alpha.** Rosette and Adeptus Ministorum both have lots of
+   negative space inside the symbol's outer outline. When
+   composited over a busy scene, the underlying scene's edges leak
+   through these negative-space regions and tank the IoU score.
+   The chapel POC's first run flagged both at 0.70 / 0.60; after
+   the alpha-mask fix to `_canny_iou()`, re-validation came back
+   at 0.942 / 0.887. But for symbols with truly sparse internal
+   alpha (the rosette case in the inquisitor portrait, IoU 0.632),
+   the alpha-mask helps but doesn't fully solve it. Fix candidates:
+   per-symbol threshold tuning, ERODED alpha mask (only score the
+   "thick" parts of the canonical), or skip canny-IoU for these
+   symbols and use template-matching instead.
+
+5. **First img2img workflow built from scratch produced noise.**
+   Two iterations of mosaic-noise output. Root cause stack:
+   (a) initial cfg=1.0 was wrong for Chroma (vs the proven
+   txt2img's cfg=3.5); (b) sampler/scheduler were wrong (used
+   euler/simple instead of res_multistep/beta); (c) even with
+   sampler config corrected, hand-built workflow still produced
+   noise — there's something in the saved template (model_sampling
+   node? Chroma-specific Flux quirks?) that the from-scratch JSON
+   missed. **Fix that worked**: load the proven template, patch in
+   LoadImage + VAEEncode, rewire `KSampler.latent_image`, drop
+   `EmptyLatentImage`. Mirror of how `generate_battlemap.py`
+   uses `load_template()` + `set_prompt()` patches.
+
+6. **Stamps under ~512px short-edge under-resolve at Flux's latent
+   scale.** Source stamps are ~128 px; VAE-encoded latent is
+   ~16×16 channels, which is below Flux's effective resolution
+   floor and decodes to garbage. Fix: pre-upscale to 512 px short-
+   edge, white-flatten alpha, run img2img, resize back, restore
+   source's alpha mask. Now the standard path in
+   `_preprocess_for_img2img()`.
+
+7. **Spacecraft floor texture subtler in regional conditioning
+   than standalone.** The hab POC base (`02_base.png`) shows hab
+   floor mottling but it's quieter than the standalone
+   `interior --floor-only --style hab` render. Regional
+   conditioning splits guidance budget across all 5 regions
+   (wall + floor + ramp + windscreen + lighting), so the floor
+   prompt has ~1/5 the effective weight. v2 prompt iteration
+   (front-loaded distinctive nouns, "high contrast" hint) helped
+   but didn't close the gap. Fix candidates: boost the floor
+   conditioning node's strength in the workflow JSON, or accept
+   the ceiling.
+
+8. **Chapel `--floor-only` decorative-trim cosmetic.** Round 4
+   polish reduced but did not eliminate a thin gilded border at
+   top + bottom edges of the chapel floor. The chapel iconography
+   prior is a strong Flux signal that resists prompt suppression.
+   Operator-acceptable; logged as known minor artifact.
+
+9. **No source SVG yet for `cult_imperialis_flame` and
+   `skull_laurel`.** The 11 canonicals from wh40k-icon don't
+   include these two. README documents game-icons.net flame.svg
+   (CC-BY 3.0) as an interim option, or operator-supplied SVGs.
+   Until then, validate-all reports them as MISSING.
+
+10. **Foundry V14 live-scene stackability test still PENDING.**
+    All assets staged at `dh-cartography/battlemaps/hab_3room_*.png`
+    but the operator-UI confirmation hasn't happened. Need to drag
+    base into Background, walls-alpha into Foreground, drop a
+    token, confirm the foreground occludes the token at the right
+    elevation.
+
+### Outstanding work (priority order for next session)
+
+1. **ControlNet symbology pipeline.** Replace the literal-paste
+   path with structural guidance. New workflow file
+   `ScenePictureControlNetV1.json`. Driver changes in
+   `generate_scene_picture.py` and `generate_character_portrait.py`
+   to emit guide images and feed them to the ControlNet apply
+   chain. Re-render the chapel scene with brass-relief Aquila
+   integrated into the apse stone, and the inquisitor portrait
+   with the rosette as armor inlay. Task #25.
+
+2. **Programmatic ship deck layout presets.** Add `ship-bridge`,
+   `ship-engineering`, `ship-barracks`, `ship-cargo` to
+   `FLOORPLAN_PRESETS` with shared outer hull dimensions and
+   deck-specific interior architecture (reactor well, bunk rows,
+   console horseshoe, container grid). Task #23.
+
+3. **Render multi-deck through spacecraft workflow.** Each
+   ship-* preset → `spacecraft --style <deck-texture>` → rendered
+   battlemap. Replace `_deliverables/08_multi_deck/` with these
+   rendered PNGs (move the doodles into `_intermediate/` if kept
+   at all). Task #24.
+
+4. **Re-render the 5 deliverable POCs** with the corrected
+   symbology pipeline once it's built (chapel, inquisitor bust,
+   anything else where symbols matter).
+
+5. **Stamp variant accuracy spot-check on diverse subjects.**
+   The radar console damaged variant works, but radar consoles
+   are detail-rich. Test on softer subjects (chair, parchment
+   document, soft fabric banner) — different denoise strengths
+   may be needed per subject class.
+
+6. **Symbol sources for `cult_imperialis_flame` and
+   `skull_laurel`** — operator-supplied or game-icons.net fallback
+   approved.
+
+7. **Foundry V14 live-scene test** — assets are staged; needs
+   ~5-min operator UI session.
+
+8. **Symbol IoU validator for sparse-alpha symbols** — eroded
+   mask or template-matching path. Low priority compared to the
+   ControlNet rebuild, since the validator is metadata, not
+   gating any actual rendering.
+
+9. **Stamp generative rotation** (asymmetric subjects). Geometric
+   covers most cases; deferred until needed.
+
+10. **ControlNet OpenPose** for explicit portrait poses, and
+    **IPAdapter face consistency** for recurring NPCs across
+    multiple portraits. Both deferred; the current prompt-only
+    path is operator-acceptable for one-off portraits.
+
+11. **LoRA training** — operator's offered material not used yet.
+    Reserve for after ControlNet path is built and we know what
+    the residual style gap actually is.
+
+### File pointers for the next operator
+
+| Path | Purpose |
+| --- | --- |
+| `generate_battlemap.py` | Battlemap pipeline (floor-only, multi-room, spacecraft regional). |
+| `generate_scene_picture.py` | Pipeline 3 — uses literal paste. Rebuild's symbol step. |
+| `generate_character_portrait.py` | Pipeline 2 — uses literal paste. Rebuild's symbol step. |
+| `generate_stamp_variants.py` | Pipeline 1. Rotation + condition variants both working. |
+| `symbol_compose.py` | Library API + CLI for canonical symbol composite/validate. KEEP for diagrammatic uses; ADD a controlnet-guide-image emit function. |
+| `symbols/<name>/canonical.png` | 11 canonicals validated end-to-end. |
+| `make_deck_variants.py` | BAD DESIGN. Replace with strip-to-shell + ship-deck presets. |
+| `qa_topdown.py` | Floor-only QA harness. Working. |
+| `classify_state.py` | State classifier. Working. |
+| `_deliverables/` | Current shipped artifacts. 08_multi_deck/ is misleading; delete or move to `_intermediate/` when rebuilding. |
+| `workflows/BattlemapInteriorV1.json` | Proven Flux txt2img template. Patch this, don't author from scratch. |
+| `workflows/BattlemapSpacecraft.json` | Proven Flux img2img regional-conditioning template. |
+| `workflows/ScenePictureControlNetV1.json` | TO BUILD. Add Canny → ControlNet apply chain. |
+
+---
+
 ## What's saved on the ComfyUI server
 
 Pulled into `workflows/` from the server's `userdata/workflows/`:

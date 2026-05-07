@@ -5,6 +5,74 @@ Open work, in priority order. Items removed when done. Last refreshed
 
 ## Open
 
+## TOP PRIORITY — Symbology rebuild (ControlNet structural guidance)
+
+The current symbol_compose pipeline pastes flat black SVG canonicals
+on top of the rendered scene. This is wrong for the spec: the
+canonical is supposed to GUIDE diffusion to render the symbol AS
+brass relief, embroidered banner, painted insignia on armor, etc.
+Operator confirmed this in session — the chapel POC has a literal
+SVG glued on, and the inquisitor portrait's rosette doesn't read as
+a seal.
+
+ComfyUI server has all required nodes installed (verified):
+`ControlNetLoader`, `CannyEdgePreprocessor`, `LineArtPreprocessor`,
+`ControlNetApplyAdvanced`, `Canny`, `InpaintModelConditioning`,
+`VAEEncodeForInpaint`, `DifferentialDiffusion`, `SetLatentNoiseMask`.
+
+Build:
+1. New workflow `workflows/ScenePictureControlNetV1.json` with the
+   Canny → ControlNetApplyAdvanced chain layered on the proven
+   txt2img template.
+2. Driver helper that emits a guide image (black canonical outline
+   on transparent canvas at the anchor's bbox position) for each
+   declared symbol.
+3. Replace `compose_symbols()` calls in
+   `generate_scene_picture.py` and `generate_character_portrait.py`
+   with the controlnet-guided render path. Keep the literal-paste
+   path available as `--symbol-style flat` for diagrammatic uses
+   (sidebar badges, journal icons); make `--symbol-style integrated`
+   the default for scenes/portraits.
+4. Per-anchor prompt augmentation: the operator declares a material
+   hint per anchor (e.g. `aquila:apse_back,large,brass-relief` or
+   `inquisition_rosette:chest_center,large,armor-inlay`); the
+   driver inserts that material hint into the prompt for the
+   symbol's region.
+5. Re-render `_deliverables/05_scene_pictures/district_4_chapel.png`
+   and `_deliverables/06_character_portraits/inquisitor_bust.png`
+   with the new pipeline so the Aquila and Rosette appear AS
+   integrated material, not as glued-on SVG.
+
+## HIGH PRIORITY — Multi-deck rebuild
+
+Current `make_deck_variants.py` design is wrong. It takes a fully-
+detailed layout PNG and adds openings; outputs are MS-Paint-quality
+because the input was already a single hand-painted deck.
+`_deliverables/08_multi_deck/` should be deleted from deliverables
+or moved to `_intermediate/`.
+
+Build:
+1. Add `ship-bridge`, `ship-engineering`, `ship-barracks`,
+   `ship-cargo` presets to `FLOORPLAN_PRESETS`. Shared outer hull
+   dimensions across all four; deck-specific interior architecture
+   (reactor well + control panels for engineering, console
+   horseshoe + windscreen for bridge, bunk rows for barracks,
+   container grid for cargo). Use clean rectangular regions in
+   canonical region colors; mirror the precision of the existing
+   `make-floorplan` presets.
+2. Add a deck-specific floor texture entry in
+   `INTERIOR_STYLE_FLOOR_TEXTURES` for each
+   (`ship-bridge` = polished black metal with brass inlays,
+   `ship-engineering` = ferro-grate over reactor coils, etc.).
+3. Render each preset through `spacecraft --style ship-<deck>`
+   to produce the actual battlemaps.
+4. Replace `_deliverables/08_multi_deck/` with the rendered
+   battlemaps, not the layout doodles.
+5. Optionally: a `strip-to-shell` mode on `make_deck_variants.py`
+   that takes ANY layout and outputs just the outer wall + bare
+   floor, so an operator's hand-painted layouts can be re-used as
+   shells for new deck variants.
+
 ## HIGH PRIORITY — Asset generation pipelines
 
 Three pipelines for generating **new** assets (today the vault is purely
