@@ -9,7 +9,7 @@ The image appears to be taken from a top-down perspective, looking down on the c
 
 Overall, the image has a minimalist design, with a focus on the different types of manhole covers."
 tags: [set, four, round, beige-colored, manhole, covers, arranged, grid-like, pattern, plain, light, background]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: ede3f1b1-99fa-5a33-94a1-c8a181ff047e      # UUID linking orientation/state variants of one object
 

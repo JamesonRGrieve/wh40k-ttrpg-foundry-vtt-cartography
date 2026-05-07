@@ -5,7 +5,7 @@
 name: "Rugged Smartphone"
 description: "The image is a line drawing of a rugged smartphone with a rectangular shape and a handle on the top. The phone is placed on a plain, light grey background. On the left side of the image, the phone has a rectangular shape with rounded edges and a textured surface. The text on the phone reads \"WASTE 8315\" and \"MYTOBE\". On the right side of the phone, there is a rectangular shape with rounded edges and a textured surface. The phone appears to be in good condition with no visible damage or wear. The overall design is simple and minimalistic, with no additional details or embellishments."
 tags: [line, rugged, smartphone, rectangular, shape, handle, top, phone, placed, plain, light, background, tech, tech-device]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: c843634f-66b5-5320-8930-cf6cee897261      # UUID linking orientation/state variants of one object
 

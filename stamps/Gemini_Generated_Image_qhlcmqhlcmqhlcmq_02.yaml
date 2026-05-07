@@ -5,7 +5,7 @@
 name: Rectangular Table
 description: "The image is a 3D rendering of a rectangular table with a flat top and four legs. The table appears to be made of wood and has a rectangular shape with rounded edges. On the left side of the table, there is a small drawer with a handle on the right side. The drawer is slightly recessed into the table. The background is a plain beige color. The image is in a sketch-like style, with no shading or shading."
 tags: [rendering, rectangular, table, flat, top, four, legs, wood, has, shape, rounded, edges, furniture, furniture-table]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 70b9bc48-6731-5432-aa84-10cfbf186eff      # UUID linking orientation/state variants of one object
 

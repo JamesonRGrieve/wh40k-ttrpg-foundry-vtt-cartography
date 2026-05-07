@@ -5,7 +5,7 @@
 name: "Round, Beige-Colored Manhole Covers Arranged"
 description: "A set of four round, beige-colored manhole covers arranged in a grid-like pattern on a plain, light grey background. Each cover has a unique design, with a rectangular shape and a flat surface. The covers appear to be made of a similar material, possibly plastic or metal, and have a smooth, polished finish. The edges of the covers are slightly raised, giving them a 3D effect. The overall appearance is simple and minimalistic, with no additional details or embellishments."
 tags: [set, four, round, beige-colored, manhole, covers, arranged, grid-like, pattern, plain, light, background]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: ede3f1b1-99fa-5a33-94a1-c8a181ff047e      # UUID linking orientation/state variants of one object
 

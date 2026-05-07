@@ -5,7 +5,7 @@
 name: Glass Bottles Arranged In A Grid-Like Pattern
 description: "A collection of empty glass bottles arranged in a grid-like pattern on a plain gray background. The bottles are of varying sizes and shapes, with some being larger than others, and some being smaller. The bottles appear to be made of glass and have a smooth, reflective surface. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall mood of the image is simple and minimalistic."
 tags: [collection, empty, glass, bottles, arranged, grid-like, pattern, plain, background, varying, sizes, shapes, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

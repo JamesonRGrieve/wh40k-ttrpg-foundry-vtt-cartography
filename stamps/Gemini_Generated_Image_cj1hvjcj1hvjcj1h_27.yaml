@@ -5,7 +5,7 @@
 name: Notes Arranged In A Scattered Manner
 description: "A collection of handwritten notes arranged in a scattered manner on a plain, light grey background. The notes appear to be of various sizes and denominations, with some overlapping each other. Some of the notes have text written on them, while others are not. The overall style of the image is simple and minimalistic, with clean lines and a focus on the notes. The image is taken from a top-down perspective, looking down on the papers."
 tags: [collection, handwritten, notes, arranged, scattered, manner, plain, light, background, various, sizes, denominations, prop, prop-document]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 9eccd4d3-8f77-5c8a-93b8-019db4b9c86f      # UUID linking orientation/state variants of one object
 

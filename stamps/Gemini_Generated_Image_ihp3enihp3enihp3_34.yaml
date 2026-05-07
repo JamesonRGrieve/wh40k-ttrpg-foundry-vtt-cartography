@@ -5,7 +5,7 @@
 name: "Small, Rectangular Box With A Lid"
 description: "The image is a 3D rendering of a small, rectangular box with a lid on top. The box appears to be made of metal and has a rectangular shape with rounded edges. On the front of the box, there are two triangular warning signs, one on each side, with the word \"Zazzle\" written in bold letters above them. The sign on the left side is slightly larger than the one on the right side, and the sign in the middle is slightly smaller than the one below it. The background is a light beige color. The overall design is simple and minimalistic."
 tags: [rendering, rectangular, box, lid, top, metal, has, shape, rounded, edges, front, there, container, container-crate]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 1a978764-abb1-51a2-8ef5-40ed31e6f558      # UUID linking orientation/state variants of one object
 

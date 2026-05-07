@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design"
 description: "The image is a simple, minimalist design with a light brown background. On the left side of the image, there is a rectangular grid with six equal squares arranged in a grid-like pattern. The squares are evenly spaced and have a smooth, glossy texture. The grid appears to be empty, with no text or images on it. The overall aesthetic is simple and minimalistic, with clean lines and a minimalistic design."
 tags: [simple, minimalist, design, light, background, left, side, there, rectangular, grid, six, equal]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: Circular Ladders In A Simple
 description: "The image is a set of three circular ladders in a simple, minimalist design. The ladders are made of metal and have a smooth, polished finish. They are arranged in a symmetrical pattern, with each ladder slightly overlapping the one below it. The top ladder is slightly larger than the bottom one, and it appears to be empty. The background is a plain, light grey color. The overall aesthetic of the image is clean and minimalistic."
 tags: [set, circular, ladders, simple, minimalist, design, metal, have, smooth, polished, finish, arranged, architecture, architecture-step]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

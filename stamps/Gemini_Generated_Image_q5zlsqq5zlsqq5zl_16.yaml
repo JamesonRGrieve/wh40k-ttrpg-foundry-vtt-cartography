@@ -5,7 +5,7 @@
 name: Cardboard Boxes Containing Various Types
 description: "A set of rectangular cardboard boxes containing various types of food items. The boxes are arranged in a grid-like pattern, with each box containing a different type of food item. The food items include a variety of shapes, sizes, and colors, including squares, rectangles, and rectangles. The background of the image is a plain, light grey color. The image has a minimalist design, with no other elements present. The overall aesthetic is simple and clean, with a focus on the food items."
 tags: [set, rectangular, cardboard, boxes, containing, various, types, food, items, arranged, grid-like, pattern, container, container-crate]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 5000eaee-6c44-5f7c-a078-d9fbd25bc0ff      # UUID linking orientation/state variants of one object
 

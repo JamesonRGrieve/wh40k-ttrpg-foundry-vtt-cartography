@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Designs In A Plain"
 description: "A set of four simple, minimalist designs in a plain, light brown background. The designs are arranged in a horizontal line, with each design having a unique shape and texture. The first design is a simple, cylindrical shape with a flat top and a curved bottom, while the second design is an elongated, straight top with a flat bottom and a straight bottom. The third design is a simple, straight top with a curved top and a flat bottom, and the fourth design is an elongated, straight top with a flat bottom. All four designs have a minimalistic, minimalist aesthetic with clean lines and minimal details. the overall color scheme is neutral, with the exception of the simple lines and shapes."
 tags: [set, four, simple, minimalist, designs, plain, light, background, arranged, horizontal, line, each]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: df070619-ec8a-54fa-ba8b-7ecaabaf9ea1      # UUID linking orientation/state variants of one object
 

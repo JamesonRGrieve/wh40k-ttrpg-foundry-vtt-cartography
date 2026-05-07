@@ -9,7 +9,7 @@ The tiles are arranged in two rows and two columns, with the top row being the m
 
 The image is a simple, minimalist representation of a square or rectangular shape, with no specific type of tile pattern that can be used as a background or texture, making it difficult to distinguish between the two types of tiles."
 tags: [set, four, square, tiles, arranged, grid-like, pattern, plain, background, symmetrical, each, tile]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 1a5d8f12-3844-5170-abd3-122b914e416d      # UUID linking orientation/state variants of one object
 

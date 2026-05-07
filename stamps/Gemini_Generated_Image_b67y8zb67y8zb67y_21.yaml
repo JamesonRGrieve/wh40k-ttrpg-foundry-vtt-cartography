@@ -5,7 +5,7 @@
 name: Wooden Boxes With A Simple
 description: "The image is a set of six isometric illustrations of wooden boxes with a simple, minimalist design. The boxes are arranged in a row on a plain, light grey background. Each box has a rectangular shape with a lid and a handle on top, and each box is slightly tilted to the left, giving a sense of depth and dimension to the image. The boxes appear to be made of a light-colored wood, possibly pine or birch, and have a smooth, polished finish. The illustrations are detailed and realistic, with a focus on the texture and shading of the wood. The overall style of the image is simple and minimalistic, with clean lines and a focus on the natural beauty of the boxes."
 tags: [set, six, isometric, illustrations, wooden, boxes, simple, minimalist, design, arranged, row, plain, container, container-crate]
-orientation: isometric   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 439c9c49-90cf-5313-a2d7-f70ab49a7364      # UUID linking orientation/state variants of one object
 

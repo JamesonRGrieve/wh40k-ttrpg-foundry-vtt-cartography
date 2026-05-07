@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design"
 description: "The image is a simple, minimalist design with a light brown background. In the center of the image, there are three rectangular icons arranged in a grid-like pattern, each containing a different type of tool. The tools include a hammer, a wrench, a screwdriver, and a pair of pliers. The icons are outlined in black and have a simple, minimalist style. The overall aesthetic is simple and minimalistic, with a focus on the tools and their design elements."
 tags: [simple, minimalist, design, light, background, center, there, rectangular, icons, arranged, grid-like, pattern, tool, decor, decor-statue]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

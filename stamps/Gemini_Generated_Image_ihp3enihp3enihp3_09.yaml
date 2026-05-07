@@ -5,7 +5,7 @@
 name: "Elements In A Plain, Light Brown Color"
 description: "The image is a 3D rendering of a set of architectural elements in a plain, light brown color. The elements are arranged in a symmetrical pattern, with each element having a unique design. On the left side of the image, there is a tall, rectangular structure with a lattice-like pattern on the top, while on the right side, there are two smaller, rectangular structures with a similar lattice pattern. The structures appear to be made of a similar material, possibly wood or metal, and have a smooth, polished finish. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [rendering, set, architectural, elements, plain, light, arranged, symmetrical, pattern, each, element, having]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 2565166c-c083-5284-9be7-f61df4435b53      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Bar Stools
 description: "A set of three minimalist bar stools with a simple line drawing style. The stools are arranged in a row, with the largest one in the center and two smaller ones on either side. The background is a plain, light grey color, providing a subtle contrast to the stools. The stools have a modern, minimalist design with clean lines and a simple, minimalist aesthetic. The overall color scheme is neutral, allowing the stools to stand out and be the focal point of the image."
 tags: [set, minimalist, bar, stools, simple, line, style, arranged, row, largest, center, smaller, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 4ef3866d-c7bf-5d52-b2b9-9d5354d003e2      # UUID linking orientation/state variants of one object
 

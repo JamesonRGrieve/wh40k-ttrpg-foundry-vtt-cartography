@@ -5,7 +5,7 @@
 name: Battered Office Chair
 description: "A worn pedestal office chair on a five-pointed caster base, viewed at a slight three-quarter angle from above. Variant of stamp 08 — slightly different scuff pattern, otherwise the same chair."
 tags: [chair, office-chair, caster, pedestal, worn, dented, scuffed, furniture, furniture-chair]
-orientation: isometric   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: aa1e0cf0-4c79-5d95-b09e-e258b4701db3      # UUID linking orientation/state variants of one object
 

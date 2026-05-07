@@ -5,7 +5,7 @@
 name: "Ceiling Tiles"
 description: a set of three different types of ceiling tiles
 tags: [set, different, types, ceiling, tiles, architecture, architecture-surface]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 69f84afe-799a-5b04-997d-eb7461cbe53b
 

@@ -5,7 +5,7 @@
 name: "Stylized, Geometric Structure Consisting Of Multiple Towers"
 description: "A line drawing of a stylized, geometric structure consisting of multiple towers. The towers are arranged in a symmetrical pattern, with each tower having a distinct shape and size. The background is a plain, light grey color, providing a subtle contrast to the intricate details of the towers. The image is a simple, minimalist design, with no additional text or images present. The overall effect is one of sophistication and elegance, with the towers standing out against the plain background."
 tags: [line, stylized, geometric, structure, consisting, multiple, towers, arranged, symmetrical, pattern, each, tower]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 7af792d3-0cde-5175-bf36-cccea4680ebb      # UUID linking orientation/state variants of one object
 

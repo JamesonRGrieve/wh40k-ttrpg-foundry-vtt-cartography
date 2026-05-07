@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design With A Plain"
 description: "The image is a simple, minimalist design with a plain, light brown background. On the left side of the image, there are three identical rectangular boxes arranged in a grid-like pattern, each with a different size and shape. The boxes are drawn in a simple, minimalist style with thin lines, giving them a clean and minimalistic look. The boxes are arranged in two rows, with the top row slightly higher than the bottom row, creating a sense of depth and dimensionality. The top row has a rectangular shape with a flat top and a flat bottom, while the bottom row has a rectangular shape with a flat top and a flat bottom. Each box has a small opening at the top, which could be used as a door or a window. The overall design is simple and minimalistic, with no additional details or embellishments present in the image."
 tags: [simple, minimalist, design, plain, light, background, left, side, there, identical, rectangular, boxes, container, container-crate, door, architecture, architecture-window]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

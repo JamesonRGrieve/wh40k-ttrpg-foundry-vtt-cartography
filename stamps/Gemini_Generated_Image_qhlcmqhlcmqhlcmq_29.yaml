@@ -5,7 +5,7 @@
 name: Blurry
 description: A blurry
 tags: [blurry]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 8a64f7a8-786c-5397-bc14-6886ba0d6cc4      # UUID linking orientation/state variants of one object
 

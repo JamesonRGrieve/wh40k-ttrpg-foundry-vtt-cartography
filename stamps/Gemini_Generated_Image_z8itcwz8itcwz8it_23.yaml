@@ -5,7 +5,7 @@
 name: Rectangular Metal Plates With A Grid Pattern
 description: "A set of three rectangular metal plates with a grid pattern on a plain, light brown background. The plates are arranged in a symmetrical pattern, with each plate having a rectangular shape and a handle on each side. The plates appear to be made of metal with a textured surface, giving them a metallic sheen, and they are outlined in a simple, minimalist design. The plates are arranged in a symmetrical pattern, with the largest plate in the center and two smaller plates on either side. The background is a solid, light brown color, and the overall appearance is simple and minimalistic, with no additional details or embellishments. The image has a minimalist aesthetic, with clean lines and shading that give it a clean and polished look."
 tags: [set, rectangular, metal, plates, grid, pattern, plain, light, background, arranged, symmetrical, each, container, container-tableware]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 547a79ff-e6df-5f3a-8e0e-62a3fb14ef45      # UUID linking orientation/state variants of one object
 

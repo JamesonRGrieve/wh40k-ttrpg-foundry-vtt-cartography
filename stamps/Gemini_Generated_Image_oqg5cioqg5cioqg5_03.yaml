@@ -5,7 +5,7 @@
 name: Coffee Cup And Saucer
 description: The image is a 3D rendering of a coffee cup and saucer. The cup is made of ceramic and has a handle on one side and a spout on the other. It is sitting on a beige-colored coaster with a textured surface. The coffee inside the cup is dark brown and appears to be freshly brewed. The background is plain white.
 tags: [rendering, coffee, cup, saucer, ceramic, has, handle, side, spout, other, sitting, beige-colored, container, container-tableware]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: db21902e-08c7-5c49-8d46-70d31179fcc2      # UUID linking orientation/state variants of one object
 

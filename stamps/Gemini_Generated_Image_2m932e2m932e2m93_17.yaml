@@ -5,7 +5,7 @@
 name: "Beige Metal Locker Pair"
 description: "Same two-door beige metal storage lockers — slightly weathered with scuff marks and edge wear. Damaged variant."
 tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: damaged
 group_id: null
 

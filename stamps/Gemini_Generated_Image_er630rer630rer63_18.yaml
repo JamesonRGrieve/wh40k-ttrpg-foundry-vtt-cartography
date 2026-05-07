@@ -5,7 +5,7 @@
 name: "Medieval Castle, Each"
 description: "A set of three 3D models of a medieval castle, each with a unique architectural design. The castles are arranged in a triangular formation, with the tallest one in the center and the two smaller ones on either side. The castles have spires, towers, and arches, with intricate details and shading that give them a realistic look. The background is a plain, light grey color, providing a subtle contrast to the detailed architecture of the castles. The image has a minimalist aesthetic, with no other elements present in the overall composition."
 tags: [set, models, medieval, castle, each, unique, architectural, design, castles, arranged, triangular, formation]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 03b4faf0-4f04-55e2-8119-a9b7c867200a      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: null
 description: null
 tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: c9e80c77-6192-5ad4-ad78-4f644a6a02d7      # UUID linking orientation/state variants of one object
 

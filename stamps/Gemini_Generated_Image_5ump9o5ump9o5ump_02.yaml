@@ -5,7 +5,7 @@
 name: Cylindrical Object
 description: "The image is a 3D rendering of a cylindrical object with a flat top and a curved bottom. It appears to be made of metal or plastic and has a smooth, shiny surface. The object has a small hole in the center, which could be a screw or a bolt. The edges of the object are slightly curved, giving it a textured appearance. The background is a light beige color, making the object stand out."
 tags: [rendering, cylindrical, object, flat, top, curved, bottom, metal, plastic, has, smooth, shiny]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: west
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

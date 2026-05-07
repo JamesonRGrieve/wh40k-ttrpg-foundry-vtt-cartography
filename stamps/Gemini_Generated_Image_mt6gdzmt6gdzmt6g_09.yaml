@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Illustration Of A Medicine Cabinet"
 description: "A simple, minimalist illustration of a medicine cabinet with multiple compartments. The cabinet has a rectangular shape with a flat top and a flat bottom. The compartments are arranged in a grid-like pattern, with each compartment containing a different type of medicine. The medicine bottles are of various sizes and colors, including white, brown, and black. The cabinet appears to be empty, with no other objects or decorations visible. The background is a simple, neutral color, allowing the focus to remain on the medicine cabinet. The overall style is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [simple, minimalist, illustration, medicine, cabinet, multiple, compartments, has, rectangular, shape, flat, top, container, container-locker, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 9c06ca17-dc9b-50af-ab26-7867bd9675f8      # UUID linking orientation/state variants of one object
 

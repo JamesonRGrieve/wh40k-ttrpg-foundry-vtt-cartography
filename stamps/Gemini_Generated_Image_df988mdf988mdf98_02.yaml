@@ -5,7 +5,7 @@
 name: Rectangular Icons Arranged In A Grid-Like Pattern
 description: "A set of four rectangular icons arranged in a grid-like pattern on a plain, light brown background. The icons appear to be made of a smooth, textured material and have a simple, minimalist design. Each icon is slightly larger than the one before it, creating a sense of depth and dimension. The overall aesthetic of the image is simple and minimalistic, with a focus on the minimalistic design of the icons."
 tags: [set, four, rectangular, icons, arranged, grid-like, pattern, plain, light, background, smooth, textured, decor, decor-statue]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: a6191de3-9729-5129-8a43-fb851291f29f      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Circular Objects Arranged In A Symmetrical Pattern
 description: "A set of four circular objects arranged in a symmetrical pattern on a plain grey background. The objects appear to be made of a light-colored material, possibly plastic or metal, and have a smooth, polished finish. Each object has a unique shape and size, with some having a slightly raised edge and others having a more rounded shape. The overall appearance of the objects is simple and minimalistic, with no additional details or embellishments."
 tags: [set, four, circular, objects, arranged, symmetrical, pattern, plain, background, light-colored, material, possibly]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: bc4b4f77-96e9-5853-b53d-0c4495c9c02c      # UUID linking orientation/state variants of one object
 

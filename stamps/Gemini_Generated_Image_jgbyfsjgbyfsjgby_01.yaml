@@ -5,7 +5,7 @@
 name: "With A Simple, Minimalist Design"
 description: "The image is a digital illustration with a simple, minimalist design. It features a plain, light grey background with a repeating pattern of small, evenly spaced rectangles. The rectangles are arranged in a symmetrical manner, creating a sense of balance and harmony. On the left side of the image, there is a larger rectangle with a smaller rectangle in the center, while on the right side, there are smaller rectangles with a similar pattern. The rectangles appear to be made of wood or metal, with a smooth, polished finish. The overall style of the illustration is simple and minimalistic, with a focus on the geometric shapes and textures of the rectangles."
 tags: [digital, illustration, simple, minimalist, design, features, plain, light, background, repeating, pattern, evenly]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

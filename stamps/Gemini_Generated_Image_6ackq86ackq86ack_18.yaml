@@ -5,7 +5,7 @@
 name: "Identical, Plain, Light Grey Backgrounds Arranged"
 description: "The image is a set of six identical, plain, light grey backgrounds arranged in a grid-like pattern. Each background has a unique, intricate design with a repeating pattern of geometric shapes and lines. The shapes vary in size and shape, with some being larger than others, while others are smaller and more compact. The designs are symmetrical and have a smooth, polished finish. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, six, identical, plain, light, backgrounds, arranged, grid-like, pattern, each, background, has]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: e0f6f4e0-fee9-5ffd-8124-b302fe4ec44b      # UUID linking orientation/state variants of one object
 

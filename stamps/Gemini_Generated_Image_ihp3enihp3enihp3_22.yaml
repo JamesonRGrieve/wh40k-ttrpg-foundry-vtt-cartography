@@ -5,7 +5,7 @@
 name: Folding Chair
 description: "The image is a 3D rendering of a folding chair. The chair is made of metal and has a beige-colored seat and backrest. It has a rectangular shape with a curved backrest and four legs that are slightly tapered at the bottom. The legs are slightly angled outward, giving the chair a modern and minimalist look. The overall design of the chair is simple and minimalistic."
 tags: [rendering, folding, chair, metal, has, beige-colored, seat, backrest, rectangular, shape, curved, four, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

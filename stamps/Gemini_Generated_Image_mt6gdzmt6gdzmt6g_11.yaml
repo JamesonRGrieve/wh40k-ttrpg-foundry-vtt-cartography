@@ -5,7 +5,7 @@
 name: Room Divider With Multiple Panels
 description: "A line drawing of a room divider with multiple panels. The panels are arranged in a grid-like pattern, with each panel having a distinct shape and size. The background is a plain, light brown color, which contrasts nicely with the neutral tones of the panels. The image has a minimalist design, with no additional details or embellishments present. The overall effect is one of sophistication and elegance."
 tags: [line, room, divider, multiple, panels, arranged, grid-like, pattern, each, panel, having, distinct]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 8df72746-64ac-5f00-bf35-caaeeb22df72      # UUID linking orientation/state variants of one object
 

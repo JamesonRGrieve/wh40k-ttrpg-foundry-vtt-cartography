@@ -5,7 +5,7 @@
 name: 3DThe image is a 3DThe image
 description: "The image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a 3D rendering of a setThe image is a 3DThe image is a 3D rendering of a setThe image is a 3D rendering of a set of four different types of plastic packaging design elements arranged in a grid-like material, with a simple, minimalist design elements arranged in a grid-like pattern on a gray background with a gray background with a grid-like texture of a set of four different types of plastic packaging design elements arranged in a grid-like pattern on a plain grey background with a grid-like pattern of a rectangular shape with a simple, minimalist design elements arranged in a grid-like texture of a rectangular shape with a grid-like appearance, with a simple, minimalist, minimalist design elements arranged in a grid-like pattern, featuring three rectangular and rectangular shape that resembles a 3D rendering of a set of four different angles of a rectangular shape that resembles a 3D rendering of three rectangular and rectangular shape with a grid-like texture with a neutral color scheme with a neutral gray color scheme with a grid-like texture, featuring a grid-like pattern on the left side of the image is"
 tags: [dthe, rendering, setthe, set, four, different, types, plastic, packaging, design, elements, arranged]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 9706bf57-3f7d-54e3-a884-8b3d978abbe3      # UUID linking orientation/state variants of one object
 

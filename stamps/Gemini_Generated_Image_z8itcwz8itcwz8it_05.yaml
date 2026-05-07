@@ -5,7 +5,7 @@
 name: Kitchen Table With A Simple Line Drawing
 description: A line drawing of a line drawing of a simple line drawing of a simple line drawing of a line drawing of a kitchen table with a simple line drawing of a simple line drawing of a simple line drawing of a simple line drawing of a kitchen table with a simple line drawing of a simple line drawing of a simple line drawing of a kitchen table with a simple line drawing of a kitchen table with a simple line drawing of a kitchen table with a simple line drawing of a kitchen or dining table with a simple line drawing of a kitchen or dining table with a simple line drawing of a kitchen or dining table with a simple line drawing of a kitchen or dining table with a simple line drawing of a simple line drawing of a kitchen table with a simple line drawing of a kitchen table with a simple line drawing
 tags: [line, simple, kitchen, table, dining, furniture, furniture-table]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 3d1285a8-35d4-56f9-8e1b-2c17bff62d16      # UUID linking orientation/state variants of one object
 

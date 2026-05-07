@@ -5,7 +5,7 @@
 name: Rectangular Doors In A Plain
 description: "A 3D rendering of a set of four rectangular doors in a plain, light grey color. The doors are arranged in a symmetrical pattern, with each door having a unique design and shape. The doors appear to be made of a smooth, textured material, giving them a realistic look. The background is a solid, neutral grey color, providing a subtle contrast to the doors. The overall effect is a simple yet elegant design that could be used as a background or wallpaper."
 tags: [rendering, set, four, rectangular, doors, plain, light, arranged, symmetrical, pattern, each, door]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

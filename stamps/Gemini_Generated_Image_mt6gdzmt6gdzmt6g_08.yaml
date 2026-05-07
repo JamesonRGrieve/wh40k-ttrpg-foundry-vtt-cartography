@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design"
 description: "The image is a simple, minimalist design with a light brown background. In the center of the image, there are three rectangular icons arranged in a grid-like pattern. Each icon is a different type of screwdriver, ranging from small to large, with a pointed tip and a cylindrical body. The icons are outlined in a simple, sans-serif font and are set against a plain, light brown background. The overall aesthetic is simple and minimalistic, with no additional embellishments or details."
 tags: [simple, minimalist, design, light, background, center, there, rectangular, icons, arranged, grid-like, pattern, decor, decor-statue]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

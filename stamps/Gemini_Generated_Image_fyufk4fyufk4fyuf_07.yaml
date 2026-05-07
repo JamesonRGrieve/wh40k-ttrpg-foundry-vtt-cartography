@@ -5,7 +5,7 @@
 name: Square Frame With A Grungy Texture
 description: "A square frame with a grungy texture in a light beige color. The frame is divided into two sections, with the top section being slightly larger than the bottom section. The edges of the frame are slightly worn, giving it a distressed look. The background is a solid beige color, providing a subtle contrast to the lighter tones of the frame. The overall effect is a simple yet elegant design that could be used as a background or wallpaper."
 tags: [square, frame, grungy, texture, light, beige, divided, into, sections, top, section, slightly]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: 94e6ceb2-4ecc-5b1e-b09c-60c12151eb20      # UUID linking orientation/state variants of one object
 

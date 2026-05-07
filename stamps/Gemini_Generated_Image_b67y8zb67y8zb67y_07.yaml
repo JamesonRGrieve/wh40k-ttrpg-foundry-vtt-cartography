@@ -5,7 +5,7 @@
 name: Rectangular Objects With A Simple
 description: "The image is a digital illustration of a set of three rectangular objects with a simple, minimalist design. The objects are arranged in a horizontal line, with the topmost object being the largest and the bottommost being the smallest. Each object has a rectangular shape with a flat top and a flat bottom, creating a symmetrical composition. The background is a plain, light grey color, which contrasts nicely with the neutral tones of the objects. The objects appear to be made of a soft, textured material, possibly linen or cotton, and have a smooth, polished finish. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [digital, illustration, set, rectangular, objects, simple, minimalist, design, arranged, horizontal, line, topmost]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

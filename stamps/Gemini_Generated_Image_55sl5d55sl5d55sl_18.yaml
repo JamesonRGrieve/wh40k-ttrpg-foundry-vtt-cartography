@@ -5,7 +5,7 @@
 name: Wine Bottle
 description: "The image is a 3D rendering of a wine bottle. The bottle is made of glass and has a cylindrical shape with a flat base and a narrow neck. It has a small opening at the top, which is slightly tilted to the side. The body of the bottle is a light brown color and appears to be empty. There is a small white label on the right side of the body, which may be a label or a label holder. The background is a plain beige color."
 tags: [rendering, wine, bottle, glass, has, cylindrical, shape, flat, base, narrow, neck, opening, container, container-vessel]
-orientation: east   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: aa7bc72a-e5b9-5a4a-8c77-bef7d59103a5      # UUID linking orientation/state variants of one object
 

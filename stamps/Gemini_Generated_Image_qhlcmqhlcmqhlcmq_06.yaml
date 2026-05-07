@@ -5,7 +5,7 @@
 name: "With A Simple, Minimalist Design"
 description: "The image is a digital illustration with a simple, minimalist design. It features a plain, light grey background with a subtle texture. On the left side of the image, there are three small, light brown flowers arranged in a symmetrical pattern, each with a unique shape and texture. The flowers appear to be made of a soft, textured fabric, giving them a textured appearance. The overall style of the illustration is simple and minimalistic, with a focus on the delicate beauty of the flowers."
 tags: [digital, illustration, simple, minimalist, design, features, plain, light, background, subtle, texture, left]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 079165c1-013e-5ddd-9c78-190c49670bca      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Open Suitcase
 description: "The image is a digital illustration of an open suitcase. The suitcase is made of metal and has a handle on the top for easy carrying. Inside the suitcase, there are various items such as a hat, a t-shirt, and a pair of shoes. The items are arranged neatly and appear to be of different sizes and colors. The background is plain white."
 tags: [digital, illustration, open, suitcase, metal, has, handle, top, easy, carrying, inside, there, container, container-bag]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 50d0505b-fbb4-537a-833d-d9183aaaf6e8      # UUID linking orientation/state variants of one object
 

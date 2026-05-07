@@ -5,7 +5,7 @@
 name: Rectangular Piece Of Paper
 description: "The image is a rectangular piece of paper with a grid-like pattern on it. The paper appears to be a form or a document, with multiple rows and columns of text. The text is written in a simple, sans-serif font and is in a light beige color. There are two rectangular boxes on the top left corner of the paper, one on the right side and one in the center. On the bottom right corner, there is a small logo or icon that is not clearly visible. The overall design is simple and minimalistic."
 tags: [rectangular, piece, paper, grid-like, pattern, form, document, multiple, rows, columns, text, written, prop, prop-document, decor, decor-statue]
-orientation: east   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 5c67ffad-c752-56c0-bd30-f0d1f3b97e5c      # UUID linking orientation/state variants of one object
 

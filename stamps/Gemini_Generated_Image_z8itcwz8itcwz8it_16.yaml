@@ -5,7 +5,7 @@
 name: "Ladder In A Simple, Minimalist Design"
 description: "A set of three 3D models of a ladder in a simple, minimalist design. The models are arranged in a grid-like pattern, with each model having a distinct shape and size. The first model is a simple, rectangular structure with a flat top and a curved bottom, while the second model is a larger, more ornate structure with a straight top and a flat bottom. Both models have a smooth, polished finish and are outlined in a light brown color. The background is a simple, neutral gray color, providing a subtle contrast to the models. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [set, models, ladder, simple, minimalist, design, arranged, grid-like, pattern, each, model, having, architecture, architecture-step]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

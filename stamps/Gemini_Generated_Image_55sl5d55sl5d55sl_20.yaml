@@ -5,7 +5,7 @@
 name: Empty Beer Bottles And Glasses Arranged
 description: "The image is a collection of multiple empty beer bottles and glasses arranged in a grid-like pattern on a plain, light grey background. The bottles are of different sizes and shapes, with some being tall and others being short. The glasses are also tall and cylindrical in shape, with a smooth, reflective surface. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall color scheme is neutral, with the bottles being the main focus of the image."
 tags: [collection, multiple, empty, beer, bottles, glasses, arranged, grid-like, pattern, plain, light, background, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

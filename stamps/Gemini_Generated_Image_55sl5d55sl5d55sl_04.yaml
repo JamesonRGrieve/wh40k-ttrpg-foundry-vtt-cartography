@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Composition With A Plain"
 description: "The image is a simple, minimalist composition with a plain, light brown background. The image is composed of multiple rectangular frames arranged in a symmetrical pattern, creating a sense of depth and dimension. The frames are evenly spaced and have a smooth, glossy finish. The overall aesthetic of the image is minimalistic and clean, with a focus on the simple yet elegant design of the frames. The image appears to be taken from a top-down perspective, looking down on the frames."
 tags: [simple, minimalist, composition, plain, light, background, composed, multiple, rectangular, frames, arranged, symmetrical]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 3a61f739-36cd-596c-a51a-f37ff0e217b0      # UUID linking orientation/state variants of one object
 

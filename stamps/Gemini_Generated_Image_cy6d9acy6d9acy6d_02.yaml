@@ -5,7 +5,7 @@
 name: "Circular, Ornate Designs In A Simple"
 description: "A set of four circular, ornate designs in a simple, minimalist style. The designs are arranged in a grid-like pattern, with each design having a unique shape and texture. The first design is a simple, rectangular shape with a flat top and a curved bottom, while the second design is an ornate, circular shape with a flat top and a curved bottom. The third design is a simple, rectangular shape with a flat top and a flat bottom, and the fourth design is an ornate, circular shape with a flat top and a flat bottom. All four designs have a neutral color palette and are set against a plain, grey background. The overall aesthetic of the image is simple and minimalistic, with a focus on the intricate details of the designs."
 tags: [set, four, circular, ornate, designs, simple, minimalist, style, arranged, grid-like, pattern, each]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 4f714026-ea87-5240-b813-6c571b6ef2c3      # UUID linking orientation/state variants of one object
 

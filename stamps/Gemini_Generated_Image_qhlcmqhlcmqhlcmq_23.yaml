@@ -5,7 +5,7 @@
 name: "Rectangular Boxes With Lids, Arranged"
 description: "A set of three rectangular boxes with lids, arranged in a symmetrical pattern on a plain, light brown background. The boxes appear to be made of metal and have a smooth, polished finish. Each box has a handle on the top for easy carrying. The boxes are symmetrical in shape, with the top box being slightly larger than the bottom one. The overall aesthetic of the image is simple and minimalistic, with no additional details or embellishments present."
 tags: [set, rectangular, boxes, lids, arranged, symmetrical, pattern, plain, light, background, metal, have, container, container-crate]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

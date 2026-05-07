@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Illustration With A Plain"
 description: "The image is a simple, minimalist illustration with a plain, light brown background. In the center of the image, there are three rectangular frames arranged in a grid-like pattern, each with a distinct shape and size. The frames appear to be made of a smooth, textured material, possibly paper or fabric, and have a slightly worn, aged look to them. The edges of the frames are slightly raised, giving them a 3D appearance. The overall style of the illustration is simple and minimalistic, with no additional details or embellishments present."
 tags: [simple, minimalist, illustration, plain, light, background, center, there, rectangular, frames, arranged, grid-like, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: null
 

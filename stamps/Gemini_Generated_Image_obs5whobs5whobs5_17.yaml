@@ -5,7 +5,7 @@
 name: Objects Arranged In A Symmetrical Manner
 description: "A line drawing of various objects arranged in a symmetrical manner on a plain, light grey background. The objects include a desk, a chair, a book, and a map. The desk and chair are drawn in a simple, minimalist style with clean lines and shading. The map is detailed and shows various geographical features such as mountains, rivers, and cities. The objects are arranged in an orderly fashion, creating a sense of balance and harmony. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [line, various, objects, arranged, symmetrical, manner, plain, light, background, include, desk, chair, furniture, furniture-chair, furniture-table, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

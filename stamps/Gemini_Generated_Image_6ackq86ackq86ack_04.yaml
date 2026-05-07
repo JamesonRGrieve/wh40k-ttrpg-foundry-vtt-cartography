@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design"
 description: "The image is a simple, minimalist design with a neutral color palette. It features a square-shaped frame with a grid-like pattern on each side, creating a symmetrical and elegant look. The frame is made up of multiple panels, each with a distinct rectangular shape and a horizontal line running through the center. The panels are evenly spaced and have a smooth texture, giving the image a polished and polished appearance. The overall design is simple yet elegant, with a focus on the geometric shapes and lines that create a sense of balance and symmetry."
 tags: [simple, minimalist, design, neutral, palette, features, square-shaped, frame, grid-like, pattern, each, side]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Designs On A Plain"
 description: "A set of four simple, minimalist designs on a plain, light brown background. Each design is composed of a simple, yet elegant, feather-like structure with a cross in the center. The designs are arranged in a symmetrical pattern, creating a sense of balance and harmony. The overall aesthetic of the image is minimalistic and contemporary, with a focus on the intricate details of each design."
 tags: [set, four, simple, minimalist, designs, plain, light, background, each, design, composed, yet]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: c7923366-32bf-519b-b487-fda0f7dabdca      # UUID linking orientation/state variants of one object
 

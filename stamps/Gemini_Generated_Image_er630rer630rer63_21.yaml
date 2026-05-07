@@ -5,7 +5,7 @@
 name: Screenshot
 description: A screenshot
 tags: [screenshot]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 7ad680d1-5d58-53da-afd3-0afb471fa831      # UUID linking orientation/state variants of one object
 

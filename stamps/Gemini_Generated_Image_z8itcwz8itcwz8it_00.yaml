@@ -5,7 +5,7 @@
 name: "Open, Rectangular Box"
 description: "The image is a 3D rendering of an open, rectangular box with a lid and a handle on the left side. The box appears to be made of metal and has a smooth, polished finish. The lid is slightly open, revealing the interior of the box. On the right side of the image, there is a smaller rectangular box with a handle on the top. The background is a plain, light grey color. The overall design is simple and minimalistic, with no additional details or embellishments."
 tags: [rendering, open, rectangular, box, lid, handle, left, side, metal, has, smooth, polished, container, container-crate]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 7486f6d4-608a-5774-ac0d-ac181c022ff1      # UUID linking orientation/state variants of one object
 

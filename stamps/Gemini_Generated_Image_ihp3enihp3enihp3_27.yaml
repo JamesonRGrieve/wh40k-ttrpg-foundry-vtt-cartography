@@ -5,7 +5,7 @@
 name: Chairs Arranged In A Row
 description: "A 3D rendering of a set of six chairs arranged in a row on a plain grey background. The chairs are made of a light-colored material and have a simple, minimalist design. Each chair has a rectangular shape with four legs and a flat backrest. The seats are arranged in two rows, with the top row slightly higher than the bottom row. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [rendering, set, six, chairs, arranged, row, plain, background, light-colored, material, have, simple, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

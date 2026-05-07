@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design With A Plain"
 description: "The image is a simple, minimalist design with a plain, light grey background. In the center of the image, there is a rectangular frame with a gun inside it. The gun appears to be a modern assault rifle with a long barrel and a scope. The frame is outlined in black and has a simple, minimalist style. The gun is positioned in the center of the frame, with the barrel pointing towards the right side of the image. The background is a solid, light grey color, providing a subtle contrast to the gun and frame. The overall aesthetic is simple and minimalistic, with a focus on the gun and the background."
 tags: [simple, minimalist, design, plain, light, background, center, there, rectangular, frame, gun, inside, container, container-barrel, weapon, weapon-ranged]
-orientation: east   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

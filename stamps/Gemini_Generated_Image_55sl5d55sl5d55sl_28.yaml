@@ -5,7 +5,7 @@
 name: Computer Monitor With A Desk On Top
 description: "The image is a digital illustration of a computer monitor with a desk on top of it. On the desk, there are two papers, a pen, and a tablet. The papers appear to be a document or a document of some kind, with some text written on them. The pen is placed next to the papers, and the tablet is on the right side of the monitor. The background is a light grey color. The image is in a sketch-like style, with a simple and minimalistic design."
 tags: [digital, illustration, computer, monitor, desk, top, there, papers, pen, tablet, document, text, furniture, furniture-table, prop, prop-document, prop-writing, tech, tech-screen, tech-device]
-orientation: east   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

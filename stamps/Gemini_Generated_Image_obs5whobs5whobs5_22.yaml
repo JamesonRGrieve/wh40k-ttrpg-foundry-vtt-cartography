@@ -5,7 +5,7 @@
 name: Transparent Background With A Transparent Background
 description: The image is a photograph of a transparent background with a transparent background is a
 tags: [photograph, transparent, background]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

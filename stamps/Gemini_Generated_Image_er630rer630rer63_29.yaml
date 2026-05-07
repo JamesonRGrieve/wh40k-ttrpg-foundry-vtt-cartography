@@ -5,7 +5,7 @@
 name: Hexagonal Structures Made Up Of Small
 description: "A set of four hexagonal structures made up of small, rectangular blocks arranged in a symmetrical pattern on a plain, light grey background. The structures appear to be made of a light-colored material, possibly paper or fabric, and have a smooth, textured surface. Each structure has a unique shape and size, with some having a slightly raised edge, while others have a more rounded shape. The overall appearance of the image is simple and minimalistic, with no additional details or embellishments present."
 tags: [set, four, hexagonal, structures, rectangular, blocks, arranged, symmetrical, pattern, plain, light, background, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: eb2c0d27-421d-5af7-b59e-c7bd6d8b2471      # UUID linking orientation/state variants of one object
 

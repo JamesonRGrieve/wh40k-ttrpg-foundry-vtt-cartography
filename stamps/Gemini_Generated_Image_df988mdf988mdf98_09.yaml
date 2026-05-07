@@ -5,7 +5,7 @@
 name: Rectangular Frames Containing Various Types Of Documents
 description: "A set of four rectangular frames containing various types of documents. The frames are arranged in a grid-like pattern, with each frame containing a different type of document. The documents appear to be of different sizes and shapes, with some overlapping each other. The background is a plain, light brown color, which contrasts nicely with the frames. The overall aesthetic of the image is simple and minimalistic, with a focus on the documents."
 tags: [set, four, rectangular, frames, containing, various, types, documents, arranged, grid-like, pattern, each, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: af858ed9-1342-56f4-a80d-4e20b004dbdb      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Ladder And A Pile Of Rocks
 description: "A set of three simple line drawings of a ladder and a pile of rocks. The ladders are arranged in a triangular formation, with the top ladder slightly higher than the bottom one. The rocks are of varying sizes and shapes, with some being larger than others. The background is a plain, light brown color. The overall style of the image is simple and minimalistic, with no additional details or embellishments."
 tags: [set, simple, line, drawings, ladder, pile, rocks, ladders, arranged, triangular, formation, top, architecture, architecture-step]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 3828272e-c1f8-5657-acf6-ffc2653ada60      # UUID linking orientation/state variants of one object
 

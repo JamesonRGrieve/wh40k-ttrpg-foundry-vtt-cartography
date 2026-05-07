@@ -5,7 +5,7 @@
 name: Circular Frames With A Simple
 description: "A set of four circular frames with a simple, minimalist design. The frames are arranged in a grid-like pattern, with each frame having a unique shape and size. The background is a solid, neutral gray color, providing a subtle contrast to the frames. The frames are outlined in a thin line, giving them a clean and polished look. The overall style of the image is minimalistic and contemporary, with clean lines and a minimalistic aesthetic."
 tags: [set, four, circular, frames, simple, minimalist, design, arranged, grid-like, pattern, each, frame]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 70dff0e3-cb7d-5dca-9328-9d0b2efcfc63      # UUID linking orientation/state variants of one object
 

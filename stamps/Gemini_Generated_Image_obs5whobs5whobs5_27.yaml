@@ -5,7 +5,7 @@
 name: "Plain, Light Grey Background"
 description: "The image is a photograph of a plain, light grey background with a subtle pattern of small, symmetrical shapes. The shapes are arranged in a symmetrical manner, creating a sense of balance and harmony. The image is taken from a top-down perspective, looking down on the plain surface. The overall aesthetic is minimalistic and minimalistic, with no other elements present in the image."
 tags: [photograph, plain, light, background, subtle, pattern, symmetrical, shapes, arranged, manner, creating, sense]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: c44a2bdc-5b90-574f-8e5e-7b0c0b23ab0d      # UUID linking orientation/state variants of one object
 

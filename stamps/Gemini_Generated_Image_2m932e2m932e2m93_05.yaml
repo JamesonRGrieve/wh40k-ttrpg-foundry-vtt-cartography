@@ -5,7 +5,7 @@
 name: "SimpleThe image is a simpleThe image"
 description: The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a 3The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simple illustration of four rectangular
 tags: [simplethe, simple, illustration, four, rectangular]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

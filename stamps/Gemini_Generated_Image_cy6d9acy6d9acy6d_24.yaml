@@ -5,7 +5,7 @@
 name: Wooden Ladder
 description: "The image is a set of four simple line drawings of a wooden ladder. The ladder is drawn in a simple, minimalist style with a light brown color. Each ladder has a rectangular shape with a flat top and four legs. The first ladder is slightly larger than the other two, and the second is slightly smaller than the third. The third ladder is slightly smaller than the fourth ladder. The fourth ladder is shorter than the fifth ladder. All the drawings are outlined in a light beige color and have a smooth, polished finish. The background is a plain, light brown color. The overall aesthetic of the image is simple and minimalistic."
 tags: [set, four, simple, line, drawings, wooden, ladder, drawn, minimalist, style, light, each, architecture, architecture-step]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

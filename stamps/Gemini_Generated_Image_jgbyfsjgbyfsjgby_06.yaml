@@ -5,7 +5,7 @@
 name: Identical Humanoid Figures Standing In A Row
 description: "The image is a 3D rendering of three identical humanoid figures standing in a row, each with a simple, minimalist design. The figures are arranged in a symmetrical pattern, with the tallest figure on the left and the smallest on the right. They are all facing the same direction and appear to be identical in size and shape, with their heads facing the same direction. The background is a plain, light grey color, and the figures are outlined in a simple, minimalist style with no additional details or shading. The figures are positioned in a way that creates a sense of depth and dimensionality, making them stand out against the plain background. The overall aesthetic of the image is minimalistic and minimalistic, with a focus on the individual figures."
 tags: [rendering, identical, humanoid, figures, standing, row, each, simple, minimalist, design, arranged, symmetrical]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 3e39c3a4-b169-5566-a74c-021713274cb6      # UUID linking orientation/state variants of one object
 

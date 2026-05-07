@@ -5,7 +5,7 @@
 name: Jug Or Pitcher On A Transparent Background
 description: "A set of three line drawings of a jug or pitcher on a transparent background. The jug is drawn in a simple, minimalist style with a smooth, polished finish. Each jug has a handle on one side and a spout on the other. The jug appears to be empty, with no contents inside. The background is a simple, neutral color, allowing the jug to stand out. The overall aesthetic of the image is clean and minimalistic."
 tags: [set, line, drawings, jug, pitcher, transparent, background, drawn, simple, minimalist, style, smooth, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 237817a5-67ca-599f-814d-d4d69b0b6789      # UUID linking orientation/state variants of one object
 

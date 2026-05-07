@@ -5,7 +5,7 @@
 name: "Round, Beige-Colored Ladders Arranged"
 description: "The image is a digital illustration of three round, beige-colored ladders arranged in a symmetrical pattern on a plain, light grey background. The ladders are made of metal and have a smooth, polished finish. They are identical in size and shape, with each one slightly overlapping the one below it, creating a sense of depth and dimension. The ladders are positioned in the center of the image, with the larger one on the left and the smaller one on the right. The overall style of the illustration is simple and minimalistic, with no additional details or embellishments present."
 tags: [digital, illustration, round, beige-colored, ladders, arranged, symmetrical, pattern, plain, light, background, metal, architecture, architecture-step]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

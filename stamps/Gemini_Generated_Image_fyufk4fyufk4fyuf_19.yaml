@@ -5,7 +5,7 @@
 name: Rectangular Plastic Containers With Handles
 description: "A set of four rectangular plastic containers with handles, each containing a different type of food. The containers are arranged in a grid-like pattern on a plain, light brown background. Each container has a unique design, with a handle on each side for easy carrying. The containers appear to be made of a durable material, likely plastic, and have a glossy finish. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, four, rectangular, plastic, containers, handles, each, containing, different, food, arranged, grid-like]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 92727d1b-1596-5ea3-8b50-209ef5b3ec01      # UUID linking orientation/state variants of one object
 

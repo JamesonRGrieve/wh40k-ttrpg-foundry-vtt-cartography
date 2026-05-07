@@ -5,7 +5,7 @@
 name: Square Tiles With A Beige Color Scheme
 description: "A set of four square tiles with a beige color scheme, arranged in a grid-like pattern. The tiles appear to be made of a textured material, possibly stone or concrete, and have a smooth, glossy finish. Each tile has a unique pattern of small, evenly spaced rectangles, creating a sense of depth and dimensionality. The tiles are arranged in two rows, with the top row slightly higher than the bottom row. The background is a solid gray color, providing a subtle contrast to the neutral tones of the tiles. The overall aesthetic of the image is simple and minimalistic, with a focus on the textures and patterns of the tiles."
 tags: [set, four, square, tiles, beige, scheme, arranged, grid-like, pattern, textured, material, possibly]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 184219dd-d671-580d-9bfa-a2f3caa9f356      # UUID linking orientation/state variants of one object
 

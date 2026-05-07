@@ -5,7 +5,7 @@
 name: Trash Can
 description: "The image is a digital illustration of a trash can. The trash can is rectangular in shape with a lid on top and two handles on either side. The lid is slightly open, revealing the contents inside. On the front of the trash can, there is a beige background with a black biohazard symbol in the center. The symbol is a triangular shape with two curved lines radiating outwards from it. The overall design is simple and minimalistic."
 tags: [digital, illustration, trash, can, rectangular, shape, lid, top, handles, either, side, slightly]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: Circular Objects With A Simple
 description: "A set of three circular objects with a simple, minimalist design. The objects are arranged in a symmetrical pattern, with each object having a unique shape and texture. The background is a plain, light grey color, providing a subtle contrast to the objects. The objects appear to be made of a sturdy material, possibly wood or metal, and have a smooth, polished finish. The overall style of the image is simple and minimalistic, with no additional embellishments or details."
 tags: [set, circular, objects, simple, minimalist, design, arranged, symmetrical, pattern, each, object, having]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 47532953-2ed7-5f53-b37f-b2df354f0510      # UUID linking orientation/state variants of one object
 

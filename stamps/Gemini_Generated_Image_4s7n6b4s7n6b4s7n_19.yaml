@@ -5,7 +5,7 @@
 name: Desk
 description: "The image is a 3D rendering of a desk with a rectangular top and two drawers on either side. The desk appears to be made of wood and has a light-colored finish. The top of the desk is covered in a rough, textured surface with small, irregularly shaped pieces scattered across it. The pieces are of different sizes and shapes, some are larger and some are smaller, while others are more irregularly shaped. There are also some small, jagged edges on the surface, giving the desk a rough and uneven appearance. The overall style of the image is simple and minimalistic."
 tags: [rendering, desk, rectangular, top, drawers, either, side, wood, has, light-colored, finish, covered, furniture, furniture-table]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 44bd69b8-6c2b-57f3-837b-eb320a7fc9a1      # UUID linking orientation/state variants of one object
 

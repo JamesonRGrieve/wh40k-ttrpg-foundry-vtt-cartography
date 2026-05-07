@@ -5,7 +5,7 @@
 name: Rectangular Metal Door With A Rectangular Shape
 description: "The image is a 3D rendering of a rectangular metal door with a rectangular shape. The door appears to be made of metal and has a textured surface with small holes and rivets. On the left side of the door, there is a handle with a curved handle and a small latch on the right side. The handle is attached to the door with two screws. The latch is also attached to a small hole on the top right corner. The background is a light beige color. The overall design is simple and minimalistic."
 tags: [rendering, rectangular, metal, door, shape, has, textured, surface, holes, rivets, left, side]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

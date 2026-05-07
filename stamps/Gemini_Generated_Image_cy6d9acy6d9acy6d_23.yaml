@@ -5,7 +5,7 @@
 name: "Ladder, Which Is A Type"
 description: "The image is a simple line drawing of a ladder, which is a type of ladder used to climb up and down a hill. The ladder is drawn in a simple, minimalist style with no additional details or shading. It has four steps, each with a handle on the top for easy maneuverability. The ladder is outlined in a light grey color, making it stand out against the plain background. The overall design is simple and minimalistic, with a focus on the ladder's design."
 tags: [simple, line, ladder, which, used, climb, down, hill, drawn, minimalist, style, additional, architecture, architecture-step]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

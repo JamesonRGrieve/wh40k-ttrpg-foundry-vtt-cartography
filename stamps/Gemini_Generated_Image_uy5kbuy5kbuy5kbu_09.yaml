@@ -5,7 +5,7 @@
 name: Open Book On A Wooden Stand
 description: "The image is a 3D illustration of an open book on a wooden stand. The book appears to be a hardcover with a brown ribbon tied around the spine. The pages of the book are filled with text, and the spine is slightly curved. The stand is made of a light-colored wood with a cross-shaped base. The background is a plain beige color. The overall style of the illustration is simple and minimalistic."
 tags: [illustration, open, book, wooden, stand, hardcover, ribbon, tied, around, spine, pages, filled, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: b511137f-189b-5961-a214-10e7f14a2fe4      # UUID linking orientation/state variants of one object
 

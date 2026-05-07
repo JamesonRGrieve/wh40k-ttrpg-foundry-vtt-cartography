@@ -5,7 +5,7 @@
 name: Image
 description: The image
 tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

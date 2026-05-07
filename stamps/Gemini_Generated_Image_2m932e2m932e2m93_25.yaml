@@ -5,7 +5,7 @@
 name: Brown And Yellow Striped Pattern
 description: a brown and yellow striped pattern on a brown background
 tags: [striped, pattern, background]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: west
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 45180b0e-61e8-5a0a-b0f9-ddd60d1744ec      # UUID linking orientation/state variants of one object
 

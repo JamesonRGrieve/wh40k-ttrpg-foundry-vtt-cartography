@@ -5,7 +5,7 @@
 name: Square-Shaped Objects Arranged In A Symmetrical Pattern
 description: "A set of four square-shaped objects arranged in a symmetrical pattern on a plain, light brown background. The objects appear to be made of paper or cardboard and have a simple, minimalist design. Each object has a different shape and size, with some having a rectangular shape and others having a square shape. The objects are arranged in an overlapping manner, creating a sense of depth and dimension. The overall aesthetic of the image is simple and minimalistic, with a focus on the textures and patterns of the objects."
 tags: [set, four, square-shaped, objects, arranged, symmetrical, pattern, plain, light, background, paper, cardboard, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 417482ad-4470-5fa7-997a-e82533145a77      # UUID linking orientation/state variants of one object
 

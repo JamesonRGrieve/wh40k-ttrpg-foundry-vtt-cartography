@@ -5,7 +5,7 @@
 name: "With A Simple, Minimalist Design"
 description: "The image is a digital illustration with a simple, minimalist design. It features a plain, light brown background with a rough, textured surface. On the left side of the image, there is a rectangular frame with a small, square-shaped indentation in the center. The frame is slightly tilted to the right, giving it a sense of depth and dimension. The edges of the frame are slightly frayed, adding texture and depth to the image. The overall style is simple and minimalistic, with a focus on the texture and depth of the background."
 tags: [digital, illustration, simple, minimalist, design, features, plain, light, background, rough, textured, surface]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: null
 

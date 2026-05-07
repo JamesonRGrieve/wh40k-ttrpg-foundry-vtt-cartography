@@ -5,7 +5,7 @@
 name: Rectangular Sink With A Single Faucet
 description: "The image is a 3D rendering of a rectangular sink with a single faucet on top. The sink is made of a light-colored material, possibly stone or porcelain, and has a smooth, polished finish. It has a rectangular shape with a flat bottom and four legs on either side. The legs are slightly curved and appear to be made of metal. There is a small circular drain in the center of the sink, which is likely used to drain water from the faucets. The overall design is simple and minimalistic."
 tags: [rendering, rectangular, sink, single, faucet, top, light-colored, material, possibly, stone, porcelain, has]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: b7ddae20-fc48-5d9f-98eb-99e951c8b2c6      # UUID linking orientation/state variants of one object
 

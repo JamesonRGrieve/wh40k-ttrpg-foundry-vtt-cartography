@@ -5,7 +5,7 @@
 name: And Papers
 description: "The image is a digital illustration of a stack of books and papers. There are three books in total, two of which are open and one is lying on its side. The books appear to be old and worn, with some of the pages appearing to be blank. The papers are scattered around the stack, some overlapping each other. The background is a light beige color. The image is drawn in a sketch-like style, with thin lines and shading to give it a realistic appearance."
 tags: [digital, illustration, stack, books, papers, there, total, which, open, lying, side, old, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: f14d2eef-a3fc-50d0-95a1-56731d421f3f      # UUID linking orientation/state variants of one object
 

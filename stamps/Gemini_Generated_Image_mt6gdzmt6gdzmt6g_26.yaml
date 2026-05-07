@@ -5,7 +5,7 @@
 name: "Panels With A Simple, Minimalist Design"
 description: "A line drawing of a row of rectangular panels with a simple, minimalist design. The panels are arranged in a symmetrical pattern, with each panel slightly overlapping the one below it. The background is a plain, light grey color, providing a subtle contrast to the neutral tones of the panels. The panels have a smooth, polished finish, giving them a polished look. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [line, row, rectangular, panels, simple, minimalist, design, arranged, symmetrical, pattern, each, panel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: edcf5866-3703-5712-a039-402318ffb98c      # UUID linking orientation/state variants of one object
 

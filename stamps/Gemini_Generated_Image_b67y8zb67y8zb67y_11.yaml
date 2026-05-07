@@ -5,7 +5,7 @@
 name: Room Divider
 description: "A 3D rendering of a room divider with a simple line drawing style. The divider is composed of six panels, each with a different width and height, arranged in a symmetrical manner. The panels are made of wood and have a light brown color. The background is a plain, light brown color, which contrasts nicely with the divider. The image has a minimalist design, with no additional details or embellishments present. The overall aesthetic is simple and minimalistic."
 tags: [rendering, room, divider, simple, line, style, composed, six, panels, each, different, width]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: dcb9b5d9-cb4a-50d4-84dc-e7ccbb18eb81      # UUID linking orientation/state variants of one object
 

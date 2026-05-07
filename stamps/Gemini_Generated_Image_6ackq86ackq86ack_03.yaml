@@ -9,7 +9,7 @@ The objects are arranged in two rows, with the top row slightly higher than the 
 
 Overall, the image has a simple, minimalist design with a neutral color palette and no additional details or embellishments."
 tags: [set, four, round, beige-colored, objects, arranged, symmetrical, pattern, plain, light, background, metal]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: ede3f1b1-99fa-5a33-94a1-c8a181ff047e      # UUID linking orientation/state variants of one object
 

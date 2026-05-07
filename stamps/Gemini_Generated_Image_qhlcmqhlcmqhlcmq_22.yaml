@@ -5,7 +5,7 @@
 name: Rectangular Frames With A Simple
 description: "A set of four rectangular frames with a simple, minimalist design. The frames are drawn in a light brown color and have a smooth, polished finish. Each frame has a rectangular shape with a flat top and a flat bottom. The frames are arranged in a symmetrical pattern, with each frame slightly overlapping the one below it. The background is a simple, neutral gray color, providing a subtle contrast to the frames. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, four, rectangular, frames, simple, minimalist, design, drawn, light, have, smooth, polished]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: Rectangular Panels With A Simple
 description: "The image is a 3D rendering of a set of four rectangular panels with a simple, minimalist design. The panels are arranged in a grid-like pattern, with each panel having a unique shape and texture. The panels are made of a light-colored material, possibly wood or metal, and have a smooth, polished finish. Each panel has a rectangular shape with four doors, each with a handle and a latch, and they are outlined in a darker shade of brown. The background is a plain, light grey color, which contrasts nicely with the lighter tones of the panels. The overall aesthetic of the image is simple and minimalistic, with no additional details or embellishments present."
 tags: [rendering, set, four, rectangular, panels, simple, minimalist, design, arranged, grid-like, pattern, each, door]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 5105a25a-7524-5cb8-95a6-b474dd1a55af      # UUID linking orientation/state variants of one object
 

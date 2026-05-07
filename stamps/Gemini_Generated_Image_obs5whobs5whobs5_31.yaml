@@ -5,7 +5,7 @@
 name: "Small, Rectangular Objects Arranged"
 description: "The image is a simple illustration of a collection of small, rectangular objects arranged in a grid-like pattern on a plain, light grey background. The objects appear to be made of a light-colored material, possibly paper or fabric, and are of varying sizes and shapes. They are arranged in an irregularly arranged manner, with some overlapping each other, creating a sense of depth and dimension. Some of the objects have a smooth texture, while others have a more rounded shape. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [simple, illustration, collection, rectangular, objects, arranged, grid-like, pattern, plain, light, background, light-colored, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 3ce2d1da-74a8-56d9-83ba-f464690c73ef      # UUID linking orientation/state variants of one object
 

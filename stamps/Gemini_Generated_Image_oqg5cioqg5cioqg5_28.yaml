@@ -5,7 +5,7 @@
 name: Objects Arranged In A Grid-Like Pattern
 description: "The image is a simple line drawing of various objects arranged in a grid-like pattern on a plain, light grey background. The objects appear to be made of paper or cardboard and are of different sizes and shapes. Some of the objects are rectangular in shape, while others are square in shape. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall color scheme is neutral, with no other elements present in the image."
 tags: [simple, line, various, objects, arranged, grid-like, pattern, plain, light, background, paper, cardboard, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 607cf3da-db0a-5eb2-82f2-909166446115      # UUID linking orientation/state variants of one object
 

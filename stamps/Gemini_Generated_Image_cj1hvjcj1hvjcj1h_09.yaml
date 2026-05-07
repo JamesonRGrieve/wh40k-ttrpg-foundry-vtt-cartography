@@ -5,7 +5,7 @@
 name: Mug With A Handle
 description: "The image is a digital illustration of a mug with a handle on the right side. The mug appears to be old and weathered, with a rough texture on the surface. On the front of the mug, there is a large gear with a skull and crossbones design in the center. The gear is surrounded by a circle of small dots. The background is a light beige color."
 tags: [digital, illustration, mug, handle, right, side, old, weathered, rough, texture, surface, front, container, container-tableware]
-orientation: east   # north | south | east | west | top-down | isometric
+orientation: north
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: 021d466c-ca6d-5f86-b127-68a6360a2799      # UUID linking orientation/state variants of one object
 

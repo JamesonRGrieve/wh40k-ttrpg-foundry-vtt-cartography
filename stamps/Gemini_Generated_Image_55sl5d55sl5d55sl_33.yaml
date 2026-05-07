@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design With A Gray Background"
 description: "The image is a simple, minimalist design with a gray background. It consists of three rectangular boxes arranged in a grid-like pattern, each with a unique shape and size. The boxes are evenly spaced and have a smooth, glossy finish. Each box has a small, circular indentation in the center, creating a symmetrical pattern. The overall design is simple yet elegant, with no additional details or embellishments present. The image appears to be taken from a top-down perspective, looking down on the boxes."
 tags: [simple, minimalist, design, background, consists, rectangular, boxes, arranged, grid-like, pattern, each, unique, container, container-crate]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: d66f2434-eed5-5b35-bb9c-4c35b42fc852      # UUID linking orientation/state variants of one object
 

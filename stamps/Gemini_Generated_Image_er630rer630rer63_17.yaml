@@ -5,7 +5,7 @@
 name: Symmetrical Geometric Patterns In A Simple
 description: "A set of four symmetrical geometric patterns in a simple, minimalist design. The patterns are arranged in a grid-like pattern, with each pattern having a unique shape and texture. The background is a plain, neutral gray color, providing a subtle contrast to the intricate designs. The patterns are symmetrical and appear to be made of a smooth, textured material, giving them a polished look. The overall effect is one of sophistication and elegance."
 tags: [set, four, symmetrical, geometric, patterns, simple, minimalist, design, arranged, grid-like, pattern, each]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 8a9f3feb-cd9c-57b8-915e-51ef39ef7add      # UUID linking orientation/state variants of one object
 

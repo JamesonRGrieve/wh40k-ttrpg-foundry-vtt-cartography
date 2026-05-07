@@ -5,7 +5,7 @@
 name: Cylindrical Object
 description: "A set of three 3D models of a cylindrical object with a flat top and a flat bottom, placed on a transparent background. The objects are arranged in a symmetrical manner, with the topmost object on the left and the bottommost object in the middle. The objects appear to be made of metal and have a smooth, polished finish. The background is a solid, light grey color, providing a subtle contrast to the objects. The image has a clean and minimalistic design, with no visible imperfections or embellishments."
 tags: [set, models, cylindrical, object, flat, top, bottom, placed, transparent, background, objects, arranged]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: f405635c-167e-503c-b35f-5ebcf6a41438      # UUID linking orientation/state variants of one object
 

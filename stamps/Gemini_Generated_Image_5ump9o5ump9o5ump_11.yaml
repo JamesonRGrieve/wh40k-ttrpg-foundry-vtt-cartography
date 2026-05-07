@@ -5,7 +5,7 @@
 name: Rectangular Piece Of Paper
 description: "The image is a rectangular piece of paper with a blank space on the top right corner. The paper appears to be a form or a document, with a rectangular shape and a flat bottom. The top left corner of the paper has a small square icon, while the bottom right corner has a horizontal line. The lines on the paper are evenly spaced and appear to be blank. The background is a light beige color."
 tags: [rectangular, piece, paper, blank, space, top, right, corner, form, document, shape, flat, prop, prop-document, decor, decor-statue]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 5c67ffad-c752-56c0-bd30-f0d1f3b97e5c      # UUID linking orientation/state variants of one object
 

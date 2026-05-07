@@ -5,7 +5,7 @@
 name: Rectangular Objects Arranged In A Grid-Like Pattern
 description: "A set of four rectangular objects arranged in a grid-like pattern on a transparent background. The objects appear to be made of a light-colored material, possibly paper or fabric, and have a smooth, glossy finish. Each object has a rectangular shape with a flat top and a flat bottom, creating a simple yet elegant design. The background is a solid, neutral gray color, providing a subtle contrast to the objects. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, four, rectangular, objects, arranged, grid-like, pattern, transparent, background, light-colored, material, possibly, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

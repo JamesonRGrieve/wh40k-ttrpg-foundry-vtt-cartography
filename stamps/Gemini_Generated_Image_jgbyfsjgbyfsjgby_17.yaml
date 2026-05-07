@@ -5,7 +5,7 @@
 name: Human Figures In A Simple
 description: "The image shows a set of three line drawings of human figures in a simple, minimalist style, set against a plain, light grey background. The figures are arranged in a symmetrical pattern, with each figure standing upright and facing the same direction. They appear to be made of a sturdy material, possibly wood or metal, and have a smooth, polished finish. Each figure has a unique design, with a distinct shape and texture, and they are all facing the same direction, creating a sense of balance and symmetry. The overall aesthetic of the image is simple and minimalistic, with no additional details or embellishments present."
 tags: [set, line, drawings, human, figures, simple, minimalist, style, against, plain, light, background]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 3e39c3a4-b169-5566-a74c-021713274cb6      # UUID linking orientation/state variants of one object
 

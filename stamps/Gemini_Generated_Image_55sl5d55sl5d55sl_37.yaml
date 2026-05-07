@@ -5,7 +5,7 @@
 name: CollectionTheThe image is a collectionTheThe image
 description: The image is a collectionTheThe image is a collectionTheThe image is a
 tags: [collectionthethe]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: f4b8f422-3cf2-5cd0-91fb-b5e0f08b295f      # UUID linking orientation/state variants of one object
 

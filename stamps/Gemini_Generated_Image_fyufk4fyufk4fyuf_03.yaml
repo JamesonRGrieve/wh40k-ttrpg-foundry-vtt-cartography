@@ -5,7 +5,7 @@
 name: Wine Bottles Arranged In A Grid-Like Pattern
 description: "A collection of empty wine bottles arranged in a grid-like pattern on a plain, light brown background. The bottles are of varying sizes and shapes, with some being larger than others, and they are all facing the same direction. The bottles appear to be made of glass and have a smooth, cylindrical shape. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall color scheme is neutral, with the bottles being the main focus of the image."
 tags: [collection, empty, wine, bottles, arranged, grid-like, pattern, plain, light, background, varying, sizes, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

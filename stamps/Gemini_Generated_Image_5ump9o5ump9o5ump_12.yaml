@@ -5,7 +5,7 @@
 name: Rectangular Piece Of Paper With Horizontal Lines
 description: "The image is a rectangular piece of paper with horizontal lines on it. The paper appears to be a document or a document of some kind. The lines are evenly spaced and run horizontally across the page. The edges of the paper are slightly curled, giving it a textured appearance. On the bottom right corner of the image, there is a circular logo or emblem. The background is a plain beige color."
 tags: [rectangular, piece, paper, horizontal, lines, document, evenly, spaced, run, horizontally, across, page, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: beb02ddb-af47-5958-8140-1955d37768fd      # UUID linking orientation/state variants of one object
 

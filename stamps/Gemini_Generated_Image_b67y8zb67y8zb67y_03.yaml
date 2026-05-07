@@ -5,7 +5,7 @@
 name: With A Minimalist Design
 description: "The image is a digital illustration with a minimalist design. It features a plain, light grey background with a repeating pattern of rectangular frames containing text. The frames are arranged in a symmetrical manner, with each frame slightly overlapping the one below it. The text is written in a simple, sans-serif font and is centered in the frame. The overall aesthetic of the image is simple and minimalistic, with a focus on the text and the frames."
 tags: [digital, illustration, minimalist, design, features, plain, light, background, repeating, pattern, rectangular, frames]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 34209f20-c921-5345-beaa-1990a30448a2      # UUID linking orientation/state variants of one object
 

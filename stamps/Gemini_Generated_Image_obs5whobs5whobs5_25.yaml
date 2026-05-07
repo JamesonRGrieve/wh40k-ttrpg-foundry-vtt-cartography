@@ -5,7 +5,7 @@
 name: Wooden Bunk Beds
 description: "A set of four wooden bunk beds with tarpaulin sheets draped over them, set against a plain grey background. The beds are arranged in a symmetrical pattern, with the top bunk slightly higher than the bottom bunk, creating a sense of depth and dimensionality. The beds have a simple, minimalist design with clean lines and no visible signs of wear or tear. The overall aesthetic of the image is simple and minimalistic, with a focus on the textures and details of the beds."
 tags: [set, four, wooden, bunk, beds, tarpaulin, sheets, draped, over, against, plain, background, furniture, furniture-bed]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: c67d5df8-2cb8-558e-ad29-84a9bb9f3c0d      # UUID linking orientation/state variants of one object
 

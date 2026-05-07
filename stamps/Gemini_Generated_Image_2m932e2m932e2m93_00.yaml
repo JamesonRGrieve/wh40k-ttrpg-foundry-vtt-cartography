@@ -5,7 +5,7 @@
 name: "Rectangular Frames With A Simple"
 description: "A set of four rectangular frames with a simple, minimalist design. The frames are arranged in a horizontal line, with the top frame slightly higher than the bottom frame. The background is a plain, light brown color, which contrasts nicely with the simple, minimalist design of the frames. Each frame contains a single piece of fabric, neatly folded and placed on top of each other. The fabric appears to be a light beige color, with no visible stains or imperfections. The overall style of the image is simple and minimalistic, with clean lines and a minimalistic aesthetic."
 tags: [set, four, rectangular, frames, simple, minimalist, design, arranged, horizontal, line, top, frame]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

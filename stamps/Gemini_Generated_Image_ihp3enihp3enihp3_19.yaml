@@ -5,7 +5,7 @@
 name: Luggage
 description: "The image is a 3D illustration of a pile of luggage. There are six bags in total, arranged in a pyramid-like formation. The bags are of different sizes and shapes, with the largest bag at the top and the smallest at the bottom. The largest bag is a large, rectangular box with a handle on top, while the smallest bag is smaller and has a flap on the front. All the bags appear to be made of a light-colored material, possibly leather or canvas. The background is a plain beige color. The image is in a sketch-like style, with thin lines and shading to give it a realistic appearance."
 tags: [illustration, pile, luggage, there, six, bags, total, arranged, pyramid-like, formation, different, sizes, container, container-crate, container-bag]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

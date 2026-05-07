@@ -5,7 +5,7 @@
 name: Wooden Chest Of Drawers
 description: "The image is a line drawing of a wooden chest of drawers. The chest is rectangular in shape and has four drawers, each with a small hole in the center. The drawers are made of light-colored wood and have a weathered, aged appearance. The top of the chest has a flat surface with a rough, uneven texture. There are also several small holes scattered across the chest, some of which are larger than others. On the bottom right corner, there is a small circular hole with a hole in it. The image is in a light brown color and appears to be hand-drawn in a sketch-like style."
 tags: [line, wooden, chest, drawers, rectangular, shape, has, four, each, hole, center, light-colored, container, container-crate]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: 0b6ff01e-6921-590e-9084-d4fa12b7dab7      # UUID linking orientation/state variants of one object
 

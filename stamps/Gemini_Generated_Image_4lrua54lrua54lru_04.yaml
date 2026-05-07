@@ -5,7 +5,7 @@
 name: "Sealed Dossier"
 description: "The same bound parchment dossier — leather strap and red wax seal — but heavily blood-stained. Bloodied variant of the intact dossier (stamp 03)."
 tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged
 group_id: f8da1a00-7d44-5515-8b77-e8ba4123214a      # UUID linking orientation/state variants of one object
 

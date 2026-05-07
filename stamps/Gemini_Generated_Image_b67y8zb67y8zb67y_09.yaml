@@ -5,7 +5,7 @@
 name: Rectangular Shelves With Various Bottles
 description: "A set of three rectangular shelves with various bottles of different sizes and colors arranged neatly on them. The shelves appear to be made of a light-colored material, possibly wood or metal, and have a smooth, polished finish. The bottles are arranged in a grid-like pattern, with each shelf containing a different type of bottle. The background is a simple, neutral color, allowing the bottles to stand out. The overall aesthetic of the image is minimalistic and modern, with a focus on the bottles and their contents."
 tags: [set, rectangular, shelves, various, bottles, different, sizes, arranged, neatly, light-colored, material, possibly, furniture, furniture-shelf, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 9c06ca17-dc9b-50af-ab26-7867bd9675f8      # UUID linking orientation/state variants of one object
 

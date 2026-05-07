@@ -5,7 +5,7 @@
 name: Closed Door
 description: "The image is a black and white illustration of a closed door. The door appears to be made of metal and has two panels, one on top and one on the bottom. The panels are slightly curved and have a rough texture. There are two metal handles on either side of the door, and a small hole in the center. The background is a plain beige color. The overall style of the illustration is simple and minimalistic."
 tags: [illustration, closed, door, metal, has, panels, top, bottom, slightly, curved, have, rough]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 425fdc1d-18e1-5da8-911c-9c171230abff      # UUID linking orientation/state variants of one object
 

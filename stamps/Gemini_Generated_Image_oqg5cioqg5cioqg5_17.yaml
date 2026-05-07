@@ -5,7 +5,7 @@
 name: "Blank, Sepia-Toned Photographs Arranged"
 description: "A collection of blank, sepia-toned photographs arranged in a scattered manner on a plain, light brown background. The photographs appear to be of different sizes and shapes, with some overlapping each other. Some of the photographs have a simple, minimalist design, while others have a more ornate, more detailed appearance. The overall mood of the image is simple and minimalistic, with a focus on the photographs."
 tags: [collection, blank, sepia-toned, photographs, arranged, scattered, manner, plain, light, background, different, sizes]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 53dcb099-d77c-5648-b420-1a95a0839224      # UUID linking orientation/state variants of one object
 

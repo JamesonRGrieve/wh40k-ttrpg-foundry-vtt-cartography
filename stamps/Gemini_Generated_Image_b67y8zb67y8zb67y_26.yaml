@@ -5,7 +5,7 @@
 name: Room Divider Screen In A Simple
 description: "A 3D rendering of a room divider screen in a simple, minimalist style. The screen is composed of four panels, each with a unique design and pattern. The panels are arranged in a symmetrical manner, with the top panel being the largest and the bottom panels being the smallest. The panels are made of a light-colored material, possibly wood or metal, and have a smooth, polished finish. The background is a plain, neutral gray color, which contrasts nicely with the simple design of the screen. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [rendering, room, divider, screen, simple, minimalist, style, composed, four, panels, each, unique, tech, tech-screen]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: f7468a84-c31a-559a-b5af-b3130a229948      # UUID linking orientation/state variants of one object
 

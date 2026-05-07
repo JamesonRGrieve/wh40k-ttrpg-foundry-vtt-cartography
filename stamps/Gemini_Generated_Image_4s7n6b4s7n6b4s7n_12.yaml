@@ -9,7 +9,7 @@ The chairs are drawn in a simple, minimalist style, with no additional details o
 
 Overall, the image is a minimalist representation of modern office furniture, with a focus on simplicity and sophistication. The chairs are arranged in a grid-like pattern, with each chair having its own unique design and color scheme, making them stand out from the rest of the image. Overall, the image conveys a sense of timelessness and sophistication, perfect for any modern office setting."
 tags: [set, four, line, drawings, modern, office, chair, simple, minimalist, style, chairs, arranged, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: inactive         # intact | damaged | destroyed | active | inactive
 group_id: 908f13e2-ab2f-5113-9575-c742cf316fc4      # UUID linking orientation/state variants of one object
 

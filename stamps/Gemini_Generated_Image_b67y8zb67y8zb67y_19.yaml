@@ -5,7 +5,7 @@
 name: "Room Divider, Which Is A Type"
 description: "A line drawing of a room divider, which is a type of folding screen used to divide rooms. It consists of four panels, each with a unique design, arranged in a horizontal manner. The panels are made of wood and have a light brown color. The design is simple and minimalistic, with no additional details or embellishments. The background is a plain beige color, which contrasts nicely with the light brown of the panels. The image has a minimalist aesthetic, with clean lines and a minimalist design. The overall effect is one of sophistication and elegance."
 tags: [line, room, divider, which, folding, screen, used, divide, rooms, consists, four, panels, tech, tech-screen]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: dcb9b5d9-cb4a-50d4-84dc-e7ccbb18eb81      # UUID linking orientation/state variants of one object
 

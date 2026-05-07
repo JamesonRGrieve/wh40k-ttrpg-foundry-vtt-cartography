@@ -5,7 +5,7 @@
 name: Folding Chair
 description: The image is a line drawing of a folding chair. The chair is made of metal and has a rectangular shape with a curved backrest and armrests. The seat and backrest are slightly curved and the legs are straight and tapered. The legs are slightly tapered and the chair appears to be empty. The image is in a light beige color and is in black and white.
 tags: [line, folding, chair, metal, has, rectangular, shape, curved, backrest, armrests, seat, slightly, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

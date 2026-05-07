@@ -5,7 +5,7 @@
 name: Square-Shaped Icon With A Beige Background
 description: "The image is a square-shaped icon with a beige background. In the center of the icon, there is a vertical line that appears to be a ladder or a ladder. The ladder is made up of two horizontal bars that are connected by a horizontal bar at the top. The bars are evenly spaced and appear to be made of a textured material. The overall design is simple and minimalistic."
 tags: [square-shaped, icon, beige, background, center, there, vertical, line, ladder, horizontal, bars, connected, architecture, architecture-step, decor, decor-statue]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 15a40840-f771-5ba3-a5fc-45929171effe      # UUID linking orientation/state variants of one object
 

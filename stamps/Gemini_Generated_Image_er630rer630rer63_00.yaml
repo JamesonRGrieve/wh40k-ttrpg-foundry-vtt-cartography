@@ -5,7 +5,7 @@
 name: "Temple, Each With A Unique Architectural Design"
 description: "A set of four 3D models of a temple, each with a unique architectural design. The models are arranged in a symmetrical pattern, with the tallest building in the center and the smaller ones on either side. The background is a plain, light grey color, providing a subtle contrast to the intricate details of the temples. The temples have pointed spires and intricate carvings on the sides, giving them a classic, timeless look. The overall style of the image is simple and minimalistic, with a focus on the architecture of the temples."
 tags: [set, four, models, temple, each, unique, architectural, design, arranged, symmetrical, pattern, tallest]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: f3fc3f98-808a-51da-b8c8-a4e451e5f68e      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Illustration Of A Desk"
 description: "A simple, minimalist illustration of a desk with a rectangular shape and a rectangular top, set against a plain, light grey background. The desk is drawn in a simple, minimalist style with a simple, minimalist design, featuring a rectangular shape and a flat surface. On the top left corner of the image, there is a small, rectangular table with a drawer, and on the top right corner, there are two identical rectangular tables with a rectangular top and a rectangular bottom, each with a single drawer. The tables are arranged in a symmetrical pattern, with the top table slightly tilted to the left, creating a sense of depth and dimensionality. The image has a soft, muted color palette, with a slight grainy texture, giving it a vintage feel. The overall composition is simple and minimalistic, with no additional details or embellishments present."
 tags: [simple, minimalist, illustration, desk, rectangular, shape, top, set, against, plain, light, background, furniture, furniture-table]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 70b9bc48-6731-5432-aa84-10cfbf186eff      # UUID linking orientation/state variants of one object
 

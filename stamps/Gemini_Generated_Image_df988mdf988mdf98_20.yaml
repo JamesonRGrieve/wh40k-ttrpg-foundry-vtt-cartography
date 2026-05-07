@@ -5,7 +5,7 @@
 name: Laptop Computer
 description: "A simple line drawing of a laptop computer with a rectangular shape and a small screen. The laptop is shown in three different angles, with the top left being slightly larger than the bottom right. The background is a plain beige color, and the laptop is outlined in a light brown color. The laptop has a sleek, modern design with rounded edges and a thin bezel. The screen is empty, with no text or images on it. The overall aesthetic of the image is minimalistic and minimalistic."
 tags: [simple, line, laptop, computer, rectangular, shape, screen, shown, different, angles, top, left, tech, tech-screen]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

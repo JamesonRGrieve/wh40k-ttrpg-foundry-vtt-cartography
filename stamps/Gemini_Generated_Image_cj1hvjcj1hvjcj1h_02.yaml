@@ -5,7 +5,7 @@
 name: Rectangular Frame With A Textured Surface
 description: "The image is a digital illustration of a rectangular frame with a textured surface. The frame appears to be made of metal or plastic and has a rectangular shape with rounded edges. The text on the frame is written in a cursive font and is in a light green color. Below the text, there is a list of items written in black text. The items are arranged in a grid-like pattern and appear to be related to a computer or other electronic device. The background of the image is plain white."
 tags: [digital, illustration, rectangular, frame, textured, surface, metal, plastic, has, shape, rounded, edges]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 345be2e7-b93c-5694-9bce-1fd7e50dd8a2      # UUID linking orientation/state variants of one object
 

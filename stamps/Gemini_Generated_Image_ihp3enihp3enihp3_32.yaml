@@ -5,7 +5,7 @@
 name: Objects
 description: "The image is a 3D rendering of a group of objects. There are nine objects in total, arranged in a scattered manner. The objects appear to be made of wood or a similar material, with a light brown color. Some of the objects are cylindrical in shape, while others are rectangular in shape. There is also a small rectangular box or container in the center of the image. The background is a plain beige color. The image is drawn in a sketch-like style, with thin lines and shading to give it a realistic appearance."
 tags: [rendering, group, objects, there, nine, total, arranged, scattered, manner, wood, similar, material, container, container-crate]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

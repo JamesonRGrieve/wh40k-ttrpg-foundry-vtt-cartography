@@ -5,7 +5,7 @@
 name: Rectangular Panels With A Smooth
 description: "The image is a digital illustration of a set of four rectangular panels with a smooth, textured surface. The panels are arranged in a symmetrical pattern, with each panel slightly overlapping the one below it. The background is a solid, neutral gray color, providing a subtle contrast to the white panels. The panels appear to be made of a similar material, possibly paper or fabric, and have a slightly worn, aged look to them. The overall style of the image is simple and minimalistic, with a focus on texture and detail."
 tags: [digital, illustration, set, four, rectangular, panels, smooth, textured, surface, arranged, symmetrical, pattern, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: null
 

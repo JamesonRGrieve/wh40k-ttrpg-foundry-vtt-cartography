@@ -5,7 +5,7 @@
 name: Square-Shaped Icon With A Beige Background
 description: "The image is a square-shaped icon with a beige background. In the center of the icon, there is a portrait of Jesus Christ. Jesus is shown with a halo above his head and a beard. He is wearing a red robe and has a serious expression on his face. The icon is mounted on a square pedestal with a square base."
 tags: [square-shaped, icon, beige, background, center, there, portrait, jesus, christ, shown, halo, above, furniture, furniture-table, decor, decor-statue]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 28313763-e011-5b91-8b2e-504ef5d7699b      # UUID linking orientation/state variants of one object
 

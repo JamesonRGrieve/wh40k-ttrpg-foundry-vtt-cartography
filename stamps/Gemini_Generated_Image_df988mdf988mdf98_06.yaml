@@ -5,7 +5,7 @@
 name: Rectangular Tray With Three Compartments
 description: "The image is a rectangular tray with three compartments. The tray is made of a light-colored material and has a smooth surface. On the left side of the tray, there is a circular cutout in the center, which appears to be a plate or a tray for food. The middle compartment has a rectangular shape with a slightly raised edge, while the right side has a slightly curved edge. The edges of the cutout are slightly raised, giving the tray a 3D effect. The overall design is simple and minimalistic."
 tags: [rectangular, tray, compartments, light-colored, material, has, smooth, surface, left, side, there, circular, container, container-tableware]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

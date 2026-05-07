@@ -5,7 +5,7 @@
 name: 3DThe image is a 3DThe image
 description: "The image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a 3DThe image is a 3D rendering of a set of four different views of a set of four different views of a set of three identical line drawings of three identical line drawings of a set of three identical 3D rendering of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of a set of three identical 3D rendering of three identical 3D rendering of a simple, minimalist design elements arranged in a grid-like objects arranged in a grid-like objects arranged in a symmetrical composition with a gray background with a grayish-colored background with a grayish-grey gradient background with a grid-like objects arranged in a symmetrical composition with a simple, minimalist design elements arranged in a grid-like pattern on a plain grey background with a simple, minimalist design elements of a"
 tags: [dthe, rendering, set, four, different, views, identical, line, drawings, simple, minimalist, design]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 7bf28e1a-1739-510d-b0ee-370417d4f611      # UUID linking orientation/state variants of one object
 

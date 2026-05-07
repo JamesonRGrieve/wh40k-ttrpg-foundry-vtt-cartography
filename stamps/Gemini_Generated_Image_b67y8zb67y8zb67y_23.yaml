@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design"
 description: "The image is a simple, minimalist design with a neutral color palette. It features a square-shaped frame in the center, surrounded by smaller rectangular frames on either side. The frame appears to be made of a smooth, textured material, possibly paper or fabric, and has a slightly worn, aged look. The background is a solid, light grey color, which contrasts nicely with the neutral tones of the frame. The overall aesthetic of the image is clean and minimalistic, with a focus on texture and depth."
 tags: [simple, minimalist, design, neutral, palette, features, square-shaped, frame, center, surrounded, smaller, rectangular, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: null
 

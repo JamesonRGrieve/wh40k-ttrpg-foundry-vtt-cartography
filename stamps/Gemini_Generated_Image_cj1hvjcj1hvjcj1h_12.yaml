@@ -5,7 +5,7 @@
 name: Blank Scrolls On A Plain
 description: "A set of four blank scrolls on a plain, light brown background. The scrolls are arranged in a symmetrical pattern, with each scroll slightly overlapping the one below it. The paper appears to be old and worn, with some creases and wrinkles visible. The edges of the scrolls are slightly curled, giving them a vintage look. The image has a simple, minimalist design with no additional embellishments or details. The overall effect is one of timelessness and sophistication."
 tags: [set, four, blank, scrolls, plain, light, background, arranged, symmetrical, pattern, each, scroll, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: 8824dd3f-0ecb-5bc8-9f52-0b5597eb9c36      # UUID linking orientation/state variants of one object
 

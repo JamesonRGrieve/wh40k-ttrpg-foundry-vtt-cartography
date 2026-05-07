@@ -5,7 +5,7 @@
 name: Ornate Bookends With A Simple
 description: "A set of four ornate bookends with a simple, minimalist design. The bookends are arranged in a symmetrical pattern, with each one slightly overlapping the one below it. Each bookend has a unique, ornate design with intricate details and patterns. The background is a neutral gray color, providing a subtle contrast to the ornate bookends. The overall aesthetic of the image is elegant and sophisticated, evoking a sense of timelessness and sophistication."
 tags: [set, four, ornate, bookends, simple, minimalist, design, arranged, symmetrical, pattern, each, slightly]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: b0b5f761-4110-56a6-aeea-f9b4f6fff3d0      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Documents Arranged In A Scattered Manner
 description: "A collection of hand-drawn documents arranged in a scattered manner on a plain grey background. The documents appear to be of various sizes and shapes, with some overlapping each other. The paper has a slightly rough texture and some creases, giving it a vintage feel. The image is taken from a top-down perspective, looking down on the documents. The overall composition is simple and minimalistic, with no additional details or embellishments present."
 tags: [collection, hand-drawn, documents, arranged, scattered, manner, plain, background, various, sizes, shapes, overlapping, prop, prop-document]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 8e0bc1d9-7b48-550d-88ce-61b54ca57dae      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: null
 description: The image is
 tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 30de0dbd-62b2-568c-bc04-9f9de0a0726f      # UUID linking orientation/state variants of one object
 

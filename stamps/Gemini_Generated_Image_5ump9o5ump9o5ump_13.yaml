@@ -5,7 +5,7 @@
 name: Square-Shaped Icon With A Light Brown Color
 description: "The image is a square-shaped icon with a light brown color. It appears to be made of a textured material, possibly paper or cardboard. The edges of the image are slightly frayed, giving it a worn and aged look. There are several horizontal lines running across the image, creating a grid-like pattern. The lines are evenly spaced and appear to be slightly overlapping each other. The background is a plain beige color."
 tags: [square-shaped, icon, light, textured, material, possibly, paper, cardboard, edges, slightly, frayed, giving, prop, prop-document, decor, decor-statue]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: 0d95dbb8-c608-5476-a84c-4af4c46a962e      # UUID linking orientation/state variants of one object
 

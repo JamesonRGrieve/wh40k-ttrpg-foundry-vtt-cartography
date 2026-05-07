@@ -5,7 +5,7 @@
 name: Rectangular Object With A Grid-Like Pattern
 description: "The image is a 3D rendering of a rectangular object with a grid-like pattern. The object appears to be made of a light-colored material, possibly paper or fabric, and has a rectangular shape with rounded edges. The lines on the object are evenly spaced and run horizontally across the surface. The background is a plain beige color. The image is slightly blurred, giving it a soft and dreamy quality."
 tags: [rendering, rectangular, object, grid-like, pattern, light-colored, material, possibly, paper, fabric, has, shape, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: a6a4c3e9-fd25-5712-8334-0cb1bef86eb6      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: "Couch With A Pillow On Top"
 description: a drawing of a couch with a pillow on top of it
 tags: [couch, pillow, top, furniture, furniture-couch]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: Empty Brown Glass Bottles Arranged
 description: "The image is a collection of multiple empty brown glass bottles arranged in a grid-like pattern on a plain, light grey background. The bottles are of different sizes and shapes, with some standing upright and others scattered around. They appear to be made of glass and have a smooth, cylindrical shape with a narrow neck and a narrow opening at the top. The bottles are arranged in an orderly fashion, with the largest bottle in the center and the smaller ones on either side. The overall aesthetic of the image is minimalistic and minimalistic, with a focus on the bottles and the texture of the background."
 tags: [collection, multiple, empty, glass, bottles, arranged, grid-like, pattern, plain, light, background, different, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

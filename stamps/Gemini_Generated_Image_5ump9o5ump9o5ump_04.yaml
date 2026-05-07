@@ -5,7 +5,7 @@
 name: Cylindrical Object
 description: "A 3D rendering of a cylindrical object with a flat surface and a curved edge. The object appears to be made of plastic or a similar material, with a smooth, glossy finish. It has a rectangular shape with rounded edges and a flat base. The background is a plain, light beige color, which contrasts nicely with the object. The image is in black and white and has a simple, minimalist design."
 tags: [rendering, cylindrical, object, flat, surface, curved, edge, plastic, similar, material, smooth, glossy]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

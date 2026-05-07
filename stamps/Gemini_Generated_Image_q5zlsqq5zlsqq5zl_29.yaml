@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design With A Plain"
 description: "The image is a simple, minimalist design with a plain, light brown background. It features multiple square frames arranged in a symmetrical pattern, each containing a distinct silhouette of a person's face. The frames are evenly spaced and have a smooth, polished finish. The overall aesthetic of the image is minimalistic and minimalistic, with a focus on the individual's face and body. The image appears to be taken from a top-down perspective, looking down on the frames, creating a sense of depth and dimensionality."
 tags: [simple, minimalist, design, plain, light, background, features, multiple, square, frames, arranged, symmetrical]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

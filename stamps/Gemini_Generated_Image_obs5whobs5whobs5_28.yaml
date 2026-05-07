@@ -5,7 +5,7 @@
 name: Chairs Arranged In A Row
 description: A set of four chairs arranged in a row on a plain grey background. The chairs have a simple design with a curved backrest and four legs. The seats are upholstered in a neutral fabric with a subtle floral pattern. The overall aesthetic of the image is minimalistic and contemporary.
 tags: [set, four, chairs, arranged, row, plain, background, have, simple, design, curved, backrest, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

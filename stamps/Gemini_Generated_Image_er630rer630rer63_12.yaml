@@ -5,7 +5,7 @@
 name: "Round, Cylindrical Object With A Handle"
 description: "The image is a 3D model of a round, cylindrical object with a handle on one side. The object appears to be made of a light-colored material, possibly plastic or metal, and has a smooth, shiny surface. The handle is long and slender, with a pointed end. The top of the object is slightly larger than the bottom, and it has a slightly curved shape. The background is a plain, light beige color."
 tags: [model, round, cylindrical, object, handle, side, light-colored, material, possibly, plastic, metal, has]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: df070619-ec8a-54fa-ba8b-7ecaabaf9ea1      # UUID linking orientation/state variants of one object
 

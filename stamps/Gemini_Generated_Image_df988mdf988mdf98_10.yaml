@@ -5,7 +5,7 @@
 name: Rectangular Doors With A Simple
 description: "A set of four rectangular doors with a simple, minimalist design. The doors are painted in a light beige color and have a smooth, polished finish. Each door has a rectangular shape with a small window in the center, allowing natural light to enter the space. The doors are arranged in a symmetrical pattern, creating a sense of balance and harmony. The overall aesthetic of the image is minimalistic and contemporary, with a focus on the simple yet elegant design of the doors."
 tags: [set, four, rectangular, doors, simple, minimalist, design, painted, light, beige, have, smooth, door, architecture, architecture-window]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

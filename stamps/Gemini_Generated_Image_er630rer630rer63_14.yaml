@@ -5,7 +5,7 @@
 name: Snowflake-Like Structure Made Up Of Small
 description: "A 3D rendering of a snowflake-like structure made up of small, irregularly shaped structures arranged in a symmetrical pattern. The structures appear to be made of a light-colored material, possibly cardboard or plastic, and have a smooth, glossy finish. The background is a plain, light grey color, which contrasts nicely with the intricate details of the snowflake structure. The snowflake shape is symmetrical, with each structure having a distinct shape and size, creating a sense of depth and dimensionality. The overall effect is a beautiful and intricate representation of a winter landscape."
 tags: [rendering, snowflake-like, structure, irregularly, shaped, structures, arranged, symmetrical, pattern, light-colored, material, possibly]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: c230e800-4f8c-5b6a-a8bf-0df998e82272      # UUID linking orientation/state variants of one object
 

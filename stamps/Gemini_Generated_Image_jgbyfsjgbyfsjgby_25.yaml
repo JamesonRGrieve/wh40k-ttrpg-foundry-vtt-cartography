@@ -5,7 +5,7 @@
 name: Mannequins Standing On Stools
 description: "A 3D rendering of three mannequins standing on stools, each wearing a knitted sweater. The mannequin on the left is standing upright, while the one on the right is sitting on a stool. The background is a plain, light grey color. The image has a simple, minimalist design with no additional details or shading. The figures are drawn in a realistic style with smooth lines and shading, giving them a lifelike appearance. The mannequin in the middle is standing upright with its arms at its sides, while the one on the right is sitting on the stool with its arms at its sides. Both figures have a neutral expression and are facing the same direction."
 tags: [rendering, mannequins, standing, stools, each, wearing, knitted, sweater, mannequin, left, upright, while, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

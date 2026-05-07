@@ -5,7 +5,7 @@
 name: Medical Cart
 description: "The image is a line drawing of a medical cart. The cart has four wheels and a handle on the top for easy maneuverability. On the front of the cart, there are several bottles of different sizes and colors arranged in a grid-like pattern. The bottles appear to be filled with different types of medical supplies, including syringes, vials, and other medical equipment. There is also a small drawer on the bottom right corner with a handle for easy carrying. The overall design is simple and minimalistic."
 tags: [line, medical, cart, has, four, wheels, handle, top, easy, maneuverability, front, there, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 42bc440f-072a-5a28-bb0d-8a7bf35de9e3      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Mug And A Star-Shaped Cookie
 description: "The image is a digital illustration of a mug and a star-shaped cookie. The mug is made of metal and has a handle on one side and a spout on the other. It appears to be empty and is sitting on a beige background. The cookie is in the shape of a star with six points and a pointed tip. The edges of the cookie are slightly curled, giving it a textured appearance. The overall color scheme of the image is gray and white."
 tags: [digital, illustration, mug, star-shaped, cookie, metal, has, handle, side, spout, other, empty, container, container-tableware]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: cb4a4925-b642-5fe2-885d-6b33da93b29d      # UUID linking orientation/state variants of one object
 

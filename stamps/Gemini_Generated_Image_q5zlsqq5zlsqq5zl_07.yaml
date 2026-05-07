@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Illustration With A Plain"
 description: "The image is a simple, minimalist illustration with a plain, light brown background. In the center of the image, there are several rectangular frames arranged in a symmetrical pattern, each containing a different type of object. The objects appear to be simple in design, with no additional details or embellishments. The frames are of varying sizes and shapes, creating a sense of depth and dimensionality. The overall aesthetic is minimalistic and minimalistic, with a focus on the shapes and textures of the objects."
 tags: [simple, minimalist, illustration, plain, light, background, center, there, several, rectangular, frames, arranged]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

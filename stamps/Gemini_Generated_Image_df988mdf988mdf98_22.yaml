@@ -5,7 +5,7 @@
 name: Rectangular Metal Plates Arranged
 description: "A set of four rectangular metal plates arranged in a horizontal line on a plain, light brown background. The plates appear to be made of metal and have a smooth, polished finish. Each plate has a rectangular shape with a flat top and a flat bottom, creating a symmetrical composition. The plates are arranged in two rows, with the top row slightly higher than the bottom row. The overall aesthetic of the image is minimalistic and industrial, with a focus on the textures and details of the plates."
 tags: [set, four, rectangular, metal, plates, arranged, horizontal, line, plain, light, background, have, container, container-tableware]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 288c4131-2096-503d-ae85-c8f6c32d4c5e      # UUID linking orientation/state variants of one object
 

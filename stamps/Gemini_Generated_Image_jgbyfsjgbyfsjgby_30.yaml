@@ -5,7 +5,7 @@
 name: Rectangular Box With A Lid
 description: "The image is a line drawing of a rectangular box with a lid. The box appears to be made of wood or metal and has a rectangular shape with a flat top. The lid has a handle on the right side and a lock on the left side. On the front of the box, there is a decorative border with a floral design. In the center of the lid, there are two wings, one with a curved line and the other with a straight line. The wings are symmetrical and have a pointed tip. The overall design is simple and elegant."
 tags: [line, rectangular, box, lid, wood, metal, has, shape, flat, top, handle, right, container, container-crate]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 251097a7-0acf-5591-8326-093293190f6b      # UUID linking orientation/state variants of one object
 

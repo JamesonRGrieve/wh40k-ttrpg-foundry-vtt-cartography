@@ -5,7 +5,7 @@
 name: Documents Arranged In A Square Frame
 description: "A collection of handwritten documents arranged in a square frame on a plain grey background. The documents appear to be of various sizes and shapes, with some overlapping each other. The paper has a light brown color and some text is not clearly visible. The overall composition is simple and minimalistic, with no additional details or embellishments."
 tags: [collection, handwritten, documents, arranged, square, frame, plain, background, various, sizes, shapes, overlapping, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 4d5be393-788b-5677-9b98-2c61e2aafa56      # UUID linking orientation/state variants of one object
 

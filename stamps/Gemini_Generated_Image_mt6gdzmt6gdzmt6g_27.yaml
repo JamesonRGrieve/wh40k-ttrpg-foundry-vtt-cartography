@@ -5,7 +5,7 @@
 name: Empty Rectangular Frames With Wheels
 description: "The image is a simple line drawing of three empty rectangular frames with wheels, set against a plain grey background. The frames are drawn in a simple, minimalist style with no additional details or embellishments. Each frame has a rectangular shape with a flat top and four legs, each with a handle on each side for easy maneuverability. The frames are arranged in a symmetrical pattern, with the top frame slightly higher than the bottom frame, creating a sense of balance and symmetry. The overall aesthetic of the image is minimalistic and minimalistic, with clean lines and a neutral color palette."
 tags: [simple, line, empty, rectangular, frames, wheels, set, against, plain, background, drawn, minimalist]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: ba10e960-dfc6-54b7-9475-550f04929c54      # UUID linking orientation/state variants of one object
 

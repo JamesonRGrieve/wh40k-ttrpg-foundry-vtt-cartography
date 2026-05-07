@@ -5,7 +5,7 @@
 name: Square Tiles
 description: "A set of four square tiles with a beige background and a pattern of small, gray flowers. The tiles are arranged in a symmetrical pattern, with each tile having a unique shape and texture. The flowers are evenly spaced and have a smooth, glossy finish. The overall aesthetic of the image is simple and minimalistic, with a focus on the intricate details of the flowers and the texture of the tiles."
 tags: [set, four, square, tiles, beige, background, pattern, flowers, arranged, symmetrical, each, tile]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: b7952d28-d299-5585-8b9f-192b30dd4359      # UUID linking orientation/state variants of one object
 

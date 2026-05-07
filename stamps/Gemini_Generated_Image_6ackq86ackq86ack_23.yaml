@@ -5,7 +5,7 @@
 name: "Round, Beige-Colored Manhole Covers"
 description: "A set of four round, beige-colored manhole covers with a grid pattern on each one. The covers are arranged in a symmetrical pattern, with the largest one in the center and two smaller ones on either side. The background is a solid gray color, providing a subtle contrast to the beige color of the covers. The image has a minimalist design, with no additional details or embellishments present. The overall aesthetic is simple yet elegant, with clean lines and a minimalist aesthetic."
 tags: [set, four, round, beige-colored, manhole, covers, grid, pattern, each, arranged, symmetrical, largest]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: c8e05613-97e5-50ee-b3dc-818e9e421203      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Wooden Chair
 description: "The image is a 3D rendering of a wooden chair. The chair has a simple design with a curved backrest and armrests. The seat and backrest are made of a light-colored wood, and the legs are slightly tapered. The legs are slightly angled outward, giving the chair a modern and minimalist look. The overall design of the chair is simple and minimalistic."
 tags: [rendering, wooden, chair, has, simple, design, curved, backrest, armrests, seat, light-colored, wood, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

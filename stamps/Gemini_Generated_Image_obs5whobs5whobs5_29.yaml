@@ -5,7 +5,7 @@
 name: "Small, Rectangular Box With A Lid"
 description: "A set of three 3D rendering illustrations of a small, rectangular box with a lid on top. The box is drawn in a sketch-like style with a simple, minimalist design. The background is a plain, light grey color, providing a neutral backdrop for the illustrations. The illustrations are arranged in a symmetrical pattern, with each box slightly overlapping the one below it. The boxes have a smooth, polished finish and appear to be made of a light-colored material, possibly wood or metal. The overall aesthetic of the image is simple and minimalistic, with a focus on the simple lines and shapes of the boxes."
 tags: [set, rendering, illustrations, rectangular, box, lid, top, drawn, sketch-like, style, simple, minimalist, container, container-crate]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 1a978764-abb1-51a2-8ef5-40ed31e6f558      # UUID linking orientation/state variants of one object
 

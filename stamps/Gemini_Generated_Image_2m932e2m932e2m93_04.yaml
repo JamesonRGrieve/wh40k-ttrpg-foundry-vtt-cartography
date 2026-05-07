@@ -5,7 +5,7 @@
 name: "Rectangular Objects Arranged In A Symmetrical Pattern"
 description: "A set of four rectangular objects arranged in a symmetrical pattern on a plain, light grey background. The objects appear to be made of a smooth, textured material and have a simple, minimalist design. Each object has a cylindrical shape with a flat top and a flat bottom, creating a sense of depth and dimension. The objects are arranged in two rows, with the top row slightly higher than the bottom row. The background is a solid, light grey color, providing a subtle contrast to the objects. The overall effect is a simple yet elegant design that could be used for a variety of purposes."
 tags: [set, four, rectangular, objects, arranged, symmetrical, pattern, plain, light, background, smooth, textured]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: c9dacb1b-8dbc-5613-9293-0a0c52ea1281      # UUID linking orientation/state variants of one object
 

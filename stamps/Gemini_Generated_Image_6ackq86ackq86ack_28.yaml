@@ -5,7 +5,7 @@
 name: Square Pattern With A Checkered Background
 description: "A square pattern with a checkered background. The pattern is composed of alternating light and dark grey squares, creating a subtle yet elegant look. The squares are arranged in a symmetrical manner, with each square having a unique design. The overall effect is one of sophistication and elegance. The image has a minimalist aesthetic, with clean lines and a subtle texture that adds depth and dimension to the overall composition."
 tags: [square, pattern, checkered, background, composed, alternating, light, dark, squares, creating, subtle, yet]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 8aeceda8-1c8a-5d29-9143-450048bc79a2      # UUID linking orientation/state variants of one object
 

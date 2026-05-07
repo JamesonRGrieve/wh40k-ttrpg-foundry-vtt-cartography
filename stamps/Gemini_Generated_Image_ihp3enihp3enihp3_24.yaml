@@ -5,7 +5,7 @@
 name: Cylindrical Object With A Lid On Top
 description: "The image is a 3D rendering of a cylindrical object with a lid on top. The object appears to be made of metal and has a textured surface with vertical lines running horizontally across it. The lid has a handle on the top and a small opening on the side. Inside the object, there is a small amount of dirt or debris scattered around. The background is a plain beige color."
 tags: [rendering, cylindrical, object, lid, top, metal, has, textured, surface, vertical, lines, running]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 3dd2e776-48f3-56ca-a00e-e64a93d0cc19      # UUID linking orientation/state variants of one object
 

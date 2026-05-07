@@ -5,7 +5,7 @@
 name: Objects Arranged In A Symmetrical Pattern
 description: "A set of four line drawings of various objects arranged in a symmetrical pattern on a plain, light brown background. The objects appear to be made of wood and have intricate, detailed designs on them. Each object has a unique shape and size, with some having a curved top and others having a straight bottom. The lines are thin and precise, creating a sense of depth and dimensionality. The overall aesthetic of the image is minimalistic and contemporary, with a focus on the intricate details of the objects."
 tags: [set, four, line, drawings, various, objects, arranged, symmetrical, pattern, plain, light, background]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: f0c1f275-3293-5e2c-a3a3-f79f3b9183a3      # UUID linking orientation/state variants of one object
 

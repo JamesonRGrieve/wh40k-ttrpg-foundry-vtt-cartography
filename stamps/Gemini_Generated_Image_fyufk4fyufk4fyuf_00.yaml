@@ -5,7 +5,7 @@
 name: Square Frame With A Textured Surface
 description: "A square frame with a textured surface in a light beige color. The frame is divided into two sections, with the top section being slightly larger than the bottom section. The edges of the frame are smooth and polished, giving it a polished look. The background is a solid beige color, which contrasts nicely with the lighter tones of the frame. The overall effect is a simple yet elegant design that could be used as a background or texture for any project."
 tags: [square, frame, textured, surface, light, beige, divided, into, sections, top, section, slightly]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 5c1b5af8-2ff9-5d9f-9aef-2859e5e75c7c      # UUID linking orientation/state variants of one object
 

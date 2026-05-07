@@ -5,7 +5,7 @@
 name: "Circular Ladders, Each With A Simple"
 description: "The image is a set of three circular ladders, each with a simple, minimalist design. The ladders are arranged in a triangular formation, with the largest one in the center and the two smaller ones on either side. Each ladder has a straight line running along its length, creating a sense of depth and dimension. The ladders appear to be made of metal and have a smooth, polished finish. The background is a plain, light grey color, which contrasts with the ladders and makes them stand out. The overall aesthetic of the image is simple and minimalistic, with no additional details or embellishments present."
 tags: [set, circular, ladders, each, simple, minimalist, design, arranged, triangular, formation, largest, center, architecture, architecture-step]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

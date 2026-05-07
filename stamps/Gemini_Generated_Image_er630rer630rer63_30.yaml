@@ -9,7 +9,7 @@ The patterns are symmetrical, with each pattern overlapping the one below it, cr
 
 Overall, the image has a minimalist aesthetic, with a focus on the intricate patterns and textures of the patterns. The overall effect is one of sophistication and elegance, making it a beautiful and timeless piece of art."
 tags: [set, four, square-shaped, patterns, transparent, background, each, pattern, intricately, designed, unique, geometric]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 32a82451-3994-5414-9b2c-0ba090766e83      # UUID linking orientation/state variants of one object
 

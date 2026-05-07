@@ -5,7 +5,7 @@
 name: "Simple, Rectangular Frame With A Gray Background"
 description: "The image is a simple, rectangular frame with a gray background. The frame is empty and has a smooth, glossy finish. It is divided into four sections, each with a different size and shape. The top section is slightly larger than the bottom section, and it appears to be made of a similar material. The edges of the frame are slightly curved, giving it a 3D effect. The background is a solid gray color, which contrasts nicely with the white frame. The overall aesthetic of the image is clean and minimalistic."
 tags: [simple, rectangular, frame, background, empty, has, smooth, glossy, finish, divided, into, four]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 2f1b6eaf-156e-5036-a397-30e955d2c489      # UUID linking orientation/state variants of one object
 

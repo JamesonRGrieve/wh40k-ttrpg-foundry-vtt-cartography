@@ -5,7 +5,7 @@
 name: Empty Glass Bottles With Cork Stoppers
 description: "A set of three empty glass bottles with cork stoppers, each containing a different type of medicine. The bottles are arranged in a triangular formation, with the largest bottle on the left and the smallest on the right. The labels on the bottles read \"AMASEC\" in bold, black lettering. The background is a plain, light grey color, providing a subtle contrast to the bottles. The overall style of the image is simple and minimalistic, with a focus on the bottles and their contents."
 tags: [set, empty, glass, bottles, cork, stoppers, each, containing, different, medicine, arranged, triangular, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: MinimalA minimal
 description: A minimalA minimal
 tags: [minimala, minimal]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 3b7dfce8-df00-5d30-b35b-78fad8dfcd34      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: "Minimalist, Hand-Drawn Calculators With A Simple"
 description: "A set of four minimalist, hand-drawn calculators with a simple, minimalist design. The calculators are arranged in a row on a plain, light grey background. Each calculator has a rectangular shape with rounded edges and a small LCD screen in the center. The calculators appear to be made of plastic or a similar material and have a smooth, glossy finish. The image has a minimalist aesthetic with clean lines and minimal detail. The overall color scheme is neutral, with the calculators being the main focus of the image."
 tags: [set, four, minimalist, hand-drawn, calculators, simple, design, arranged, row, plain, light, background, tech, tech-screen]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 8099c80c-fcc7-51f5-b65e-607890f76e1c      # UUID linking orientation/state variants of one object
 

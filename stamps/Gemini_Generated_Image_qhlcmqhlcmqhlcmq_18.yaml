@@ -5,7 +5,7 @@
 name: Chair
 description: The image is a 3D rendering of a chair. The chair has a rectangular frame with four legs. The seat is upholstered in a light brown fabric. The backrest is slightly curved and the seat appears to be slightly cushioned. The overall design of the chair is simple and minimalistic.
 tags: [rendering, chair, has, rectangular, frame, four, legs, seat, upholstered, light, fabric, backrest, furniture, furniture-chair]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

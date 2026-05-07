@@ -5,7 +5,7 @@
 name: Square Pattern With A Geometric Design
 description: "A square pattern with a geometric design on a beige background. The pattern is composed of interlocking geometric shapes, creating a sense of depth and dimension. The shapes are arranged in a symmetrical manner, with each shape overlapping the one below it. The overall effect is elegant and sophisticated, with a focus on the intricate details of the patterns. The image has a soft, muted color palette, with the beige background providing a subtle contrast to the neutral tones of the geometric shapes. Overall, the image conveys a sense of sophistication and elegance, perfect for any room."
 tags: [square, pattern, geometric, design, beige, background, composed, interlocking, shapes, creating, sense, depth]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 7ddf0e3a-09df-5d97-a88d-c2f72f58be4f      # UUID linking orientation/state variants of one object
 

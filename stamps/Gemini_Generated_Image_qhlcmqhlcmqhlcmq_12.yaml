@@ -5,7 +5,7 @@
 name: Open Refrigerator
 description: "The image is a 3D rendering of an open refrigerator. The refrigerator is made of metal and has a rectangular shape with a flat top. The door is open, revealing the interior of the fridge. Inside the fridge, there are four shelves, each with a small vent on the right side. The shelves are empty and appear to be made of a light-colored material. The fridge has a handle on the top for easy opening and closing. The background is a plain beige color."
 tags: [rendering, open, refrigerator, metal, has, rectangular, shape, flat, top, door, revealing, interior]
-orientation: east   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 92d2b740-8d7f-5600-ba8c-e2cf3dd4a959      # UUID linking orientation/state variants of one object
 

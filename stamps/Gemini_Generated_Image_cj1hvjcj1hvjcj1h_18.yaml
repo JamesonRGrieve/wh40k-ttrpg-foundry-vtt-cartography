@@ -5,7 +5,7 @@
 name: Empty Glass Bottles
 description: "A set of three empty glass bottles with the word \"AMASEC\" written on them in a simple, minimalist style. The bottles are arranged in a horizontal row on a plain, light brown background. Each bottle has a unique shape and design, with a cylindrical body and a narrow neck. The labels on the bottles are clearly visible, with the brand name written in a bold, sans-serif font. The overall aesthetic of the image is simple and minimalistic, with a focus on the bottles and their design."
 tags: [set, empty, glass, bottles, word, amasec, written, simple, minimalist, style, arranged, horizontal, container, container-vessel]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

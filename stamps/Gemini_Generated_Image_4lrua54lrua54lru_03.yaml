@@ -5,7 +5,7 @@
 name: "Sealed Dossier"
 description: "A bound parchment dossier tied with a leather strap and red wax seal. Aged paper visible at the edges, light staining. Intact variant."
 tags: [collectionthe, digital, illustration, collection, old, vintage-looking, sepia-toned, hand-drawn, illustrations, stack, blank, old-fashioned, prop, prop-document]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact
 group_id: f8da1a00-7d44-5515-8b77-e8ba4123214a      # UUID linking orientation/state variants of one object
 

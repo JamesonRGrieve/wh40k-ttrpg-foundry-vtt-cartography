@@ -5,7 +5,7 @@
 name: Square-Shaped Frame With A Beige Background
 description: "The image is a square-shaped frame with a beige background. The frame is made of a light green material and has a simple, minimalist design. It has a rectangular shape with rounded edges and a flat base. The edges of the frame are decorated with small, ornate details, giving it a decorative and elegant look. The overall design is simple and minimalistic."
 tags: [square-shaped, frame, beige, background, light, material, has, simple, minimalist, design, rectangular, shape]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: b8b34510-e612-5ab1-a619-05004e4c0448      # UUID linking orientation/state variants of one object
 

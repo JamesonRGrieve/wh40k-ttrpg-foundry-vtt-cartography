@@ -5,7 +5,7 @@
 name: "Spires In A Simple, Minimalist Design"
 description: "A set of four stylized spires in a simple, minimalist design. The spires are arranged in a symmetrical pattern, with each spire having a unique shape and texture. The background is a plain, light grey color, providing a subtle contrast to the spires. The image is a 3D rendering, giving it a realistic look and feel. The spires appear to be made of metal and have a smooth, polished finish. The overall effect is one of sophistication and elegance."
 tags: [set, four, stylized, spires, simple, minimalist, design, arranged, symmetrical, pattern, each, spire]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 233cacd8-f420-572b-bff5-b59f6fb607fe      # UUID linking orientation/state variants of one object
 

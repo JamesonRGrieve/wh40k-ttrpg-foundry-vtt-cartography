@@ -5,7 +5,7 @@
 name: Technical Drawing Of A Set
 description: "The image is a technical drawing of a set of four rectangular boxes containing various types of ammunition. The boxes are arranged in a grid-like pattern on a plain, light brown background. Each box contains a different type of ammunition, ranging from small to large, with a cylindrical shape and a pointed tip. The bullets are drawn in a simple, minimalist style with thin lines and shading, giving them a clean and polished appearance. The overall color scheme of the image is neutral, with the exception of the light brown background providing a subtle contrast."
 tags: [technical, set, four, rectangular, boxes, containing, various, types, ammunition, arranged, grid-like, pattern, container, container-crate]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: d8e58c9b-4e20-5b0c-ac25-87ce3372b10c      # UUID linking orientation/state variants of one object
 

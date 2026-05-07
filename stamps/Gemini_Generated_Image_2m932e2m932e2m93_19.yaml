@@ -5,7 +5,7 @@
 name: "Crosses"
 description: a set of three crosses on a gray background
 tags: [set, crosses, background]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design With A Plain"
 description: "The image is a simple, minimalist design with a plain, light grey background. On the left side of the image, there are several small, detailed leaves arranged in a symmetrical pattern. The leaves are of different sizes and shapes, with some overlapping each other, creating a sense of depth and dimension. The overall aesthetic is minimalistic and minimalistic, with a focus on the natural beauty of the leaves. The image is taken from a top-down perspective, looking down on the leaves, giving a clear view of their intricate details and texture."
 tags: [simple, minimalist, design, plain, light, background, left, side, there, several, detailed, leaves]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: Empty glassThe
 description: The image is a set of four empty glassThe
 tags: [set, four, empty, glassthe]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

@@ -5,7 +5,7 @@
 name: Bed With A Gray Background
 description: "A set of four 3D models of a bed with a gray background. The beds are arranged in a grid-like pattern, with each bed having a rectangular shape with a flat top and a flat bottom. Each bed is covered with a light-colored, textured fabric, giving it a textured appearance. The fabric appears to be slightly wrinkled and has a slightly worn, aged look to it, suggesting that it has been used for a long time. The beds are positioned in a symmetrical manner, with the top bed slightly higher than the bottom bed, creating a sense of depth and dimensionality. The overall aesthetic of the image is minimalistic and contemporary, with a focus on textures and patterns."
 tags: [set, four, models, bed, background, beds, arranged, grid-like, pattern, each, having, rectangular, furniture, furniture-bed]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: null
 

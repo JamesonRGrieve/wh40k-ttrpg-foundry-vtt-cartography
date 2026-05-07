@@ -5,7 +5,7 @@
 name: Paper Pieces Arranged In A Scattered Manner
 description: "A collection of blank paper pieces arranged in a scattered manner on a plain, light grey background. The paper pieces are of various sizes and shapes, some overlapping each other, creating a sense of depth and dimension. The image has a minimalist design, with no other elements present in the composition. The overall mood is simple and minimalistic, with a focus on the blank paper pieces."
 tags: [collection, blank, paper, pieces, arranged, scattered, manner, plain, light, background, various, sizes, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: a143e295-d2a3-5872-ad6f-6083408d18ac      # UUID linking orientation/state variants of one object
 

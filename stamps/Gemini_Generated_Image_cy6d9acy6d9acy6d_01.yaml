@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design"
 description: "The image is a simple, minimalist design with a neutral color palette. It features three rectangular panels arranged in a grid-like pattern, each with a unique design. The panels are evenly spaced and have a smooth, textured surface. The background is a solid, light grey color, which contrasts nicely with the neutral tones of the panels. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple lines and shapes that create a sense of depth and dimensionality."
 tags: [simple, minimalist, design, neutral, palette, features, rectangular, panels, arranged, grid-like, pattern, each]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

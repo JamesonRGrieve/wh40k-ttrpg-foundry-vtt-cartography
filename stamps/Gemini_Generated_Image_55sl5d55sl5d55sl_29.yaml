@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Illustration"
 description: "The image is a simple, minimalist illustration with a neutral color palette. It features four square-shaped objects arranged in a grid-like pattern, each with a distinct shape and size. The objects appear to be made of a light-colored material, possibly paper or fabric, and have a smooth, glossy finish. The background is a simple, textured gray color, which contrasts nicely with the neutral tones of the objects. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple shapes and textures of the objects."
 tags: [simple, minimalist, illustration, neutral, palette, features, four, square-shaped, objects, arranged, grid-like, pattern, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: d66f2434-eed5-5b35-bb9c-4c35b42fc852      # UUID linking orientation/state variants of one object
 

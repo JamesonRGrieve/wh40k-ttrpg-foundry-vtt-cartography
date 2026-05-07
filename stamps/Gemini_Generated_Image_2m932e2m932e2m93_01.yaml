@@ -5,7 +5,7 @@
 name: "Cogitator Console"
 description: "A cogitator/auspex console terminal with a large green CRT scope display showing radar/sensor readouts, full keypad with control switches and knobs."
 tags: [digital, illustration, set, vintage, televisions, arranged, grid-like, pattern, background, drawn, simple, minimalist, tech, tech-screen]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: north
 state: active
 group_id: 4325bfec-db34-5426-afd6-54e30220b3ad      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Geometric Patterns In A Simple
 description: "A set of four geometric patterns in a simple, minimalist design. The patterns are arranged in a grid-like manner, with each pattern having a distinct shape and size. The background is a solid, neutral gray color, providing a subtle contrast to the intricate details of the patterns. On the top left corner of the image, there is a larger, more prominent pattern that appears to be overlapping each other, creating a sense of depth and dimensionality. The pattern is composed of multiple overlapping rectangles, each with a different size and shape, creating an interesting visual effect. The overall effect is one of sophistication and elegance."
 tags: [set, four, geometric, patterns, simple, minimalist, design, arranged, grid-like, manner, each, pattern]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 1b323846-520b-5fe3-8906-9d3973ad84a3      # UUID linking orientation/state variants of one object
 

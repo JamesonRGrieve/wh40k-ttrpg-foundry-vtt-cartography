@@ -5,7 +5,7 @@
 name: Chaotic Scene Composed Of Small
 description: "A 3D rendering of a chaotic scene composed of small, irregularly shaped objects scattered across a plain, light-colored background. The objects appear to be made of paper or cardboard, with some overlapping and some standing upright. The texture of the paper is rough and uneven, with visible cracks and crevices. The overall appearance is chaotic and chaotic, with a sense of chaos and confusion. the image is a simple yet detailed representation of a chaotic scene, with the objects overlapping and standing upright, creating a sense of depth and dimensionality."
 tags: [rendering, chaotic, scene, composed, irregularly, shaped, objects, scattered, across, plain, light-colored, background, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 5bc43278-dd00-52b3-8370-837cccec6162      # UUID linking orientation/state variants of one object
 

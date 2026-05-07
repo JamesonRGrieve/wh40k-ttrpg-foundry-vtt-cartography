@@ -5,7 +5,7 @@
 name: Wooden Toolboxes With Various Compartments
 description: "A set of three wooden toolboxes with various compartments, arranged in a symmetrical pattern on a plain grey background. The toolboxes are made of light-colored wood and have a smooth, polished finish. Each toolbox has a handle on the top for easy carrying. The compartments are divided into sections, each with a different type of tool inside, such as a screwdriver, a ruler, a pencil sharpener, and a ruler. The overall style of the toolboxes is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [set, wooden, toolboxes, various, compartments, arranged, symmetrical, pattern, plain, background, light-colored, wood, prop, prop-writing, tool]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: fad127d0-0a3f-5b85-bbfe-03966872e412      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: "Luggage"
 description: a set of four different types of luggage on a gray background
 tags: [set, four, different, types, luggage, background, container, container-bag]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 7f3c9e19-68f5-524b-a95b-a918dc095c93      # UUID linking orientation/state variants of one object
 

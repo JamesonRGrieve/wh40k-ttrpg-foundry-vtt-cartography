@@ -5,7 +5,7 @@
 name: "Simple, Minimalist Design With A Plain"
 description: "The image is a simple, minimalist design with a plain, light brown background. In the center of the image, there are three identical cross silhouettes arranged in a symmetrical pattern, each with a distinct shape and size. The crosses are evenly spaced and have a smooth, polished finish. The overall aesthetic is minimalistic and minimalistic, with no additional embellishments or details. The image appears to be taken from a top-down perspective, looking down on the crosses."
 tags: [simple, minimalist, design, plain, light, background, center, there, identical, cross, silhouettes, arranged]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

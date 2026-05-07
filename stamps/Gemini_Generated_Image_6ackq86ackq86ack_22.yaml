@@ -5,7 +5,7 @@
 name: Seamless Pattern With A Minimalist Design
 description: "The image is a seamless pattern with a minimalist design. It consists of two square panels, each with a different pattern, arranged in a symmetrical manner. The panels are made of a light-colored material, possibly wood or metal, and have a smooth, polished finish. Each panel has a rectangular shape with a grid-like pattern in the center, creating a sense of depth and dimension. The pattern is symmetrical, with each panel slightly overlapping the one below it. The overall effect is a simple yet elegant design that could be used as a background or wallpaper."
 tags: [seamless, pattern, minimalist, design, consists, square, panels, each, different, arranged, symmetrical, manner]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

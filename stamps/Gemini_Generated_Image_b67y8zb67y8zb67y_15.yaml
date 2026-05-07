@@ -5,7 +5,7 @@
 name: "With A Simple, Minimalist Design"
 description: "The image is a digital illustration with a simple, minimalist design. It features three rectangular objects arranged in a horizontal line on a plain, light brown background. The objects appear to be made of a soft, textured material, possibly paper or fabric, with a slightly rough, uneven texture. Each object has a rectangular shape with a flat top and a flat bottom, creating a symmetrical composition. The objects are drawn in a light brown color, with some areas appearing darker and others lighter. The overall style of the image is simple and minimalistic, with clean lines and a focus on texture and depth."
 tags: [digital, illustration, simple, minimalist, design, features, rectangular, objects, arranged, horizontal, line, plain, prop, prop-document]
-orientation: null   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

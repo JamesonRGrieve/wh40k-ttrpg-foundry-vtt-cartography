@@ -5,7 +5,7 @@
 name: Square Frames With A Textured
 description: "A set of four square frames with a textured, vintage look. The frames are arranged in a symmetrical pattern, with each frame slightly overlapping the one below it. The background is a solid, light grey color, and the frames have a slightly worn, aged appearance. The overall style of the image is simple and minimalistic, with a focus on the textures and patterns of the frames. The image appears to be taken from a top-down perspective, looking down on the frames."
 tags: [set, four, square, frames, textured, vintage, arranged, symmetrical, pattern, each, frame, slightly]
-orientation: top-down   # north | south | east | west | top-down | isometric
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: null
 
