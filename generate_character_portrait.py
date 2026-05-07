@@ -1,108 +1,324 @@
 #!/usr/bin/env -S uv run --script
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["pillow", "PyYAML", "requests"]
+# dependencies = ["pillow", "numpy", "opencv-python-headless", "PyYAML", "requests"]
 # ///
 """Pipeline 2 — character portrait generator.
 
-Status: SKELETON. Implementation deferred until the symbol library
-has canonical Aquila/Inquisition/Mechanicus art and the operator
-has approved a stylistic direction (FFG-era 40K RPG sourcebook
-illustration vs. something more painterly).
+Bust / three-quarter / full-body portraits matched to the campaign's
+illustrated style. Uses the proven Flux txt2img workflow
+(BattlemapInteriorV1) with three additions:
 
-Purpose
--------
-Produce bust / three-quarter / full-body portraits for NPCs and PCs
-matching the campaign's illustrated style. Today characters live as
-text-only Markdown in `Characters/`; portraits feed Kanka sidebar
-images and Foundry actor avatars.
+1. Class-specific portrait prompts (Inquisitor / Acolyte / Tech-priest
+   / Guardsman / Preacher / Astropath / Hive-ganger / Civilian).
+2. Anti-symbol negative prompts so Flux doesn't draw mangled Aquila /
+   Inquisition / Mechanicus iconography.
+3. Symbol-compose pass at class-specific anchor points (chest, collar,
+   pauldron, etc.) so canonical 40K iconography is pasted from the
+   library instead of hallucinated.
 
-Style target: painterly, grimdark, illustrative. Operator may want
-different stylistic options per character class (Inquisitor vs.
-hive-ganger vs. Astropath).
+ControlNet OpenPose for explicit pose composition is deferred to a
+future iteration; for now portrait composition is prompt-driven plus
+seed selection.
 
-Workflow & symbology
---------------------
-- ComfyUI workflow: `CharacterPortraitV1.json` (to build).
-- Flux txt2img + ControlNet OpenPose for body composition.
-- IPAdapter for face consistency across multiple portraits of the
-  same character (so a recurring NPC looks the same in every
-  rendering).
-- Negative prompts forbid hallucinated symbology
-  ("no Imperial Aquila in robes, no Inquisitorial I, no Mechanicus
-  cog — composited separately as canonical").
-- Symbol-compose pass paints canonicals at the body anchors
-  declared per character class:
-      Inquisitor  → Inquisition I on chest, Aquila on collar
-      Tech-priest → Mechanicus cog on chestplate
-      Guardsman   → Skull-laurel on shoulder pad
-      Preacher    → Cult Imperialis flame on lectern/robe
-      …
-
-Acceptance criteria for the first cut
--------------------------------------
-1. Generate portraits for 3 PCs at bust scale.
-2. Each portrait: zero hallucinated symbology in the raw render
-   (validated by inspecting the negative prompt was honored).
-3. One canonical Aquila composited where declared.
-4. Symbol validation (canny IoU) passes for every composited symbol.
-5. Operator approves stylistic match.
-
-Output convention
------------------
-Writes to `../../Characters/portraits/<name>_<slot>.png` and
-`<name>_<slot>.json` (sidecar with seed, prompt, IPAdapter ref,
-symbol-compose log). The sidecar enables exact-reproduction renders
-later.
-
-Usage (planned)
----------------
-    uv run generate_character_portrait.py "Inquisitor Vael" \
-            --slot bust --class inquisitor --seed 42
-
-    uv run generate_character_portrait.py "Tech-priest Hark" \
-            --slot full-body --class tech-priest \
-            --reference-from "../Characters/Hark_face_ref.png"
+Usage:
+    uv run generate_character_portrait.py "Inquisitor Vael" \\
+        --slot bust --class inquisitor --seed 42 \\
+        --output ../../Characters/portraits/Vael_bust.png
 """
 from __future__ import annotations
 
 import argparse
+import json
 import sys
+import uuid
+from dataclasses import dataclass
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from PIL import Image
+from generate_battlemap import (  # type: ignore[import-not-found]
+    _extend_negative,
+    load_template,
+    poll_history,
+    set_dimensions,
+    set_prompt,
+    set_save_prefix,
+    set_seed,
+    submit_prompt,
+    _saved_images_from_history,
+    _download_first,
+)
+from symbol_compose import (  # type: ignore[import-not-found]
+    SymbolPlacement,
+    compose_symbols,
+    load_symbol,
+    validate_symbol,
+)
 
-def _not_implemented(reason: str) -> int:
-    print(
-        "generate_character_portrait.py is a SKELETON; the full pipeline is not yet wired up.",
-        file=sys.stderr,
+HERE = Path(__file__).resolve().parent
+
+SLOT_DIMS: dict[str, tuple[int, int]] = {
+    "bust": (768, 1024),
+    "three-quarter": (768, 1280),
+    "full-body": (768, 1536),
+}
+
+# Per-slot token-crop center (fractional cy in the portrait). The face is
+# higher in the frame for longer compositions because the head occupies a
+# smaller portion of the canvas.
+TOKEN_CY_FRAC: dict[str, float] = {
+    "bust": 0.30,           # head/shoulders bust — face in upper third
+    "three-quarter": 0.20,  # face in top fifth
+    "full-body": 0.13,      # face near top of frame
+}
+
+# Token edge length (px). 512 is a comfortable Foundry token size that scales
+# down cleanly to the system's default ~100px tile grid. The crop is square.
+TOKEN_EDGE_PX = 512
+
+# Class -> (prompt cue, list of symbol placements as (name, anchor, size_label)).
+# Symbols paste at fractions of (image_w, image_h) — see _ANCHOR_FRACS.
+CLASS_PROFILES: dict[str, dict] = {
+    "inquisitor": {
+        "prompt": "an Inquisitor of the Holy Ordos, severe weathered face, long dark coat with high collar, "
+                  "embellished gunmetal armor under the coat, ornate chest carapace, "
+                  "carrying a power weapon at the hip, somber gaze, oil-painting portrait style",
+        "symbols": [("inquisition_rosette", "chest_center", "medium")],
+    },
+    "acolyte": {
+        "prompt": "a hard-bitten Inquisitorial acolyte, scarred face, practical fatigues with a personal sigil, "
+                  "weathered armor pieces, holstered laspistol, tense alert expression, oil-painting portrait style",
+        "symbols": [("inquisition_i", "collar_left", "small")],
+    },
+    "tech-priest": {
+        "prompt": "an Adeptus Mechanicus Tech-priest, half-flesh half-mechanical face, robotic eye lens, "
+                  "mechadendrites emerging from red robes, brass and steel cybernetic augmentations, "
+                  "cogitator implants, dim red glow, oil-painting portrait style",
+        "symbols": [("mechanicus_cog", "chest_center", "medium")],
+    },
+    "guardsman": {
+        "prompt": "an Imperial Guardsman, weathered helmeted face with chin strap, flak armor over fatigues, "
+                  "regimental insignia on the shoulder, lasgun slung at the side, dirt-streaked, "
+                  "weary determined expression, oil-painting portrait style",
+        "symbols": [("astra_militarum", "shoulder_right", "small")],
+    },
+    "preacher": {
+        "prompt": "an Ecclesiarchy preacher, robed cleric with a censer at the belt, severe ascetic face, "
+                  "holy book under one arm, candle-lit warm illumination, oil-painting portrait style",
+        "symbols": [("adeptus_ministorum", "chest_center", "medium")],
+    },
+    "astropath": {
+        "prompt": "an Astropath, blind sealed eyes, gaunt skull-like face, gold and bone-white robes, "
+                  "warp-touched aura, faintly glowing skin, ethereal painterly atmosphere, oil-painting portrait style",
+        "symbols": [],
+    },
+    "hive-ganger": {
+        "prompt": "a hive-world ganger, scarred and tattooed face, stitched-together leather and salvage armor, "
+                  "improvised stub weapon, defiant snarling expression, neon-stained underhive lighting, "
+                  "oil-painting portrait style",
+        "symbols": [],
+    },
+    "civilian": {
+        "prompt": "a hive-world Imperial citizen, drab worker's clothing with a personal Aquila pendant, "
+                  "tired careworn face, muted brown and gray palette, oil-painting portrait style",
+        "symbols": [("aquila", "collar_center", "small")],
+    },
+}
+
+# Fractional anchors keyed by name. Same convention as the scene picture
+# generator: (cx_frac, cy_frac, base_size_frac of min(w, h)).
+_ANCHOR_FRACS: dict[str, tuple[float, float, float]] = {
+    "chest_center": (0.50, 0.62, 0.18),
+    "collar_left":  (0.40, 0.42, 0.10),
+    "collar_center": (0.50, 0.40, 0.10),
+    "shoulder_right": (0.72, 0.45, 0.12),
+    "pauldron_left": (0.30, 0.45, 0.14),
+}
+
+_SIZE_SCALE: dict[str, float] = {
+    "small": 0.6,
+    "medium": 1.0,
+    "large": 1.5,
+}
+
+PORTRAIT_NEG_T5 = (
+    "Imperial Aquila, two-headed eagle emblem, Inquisition I, Inquisitorial rosette, "
+    "Mechanicus cog, half-cog half-skull, Adepta Sororitas fleur-de-lys, "
+    "Adeptus Custodes lightning bolt, Astra Militarum winged skull, "
+    "Adeptus Ministorum sigil, ornate religious symbology, branded faction emblems, "
+    "anime, cartoon, cel shading, photorealistic, photograph, low resolution, watermark, text, signature, "
+    "extra arms, extra heads, missing limbs, deformed face, disfigured, blurry, ugly, messy"
+)
+PORTRAIT_NEG_CLIP_L = (
+    "imperial aquila, eagle emblem, inquisition i, mechanicus cog, sigil, deformed, blurry"
+)
+
+
+@dataclass
+class PortraitSpec:
+    name: str
+    cls: str
+    slot: str
+    seed: int
+    output: Path
+
+
+def build_portrait_prompt(*, name: str, cls: str, slot: str) -> tuple[str, str]:
+    if cls not in CLASS_PROFILES:
+        raise ValueError(f"unknown class {cls!r}; known: {list(CLASS_PROFILES)}")
+    body = CLASS_PROFILES[cls]["prompt"]
+    composition = {
+        "bust": "head and shoulders bust portrait, neutral background, centered composition",
+        "three-quarter": "three-quarter length portrait from the thighs up, neutral background, centered composition",
+        "full-body": "full-body standing portrait, neutral background, centered composition",
+    }[slot]
+    t5 = (
+        f"{composition}, "
+        f"warhammer 40000 grimdark aesthetic, painterly oil-painting illustration, "
+        f"{body}, "
+        f"highly detailed character portrait, dramatic chiaroscuro lighting, "
+        f"professional concept art quality, single character, plain dark background"
     )
-    print(f"  reason: {reason}", file=sys.stderr)
-    print(
-        "  see the docstring at the top of this file and TODO.md "
-        "(asset generation pipelines) for the build plan.",
-        file=sys.stderr,
-    )
-    return 64
+    clip_l = f"warhammer 40k, grimdark portrait, {cls}, painterly oil painting"
+    return t5, clip_l
+
+
+def resolve_portrait_anchor(
+    spec: tuple[str, str, str],
+    *,
+    image_w: int,
+    image_h: int,
+) -> SymbolPlacement:
+    sym_name, anchor, size_label = spec
+    if anchor not in _ANCHOR_FRACS:
+        raise ValueError(f"unknown anchor {anchor!r}; known: {sorted(_ANCHOR_FRACS)}")
+    cx_frac, cy_frac, base_size_frac = _ANCHOR_FRACS[anchor]
+    base_size_px = int(min(image_w, image_h) * base_size_frac)
+    size_px = max(48, int(base_size_px * _SIZE_SCALE[size_label]))
+    cx = int(image_w * cx_frac)
+    cy = int(image_h * cy_frac)
+    return SymbolPlacement(name=sym_name, x=cx - size_px // 2, y=cy - size_px // 2, size=size_px)
+
+
+def render_portrait(
+    *,
+    server: str,
+    t5xxl: str,
+    clip_l: str,
+    width: int,
+    height: int,
+    seed: int,
+    prefix: str,
+) -> Path:
+    wf = load_template("BattlemapInteriorV1")
+    set_prompt(wf, "pos", t5xxl=t5xxl, clip_l=clip_l)
+    _extend_negative(wf, t5_addendum=PORTRAIT_NEG_T5, clip_l_addendum=PORTRAIT_NEG_CLIP_L)
+    set_dimensions(wf, "latent", width=width, height=height)
+    set_seed(wf, "sampler", seed)
+    set_save_prefix(wf, "save", prefix)
+
+    client_id = uuid.uuid4().hex
+    print(f"[portrait] submitting prefix={prefix} {width}x{height} seed={seed}", file=sys.stderr)
+    pid = submit_prompt(server, wf, client_id)
+    print(f"[portrait] prompt_id={pid}", file=sys.stderr)
+    record = poll_history(server, pid)
+    saved = _saved_images_from_history(record)
+    if not saved:
+        raise RuntimeError(f"no SaveImage outputs in history")
+    return _download_first(server, saved, prefix)
 
 
 def cmd_portrait(args: argparse.Namespace) -> int:
-    return _not_implemented(
-        "ComfyUI workflow CharacterPortraitV1.json not yet built; "
-        "Flux txt2img + ControlNet OpenPose + IPAdapter chain pending. "
-        "Symbol compose pass is ready but blocked on canonical PNGs in symbols/."
+    if args.cls not in CLASS_PROFILES:
+        print(f"unknown class {args.cls!r}; known: {list(CLASS_PROFILES)}", file=sys.stderr)
+        return 2
+    if args.slot not in SLOT_DIMS:
+        print(f"unknown slot {args.slot!r}; known: {list(SLOT_DIMS)}", file=sys.stderr)
+        return 2
+
+    width, height = SLOT_DIMS[args.slot]
+    profile_symbols = CLASS_PROFILES[args.cls]["symbols"]
+
+    # Pre-resolve symbols so missing canonicals fail BEFORE GPU.
+    placements: list[SymbolPlacement] = []
+    for sym_spec in profile_symbols:
+        load_symbol(sym_spec[0])
+        placements.append(resolve_portrait_anchor(sym_spec, image_w=width, image_h=height))
+
+    t5, clip_l = build_portrait_prompt(name=args.name, cls=args.cls, slot=args.slot)
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    prefix = args.output.stem
+
+    raw_path = render_portrait(
+        server=args.server,
+        t5xxl=t5,
+        clip_l=clip_l,
+        width=width,
+        height=height,
+        seed=args.seed,
+        prefix=prefix,
     )
+
+    base = Image.open(raw_path)
+    report: list[dict] = []
+    if placements:
+        composed = compose_symbols(base, placements)
+        for p in placements:
+            ok, score = validate_symbol(composed, p)
+            tag = "OK" if ok else "FLAG"
+            print(f"[portrait] symbol {p.name}@({p.x},{p.y}) size={p.size}: {tag} (IoU {score:.3f})",
+                  file=sys.stderr)
+            report.append({"name": p.name, "x": p.x, "y": p.y, "size": p.size,
+                           "valid": bool(ok), "iou": float(score)})
+        final = composed
+        composed.save(args.output)
+    else:
+        final = base
+        if args.output != raw_path:
+            base.save(args.output)
+
+    # --- Token: 1:1 square crop centered on the face -----------------------
+    # Foundry actors have a portrait (full image, sidebar) AND a token (1:1,
+    # canvas). The token is typically the head + shoulders cropped from the
+    # portrait. Crop center is per-slot because the face occupies a different
+    # vertical fraction depending on portrait length.
+    cy_frac = TOKEN_CY_FRAC[args.slot]
+    img_w, img_h = final.size
+    edge = min(img_w, img_h)  # crop within the portrait's smaller dimension
+    cy = int(img_h * cy_frac)
+    # Clamp so the square stays inside the canvas.
+    half = edge // 2
+    cy = max(half, min(img_h - half, cy))
+    cx = img_w // 2
+    crop_box = (cx - half, cy - half, cx + half, cy + half)
+    token = final.convert("RGBA").crop(crop_box).resize((TOKEN_EDGE_PX, TOKEN_EDGE_PX), Image.LANCZOS)
+    token_path = args.output.with_name(f"{args.output.stem}_token.png")
+    token.save(token_path)
+    print(f"[portrait] token: {token_path.name} ({TOKEN_EDGE_PX}x{TOKEN_EDGE_PX} from crop {crop_box})",
+          file=sys.stderr)
+
+    sidecar = args.output.with_suffix(".json")
+    sidecar.write_text(json.dumps({
+        "name": args.name, "class": args.cls, "slot": args.slot,
+        "seed": args.seed, "width": width, "height": height,
+        "t5xxl": t5, "clip_l": clip_l,
+        "raw_render": str(raw_path), "symbols": report,
+        "token": {"path": str(token_path), "edge_px": TOKEN_EDGE_PX, "crop_box": list(crop_box)},
+    }, indent=2))
+    print(f"[portrait] wrote {args.output} (+ {sidecar.name})", file=sys.stderr)
+    return 0
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("name", help="character name (matches Characters/<name>.md filename or display name)")
-    ap.add_argument("--slot", choices=["bust", "three-quarter", "full-body"], default="bust")
-    ap.add_argument("--class", dest="cls", required=True,
-                    choices=["inquisitor", "acolyte", "tech-priest", "guardsman",
-                             "preacher", "astropath", "hive-ganger", "civilian"])
-    ap.add_argument("--reference-from", type=Path, default=None,
-                    help="optional face reference image (IPAdapter)")
-    ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--server", default="http://198.51.100.11:8188")
+    ap.add_argument("name", help="character name (matches Characters/<name>.md)")
+    ap.add_argument("--slot", choices=sorted(SLOT_DIMS), default="bust")
+    ap.add_argument("--class", dest="cls", required=True, choices=sorted(CLASS_PROFILES))
+    ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--output", type=Path, required=True)
     ap.set_defaults(func=cmd_portrait)
     args = ap.parse_args()
     return args.func(args)

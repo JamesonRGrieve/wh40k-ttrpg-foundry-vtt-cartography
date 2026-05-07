@@ -347,6 +347,122 @@ operator hand-paint (which is the appropriate division of labor).
 
 ---
 
+## 2026-05-07 — Asset generation pipelines (build session 1)
+
+Three new pipelines wired end-to-end with the symbol-preservation
+infrastructure. Each delivers a real first-cut artifact; further
+iteration is operator-driven.
+
+### Pipeline 3 — scene pictures (LANDED)
+
+`generate_scene_picture.py` reuses the Flux txt2img workflow
+(BattlemapInteriorV1) with three additions:
+1. Anti-symbol negative prompts (Aquila/Inquisition/Mechanicus etc).
+2. Per-aspect anchor map (DEFAULT_ANCHORS, fractional coords).
+3. Post-render symbol_compose pass with canny-IoU validation.
+
+POC (seed 42, 1024×768): `[[District 4 Chapel]]` with
+`aquila:apse_back,large` + `adeptus_ministorum:lectern_front,small`.
+
+**Wins:**
+- Recognizable chapel interior — pews, candles, arches, dramatic
+  lighting. Operator-acceptable for a handout.
+- Anti-symbol negatives WORKED: no hallucinated 40K iconography in
+  the diffusion render itself. The composited canonicals are the
+  ONLY 40K symbology in the final image.
+- Aquila and Ministorum sigil pasted at the right anchor points,
+  visually integrated.
+
+**Fails (and fixes):**
+- **Validator was wrong.** First run flagged both symbols (IoU 0.70
+  / 0.60) below threshold. Root cause: validator was comparing the
+  cropped composite region (which has SCENE edges visible through
+  the canonical's transparent regions) against the clean canonical.
+  Fix: alpha-mask the IoU to the canonical's non-transparent
+  pixels. Re-validation: aquila 0.942, adeptus_ministorum 0.887,
+  both pass. Validator update is in `_canny_iou(mask_alpha=True)`.
+
+### Pipeline 1 — stamp variants (LANDED)
+
+`generate_stamp_variants.py` with two subcommands:
+
+- **`rotate --method geometric`**: pure PIL, no GPU. Rotates the
+  PNG 90/180/270° per requested variant. Tested on
+  `Gemini_Generated_Image_2m932e2m932e2m93_01.png` (radar console);
+  south/east/west variants produced correctly with alpha preserved.
+- **`condition`**: img2img via a client-constructed Flux workflow
+  with low denoise (0.55-0.65). Tested with damaged variant.
+
+**Wins:**
+- Geometric rotation is fast, deterministic, lossless. Covers the
+  majority of top-down rotation cases.
+- Client-constructed img2img workflow works without any server-side
+  workflow file (submitted directly via /prompt API).
+
+**Fails (and fixes):**
+- **First condition render produced noise.** Root cause: stamps
+  are ~128×128, VAE-encoded latent is ~16×16. Flux is severely
+  under-resolved at that latent size and decodes to garbage.
+- **Fix: pre-upscale to 512px shortest edge BEFORE img2img**, then
+  resize down + restore alpha mask from the source after. New
+  helper `_preprocess_for_img2img()`. The white-background flatten
+  also gives Flux a stable backdrop to denoise against.
+- **Generative rotation deferred** — geometric covers the common
+  case; generative rotation (proper relighting + asymmetry update)
+  is non-trivial and lower priority than condition variants.
+
+### Pipeline 2 — character portraits (LANDED, bust + token)
+
+`generate_character_portrait.py` reuses the Flux txt2img workflow
+with class-specific prompts + anti-symbol negatives + symbol-compose
+pass. POC: Inquisitor bust at 768×1024, seed 42.
+
+Per-class profile in CLASS_PROFILES dict:
+- inquisitor → rosette on chest center
+- acolyte → I on collar left
+- tech-priest → cog on chest center
+- guardsman → astra-militarum on shoulder right
+- preacher → ministorum on chest center
+- astropath → no symbol (warp-touched, generic)
+- hive-ganger → no symbol (illegitimate)
+- civilian → aquila on collar (personal pendant)
+
+**Token output (operator request):** every portrait also produces a
+1:1 square token cropped from the head/shoulders region, scaled to
+512×512 (Foundry actor token convention). Per-slot crop center via
+TOKEN_CY_FRAC: 0.30 for bust, 0.20 for three-quarter, 0.13 for
+full-body. Output naming: `<name>.png` for portrait,
+`<name>_token.png` for token. Sidecar JSON records the crop box.
+
+**Wins:**
+- Inquisitor portrait nailed the brief — severe weathered face,
+  high-collar coat, ornate carapace, oil-painting style.
+- Anti-symbol negatives kept hallucinated 40K iconography out of
+  the diffusion render; the composited rosette is the only sigil.
+- Token crop is operator-acceptable for Foundry actor-token use.
+
+**Fails (and TODOs):**
+- Rosette IoU 0.632 (FLAG). The rosette has lots of internal alpha
+  and the armor detail underneath leaks into the comparison even
+  with alpha-masked IoU. Symbols with sparse internal coverage
+  need a different validation approach (maybe an inset mask or a
+  lower threshold per-symbol).
+- ControlNet OpenPose for explicit pose composition is deferred.
+- IPAdapter face consistency across multiple portraits of the same
+  character is deferred. Currently each portrait re-rolls the face;
+  to make a recurring NPC look consistent across portraits, the
+  operator would need to lock seed + prompt manually.
+
+### Cross-cutting
+
+- **`_extend_negative()` now reused by 3 pipelines** (battlemap
+  interior, scene picture, condition variant) — DRY win.
+- **Symbol library validated end-to-end**. 11/13 canonicals load
+  and composite correctly. Cult Imperialis flame and skull-laurel
+  still pending operator-supplied SVGs.
+
+---
+
 ## What's saved on the ComfyUI server
 
 Pulled into `workflows/` from the server's `userdata/workflows/`:

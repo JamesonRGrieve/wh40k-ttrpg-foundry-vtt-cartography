@@ -198,31 +198,47 @@ def _canny_edges(image: Image.Image, low: int = 80, high: int = 160) -> np.ndarr
     return cv2.Canny(arr, low, high)
 
 
-def _canny_iou(a: Image.Image, b: Image.Image) -> float:
+def _canny_iou(a: Image.Image, b: Image.Image, *, mask_alpha: bool = True) -> float:
     """Intersection-over-union of binary Canny edge maps after dilation.
 
-    Both images are first resized to the same dimensions; transparent
+    Both images are first resized to the same dimensions. Transparent
     backgrounds are flattened to white before edge detection so the
     silhouette of the symbol drives the comparison rather than the
     canvas color.
+
+    `mask_alpha`: when True (the default), restrict the IoU to pixels
+    where the FIRST image (the canonical) has non-trivial alpha. This
+    is what makes the validator usable on a real composite: the
+    canonical's transparent regions are masked out, so scene edges
+    leaking through where the canonical isn't drawn don't pollute the
+    score. Set False for symbol-vs-symbol comparison.
     """
     import cv2
-    if a.size != b.size:
-        b = b.resize(a.size, Image.LANCZOS)
+    a_rgba = a.convert("RGBA")
+    b_rgba = b.convert("RGBA")
+    if a_rgba.size != b_rgba.size:
+        b_rgba = b_rgba.resize(a_rgba.size, Image.LANCZOS)
 
     def flatten(im: Image.Image) -> Image.Image:
         bg = Image.new("RGBA", im.size, (255, 255, 255, 255))
-        bg.alpha_composite(im.convert("RGBA"))
+        bg.alpha_composite(im)
         return bg.convert("RGB")
 
-    ea = _canny_edges(flatten(a))
-    eb = _canny_edges(flatten(b))
-    # Light dilation absorbs single-pixel jitter from rotation/scaling.
+    ea = _canny_edges(flatten(a_rgba))
+    eb = _canny_edges(flatten(b_rgba))
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-    ea = cv2.dilate(ea, kernel, iterations=1) > 0
-    eb = cv2.dilate(eb, kernel, iterations=1) > 0
-    inter = np.logical_and(ea, eb).sum()
-    union = np.logical_or(ea, eb).sum()
+    ea_d = cv2.dilate(ea, kernel, iterations=1) > 0
+    eb_d = cv2.dilate(eb, kernel, iterations=1) > 0
+
+    if mask_alpha:
+        alpha = np.array(a_rgba.split()[-1])
+        # Slightly dilate the mask so edges right on the alpha boundary count.
+        m = cv2.dilate((alpha > 32).astype(np.uint8) * 255, kernel, iterations=2) > 0
+        ea_d &= m
+        eb_d &= m
+
+    inter = np.logical_and(ea_d, eb_d).sum()
+    union = np.logical_or(ea_d, eb_d).sum()
     if union == 0:
         return 0.0
     return float(inter) / float(union)
