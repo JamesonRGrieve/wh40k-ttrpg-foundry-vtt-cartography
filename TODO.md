@@ -1,44 +1,126 @@
 # Cartography TODO
 
 Open work, in priority order. Items removed when done. Last refreshed
-2026-05-06.
+2026-05-07.
 
 ## Open
 
-- [ ] **Architecture-only via workflow surgery (cosmetic).** The
-  saved `BattlemapSpacecraft.json` on the ComfyUI server still has
-  chair/locker/console region nodes. The driver overrides their
-  prompts to "empty deck plating" by default, which works
-  correctly. Cleaner long-term: clone server-side as
-  `BattlemapSpacecraftV2_Architecture.json` with the furniture
-  region nodes (and their ImageColorToMask + ConditioningSetMask +
-  ConditioningCombine entries) removed. No functional impact;
-  cosmetic / future-proofing only.
+- [ ] **HIGH PRIORITY: Stamp variant generator (gap-filling pipeline).**
+  Today the vault has only what Gemini happened to paint on the source
+  sheets. There is no workflow that takes a stamp ("desk, top-down,
+  intact") and generates matching variants — no rotation generator,
+  no damage/activation state generator. The existing pipeline is
+  purely classify-what-you-got: Florence-2 captions + CLIP-ViT-L-14
+  zero-shot for orientation/state. Result: rotational and condition
+  coverage is whatever the sheets happened to provide, with no way
+  to fill obvious holes.
+
+  What we need:
+  - **Rotational variants.** Given a top-down or N-facing stamp,
+    produce S/E/W variants. Two paths:
+    1. **Geometric** for top-down stamps: rotate the PNG 90/180/270°.
+       Fast, deterministic, but the result reads as "rotated", not
+       "naturally drawn from the new angle" — shadows and asymmetric
+       details look wrong.
+    2. **Generative** for non-trivial cases: img2img with controlnet
+       depth/normal hints and a prompt-rotated description. ComfyUI
+       has the building blocks (Flux, IPAdapter, CLIP-ViT-H embed
+       — all installed for the existing classifier). Needs a new
+       workflow file (`StampVariantsRotation.json`) and a driver.
+  - **Condition state variants.** Given an "intact" stamp, generate
+    "damaged" and "destroyed" matched-style copies. Same img2img +
+    IPAdapter approach: IPAdapter encodes the source style, prompt
+    drives the damage pass. "active" / "inactive" can use a similar
+    pattern with light-emission cues.
+  - **LoRA training.** Reserve for when prompt+IPAdapter caps out.
+    Operator has training material on offer; budget ~6-12 hours
+    one-time to capture the Solenne campaign style as a LoRA. A
+    style-LoRA would unlock both gap-filling AND new archetypes
+    (vehicles, weapons, full character poses) without sourcing
+    new Gemini sheets.
+
+  Acceptance for first cut: take 5 hand-picked source stamps with
+  obvious gaps in their group (e.g. a desk that only has a top-down
+  variant), generate the missing rotation variants, classify them
+  through the existing pipeline, and confirm group_id assigns them
+  to the same group as the source. If that round-trip works, scale.
+
+
+
+- [ ] **Chapel `--floor-only` thin perimeter trim (minor).** Round 4
+  polish reduced the artifact: gilded mosaic now renders as a
+  centered Aquila medallion (acceptable feature) plus a thin trim
+  line along the perimeter. The chapel iconography prior is a strong
+  Flux signal that resists prompt suppression. Operators can crop or
+  accept; not blocking.
+- [ ] **Foundry V14 stackable scene end-to-end test.** Real
+  multi-room battlemap pair now staged at
+  `dh-cartography/battlemaps/hab_3room_base.png` +
+  `hab_3room_walls_alpha.png` (1792×1024, hab archetype, seed 42).
+  Layout source at `hab_3room_layout.png`. Pending: deploy via
+  `../../deploy.sh cartography`, then in Foundry create a scene
+  using the base as Background and the walls-alpha as Foreground
+  tile, drop a token, verify wall occlusion. ~5-min operator check.
+- [ ] **Floor texture weight in spacecraft mode (round 2).** First
+  iteration applied to hab fragment (front-loaded distinctive nouns,
+  added "high contrast", "distinct"). Re-render scheduled. If still
+  subtle, options: (a) repeat for other archetypes; (b) modify the
+  spacecraft workflow JSON to boost floor-region guidance; (c) accept
+  the limitation as an inherent trade-off of regional conditioning.
+- [ ] **Multi-deck UX helper polish.** Initial helper writes deck
+  variants but doesn't validate that the outer hull pixels remain
+  identical across decks (modulo opening cuts). Add a sanity check
+  that prints the wall-IoU between deck1 and deck<N> after writing.
 - [ ] **Multi-deck UX helper** — operator must hand-paint two
   layouts that share the wall band. A helper that takes one base
   hull layout and emits N variants (engineering with rear ramp,
   bridge with windscreen, etc.) would shave ~10 minutes per
-  multi-deck ship. Scoped to the spacecraft architectural elements
-  only — hand-painting is fine for room-detail layouts.
+  multi-deck ship. Scoped to spacecraft architectural elements only.
 - [ ] **Layered/stackable wide-scale maps** — faction control
   overlays, hex grids, jurisdiction zones, fleet movement vectors.
   All useful at the strategic scale, none implemented. Pattern
   mirrors architectural `--walls-only`: render the base, render an
-  overlay separately, alpha-mask, composite. Worth a separate
-  helper script (e.g. `make_overlay.py hex --grid 64x64`).
-- [ ] **Foundry V14 stackable scene end-to-end test** — the
-  driver's `--walls-only` produces correctly-aligned alpha PNGs.
-  Not yet verified inside Foundry with a live scene + token
-  movement above/below the foreground. ~5-min spot-check post-
-  deploy is sufficient; needs an operator at Foundry's UI.
+  overlay separately, alpha-mask, composite. Worth a separate helper
+  script (e.g. `make_overlay.py hex --grid 64x64`).
 - [ ] **Operator-driven manual review of orientation + state on
   outliers.** The CLIP zero-shot orientation classifier is ~64%
   accurate on hand-grounded tests; ~36% of populated values may be
-  wrong. Foundry tile rotation is freeform so the field is
-  metadata only, but a quick manual-correction pass on the most
-  unambiguous misses (e.g. desks/lockers labeled top-down where
-  they're clearly isometric) would tighten the search filter
-  experience.
+  wrong. State classifier (new this session) lifted state coverage
+  25% → 78.5% but its accuracy is unverified — likely ~70-80% on
+  damaged/intact/destroyed (bimodal stamps), lower on active/inactive.
+  Foundry tile rotation is freeform so these fields are metadata only,
+  but a quick manual-correction pass on the most unambiguous misses
+  would tighten the search filter experience.
+
+## RECENTLY CLOSED
+
+- [x] **Architecture-only via workflow surgery (cosmetic).** Replaced
+  by the stronger result: floor-only base + walls-only foreground is
+  the canonical stackable design. The saved BattlemapSpacecraft.json
+  furniture region nodes still neutralize correctly at runtime;
+  cosmetic V2 clone deferred to future cleanup pass.
+- [x] **Top-down bare battlemap quality pass (round 3).** Floor-only
+  mode added to `generate_battlemap.py interior` and to
+  `qa_topdown.py`. 10/10 archetypes render clean tileable floors at
+  seed 42. See docs/battlemap-workflow.md for the round-by-round log.
+- [x] **Multi-room floor-plan support.** Operator critique
+  ("all single rooms / all square") addressed: new `make-floorplan`
+  CLI + `FLOORPLAN_PRESETS` + `spacecraft --style <archetype>` flag.
+  POC `hab-3room-corridor × hab` rendered at 1792×1024 with three
+  rooms, central corridor, three doorways, walls + base + walls-only
+  alpha all pixel-aligned.
+- [x] **Floor-plan preset library expanded.** Added `tunnel-junction`,
+  `chapel-nave-with-apse`, `industrial-bay`, `archive-stacks-grid`.
+  Total 6 presets. All render correctly; minor cosmetic glitches
+  noted in the workflow doc.
+- [x] **State classifier (CLIP zero-shot).** New `classify_state.py`.
+  Two-stage damage + activation with strict gating to avoid
+  "everything dim is inactive" bias. Lifted state coverage from 25%
+  → 78.5% across the 615-stamp vault.
+- [x] **Multi-deck UX helper.** New `make_deck_variants.py`. Takes
+  a base hull layout, emits N deck variants preserving outer hull
+  pixel-perfect, with optional canonical openings
+  (`--opening deck1=ramp:south`).
 
 ## Pre-deploy checklist
 

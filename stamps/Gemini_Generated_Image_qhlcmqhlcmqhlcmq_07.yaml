@@ -6,7 +6,7 @@ name: Square-Shaped Objects Arranged In A Grid-Like Pattern
 description: "A set of four square-shaped objects arranged in a grid-like pattern on a transparent background. The objects appear to be made of a light-colored material, possibly stone or porcelain, with a smooth, textured surface. Each object has a unique shape and texture, with some having a slightly raised edge and others having a more rounded shape. The objects are arranged in two rows, with the top row slightly higher than the bottom row, creating a sense of depth and dimensionality. The background is a simple, neutral color, allowing the objects to stand out. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, four, square-shaped, objects, arranged, grid-like, pattern, transparent, background, light-colored, material, possibly]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: null
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png

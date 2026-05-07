@@ -6,7 +6,7 @@ name: Square
 description: A square
 tags: [square]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 0892419b-5f22-51ea-8913-af6d9a5d1d10      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png

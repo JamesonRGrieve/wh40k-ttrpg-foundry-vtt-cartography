@@ -6,7 +6,7 @@ name: Seamless Pattern Of Multiple Computer Icons Arranged
 description: "The image is a seamless pattern of multiple computer icons arranged in a grid-like manner on a plain gray background. The icons are of different shapes and sizes, with some having a rectangular shape and others having a square shape. Each icon has a simple, minimalist design with no additional details or embellishments. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple lines and shapes of the icons."
 tags: [seamless, pattern, multiple, computer, icons, arranged, grid-like, manner, plain, background, different, shapes, decor, decor-statue]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 58c9ed94-0df6-534e-ab46-e5b151249d88      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png

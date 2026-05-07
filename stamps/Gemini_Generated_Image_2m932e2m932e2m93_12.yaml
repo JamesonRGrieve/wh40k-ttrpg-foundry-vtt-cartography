@@ -6,7 +6,7 @@ name: "Containers Arranged In A Grid-Like Pattern"
 description: "A 3D rendering of a set of cylindrical containers arranged in a grid-like pattern on a gray background. The containers appear to be made of plastic and have a smooth, glossy finish. They are of varying sizes and shapes, with some being larger than others. The containers are arranged in an orderly fashion, with the largest container at the top left corner and the smallest at the bottom right corner. The overall aesthetic of the image is minimalistic and modern, with a focus on the containers."
 tags: [rendering, set, cylindrical, containers, arranged, grid-like, pattern, background, plastic, have, smooth, glossy]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 7bd42241-8957-5493-85db-b363bbdbaab2
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

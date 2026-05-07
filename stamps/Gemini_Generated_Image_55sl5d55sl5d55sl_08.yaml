@@ -6,7 +6,7 @@ name: Stool
 description: "The image is a 3D rendering of a stool. It is a simple, minimalist design with a rectangular seat and four legs. The stool appears to be made of wood and has a light grey finish. The seat is slightly curved and the legs are straight and tapered. The overall shape of the stool is simple and minimalistic. The background is a plain beige color."
 tags: [rendering, stool, simple, minimalist, design, rectangular, seat, four, legs, wood, has, light, furniture, furniture-chair]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: null
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png

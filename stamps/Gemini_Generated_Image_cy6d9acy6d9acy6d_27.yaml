@@ -6,7 +6,7 @@ name: Wooden Ladders Arranged In A Grid-Like Pattern
 description: "A set of four simple wooden ladders arranged in a grid-like pattern on a gray background. Each ladder has a rectangular shape with a flat top and four horizontal slats. The ladders appear to be made of a light-colored wood, possibly pine or birch, and have a smooth finish. The image has a clean and minimalistic design, with no visible imperfections or embellishments. The overall aesthetic is minimalistic and contemporary."
 tags: [set, four, simple, wooden, ladders, arranged, grid-like, pattern, background, each, ladder, has, architecture, architecture-step]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: null
 
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png

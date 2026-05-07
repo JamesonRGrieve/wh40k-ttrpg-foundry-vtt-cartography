@@ -10,7 +10,7 @@ In the center of each compartment, there appears to have a small amount of food 
 The tray has a handle on the top for easy carrying. The overall design is simple and minimalistic, with a clean and organized layout."
 tags: [illustration, rectangular, tray, four, compartments, plastic, similar, material, has, smooth, surface, left, container, container-tableware, weapon, weapon-melee]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: c6d2d8a8-d780-5a76-a4e6-c2cb638f0f66
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png

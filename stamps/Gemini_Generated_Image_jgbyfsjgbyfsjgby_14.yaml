@@ -6,7 +6,7 @@ name: Rectangular Objects Arranged In A Grid-Like Pattern
 description: "The image is a 3D rendering of a set of four rectangular objects arranged in a grid-like pattern on a plain, light grey background. The objects appear to be made of a smooth, textured material with a slightly rough, uneven surface. Each object has a rectangular shape with rounded edges and a small, circular indentation in the center. The edges of the objects are slightly raised, giving them a textured appearance. The overall style of the image is simple and minimalistic, with no additional details or embellishments present."
 tags: [rendering, set, four, rectangular, objects, arranged, grid-like, pattern, plain, light, background, smooth]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: dc5e4087-c453-5ca0-9e70-56cd25c72c41
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png

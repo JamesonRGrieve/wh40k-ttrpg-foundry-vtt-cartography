@@ -6,7 +6,7 @@ name: "Plain, Light Grey Background With A Subtle"
 description: "The image is a photograph of a plain, light grey background with a subtle, abstract pattern of small, overlapping shapes. The shapes are arranged in a symmetrical manner, creating a sense of balance and harmony. The image has a minimalist design, with no other elements present in the composition. The overall mood of the image is peaceful and serene, with a focus on the natural beauty of the background."
 tags: [photograph, plain, light, background, subtle, abstract, pattern, overlapping, shapes, arranged, symmetrical, manner]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: a8860189-4cc3-54ce-a594-a4d69783378d      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png

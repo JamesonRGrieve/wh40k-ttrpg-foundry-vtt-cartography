@@ -6,7 +6,7 @@ name: ImageA setA setA setA setA setA
 description: "The imageA setA setA setA setA setA setTheA setTheThe image is a simple, image is a simple, image is a simple, image is a simple, image shows three identical identical"
 tags: [imagea, seta, setthea, setthethe, simple, identical]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: null
 
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png

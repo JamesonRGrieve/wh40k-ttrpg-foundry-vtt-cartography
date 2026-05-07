@@ -6,7 +6,7 @@ name: null
 description: The image is a
 tags: []
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: f79b07c4-717f-5001-9c87-3e33ec2c3b51
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png

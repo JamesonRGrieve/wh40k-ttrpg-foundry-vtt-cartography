@@ -10,7 +10,7 @@ The image is a stock photo with a resolution of 1024x1024 pixels, featuring a si
 Overall, the image conveys a sense of timelessness and sophistication, perfect for any room divider."
 tags: [hand-drawn, illustration, room, divider, simple, minimalist, design, divided, into, four, sections, each]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 343ed5bc-ec2b-5e85-91bb-bed57d168449      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png

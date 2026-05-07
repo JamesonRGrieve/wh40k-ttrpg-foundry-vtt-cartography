@@ -6,7 +6,7 @@ name: Humanoid Figure Standing On A Pedestal
 description: "A set of three 3D models of a humanoid figure standing on a pedestal. The figures are rendered in a realistic style with smooth lines and shading, giving them a lifelike appearance. The figures are positioned in a symmetrical manner, with the tallest figure on the left and the smallest on the right. They are all facing the same direction, with their arms at their sides and their heads slightly tilted upwards. The background is a plain, light grey color, providing a subtle contrast to the figures. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, models, humanoid, figure, standing, pedestal, figures, rendered, realistic, style, smooth, lines, furniture, furniture-table]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: cc2ba6e9-fa29-5903-8a89-a4099692cda6
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png

@@ -6,7 +6,7 @@ name: "Simple, Minimalist Design With A Plain"
 description: "The image is a simple, minimalist design with a plain, light grey background. The background is divided into two sections, with the top section being slightly larger than the bottom section. On the left side of the image, there are several thin, white lines that form a repeating pattern, creating a sense of depth and dimension. The lines are arranged in a symmetrical manner, with each line slightly overlapping the one below it. The overall aesthetic is minimalistic and minimalistic, with no additional details or embellishments present. The image appears to be taken from a top-down perspective, looking down on the lines."
 tags: [simple, minimalist, design, plain, light, background, divided, into, sections, top, section, slightly]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: a88888ca-ed2f-59c7-8f80-69d14e239b88
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png

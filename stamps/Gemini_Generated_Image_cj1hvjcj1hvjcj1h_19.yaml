@@ -6,7 +6,7 @@ name: Rectangular Plastic Containers With A Flat Surface
 description: "A set of three rectangular plastic containers with a flat surface. The containers are arranged in a triangular formation, with the largest container in the center and two smaller containers on either side. Each container has a unique design, with a textured surface and a slightly raised edge. The containers appear to be made of a light-colored material, possibly plastic or metal, and have a smooth, glossy finish. The background is a plain, neutral gray color, which contrasts nicely with the containers. The overall aesthetic of the image is minimalistic and modern."
 tags: [set, rectangular, plastic, containers, flat, surface, arranged, triangular, formation, largest, container, center]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 53c594bc-256d-54db-a0ca-e2f0452a9b1b      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png

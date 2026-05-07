@@ -6,7 +6,7 @@ name: Seamless Patterns With A Beige Background
 description: "A set of four seamless patterns with a beige background. Each pattern consists of a small, intricate design that resembles a cityscape. The buildings are arranged in a grid-like pattern, with each building having a unique shape and size. The colors used in the patterns vary, with some being shades of beige, while others are darker shades of brown. The overall effect is a visually pleasing and sophisticated design that is sure to draw attention to the intricate details of the buildings."
 tags: [set, four, seamless, patterns, beige, background, each, pattern, consists, intricate, design, resembles]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: c760c4b7-bcb8-5ecc-be44-6f1dd9619f4d      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png

@@ -6,7 +6,7 @@ name: Room Divider With A Grid Pattern
 description: "A minimalist illustration of a room divider with a grid pattern. The room has a neutral color palette with a subtle texture. On the left side of the image, there are three open shutters, each with a different pattern. The shutters are arranged in a symmetrical manner, creating a sense of balance and harmony. The background is a simple, neutral color, allowing the focus to remain on the dividers. The overall style of the image is minimalistic and contemporary, with clean lines and a minimalist aesthetic."
 tags: [minimalist, illustration, room, divider, grid, pattern, has, neutral, palette, subtle, texture, left]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 683a4efe-3582-5af3-8060-a8d889ac1d4a      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png

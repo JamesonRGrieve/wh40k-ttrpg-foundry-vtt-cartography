@@ -6,7 +6,7 @@ name: "Couch With A Pillow On Top"
 description: a drawing of a couch with a pillow on top of it
 tags: [couch, pillow, top, furniture, furniture-couch]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 303b0dad-62ef-586c-b1f9-e7deb708621a
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

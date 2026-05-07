@@ -6,7 +6,7 @@ name: Computer Monitor
 description: "The image is a digital illustration of a computer monitor. The monitor is rectangular in shape and has a flat base. On the screen of the monitor, there are various objects scattered around, including a piece of paper, a pencil, a ruler, and a magnifying glass. The objects appear to be in various sizes and shapes, with some overlapping and some standing upright. The background of the image is plain white."
 tags: [digital, illustration, computer, monitor, rectangular, shape, has, flat, base, screen, there, various, prop, prop-document, prop-writing, tech, tech-screen]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: null
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png

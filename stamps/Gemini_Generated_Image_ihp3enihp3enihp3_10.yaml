@@ -6,7 +6,7 @@ name: Kitchen Setting With A Gray Background
 description: "A simple line drawing of a kitchen setting with a gray background. On the left side of the image, there is a rectangular table with various kitchen items such as plates, bowls, and utensils arranged neatly on it. The table is drawn in a simple, minimalist style with clean lines and minimal detail. The items are arranged in a way that creates a sense of balance and harmony, with the table being the main focus of the image. The background is a solid, neutral gray color, providing a subtle contrast to the simple lines of the table and items. The overall aesthetic is minimalistic and clean, with a focus on the minimalistic elements of the kitchen setting."
 tags: [simple, line, kitchen, setting, background, left, side, there, rectangular, table, various, items, furniture, furniture-table, container, container-tableware]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: 91a1f545-91d4-59bc-a535-e60b34d858fb      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png

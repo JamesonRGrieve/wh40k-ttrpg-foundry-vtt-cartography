@@ -6,7 +6,7 @@ name: Chair
 description: "The image is a 3D rendering of a chair. The chair has a simple design with a curved backrest and armrests. The seat and backrest are made of a light-colored material, possibly plastic or metal. The legs of the chair are slightly tapered and have a slightly curved shape. The overall design is simple and minimalistic."
 tags: [rendering, chair, has, simple, design, curved, backrest, armrests, seat, light-colored, material, possibly, furniture, furniture-chair]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 2ec328b1-ea46-5f6e-b8a5-bb0c1eac817a
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png

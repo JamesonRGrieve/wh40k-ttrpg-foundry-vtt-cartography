@@ -6,7 +6,7 @@ name: Design With A Minimalist Aesthetic
 description: "The image is a graphic design with a minimalist aesthetic. It features six rectangular frames arranged in a grid-like pattern on a plain, light grey background. Each frame contains a different type of document or document, with text written in a neat, cursive font. The documents appear to be of different sizes and shapes, with some having a larger font size than others. The text is centered in the frame and is surrounded by a thin, black border. The overall design is simple and minimalistic, with a focus on the text and the background."
 tags: [graphic, design, minimalist, aesthetic, features, six, rectangular, frames, arranged, grid-like, pattern, plain, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: active
 group_id: 41dd735c-65ff-5a7c-8b3b-3e4891bcc192      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png

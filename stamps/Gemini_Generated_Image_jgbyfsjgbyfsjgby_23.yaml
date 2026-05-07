@@ -6,7 +6,7 @@ name: Wooden Chest Or Chest Of Drawers
 description: "The image is a line drawing of a wooden chest or chest of drawers. The chest is rectangular in shape and has four legs at the bottom. On the top of the chest, there are three different types of guns - a gun, a shotgun, and a shotgun shell. The guns are arranged in a horizontal line, with the shotgun on the left side, the shotgun in the middle, and the shotgun and shotgun shell on the right side. The guns appear to be made of metal and have a metallic finish. The background is a light beige color."
 tags: [line, wooden, chest, drawers, rectangular, shape, has, four, legs, bottom, top, there, container, container-crate, weapon, weapon-ranged]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: 77e82241-0ff8-566c-a105-68dcdf95d759      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_jgbyfsjgbyfsjgby.png

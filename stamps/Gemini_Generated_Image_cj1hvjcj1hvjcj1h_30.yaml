@@ -6,7 +6,7 @@ name: "Simple, Image"
 description: "The image is a simple, image is"
 tags: [simple]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: b31b1953-83ba-5e4a-9c0b-4f97157d8049      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png

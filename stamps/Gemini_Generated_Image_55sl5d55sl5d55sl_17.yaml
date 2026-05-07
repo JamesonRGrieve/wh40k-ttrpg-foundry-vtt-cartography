@@ -6,7 +6,7 @@ name: Glass Bottle
 description: "The image is a 3D rendering of a glass bottle. The bottle is empty and appears to be made of glass. It has a cylindrical shape with a flat base and a narrow neck. The top of the bottle has a small cap with a small knob on top. The background is a plain beige color. The image is in a simple, minimalistic style."
 tags: [rendering, glass, bottle, empty, has, cylindrical, shape, flat, base, narrow, neck, top, container, container-vessel]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: aa7bc72a-e5b9-5a4a-8c77-bef7d59103a5      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png

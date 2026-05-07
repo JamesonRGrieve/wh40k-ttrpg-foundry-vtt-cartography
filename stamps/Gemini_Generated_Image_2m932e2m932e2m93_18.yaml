@@ -6,7 +6,7 @@ name: "Brown Background With A Pattern"
 description: a brown background with a pattern of squares and rectangles
 tags: [background, pattern, squares, rectangles]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: null
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

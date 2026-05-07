@@ -10,7 +10,7 @@ The first section on the left side of the tray has a small circular indentation 
 All the food items appear to be made of different types of bread or crackers, with some having a light brown color and others having a darker brown color. There is also a small square indentation on the bottom right corner, which could be a biscuit or a slice of bread."
 tags: [rectangular, tray, six, compartments, light-colored, material, has, handle, right, side, easy, carrying]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: 38cef9f8-2bb7-5cda-b46f-00ac1b08d23e      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png

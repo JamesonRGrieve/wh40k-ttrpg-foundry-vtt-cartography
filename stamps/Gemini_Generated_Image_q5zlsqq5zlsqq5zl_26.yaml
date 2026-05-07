@@ -6,7 +6,7 @@ name: Square Frames Containing Various Geometric Shapes Arranged
 description: "A set of four square frames containing various geometric shapes arranged in a grid-like pattern. The frames are beige in color and have a smooth, glossy finish. Each frame contains a different geometric shape, including a square, a rectangle, a square, and a rectangle. The shapes are arranged in an orderly fashion, with some overlapping each other. The background is a solid beige color, providing a subtle contrast to the shapes. The overall aesthetic of the image is simple and minimalistic, with a focus on the geometric shapes."
 tags: [set, four, square, frames, containing, various, geometric, shapes, arranged, grid-like, pattern, beige]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: 8f25a3f8-10f7-594f-961f-40bda76c68ce      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png

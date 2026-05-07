@@ -6,7 +6,7 @@ name: Trash Can
 description: "The image is a digital illustration of a trash can. The trash can is beige in color and has a rectangular shape with a lid on top. On the front of the trash can, there is a square sticker with a black biohazard symbol in the center. The symbol is a circle with a diagonal line through it, representing the chemical element. The background of the image is plain white."
 tags: [digital, illustration, trash, can, beige, has, rectangular, shape, lid, top, front, there]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: null
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png

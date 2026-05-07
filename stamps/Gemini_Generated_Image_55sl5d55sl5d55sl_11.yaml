@@ -6,7 +6,7 @@ name: null
 description: The image is a
 tags: []
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 76d498ed-1b0c-5390-9f01-2f964beb1909      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png

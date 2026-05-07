@@ -6,7 +6,7 @@ name: "Crosses"
 description: a set of three crosses on a gray background
 tags: [set, crosses, background]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: null
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

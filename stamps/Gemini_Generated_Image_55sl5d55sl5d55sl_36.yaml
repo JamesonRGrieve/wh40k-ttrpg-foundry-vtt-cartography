@@ -6,7 +6,7 @@ name: Circular Object With Six Wooden Sticks Arranged
 description: "The image is a circular object with six wooden sticks arranged in a circular pattern. The sticks are of different sizes and shapes, with the largest stick at the top and the smallest at the bottom. The object appears to be made of metal or a similar material, with a rough, textured surface. The background is a light beige color, and the overall design is simple and minimalistic."
 tags: [circular, object, six, wooden, sticks, arranged, pattern, different, sizes, shapes, largest, stick]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 4366be04-dae7-5b13-8358-25904c86c29e      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png

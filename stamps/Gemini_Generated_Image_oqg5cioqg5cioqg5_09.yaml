@@ -6,7 +6,7 @@ name: Small Glass Bottles With Cork Stoppers
 description: "A set of three small glass bottles with cork stoppers, arranged in a row on a plain grey background. Each bottle has a unique label with the name \"annucci\" written in a cursive font. The bottles appear to be empty, with no labels or illustrations on them. The image has a minimalist design with clean lines and a soft, muted color palette. The overall aesthetic is simple and minimalistic, with a focus on the bottles and their contents."
 tags: [set, glass, bottles, cork, stoppers, arranged, row, plain, background, each, bottle, has, container, container-vessel]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: null
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png

@@ -6,7 +6,7 @@ name: Square-Shaped Metal Plate With A Square
 description: "The image is a square-shaped metal plate with a square in the center. The plate is made of a light-colored metal and has a textured surface with small holes scattered throughout. The edges of the plate are slightly raised, giving it a 3D appearance. There are two small hinges on either side of the square, which are used to secure the plate in place. The overall design is simple and minimalistic."
 tags: [square-shaped, metal, plate, square, center, light-colored, has, textured, surface, holes, scattered, throughout, container, container-tableware]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: null
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png

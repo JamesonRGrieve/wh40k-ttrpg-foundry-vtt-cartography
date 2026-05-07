@@ -6,7 +6,7 @@ name: MinimalistA minimalist
 description: A minimalistA minimalist
 tags: [minimalista, minimalist]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: fe00412d-db05-5e58-b521-67601ed611f6      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png

@@ -6,7 +6,7 @@ name: "Seamless Pattern Of Small, Beige-Colored Cubes Arranged"
 description: "A 3D rendering of a seamless pattern of small, beige-colored cubes arranged in a grid-like structure on a plain, light brown background. The cubes are arranged in a symmetrical pattern, creating a sense of depth and dimensionality, with each cube having a distinct shape and size. The texture of the cubes varies depending on the size and shape of each cube, with some being larger than others, and some being smaller than others. The overall effect is a simple, minimalist representation of a cityscape, with no other objects or structures in sight. The image has a minimalist design, with a focus on the texture of the cubes, and the overall aesthetic is simple yet detailed, with a focus on the intricate details of each cube. The background is a solid, light brown color, providing a subtle contrast to the beige tones of the cubes, making them stand out against the neutral tones of the background."
 tags: [rendering, seamless, pattern, beige-colored, cubes, arranged, grid-like, structure, plain, light, background, symmetrical]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: 6a10c509-9059-51ea-8310-23e58f22a00d      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png

@@ -6,7 +6,7 @@ name: Office Chairs In A Simple
 description: "A set of four line drawings of office chairs in a simple, minimalist style. The chairs are arranged in a row on a plain, light brown background. Each chair has a unique design, with a curved backrest and armrests, and a comfortable cushion for added comfort. The chairs are drawn in a simple, minimalist style, with no additional details or embellishments. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, four, line, drawings, office, chairs, simple, minimalist, style, arranged, row, plain, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 242ccb20-4d55-558e-9309-1718d3200d27      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png

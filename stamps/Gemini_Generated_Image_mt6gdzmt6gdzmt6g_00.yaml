@@ -6,7 +6,7 @@ name: "Simple, Minimalist Illustration With A Plain"
 description: "The image is a simple, minimalist illustration with a plain, light brown background. It features three rectangular objects arranged in a horizontal line, each with a distinct shape and texture. The objects appear to be made of a soft, textured material, possibly linen or cotton, and have a smooth, even finish. The shapes vary in size and shape, with some being larger than others, while others are smaller and more compact. The overall style of the image is simple and minimalistic, with clean lines and a minimalistic aesthetic."
 tags: [simple, minimalist, illustration, plain, light, background, features, rectangular, objects, arranged, horizontal, line]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: 7f510dd9-d9ba-5935-a66f-e9d7b753e35c
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png

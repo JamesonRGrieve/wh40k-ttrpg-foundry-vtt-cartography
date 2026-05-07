@@ -6,7 +6,7 @@ name: Rectangular Boxes Containing Various Documents
 description: "A set of three rectangular boxes containing various documents. The boxes are arranged in a triangular formation, with the top box slightly higher than the bottom box. Each box contains a different type of document, including a document with a title, a description, and a brief description. The documents appear to be blank, with no text or images on them. The background is a plain, light grey color. The overall aesthetic of the image is minimalistic and professional."
 tags: [set, rectangular, boxes, containing, various, documents, arranged, triangular, formation, top, box, slightly, container, container-crate, prop, prop-document]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 9980f582-499a-5cb0-973f-01901c696fab      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png

@@ -6,7 +6,7 @@ name: Complex Network Of Interconnected Pipes And Valves
 description: "A 3D rendering of a complex network of interconnected pipes and valves. The image is composed of a series of interconnected pipes and valves, each with a unique shape and size. The pipes are arranged in a symmetrical pattern, with some overlapping each other. The valves are connected by thin lines, creating a sense of depth and dimensionality. The background is a plain, light grey color, providing a subtle contrast to the intricate details of the pipes and valves. The overall effect is one of sophistication and reliability, with a focus on the interconnectedness of the system."
 tags: [rendering, complex, network, interconnected, pipes, valves, composed, series, each, unique, shape, size, tech, tech-utility]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: 31be98db-b630-5421-b699-5aabea2eebde      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png

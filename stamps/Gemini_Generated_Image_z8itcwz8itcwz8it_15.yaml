@@ -6,7 +6,7 @@ name: Rectangular Panels Arranged In A Grid-Like Pattern
 description: "The image shows a set of four rectangular panels arranged in a grid-like pattern on a plain, light brown background. The panels appear to be made of metal and have a simple, minimalist design. Each panel has a grid of small, evenly spaced squares, creating a neat and organized look. The grid is symmetrical, with the top panel being the largest and the bottom panels being the smallest. The panels are arranged in two rows, with each panel slightly overlapping the one below it. The overall aesthetic of the image is simple and minimalistic, with no additional details or embellishments present."
 tags: [set, four, rectangular, panels, arranged, grid-like, pattern, plain, light, background, metal, have]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: a08a8a93-5380-5d78-ba75-83649e9ed627      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png

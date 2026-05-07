@@ -10,7 +10,7 @@ The first design on the top left is a simple, ornate urn with a lid, while the s
 The overall aesthetic of the image is elegant and sophisticated, with a focus on the intricate details and patterns of the designs. The overall effect is one of sophistication and elegance."
 tags: [collection, four, ornamental, designs, simple, minimalist, style, background, solid, dark, arranged, grid-like]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 10fc5d7f-43a5-5b48-8c1a-397d8a5f1775      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png

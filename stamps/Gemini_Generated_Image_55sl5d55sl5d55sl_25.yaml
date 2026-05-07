@@ -6,7 +6,7 @@ name: Tray With Six Beer Mugs Arranged
 description: "The image is a 3D rendering of a tray with six beer mugs arranged in a circular pattern. The mugs are of different sizes and shapes, with the largest mug in the center and the smallest ones on either side. The tray appears to be made of a light-colored material, possibly wood or metal, and has a smooth surface. The background is a plain beige color. The overall style of the image is simple and minimalistic."
 tags: [rendering, tray, six, beer, mugs, arranged, circular, pattern, different, sizes, shapes, largest, container, container-tableware]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 441c4426-ec45-5d24-88ea-32e30224d3f4      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png

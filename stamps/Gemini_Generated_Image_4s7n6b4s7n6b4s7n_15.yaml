@@ -6,7 +6,7 @@ name: Mug With A Spoon In It
 description: "The image is a digital illustration of a mug with a spoon in it. The mug is made of ceramic and has a handle on the right side. It appears to be empty and is filled with a dark liquid, possibly coffee or tea. The spoon is resting on the rim of the mug and is slightly tilted to the side. The background is a light beige color. The overall style of the illustration is simple and minimalistic."
 tags: [digital, illustration, mug, spoon, ceramic, has, handle, right, side, empty, filled, dark, container, container-tableware]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: db21902e-08c7-5c49-8d46-70d31179fcc2      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png

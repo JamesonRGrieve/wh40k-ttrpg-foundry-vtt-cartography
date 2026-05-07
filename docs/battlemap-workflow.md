@@ -14,6 +14,339 @@ an optional step but is NOT implemented yet.
 
 ---
 
+## 2026-05-07 — Round 1 audit of interior smoketests
+
+Graded the original `map_*_smoketest_00001_.png` set on three axes:
+top-down fidelity, architecture-only, tileability.
+
+| Archetype | Top-down | Arch-only | Tileable | Failure mode |
+| --- | --- | --- | --- | --- |
+| hab | ✓ | ✓ | ✗ | Bezel/frame artifact at all 4 edges |
+| industrial | ✓ | ⚠ | ✗ | Bezel + hazard-stripe cross painted on floor |
+| chapel | ✗ | ✓ | ✗ | Visible side columns + ceiling = isometric drift |
+| tunnel | ✓ | ✓ | ✗ | Bezel; rendered 1:1 instead of corridor aspect |
+| garrison | ✓ | ✗ | ✗ | Weapon racks + vehicles leaked into base |
+| bar | ⚠ | ✓ | ✗ | Bezel; hanging chains imply slight perspective |
+| interior_bareroom | ✓ | ✓ | ✗ | Bezel even on the bare baseline |
+
+`lair`, `medicae`, `archive`, `mechanicus` had no canonical-seed
+smoketests at all — never tested at parity.
+
+**Three diagnosed failure modes:**
+
+1. **Universal bezel/frame artifact.** Every interior render had a
+   thick rendered metal bezel/frame around the image edges that
+   defeated tileability. The static negative in
+   `BattlemapInteriorV1.json` (`"perspective view, side view,
+   isometric, character…"`) does NOT target it. Also: the driver only
+   ever wrote `pos.t5xxl/clip_l` — `neg` was never adjusted client-side.
+2. **Isometric drift on chapel + bar.** Despite "top-down overhead
+   orthographic" in the positive, Flux rendered visible vertical wall
+   faces and ceiling structures.
+3. **Furniture leak on garrison.** Naming an object even in a
+   negative-shaped clause ("racks bare of weapons") still produced the
+   rack object. Garrison had visible weapon racks and vehicle
+   silhouettes at the edges.
+
+### Round 2 fix shape
+
+- Added `_extend_negative()` helper to `generate_battlemap.py` so the
+  driver can layer a domain-specific negative addendum onto the
+  workflow's static neg without mutating the server-side workflow file.
+- `INTERIOR_NEG_ADDENDUM_T5/CLIP_L` constants target all three failure
+  modes: anti-bezel ("frame, bezel, border, vignette, picture frame,
+  walls forming a border around the image, dark edge falloff"),
+  anti-isometric ("vertical wall faces visible, ceiling structures
+  visible, ceiling beams, side perspective"), anti-furniture-leak
+  ("weapon racks, banners, vehicles, bunks, crates, barrels, hanging
+  chains, hanging lights as objects").
+- Universal positive clause: "camera looking straight down at 90
+  degrees, pure orthographic projection, image fills the frame
+  edge-to-edge with no border".
+- Per-archetype tightening:
+  - `garrison` — dropped "weapon racks" and "regimental banners" from
+    positive; replaced with neutral "spartan reinforced concrete walls
+    with bolt fixtures and faded paint" plus explicit "no racks, no
+    banners, no vehicles".
+  - `chapel` — replaced "tall stone walls with carved Imperial
+    iconography and brass relief panels" (which Flux rendered
+    isometrically) with "thin stone wall outlines forming the room
+    perimeter"; replaced "stained-glass slit windows" with "colored
+    light pools on the floor from stained-glass slit windows"
+    (deflects the camera from rendering the windows themselves).
+  - `bar` — pulled "dim hanging lights" and "amber lumen pendants"
+    (both rendered as objects); replaced with "amber pools of lumen
+    light cast onto the floor".
+- New harness `qa_topdown.py` re-renders every archetype at one
+  canonical seed (default 42), 1024² for square archetypes, 1024×512
+  for `tunnel`. Outputs land in `battlemaps/qa/<tag>/`.
+
+Round 2 results below.
+
+### Round 2 results (seed 42, 14 archetypes, 894s)
+
+| Archetype | Top-down | Arch-only | Tileable | Verdict vs round 1 |
+| --- | --- | --- | --- | --- |
+| hab | ✓ | ✓ | ✗ | Bezel still present (slightly thinner) |
+| chapel | **✓** | ✓ | ⚠ | **WIN: isometric drift fully fixed**; thin perimeter ring of light fixtures only |
+| garrison | ✓ | **✗** | ✗ | Lockers/crates still leak around perimeter — furniture leak persists in different objects |
+| bar | ✓ | ⚠ | ✗ | Hanging chains gone; small light-fixture ring around perimeter |
+| tunnel | ✓ | ⚠ | ✗ | **WIN: corridor aspect now 2:1**; "porthole" frame still present |
+| industrial | ✓ | ✗ | ✗ | Hazard stripes painted as objects; crane gantry rendered overhead |
+| medicae | ✓ | **✗** | ✗ | Cabinets/shelves rendered along perimeter |
+| **lair** | **✓** | **✓** | **✓** | **WIN: pristine, no bezel, fills frame edge-to-edge** |
+| archive | ⚠ | ✗ | ✗ | Slight isometric drift; shelf alcoves as 3D structures |
+| mechanicus | ✓ | ✗ | ✗ | Decorative cog reliefs as objects; lumen ring around perimeter |
+| **district** | ✓ | ✓ | ✓ | **WIN: clean, tileable, no bezel** |
+| region | ✓ | ✓ | ⚠ | Strong cartographic framing; usable |
+| planet | ✓ | ✓ | ⚠ | Orbital disc; intentionally framed (not for tiling) |
+| system | ✓ | ✓ | ⚠ | Parchment chart frame intentional |
+
+**Wins (round 2):**
+- Chapel isometric drift fixed — strongest negative + "no ceiling, no side walls" + replacing object-named architectural features (carved iconography, brass relief panels) with flat descriptions.
+- Tunnel correct corridor aspect (1024×512).
+- Lair pristine — biomorphic textures don't fall into the bezel/wall-thickness trap.
+- District + wide-scale archetypes essentially unaffected by the changes (they were already strong; now also benefit from the universal negative).
+
+**Failures still standing (round 2):**
+- **Bezel persists on most interiors.** Diagnosed as the actual root cause: it's not a vignette — it's the room's perimeter walls being rendered with implied 3D thickness. Anti-bezel negatives can't suppress something the positive prompt explicitly asks for ("thick bulkhead walls around the perimeter").
+- **Furniture leak persists** but the leaked objects shifted: garrison now leaks lockers/crates instead of weapon racks; medicae leaks cabinets; archive leaks shelf alcoves; mechanicus leaks decorative cog reliefs. The pattern: any noun in the positive prompt that names an architectural-furnishing hybrid (banner, rack, cabinet, shelf, relief) gets rendered, regardless of negative intent.
+
+**Round 3 pivot — floor-only base layer.**
+
+The bezel/wall-thickness issue is a positive-prompt problem, not a
+negative-prompt problem. Stackable design says walls live on a
+separate foreground/walls-only pass anyway. So:
+
+- New `INTERIOR_STYLE_FLOOR_TEXTURES` dict — one per archetype,
+  describing only the floor surface texture.
+- New `INTERIOR_FLOOR_PROMPT_TEMPLATE` — wraps the texture in a fixed
+  "top-down floor filling the entire frame, no walls" envelope.
+- New `INTERIOR_FLOOR_ONLY_NEG_T5/CLIP_L` — strong "walls, bulkheads,
+  perimeter walls, doorways, columns" suppression layered on top of
+  the round-2 universal negative.
+- New CLI flag `--floor-only` on `interior` and `qa_topdown.py`.
+- `run_interior(floor_only=True)` plumbing.
+
+The canonical stackable base map becomes: floor (interior
+`--floor-only --style <archetype>`) + walls (separate render or
+hand-drawn) + stamps. Round 3 results below.
+
+### Round 3 results (floor-only, seed 42, 10 interior archetypes, 635s)
+
+| Archetype | Top-down | No-walls | Tileable | Notes |
+| --- | --- | --- | --- | --- |
+| hab | ✓ | ✓ | ✓ | Clean ferrocrete slabs with yellow lumen-pool stains; seamless. |
+| tunnel | ✓ | ✓ | ✓ | Steel grating + cable bundle on the floor; corridor aspect 2:1. |
+| industrial | ✓ | ✓ | ✓ | Steel plate floor with weld seams and amber-rust patches. |
+| chapel | ✓ | ✓ | ⚠ | Aquila mosaic stones; **top + bottom decorative gilded borders** persist (probably triggered by "candle wax accumulated at edges" in fragment). Minor; trim or accept. |
+| bar | ✓ | ✓ | ✓ | Wood plank with deep stains and burn marks; pristine tileable surface. |
+| garrison | ✓ | ✓ | ✓ | Concrete tile with rust patches; **no more lockers leaking**. |
+| lair | ✓ | ✓ | ✓ | Organic substrate with green phosphor patches; pristine. |
+| medicae | ✓ | ✓ | ✓ | White ceramic tiles, faint stains; **no more cabinets leaking**. |
+| archive | ✓ | ✓ | ✓ | Wooden plank with paper fragments; **no more shelf alcoves**. |
+| mechanicus | ✓ | ✓ | ⚠ | Black metal plate with engraved cog motif; round red lumens drawn AS floor studs. Decorative but acceptable as stampable base. |
+
+**Verdict: floor-only is the canonical interior base layer.** 8/10 fully
+deploy-ready as tileable bare floor; 2/10 have minor decorative
+artifacts (chapel border, mechanicus lumen studs) that are still
+stamp-compatible.
+
+**Wins (round 3):**
+- The bezel/wall-thickness artifact is GONE on every archetype. Pure
+  floor texture, edge-to-edge.
+- Furniture leak GONE — no lockers, cabinets, racks, shelves, banners.
+  Removing the architectural-furnishing nouns from the positive
+  prompt entirely was the fix; negative prompts alone could not.
+- Tunnel correctly elongated (1024×512) and reads as a corridor floor.
+- Lair extended its round-2 win — even cleaner without the perimeter.
+
+**Failures still standing (minor):**
+- Chapel: gilded mosaic borders at top + bottom edges. Caused by
+  "candle wax accumulated at edges" in the texture fragment biasing
+  Flux toward an explicit edge. Future round: drop "at edges".
+- Mechanicus: red lumen circles drawn on the floor as decorative
+  studs. The fragment includes "ritual blood-red lumen pools"; Flux
+  is rendering them as physical floor inlays not light pools. Future
+  round: rephrase as "ambient red ground glow" or similar.
+
+**LoRA decision: not needed.** Round 3 floor-only meets the deploy
+bar across all 10 archetypes. Plus the 4 wide-scale archetypes from
+round 2 (district/region/planet/system) which are unaffected by the
+floor-only mode. The user's offered training material remains in
+reserve for future archetypes or higher-quality runs but is NOT
+blocking any current goal.
+
+### Round 4 polish (chapel + mechanicus only, seed 42, 138s)
+
+| Archetype | Verdict |
+| --- | --- |
+| **mechanicus** | **WIN.** Replaced "ritual blood-red lumen pools" with "diffuse ambient blood-red illumination across the floor, no light fixtures, no studs". Output: clean black metal plate with red mottled ambient glow + small central Aquila motif. No physical studs. Tileable. |
+| chapel | Mixed. Replaced "candle wax accumulated at edges" with scattered drips and "no decorative borders". Output: thin perimeter trim STILL renders + centered Aquila medallion (smaller, cleaner). The medallion is a feature; the trim persists. Diminishing-returns territory — gilded chapel iconography is a strong Flux prior at this aesthetic. |
+
+**Decision:** stop iterating chapel; the trim is acceptable for stamp-overlay use and the medallion adds rather than detracts. Logged as a known minor artifact rather than blocking. Future operator can suppress with a tighter aspect-ratio crop if it bothers them.
+
+**Cross-round wins summary:**
+- R1 → R2: chapel isometric drift fixed; tunnel corridor aspect; lair pristine; district pristine.
+- R2 → R3: bezel artifact eliminated universally via floor-only pivot; furniture leak eliminated; 8/10 fully clean.
+- R3 → R4: mechanicus stud artifact fixed; chapel border partially-fixed (acceptable).
+
+**Cross-round failures summary:**
+- R1: bezel + isometric + furniture leak across most archetypes; no smoketests for 4 archetypes (lair/medicae/archive/mechanicus).
+- R2: bezel/wall-thickness root cause discovered (positive-prompt issue, not negative-prompt issue); furniture-leak resists named-noun negation.
+- R3: chapel decorative borders triggered by "at edges" phrasing; mechanicus lumen pools rendered as physical studs.
+- R4: chapel iconography prior is sticky; one round of polish insufficient to fully strip it.
+
+**Canonical stackable battlemap recipe (settled this round):**
+1. **Floor (base layer):** `uv run generate_battlemap.py interior --style <archetype> --floor-only --seed <s>`
+2. **Walls (foreground layer):** `uv run generate_battlemap.py spacecraft --layout <hand-painted-or-default> --walls-only --seed <s>` — produces a transparent-bg PNG of just the wall geometry.
+3. **Stamps (tile layer):** placed in Foundry via Mass Edit Preset Browser.
+
+The pre-existing layered-pass infrastructure (`mask-by-layout`,
+`compose`, `--keep-only`) all keeps working unchanged.
+
+### 2026-05-07 — Floor-plan layouts unblock real battlemaps
+
+The floor-only pivot above produces excellent **floor textures** but
+not real battlemaps — every render was a single 1024² square room
+with no architectural footprint. Operator critique: "all the
+battlemaps are single rooms with no floor plan or walls to speak of,
+and they're all square." Correct.
+
+The fix is to pivot the canonical interior recipe to the spacecraft
+workflow with a multi-room layout PNG. The spacecraft workflow has
+been the spatial-control engine all along; it just wasn't being
+used for non-ship interiors.
+
+**New tooling:**
+
+- `_make_floorplan(spec)` — paints a canonical-color layout PNG from
+  a (rooms, corridors, doors) spec on an arbitrary canvas size.
+- `FLOORPLAN_PRESETS` — `hab-2room` (1280×640, two adjacent rooms +
+  shared doorway), `hab-3room-corridor` (1792×1024, three rooms off
+  a horizontal corridor with three doorways).
+- New CLI `make-floorplan <output> --preset <name>` with optional
+  `--canvas-w/--canvas-h/--wall-thickness` overrides.
+- New `spacecraft --style <archetype>` flag — pulls
+  `INTERIOR_STYLE_FLOOR_TEXTURES[style]` and applies it as the
+  `floor` region prompt override. Means the same hab/chapel/lair
+  texture work that landed in round 3 now flows through the
+  spatial-control engine. Explicit `--override floor=…` still wins.
+
+**New canonical recipe (revised):**
+
+1. **Floor plan layout:** `uv run generate_battlemap.py make-floorplan layouts/<name>.png --preset <preset>` (or hand-paint a layout PNG using the canonical region colors).
+2. **Base render:** `uv run generate_battlemap.py spacecraft --layout layouts/<name>.png --style <archetype> --seed <s> --prefix <name>_base` — multi-room textured base map.
+3. **Walls overlay:** `uv run generate_battlemap.py spacecraft --layout layouts/<name>.png --walls-only --seed <s> --prefix <name>_walls` — transparent-bg PNG of the wall geometry only, pixel-aligned with the base.
+4. **Stamps:** placed in Foundry via Mass Edit Preset Browser.
+
+**POC render — `hab-3room-corridor` × hab archetype, seed 42:**
+
+- `layouts/poc_hab_3room.png` — 1792×1024 layout PNG with 3 rooms +
+  central corridor + 3 doorways. Lights placed at perimeter corners.
+- `battlemaps/poc_hab_3room_base_00001_.png` — base render via
+  `spacecraft --style hab`. Walls clearly defined, corridor connects
+  three rooms, doorways visible as floor cuts through wall band, hab
+  ferrocrete floor mottling visible. **First real multi-room
+  battlemap from the pipeline.**
+- `battlemaps/poc_hab_3room_walls_00001_.png` (+ `_alpha.png`) —
+  walls-only foreground via `spacecraft --walls-only` (next render).
+
+**Wins:**
+
+- Multi-room layout works end-to-end. The spacecraft regional
+  conditioning preserves the canonical colors strongly enough that
+  walls remain crisp and doorways are clean cuts.
+- The 1792×1024 aspect proves layouts are not constrained to 1024².
+- The `--style hab` flag flows the round-3 floor texture through the
+  spacecraft engine, so no prompt duplication.
+
+**Failures / cosmetic:**
+
+- The hab ferrocrete texture is subtler in the spacecraft render
+  than in the standalone `interior --floor-only` render (regional
+  conditioning splits guidance across regions, so the floor prompt
+  has less aggregate weight). Iterating the prompt to be more
+  prompt-dominant (front-loaded distinctive nouns, "high contrast",
+  "distinct"). Re-render below.
+- Light spots at room corners read as floor inlays rather than
+  perimeter wall fixtures (canonical color #D4B260 placed inside the
+  wall band but outside the room interior in the layout — that
+  region renders amber, but at small disk size). Cosmetic only.
+
+### 2026-05-07 — Floor-plan preset library expanded
+
+Added four new presets to `FLOORPLAN_PRESETS`:
+
+| Preset | Canvas | Footprint |
+| --- | --- | --- |
+| `tunnel-junction` | 1536×1536 | T-junction of three corridors meeting at a central hub. |
+| `chapel-nave-with-apse` | 1280×1792 | Long nave with smaller apse at the north end. |
+| `industrial-bay` | 2048×1024 | Single large bay + small annex/control booth. |
+| `archive-stacks-grid` | 1792×1280 | 8 vault rooms (4×2) connected by central spine corridor. |
+
+All four render correctly via `make-floorplan --preset <name>`.
+Minor cosmetic glitches noted (small wall-band offset at apse↔nave
+junction in chapel; small floor stub at hub south wall in tunnel)
+but functional for spacecraft-workflow consumption.
+
+### 2026-05-07 — State classifier (CLIP zero-shot) landed
+
+`classify_state.py` runs CLIP-ViT-L-14 zero-shot against each stamp
+to populate the `state` field. Two-stage:
+
+1. **Damage**: intact / damaged / destroyed / stateless (→ null).
+2. **Activation**: active / inactive / non-device. Activation
+   overrides damage only when (a) margin > damage margin, (b) margin
+   exceeds `ACTIVATION_TRIGGER_MARGIN` (0.18), and (c) damage said
+   `intact` or `stateless` — never override `damaged`/`destroyed`.
+
+Why the strict gating: in the first dry-run almost every dim-rendered
+stamp won "inactive" because Flux-rendered illustrations tend to be
+dim regardless of whether the subject is a device. The four-condition
+gate eliminates that bias.
+
+**Run on the full 615-stamp vault:**
+- wrote: 326 (new state values)
+- skipped (existing): 157 (manual + caption-keyword fills preserved)
+- skipped (low confidence): 132 (visually ambiguous)
+- final coverage: 483/615 (78.5%) ← up from 25%
+
+Distribution of new writes: 138 damaged / 121 intact / 47 inactive /
+15 destroyed / 5 active / 132 null.
+
+**Wins:**
+- 53.5-percentage-point lift in state coverage.
+- Owner-only on `state` (regex-replace, doesn't touch other fields).
+- Existing values (operator-edited or caption-keyword) preserved by
+  default; `--force` available if a re-classify is wanted.
+
+**Failures / known limitations:**
+- "Intact" and "damaged" are bimodal; CLIP-ViT-L-14 has ~15-30%
+  margin on most stamps but ~5-8% on visually-clean stamps that
+  could be either ("damage margin too low" → null). 132 null is
+  acceptable; pushing further would need either a fine-tuned model
+  or human review.
+- "Active" only fires 5 times. Most "powered-on" stamps in the
+  vault are static illustrations without strong glow cues, so CLIP
+  defaults to "inactive". Acceptable bias.
+
+### 2026-05-07 — Multi-deck variant helper landed
+
+`make_deck_variants.py` takes a base hull layout PNG and emits N
+deck-variant copies preserving the outer hull byte-for-byte, with
+optional canonical openings (rear ramp, dorsal windscreen) painted
+per-deck via `--opening deck<N>=<role>:<side>`.
+
+Tested on `spacecraft_default_quantized_v2.png`: deck1 with a
+ramp:south opening, deck2 with a windscreen:north opening. Outer
+hull stays pixel-aligned across decks; interior detail is left to
+operator hand-paint (which is the appropriate division of labor).
+
+
+
+---
+
 ## What's saved on the ComfyUI server
 
 Pulled into `workflows/` from the server's `userdata/workflows/`:

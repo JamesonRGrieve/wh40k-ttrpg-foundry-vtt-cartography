@@ -6,7 +6,7 @@ name: Square Frame
 description: "A square frame with a beige background and a pattern of small, evenly spaced circles. The circles are arranged in a symmetrical pattern, creating a sense of balance and harmony. The frame appears to be made of a light-colored material, possibly cardboard or paper, and has a smooth, glossy finish. The circles are evenly spaced and have a slightly raised edge, giving them a 3D effect. The overall aesthetic of the image is simple and elegant, with a focus on the texture and design of the frames."
 tags: [square, frame, beige, background, pattern, evenly, spaced, circles, arranged, symmetrical, creating, sense, prop, prop-document]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: b3af4128-ed68-5550-950f-17ff7df34d35      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png

@@ -10,7 +10,7 @@ The frames are empty, with no text or images on them, giving a sense of depth an
 Overall, the image conveys a sense of timelessness and sophistication, perfect for any occasion. The frames are simple yet elegant, with a focus on texture and design, making them a timeless piece of art. Overall, the image is a beautiful representation of a timeless piece of art that will never go out of style."
 tags: [set, four, rectangular, frames, beige, textured, surface, arranged, symmetrical, pattern, each, frame]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 21bc64ce-7b51-5282-b47d-0d901c523f50
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png

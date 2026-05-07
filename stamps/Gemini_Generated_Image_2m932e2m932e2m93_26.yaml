@@ -6,7 +6,7 @@ name: "Valves"
 description: a set of four different types of valves
 tags: [set, four, different, types, valves, tech, tech-utility]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: e4728eca-21af-5644-b9ad-a54fae6fa074      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_2m932e2m932e2m93.png

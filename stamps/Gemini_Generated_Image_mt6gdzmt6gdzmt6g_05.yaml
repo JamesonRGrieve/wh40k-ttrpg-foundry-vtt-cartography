@@ -6,7 +6,7 @@ name: Rectangular Boxes With A Cross-Shaped Design
 description: "The image is a simple line drawing of three rectangular boxes with a cross-shaped design, set against a plain, light brown background. The boxes are arranged in a symmetrical pattern, with each box having a different size and shape. The first box on the left is slightly larger than the one on the right, and the second box is slightly smaller than the third box. All three boxes have a simple, minimalist design with clean lines and minimal details. The overall aesthetic of the image is minimalistic and contemporary, with a focus on the simple lines and shapes of the boxes."
 tags: [simple, line, rectangular, boxes, cross-shaped, design, set, against, plain, light, background, arranged, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: f89d17dc-769c-5939-8a85-613cc6926ff9      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png

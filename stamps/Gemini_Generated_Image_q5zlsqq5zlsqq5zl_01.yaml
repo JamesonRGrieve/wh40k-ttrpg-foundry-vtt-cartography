@@ -6,7 +6,7 @@ name: Round Stool With Four Legs
 description: The image is a 3D rendering of a round stool with four legs. The stool is made of wood and has a round seat with a textured surface. The legs are made of metal and are slightly tapered at the bottom. The seat is slightly curved and appears to be made of a light-colored material. The overall design of the stool is simple and minimalistic.
 tags: [rendering, round, stool, four, legs, wood, has, seat, textured, surface, metal, slightly, furniture, furniture-chair]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: null
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png

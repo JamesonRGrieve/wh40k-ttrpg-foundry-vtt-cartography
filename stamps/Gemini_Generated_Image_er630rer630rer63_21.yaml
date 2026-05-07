@@ -6,7 +6,7 @@ name: Screenshot
 description: A screenshot
 tags: [screenshot]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: 7ad680d1-5d58-53da-afd3-0afb471fa831      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png

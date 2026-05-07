@@ -6,7 +6,7 @@ name: Bottle Of Wine And Two Pieces
 description: "The image is a line drawing of a bottle of wine and two pieces of bread. The bottle is on the left side of the image and the two pieces are on the right side. The bread appears to be a slice of bread with a criss-cross pattern on the top. The background is a light beige color. The image is in a simple, sketch-like style."
 tags: [line, bottle, wine, pieces, bread, left, side, right, slice, criss-cross, pattern, top, container, container-vessel]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: null
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png

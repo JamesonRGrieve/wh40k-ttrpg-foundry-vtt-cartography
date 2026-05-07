@@ -6,7 +6,7 @@ name: Wooden Ladder
 description: "The image is a 3D illustration of a wooden ladder. The ladder is made of a light-colored wood and has four horizontal bars. The bars are evenly spaced and appear to be made of metal. At the bottom of the ladder, there are two small metal brackets that are attached to the top and bottom. The brackets are slightly curved and have a smooth finish. The background is a plain beige color."
 tags: [illustration, wooden, ladder, light-colored, wood, has, four, horizontal, bars, evenly, spaced, metal, architecture, architecture-step]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: null
 
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png

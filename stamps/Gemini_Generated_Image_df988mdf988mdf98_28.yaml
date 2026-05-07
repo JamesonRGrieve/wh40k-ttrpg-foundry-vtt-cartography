@@ -10,7 +10,7 @@ In the center of each compartment, it is divided into two sections, with the lef
 The tray has a handle on the top right corner, which is likely used to open and close the lid. There is also a small indentation on the bottom left corner, which could be a spoon or a fork. The overall design is simple and minimalistic."
 tags: [rectangular, plastic, tray, four, compartments, light-colored, material, has, smooth, surface, left, side]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: c6d2d8a8-d780-5a76-a4e6-c2cb638f0f66
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png

@@ -6,7 +6,7 @@ name: "Plain, Light Grey Background"
 description: "The image is a photograph of a plain, light grey background with a subtle texture. The image is taken from a slightly angled perspective, looking up at the top of the frame. The background has a smooth, even surface with no visible imperfections or patterns. The texture of the background is smooth and even, with no visible gaps or crevices. The overall mood of the image is minimalistic and clean, with a focus on the simple yet elegant design of the background."
 tags: [photograph, plain, light, background, subtle, texture, taken, slightly, angled, perspective, looking, top]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: null
 
 source: Gemini_Generated_Image_5ump9o5ump9o5ump.png

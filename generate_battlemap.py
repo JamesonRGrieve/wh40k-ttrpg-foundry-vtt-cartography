@@ -193,6 +193,8 @@ def set_load_image(workflow: dict[str, Any], node_id: str, server_path: str) -> 
 INTERIOR_DEFAULT_T5 = (
     "top-down overhead orthographic view of an empty grimdark sci-fi interior room, "
     "warhammer 40000 aesthetic, "
+    "camera looking straight down at 90 degrees, pure orthographic projection, "
+    "image fills the frame edge-to-edge with no border, "
     "corroded metal deck plating floor with seam lines and diamond plate patches, "
     "thick bulkhead walls around the perimeter with dark gunmetal armor plating, "
     "rivets and weld seams, structural ribs along the walls, "
@@ -204,6 +206,30 @@ INTERIOR_DEFAULT_T5 = (
 )
 INTERIOR_DEFAULT_CLIP_L = (
     "grimdark sci-fi, top-down battle map, empty room, bare floor, bulkhead walls, tabletop rpg"
+)
+
+# Universal negative addendum applied to every interior render. Targets
+# the three failure modes observed in the first round of smoketests:
+#   (1) the rendered metal frame/bezel that wraps every interior render
+#       and destroys tileability;
+#   (2) isometric drift — visible vertical wall faces and ceiling
+#       structures bleeding into the top-down render;
+#   (3) furniture leak — Flux rendering objects named in the positive
+#       prompt even when negated ("racks bare of weapons" still produces
+#       racks).
+# Concatenated onto the workflow's static neg.t5xxl / neg.clip_l before
+# submission. See run_interior().
+INTERIOR_NEG_ADDENDUM_T5 = (
+    "frame, bezel, border, decorative border, vignette, dark vignette edges, "
+    "picture frame, image border, walls forming a border around the image, "
+    "thick metal trim around image edges, dark edge falloff, "
+    "vertical wall faces visible, ceiling structures visible, "
+    "ceiling beams, exposed rafters, side perspective, three-quarter view, "
+    "weapon racks, banners, vehicles, bunks, crates, barrels, hanging chains, "
+    "hanging lights as objects, pendants as objects"
+)
+INTERIOR_NEG_ADDENDUM_CLIP_L = (
+    "frame, border, vignette, side view, vertical walls, ceiling beams"
 )
 
 # Per-archetype prompt overrides for typical Solenne campaign locations.
@@ -247,32 +273,36 @@ INTERIOR_STYLES: dict[str, str] = {
     "chapel": (
         "top-down overhead orthographic view of an empty Imperial chapel interior, "
         "warhammer 40000 aesthetic, hive ministorum chapel, "
+        "camera looking straight down at 90 degrees, pure top-down floorplan view, "
+        "image fills the frame edge-to-edge with no border, no ceiling visible, no side walls visible, "
         "polished stone floor with mosaic Aquila pattern, candle wax and grime accumulated at edges, "
-        "tall stone walls with carved Imperial iconography and brass relief panels, "
-        "stained-glass slit windows casting colored light, votive candles in alcoves, "
+        "thin stone wall outlines forming the room perimeter, "
+        "colored light pools on the floor from stained-glass slit windows, votive candles around the perimeter, "
         "muted earth-tone palette with golden accent, oil painting style, "
-        "tabletop RPG battle map, highly detailed mosaic floor and stonework wall textures, "
-        "completely empty nave with no pews, no furniture, no characters"
+        "tabletop RPG battle map, highly detailed mosaic floor texture, "
+        "completely empty nave with no pews, no furniture, no columns, no characters"
     ),
     "bar": (
         "top-down overhead orthographic view of an empty grimy underground bar interior, "
         "warhammer 40000 aesthetic, sub-level hive watering hole, "
+        "camera looking straight down at 90 degrees, image fills the frame edge-to-edge, "
         "scuffed wood plank floor with stains and burn marks and old blood, "
-        "low brick walls with peeling posters and dim hanging lights, "
-        "amber lumen pendants over where tables would be, deep shadows in corners, "
+        "low brick walls with peeling posters at the perimeter, "
+        "amber pools of lumen light cast onto the floor, deep shadows in corners, "
         "muted brown and amber palette, oil painting style, "
         "tabletop RPG battle map, highly detailed floor and wall textures, "
-        "completely empty room with no tables, no chairs, no bar counter, no props, no characters"
+        "completely empty room with no tables, no chairs, no bar counter, no props, no hanging lights as objects, no characters"
     ),
     "garrison": (
         "top-down overhead orthographic view of an empty Imperial Guard garrison barracks interior, "
         "warhammer 40000 aesthetic, regimental quarters, "
+        "camera looking straight down at 90 degrees, image fills the frame edge-to-edge, "
         "scuffed concrete floor with painted hazard markings and dirt drag patterns, "
-        "spartan reinforced walls with regimental banners and weapon racks bare of weapons, "
+        "spartan reinforced concrete walls with bolt fixtures and faded paint, "
         "harsh overhead fluorescent strip lighting, deep shadow gaps between fixtures, "
         "muted gray and military-green palette, oil painting style, "
         "tabletop RPG battle map, highly detailed floor and wall textures, "
-        "completely empty barracks with no bunks, no furniture, no equipment, no characters"
+        "completely empty barracks, no bunks, no furniture, no equipment, no racks, no banners, no vehicles, no characters"
     ),
     "lair": (
         "top-down overhead orthographic view of an empty biomorphic genestealer cult lair chamber, "
@@ -369,6 +399,91 @@ INTERIOR_STYLES: dict[str, str] = {
     ),
 }
 
+# Floor-only prompt fragments per archetype. The base interior render
+# in `--floor-only` mode SHOULD NOT include walls — they leak as 3D
+# perimeter bezels even with strong negatives because Flux interprets
+# "bulkhead walls around the perimeter" as a rendered object, not a
+# negative-space. The stackable design already has a separate walls
+# layer (`run_spacecraft --walls-only` or hand-drawn), so the base map
+# is canonically the floor texture filling the entire frame.
+#
+# Each value here is a TEXTURE fragment describing only the floor
+# surface. The driver wraps it in a fixed top-down envelope and a
+# strong "no walls" negative when rendering.
+INTERIOR_STYLE_FLOOR_TEXTURES: dict[str, str] = {
+    "hab": (
+        "heavily weathered ferrocrete slab floor, high contrast warm rust-brown "
+        "and gray-brown texture, deep dark cracks running across the slabs, "
+        "thick oil stain patches with sharp edges, scattered water damage rings, "
+        "exposed rebar showing through chipped patches, sickly yellow stained "
+        "lumen pool, painterly grimdark hive sub-level floor texture, "
+        "distinct stained concrete look"
+    ),
+    "tunnel": (
+        "corrugated steel floor grating with bolt seams and rust patches, "
+        "scattered cable bundles running along the floor, "
+        "occasional emergency red lumen pool, deep ambient darkness"
+    ),
+    "industrial": (
+        "heavy plate steel floor with grime stains and oil splatter, "
+        "subtle weld seams between plates, ambient orange-amber light"
+    ),
+    "chapel": (
+        "polished stone floor with intricate Aquila mosaic centered, "
+        "scattered candle wax drips and dust patches across the slabs, "
+        "diffuse soft golden ambient illumination, no decorative borders"
+    ),
+    "bar": (
+        "scuffed wood plank flooring with deep stains, burn marks, old blood, "
+        "dim warm amber light pools, scattered cigarette burns"
+    ),
+    "garrison": (
+        "scuffed concrete floor with painted hazard markings and dirt drag patterns, "
+        "regimental boot scuffs, harsh white overhead light pools"
+    ),
+    "lair": (
+        "irregular organic floor surface with chitinous ridges, dried mucous patches, "
+        "bone fragments embedded in the substrate, phosphorescent green glow patches"
+    ),
+    "medicae": (
+        "polished white ceramic tile floor with grout lines, "
+        "faint blood stains long-scrubbed, harsh sterile white overhead light"
+    ),
+    "archive": (
+        "dust-covered wooden plank flooring, dropped paper fragments, "
+        "ink stains, dim warm brass lumen pools"
+    ),
+    "mechanicus": (
+        "polished black metal floor with engraved cog-iconography and Mechanicus runes, "
+        "diffuse ambient blood-red illumination across the floor, no light fixtures, no studs, "
+        "deep shadows in the darker areas"
+    ),
+}
+
+# Wrap fragment in this envelope to force a pure-floor render.
+INTERIOR_FLOOR_PROMPT_TEMPLATE = (
+    "top-down overhead orthographic view of a bare floor surface filling the entire frame, "
+    "warhammer 40000 aesthetic, "
+    "camera looking straight down at 90 degrees, pure orthographic projection, "
+    "image fills the frame edge-to-edge with no border and no walls, "
+    "{texture}, "
+    "oil painting style, tabletop RPG battle map floor texture, "
+    "highly detailed seamless floor surface, "
+    "no walls, no perimeter walls, no bulkheads, no doorways, "
+    "no furniture, no props, no objects, no characters, no people"
+)
+
+# Negative addendum specifically for floor-only renders. Layers on top of
+# INTERIOR_NEG_ADDENDUM_T5 to actively suppress walls.
+INTERIOR_FLOOR_ONLY_NEG_T5 = (
+    "walls, bulkheads, perimeter walls, room walls, wall faces, vertical surfaces, "
+    "doorways, archways, columns, pillars, room boundaries, edge bezel"
+)
+INTERIOR_FLOOR_ONLY_NEG_CLIP_L = (
+    "walls, bulkheads, perimeter walls, doorways, columns"
+)
+
+
 INTERIOR_STYLE_TAGS: dict[str, str] = {
     "hab": "hab apartment, ferrocrete floor, hive sub-level",
     "tunnel": "maintenance tunnel, narrow corridor, cabled walls",
@@ -391,6 +506,25 @@ def _clip_l_for_style(style: str) -> str:
     return f"grimdark sci-fi, top-down battle map, empty room, {INTERIOR_STYLE_TAGS[style]}, tabletop rpg"
 
 
+def _extend_negative(workflow: dict[str, Any], *, t5_addendum: str, clip_l_addendum: str) -> None:
+    """Concatenate addenda onto the workflow's existing neg.t5xxl / neg.clip_l.
+
+    The static negative baked into BattlemapInteriorV1.json on the server
+    targets generic anti-style (anime, cartoon, photo). The addendum
+    layers domain-specific negatives on top: anti-bezel, anti-isometric,
+    anti-furniture-leak. Done client-side so the server-side workflow
+    file stays unchanged (it is authoritative; we don't push edits).
+    """
+    node = workflow.get("neg")
+    if not node or node.get("class_type") != "CLIPTextEncodeFlux":
+        return
+    inputs = node["inputs"]
+    base_t5 = inputs.get("t5xxl", "")
+    base_clip = inputs.get("clip_l", "")
+    inputs["t5xxl"] = (base_t5 + ", " + t5_addendum) if base_t5 else t5_addendum
+    inputs["clip_l"] = (base_clip + ", " + clip_l_addendum) if base_clip else clip_l_addendum
+
+
 def run_interior(
     server: str,
     *,
@@ -400,9 +534,16 @@ def run_interior(
     height: int,
     seed: int,
     prefix: str,
+    floor_only: bool = False,
 ) -> Path:
     wf = load_template("BattlemapInteriorV1")
     set_prompt(wf, "pos", t5xxl=t5xxl, clip_l=clip_l)
+    neg_t5 = INTERIOR_NEG_ADDENDUM_T5
+    neg_clip = INTERIOR_NEG_ADDENDUM_CLIP_L
+    if floor_only:
+        neg_t5 = neg_t5 + ", " + INTERIOR_FLOOR_ONLY_NEG_T5
+        neg_clip = neg_clip + ", " + INTERIOR_FLOOR_ONLY_NEG_CLIP_L
+    _extend_negative(wf, t5_addendum=neg_t5, clip_l_addendum=neg_clip)
     set_dimensions(wf, "latent", width=width, height=height)
     set_seed(wf, "sampler", seed)
     set_save_prefix(wf, "save", prefix)
@@ -698,6 +839,350 @@ def _make_corridor(
     Image.fromarray(arr, mode="RGB").save(output)
 
 
+# --- Multi-room floor-plan layouts -----------------------------------------
+#
+# A floor plan is a composition of room rectangles + corridor rectangles +
+# doorway cuts on a single canvas, all painted in canonical region colors so
+# the spacecraft workflow can condition each region with a different prompt.
+#
+# Spec format (a plain dict, since a YAML/JSON callsite is most convenient):
+#
+#     {
+#       "canvas": (width, height),
+#       "wall_thickness": 32,
+#       "rooms": [(x, y, w, h), ...],          # interior spaces with walls + lights
+#       "corridors": [(x, y, w, h), ...],      # interior spaces with walls + lights, fewer
+#       "doors": [(x, y, w, h), ...],          # rectangles to overpaint with floor
+#       "light_count_per_room": 4,
+#       "light_count_per_corridor": 4,
+#     }
+#
+# Rooms and corridors are painted identically here (wall band + floor fill) —
+# the distinction matters only for light density and naming. The order of
+# operations: walls first, then floor inside walls, then doors carve through
+# the walls.
+
+
+def _paint_lights_around_perimeter(
+    arr,  # type: ignore[no-untyped-def]
+    rect: tuple[int, int, int, int],
+    *,
+    wall_thickness: int,
+    light_count: int,
+    light_rgb: tuple[int, int, int],
+) -> None:
+    """Place `light_count` light disks evenly around the perimeter of `rect`."""
+    import numpy as np
+
+    if light_count <= 0:
+        return
+    x, y, w, h = rect
+    cx_inset = max(8, wall_thickness // 2)
+    radius = max(8, wall_thickness // 2)
+    per_side = max(1, light_count // 4)
+    positions: list[tuple[int, int]] = []
+    for i in range(per_side):
+        px = x + int(w * (i + 1) / (per_side + 1))
+        positions.append((px, y + cx_inset))
+        positions.append((px, y + h - cx_inset))
+    for j in range(per_side):
+        py = y + int(h * (j + 1) / (per_side + 1))
+        positions.append((x + cx_inset, py))
+        positions.append((x + w - cx_inset, py))
+    H, W = arr.shape[:2]
+    ys, xs = np.ogrid[0:H, 0:W]
+    for cx, cy in positions:
+        mask = (xs - cx) ** 2 + (ys - cy) ** 2 <= radius * radius
+        arr[mask] = light_rgb
+
+
+def _make_floorplan(output: Path, *, spec: dict) -> None:
+    """Paint a multi-room/corridor canonical-color layout PNG.
+
+    See module-level comment for the spec format. Output is ready to feed
+    directly to the spacecraft workflow as a layout PNG.
+    """
+    import numpy as np
+    from PIL import Image
+
+    canvas_w, canvas_h = spec["canvas"]
+    wall_thickness = int(spec.get("wall_thickness", 32))
+
+    arr = np.zeros((canvas_h, canvas_w, 3), dtype=np.uint8)  # outside = black
+    wall = SPACECRAFT_REGION_RGB["wall"]
+    floor = SPACECRAFT_REGION_RGB["floor"]
+    light = SPACECRAFT_REGION_RGB["lighting"]
+
+    def paint_box(x: int, y: int, w: int, h: int) -> None:
+        # Wall band first, then carve interior to floor.
+        arr[y : y + h, x : x + w] = wall
+        arr[
+            y + wall_thickness : y + h - wall_thickness,
+            x + wall_thickness : x + w - wall_thickness,
+        ] = floor
+
+    for rect in spec.get("rooms", []):
+        paint_box(*rect)
+    for rect in spec.get("corridors", []):
+        paint_box(*rect)
+
+    # Doors: overpaint walls with floor in the door rectangle. This naturally
+    # connects adjacent rooms / room-to-corridor with a clean opening.
+    for x, y, w, h in spec.get("doors", []):
+        arr[y : y + h, x : x + w] = floor
+
+    # Lights AFTER doorways so they don't paint over a door cut.
+    n_room_lights = int(spec.get("light_count_per_room", 4))
+    n_corr_lights = int(spec.get("light_count_per_corridor", 4))
+    for rect in spec.get("rooms", []):
+        _paint_lights_around_perimeter(
+            arr, rect,
+            wall_thickness=wall_thickness, light_count=n_room_lights, light_rgb=light,
+        )
+    for rect in spec.get("corridors", []):
+        _paint_lights_around_perimeter(
+            arr, rect,
+            wall_thickness=wall_thickness, light_count=n_corr_lights, light_rgb=light,
+        )
+
+    Image.fromarray(arr, mode="RGB").save(output)
+
+
+# Named presets — easy starting points without hand-spec'ing rectangles.
+# Sizes target Foundry's default 100px grid: a 1024×768 plan is about a
+# 10×8-square map, comfortable as a single-scene encounter battlemap.
+def _preset_hab_2room(canvas_w: int = 1280, canvas_h: int = 640, wall: int = 32) -> dict:
+    """Two square hab rooms side-by-side, one shared doorway."""
+    door_w = 96
+    room_w = (canvas_w - wall) // 2  # leave the shared interior wall
+    rooms = [
+        (0, 0, room_w + wall // 2, canvas_h),                                  # left
+        (room_w - wall // 2, 0, canvas_w - (room_w - wall // 2), canvas_h),    # right
+    ]
+    door_y = (canvas_h - door_w) // 2
+    door_x = room_w - wall // 2
+    doors = [(door_x, door_y, wall, door_w)]
+    return {
+        "canvas": (canvas_w, canvas_h),
+        "wall_thickness": wall,
+        "rooms": rooms,
+        "corridors": [],
+        "doors": doors,
+        "light_count_per_room": 4,
+    }
+
+
+def _preset_hab_3room_corridor(
+    canvas_w: int = 1792, canvas_h: int = 1024, wall: int = 32
+) -> dict:
+    """Three rooms off a central horizontal corridor (T-shape).
+
+    Layout (rooms 1–3 around a central corridor C):
+        ┌─R1──┐    ┌──R2─┐
+        │     │    │     │
+        │     │    │     │
+        └──┬──┘    └──┬──┘
+        ───┴────CCCC───┴───
+                  │
+                ┌─┴───┐
+                │  R3 │
+                │     │
+                └─────┘
+    """
+    corr_h = 224
+    corr_y = (canvas_h - corr_h) // 2
+    corridor = (0, corr_y, canvas_w, corr_h)
+
+    room_h = corr_y  # rooms occupy everything above and below corridor
+    r1_w = (canvas_w - wall * 3) // 3
+    r1 = (0, 0, r1_w, room_h + wall)
+    r2 = (canvas_w - r1_w, 0, r1_w, room_h + wall)
+    # Room 3 below the corridor, centered
+    r3_w = canvas_w // 2
+    r3_x = (canvas_w - r3_w) // 2
+    r3 = (r3_x, corr_y + corr_h - wall, r3_w, canvas_h - (corr_y + corr_h) + wall)
+
+    door_w = 96
+    doors = [
+        # R1 → corridor (south wall of R1 / north wall of corridor)
+        (r1[0] + (r1_w - door_w) // 2, corr_y, door_w, wall),
+        # R2 → corridor
+        (r2[0] + (r1_w - door_w) // 2, corr_y, door_w, wall),
+        # Corridor → R3 (south wall of corridor / north wall of R3)
+        (r3_x + (r3_w - door_w) // 2, corr_y + corr_h - wall, door_w, wall),
+    ]
+    return {
+        "canvas": (canvas_w, canvas_h),
+        "wall_thickness": wall,
+        "rooms": [r1, r2, r3],
+        "corridors": [corridor],
+        "doors": doors,
+        "light_count_per_room": 4,
+        "light_count_per_corridor": 6,
+    }
+
+
+def _preset_tunnel_junction(
+    canvas_w: int = 1536, canvas_h: int = 1536, wall: int = 32
+) -> dict:
+    """T-junction of three corridors meeting at a central hub.
+
+        ┌──────CN──────┐
+        │              │
+        │     ┌──┐     │
+        │     │  │     │
+        ──CW──┤  ├──CE──
+        │     │  │     │
+        │     └──┘     │
+        │              │
+        │     CS not used here — T not X
+        └──────────────┘
+    """
+    corr_w = 224
+    cx = canvas_w // 2
+    cy = canvas_h // 2
+    # West corridor
+    west = (0, cy - corr_w // 2, cx, corr_w)
+    # East corridor
+    east = (cx, cy - corr_w // 2, canvas_w - cx, corr_w)
+    # North corridor
+    north = (cx - corr_w // 2, 0, corr_w, cy)
+    # Hub: small room at the junction
+    hub_size = 320
+    hub = (cx - hub_size // 2, cy - hub_size // 2, hub_size, hub_size)
+    # Doorways from hub into each corridor
+    door_w = 96
+    doors = [
+        # west wall of hub → east end of west corridor
+        (hub[0], cy - door_w // 2, wall, door_w),
+        # east wall of hub
+        (hub[0] + hub_size - wall, cy - door_w // 2, wall, door_w),
+        # north wall of hub
+        (cx - door_w // 2, hub[1], door_w, wall),
+    ]
+    return {
+        "canvas": (canvas_w, canvas_h),
+        "wall_thickness": wall,
+        "rooms": [hub],
+        "corridors": [west, east, north],
+        "doors": doors,
+        "light_count_per_room": 4,
+        "light_count_per_corridor": 6,
+    }
+
+
+def _preset_chapel_nave_with_apse(
+    canvas_w: int = 1280, canvas_h: int = 1792, wall: int = 32
+) -> dict:
+    """Long chapel nave with a smaller apse at the north end.
+
+       ┌──────A──────┐    apse (smaller, terminus)
+       │             │
+       │             │
+       └──┐       ┌──┘
+          │       │
+       ┌──┘       └──┐
+       │             │
+       │      N      │    nave (long body of chapel)
+       │             │
+       │             │
+       │             │
+       └──────D──────┘    south doorway (entry)
+    """
+    apse_h = canvas_h // 4
+    apse_w = canvas_w * 3 // 4
+    apse_x = (canvas_w - apse_w) // 2
+    apse = (apse_x, 0, apse_w, apse_h)
+
+    nave_y = apse_h - wall  # share the wall band
+    nave = (0, nave_y, canvas_w, canvas_h - nave_y)
+
+    door_w = 128
+    doors = [
+        # apse → nave
+        (apse_x + (apse_w - door_w) // 2, apse_h - wall, door_w, wall),
+        # nave south entry (a cosmetic doorway out the bottom)
+        ((canvas_w - door_w) // 2, canvas_h - wall, door_w, wall),
+    ]
+    return {
+        "canvas": (canvas_w, canvas_h),
+        "wall_thickness": wall,
+        "rooms": [apse, nave],
+        "corridors": [],
+        "doors": doors,
+        "light_count_per_room": 6,
+    }
+
+
+def _preset_industrial_bay(
+    canvas_w: int = 2048, canvas_h: int = 1024, wall: int = 48
+) -> dict:
+    """Single large industrial bay with a small annex/control booth on one side."""
+    bay = (0, 0, canvas_w * 3 // 4 + wall, canvas_h)
+    booth_w = canvas_w - bay[2] + wall
+    booth_h = canvas_h // 2
+    booth = (bay[2] - wall, (canvas_h - booth_h) // 2, booth_w, booth_h)
+    door_w = 128
+    doors = [
+        (bay[2] - wall, booth[1] + (booth_h - door_w) // 2, wall, door_w),
+    ]
+    return {
+        "canvas": (canvas_w, canvas_h),
+        "wall_thickness": wall,
+        "rooms": [bay, booth],
+        "corridors": [],
+        "doors": doors,
+        "light_count_per_room": 8,
+    }
+
+
+def _preset_archive_stacks_grid(
+    canvas_w: int = 1792, canvas_h: int = 1280, wall: int = 24
+) -> dict:
+    """Grid of small archive vaults connected by a central spine corridor."""
+    spine_h = 160
+    spine_y = (canvas_h - spine_h) // 2
+    spine = (0, spine_y, canvas_w, spine_h)
+
+    vault_w = canvas_w // 4
+    vault_h = (canvas_h - spine_h) // 2
+    vaults = []
+    doors = []
+    door_w = 96
+    for i in range(4):
+        x = i * vault_w
+        # top row
+        v = (x, 0, vault_w + wall, vault_y_h := vault_h + wall)
+        if i == 3:
+            v = (x, 0, canvas_w - x, vault_y_h)
+        vaults.append(v)
+        # door from this top vault into spine
+        doors.append((v[0] + (v[2] - door_w) // 2, spine_y, door_w, wall))
+        # bottom row
+        bv = (x, spine_y + spine_h - wall, v[2], canvas_h - (spine_y + spine_h) + wall)
+        vaults.append(bv)
+        doors.append((bv[0] + (bv[2] - door_w) // 2, spine_y + spine_h - wall, door_w, wall))
+    return {
+        "canvas": (canvas_w, canvas_h),
+        "wall_thickness": wall,
+        "rooms": vaults,
+        "corridors": [spine],
+        "doors": doors,
+        "light_count_per_room": 4,
+        "light_count_per_corridor": 8,
+    }
+
+
+FLOORPLAN_PRESETS: dict[str, "callable[[], dict]"] = {  # type: ignore[type-arg]
+    "hab-2room": _preset_hab_2room,
+    "hab-3room-corridor": _preset_hab_3room_corridor,
+    "tunnel-junction": _preset_tunnel_junction,
+    "chapel-nave-with-apse": _preset_chapel_nave_with_apse,
+    "industrial-bay": _preset_industrial_bay,
+    "archive-stacks-grid": _preset_archive_stacks_grid,
+}
+
+
 def _quantize_layout(
     src: Path,
     dest: Path,
@@ -870,6 +1355,14 @@ def main() -> int:
     pi.add_argument("--height", type=int, default=1024)
     pi.add_argument("--seed", type=int, default=0)
     pi.add_argument("--prefix", default="map_interior")
+    pi.add_argument(
+        "--floor-only",
+        action="store_true",
+        help="render the floor texture only, with no walls — the canonical "
+        "stackable base layer. Walls go on a separate foreground/walls-only "
+        "pass (see `spacecraft --walls-only`) or are stamped/hand-drawn. "
+        "When set with --style, uses INTERIOR_STYLE_FLOOR_TEXTURES.",
+    )
 
     ps = sub.add_parser("spacecraft", help="img2img regional-conditioning battlemap")
     ps.add_argument("--layout", type=Path, required=True, help="path to color-coded layout PNG")
@@ -897,6 +1390,16 @@ def main() -> int:
         "--override floor='metal catwalk grating, scaffold flooring'. "
         "Combine with --keep-only floor to produce a scaffolding overlay "
         "over a separately-rendered base map.",
+    )
+    ps.add_argument(
+        "--style",
+        choices=sorted(INTERIOR_STYLE_FLOOR_TEXTURES),
+        default=None,
+        help="apply an archetype's floor texture as a `floor` region override. "
+        "Equivalent to `--override floor=<INTERIOR_STYLE_FLOOR_TEXTURES[style]>` "
+        "but spelled as a single named flag. Use this to render a hab/chapel/"
+        "industrial interior on a multi-room layout instead of the default "
+        "ship deck plating. Explicit --override floor=... wins.",
     )
     ps.add_argument(
         "--render-furniture",
@@ -980,6 +1483,23 @@ def main() -> int:
         help="number of light fixtures around the perimeter (0 to disable)",
     )
 
+    pmf = sub.add_parser(
+        "make-floorplan",
+        help="emit a canonical-color multi-room floor-plan layout PNG. "
+        "Rooms + corridors + doorways at arbitrary aspect ratios. "
+        "Output feeds the spacecraft workflow as a layout.",
+    )
+    pmf.add_argument("output", type=Path)
+    pmf.add_argument(
+        "--preset",
+        choices=sorted(FLOORPLAN_PRESETS),
+        required=True,
+        help="named preset for the room arrangement",
+    )
+    pmf.add_argument("--canvas-w", type=int, default=None, help="override canvas width")
+    pmf.add_argument("--canvas-h", type=int, default=None, help="override canvas height")
+    pmf.add_argument("--wall-thickness", type=int, default=None, help="override wall thickness")
+
     pmc = sub.add_parser(
         "make-corridor",
         help="emit a canonical-color corridor layout PNG. Long thin shape with "
@@ -1027,8 +1547,16 @@ def main() -> int:
         if args.style != "default" and (args.t5xxl is not None or args.clip_l is not None):
             print("--style and --t5xxl/--clip-l are mutually exclusive", file=sys.stderr)
             return 2
+        if args.floor_only and args.style != "default" and args.style not in INTERIOR_STYLE_FLOOR_TEXTURES:
+            print(f"--floor-only has no texture defined for style {args.style!r}", file=sys.stderr)
+            return 2
         if args.style != "default":
-            t5 = INTERIOR_STYLES[args.style]
+            if args.floor_only:
+                t5 = INTERIOR_FLOOR_PROMPT_TEMPLATE.format(
+                    texture=INTERIOR_STYLE_FLOOR_TEXTURES[args.style]
+                )
+            else:
+                t5 = INTERIOR_STYLES[args.style]
             clip = _clip_l_for_style(args.style)
         else:
             t5 = args.t5xxl if args.t5xxl is not None else INTERIOR_DEFAULT_T5
@@ -1041,6 +1569,7 @@ def main() -> int:
             height=args.height,
             seed=args.seed,
             prefix=args.prefix,
+            floor_only=args.floor_only,
         )
     elif args.cmd == "spacecraft":
         if not args.layout.exists():
@@ -1053,6 +1582,8 @@ def main() -> int:
                 return 2
             keep_only = "wall"
         overrides: dict[str, str] = {}
+        if args.style is not None:
+            overrides["floor"] = INTERIOR_STYLE_FLOOR_TEXTURES[args.style]
         for spec in args.override:
             if "=" not in spec:
                 print(f"--override expects ROLE=TEXT, got {spec!r}", file=sys.stderr)
@@ -1112,6 +1643,18 @@ def main() -> int:
             light_count=args.lights,
         )
         print(f"[make-room] -> {args.output}", file=sys.stderr)
+    elif args.cmd == "make-floorplan":
+        builder = FLOORPLAN_PRESETS[args.preset]
+        kwargs: dict = {}
+        if args.canvas_w is not None:
+            kwargs["canvas_w"] = args.canvas_w
+        if args.canvas_h is not None:
+            kwargs["canvas_h"] = args.canvas_h
+        if args.wall_thickness is not None:
+            kwargs["wall"] = args.wall_thickness
+        spec = builder(**kwargs)
+        _make_floorplan(args.output, spec=spec)
+        print(f"[make-floorplan] -> {args.output} preset={args.preset} canvas={spec['canvas']}", file=sys.stderr)
     elif args.cmd == "make-corridor":
         _make_corridor(
             args.output,

@@ -6,7 +6,7 @@ name: Desk Lamps With A Simple
 description: "A set of three desk lamps with a simple, minimalist design. The lamps are arranged in a triangular formation, with the largest lamp on the left and the smallest on the right. The lamps have a classic, vintage look with a beige shade and a silver base. The background is a plain, light grey color, providing a subtle contrast to the warm tones of the lamps. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, desk, lamps, simple, minimalist, design, arranged, triangular, formation, largest, lamp, left, furniture, furniture-table, light, light-fixture]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: null
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png

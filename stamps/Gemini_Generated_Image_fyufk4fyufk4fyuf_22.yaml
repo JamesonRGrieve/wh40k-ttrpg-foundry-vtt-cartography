@@ -6,7 +6,7 @@ name: Circular Objects With A Textured Surface
 description: "A set of four circular objects with a textured surface, arranged in a symmetrical pattern. The objects appear to be made of concrete or stone, with a light brown color and a slightly rough texture. Each object has a small hole in the center, likely for ventilation or other purposes. The background is a plain, light grey color, providing a subtle contrast to the objects. The image has a minimalist design, with no other elements present."
 tags: [set, four, circular, objects, textured, surface, arranged, symmetrical, pattern, concrete, stone, light]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 847c5eed-55f9-586e-85d4-bb019e0fc483      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png

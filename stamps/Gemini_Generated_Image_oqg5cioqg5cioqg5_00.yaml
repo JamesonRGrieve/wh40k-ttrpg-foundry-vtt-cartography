@@ -6,7 +6,7 @@ name: Coffee Cup And Saucer
 description: "The image is a digital illustration of a coffee cup and saucer. The cup is made of ceramic and has a handle on the right side. It is filled with a dark brown liquid, which appears to be coffee or tea. The liquid is dripping down the sides of the cup, creating a messy and messy appearance. The saucer is also made of the same material as the cup. The background is a light beige color. The overall style of the illustration is simple and minimalistic."
 tags: [digital, illustration, coffee, cup, saucer, ceramic, has, handle, right, side, filled, dark, container, container-tableware]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: db21902e-08c7-5c49-8d46-70d31179fcc2      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png

@@ -6,7 +6,7 @@ name: Futuristic Cityscape With A Grid-Like Structure
 description: "A 3D rendering of a futuristic cityscape with a grid-like structure. The image is composed of a series of interconnected squares and rectangles, arranged in a symmetrical pattern. The squares are of varying sizes and shapes, with some being larger than others. The rectangles are connected by thin lines, creating a sense of depth and dimensionality. The background is a solid gray color, providing a subtle contrast to the futuristic cityscape. The overall effect is one of sophistication and sophistication, with a focus on the intricate details of the cityscape."
 tags: [rendering, futuristic, cityscape, grid-like, structure, composed, series, interconnected, squares, rectangles, arranged, symmetrical]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: destroyed
 group_id: 8a2c3db4-eeb1-5e9d-af1e-d2b8842bd04d      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png

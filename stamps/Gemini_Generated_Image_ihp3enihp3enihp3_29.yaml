@@ -6,7 +6,7 @@ name: Square-Shaped Table With Four Legs
 description: "The image is a 3D rendering of a square-shaped table with four legs. The table appears to be made of a light-colored material, possibly wood or metal, and has a smooth surface. The legs are slightly tapered and have a slightly curved shape. On the top of the table, there is a rectangular piece of paper or fabric with some text or images printed on it. The background is a plain beige color."
 tags: [rendering, square-shaped, table, four, legs, light-colored, material, possibly, wood, metal, has, smooth, furniture, furniture-table, prop, prop-document]
 orientation: north
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: da96cd5b-84f6-5f3a-8289-e74de997afd7      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png

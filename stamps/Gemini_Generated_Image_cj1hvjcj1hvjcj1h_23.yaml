@@ -6,7 +6,7 @@ name: Arranged In A Grid-Like Pattern
 description: "A set of brushes arranged in a grid-like pattern on a transparent background. The brushes are of different sizes and shapes, with some having a pointed tip and others having a flat handle. The bristles of the brushes are evenly spaced and have a light brown color. The image has a minimalist design with clean lines and a simple, clean look. The background is a solid gray color, providing a subtle contrast to the brushes. The overall aesthetic of the image is clean and minimalistic."
 tags: [set, brushes, arranged, grid-like, pattern, transparent, background, different, sizes, shapes, having, pointed]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: fe349d24-d560-55a5-9128-7a506018a643      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png

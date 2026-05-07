@@ -6,7 +6,7 @@ name: "Simple, Minimalist Design"
 description: "The image is a simple, minimalist design with a light brown background. In the center of the image, there are six square frames arranged in a grid-like pattern, each containing a different type of tool. The tools include a pair of scissors, a hammer, a screwdriver, a pliers, and a wrench. Each tool has a distinct shape and size, with a curved handle and a pointed tip. The tools are drawn in a simple, minimalist style, with no additional details or embellishments. The overall aesthetic is clean and minimalistic, with a focus on precision and accuracy."
 tags: [simple, minimalist, design, light, background, center, there, six, square, frames, arranged, grid-like, tool]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 7d31db98-ece3-57ae-b4b5-0832f3dfc505
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png

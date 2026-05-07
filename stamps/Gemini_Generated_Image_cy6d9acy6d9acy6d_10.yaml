@@ -6,7 +6,7 @@ name: ImageA setA setThe imageA setThe image
 description: The imageA setA setThe imageA setThe image is
 tags: [imagea, seta, setthe]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: null
 
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png

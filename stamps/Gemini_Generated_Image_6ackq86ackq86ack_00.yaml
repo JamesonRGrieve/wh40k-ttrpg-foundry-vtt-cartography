@@ -6,7 +6,7 @@ name: Seamless Pattern With A Rectangular Shape
 description: "The image is a seamless pattern with a rectangular shape in the center. The pattern is made up of small, evenly spaced rectangles in a light beige color. The rectangles are arranged in a symmetrical manner, creating a sense of balance and symmetry. The background is a solid beige color, providing a subtle contrast to the overall design. The overall effect is a clean and minimalistic look, perfect for any project."
 tags: [seamless, pattern, rectangular, shape, center, evenly, spaced, rectangles, light, beige, arranged, symmetrical]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: c84d3746-55e2-58d4-9570-dd66b9051e86
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png

@@ -6,7 +6,7 @@ name: "Simple, Minimalist Design"
 description: "The image is a simple, minimalist design with a light brown background. In the center of the image, there are six square icons arranged in a grid-like pattern, each containing a different type of screwdriver. The screwdrivers are of different sizes and shapes, with some having a pointed tip and others having a flat tip. The icons are outlined in a thin line, giving them a clean and minimalistic look. The overall design is simple and clean, with no additional embellishments or details."
 tags: [simple, minimalist, design, light, background, center, there, six, square, icons, arranged, grid-like, decor, decor-statue]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 7d31db98-ece3-57ae-b4b5-0832f3dfc505
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png

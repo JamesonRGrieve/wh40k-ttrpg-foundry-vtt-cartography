@@ -6,7 +6,7 @@ name: Square Frames With A Textured Surface
 description: "A set of four square frames with a textured surface, arranged in a symmetrical pattern. The frames are beige in color and have a simple, elegant design. The background is a checkered pattern in shades of gray and beige, creating a subtle contrast with the neutral tones of the frames. The overall effect is one of sophistication and elegance. The image has a high resolution, making it suitable for use as a background or texture."
 tags: [set, four, square, frames, textured, surface, arranged, symmetrical, pattern, beige, have, simple]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: null
 
 source: Gemini_Generated_Image_6ackq86ackq86ack.png

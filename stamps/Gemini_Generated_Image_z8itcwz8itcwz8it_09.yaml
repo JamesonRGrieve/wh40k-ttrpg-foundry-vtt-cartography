@@ -6,7 +6,7 @@ name: With A Minimalist Design
 description: "The image is a digital illustration with a minimalist design. It features a set of six circular, engraved designs on a plain, light grey background. The designs are symmetrical and appear to be made of metal or plastic. Each design has a unique shape and size, with intricate details and patterns. The designs are arranged in a symmetrical pattern, with the largest design in the center and the smaller ones on either side. The overall aesthetic of the image is simple and minimalistic, with a focus on the intricate details of the designs."
 tags: [digital, illustration, minimalist, design, features, set, six, circular, engraved, designs, plain, light]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 66562aef-531e-5af7-a6e4-ec5a7f003a42      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png

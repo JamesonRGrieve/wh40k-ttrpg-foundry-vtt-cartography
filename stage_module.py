@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """
-Stage extracted stamps into the dh-cartography Foundry module directory.
+Stage extracted stamps and battlemaps into the dh-cartography module dir.
 
 Hardlinks (or copies, on filesystems that don't support hardlinks) every
 PNG from `stamps/` into `dh-cartography/stamps/` so the module is
 self-contained and ready to zip-and-install or rsync to the Foundry VTT.
+
+Battlemap assets curated for module deployment go in
+`dh-cartography/battlemaps/` directly (no source-of-truth folder; the
+operator copies in chosen renders by hand). This script does NOT touch
+that subdir — it's manually curated.
 
 Sidecar YAML files are NOT staged — they are pipeline metadata, not
 runtime assets. The Mass Edit preset pack JSON is the runtime artifact.

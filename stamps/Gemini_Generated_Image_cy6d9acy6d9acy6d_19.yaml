@@ -6,7 +6,7 @@ name: null
 description: The image is
 tags: []
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: inactive
 group_id: null
 
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png

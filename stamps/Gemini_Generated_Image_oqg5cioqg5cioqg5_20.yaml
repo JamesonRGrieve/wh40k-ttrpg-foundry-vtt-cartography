@@ -6,7 +6,7 @@ name: File Folders Arranged In A Grid-Like Pattern
 description: "A collection of beige file folders arranged in a grid-like pattern on a plain grey background. The file folders are of varying sizes and shapes, with some being open and others closed. The folders appear to be made of a sturdy material, possibly paper or cardboard, and have a smooth, glossy finish. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall mood of the image is clean and organized, with a focus on the file folders."
 tags: [collection, beige, file, folders, arranged, grid-like, pattern, plain, background, varying, sizes, shapes, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: 3c088696-2b58-543f-b532-bc39f10153aa      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png

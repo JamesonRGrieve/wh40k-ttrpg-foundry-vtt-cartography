@@ -10,7 +10,7 @@ The image is a minimalist representation of a prison or jail, with a focus on th
 Overall, the image conveys a sense of timelessness and elegance, with the simple yet elegant design that will never go out of style."
 tags: [set, ornate, wooden, doors, simple, minimalist, design, against, plain, light, background, creating, door]
 orientation: isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged
 group_id: 9d93875d-1609-5dc9-9f94-accbdd2302b8      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_z8itcwz8itcwz8it.png

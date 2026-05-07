@@ -6,7 +6,7 @@ name: Menu Design With A Minimalist Aesthetic
 description: "The image is a digital illustration of a menu design with a minimalist aesthetic. The background is a light grey color with a subtle gradient effect. On the left side of the image, there is a rectangular frame with a textured surface, giving it a vintage look. The text is written in a neat, cursive font and is centered in the frame. The frame is divided into two sections, with the top section containing a list of items and the bottom section containing a description of each item. The items are arranged in a neat and orderly manner, with each item having its own space for the user to write their own information. The overall design is simple yet elegant, with a focus on the text and the background."
 tags: [digital, illustration, menu, design, minimalist, aesthetic, background, light, subtle, gradient, effect, left]
 orientation: top-down
-state: null         # intact | damaged | destroyed | active | inactive
+state: intact
 group_id: afd3fc3b-3f72-5298-8e55-e756c738b40c      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png
