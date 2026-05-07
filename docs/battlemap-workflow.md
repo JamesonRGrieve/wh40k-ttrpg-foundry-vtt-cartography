@@ -132,6 +132,66 @@ Future: extend `pipeline_status.py` with a "group sanity check"
 that flags suspicious merges (e.g. groups whose member captions
 share <50% of content tokens).
 
+### 2026-05-06 — Orientation classification via CLIP zero-shot
+
+Caption-based `derive_orientation` populated only ~3% of stamps —
+Florence-2 captions almost never include directional words.
+Built `classify_orientation.py` to bypass captions entirely:
+CLIP-ViT-L-14 zero-shot classification directly on the stamp PNG.
+
+Two stages:
+1. Camera angle: top-down vs isometric (softmax over paraphrase set
+   per label, average-pooled embedding).
+2. Facing direction (only run when isometric): N/S/E/W via four
+   directional paraphrase sets.
+
+Confidence margin gates: results stay null below 12% probability
+margin between top-1 and top-2.
+
+**Research path documented**:
+- `Florence-2 docvqa` task: empty for natural images. Documents only.
+- `SigLIP-so400m`: sigmoid scoring biased to verbose label sets —
+  collapsed every stamp to "top-down" with the longer prompts. Bad
+  for binary contrastive choice in this domain.
+- `CLIP-ViT-L-14 softmax`: ~64% angle accuracy on the 4lrua5
+  hand-grounded test set. Best of the three on stylized
+  illustrations. Picked.
+
+Full vault: 552/615 (89.7%) populated. Distribution:
+303 top-down, 142 north, 91 isometric, 80 null (low-confidence),
+12 west, 4 east. Operator can manually correct misses; Foundry
+tile rotation is freeform regardless.
+
+### 2026-05-06 — Phase 2 merge: median cross-pair, not best
+
+Best-pair similarity chained unrelated clusters into superclusters
+(one supercluster reached 121 members in this vault). The single
+high-similarity pair between two otherwise-distinct clusters
+triggered a merge, snowballing transitively across the union-find.
+
+Switched to MEDIAN cross-pair similarity at MERGE_THRESHOLD=0.92.
+Now the bulk of cross-pair distribution must exceed the threshold.
+Cap on cluster size dropped from 121 to 17. 88 multi-member
+candidates produced (vs 41 with best-pair); audit flagged 23
+(cleared); 65 clean confirmed groups.
+
+### 2026-05-06 — "Caption-resistant" stamps were all gutter artifacts
+
+The 17 stamps that resisted Florence-2 (PromptGen + base) all had
+fill ratios 0.013-0.041 — grid-line networks captured before
+MIN_FILL_RATIO was added to extract_stamps.py. Most appeared at
+sheet positions 14-16 (consistent with the extractor processing
+the gutter-network connected component AFTER the cell stamps).
+
+Retroactive cleanup: `/tmp/cleanup_gutter.py` removes any stamp
+with fill < 0.10. Result: 632 → 615 stamps, 100% classification
+on real-stamp content.
+
+The tertiary Florence-2-base fallback is still valuable for the
+3-5 real stamps where PromptGen silently empties; it just turned
+out NOT to be the recovery path for the 17 outliers we initially
+investigated.
+
 ### 2026-05-06 — Tertiary fallback recovers 111/128 PromptGen empties
 
 After the long classify pass left 128 stamps with empty captions,

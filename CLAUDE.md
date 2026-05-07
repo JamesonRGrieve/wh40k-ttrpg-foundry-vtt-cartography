@@ -254,7 +254,32 @@ drop). Default extension `.json`.
     concrete subject token; the operator clears their group_ids
     via the snippet in `docs/battlemap-workflow.md`. Lower the
     threshold or cap cluster size at the source for a permanent fix.
-16. **PromptGen captions need preamble stripping for usable names.**
+16. **Florence-2 docvqa is for documents, not natural images.**
+    Tested: returns empty on every stamp regardless of question.
+    Don't use it for object Q&A. For object classification, use
+    CLIP zero-shot via `classify_orientation.py`.
+17. **CLIP > SigLIP for binary contrastive classification on
+    stylized illustrations** in this domain. SigLIP-so400m's
+    sigmoid scoring biases toward whichever label has the more
+    verbose / specific paraphrase set, collapsing all stamps to
+    one label. CLIP-ViT-L-14's softmax over a small label set
+    (top-down vs isometric) discriminates ~64% on hand-grounded
+    test data — much better than SigLIP's ~0% (everything
+    top-down) on the same prompts.
+18. **Phase 2 merge: median cross-pair similarity, not best.**
+    Best-pair MERGE_THRESHOLD=0.92 chained unrelated clusters into
+    superclusters of 100+ members (one coincidentally-similar pair
+    triggered a merge, snowballing transitively). Median requires
+    the bulk of cross-pair similarity to exceed 0.92. Cap on
+    cluster size after this fix: ~17 in a 615-stamp vault, down
+    from 121.
+19. **Caption-resistant stamps were all gutter artifacts.** The
+    16% of stamps that resisted Florence-2 (PromptGen + base) all
+    had fill ratios 0.013-0.041 — i.e. they were grid-line
+    networks captured before MIN_FILL_RATIO=0.15 was added to
+    extract_stamps.py. Retroactive cleanup script removes them by
+    fill ratio; after that, real-stamp classification rate is 100%.
+20. **PromptGen captions need preamble stripping for usable names.**
     PromptGen-v2.0 reliably emits captions like "The image is a
     digital illustration of [subject]" or "A set of three 3D
     rendering illustrations of [subject]". A naive head-noun
