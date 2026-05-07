@@ -7,7 +7,7 @@ description: "A line drawing of various objects arranged in a symmetrical manner
 tags: [line, various, objects, arranged, symmetrical, manner, plain, light, background, include, desk, chair, furniture, furniture-chair, furniture-table, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 7ee2d12c-1fc8-59b5-8c0b-473c36521a2e      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 17

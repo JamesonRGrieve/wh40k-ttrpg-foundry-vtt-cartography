@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Square-Shaped Icon With A Light Brown Color
+description: "The image is a square-shaped icon with a light brown color. It appears to be made of a textured material, possibly paper or cardboard. The edges of the image are slightly frayed, giving it a worn and aged look. There are several horizontal lines running across the image, creating a grid-like pattern. The lines are evenly spaced and appear to be slightly overlapping each other. The background is a plain beige color."
+tags: [square-shaped, icon, light, textured, material, possibly, paper, cardboard, edges, slightly, frayed, giving, prop, prop-document, decor, decor-statue]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: 2d19e2c1-172f-5377-9bb6-271e81ebcd5b      # UUID linking orientation/state variants of one object
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: 0d95dbb8-c608-5476-a84c-4af4c46a962e      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_5ump9o5ump9o5ump.png
 source_index: 13
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:13:53+00:00"
+classified_by: microsoft/Florence-2-large

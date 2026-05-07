@@ -2,9 +2,9 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Chair
+description: The image is a 3D rendering of a chair. The chair has a simple design with a curved backrest and four legs. The seat and backrest are made of a light-colored fabric material. The legs are slightly tapered and have a slightly curved shape. The overall design of the chair is simple and minimalistic.
+tags: [rendering, chair, has, simple, design, curved, backrest, four, legs, seat, light-colored, fabric, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
@@ -12,5 +12,5 @@ group_id: null
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 4
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T17:25:11+00:00"
+classified_by: microsoft/Florence-2-large

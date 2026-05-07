@@ -7,7 +7,7 @@ description: "A detailed sketch of a desk with various stationery items scattere
 tags: [detailed, sketch, desk, various, stationery, items, scattered, across, surface, wood, has, rectangular, furniture, furniture-table, prop, prop-document, prop-writing]
 orientation: null   # north | south | east | west | top-down | isometric
 state: damaged
-group_id: 7ee2d12c-1fc8-59b5-8c0b-473c36521a2e      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 11

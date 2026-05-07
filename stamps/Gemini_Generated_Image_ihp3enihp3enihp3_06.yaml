@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Trash Can
+description: The image is a 3D rendering of a trash can. The trash can is round and cylindrical in shape with a lid on top. The lid has a handle on the top for easy carrying. The body of the trash can has a ribbed texture and appears to be made of a light-colored material. The background is a plain beige color.
+tags: [rendering, trash, can, round, cylindrical, shape, lid, top, has, handle, easy, carrying]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: e383174a-d7ef-5dbb-be08-de3841ab2738      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 6
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T17:26:34+00:00"
+classified_by: microsoft/Florence-2-large

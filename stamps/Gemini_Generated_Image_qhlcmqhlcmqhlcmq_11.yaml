@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Old-Fashioned Sink
+description: "The image is a 3D rendering of an old-fashioned sink. The sink is rectangular in shape and appears to be made of a light-colored material, possibly stone or porcelain. It has a rectangular base with four legs that are slightly curved at the bottom. The legs are attached to the bottom of the sink with small feet. On top of the base, there is a single faucet with two handles. The handle is slightly curved and has a small circular hole in the center. The overall appearance is weathered and aged, suggesting that the sink has been used for a long time."
+tags: [rendering, old-fashioned, sink, rectangular, shape, light-colored, material, possibly, stone, porcelain, has, base]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: 2541c6dc-50bf-532c-9d51-bc7dab6c1305      # UUID linking orientation/state variants of one object
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: 34446e39-735c-5088-87cd-55b62400c9a9      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 11
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:47:55+00:00"
+classified_by: microsoft/Florence-2-large

@@ -2,9 +2,9 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Desk Lamp
+description: The image is a line drawing of a desk lamp. The lamp has a long arm with a round shade on top. The shade is slightly curved and has a small knob on the side. The arm is attached to a base that is also curved and appears to be made of metal. The base is rectangular in shape and is slightly tapered at the bottom. The overall design of the lamp is simple and minimalistic.
+tags: [line, desk, lamp, has, long, arm, round, shade, top, slightly, curved, knob, furniture, furniture-table, light, light-fixture]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
@@ -12,5 +12,5 @@ group_id: null
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 6
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T15:28:19+00:00"
+classified_by: microsoft/Florence-2-large

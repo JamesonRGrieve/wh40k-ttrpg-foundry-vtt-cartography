@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Square-Shaped Frame With A Beige Background
+description: "The image is a square-shaped frame with a beige background. The frame is made of a light green material and has a simple, minimalist design. It has a rectangular shape with rounded edges and a flat base. The edges of the frame are slightly curved and there are two small holes on either side. The overall appearance is simple and minimalistic."
+tags: [square-shaped, frame, beige, background, light, material, has, simple, minimalist, design, rectangular, shape]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: d6e07e38-902c-54f1-9f21-469a09c16fda      # UUID linking orientation/state variants of one object
+group_id: b8b34510-e612-5ab1-a619-05004e4c0448      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_5ump9o5ump9o5ump.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:04:18+00:00"
+classified_by: microsoft/Florence-2-large

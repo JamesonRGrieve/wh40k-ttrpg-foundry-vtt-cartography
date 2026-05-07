@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Open Refrigerator
+description: "The image is a 3D rendering of an open refrigerator. The refrigerator is made of metal and has a rectangular shape with a flat top. The door is open, revealing the interior of the fridge. Inside the fridge, there are four shelves, each with a small vent on the right side. The shelves are empty and appear to be made of a light-colored material. The fridge has a handle on the top for easy opening and closing. The background is a plain beige color."
+tags: [rendering, open, refrigerator, metal, has, rectangular, shape, flat, top, door, revealing, interior]
+orientation: east   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: d190f4ef-2ec0-5a0c-815b-2b622a945efe      # UUID linking orientation/state variants of one object
+group_id: 92d2b740-8d7f-5600-ba8c-e2cf3dd4a959      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 12
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:49:19+00:00"
+classified_by: microsoft/Florence-2-large

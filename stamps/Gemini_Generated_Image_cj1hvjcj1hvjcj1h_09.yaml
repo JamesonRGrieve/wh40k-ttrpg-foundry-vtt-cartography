@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: 292373a7-0c49-5fbc-8899-6af0358b64d4      # UUID linking orientation/state variants of one object
+name: Mug With A Handle
+description: "The image is a digital illustration of a mug with a handle on the right side. The mug appears to be old and weathered, with a rough texture on the surface. On the front of the mug, there is a large gear with a skull and crossbones design in the center. The gear is surrounded by a circle of small dots. The background is a light beige color."
+tags: [digital, illustration, mug, handle, right, side, old, weathered, rough, texture, surface, front, container, container-tableware]
+orientation: east   # north | south | east | west | top-down | isometric
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: 021d466c-ca6d-5f86-b127-68a6360a2799      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png
 source_index: 9
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:44:32+00:00"
+classified_by: microsoft/Florence-2-large

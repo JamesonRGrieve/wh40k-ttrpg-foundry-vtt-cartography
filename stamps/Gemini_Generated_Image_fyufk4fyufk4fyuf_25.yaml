@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Glass Tumbler
+description: "The image is a 3D rendering of a glass tumbler. The glass is transparent and appears to be empty. It has a cylindrical shape with a wide base and a narrow neck. The top of the glass is slightly curved and has a small opening at the bottom. There is a small indentation in the center of the cup, which could be a crack or a crack in the glass. The image is in black and white and is set against a plain beige background."
+tags: [rendering, glass, tumbler, transparent, empty, has, cylindrical, shape, wide, base, narrow, neck, container, container-tableware]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: c579aca3-fd67-52a2-a797-3045c2a69252      # UUID linking orientation/state variants of one object
+group_id: 939fce6d-9757-5375-b8e3-5800605f6c9a      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_fyufk4fyufk4fyuf.png
 source_index: 25
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T17:22:26+00:00"
+classified_by: microsoft/Florence-2-large

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Coffee Cup And Saucer
+description: The image is a 3D rendering of a coffee cup and saucer. The cup is made of ceramic and has a handle on one side and a spout on the other. It is sitting on a beige-colored coaster with a textured surface. The coffee inside the cup is dark brown and appears to be freshly brewed. The background is plain white.
+tags: [rendering, coffee, cup, saucer, ceramic, has, handle, side, spout, other, sitting, beige-colored, container, container-tableware]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 60182f8c-0fcc-59f0-bf47-21a08f6e8c51      # UUID linking orientation/state variants of one object
+group_id: db21902e-08c7-5c49-8d46-70d31179fcc2      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_oqg5cioqg5cioqg5.png
 source_index: 3
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:17:17+00:00"
+classified_by: microsoft/Florence-2-large

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Rectangular Piece Of Paper With Horizontal Lines
+description: "The image is a rectangular piece of paper with horizontal lines on it. The paper appears to be a document or a document of some kind. The lines are evenly spaced and run horizontally across the page. The edges of the paper are slightly curled, giving it a textured appearance. On the bottom right corner of the image, there is a circular logo or emblem. The background is a plain beige color."
+tags: [rectangular, piece, paper, horizontal, lines, document, evenly, spaced, run, horizontally, across, page, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: ab99d4d3-4608-5ac8-ae6f-8fd570b2a2ef      # UUID linking orientation/state variants of one object
+group_id: beb02ddb-af47-5958-8140-1955d37768fd      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_5ump9o5ump9o5ump.png
 source_index: 12
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:12:30+00:00"
+classified_by: microsoft/Florence-2-large

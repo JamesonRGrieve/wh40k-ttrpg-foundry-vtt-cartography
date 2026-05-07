@@ -7,7 +7,7 @@ description: "A set of six rectangular tables with a simple, minimalist design. 
 tags: [set, six, rectangular, tables, simple, minimalist, design, arranged, grid-like, pattern, each, table, furniture, furniture-table]
 orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 7ee2d12c-1fc8-59b5-8c0b-473c36521a2e      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 9

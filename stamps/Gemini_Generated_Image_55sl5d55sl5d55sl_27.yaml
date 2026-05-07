@@ -2,9 +2,9 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Square-Shaped Object With A Flat Base
+description: "The image is a square-shaped object with a flat base. It appears to be made of a light-colored material, possibly plastic or metal. The object has a rectangular shape with rounded edges and a small indentation in the center. The edges of the object are slightly curved, giving it a 3D appearance. The background is a plain beige color."
+tags: [square-shaped, object, flat, base, light-colored, material, possibly, plastic, metal, has, rectangular, shape]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
@@ -12,5 +12,5 @@ group_id: null
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 27
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T15:57:27+00:00"
+classified_by: microsoft/Florence-2-large

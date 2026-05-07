@@ -2,15 +2,19 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Rectangular Tray With Four Compartments
+description: "The image is a 3D illustration of a rectangular tray with four compartments. The tray appears to be made of plastic or a similar material and has a smooth surface. On the left side of the tray, there is a small circular indentation in the center, which could be a plate or a tray for food. Next to it, there are two small holes on the right side, which may be used to hold the tray in place. 
+
+In the center of each compartment, there appears to have a small amount of food items, including a piece of bread, a plate with a fork and knife, and a small container with a lid. The food items are arranged in a way that suggests they are ready to be eaten.
+
+The tray has a handle on the top for easy carrying. The overall design is simple and minimalistic, with a clean and organized layout."
+tags: [illustration, rectangular, tray, four, compartments, plastic, similar, material, has, smooth, surface, left, container, container-tableware, weapon, weapon-melee]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 
 source: Gemini_Generated_Image_df988mdf988mdf98.png
 source_index: 21
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T17:11:53+00:00"
+classified_by: microsoft/Florence-2-large

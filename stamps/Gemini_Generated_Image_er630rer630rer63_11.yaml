@@ -7,7 +7,7 @@ description: "A set of four simple, minimalist designs in a plain, light brown b
 tags: [set, four, simple, minimalist, designs, plain, light, background, arranged, horizontal, line, each]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: d8aae5c5-4fdc-501f-b23e-eaaec329265c      # UUID linking orientation/state variants of one object
+group_id: df070619-ec8a-54fa-ba8b-7ecaabaf9ea1      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_er630rer630rer63.png
 source_index: 11

@@ -7,7 +7,7 @@ description: The image is a photograph of a transparent background with a transp
 tags: [photograph, transparent, background]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 18f7bf39-6e1f-5dd0-a3dd-8f29214c90cd      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 22

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Tray With Six Glasses Arranged
+description: "The image shows a tray with six glasses arranged in a circular pattern. The glasses are of different sizes and shapes, with the largest glass in the center and the smallest ones on either side. All the glasses are filled with a light-colored liquid, possibly coffee or tea. The tray appears to be made of metal or plastic and has a smooth surface. The background is a plain beige color."
+tags: [tray, six, glasses, arranged, circular, pattern, different, sizes, shapes, largest, glass, center]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 9e939af8-2aa5-5ccf-8128-d3206049cfc4      # UUID linking orientation/state variants of one object
+group_id: b63afcab-6698-5719-8fb0-61a6e67c9d4f      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 24
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T15:54:43+00:00"
+classified_by: microsoft/Florence-2-large

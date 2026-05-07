@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Stool
+description: "The image is a 3D rendering of a stool. It is a simple, minimalist design with a rectangular seat and four legs. The stool appears to be made of wood and has a light grey finish. The seat is slightly curved and the legs are straight and tapered. The overall shape of the stool is simple and minimalistic. The background is a plain beige color."
+tags: [rendering, stool, simple, minimalist, design, rectangular, seat, four, legs, wood, has, light, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 8f21ab84-c94a-5057-b47d-de6a81209b4c      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 8
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T15:42:53+00:00"
+classified_by: microsoft/Florence-2-large

@@ -7,7 +7,7 @@ description: "The image is a simple line drawing of various tools arranged in a 
 tags: [simple, line, various, tools, arranged, grid-like, pattern, plain, light, background, outlined, rows, tool]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 34afa46d-ebbd-5c42-8ec4-9d226a85ea3a      # UUID linking orientation/state variants of one object
+group_id: 42bc440f-072a-5a28-bb0d-8a7bf35de9e3      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 12

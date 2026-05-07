@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Metal Locker
+description: "The image is a digital illustration of a metal locker. It is a rectangular box with two doors, each with a handle on the top. The doors are closed and appear to be made of metal. The body of the locker is a light beige color and has a textured surface. There are two rectangular panels on either side of the doors, one on top of the other, with horizontal lines running horizontally across them. The panels are brown in color and have a slightly rough texture. The door handles are silver and are attached to the sides of the box with screws. The overall design is simple and minimalistic."
+tags: [digital, illustration, metal, locker, rectangular, box, doors, each, handle, top, closed, body, container, container-locker, container-crate, door]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 51ac385d-6f0d-5c4f-8fb9-d07776545967      # UUID linking orientation/state variants of one object
+group_id: 76ded828-787a-5e5e-a1d0-f7d1488a2d52      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png
 source_index: 17
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:36:17+00:00"
+classified_by: microsoft/Florence-2-large

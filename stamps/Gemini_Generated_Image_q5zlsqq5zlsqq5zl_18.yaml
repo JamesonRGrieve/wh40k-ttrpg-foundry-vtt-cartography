@@ -2,9 +2,9 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Computer Monitor
+description: "The image is a digital illustration of a computer monitor. The monitor is rectangular in shape and has a flat base. On the screen of the monitor, there are various objects scattered around, including a piece of paper, a pencil, a ruler, and a magnifying glass. The objects appear to be in various sizes and shapes, with some overlapping and some standing upright. The background of the image is plain white."
+tags: [digital, illustration, computer, monitor, rectangular, shape, has, flat, base, screen, there, various, prop, prop-document, prop-writing, tech, tech-screen]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
@@ -12,5 +12,5 @@ group_id: null
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:29:08+00:00"
+classified_by: microsoft/Florence-2-large

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: "Old, Rectangular Box With A Lock"
+description: "The image is a 3D rendering of an old, rectangular box with a lock on the front. The box appears to be made of metal and has a weathered, aged appearance. It has a rectangular shape with a flat top and a flat bottom. The lid is slightly open, revealing the contents inside. The sides of the box are decorated with rivets and rivets, and there is a small handle on the top for easy carrying. The overall design is simple and minimalistic."
+tags: [rendering, old, rectangular, box, lock, front, metal, has, weathered, aged, appearance, shape, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
+state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: null
 
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 11
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:09:03+00:00"
+classified_by: microsoft/Florence-2-large

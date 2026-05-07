@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Square-Shaped Container With A Lid
+description: The image is a 3D rendering of a square-shaped container with a lid. The container appears to be made of plastic or a similar material and has a smooth surface. The lid has a round shape with a small knob on top. The body of the container is rectangular in shape and is slightly tapered at the bottom. The background is a light beige color.
+tags: [rendering, square-shaped, container, lid, plastic, similar, material, has, smooth, surface, round, shape]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: d6f3822f-ecbb-578e-b28d-d780c09251b5      # UUID linking orientation/state variants of one object
+group_id: 10d9458d-f1b6-5945-b8d7-05842043a98b      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_4s7n6b4s7n6b4s7n.png
 source_index: 1
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T15:26:57+00:00"
+classified_by: microsoft/Florence-2-large

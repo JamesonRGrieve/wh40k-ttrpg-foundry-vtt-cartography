@@ -2,9 +2,9 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Wooden Chair
+description: "The image is a 3D rendering of a wooden chair. The chair has a simple design with four legs and a curved backrest. The seat is upholstered in a light-colored fabric with a textured pattern. On the backrest, there is a folded piece of fabric, possibly a towel or a blanket. The overall color scheme of the image is neutral, with shades of beige, brown, and gray."
+tags: [rendering, wooden, chair, has, simple, design, four, legs, curved, backrest, seat, upholstered, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
@@ -12,5 +12,5 @@ group_id: null
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:10:25+00:00"
+classified_by: microsoft/Florence-2-large

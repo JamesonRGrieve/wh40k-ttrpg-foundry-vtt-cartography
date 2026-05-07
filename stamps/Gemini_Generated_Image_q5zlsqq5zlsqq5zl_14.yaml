@@ -7,7 +7,7 @@ description: "The image is a simpleThe image isThe image isThe image is a simple
 tags: [simplethe, isthe, simple, andthe, illustration, ofthe, minimalist, design, multiple, empty, beer, bottles, container, container-vessel]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: abd844e3-b1d3-578a-b664-e8c17353e0df      # UUID linking orientation/state variants of one object
+group_id: aa7bc72a-e5b9-5a4a-8c77-bef7d59103a5      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 14

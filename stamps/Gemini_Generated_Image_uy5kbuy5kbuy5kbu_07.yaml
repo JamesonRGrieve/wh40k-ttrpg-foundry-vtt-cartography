@@ -7,7 +7,7 @@ description: "The image is a 3D rendering of a wooden bench in a simple, minimal
 tags: [rendering, wooden, bench, simple, minimalist, style, drawn, light, smooth, polished, finish, has, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: intact         # intact | damaged | destroyed | active | inactive
-group_id: d27999d9-5d58-5a3e-9a32-ce4f1ff43c8b      # UUID linking orientation/state variants of one object
+group_id: b5ad6d3a-e935-5f2d-ae89-76cab50b7574      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 7

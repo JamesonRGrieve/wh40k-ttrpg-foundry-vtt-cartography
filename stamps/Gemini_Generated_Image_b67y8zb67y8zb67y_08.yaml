@@ -7,7 +7,7 @@ description: "The image is a simple, minimalist design with a light brown backgr
 tags: [simple, minimalist, design, light, background, center, there, six, square, icons, arranged, grid-like, decor, decor-statue]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: a4332f6a-7053-5f84-8cb6-e9253c020138      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png
 source_index: 8

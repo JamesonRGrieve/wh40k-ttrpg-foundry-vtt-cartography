@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Archway With A Statue Of A Person
+description: "The image is a 3D rendering of an archway with a statue of a person in the center. The person is wearing a hooded robe and has their hands clasped together in prayer. The statue appears to be made of stone or a similar material and is in a light grey color. The archway is arched and has a simple, ornate design. The background is plain and the overall color scheme of the image is neutral."
+tags: [rendering, archway, statue, person, center, wearing, hooded, robe, has, hands, clasped, together, decor, decor-statue]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 951497b5-2323-5f63-a307-22f4542c82d4      # UUID linking orientation/state variants of one object
+group_id: bcb659b1-3ba5-5527-a2ad-cae33e782358      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 13
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T19:03:58+00:00"
+classified_by: microsoft/Florence-2-large

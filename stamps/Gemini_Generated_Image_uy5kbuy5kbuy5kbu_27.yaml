@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Archway
+description: "The image is a digital illustration of an archway. The archway is made of stone and has a pointed top. It is supported by two columns on either side. The walls of the archway are made of brick and there is a small window in the center. Through the window, we can see a large rock or stone with a rough texture. The rock appears to be old and weathered, with some cracks and chips visible. The overall color scheme of the image is beige and gray."
+tags: [digital, illustration, archway, stone, has, pointed, top, supported, columns, either, side, walls, architecture, architecture-window, architecture-wall]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: 9b74a996-fa13-5264-9b0f-4cc228819c13      # UUID linking orientation/state variants of one object
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: 1d3e8612-4f6c-515d-a5bc-074d11af716e      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_uy5kbuy5kbuy5kbu.png
 source_index: 27
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T19:13:06+00:00"
+classified_by: microsoft/Florence-2-large

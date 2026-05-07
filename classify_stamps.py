@@ -59,6 +59,14 @@ DEFAULT_SERVER = "http://198.51.100.11:8188"
 # "a set of ..." or background-only descriptions for our cartography stamps).
 # It also unlocks the prompt_gen_tags task (base returns region tokens for it).
 MODEL_NAME = "MiaoshouAI/Florence-2-large-PromptGen-v2.0"
+# Fallback model used in the tertiary pass when MODEL_NAME returns empty
+# captions on both default (native+transparent) and retry (768+white)
+# payloads. PromptGen v2.0 silently emits empty strings on certain
+# clean grimdark stamps (e.g. ATM-style kiosks, simple desks, drink
+# trays); Florence-2-base captions the same images successfully —
+# its "image is a 3D rendering of …" preamble strips cleanly via
+# `_strip_preamble()`.
+FALLBACK_MODEL_NAME = "microsoft/Florence-2-large"
 SUBFOLDER = "dh_classify"  # subdirectory under ComfyUI's input/ for our uploads
 HERE = Path(__file__).resolve().parent
 STAMPS_DIR = HERE / "stamps"
@@ -284,7 +292,18 @@ def poll_history(server: str, prompt_id: str, timeout: float = POLL_TIMEOUT_S) -
     raise TimeoutError(f"prompt {prompt_id} did not complete in {timeout}s")
 
 
-def build_workflow(server_filename: str) -> dict:
+def build_workflow(server_filename: str, *, model: str = MODEL_NAME, single_task: bool = False) -> dict:
+    """Build a Florence-2 workflow for one image.
+
+    `model` defaults to the PromptGen finetune; pass `FALLBACK_MODEL_NAME`
+    for the tertiary fallback pass on stamps PromptGen empties on.
+
+    `single_task=True` drops the prompt_gen_tags companion node — only
+    the base Florence-2 supports it weakly, and bundling both tasks on
+    the fallback path adds latency without value. Caption-only is
+    sufficient for the tertiary pass; tags get derived from the caption
+    text downstream.
+    """
     image_ref = f"{SUBFOLDER}/{server_filename}" if SUBFOLDER else server_filename
     common_run_inputs: dict = {
         "florence2_model": ["loader", 0],
@@ -310,7 +329,7 @@ def build_workflow(server_filename: str) -> dict:
         "loader": {
             "class_type": "DownloadAndLoadFlorence2Model",
             "inputs": {
-                "model": MODEL_NAME,
+                "model": model,
                 "precision": "fp16",
                 "attention": "sdpa",
                 "convert_to_safetensors": False,
@@ -320,10 +339,12 @@ def build_workflow(server_filename: str) -> dict:
             "class_type": "Florence2Run",
             "inputs": {**common_run_inputs, "task": "more_detailed_caption"},
         },
-        "tags": {
-            "class_type": "Florence2Run",
-            "inputs": {**common_run_inputs, "task": "prompt_gen_tags"},
-        },
+        **({} if single_task else {
+            "tags": {
+                "class_type": "Florence2Run",
+                "inputs": {**common_run_inputs, "task": "prompt_gen_tags"},
+            },
+        }),
         # PreviewAny is an OUTPUT_NODE that captures any input into /history.
         # Florence2Run is not an output node on its own; without these wrappers
         # ComfyUI rejects the workflow as having no outputs.
@@ -331,10 +352,12 @@ def build_workflow(server_filename: str) -> dict:
             "class_type": "PreviewAny",
             "inputs": {"source": ["caption", 2]},
         },
-        "save_tags": {
-            "class_type": "PreviewAny",
-            "inputs": {"source": ["tags", 2]},
-        },
+        **({} if single_task else {
+            "save_tags": {
+                "class_type": "PreviewAny",
+                "inputs": {"source": ["tags", 2]},
+            },
+        }),
     }
 
 
@@ -716,6 +739,23 @@ def classify_one(server: str, png: Path, yaml_path: Path, client_id: str) -> tup
         retry_history = poll_history(server, retry_pid)
         caption, tags_raw = extract_strings(retry_history)
 
+    # Tertiary pass: when PromptGen v2.0 has emptied on both payloads,
+    # fall back to Florence-2-large (base, non-PromptGen). The base
+    # model is less domain-tuned but more robust on the art-style edge
+    # cases where PromptGen silently fails. Caption-only, no tags
+    # (base's prompt_gen_tags task returns region tokens, not tags;
+    # category tags get derived from the caption text downstream
+    # anyway).
+    used_model = MODEL_NAME
+    if not caption and not tags_raw:
+        fallback_filename = upload_image(server, png, retry=True)
+        fallback_workflow = build_workflow(fallback_filename, model=FALLBACK_MODEL_NAME, single_task=True)
+        fallback_pid = submit_prompt(server, fallback_workflow, client_id)
+        fallback_history = poll_history(server, fallback_pid)
+        caption, tags_raw = extract_strings(fallback_history)
+        if caption or tags_raw:
+            used_model = FALLBACK_MODEL_NAME
+
     if not caption and not tags_raw:
         raise RuntimeError(f"empty Florence-2 output for {png.name}")
 
@@ -743,7 +783,7 @@ def classify_one(server: str, png: Path, yaml_path: Path, client_id: str) -> tup
                     existing.append(norm)
         fields["tags"] = derive_tags("", existing, caption=caption)
     fields["classified_at"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
-    fields["classified_by"] = MODEL_NAME
+    fields["classified_by"] = used_model
 
     update_sidecar(yaml_path, fields)
     return caption, tags_raw

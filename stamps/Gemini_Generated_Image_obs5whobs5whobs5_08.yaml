@@ -2,9 +2,9 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Single Bed With A Metal Frame
+description: "The image is a 3D rendering of a single bed with a metal frame. The bed has a slatted headboard and footboard, and the mattress is covered with a beige-colored blanket. There are two pillows on the bed, one on each side of the bed. The background is a plain beige color. The image is in a sketch-like style, with no shading or shading."
+tags: [rendering, single, bed, metal, frame, has, slatted, headboard, footboard, mattress, covered, beige-colored, furniture, furniture-bed]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
@@ -12,5 +12,5 @@ group_id: null
 source: Gemini_Generated_Image_obs5whobs5whobs5.png
 source_index: 8
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:06:18+00:00"
+classified_by: microsoft/Florence-2-large

@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Computer Monitor With A Desk On Top
+description: "The image is a digital illustration of a computer monitor with a desk on top of it. On the desk, there are two papers, a pen, and a tablet. The papers appear to be a document or a document of some kind, with some text written on them. The pen is placed next to the papers, and the tablet is on the right side of the monitor. The background is a light grey color. The image is in a sketch-like style, with a simple and minimalistic design."
+tags: [digital, illustration, computer, monitor, desk, top, there, papers, pen, tablet, document, text, furniture, furniture-table, prop, prop-document, prop-writing, tech, tech-screen, tech-device]
+orientation: east   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 256a5b32-0ca5-5fed-84c7-cc741db1332f      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 28
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T15:58:50+00:00"
+classified_by: microsoft/Florence-2-large

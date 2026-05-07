@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Chair
+description: The image is a 3D rendering of a chair. The chair has a rectangular frame with four legs. The seat is upholstered in a light brown fabric. The backrest is slightly curved and the seat appears to be slightly cushioned. The overall design of the chair is simple and minimalistic.
+tags: [rendering, chair, has, rectangular, frame, four, legs, seat, upholstered, light, fabric, backrest, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 72e5cf93-0805-50d9-998f-264ba6569fb2      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 18
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:58:27+00:00"
+classified_by: microsoft/Florence-2-large

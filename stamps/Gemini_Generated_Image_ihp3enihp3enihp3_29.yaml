@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Square-Shaped Table With Four Legs
+description: "The image is a 3D rendering of a square-shaped table with four legs. The table appears to be made of a light-colored material, possibly wood or metal, and has a smooth surface. The legs are slightly tapered and have a slightly curved shape. On the top of the table, there is a rectangular piece of paper or fabric with some text or images printed on it. The background is a plain beige color."
+tags: [rendering, square-shaped, table, four, legs, light-colored, material, possibly, wood, metal, has, smooth, furniture, furniture-table, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: d2b3707a-00d2-5a25-a71e-edec39a8abe6      # UUID linking orientation/state variants of one object
+group_id: da96cd5b-84f6-5f3a-8289-e74de997afd7      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 29
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T17:41:13+00:00"
+classified_by: microsoft/Florence-2-large

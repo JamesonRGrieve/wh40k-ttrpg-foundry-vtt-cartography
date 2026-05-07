@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Small Glass Jar With A Round Lid
+description: "The image is a 3D rendering of a small glass jar with a round lid. The jar appears to be made of transparent glass and has a cylindrical shape with a flat base. The lid is slightly open, revealing the contents inside. The background is a light beige color, making the jar the focal point of the image."
+tags: [rendering, glass, jar, round, lid, transparent, has, cylindrical, shape, flat, base, slightly, container, container-vessel]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: e88f9764-77da-58b8-8e34-fefcbf7f4a20      # UUID linking orientation/state variants of one object
+group_id: 73e3781e-e75f-5fec-b768-d83970d69497      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_cj1hvjcj1hvjcj1h.png
 source_index: 8
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:43:09+00:00"
+classified_by: microsoft/Florence-2-large

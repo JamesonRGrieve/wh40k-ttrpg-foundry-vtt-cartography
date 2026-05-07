@@ -2,9 +2,9 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Wooden Ladder
+description: "The image is a 3D illustration of a wooden ladder. The ladder is made of a light-colored wood and has four horizontal bars. The bars are evenly spaced and appear to be made of metal. At the bottom of the ladder, there are two small metal brackets that are attached to the top and bottom. The brackets are slightly curved and have a smooth finish. The background is a plain beige color."
+tags: [illustration, wooden, ladder, light-colored, wood, has, four, horizontal, bars, evenly, spaced, metal, architecture, architecture-step]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
@@ -12,5 +12,5 @@ group_id: null
 source: Gemini_Generated_Image_cy6d9acy6d9acy6d.png
 source_index: 26
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T17:02:46+00:00"
+classified_by: microsoft/Florence-2-large

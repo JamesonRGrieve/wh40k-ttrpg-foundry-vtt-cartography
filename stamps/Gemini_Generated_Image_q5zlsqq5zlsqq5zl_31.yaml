@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Wooden Chest Of Drawers
+description: "The image is a line drawing of a wooden chest of drawers. The chest is rectangular in shape and has four drawers, each with a small hole in the center. The drawers are made of light-colored wood and have a weathered, aged appearance. The top of the chest has a flat surface with a rough, uneven texture. There are also several small holes scattered across the chest, some of which are larger than others. On the bottom right corner, there is a small circular hole with a hole in it. The image is in a light brown color and appears to be hand-drawn in a sketch-like style."
+tags: [line, wooden, chest, drawers, rectangular, shape, has, four, each, hole, center, light-colored, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: bfd67365-d866-5d9e-8b6b-32cfe54ed638      # UUID linking orientation/state variants of one object
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: 0b6ff01e-6921-590e-9084-d4fa12b7dab7      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_q5zlsqq5zlsqq5zl.png
 source_index: 31
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T18:38:17+00:00"
+classified_by: microsoft/Florence-2-large

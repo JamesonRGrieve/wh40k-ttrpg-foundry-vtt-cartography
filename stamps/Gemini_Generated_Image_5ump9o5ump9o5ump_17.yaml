@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Oval-Shaped Object
+description: "The image is a 3D rendering of an oval-shaped object. The object appears to be made of a light-colored material, possibly paper or fabric. It has a smooth, curved shape with a slight curve at the top. The edges of the object are slightly uneven, giving it a textured appearance. The background is a neutral beige color, making the object stand out."
+tags: [rendering, oval-shaped, object, light-colored, material, possibly, paper, fabric, has, smooth, curved, shape, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 8c179ed2-1237-5cb6-928e-983b189beca2      # UUID linking orientation/state variants of one object
+group_id: 9b002d0a-f75e-5890-b769-05d6c09e7fb9      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_5ump9o5ump9o5ump.png
 source_index: 17
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:16:38+00:00"
+classified_by: microsoft/Florence-2-large

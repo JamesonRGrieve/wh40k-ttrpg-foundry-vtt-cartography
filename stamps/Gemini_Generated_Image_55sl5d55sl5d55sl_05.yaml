@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Round Tray With Six Small Cups Arranged
+description: "The image is a 3D rendering of a round tray with six small cups arranged in a grid-like pattern. The cups are filled with a light brown liquid, which appears to be a smoothie or a milkshake. The tray has a smooth surface and the cups are evenly spaced. The background is a light beige color. The overall design is simple and minimalistic."
+tags: [rendering, round, tray, six, cups, arranged, grid-like, pattern, filled, light, liquid, which, container, container-tableware]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 9e939af8-2aa5-5ccf-8128-d3206049cfc4      # UUID linking orientation/state variants of one object
+group_id: b63afcab-6698-5719-8fb0-61a6e67c9d4f      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_55sl5d55sl5d55sl.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T15:41:31+00:00"
+classified_by: microsoft/Florence-2-large

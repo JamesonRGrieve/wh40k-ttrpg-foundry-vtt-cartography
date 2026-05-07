@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Folding Chair
+description: The image is a 3D rendering of a folding chair. The chair is made of metal and has a beige-colored seat and backrest. The seat is upholstered in a light brown fabric with a textured pattern. The backrest is slightly curved and the legs are straight and tapered. The frame of the chair is also beige and appears to be made of steel. The overall design is simple and modern.
+tags: [rendering, folding, chair, metal, has, beige-colored, seat, backrest, upholstered, light, fabric, textured, furniture, furniture-chair]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 72e5cf93-0805-50d9-998f-264ba6569fb2      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 11
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T17:27:57+00:00"
+classified_by: microsoft/Florence-2-large

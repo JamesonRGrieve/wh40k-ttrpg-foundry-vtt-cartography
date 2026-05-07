@@ -1179,8 +1179,7 @@
       "furniture-table",
       "prop",
       "prop-document",
-      "state-damaged",
-      "group:7ee2d12c-1fc8-59b5-8c0b-473c36521a2e"
+      "state-damaged"
     ],
     "gridSize": 100,
     "data": [
@@ -1487,11 +1486,23 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n01",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_01",
+    "name": "Square-Shaped Container With A Lid",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_01.png",
     "tags": [
-      "group:d6f3822f-ecbb-578e-b28d-d780c09251b5"
+      "rendering",
+      "square-shaped",
+      "container",
+      "lid",
+      "plastic",
+      "similar",
+      "material",
+      "has",
+      "smooth",
+      "surface",
+      "round",
+      "shape",
+      "group:10d9458d-f1b6-5945-b8d7-05842043a98b"
     ],
     "gridSize": 100,
     "data": [
@@ -1646,10 +1657,27 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n06",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_06",
+    "name": "Desk Lamp",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_06.png",
-    "tags": [],
+    "tags": [
+      "line",
+      "desk",
+      "lamp",
+      "has",
+      "long",
+      "arm",
+      "round",
+      "shade",
+      "top",
+      "slightly",
+      "curved",
+      "knob",
+      "furniture",
+      "furniture-table",
+      "light",
+      "light-fixture"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -1743,11 +1771,26 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n09",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_09",
+    "name": "Tablet",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_09.png",
     "tags": [
-      "group:dc25d791-0574-5f0a-8d9f-b84071756fd3"
+      "digital",
+      "illustration",
+      "tablet",
+      "rectangular",
+      "shape",
+      "has",
+      "beige",
+      "background",
+      "screen",
+      "there",
+      "tabs",
+      "user",
+      "tech",
+      "tech-screen",
+      "tech-device",
+      "group:fbcc118a-c729-5220-a6ec-e3fde4bb599c"
     ],
     "gridSize": 100,
     "data": [
@@ -1827,8 +1870,7 @@
       "prop",
       "prop-document",
       "prop-writing",
-      "state-damaged",
-      "group:7ee2d12c-1fc8-59b5-8c0b-473c36521a2e"
+      "state-damaged"
     ],
     "gridSize": 100,
     "data": [
@@ -1936,11 +1978,26 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n15",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_15",
+    "name": "Mug With A Spoon In It \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_15.png",
     "tags": [
-      "group:59686c39-19a6-5ca5-a5cf-9fe492f22ce1"
+      "digital",
+      "illustration",
+      "mug",
+      "spoon",
+      "ceramic",
+      "has",
+      "handle",
+      "right",
+      "side",
+      "empty",
+      "filled",
+      "dark",
+      "container",
+      "container-tableware",
+      "facing-east",
+      "group:db21902e-08c7-5c49-8d46-70d31179fcc2"
     ],
     "gridSize": 100,
     "data": [
@@ -2064,11 +2121,25 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n19",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_19",
+    "name": "Desk",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_19.png",
     "tags": [
-      "group:8047e83d-4e09-5e61-8e3b-670f8355aea6"
+      "rendering",
+      "desk",
+      "rectangular",
+      "top",
+      "drawers",
+      "either",
+      "side",
+      "wood",
+      "has",
+      "light-colored",
+      "finish",
+      "covered",
+      "furniture",
+      "furniture-table",
+      "group:44bd69b8-6c2b-57f3-837b-eb320a7fc9a1"
     ],
     "gridSize": 100,
     "data": [
@@ -2152,11 +2223,27 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n22",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_22",
+    "name": "Coffee Cup",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_22.png",
     "tags": [
-      "group:308cd23d-56a7-5adf-8cda-fe84b870ab08"
+      "rendering",
+      "coffee",
+      "cup",
+      "paper",
+      "has",
+      "cylindrical",
+      "shape",
+      "lid",
+      "top",
+      "slightly",
+      "open",
+      "revealing",
+      "container",
+      "container-tableware",
+      "prop",
+      "prop-document",
+      "group:f53bbc28-2a09-5bc7-9fa3-7eea80ebe17e"
     ],
     "gridSize": 100,
     "data": [
@@ -2320,11 +2407,25 @@
   },
   {
     "id": "generatedimage4s7n6b4s7n6b4s7n27",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_27",
+    "name": "Office Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_27.png",
     "tags": [
-      "group:9c69f542-7d3c-5a62-ae3f-f1492457e87b"
+      "rendering",
+      "office",
+      "chair",
+      "shown",
+      "light",
+      "has",
+      "high",
+      "backrest",
+      "armrests",
+      "swivel",
+      "base",
+      "four",
+      "furniture",
+      "furniture-chair",
+      "group:02e70a68-ddba-5abb-ba7d-1d7a5d700144"
     ],
     "gridSize": 100,
     "data": [
@@ -2571,11 +2672,25 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl05",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_05",
+    "name": "Round Tray With Six Small Cups Arranged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_05.png",
     "tags": [
-      "group:9e939af8-2aa5-5ccf-8128-d3206049cfc4"
+      "rendering",
+      "round",
+      "tray",
+      "six",
+      "cups",
+      "arranged",
+      "grid-like",
+      "pattern",
+      "filled",
+      "light",
+      "liquid",
+      "which",
+      "container",
+      "container-tableware",
+      "group:b63afcab-6698-5719-8fb0-61a6e67c9d4f"
     ],
     "gridSize": 100,
     "data": [
@@ -2656,11 +2771,24 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl08",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_08",
+    "name": "Stool",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_08.png",
     "tags": [
-      "group:8f21ab84-c94a-5057-b47d-de6a81209b4c"
+      "rendering",
+      "stool",
+      "simple",
+      "minimalist",
+      "design",
+      "rectangular",
+      "seat",
+      "four",
+      "legs",
+      "wood",
+      "has",
+      "light",
+      "furniture",
+      "furniture-chair"
     ],
     "gridSize": 100,
     "data": [
@@ -2680,10 +2808,25 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl09",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_09",
+    "name": "Stool",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_09.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "stool",
+      "has",
+      "round",
+      "seat",
+      "leather",
+      "cushion",
+      "top",
+      "four",
+      "legs",
+      "slightly",
+      "tapered",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -2920,11 +3063,25 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl17",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_17",
+    "name": "Glass Bottle",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_17.png",
     "tags": [
-      "group:abd844e3-b1d3-578a-b664-e8c17353e0df"
+      "rendering",
+      "glass",
+      "bottle",
+      "empty",
+      "has",
+      "cylindrical",
+      "shape",
+      "flat",
+      "base",
+      "narrow",
+      "neck",
+      "top",
+      "container",
+      "container-vessel",
+      "group:aa7bc72a-e5b9-5a4a-8c77-bef7d59103a5"
     ],
     "gridSize": 100,
     "data": [
@@ -2944,11 +3101,26 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl18",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_18",
+    "name": "Wine Bottle \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_18.png",
     "tags": [
-      "group:abd844e3-b1d3-578a-b664-e8c17353e0df"
+      "rendering",
+      "wine",
+      "bottle",
+      "glass",
+      "has",
+      "cylindrical",
+      "shape",
+      "flat",
+      "base",
+      "narrow",
+      "neck",
+      "opening",
+      "container",
+      "container-vessel",
+      "facing-east",
+      "group:aa7bc72a-e5b9-5a4a-8c77-bef7d59103a5"
     ],
     "gridSize": 100,
     "data": [
@@ -3027,10 +3199,26 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl21",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_21",
+    "name": "Bottle Of Wine And Two Pieces \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_21.png",
-    "tags": [],
+    "tags": [
+      "line",
+      "bottle",
+      "wine",
+      "pieces",
+      "bread",
+      "left",
+      "side",
+      "right",
+      "slice",
+      "criss-cross",
+      "pattern",
+      "top",
+      "container",
+      "container-vessel",
+      "facing-west"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -3121,11 +3309,23 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl24",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_24",
+    "name": "Tray With Six Glasses Arranged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_24.png",
     "tags": [
-      "group:9e939af8-2aa5-5ccf-8128-d3206049cfc4"
+      "tray",
+      "six",
+      "glasses",
+      "arranged",
+      "circular",
+      "pattern",
+      "different",
+      "sizes",
+      "shapes",
+      "largest",
+      "glass",
+      "center",
+      "group:b63afcab-6698-5719-8fb0-61a6e67c9d4f"
     ],
     "gridSize": 100,
     "data": [
@@ -3145,10 +3345,24 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl25",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_25",
+    "name": "Tray With Six Beer Mugs Arranged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_25.png",
     "tags": [
+      "rendering",
+      "tray",
+      "six",
+      "beer",
+      "mugs",
+      "arranged",
+      "circular",
+      "pattern",
+      "different",
+      "sizes",
+      "shapes",
+      "largest",
+      "container",
+      "container-tableware",
       "group:441c4426-ec45-5d24-88ea-32e30224d3f4"
     ],
     "gridSize": 100,
@@ -3193,10 +3407,23 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl27",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_27",
+    "name": "Square-Shaped Object With A Flat Base",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_27.png",
-    "tags": [],
+    "tags": [
+      "square-shaped",
+      "object",
+      "flat",
+      "base",
+      "light-colored",
+      "material",
+      "possibly",
+      "plastic",
+      "metal",
+      "has",
+      "rectangular",
+      "shape"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -3215,11 +3442,31 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl28",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_28",
+    "name": "Computer Monitor With A Desk On Top \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_28.png",
     "tags": [
-      "group:256a5b32-0ca5-5fed-84c7-cc741db1332f"
+      "digital",
+      "illustration",
+      "computer",
+      "monitor",
+      "desk",
+      "top",
+      "there",
+      "papers",
+      "pen",
+      "tablet",
+      "document",
+      "text",
+      "furniture",
+      "furniture-table",
+      "prop",
+      "prop-document",
+      "prop-writing",
+      "tech",
+      "tech-screen",
+      "tech-device",
+      "facing-east"
     ],
     "gridSize": 100,
     "data": [
@@ -3342,9 +3589,7 @@
     "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_32",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_32.png",
-    "tags": [
-      "group:256a5b32-0ca5-5fed-84c7-cc741db1332f"
-    ],
+    "tags": [],
     "gridSize": 100,
     "data": [
       {
@@ -3461,11 +3706,23 @@
   },
   {
     "id": "generatedimage55sl5d55sl5d55sl36",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_36",
+    "name": "Circular Object With Six Wooden Sticks Arranged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_36.png",
     "tags": [
-      "group:30f9b108-c9e4-5141-aa64-e4bbfec276ae"
+      "circular",
+      "object",
+      "six",
+      "wooden",
+      "sticks",
+      "arranged",
+      "pattern",
+      "different",
+      "sizes",
+      "shapes",
+      "largest",
+      "stick",
+      "group:4366be04-dae7-5b13-8358-25904c86c29e"
     ],
     "gridSize": 100,
     "data": [
@@ -3573,8 +3830,7 @@
       "angled",
       "perspective",
       "looking",
-      "top",
-      "group:cb77c38d-d784-56e1-8d01-671b70091e02"
+      "top"
     ],
     "gridSize": 100,
     "data": [
@@ -3594,11 +3850,22 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump02",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_02",
+    "name": "Cylindrical Object",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_02.png",
     "tags": [
-      "group:296f8650-6737-5974-bc34-485418a0e33a"
+      "rendering",
+      "cylindrical",
+      "object",
+      "flat",
+      "top",
+      "curved",
+      "bottom",
+      "metal",
+      "plastic",
+      "has",
+      "smooth",
+      "shiny"
     ],
     "gridSize": 100,
     "data": [
@@ -3618,11 +3885,22 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump03",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_03",
+    "name": "Curved Object",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_03.png",
     "tags": [
-      "group:cb77c38d-d784-56e1-8d01-671b70091e02"
+      "rendering",
+      "curved",
+      "object",
+      "light-colored",
+      "material",
+      "possibly",
+      "plastic",
+      "metal",
+      "has",
+      "rectangular",
+      "shape",
+      "rounded"
     ],
     "gridSize": 100,
     "data": [
@@ -3657,8 +3935,7 @@
       "similar",
       "material",
       "smooth",
-      "glossy",
-      "group:cb77c38d-d784-56e1-8d01-671b70091e02"
+      "glossy"
     ],
     "gridSize": 100,
     "data": [
@@ -3678,11 +3955,23 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump05",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_05",
+    "name": "Square-Shaped Frame With A Beige Background",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_05.png",
     "tags": [
-      "group:d6e07e38-902c-54f1-9f21-469a09c16fda"
+      "square-shaped",
+      "frame",
+      "beige",
+      "background",
+      "light",
+      "material",
+      "has",
+      "simple",
+      "minimalist",
+      "design",
+      "rectangular",
+      "shape",
+      "group:b8b34510-e612-5ab1-a619-05004e4c0448"
     ],
     "gridSize": 100,
     "data": [
@@ -3702,11 +3991,23 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump06",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_06",
+    "name": "Square-Shaped Frame With A Beige Background",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_06.png",
     "tags": [
-      "group:d6e07e38-902c-54f1-9f21-469a09c16fda"
+      "square-shaped",
+      "frame",
+      "beige",
+      "background",
+      "light",
+      "material",
+      "has",
+      "simple",
+      "minimalist",
+      "design",
+      "rectangular",
+      "shape",
+      "group:b8b34510-e612-5ab1-a619-05004e4c0448"
     ],
     "gridSize": 100,
     "data": [
@@ -3726,11 +4027,25 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump07",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_07",
+    "name": "Square-Shaped Document With A Beige Background",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_07.png",
     "tags": [
-      "group:ea933019-d298-5a14-80b3-0c01a75f6ae4"
+      "square-shaped",
+      "document",
+      "beige",
+      "background",
+      "paper",
+      "cardboard",
+      "has",
+      "multiple",
+      "horizontal",
+      "lines",
+      "running",
+      "horizontally",
+      "prop",
+      "prop-document",
+      "group:b4103363-3168-50b9-88b8-9277b94f4d40"
     ],
     "gridSize": 100,
     "data": [
@@ -3753,9 +4068,7 @@
     "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_08",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_08.png",
-    "tags": [
-      "group:9f30df51-0b83-5583-bf52-a13018eb4296"
-    ],
+    "tags": [],
     "gridSize": 100,
     "data": [
       {
@@ -3774,11 +4087,25 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump09",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_09",
+    "name": "Square-Shaped Document With A Beige Background",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_09.png",
     "tags": [
-      "group:353b6cb1-1203-5d78-a866-3815e8dd190e"
+      "square-shaped",
+      "document",
+      "beige",
+      "background",
+      "paper",
+      "cardboard",
+      "has",
+      "multiple",
+      "horizontal",
+      "lines",
+      "running",
+      "horizontally",
+      "prop",
+      "prop-document",
+      "group:b4103363-3168-50b9-88b8-9277b94f4d40"
     ],
     "gridSize": 100,
     "data": [
@@ -3798,11 +4125,24 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump10",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_10",
+    "name": "Piece Of Paper With Horizontal Lines",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_10.png",
     "tags": [
-      "group:9f30df51-0b83-5583-bf52-a13018eb4296"
+      "rendering",
+      "piece",
+      "paper",
+      "horizontal",
+      "lines",
+      "slightly",
+      "crumpled",
+      "has",
+      "textured",
+      "surface",
+      "evenly",
+      "spaced",
+      "prop",
+      "prop-document"
     ],
     "gridSize": 100,
     "data": [
@@ -3822,11 +4162,27 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump11",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_11",
+    "name": "Rectangular Piece Of Paper",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_11.png",
     "tags": [
-      "group:bd3fb585-8d54-5e91-995b-612c93ac0aa8"
+      "rectangular",
+      "piece",
+      "paper",
+      "blank",
+      "space",
+      "top",
+      "right",
+      "corner",
+      "form",
+      "document",
+      "shape",
+      "flat",
+      "prop",
+      "prop-document",
+      "decor",
+      "decor-statue",
+      "group:5c67ffad-c752-56c0-bd30-f0d1f3b97e5c"
     ],
     "gridSize": 100,
     "data": [
@@ -3846,11 +4202,25 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump12",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_12",
+    "name": "Rectangular Piece Of Paper With Horizontal Lines",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_12.png",
     "tags": [
-      "group:ab99d4d3-4608-5ac8-ae6f-8fd570b2a2ef"
+      "rectangular",
+      "piece",
+      "paper",
+      "horizontal",
+      "lines",
+      "document",
+      "evenly",
+      "spaced",
+      "run",
+      "horizontally",
+      "across",
+      "page",
+      "prop",
+      "prop-document",
+      "group:beb02ddb-af47-5958-8140-1955d37768fd"
     ],
     "gridSize": 100,
     "data": [
@@ -3870,11 +4240,28 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump13",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_13",
+    "name": "Square-Shaped Icon With A Light Brown Color \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_13.png",
     "tags": [
-      "group:2d19e2c1-172f-5377-9bb6-271e81ebcd5b"
+      "square-shaped",
+      "icon",
+      "light",
+      "textured",
+      "material",
+      "possibly",
+      "paper",
+      "cardboard",
+      "edges",
+      "slightly",
+      "frayed",
+      "giving",
+      "prop",
+      "prop-document",
+      "decor",
+      "decor-statue",
+      "state-damaged",
+      "group:0d95dbb8-c608-5476-a84c-4af4c46a962e"
     ],
     "gridSize": 100,
     "data": [
@@ -3919,11 +4306,28 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump15",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_15",
+    "name": "Rectangular Piece Of Paper \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_15.png",
     "tags": [
-      "group:bd3fb585-8d54-5e91-995b-612c93ac0aa8"
+      "rectangular",
+      "piece",
+      "paper",
+      "grid-like",
+      "pattern",
+      "form",
+      "document",
+      "multiple",
+      "rows",
+      "columns",
+      "text",
+      "written",
+      "prop",
+      "prop-document",
+      "decor",
+      "decor-statue",
+      "facing-east",
+      "group:5c67ffad-c752-56c0-bd30-f0d1f3b97e5c"
     ],
     "gridSize": 100,
     "data": [
@@ -3978,11 +4382,25 @@
   },
   {
     "id": "generatedimage5ump9o5ump9o5ump17",
-    "name": "Gemini_Generated_Image_5ump9o5ump9o5ump_17",
+    "name": "Oval-Shaped Object",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_5ump9o5ump9o5ump_17.png",
     "tags": [
-      "group:8c179ed2-1237-5cb6-928e-983b189beca2"
+      "rendering",
+      "oval-shaped",
+      "object",
+      "light-colored",
+      "material",
+      "possibly",
+      "paper",
+      "fabric",
+      "has",
+      "smooth",
+      "curved",
+      "shape",
+      "prop",
+      "prop-document",
+      "group:9b002d0a-f75e-5890-b769-05d6c09e7fb9"
     ],
     "gridSize": 100,
     "data": [
@@ -4401,10 +4819,25 @@
   },
   {
     "id": "generatedimage6ackq86ackq86ack11",
-    "name": "Gemini_Generated_Image_6ackq86ackq86ack_11",
+    "name": "Square-Shaped Metal Plate With A Square",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_6ackq86ackq86ack_11.png",
-    "tags": [],
+    "tags": [
+      "square-shaped",
+      "metal",
+      "plate",
+      "square",
+      "center",
+      "light-colored",
+      "has",
+      "textured",
+      "surface",
+      "holes",
+      "scattered",
+      "throughout",
+      "container",
+      "container-tableware"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -5068,8 +5501,7 @@
       "light",
       "background",
       "element",
-      "featuring",
-      "group:a4332f6a-7053-5f84-8cb6-e9253c020138"
+      "featuring"
     ],
     "gridSize": 100,
     "data": [
@@ -5147,11 +5579,23 @@
   },
   {
     "id": "generatedimageb67y8zb67y8zb67y04",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_04",
+    "name": "Curtains",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_04.png",
     "tags": [
-      "group:ab748304-7d21-564f-86f0-e3d8a7afc467"
+      "line",
+      "pair",
+      "curtains",
+      "beige",
+      "have",
+      "scalloped",
+      "edge",
+      "closed",
+      "sheer",
+      "fabric",
+      "frame",
+      "metal",
+      "group:a4f678a7-8b32-5c8a-a11f-1afc576d5e65"
     ],
     "gridSize": 100,
     "data": [
@@ -5171,11 +5615,26 @@
   },
   {
     "id": "generatedimageb67y8zb67y8zb67y05",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_05",
+    "name": "Medical Cart With Four Wheels \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_05.png",
     "tags": [
-      "group:08bc5b09-995e-5e03-8b9b-163ced97f7c2"
+      "line",
+      "medical",
+      "cart",
+      "four",
+      "wheels",
+      "rectangular",
+      "shape",
+      "has",
+      "handle",
+      "top",
+      "easy",
+      "maneuverability",
+      "container",
+      "container-crate",
+      "facing-west",
+      "group:f89d17dc-769c-5939-8a85-613cc6926ff9"
     ],
     "gridSize": 100,
     "data": [
@@ -5286,8 +5745,7 @@
       "arranged",
       "grid-like",
       "decor",
-      "decor-statue",
-      "group:a4332f6a-7053-5f84-8cb6-e9253c020138"
+      "decor-statue"
     ],
     "gridSize": 100,
     "data": [
@@ -5420,11 +5878,25 @@
   },
   {
     "id": "generatedimageb67y8zb67y8zb67y12",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_12",
+    "name": "Medical Cart",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_12.png",
     "tags": [
-      "group:34afa46d-ebbd-5c42-8ec4-9d226a85ea3a"
+      "line",
+      "medical",
+      "cart",
+      "has",
+      "four",
+      "wheels",
+      "handle",
+      "top",
+      "easy",
+      "maneuverability",
+      "front",
+      "there",
+      "container",
+      "container-vessel",
+      "group:42bc440f-072a-5a28-bb0d-8a7bf35de9e3"
     ],
     "gridSize": 100,
     "data": [
@@ -5444,11 +5916,22 @@
   },
   {
     "id": "generatedimageb67y8zb67y8zb67y13",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_13",
+    "name": "Trash Can",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_13.png",
     "tags": [
-      "group:6273da71-04a4-5ff2-8432-82b31d1c0c8f"
+      "digital",
+      "illustration",
+      "trash",
+      "can",
+      "beige",
+      "has",
+      "rectangular",
+      "shape",
+      "lid",
+      "top",
+      "front",
+      "there"
     ],
     "gridSize": 100,
     "data": [
@@ -5529,11 +6012,24 @@
   },
   {
     "id": "generatedimageb67y8zb67y8zb67y16",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_16",
+    "name": "Rectangular Tray With A Set \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_16.png",
     "tags": [
-      "group:a4332f6a-7053-5f84-8cb6-e9253c020138"
+      "rectangular",
+      "tray",
+      "set",
+      "surgical",
+      "instruments",
+      "plastic",
+      "similar",
+      "material",
+      "has",
+      "smooth",
+      "surface",
+      "left",
+      "tool",
+      "facing-west"
     ],
     "gridSize": 100,
     "data": [
@@ -5553,11 +6049,27 @@
   },
   {
     "id": "generatedimageb67y8zb67y8zb67y17",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_17",
+    "name": "Metal Locker",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_17.png",
     "tags": [
-      "group:51ac385d-6f0d-5c4f-8fb9-d07776545967"
+      "digital",
+      "illustration",
+      "metal",
+      "locker",
+      "rectangular",
+      "box",
+      "doors",
+      "each",
+      "handle",
+      "top",
+      "closed",
+      "body",
+      "container",
+      "container-locker",
+      "container-crate",
+      "door",
+      "group:76ded828-787a-5e5e-a1d0-f7d1488a2d52"
     ],
     "gridSize": 100,
     "data": [
@@ -5804,11 +6316,23 @@
   },
   {
     "id": "generatedimageb67y8zb67y8zb67y24",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_24",
+    "name": "Closed Door",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_24.png",
     "tags": [
-      "group:ebc6e00d-a951-5f35-b88f-c121ed0ecc34"
+      "illustration",
+      "closed",
+      "door",
+      "metal",
+      "has",
+      "panels",
+      "top",
+      "bottom",
+      "slightly",
+      "curved",
+      "have",
+      "rough",
+      "group:425fdc1d-18e1-5da8-911c-9c171230abff"
     ],
     "gridSize": 100,
     "data": [
@@ -5894,11 +6418,23 @@
   },
   {
     "id": "generatedimageb67y8zb67y8zb67y27",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_27",
+    "name": "Trolley Or Cart",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_27.png",
     "tags": [
-      "group:3c8addbf-aab0-53d8-b0a1-0a76fba37651"
+      "line",
+      "trolley",
+      "cart",
+      "has",
+      "four",
+      "wheels",
+      "each",
+      "handle",
+      "top",
+      "easy",
+      "maneuverability",
+      "metal",
+      "group:ea65b79c-89b1-5dc9-b466-eaffaf2d315c"
     ],
     "gridSize": 100,
     "data": [
@@ -5955,11 +6491,26 @@
   },
   {
     "id": "generatedimagecj1hvjcj1hvjcj1h00",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_00",
+    "name": "Mug \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_00.png",
     "tags": [
-      "group:46a65a71-cfda-56e1-99ad-fff2557696bb"
+      "rendering",
+      "mug",
+      "light-colored",
+      "material",
+      "possibly",
+      "ceramic",
+      "porcelain",
+      "has",
+      "handle",
+      "right",
+      "side",
+      "empty",
+      "container",
+      "container-tableware",
+      "facing-east",
+      "group:cb4a4925-b642-5fe2-885d-6b33da93b29d"
     ],
     "gridSize": 100,
     "data": [
@@ -6017,11 +6568,23 @@
   },
   {
     "id": "generatedimagecj1hvjcj1hvjcj1h02",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_02",
+    "name": "Rectangular Frame With A Textured Surface",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_02.png",
     "tags": [
-      "group:f5365de1-6d3d-54e9-84ee-c78302744944"
+      "digital",
+      "illustration",
+      "rectangular",
+      "frame",
+      "textured",
+      "surface",
+      "metal",
+      "plastic",
+      "has",
+      "shape",
+      "rounded",
+      "edges",
+      "group:345be2e7-b93c-5694-9bce-1fd7e50dd8a2"
     ],
     "gridSize": 100,
     "data": [
@@ -6231,11 +6794,25 @@
   },
   {
     "id": "generatedimagecj1hvjcj1hvjcj1h08",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_08",
+    "name": "Small Glass Jar With A Round Lid",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_08.png",
     "tags": [
-      "group:e88f9764-77da-58b8-8e34-fefcbf7f4a20"
+      "rendering",
+      "glass",
+      "jar",
+      "round",
+      "lid",
+      "transparent",
+      "has",
+      "cylindrical",
+      "shape",
+      "flat",
+      "base",
+      "slightly",
+      "container",
+      "container-vessel",
+      "group:73e3781e-e75f-5fec-b768-d83970d69497"
     ],
     "gridSize": 100,
     "data": [
@@ -6255,11 +6832,27 @@
   },
   {
     "id": "generatedimagecj1hvjcj1hvjcj1h09",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_09",
+    "name": "Mug With A Handle \u2014 damaged, east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_09.png",
     "tags": [
-      "group:292373a7-0c49-5fbc-8899-6af0358b64d4"
+      "digital",
+      "illustration",
+      "mug",
+      "handle",
+      "right",
+      "side",
+      "old",
+      "weathered",
+      "rough",
+      "texture",
+      "surface",
+      "front",
+      "container",
+      "container-tableware",
+      "facing-east",
+      "state-damaged",
+      "group:021d466c-ca6d-5f86-b127-68a6360a2799"
     ],
     "gridSize": 100,
     "data": [
@@ -6381,11 +6974,26 @@
   },
   {
     "id": "generatedimagecj1hvjcj1hvjcj1h13",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_13",
+    "name": "Desk Lamp",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_13.png",
     "tags": [
-      "group:afca2a5a-20ae-5dd5-9134-f765a9d98e18"
+      "rendering",
+      "desk",
+      "lamp",
+      "metal",
+      "has",
+      "rectangular",
+      "base",
+      "square",
+      "top",
+      "there",
+      "cylindrical",
+      "lampshade",
+      "furniture",
+      "furniture-table",
+      "light",
+      "light-fixture"
     ],
     "gridSize": 100,
     "data": [
@@ -6443,11 +7051,25 @@
   },
   {
     "id": "generatedimagecj1hvjcj1hvjcj1h15",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_15",
+    "name": "Feather Quill Pen",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_15.png",
     "tags": [
-      "group:b492f7ca-6a23-5db3-ab5f-5360ce58bfae"
+      "digital",
+      "illustration",
+      "feather",
+      "quill",
+      "pen",
+      "has",
+      "long",
+      "pointed",
+      "tip",
+      "end",
+      "curved",
+      "body",
+      "prop",
+      "prop-writing",
+      "group:b39264ed-36a7-5b40-bf6a-2a87cae082dd"
     ],
     "gridSize": 100,
     "data": [
@@ -6491,11 +7113,26 @@
   },
   {
     "id": "generatedimagecj1hvjcj1hvjcj1h17",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_17",
+    "name": "Mug \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_17.png",
     "tags": [
-      "group:0e205f31-de45-5e88-9e11-d173c12fa50d"
+      "rendering",
+      "mug",
+      "ceramic",
+      "has",
+      "light",
+      "round",
+      "handle",
+      "right",
+      "side",
+      "slightly",
+      "curved",
+      "spout",
+      "container",
+      "container-tableware",
+      "facing-west",
+      "group:cb4a4925-b642-5fe2-885d-6b33da93b29d"
     ],
     "gridSize": 100,
     "data": [
@@ -6739,11 +7376,25 @@
   },
   {
     "id": "generatedimagecj1hvjcj1hvjcj1h24",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_24",
+    "name": "Mug And A Star-Shaped Cookie",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_24.png",
     "tags": [
-      "group:46a65a71-cfda-56e1-99ad-fff2557696bb"
+      "digital",
+      "illustration",
+      "mug",
+      "star-shaped",
+      "cookie",
+      "metal",
+      "has",
+      "handle",
+      "side",
+      "spout",
+      "other",
+      "empty",
+      "container",
+      "container-tableware",
+      "group:cb4a4925-b642-5fe2-885d-6b33da93b29d"
     ],
     "gridSize": 100,
     "data": [
@@ -7240,11 +7891,27 @@
   },
   {
     "id": "generatedimagecy6d9acy6d9acy6d06",
-    "name": "Gemini_Generated_Image_cy6d9acy6d9acy6d_06",
+    "name": "Square-Shaped Icon With A Beige Background",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cy6d9acy6d9acy6d_06.png",
     "tags": [
-      "group:eebf15b4-76f9-5a4e-a620-e2bbe86e47a5"
+      "square-shaped",
+      "icon",
+      "beige",
+      "background",
+      "center",
+      "there",
+      "vertical",
+      "line",
+      "ladder",
+      "horizontal",
+      "bars",
+      "connected",
+      "architecture",
+      "architecture-step",
+      "decor",
+      "decor-statue",
+      "group:15a40840-f771-5ba3-a5fc-45929171effe"
     ],
     "gridSize": 100,
     "data": [
@@ -7916,10 +8583,25 @@
   },
   {
     "id": "generatedimagecy6d9acy6d9acy6d26",
-    "name": "Gemini_Generated_Image_cy6d9acy6d9acy6d_26",
+    "name": "Wooden Ladder",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cy6d9acy6d9acy6d_26.png",
-    "tags": [],
+    "tags": [
+      "illustration",
+      "wooden",
+      "ladder",
+      "light-colored",
+      "wood",
+      "has",
+      "four",
+      "horizontal",
+      "bars",
+      "evenly",
+      "spaced",
+      "metal",
+      "architecture",
+      "architecture-step"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -8226,10 +8908,26 @@
   },
   {
     "id": "generatedimagedf988mdf988mdf9806",
-    "name": "Gemini_Generated_Image_df988mdf988mdf98_06",
+    "name": "Rectangular Tray With Three Compartments \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_df988mdf988mdf98_06.png",
-    "tags": [],
+    "tags": [
+      "rectangular",
+      "tray",
+      "compartments",
+      "light-colored",
+      "material",
+      "has",
+      "smooth",
+      "surface",
+      "left",
+      "side",
+      "there",
+      "circular",
+      "container",
+      "container-tableware",
+      "facing-west"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -8459,11 +9157,24 @@
   },
   {
     "id": "generatedimagedf988mdf988mdf9813",
-    "name": "Gemini_Generated_Image_df988mdf988mdf98_13",
+    "name": "Rectangular Tray With Six Compartments \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_df988mdf988mdf98_13.png",
     "tags": [
-      "group:1c3e6de9-84ee-53cd-a2b4-0f19ea3eec20"
+      "rectangular",
+      "tray",
+      "six",
+      "compartments",
+      "light-colored",
+      "material",
+      "has",
+      "handle",
+      "right",
+      "side",
+      "easy",
+      "carrying",
+      "facing-west",
+      "group:38cef9f8-2bb7-5cda-b46f-00ac1b08d23e"
     ],
     "gridSize": 100,
     "data": [
@@ -8727,10 +9438,28 @@
   },
   {
     "id": "generatedimagedf988mdf988mdf9821",
-    "name": "Gemini_Generated_Image_df988mdf988mdf98_21",
+    "name": "Rectangular Tray With Four Compartments \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_df988mdf988mdf98_21.png",
-    "tags": [],
+    "tags": [
+      "illustration",
+      "rectangular",
+      "tray",
+      "four",
+      "compartments",
+      "plastic",
+      "similar",
+      "material",
+      "has",
+      "smooth",
+      "surface",
+      "left",
+      "container",
+      "container-tableware",
+      "weapon",
+      "weapon-melee",
+      "facing-west"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -8971,10 +9700,24 @@
   },
   {
     "id": "generatedimagedf988mdf988mdf9828",
-    "name": "Gemini_Generated_Image_df988mdf988mdf98_28",
+    "name": "Rectangular Plastic Tray With Four Compartments \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_df988mdf988mdf98_28.png",
-    "tags": [],
+    "tags": [
+      "rectangular",
+      "plastic",
+      "tray",
+      "four",
+      "compartments",
+      "light-colored",
+      "material",
+      "has",
+      "smooth",
+      "surface",
+      "left",
+      "side",
+      "facing-west"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -9345,11 +10088,23 @@
   },
   {
     "id": "generatedimageer630rer630rer6310",
-    "name": "Gemini_Generated_Image_er630rer630rer63_10",
+    "name": "Round, Cylindrical Object With A Handle",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_er630rer630rer63_10.png",
     "tags": [
-      "group:d8aae5c5-4fdc-501f-b23e-eaaec329265c"
+      "model",
+      "round",
+      "cylindrical",
+      "object",
+      "handle",
+      "side",
+      "light-colored",
+      "material",
+      "possibly",
+      "plastic",
+      "metal",
+      "has",
+      "group:df070619-ec8a-54fa-ba8b-7ecaabaf9ea1"
     ],
     "gridSize": 100,
     "data": [
@@ -9385,7 +10140,7 @@
       "horizontal",
       "line",
       "each",
-      "group:d8aae5c5-4fdc-501f-b23e-eaaec329265c"
+      "group:df070619-ec8a-54fa-ba8b-7ecaabaf9ea1"
     ],
     "gridSize": 100,
     "data": [
@@ -9405,11 +10160,23 @@
   },
   {
     "id": "generatedimageer630rer630rer6312",
-    "name": "Gemini_Generated_Image_er630rer630rer63_12",
+    "name": "Round, Cylindrical Object With A Handle",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_er630rer630rer63_12.png",
     "tags": [
-      "group:d8aae5c5-4fdc-501f-b23e-eaaec329265c"
+      "model",
+      "round",
+      "cylindrical",
+      "object",
+      "handle",
+      "side",
+      "light-colored",
+      "material",
+      "possibly",
+      "plastic",
+      "metal",
+      "has",
+      "group:df070619-ec8a-54fa-ba8b-7ecaabaf9ea1"
     ],
     "gridSize": 100,
     "data": [
@@ -11009,11 +11776,25 @@
   },
   {
     "id": "generatedimagefyufk4fyufk4fyuf25",
-    "name": "Gemini_Generated_Image_fyufk4fyufk4fyuf_25",
+    "name": "Glass Tumbler",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_fyufk4fyufk4fyuf_25.png",
     "tags": [
-      "group:c579aca3-fd67-52a2-a797-3045c2a69252"
+      "rendering",
+      "glass",
+      "tumbler",
+      "transparent",
+      "empty",
+      "has",
+      "cylindrical",
+      "shape",
+      "wide",
+      "base",
+      "narrow",
+      "neck",
+      "container",
+      "container-tableware",
+      "group:939fce6d-9757-5375-b8e3-5800605f6c9a"
     ],
     "gridSize": 100,
     "data": [
@@ -11217,11 +11998,24 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp302",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_02",
+    "name": "ATM machine",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_02.png",
     "tags": [
-      "group:4c4d6a97-c0de-5b98-a0dc-5e89c0246464"
+      "illustration",
+      "atm",
+      "machine",
+      "rectangular-shaped",
+      "beige-colored",
+      "exterior",
+      "flat",
+      "top",
+      "has",
+      "control",
+      "panel",
+      "front",
+      "tech",
+      "tech-screen"
     ],
     "gridSize": 100,
     "data": [
@@ -11278,10 +12072,25 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp304",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_04",
+    "name": "Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_04.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "chair",
+      "has",
+      "simple",
+      "design",
+      "curved",
+      "backrest",
+      "four",
+      "legs",
+      "seat",
+      "light-colored",
+      "fabric",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -11337,11 +12146,22 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp306",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_06",
+    "name": "Trash Can",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_06.png",
     "tags": [
-      "group:e383174a-d7ef-5dbb-be08-de3841ab2738"
+      "rendering",
+      "trash",
+      "can",
+      "round",
+      "cylindrical",
+      "shape",
+      "lid",
+      "top",
+      "has",
+      "handle",
+      "easy",
+      "carrying"
     ],
     "gridSize": 100,
     "data": [
@@ -11515,11 +12335,24 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp311",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_11",
+    "name": "Folding Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_11.png",
     "tags": [
-      "group:72e5cf93-0805-50d9-998f-264ba6569fb2"
+      "rendering",
+      "folding",
+      "chair",
+      "metal",
+      "has",
+      "beige-colored",
+      "seat",
+      "backrest",
+      "upholstered",
+      "light",
+      "fabric",
+      "textured",
+      "furniture",
+      "furniture-chair"
     ],
     "gridSize": 100,
     "data": [
@@ -11575,11 +12408,27 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp313",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_13",
+    "name": "Trash Can \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_13.png",
     "tags": [
-      "group:6a1f54bd-94cf-54b3-a2c9-d5ada01118c4"
+      "digital",
+      "illustration",
+      "trash",
+      "can",
+      "metal",
+      "has",
+      "lid",
+      "handle",
+      "top",
+      "filled",
+      "various",
+      "items",
+      "container",
+      "container-bag",
+      "prop",
+      "prop-document",
+      "state-damaged"
     ],
     "gridSize": 100,
     "data": [
@@ -11602,9 +12451,7 @@
     "name": "Gemini_Generated_Image_ihp3enihp3enihp3_14",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_14.png",
-    "tags": [
-      "group:4c4d6a97-c0de-5b98-a0dc-5e89c0246464"
-    ],
+    "tags": [],
     "gridSize": 100,
     "data": [
       {
@@ -11745,10 +12592,26 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp319",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_19",
+    "name": "Luggage",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_19.png",
-    "tags": [],
+    "tags": [
+      "illustration",
+      "pile",
+      "luggage",
+      "there",
+      "six",
+      "bags",
+      "total",
+      "arranged",
+      "pyramid-like",
+      "formation",
+      "different",
+      "sizes",
+      "container",
+      "container-crate",
+      "container-bag"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -11830,11 +12693,24 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp322",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_22",
+    "name": "Folding Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_22.png",
     "tags": [
-      "group:6ec0de00-2875-51a3-832b-2746e8388490"
+      "rendering",
+      "folding",
+      "chair",
+      "metal",
+      "has",
+      "beige-colored",
+      "seat",
+      "backrest",
+      "rectangular",
+      "shape",
+      "curved",
+      "four",
+      "furniture",
+      "furniture-chair"
     ],
     "gridSize": 100,
     "data": [
@@ -11891,11 +12767,23 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp324",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_24",
+    "name": "Cylindrical Object With A Lid On Top",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_24.png",
     "tags": [
-      "group:72d08e9f-d9f1-5fba-b586-b30b1539caaa"
+      "rendering",
+      "cylindrical",
+      "object",
+      "lid",
+      "top",
+      "metal",
+      "has",
+      "textured",
+      "surface",
+      "vertical",
+      "lines",
+      "running",
+      "group:3dd2e776-48f3-56ca-a00e-e64a93d0cc19"
     ],
     "gridSize": 100,
     "data": [
@@ -11931,7 +12819,7 @@
       "minimalthe",
       "empty",
       "cylindrical",
-      "group:72d08e9f-d9f1-5fba-b586-b30b1539caaa"
+      "group:3dd2e776-48f3-56ca-a00e-e64a93d0cc19"
     ],
     "gridSize": 100,
     "data": [
@@ -11951,10 +12839,25 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp326",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_26",
+    "name": "Bench Or Seat",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_26.png",
-    "tags": [],
+    "tags": [
+      "model",
+      "bench",
+      "seat",
+      "simple",
+      "minimalist",
+      "design",
+      "rectangular",
+      "shape",
+      "four",
+      "legs",
+      "light-colored",
+      "material",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -12034,11 +12937,27 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp329",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_29",
+    "name": "Square-Shaped Table With Four Legs",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_29.png",
     "tags": [
-      "group:d2b3707a-00d2-5a25-a71e-edec39a8abe6"
+      "rendering",
+      "square-shaped",
+      "table",
+      "four",
+      "legs",
+      "light-colored",
+      "material",
+      "possibly",
+      "wood",
+      "metal",
+      "has",
+      "smooth",
+      "furniture",
+      "furniture-table",
+      "prop",
+      "prop-document",
+      "group:da96cd5b-84f6-5f3a-8289-e74de997afd7"
     ],
     "gridSize": 100,
     "data": [
@@ -12133,10 +13052,25 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp332",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_32",
+    "name": "Objects",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_32.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "group",
+      "objects",
+      "there",
+      "nine",
+      "total",
+      "arranged",
+      "scattered",
+      "manner",
+      "wood",
+      "similar",
+      "material",
+      "container",
+      "container-crate"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -12155,11 +13089,24 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp333",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_33",
+    "name": "Folding Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_33.png",
     "tags": [
-      "group:41c6c8d5-8ae3-56a8-9600-cd109d0eb818"
+      "line",
+      "folding",
+      "chair",
+      "metal",
+      "has",
+      "rectangular",
+      "shape",
+      "curved",
+      "backrest",
+      "armrests",
+      "seat",
+      "slightly",
+      "furniture",
+      "furniture-chair"
     ],
     "gridSize": 100,
     "data": [
@@ -12179,11 +13126,26 @@
   },
   {
     "id": "generatedimageihp3enihp3enihp334",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_34",
+    "name": "Small, Rectangular Box With A Lid \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_34.png",
     "tags": [
-      "group:5b251aa0-02f5-51b8-bd05-5db6f052fa02"
+      "rendering",
+      "rectangular",
+      "box",
+      "lid",
+      "top",
+      "metal",
+      "has",
+      "shape",
+      "rounded",
+      "edges",
+      "front",
+      "there",
+      "container",
+      "container-crate",
+      "facing-west",
+      "group:1a978764-abb1-51a2-8ef5-40ed31e6f558"
     ],
     "gridSize": 100,
     "data": [
@@ -13013,11 +13975,28 @@
   },
   {
     "id": "generatedimagejgbyfsjgbyfsjgby23",
-    "name": "Gemini_Generated_Image_jgbyfsjgbyfsjgby_23",
+    "name": "Wooden Chest Or Chest Of Drawers \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_jgbyfsjgbyfsjgby_23.png",
     "tags": [
-      "group:3485b09e-b083-57fd-9f4b-acbfdf7755c9"
+      "line",
+      "wooden",
+      "chest",
+      "drawers",
+      "rectangular",
+      "shape",
+      "has",
+      "four",
+      "legs",
+      "bottom",
+      "top",
+      "there",
+      "container",
+      "container-crate",
+      "weapon",
+      "weapon-ranged",
+      "facing-west",
+      "group:77e82241-0ff8-566c-a105-68dcdf95d759"
     ],
     "gridSize": 100,
     "data": [
@@ -13260,11 +14239,26 @@
   },
   {
     "id": "generatedimagejgbyfsjgbyfsjgby30",
-    "name": "Gemini_Generated_Image_jgbyfsjgbyfsjgby_30",
+    "name": "Rectangular Box With A Lid \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_jgbyfsjgbyfsjgby_30.png",
     "tags": [
-      "group:4606897f-4ee8-5f73-9bb6-07319238fe5b"
+      "line",
+      "rectangular",
+      "box",
+      "lid",
+      "wood",
+      "metal",
+      "has",
+      "shape",
+      "flat",
+      "top",
+      "handle",
+      "right",
+      "container",
+      "container-crate",
+      "facing-west",
+      "group:251097a7-0acf-5591-8326-093293190f6b"
     ],
     "gridSize": 100,
     "data": [
@@ -13530,8 +14524,7 @@
       "frames",
       "arranged",
       "grid-like",
-      "tool",
-      "group:a4332f6a-7053-5f84-8cb6-e9253c020138"
+      "tool"
     ],
     "gridSize": 100,
     "data": [
@@ -13655,7 +14648,7 @@
       "arranged",
       "container",
       "container-crate",
-      "group:08bc5b09-995e-5e03-8b9b-163ced97f7c2"
+      "group:f89d17dc-769c-5939-8a85-613cc6926ff9"
     ],
     "gridSize": 100,
     "data": [
@@ -13675,11 +14668,24 @@
   },
   {
     "id": "generatedimagemt6gdzmt6gdzmt6g06",
-    "name": "Gemini_Generated_Image_mt6gdzmt6gdzmt6g_06",
+    "name": "Rectangular Box Or Container",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_mt6gdzmt6gdzmt6g_06.png",
     "tags": [
-      "group:17efa98a-4d75-5c85-90f4-2a6f61a6474d"
+      "rendering",
+      "rectangular",
+      "box",
+      "container",
+      "plastic",
+      "similar",
+      "material",
+      "has",
+      "lid",
+      "handle",
+      "top",
+      "shape",
+      "container-crate",
+      "group:ca7dcbf2-4240-5f6f-8d2a-8da03fbb2ce4"
     ],
     "gridSize": 100,
     "data": [
@@ -13754,8 +14760,7 @@
       "grid-like",
       "pattern",
       "decor",
-      "decor-statue",
-      "group:a4332f6a-7053-5f84-8cb6-e9253c020138"
+      "decor-statue"
     ],
     "gridSize": 100,
     "data": [
@@ -13904,7 +14909,7 @@
       "outlined",
       "rows",
       "tool",
-      "group:34afa46d-ebbd-5c42-8ec4-9d226a85ea3a"
+      "group:42bc440f-072a-5a28-bb0d-8a7bf35de9e3"
     ],
     "gridSize": 100,
     "data": [
@@ -13924,11 +14929,22 @@
   },
   {
     "id": "generatedimagemt6gdzmt6gdzmt6g13",
-    "name": "Gemini_Generated_Image_mt6gdzmt6gdzmt6g_13",
+    "name": "Trash Can",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_mt6gdzmt6gdzmt6g_13.png",
     "tags": [
-      "group:6273da71-04a4-5ff2-8432-82b31d1c0c8f"
+      "digital",
+      "illustration",
+      "trash",
+      "can",
+      "rectangular",
+      "shape",
+      "lid",
+      "top",
+      "handles",
+      "either",
+      "side",
+      "slightly"
     ],
     "gridSize": 100,
     "data": [
@@ -14027,8 +15043,7 @@
       "pattern",
       "tool",
       "decor",
-      "decor-statue",
-      "group:a4332f6a-7053-5f84-8cb6-e9253c020138"
+      "decor-statue"
     ],
     "gridSize": 100,
     "data": [
@@ -14351,11 +15366,25 @@
   },
   {
     "id": "generatedimagemt6gdzmt6gdzmt6g25",
-    "name": "Gemini_Generated_Image_mt6gdzmt6gdzmt6g_25",
+    "name": "Open Laptop",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_mt6gdzmt6gdzmt6g_25.png",
     "tags": [
-      "group:6c11a548-0c4a-5fb6-976d-da78ad98e036"
+      "line",
+      "open",
+      "laptop",
+      "rectangular",
+      "shape",
+      "has",
+      "handle",
+      "top",
+      "easy",
+      "carrying",
+      "body",
+      "light-colored",
+      "tech",
+      "tech-screen",
+      "group:8d178761-4c48-53ae-8538-3d101dd55a2a"
     ],
     "gridSize": 100,
     "data": [
@@ -14564,8 +15593,7 @@
       "table",
       "furniture",
       "furniture-table",
-      "state-intact",
-      "group:7ee2d12c-1fc8-59b5-8c0b-473c36521a2e"
+      "state-intact"
     ],
     "gridSize": 100,
     "data": [
@@ -14585,10 +15613,25 @@
   },
   {
     "id": "generatedimageobs5whobs5whobs503",
-    "name": "Gemini_Generated_Image_obs5whobs5whobs5_03",
+    "name": "Wooden Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_obs5whobs5whobs5_03.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "wooden",
+      "chair",
+      "has",
+      "simple",
+      "design",
+      "curved",
+      "backrest",
+      "armrests",
+      "seat",
+      "light-colored",
+      "fabric",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -14607,10 +15650,26 @@
   },
   {
     "id": "generatedimageobs5whobs5whobs504",
-    "name": "Gemini_Generated_Image_obs5whobs5whobs5_04",
+    "name": "Old, Rectangular Box With A Lock \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_obs5whobs5whobs5_04.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "old",
+      "rectangular",
+      "box",
+      "lock",
+      "front",
+      "metal",
+      "has",
+      "weathered",
+      "aged",
+      "appearance",
+      "shape",
+      "container",
+      "container-crate",
+      "state-damaged"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -14741,10 +15800,25 @@
   },
   {
     "id": "generatedimageobs5whobs5whobs508",
-    "name": "Gemini_Generated_Image_obs5whobs5whobs5_08",
+    "name": "Single Bed With A Metal Frame",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_obs5whobs5whobs5_08.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "single",
+      "bed",
+      "metal",
+      "frame",
+      "has",
+      "slatted",
+      "headboard",
+      "footboard",
+      "mattress",
+      "covered",
+      "beige-colored",
+      "furniture",
+      "furniture-bed"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -14781,8 +15855,7 @@
       "table",
       "furniture",
       "furniture-table",
-      "top-down",
-      "group:7ee2d12c-1fc8-59b5-8c0b-473c36521a2e"
+      "top-down"
     ],
     "gridSize": 100,
     "data": [
@@ -14802,10 +15875,25 @@
   },
   {
     "id": "generatedimageobs5whobs5whobs510",
-    "name": "Gemini_Generated_Image_obs5whobs5whobs5_10",
+    "name": "Wooden Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_obs5whobs5whobs5_10.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "wooden",
+      "chair",
+      "has",
+      "simple",
+      "design",
+      "curved",
+      "backrest",
+      "armrests",
+      "seat",
+      "light-colored",
+      "wood",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -14824,10 +15912,26 @@
   },
   {
     "id": "generatedimageobs5whobs5whobs511",
-    "name": "Gemini_Generated_Image_obs5whobs5whobs5_11",
+    "name": "Old, Rectangular Box With A Lock \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_obs5whobs5whobs5_11.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "old",
+      "rectangular",
+      "box",
+      "lock",
+      "front",
+      "metal",
+      "has",
+      "weathered",
+      "aged",
+      "appearance",
+      "shape",
+      "container",
+      "container-crate",
+      "state-damaged"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -15055,8 +16159,7 @@
       "furniture-chair",
       "furniture-table",
       "prop",
-      "prop-document",
-      "group:7ee2d12c-1fc8-59b5-8c0b-473c36521a2e"
+      "prop-document"
     ],
     "gridSize": 100,
     "data": [
@@ -15076,10 +16179,25 @@
   },
   {
     "id": "generatedimageobs5whobs5whobs518",
-    "name": "Gemini_Generated_Image_obs5whobs5whobs5_18",
+    "name": "Wooden Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_obs5whobs5whobs5_18.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "wooden",
+      "chair",
+      "has",
+      "simple",
+      "design",
+      "four",
+      "legs",
+      "curved",
+      "backrest",
+      "seat",
+      "upholstered",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -15219,8 +16337,7 @@
     "tags": [
       "photograph",
       "transparent",
-      "background",
-      "group:18f7bf39-6e1f-5dd0-a3dd-8f29214c90cd"
+      "background"
     ],
     "gridSize": 100,
     "data": [
@@ -15277,11 +16394,24 @@
   },
   {
     "id": "generatedimageobs5whobs5whobs524",
-    "name": "Gemini_Generated_Image_obs5whobs5whobs5_24",
+    "name": "Square-Shaped Object With Four Legs",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_obs5whobs5whobs5_24.png",
     "tags": [
-      "group:18f7bf39-6e1f-5dd0-a3dd-8f29214c90cd"
+      "rendering",
+      "square-shaped",
+      "object",
+      "four",
+      "legs",
+      "wood",
+      "similar",
+      "material",
+      "has",
+      "smooth",
+      "surface",
+      "top",
+      "prop",
+      "prop-document"
     ],
     "gridSize": 100,
     "data": [
@@ -15473,7 +16603,7 @@
       "container",
       "container-crate",
       "state-intact",
-      "group:6c9fa8a3-013b-5c8a-95a4-674abc75a6b1"
+      "group:1a978764-abb1-51a2-8ef5-40ed31e6f558"
     ],
     "gridSize": 100,
     "data": [
@@ -15569,11 +16699,26 @@
   },
   {
     "id": "generatedimageoqg5cioqg5cioqg500",
-    "name": "Gemini_Generated_Image_oqg5cioqg5cioqg5_00",
+    "name": "Coffee Cup And Saucer \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_oqg5cioqg5cioqg5_00.png",
     "tags": [
-      "group:59686c39-19a6-5ca5-a5cf-9fe492f22ce1"
+      "digital",
+      "illustration",
+      "coffee",
+      "cup",
+      "saucer",
+      "ceramic",
+      "has",
+      "handle",
+      "right",
+      "side",
+      "filled",
+      "dark",
+      "container",
+      "container-tableware",
+      "facing-east",
+      "group:db21902e-08c7-5c49-8d46-70d31179fcc2"
     ],
     "gridSize": 100,
     "data": [
@@ -15593,11 +16738,27 @@
   },
   {
     "id": "generatedimageoqg5cioqg5cioqg501",
-    "name": "Gemini_Generated_Image_oqg5cioqg5cioqg5_01",
+    "name": "Sketch Of A Cup Or Mug \u2014 damaged, east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_oqg5cioqg5cioqg5_01.png",
     "tags": [
-      "group:e34dddea-9cc3-511f-9340-5844329f7a76"
+      "sketch",
+      "cup",
+      "mug",
+      "handle",
+      "right",
+      "side",
+      "old",
+      "weathered",
+      "cracks",
+      "crevices",
+      "surface",
+      "slightly",
+      "container",
+      "container-tableware",
+      "facing-east",
+      "state-damaged",
+      "group:8e75ac98-30ce-599c-86d6-3f8bdff9202d"
     ],
     "gridSize": 100,
     "data": [
@@ -15617,11 +16778,25 @@
   },
   {
     "id": "generatedimageoqg5cioqg5cioqg502",
-    "name": "Gemini_Generated_Image_oqg5cioqg5cioqg5_02",
+    "name": "Spoon",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_oqg5cioqg5cioqg5_02.png",
     "tags": [
-      "group:f1337693-53a7-5aa7-a9e8-ea910803a1e2"
+      "rendering",
+      "spoon",
+      "has",
+      "long",
+      "handle",
+      "round",
+      "bowl",
+      "end",
+      "slightly",
+      "curved",
+      "light-colored",
+      "material",
+      "container",
+      "container-tableware",
+      "group:31b9a855-6f89-5aea-98cf-f4251dac8b33"
     ],
     "gridSize": 100,
     "data": [
@@ -15641,11 +16816,25 @@
   },
   {
     "id": "generatedimageoqg5cioqg5cioqg503",
-    "name": "Gemini_Generated_Image_oqg5cioqg5cioqg5_03",
+    "name": "Coffee Cup And Saucer",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_oqg5cioqg5cioqg5_03.png",
     "tags": [
-      "group:60182f8c-0fcc-59f0-bf47-21a08f6e8c51"
+      "rendering",
+      "coffee",
+      "cup",
+      "saucer",
+      "ceramic",
+      "has",
+      "handle",
+      "side",
+      "spout",
+      "other",
+      "sitting",
+      "beige-colored",
+      "container",
+      "container-tableware",
+      "group:db21902e-08c7-5c49-8d46-70d31179fcc2"
     ],
     "gridSize": 100,
     "data": [
@@ -15704,11 +16893,25 @@
   },
   {
     "id": "generatedimageoqg5cioqg5cioqg505",
-    "name": "Gemini_Generated_Image_oqg5cioqg5cioqg5_05",
+    "name": "Bowl",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_oqg5cioqg5cioqg5_05.png",
     "tags": [
-      "group:a123828c-9266-5ed0-8f24-95f9531a8231"
+      "rendering",
+      "bowl",
+      "round",
+      "has",
+      "smooth",
+      "surface",
+      "ceramic",
+      "similar",
+      "material",
+      "edges",
+      "decorated",
+      "intricate",
+      "container",
+      "container-tableware",
+      "group:8c6f1c95-83aa-5b41-a641-a019b1b5179f"
     ],
     "gridSize": 100,
     "data": [
@@ -16575,11 +17778,25 @@
   },
   {
     "id": "generatedimageoqg5cioqg5cioqg529",
-    "name": "Gemini_Generated_Image_oqg5cioqg5cioqg5_29",
+    "name": "Rectangular Object With A Grid-Like Pattern",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_oqg5cioqg5cioqg5_29.png",
     "tags": [
-      "group:74a93d40-c208-5237-85de-ec253b50aac6"
+      "rendering",
+      "rectangular",
+      "object",
+      "grid-like",
+      "pattern",
+      "light-colored",
+      "material",
+      "possibly",
+      "paper",
+      "fabric",
+      "has",
+      "shape",
+      "prop",
+      "prop-document",
+      "group:a6a4c3e9-fd25-5712-8334-0cb1bef86eb6"
     ],
     "gridSize": 100,
     "data": [
@@ -16710,10 +17927,25 @@
   },
   {
     "id": "generatedimageq5zlsqq5zlsqq5zl01",
-    "name": "Gemini_Generated_Image_q5zlsqq5zlsqq5zl_01",
+    "name": "Round Stool With Four Legs",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_q5zlsqq5zlsqq5zl_01.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "round",
+      "stool",
+      "four",
+      "legs",
+      "wood",
+      "has",
+      "seat",
+      "textured",
+      "surface",
+      "metal",
+      "slightly",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -17093,10 +18325,25 @@
   },
   {
     "id": "generatedimageq5zlsqq5zlsqq5zl13",
-    "name": "Gemini_Generated_Image_q5zlsqq5zlsqq5zl_13",
+    "name": "Bottles Of Different Sizes And Shapes",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_q5zlsqq5zlsqq5zl_13.png",
-    "tags": [],
+    "tags": [
+      "bottles",
+      "different",
+      "sizes",
+      "shapes",
+      "arranged",
+      "triangular",
+      "formation",
+      "largest",
+      "bottle",
+      "center",
+      "smaller",
+      "either",
+      "container",
+      "container-vessel"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -17133,7 +18380,7 @@
       "bottles",
       "container",
       "container-vessel",
-      "group:abd844e3-b1d3-578a-b664-e8c17353e0df"
+      "group:aa7bc72a-e5b9-5a4a-8c77-bef7d59103a5"
     ],
     "gridSize": 100,
     "data": [
@@ -17270,10 +18517,28 @@
   },
   {
     "id": "generatedimageq5zlsqq5zlsqq5zl18",
-    "name": "Gemini_Generated_Image_q5zlsqq5zlsqq5zl_18",
+    "name": "Computer Monitor",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_q5zlsqq5zlsqq5zl_18.png",
-    "tags": [],
+    "tags": [
+      "digital",
+      "illustration",
+      "computer",
+      "monitor",
+      "rectangular",
+      "shape",
+      "has",
+      "flat",
+      "base",
+      "screen",
+      "there",
+      "various",
+      "prop",
+      "prop-document",
+      "prop-writing",
+      "tech",
+      "tech-screen"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -17362,11 +18627,23 @@
   },
   {
     "id": "generatedimageq5zlsqq5zlsqq5zl22",
-    "name": "Gemini_Generated_Image_q5zlsqq5zlsqq5zl_22",
+    "name": "Square-Shaped Wooden Board With Four Legs",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_q5zlsqq5zlsqq5zl_22.png",
     "tags": [
-      "group:043927f7-9e71-5088-a75c-3b4c82b51555"
+      "square-shaped",
+      "wooden",
+      "board",
+      "four",
+      "legs",
+      "light-colored",
+      "wood",
+      "has",
+      "beige",
+      "background",
+      "there",
+      "several",
+      "group:aa60fb44-0920-538b-89c6-a9a5464f79da"
     ],
     "gridSize": 100,
     "data": [
@@ -17386,10 +18663,25 @@
   },
   {
     "id": "generatedimageq5zlsqq5zlsqq5zl23",
-    "name": "Gemini_Generated_Image_q5zlsqq5zlsqq5zl_23",
+    "name": "Round Stool With Four Legs",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_q5zlsqq5zlsqq5zl_23.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "round",
+      "stool",
+      "four",
+      "legs",
+      "wood",
+      "has",
+      "light",
+      "seat",
+      "have",
+      "textured",
+      "surface",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -17664,11 +18956,26 @@
   },
   {
     "id": "generatedimageq5zlsqq5zlsqq5zl31",
-    "name": "Gemini_Generated_Image_q5zlsqq5zlsqq5zl_31",
+    "name": "Wooden Chest Of Drawers \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_q5zlsqq5zlsqq5zl_31.png",
     "tags": [
-      "group:bfd67365-d866-5d9e-8b6b-32cfe54ed638"
+      "line",
+      "wooden",
+      "chest",
+      "drawers",
+      "rectangular",
+      "shape",
+      "has",
+      "four",
+      "each",
+      "hole",
+      "center",
+      "light-colored",
+      "container",
+      "container-crate",
+      "state-damaged",
+      "group:0b6ff01e-6921-590e-9084-d4fa12b7dab7"
     ],
     "gridSize": 100,
     "data": [
@@ -18120,11 +19427,26 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq02",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_02",
+    "name": "Rectangular Table \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_02.png",
     "tags": [
-      "group:27dbdd76-4907-5dd4-a137-6fd2bc101856"
+      "rendering",
+      "rectangular",
+      "table",
+      "flat",
+      "top",
+      "four",
+      "legs",
+      "wood",
+      "has",
+      "shape",
+      "rounded",
+      "edges",
+      "furniture",
+      "furniture-table",
+      "facing-west",
+      "group:70b9bc48-6731-5432-aa84-10cfbf186eff"
     ],
     "gridSize": 100,
     "data": [
@@ -18182,11 +19504,24 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq04",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_04",
+    "name": "Rectangular Sink With A Single Faucet \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_04.png",
     "tags": [
-      "group:843d4887-e76a-5ba2-8980-2bc055bac1e8"
+      "rendering",
+      "rectangular",
+      "sink",
+      "single",
+      "faucet",
+      "top",
+      "light-colored",
+      "material",
+      "possibly",
+      "stone",
+      "porcelain",
+      "has",
+      "state-intact",
+      "group:b7ddae20-fc48-5d9f-98eb-99e951c8b2c6"
     ],
     "gridSize": 100,
     "data": [
@@ -18206,10 +19541,24 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq05",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_05",
+    "name": "Rectangular Metal Door With A Rectangular Shape \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_05.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "rectangular",
+      "metal",
+      "door",
+      "shape",
+      "has",
+      "textured",
+      "surface",
+      "holes",
+      "rivets",
+      "left",
+      "side",
+      "facing-west"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -18300,11 +19649,25 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq08",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_08",
+    "name": "Open Suitcase",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_08.png",
     "tags": [
-      "group:e4ae08ae-235f-507d-a1e0-155b8bde787d"
+      "digital",
+      "illustration",
+      "open",
+      "suitcase",
+      "metal",
+      "has",
+      "handle",
+      "top",
+      "easy",
+      "carrying",
+      "inside",
+      "there",
+      "container",
+      "container-bag",
+      "group:50d0505b-fbb4-537a-833d-d9183aaaf6e8"
     ],
     "gridSize": 100,
     "data": [
@@ -18324,11 +19687,30 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq09",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_09",
+    "name": "Sketch Of A Desk \u2014 west",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_09.png",
     "tags": [
-      "group:7ee2d12c-1fc8-59b5-8c0b-473c36521a2e"
+      "sketch",
+      "desk",
+      "few",
+      "papers",
+      "cup",
+      "coffee",
+      "rectangular",
+      "shape",
+      "has",
+      "drawer",
+      "left",
+      "side",
+      "furniture",
+      "furniture-table",
+      "container",
+      "container-tableware",
+      "prop",
+      "prop-document",
+      "prop-writing",
+      "facing-west"
     ],
     "gridSize": 100,
     "data": [
@@ -18348,10 +19730,25 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq10",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_10",
+    "name": "Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_10.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "chair",
+      "has",
+      "simple",
+      "design",
+      "curved",
+      "backrest",
+      "armrests",
+      "seat",
+      "light-colored",
+      "material",
+      "possibly",
+      "furniture",
+      "furniture-chair"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -18370,11 +19767,24 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq11",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_11",
+    "name": "Old-Fashioned Sink \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_11.png",
     "tags": [
-      "group:2541c6dc-50bf-532c-9d51-bc7dab6c1305"
+      "rendering",
+      "old-fashioned",
+      "sink",
+      "rectangular",
+      "shape",
+      "light-colored",
+      "material",
+      "possibly",
+      "stone",
+      "porcelain",
+      "has",
+      "base",
+      "state-damaged",
+      "group:34446e39-735c-5088-87cd-55b62400c9a9"
     ],
     "gridSize": 100,
     "data": [
@@ -18394,11 +19804,24 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq12",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_12",
+    "name": "Open Refrigerator \u2014 east",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_12.png",
     "tags": [
-      "group:d190f4ef-2ec0-5a0c-815b-2b622a945efe"
+      "rendering",
+      "open",
+      "refrigerator",
+      "metal",
+      "has",
+      "rectangular",
+      "shape",
+      "flat",
+      "top",
+      "door",
+      "revealing",
+      "interior",
+      "facing-east",
+      "group:92d2b740-8d7f-5600-ba8c-e2cf3dd4a959"
     ],
     "gridSize": 100,
     "data": [
@@ -18418,11 +19841,26 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq13",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_13",
+    "name": "And Papers \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_13.png",
     "tags": [
-      "group:be96ae93-59c6-5827-ab73-5036857d3909"
+      "digital",
+      "illustration",
+      "stack",
+      "books",
+      "papers",
+      "there",
+      "total",
+      "which",
+      "open",
+      "lying",
+      "side",
+      "old",
+      "prop",
+      "prop-document",
+      "state-damaged",
+      "group:f14d2eef-a3fc-50d0-95a1-56731d421f3f"
     ],
     "gridSize": 100,
     "data": [
@@ -18503,10 +19941,26 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq16",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_16",
+    "name": "Rectangular Box Or Chest \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_16.png",
-    "tags": [],
+    "tags": [
+      "rendering",
+      "rectangular",
+      "box",
+      "chest",
+      "dark-colored",
+      "material",
+      "possibly",
+      "leather",
+      "canvas",
+      "textured",
+      "surface",
+      "has",
+      "container",
+      "container-crate",
+      "state-damaged"
+    ],
     "gridSize": 100,
     "data": [
       {
@@ -18564,11 +20018,24 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq18",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_18",
+    "name": "Chair",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_18.png",
     "tags": [
-      "group:72e5cf93-0805-50d9-998f-264ba6569fb2"
+      "rendering",
+      "chair",
+      "has",
+      "rectangular",
+      "frame",
+      "four",
+      "legs",
+      "seat",
+      "upholstered",
+      "light",
+      "fabric",
+      "backrest",
+      "furniture",
+      "furniture-chair"
     ],
     "gridSize": 100,
     "data": [
@@ -18588,11 +20055,23 @@
   },
   {
     "id": "generatedimageqhlcmqhlcmqhlcmq19",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_19",
+    "name": "Sink",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_19.png",
     "tags": [
-      "group:b6d4b9fa-d61c-584f-8f40-85852e6061a5"
+      "illustration",
+      "sink",
+      "rectangular",
+      "shape",
+      "has",
+      "flat",
+      "bottom",
+      "faucets",
+      "either",
+      "side",
+      "top",
+      "faucet",
+      "group:2fa22107-f5e8-5362-8b2f-a42573beb097"
     ],
     "gridSize": 100,
     "data": [
@@ -18776,7 +20255,7 @@
       "background",
       "furniture",
       "furniture-table",
-      "group:27dbdd76-4907-5dd4-a137-6fd2bc101856"
+      "group:70b9bc48-6731-5432-aa84-10cfbf186eff"
     ],
     "gridSize": 100,
     "data": [
@@ -18954,11 +20433,25 @@
   },
   {
     "id": "generatedimageuy5kbuy5kbuy5kbu00",
-    "name": "Gemini_Generated_Image_uy5kbuy5kbuy5kbu_00",
+    "name": "Wooden Bench",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_uy5kbuy5kbuy5kbu_00.png",
     "tags": [
-      "group:d27999d9-5d58-5a3e-9a32-ce4f1ff43c8b"
+      "rendering",
+      "wooden",
+      "bench",
+      "light-colored",
+      "wood",
+      "has",
+      "simple",
+      "design",
+      "curved",
+      "backrest",
+      "armrests",
+      "seat",
+      "furniture",
+      "furniture-chair",
+      "group:b5ad6d3a-e935-5f2d-ae89-76cab50b7574"
     ],
     "gridSize": 100,
     "data": [
@@ -19206,7 +20699,7 @@
       "furniture",
       "furniture-chair",
       "state-intact",
-      "group:d27999d9-5d58-5a3e-9a32-ce4f1ff43c8b"
+      "group:b5ad6d3a-e935-5f2d-ae89-76cab50b7574"
     ],
     "gridSize": 100,
     "data": [
@@ -19264,10 +20757,24 @@
   },
   {
     "id": "generatedimageuy5kbuy5kbuy5kbu09",
-    "name": "Gemini_Generated_Image_uy5kbuy5kbuy5kbu_09",
+    "name": "Open Book On A Wooden Stand",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_uy5kbuy5kbuy5kbu_09.png",
     "tags": [
+      "illustration",
+      "open",
+      "book",
+      "wooden",
+      "stand",
+      "hardcover",
+      "ribbon",
+      "tied",
+      "around",
+      "spine",
+      "pages",
+      "filled",
+      "prop",
+      "prop-document",
       "group:b511137f-189b-5961-a214-10e7f14a2fe4"
     ],
     "gridSize": 100,
@@ -19385,11 +20892,25 @@
   },
   {
     "id": "generatedimageuy5kbuy5kbuy5kbu13",
-    "name": "Gemini_Generated_Image_uy5kbuy5kbuy5kbu_13",
+    "name": "Archway With A Statue Of A Person",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_uy5kbuy5kbuy5kbu_13.png",
     "tags": [
-      "group:951497b5-2323-5f63-a307-22f4542c82d4"
+      "rendering",
+      "archway",
+      "statue",
+      "person",
+      "center",
+      "wearing",
+      "hooded",
+      "robe",
+      "has",
+      "hands",
+      "clasped",
+      "together",
+      "decor",
+      "decor-statue",
+      "group:bcb659b1-3ba5-5527-a2ad-cae33e782358"
     ],
     "gridSize": 100,
     "data": [
@@ -19544,11 +21065,27 @@
   },
   {
     "id": "generatedimageuy5kbuy5kbuy5kbu18",
-    "name": "Gemini_Generated_Image_uy5kbuy5kbuy5kbu_18",
+    "name": "Square-Shaped Icon With A Beige Background",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_uy5kbuy5kbuy5kbu_18.png",
     "tags": [
-      "group:72c6dbc3-1614-51e8-b8d9-fcccdc7d9dc6"
+      "square-shaped",
+      "icon",
+      "beige",
+      "background",
+      "center",
+      "there",
+      "portrait",
+      "jesus",
+      "christ",
+      "shown",
+      "halo",
+      "above",
+      "furniture",
+      "furniture-table",
+      "decor",
+      "decor-statue",
+      "group:28313763-e011-5b91-8b2e-504ef5d7699b"
     ],
     "gridSize": 100,
     "data": [
@@ -19641,11 +21178,26 @@
   },
   {
     "id": "generatedimageuy5kbuy5kbuy5kbu21",
-    "name": "Gemini_Generated_Image_uy5kbuy5kbuy5kbu_21",
+    "name": "Archway With Three Lit Candles Inside \u2014 intact",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_uy5kbuy5kbuy5kbu_21.png",
     "tags": [
-      "group:eaff1a42-c536-5344-81e3-d91c8591523f"
+      "digital",
+      "illustration",
+      "archway",
+      "lit",
+      "candles",
+      "inside",
+      "stone",
+      "has",
+      "smooth",
+      "polished",
+      "finish",
+      "arranged",
+      "light",
+      "light-fixture",
+      "state-intact",
+      "group:9f0c08a3-db26-5a70-82f7-d8969552457c"
     ],
     "gridSize": 100,
     "data": [
@@ -19838,11 +21390,27 @@
   },
   {
     "id": "generatedimageuy5kbuy5kbuy5kbu27",
-    "name": "Gemini_Generated_Image_uy5kbuy5kbuy5kbu_27",
+    "name": "Archway \u2014 damaged",
     "documentName": "Tile",
     "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_uy5kbuy5kbuy5kbu_27.png",
     "tags": [
-      "group:9b74a996-fa13-5264-9b0f-4cc228819c13"
+      "digital",
+      "illustration",
+      "archway",
+      "stone",
+      "has",
+      "pointed",
+      "top",
+      "supported",
+      "columns",
+      "either",
+      "side",
+      "walls",
+      "architecture",
+      "architecture-window",
+      "architecture-wall",
+      "state-damaged",
+      "group:1d3e8612-4f6c-515d-a5bc-074d11af716e"
     ],
     "gridSize": 100,
     "data": [

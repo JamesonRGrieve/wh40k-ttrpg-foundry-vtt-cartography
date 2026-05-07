@@ -7,7 +7,7 @@ description: "The image is a simple line drawing of three rectangular boxes with
 tags: [simple, line, rectangular, boxes, cross-shaped, design, set, against, plain, light, background, arranged, container, container-crate]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 08bc5b09-995e-5e03-8b9b-163ced97f7c2      # UUID linking orientation/state variants of one object
+group_id: f89d17dc-769c-5939-8a85-613cc6926ff9      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_mt6gdzmt6gdzmt6g.png
 source_index: 5

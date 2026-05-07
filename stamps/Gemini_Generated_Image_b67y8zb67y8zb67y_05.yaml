@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Medical Cart With Four Wheels
+description: "The image is a line drawing of a medical cart with four wheels. The cart is rectangular in shape and has a handle on the top for easy maneuverability. On the front of the cart, there are three compartments - a first aid kit, a bandage, and a first-aid kit. The first aid box is brown with a white cross on it, the second one is green with a red cross, and the third one is white with a blue cross. There are also two small pieces of bandages on the left side of each compartment. The background is a light beige color."
+tags: [line, medical, cart, four, wheels, rectangular, shape, has, handle, top, easy, maneuverability, container, container-crate]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 08bc5b09-995e-5e03-8b9b-163ced97f7c2      # UUID linking orientation/state variants of one object
+group_id: f89d17dc-769c-5939-8a85-613cc6926ff9      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png
 source_index: 5
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:25:46+00:00"
+classified_by: microsoft/Florence-2-large

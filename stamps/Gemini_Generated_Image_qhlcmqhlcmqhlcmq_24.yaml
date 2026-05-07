@@ -7,7 +7,7 @@ description: "A simple, minimalist illustration of a desk with a rectangular sha
 tags: [simple, minimalist, illustration, desk, rectangular, shape, top, set, against, plain, light, background, furniture, furniture-table]
 orientation: null   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: 27dbdd76-4907-5dd4-a137-6fd2bc101856      # UUID linking orientation/state variants of one object
+group_id: 70b9bc48-6731-5432-aa84-10cfbf186eff      # UUID linking orientation/state variants of one object
 
 source: Gemini_Generated_Image_qhlcmqhlcmqhlcmq.png
 source_index: 24

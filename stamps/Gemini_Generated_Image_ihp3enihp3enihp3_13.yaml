@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
+name: Trash Can
+description: "The image is a digital illustration of a trash can. The trash can is made of metal and has a lid with a handle on top. It is filled with various items such as coins, bags, and other miscellaneous items. There are also a few pieces of paper scattered around the trash can, some of which appear to be old and worn. The background is a plain beige color. The overall style of the illustration is simple and minimalistic."
+tags: [digital, illustration, trash, can, metal, has, lid, handle, top, filled, various, items, container, container-bag, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric
-state: null         # intact | damaged | destroyed | active | inactive
-group_id: 6a1f54bd-94cf-54b3-a2c9-d5ada01118c4      # UUID linking orientation/state variants of one object
+state: damaged         # intact | damaged | destroyed | active | inactive
+group_id: null
 
 source: Gemini_Generated_Image_ihp3enihp3enihp3.png
 source_index: 13
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T17:29:20+00:00"
+classified_by: microsoft/Florence-2-large

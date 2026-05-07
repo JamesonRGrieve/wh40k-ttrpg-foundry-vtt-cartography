@@ -2,15 +2,15 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: null
-description: null
-tags: []
-orientation: null   # north | south | east | west | top-down | isometric
+name: Rectangular Tray With A Set
+description: "The image is a rectangular tray with a set of surgical instruments on it. The tray appears to be made of plastic or a similar material and has a smooth surface. On the left side of the tray, there are six surgical instruments arranged in a grid-like pattern. The instruments include a pair of scissors, a forceps, a scalpel, a tweezers, and a pliers. All of the instruments are drawn in a simple, minimalist style. The background is a light beige color, making the tools stand out."
+tags: [rectangular, tray, set, surgical, instruments, plastic, similar, material, has, smooth, surface, left, tool]
+orientation: west   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
-group_id: a4332f6a-7053-5f84-8cb6-e9253c020138      # UUID linking orientation/state variants of one object
+group_id: null
 
 source: Gemini_Generated_Image_b67y8zb67y8zb67y.png
 source_index: 16
 extracted_at: 2026-05-05T15:58:10+00:00
-classified_at: null
-classified_by: null
+classified_at: "2026-05-06T16:34:54+00:00"
+classified_by: microsoft/Florence-2-large
