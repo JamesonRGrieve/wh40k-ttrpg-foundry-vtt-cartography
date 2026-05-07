@@ -533,31 +533,6 @@
     ]
   },
   {
-    "id": "generatedimage2m932e2m932e2m9314",
-    "name": "Gemini_Generated_Image_2m932e2m932e2m93_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_14.png",
-    "tags": [
-      "top-down",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_2m932e2m932e2m93_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimage2m932e2m932e2m9315",
     "name": "Luggage \u2014 top-down",
     "documentName": "Tile",
@@ -2001,31 +1976,6 @@
     ]
   },
   {
-    "id": "generatedimage4s7n6b4s7n6b4s7n14",
-    "name": "Gemini_Generated_Image_4s7n6b4s7n6b4s7n_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_14.png",
-    "tags": [
-      "top-down",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_4s7n6b4s7n6b4s7n_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimage4s7n6b4s7n6b4s7n15",
     "name": "Mug With A Spoon In It \u2014 north",
     "documentName": "Tile",
@@ -3103,31 +3053,6 @@
         "y": 0,
         "width": 153,
         "height": 110,
-        "rotation": 0
-      }
-    ]
-  },
-  {
-    "id": "generatedimage55sl5d55sl5d55sl16",
-    "name": "Gemini_Generated_Image_55sl5d55sl5d55sl_16",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_16.png",
-    "tags": [
-      "top-down",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_55sl5d55sl5d55sl_16.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
         "rotation": 0
       }
     ]
@@ -5050,31 +4975,6 @@
     ]
   },
   {
-    "id": "generatedimage6ackq86ackq86ack14",
-    "name": "Gemini_Generated_Image_6ackq86ackq86ack_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_6ackq86ackq86ack_14.png",
-    "tags": [
-      "top-down",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_6ackq86ackq86ack_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimage6ackq86ackq86ack15",
     "name": "Simple, Minimalist Design \u2014 intact, top-down",
     "documentName": "Tile",
@@ -6104,30 +6004,6 @@
         "y": 0,
         "width": 88,
         "height": 128,
-        "rotation": 0
-      }
-    ]
-  },
-  {
-    "id": "generatedimageb67y8zb67y8zb67y14",
-    "name": "Gemini_Generated_Image_b67y8zb67y8zb67y_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_14.png",
-    "tags": [
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_b67y8zb67y8zb67y_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
         "rotation": 0
       }
     ]
@@ -7272,30 +7148,6 @@
     ]
   },
   {
-    "id": "generatedimagecj1hvjcj1hvjcj1h16",
-    "name": "Gemini_Generated_Image_cj1hvjcj1hvjcj1h_16",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_16.png",
-    "tags": [
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_cj1hvjcj1hvjcj1h_16.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimagecj1hvjcj1hvjcj1h17",
     "name": "Mug \u2014 north",
     "documentName": "Tile",
@@ -8386,30 +8238,6 @@
     ]
   },
   {
-    "id": "generatedimagecy6d9acy6d9acy6d14",
-    "name": "Gemini_Generated_Image_cy6d9acy6d9acy6d_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_cy6d9acy6d9acy6d_14.png",
-    "tags": [
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_cy6d9acy6d9acy6d_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimagecy6d9acy6d9acy6d15",
     "name": "Circular Ladders, Each With A Simple \u2014 intact, top-down",
     "documentName": "Tile",
@@ -9426,30 +9254,6 @@
         "y": 0,
         "width": 122,
         "height": 90,
-        "rotation": 0
-      }
-    ]
-  },
-  {
-    "id": "generatedimagedf988mdf988mdf9814",
-    "name": "Gemini_Generated_Image_df988mdf988mdf98_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_df988mdf988mdf98_14.png",
-    "tags": [
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_df988mdf988mdf98_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
         "rotation": 0
       }
     ]
@@ -10565,31 +10369,6 @@
         "y": 0,
         "width": 180,
         "height": 165,
-        "rotation": 0
-      }
-    ]
-  },
-  {
-    "id": "generatedimageer630rer630rer6316",
-    "name": "Gemini_Generated_Image_er630rer630rer63_16",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_er630rer630rer63_16.png",
-    "tags": [
-      "facing-east",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_er630rer630rer63_16.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1376,
-        "height": 768,
         "rotation": 0
       }
     ]
@@ -12815,31 +12594,6 @@
     ]
   },
   {
-    "id": "generatedimageihp3enihp3enihp316",
-    "name": "Gemini_Generated_Image_ihp3enihp3enihp3_16",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_16.png",
-    "tags": [
-      "top-down",
-      "group:a22e99c3-f61f-5c69-bfd2-0605f7bdf266"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_ihp3enihp3enihp3_16.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 784,
-        "height": 1360,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimageihp3enihp3enihp317",
     "name": "Rectangular Box With A Grid Pattern \u2014 intact, top-down",
     "documentName": "Tile",
@@ -14122,31 +13876,6 @@
     ]
   },
   {
-    "id": "generatedimagejgbyfsjgbyfsjgby16",
-    "name": "Gemini_Generated_Image_jgbyfsjgbyfsjgby_16",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_jgbyfsjgbyfsjgby_16.png",
-    "tags": [
-      "top-down",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_jgbyfsjgbyfsjgby_16.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimagejgbyfsjgbyfsjgby17",
     "name": "Human Figures In A Simple \u2014 intact, top-down",
     "documentName": "Tile",
@@ -15358,30 +15087,6 @@
         "y": 0,
         "width": 90,
         "height": 124,
-        "rotation": 0
-      }
-    ]
-  },
-  {
-    "id": "generatedimagemt6gdzmt6gdzmt6g14",
-    "name": "Gemini_Generated_Image_mt6gdzmt6gdzmt6g_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_mt6gdzmt6gdzmt6g_14.png",
-    "tags": [
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_mt6gdzmt6gdzmt6g_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
         "rotation": 0
       }
     ]
@@ -17711,31 +17416,6 @@
     ]
   },
   {
-    "id": "generatedimageoqg5cioqg5cioqg515",
-    "name": "Gemini_Generated_Image_oqg5cioqg5cioqg5_15",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_oqg5cioqg5cioqg5_15.png",
-    "tags": [
-      "facing-east",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_oqg5cioqg5cioqg5_15.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimageoqg5cioqg5cioqg516",
     "name": "CollectionThe image is a collectionThe image \u2014 top-down",
     "documentName": "Tile",
@@ -19092,30 +18772,6 @@
     ]
   },
   {
-    "id": "generatedimageq5zlsqq5zlsqq5zl21",
-    "name": "Gemini_Generated_Image_q5zlsqq5zlsqq5zl_21",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_q5zlsqq5zlsqq5zl_21.png",
-    "tags": [
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_q5zlsqq5zlsqq5zl_21.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimageq5zlsqq5zlsqq5zl22",
     "name": "Square-Shaped Wooden Board With Four Legs \u2014 top-down",
     "documentName": "Tile",
@@ -20403,31 +20059,6 @@
     ]
   },
   {
-    "id": "generatedimageqhlcmqhlcmqhlcmq14",
-    "name": "Gemini_Generated_Image_qhlcmqhlcmqhlcmq_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_14.png",
-    "tags": [
-      "top-down",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimageqhlcmqhlcmqhlcmq15",
     "name": "Square Frames Arranged In A Grid-Like Pattern \u2014 top-down",
     "documentName": "Tile",
@@ -21485,31 +21116,6 @@
     ]
   },
   {
-    "id": "generatedimageuy5kbuy5kbuy5kbu14",
-    "name": "Gemini_Generated_Image_uy5kbuy5kbuy5kbu_14",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_uy5kbuy5kbuy5kbu_14.png",
-    "tags": [
-      "isometric",
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_uy5kbuy5kbuy5kbu_14.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
-        "rotation": 0
-      }
-    ]
-  },
-  {
     "id": "generatedimageuy5kbuy5kbuy5kbu15",
     "name": "Wooden Bench With A Beige Cushion \u2014 north",
     "documentName": "Tile",
@@ -22259,30 +21865,6 @@
         "y": 0,
         "width": 177,
         "height": 138,
-        "rotation": 0
-      }
-    ]
-  },
-  {
-    "id": "generatedimagez8itcwz8itcwz8it07",
-    "name": "Gemini_Generated_Image_z8itcwz8itcwz8it_07",
-    "documentName": "Tile",
-    "img": "modules/dh-cartography/stamps/Gemini_Generated_Image_z8itcwz8itcwz8it_07.png",
-    "tags": [
-      "group:c9e80c77-6192-5ad4-ad78-4f644a6a02d7"
-    ],
-    "gridSize": 100,
-    "data": [
-      {
-        "texture": {
-          "src": "modules/dh-cartography/stamps/Gemini_Generated_Image_z8itcwz8itcwz8it_07.png",
-          "scaleX": 1,
-          "scaleY": 1
-        },
-        "x": 0,
-        "y": 0,
-        "width": 1408,
-        "height": 768,
         "rotation": 0
       }
     ]
