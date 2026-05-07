@@ -5,45 +5,156 @@ Open work, in priority order. Items removed when done. Last refreshed
 
 ## Open
 
-- [ ] **HIGH PRIORITY: Stamp variant generator (gap-filling pipeline).**
-  Today the vault has only what Gemini happened to paint on the source
-  sheets. There is no workflow that takes a stamp ("desk, top-down,
-  intact") and generates matching variants — no rotation generator,
-  no damage/activation state generator. The existing pipeline is
-  purely classify-what-you-got: Florence-2 captions + CLIP-ViT-L-14
-  zero-shot for orientation/state. Result: rotational and condition
-  coverage is whatever the sheets happened to provide, with no way
-  to fill obvious holes.
+## HIGH PRIORITY — Asset generation pipelines
 
-  What we need:
-  - **Rotational variants.** Given a top-down or N-facing stamp,
-    produce S/E/W variants. Two paths:
-    1. **Geometric** for top-down stamps: rotate the PNG 90/180/270°.
-       Fast, deterministic, but the result reads as "rotated", not
-       "naturally drawn from the new angle" — shadows and asymmetric
-       details look wrong.
-    2. **Generative** for non-trivial cases: img2img with controlnet
-       depth/normal hints and a prompt-rotated description. ComfyUI
-       has the building blocks (Flux, IPAdapter, CLIP-ViT-H embed
-       — all installed for the existing classifier). Needs a new
-       workflow file (`StampVariantsRotation.json`) and a driver.
-  - **Condition state variants.** Given an "intact" stamp, generate
-    "damaged" and "destroyed" matched-style copies. Same img2img +
-    IPAdapter approach: IPAdapter encodes the source style, prompt
-    drives the damage pass. "active" / "inactive" can use a similar
-    pattern with light-emission cues.
-  - **LoRA training.** Reserve for when prompt+IPAdapter caps out.
-    Operator has training material on offer; budget ~6-12 hours
-    one-time to capture the Solenne campaign style as a LoRA. A
-    style-LoRA would unlock both gap-filling AND new archetypes
-    (vehicles, weapons, full character poses) without sourcing
-    new Gemini sheets.
+Three pipelines for generating **new** assets (today the vault is purely
+classify-what-Gemini-already-drew). All three share a cross-cutting
+**symbol-preservation strategy** because diffusion models routinely mangle
+canonical 40K iconography (Aquila feathers/heads/swords drift, Inquisition
+`I` becomes generic crosses, Mechanicus cog teeth multiply). Symbol
+fidelity is non-negotiable.
 
-  Acceptance for first cut: take 5 hand-picked source stamps with
-  obvious gaps in their group (e.g. a desk that only has a top-down
-  variant), generate the missing rotation variants, classify them
-  through the existing pipeline, and confirm group_id assigns them
-  to the same group as the source. If that round-trip works, scale.
+### Cross-cutting: symbol-preservation strategy
+
+The foundational rule: **canonical symbols are PASTED, never generated**.
+Diffusion is allowed to render style/atmosphere; it is NOT allowed to
+render the symbology. Every symbol in our library has a canonical PNG
+master with a sidecar JSON declaring its anchor / scale / lighting
+behavior; downstream pipelines composite the master onto the diffusion
+output rather than asking the model to draw it.
+
+Layered approach (ordered by strictness):
+
+1. **Library lookup.** `symbols/<name>/canonical.png` is the source of
+   truth. Variants for lighting (dim, lit, candlelit, red-emergency)
+   live as siblings (`canonical_dim.png`, `canonical_lit.png`, …).
+2. **Anchor-point compositing.** Each generation workflow declares a
+   layout/template that designates anchor points where symbols belong
+   (e.g. `chapel_apse_back_wall: aquila`). The compositor pastes the
+   right canonical at the right scale and angle.
+3. **Lighting transfer pass (optional).** When the symbol must look
+   integrated with scene lighting, compose against a shadow-map pass
+   from the diffusion render so the canonical inherits the scene's
+   ambient color/contrast without losing its silhouette.
+4. **Validation.** After compositing, run a Canny-edge similarity check
+   between the composited region and the canonical. If similarity drops
+   below a threshold the asset is flagged for operator review.
+5. **Hard prohibition.** Diffusion prompts must explicitly negate
+   symbol generation: "no Imperial Aquila in the render, no eagle
+   sigils, no Inquisition I, no Mechanicus cog — these will be
+   composited separately as canonical art". Without this, Flux will
+   try to render the symbol AND we'll paste over it, leaving artifacts.
+
+Required infrastructure (build before any pipeline):
+- `symbols/` directory with one folder per canonical symbol. Each
+  folder contains `canonical.png` (transparent PNG, master), optional
+  lighting variants, and `metadata.json` (anchor scale, allowed
+  rotations, allowed mirroring).
+- `symbol_compose.py` — utility module: `compose_symbols(image,
+  anchor_specs)` pastes canonicals at named anchors; `validate_symbol(
+  image, anchor_spec)` runs the Canny similarity check.
+- Operator-provided canonical sources for at minimum: Imperial Aquila,
+  Inquisitorial `I`, Mechanicus cog, Cult Imperialis flame, Skull-and-
+  laurel sigil. These are GW IP; operator must supply or approve
+  generated-then-locked references.
+
+### Pipeline 1 — Stamp variant generator (gap-filling + new archetypes)
+
+**Purpose.** Fill rotational and condition holes in the existing
+615-stamp vault, AND produce wholly new archetypes (vehicles, full-body
+poses, weapons) without sourcing new Gemini sheets.
+
+**Workflow file:** `workflows/StampVariantsV1.json` (to build) —
+img2img + IPAdapter encoding source-stamp style + ControlNet
+depth/normal for rotational pose control.
+
+**Driver:** `generate_stamp_variants.py` (to build) — takes a source
+stamp + a list of desired variants {north, south, east, west, intact,
+damaged, destroyed, active, inactive}, runs N renders, applies
+symbol-compose pass if the source has any registered symbols.
+
+**Acceptance for first cut:**
+- Pick 5 source stamps with obvious gaps in their group (e.g. a desk
+  that only exists top-down).
+- Generate the missing variants.
+- Run them through extract → make_sidecars → classify → assign_groups.
+- Confirm group_id assigns the new variants to the SAME group as the
+  source. If round-trip works, scale.
+
+**LoRA fallback:** if prompt + IPAdapter caps out at ~70% style
+fidelity, train a Solenne-style LoRA from operator training material
+(~6-12 GPU-hours one-time). Defer until needed.
+
+### Pipeline 2 — Character portrait generator
+
+**Purpose.** Produce bust / full-body portraits for NPCs and PCs
+matching the campaign's illustrated style. Today characters live as
+text-only Markdown in `Characters/`; portraits would populate Kanka
+sidebar images and Foundry actor portraits.
+
+**Style target.** Painterly, grimdark, illustrative — closer to FFG-
+era 40K RPG sourcebook art than the stamp-grid aesthetic. Operator may
+want different stylistic options per character class (Inquisitor vs.
+hive-ganger vs. Astropath).
+
+**Workflow file:** `workflows/CharacterPortraitV1.json` (to build) —
+Flux txt2img + ControlNet OpenPose for body composition + IPAdapter
+for face consistency across multiple portraits of the same character.
+
+**Driver:** `generate_character_portrait.py` (to build) — takes a
+character name + body slot (bust|three-quarter|full-body) + style hint
++ optional reference IPAdapter image; outputs to
+`Characters/portraits/<name>_<slot>.png` and writes a sidecar JSON
+recording the seed/prompt for reproducibility.
+
+**Symbol concerns:** robes/uniforms often carry Aquila or Inquisition
+sigils. Compose canonical at anchor points (chest-front, collar,
+shoulder-pad) declared in the portrait template per character class.
+
+**Acceptance for first cut:**
+- Generate portraits for 3 PCs at bust scale.
+- Each portrait: zero hallucinated symbology in raw render (validated
+  via the negative-prompt rule); one canonical Aquila composited where
+  declared; symbol-validation passes.
+- Operator approves stylistic match.
+
+### Pipeline 3 — Scene picture generator
+
+**Purpose.** Establishing shots, lore illustrations, document handouts,
+investigation photos. Various aspect ratios; often heavy with multiple
+canonical symbols (Imperial banners, Mechanicus signage, Aquila reliefs
+on architecture).
+
+**Workflow file:** `workflows/ScenePictureV1.json` (to build) — Flux
+txt2img with optional ControlNet depth for spatial composition.
+
+**Driver:** `generate_scene_picture.py` (to build) — takes a scene
+spec (location wikilink, aspect ratio, mood, declared symbol anchors)
+and produces an asset at `Lore/handouts/<slug>.png` or similar.
+
+**Multi-symbol handling.** A single scene can require 5+ canonical
+symbol composites (e.g. an Imperial chapel with Aquila on apse,
+Inquisition `I` over door, skull-laurel on lectern). Symbol-compose
+pass walks all anchors in declaration order.
+
+**Acceptance for first cut:**
+- Generate 3 scene pictures: Hab District 4 establishing shot, the
+  District 4 Chapel interior (with at least 2 canonical symbols),
+  and the Astropathic Relay Station (with 1 canonical symbol).
+- All canonical symbols pixel-match their library masters after
+  composite.
+- Operator approves.
+
+### Build order
+
+1. Symbol library scaffolding + `symbol_compose.py` + canonical
+   sources (operator action required to provide / approve).
+2. Pipeline 1 (stamps) — closest to existing classify pipeline,
+   shortest validation loop via group round-trip.
+3. Pipeline 3 (scenes) — leverages stamp lessons; scenes are
+   bigger but architecturally similar (txt2img + post-composite).
+4. Pipeline 2 (portraits) — most distinct style; benefits from
+   lessons learned in 1 and 3 about IPAdapter style consistency.
 
 
 

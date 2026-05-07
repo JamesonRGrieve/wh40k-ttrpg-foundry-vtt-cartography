@@ -1,0 +1,19 @@
+{
+  "name": "skull_laurel",
+  "display_name": "Imperial Skull-and-Laurel",
+  "default_size_px": 192,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "regimental_banner",
+    "officer_collar",
+    "memorial_plaque",
+    "weapon_haft"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Imperial skull centered, laurel wreath surrounding. Used as a victory/honor sigil. Asymmetric internal detailing (jaw line, wreath weave) makes mirror unsafe."
+}

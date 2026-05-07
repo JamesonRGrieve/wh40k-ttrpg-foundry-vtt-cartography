@@ -1,0 +1,19 @@
+{
+  "name": "cult_imperialis_flame",
+  "display_name": "Cult Imperialis Flame Sigil",
+  "default_size_px": 192,
+  "allowed_rotations": [0],
+  "allowed_mirror": true,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "chapel_lectern",
+    "altar_face",
+    "preacher_robe",
+    "votive_candle_panel"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Stylized flame motif used by the Ecclesiarchy. Mirror permitted (flame is roughly symmetric)."
+}

@@ -1,0 +1,20 @@
+{
+  "name": "inquisition_i",
+  "display_name": "Inquisitorial I",
+  "default_size_px": 192,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "robe_collar",
+    "robe_chest",
+    "rosette_badge",
+    "door_keystone",
+    "warrant_seal"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Stylized I with three skulls (one above the upper bar, one in the central stem, one below the lower bar). Body proportions are diagnostic — Flux tends to drop one skull or merge them. Lock and composite, never generate."
+}

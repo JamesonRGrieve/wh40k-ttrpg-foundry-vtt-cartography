@@ -1,0 +1,20 @@
+{
+  "name": "mechanicus_cog",
+  "display_name": "Adeptus Mechanicus Cog (Opus Machina)",
+  "default_size_px": 224,
+  "allowed_rotations": [0, 90, 180, 270],
+  "allowed_mirror": true,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "shrine_apse",
+    "machine_panel",
+    "tech_priest_robe",
+    "ship_engineering_bulkhead",
+    "console_face"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.82
+  },
+  "notes": "Half cog (left) fused with skull (right). Tooth count is diagnostic — Flux freely multiplies cog teeth. Mirror policy is true because the cog/skull arrangement is deliberately asymmetric and a mirrored version is its own valid Mechanicus variant (left-handed cog). Threshold 0.82 (slightly relaxed from 0.85) accommodates the rotation/mirror permutations."
+}

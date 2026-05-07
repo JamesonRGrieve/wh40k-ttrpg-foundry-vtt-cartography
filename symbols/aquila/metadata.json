@@ -1,0 +1,22 @@
+{
+  "name": "aquila",
+  "display_name": "Imperial Aquila",
+  "default_size_px": 256,
+  "allowed_rotations": [0],
+  "allowed_mirror": false,
+  "preserve_aspect": true,
+  "anchor_hints": [
+    "chapel_apse_back",
+    "chapel_floor_centerpiece",
+    "robe_chest",
+    "banner_field",
+    "door_keystone",
+    "shoulder_pad",
+    "ship_hull_marking"
+  ],
+  "validation": {
+    "method": "canny_iou",
+    "threshold": 0.85
+  },
+  "notes": "Two-headed eagle holding sword and skull/book. NEVER mirror — symmetric subject, but the asymmetry of internal details (sword orientation, scroll) breaks if flipped. NEVER rotate off 0° — sideways or upside-down Aquilae are heretical and visually wrong."
+}
