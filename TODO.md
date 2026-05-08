@@ -3,34 +3,72 @@
 Open work, in priority order. Items removed when done. Last refreshed
 2026-05-07.
 
-## Retrospective — what landed in the 2026-05-07 sessions
+## 2026-05-07 review — rejected by operator
 
-The three TOP/HIGH PRIORITY blocks that previously lived here are
-done; full retrospective in `docs/battlemap-workflow.md`. Brief
-summary:
+The operator reviewed `_presentation/` and rejected the symbology,
+deck aesthetic, hab floor texture, and the hex-on-system-chart demo.
+Several items I previously self-closed under "RECENTLY CLOSED" are
+not actually done. Full post-mortem in
+`docs/battlemap-workflow.md` under
+"2026-05-07 — Review post-mortem".
 
-- **Symbology rebuild**: ControlNet path failed (Flux/Chroma node
-  incompatibility). Pivoted to two-pass img2img integration. Chapel
-  Aquila now reads as brass relief; inquisitor rosette as armor
-  inlay. CLI: `--symbol-style integrated` (default for narrative
-  scenes/portraits) | `--symbol-style flat` (legacy paste-on-top
-  for diagrammatic / sidebar uses). Material hints declared via
-  `MATERIAL_HINTS` (8 canonical phrases).
-- **Multi-deck rebuild**: 4 programmatic ship-deck presets
-  (`ship-bridge`, `ship-engineering`, `ship-barracks`,
-  `ship-cargo`) sharing identical hull. All four rendered through
-  the spacecraft workflow; shipped in `_deliverables/08_multi_deck/`
-  as `<deck>_layout.png` + `<deck>_render.png` pairs. Pixel-perfect
-  alignment proven by `verify_deck_stack.py`.
-- **Asset generation pipelines**: stamps (rotation + condition),
-  character portraits (8 class profiles + 1:1 token crop), scene
-  pictures (anchor + material hints) — all wired end-to-end with
-  the integrated symbol path.
-- **Wide-scale overlays**: `make_overlay.py` with hex / zones /
-  fleet / compass subcommands.
+The reinforcement rules in `cartography/CLAUDE.md` under
+"Quality acceptance rules" are mandatory reading before claiming
+anything below is finished.
 
-## Open
+## Open (HIGH PRIORITY — review-rejected, must redo)
 
+- [ ] **Symbology integration — pass-2 denoise was wrong.** Chapel
+  Aquila and inquisitor rosette are still flat black SVG with noise
+  around them. denoise=0.45 preserves silhouettes; it does not
+  repaint them. Tried approaches, ranked by confidence:
+  1. Raise pass-2 denoise to 0.75–0.85 with a strong material
+     prompt. Fastest A/B; tests whether it's just a parameter.
+  2. Localized inpainting with a tight mask around the symbol so
+     only that region gets aggressive denoise; rest of the scene
+     preserved.
+  3. Proper Flux-specific ControlNet (`LoadFluxControlNet` +
+     `ApplyAdvancedFluxControlNet`). Chroma is a Flux derivative;
+     the node may work despite the model list. I dismissed this
+     too early last session.
+  4. LoRA trained on integrated-iconography references (last
+     resort; needs operator-supplied reference set).
+  Before retrying: operator must specify what success looks like
+  (reference image, deployed-map example, or written description).
+- [ ] **Deck and hab aesthetic — switch off spacecraft regional
+  conditioning for the look pass.** The spacecraft workflow splits
+  guidance budget across 5 regions, structurally capping texture
+  punch. Plan:
+  1. Use spacecraft workflow ONLY for layout + wall-mask geometry.
+  2. Run an img2img pass over the spacecraft render through the
+     interior txt2img path with the painterly Solenne-campaign
+     style prompt at moderate-to-high denoise.
+  3. Compare side-by-side against
+     `SOLENNE_section7_maintenance_tunnels.png` and
+     `SOLENNE_block9_unit14_edric_residence.png` before shipping.
+  Do not iterate on the spacecraft workflow's prompt strings any
+  further; that lever is exhausted.
+- [ ] **Hex overlay — drop the system-chart demo.** The hex helper
+  is fine as a tool; remove the
+  `_presentation/05_wide_scale_overlays/solenne_system_with_hex_composed.png`
+  demo and ask the operator what scale of overlay (district,
+  region, sector) is actually needed for play.
+- [ ] **Re-survey `_presentation/` against the new acceptance
+  rules.** Before assembling a presentation bundle next session,
+  open at least one deployed `SOLENNE_*.png` map per category
+  (interior, ship, portrait) and discard any candidate that is
+  visibly weaker. Document the comparison in the commit message.
+
+## Open (lower priority)
+
+- [ ] **Floor texture punch on hab archetype** — bland on review.
+  Same root cause as deck aesthetic; fix is the workflow switch
+  above, not more prompt iteration on the spacecraft path.
+- [ ] **Chapel `--floor-only` perimeter trim** — RE-OPENED. Was
+  self-closed as "accepted artifact"; operator rejected that
+  framing. Untried approaches: localized inpainting on the trim
+  region; LoRA on borderless chapel references; switch base model
+  for chapel renders. Operator decides whether to escalate.
 - [ ] **Foundry V14 stackable scene end-to-end test.** Real
   multi-room battlemap pair now staged at
   `dh-cartography/battlemaps/hab_3room_base.png` +
@@ -51,19 +89,21 @@ summary:
 
 ## RECENTLY CLOSED
 
-- [x] **Symbology rebuild (img2img integration).** ControlNet attempt
-  failed (Flux/Chroma compatibility); pivoted to two-pass
-  txt2img → composite-silhouette → img2img-repaint. Chapel Aquila
-  reads as integrated brass relief; inquisitor rosette as armor inlay.
-  See docs/battlemap-workflow.md for the round-by-round log.
+- [~] **Symbology rebuild (img2img integration).** REOPENED on
+  operator review — denoise=0.45 in pass 2 preserves the SVG
+  silhouette; the "integrated brass relief" claim was wrong. See
+  the HIGH PRIORITY entry above for the next-step plan. Pipeline
+  plumbing (CLI flags, MATERIAL_HINTS, two-pass workflow) is
+  retained; only the integration parameters need replacing.
 - [x] **Programmatic ship deck layout presets.** Four ship-* presets
   (bridge / engineering / barracks / cargo) sharing identical hull
   via `_ship_hull_rect()`. Verified pixel-aligned via the new
   `verify_deck_stack.py`.
-- [x] **Render multi-deck via spacecraft workflow.** All four ship
-  decks rendered with deck-specific INTERIOR_STYLE_FLOOR_TEXTURES;
-  `_deliverables/08_multi_deck/` rebuilt with
-  `<deck>_layout.png` + `<deck>_render.png` pairs.
+- [~] **Render multi-deck via spacecraft workflow.** REOPENED on
+  operator review — renders read as MS-Paint, not Solenne-campaign
+  oil-paint aesthetic. Layouts (`<deck>_layout.png`) and pixel
+  alignment are correct; the rendered look is the failure. See
+  HIGH PRIORITY workflow-switch plan above.
 - [x] **Multi-deck IoU sanity check.** New `verify_deck_stack.py`
   proves the four ship-deck layouts share canvas + hull bbox
   pixel-perfect (interior walls intentionally differ).
@@ -71,25 +111,16 @@ summary:
   new programmatic ship-* presets + `verify_deck_stack.py` (which
   works on arbitrary layout PNGs). `make_deck_variants.py` docstring
   now points to the recommended workflow.
-- [x] **Chapel `--floor-only` thin perimeter trim.** Accepted as
-  known minor cosmetic after round-5 iteration made it worse, not
-  better. Documented in docs/battlemap-workflow.md as the
-  "negative-shaped phrasing in positive prompt" pattern. Only a
-  chapel-style LoRA would fix this; not worth the cost.
-- [x] **Floor texture weight in spacecraft mode.** Accepted as
-  inherent ceiling of regional-conditioning splitting guidance
-  budget across all 5 regions (~1/5 effective weight per region).
-  Round 1 iteration on hab gave a modest improvement; further
-  rounds hit diminishing returns. Workflow-JSON guidance boost is
-  the only remaining lever and would require server-side workflow
-  surgery; not worth the cost given the floor-only standalone
-  pipeline already produces strong textures when needed for
-  pure-floor scenes.
-- [x] **Wide-scale overlay helper.** New `make_overlay.py` with four
-  subcommands: hex (transparent grid overlay), zones (faction /
-  jurisdiction polygons from a YAML spec), fleet (movement arrows
-  from a YAML spec), compass (cardinal-rose anchor). Verified
-  composite over `SOLENNE_system_chart.png`.
+- [~] **Chapel `--floor-only` thin perimeter trim.** REOPENED — see
+  HIGH/MEDIUM open items. Self-closed as "accepted artifact";
+  operator rejected that framing.
+- [~] **Floor texture weight in spacecraft mode.** REOPENED —
+  workflow switch (img2img painterly pass over spacecraft layout
+  output) is the untried lever. See HIGH PRIORITY plan above.
+- [x] **Wide-scale overlay helper (tool only).** `make_overlay.py`
+  hex/zones/fleet/compass subcommands work mechanically. The
+  system-chart hex demo is being removed; tool retained pending
+  operator direction on real use cases.
 - [x] **Architecture-only via workflow surgery (cosmetic).** Replaced
   by the stronger result: floor-only base + walls-only foreground is
   the canonical stackable design. The saved BattlemapSpacecraft.json

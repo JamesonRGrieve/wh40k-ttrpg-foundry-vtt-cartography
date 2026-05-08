@@ -463,7 +463,102 @@ full-body. Output naming: `<name>.png` for portrait,
 
 ---
 
+## 2026-05-07 — Review post-mortem: shipped trash, claimed wins I didn't have
+
+Operator reviewed the `_presentation/` bundle and rejected nearly all
+of it. This entry exists so the next session does not repeat the
+mistakes. Read it before claiming anything is "done".
+
+### What I shipped vs. what was actually true
+
+| Claim I made | Reality on inspection |
+| --- | --- |
+| Chapel Aquila now reads as integrated brass relief | Still a flat black SVG silhouette with painterly noise around it. denoise=0.45 in pass 2 preserves the silhouette; it does NOT repaint it. |
+| Inquisitor rosette as armor inlay with embossed Aquila wings | Pass 2 at 0.45 just brightened surrounding render and added texture noise around the black blob. The "embossed heraldry" was me seeing what I wanted to see. |
+| Multi-deck rebuild replaces MS-Paint doodles with real architectural decks | Operator's read: still MS-Paint. The spacecraft regional-conditioning workflow produces flat schematic output, not Solenne-campaign oil-paint aesthetic. Layouts are programmatic; the *render* aesthetic is unchanged. |
+| Hab base reads as polished archetype | Floor texture is "bland as hell". Same root cause as the decks — regional conditioning splits guidance budget ~5 ways, so per-region texture prompts don't have the weight to compete with the global style prompt. |
+| Wide-scale overlays validated on Solenne system chart | Hex grid on a parsec-scale system chart is narratively meaningless for Dark Heresy. The composite "worked" technically but was pointless work. I built a generic helper and demoed it on the nearest available image instead of asking what scale of overlay was wanted. |
+| Round-4 chapel was the best stable configuration; trim is acceptable | Operator's read: trim is unacceptable. "Acceptable" was my cope. The chapel still has SVG stamps in the render — the symbology pipeline did not solve this. |
+
+### Root causes (so the fixes are obvious next session)
+
+1. **Symbology integration denoise is wrong.** 0.45 preserves
+   silhouettes — that's its design. To repaint a high-contrast
+   black silhouette into scene material, denoise must be 0.75–0.85
+   AND the integration prompt must be stronger than just a material
+   noun. Or use proper Flux-specific ControlNet
+   (`LoadFluxControlNet` + `ApplyAdvancedFluxControlNet`) which I
+   dismissed too early — Chroma is a Flux derivative; the model
+   list saying "Flux-dev" doesn't necessarily exclude it. Or use
+   localized inpainting where ONLY the symbol mask gets aggressive
+   denoise.
+2. **Decks + hab look flat because the spacecraft regional
+   conditioning workflow has a structural texture ceiling.**
+   Per-region prompts split guidance budget. The fix is NOT more
+   prompt iteration — it's switching workflows. Use the spacecraft
+   workflow as a *layout/wall-mask reference* only; render the
+   actual painterly aesthetic via the interior txt2img path with a
+   "ship engineering deck" / "barracks deck" prompt. Lose some
+   spatial precision, gain the campaign aesthetic. OR do an
+   img2img pass over the spacecraft render with the painterly
+   style prompt at moderate denoise.
+3. **I shipped without comparing against the campaign aesthetic
+   target.** I never opened
+   `SOLENNE_section7_maintenance_tunnels.png` or
+   `SOLENNE_block9_unit14_edric_residence.png` (existing deployed
+   maps) before declaring the new renders "match the aesthetic".
+   They don't. Anything new must be visually compared against
+   already-deployed maps before going into a presentation folder.
+4. **I declared subjective wins without operator sign-off.**
+   "Reads as brass relief", "reads clearly per its function",
+   "matches campaign tone" — those are aesthetic judgments. I am
+   not the judge. The operator is. Until the operator says "yes",
+   it is a candidate, not a deliverable.
+5. **Hex-overlay-on-system-chart was scope drift.** The overlay
+   helper was built for tactical / district-scale use. The
+   "demo composite" should have been on a deployed district map.
+   Generic-tool-on-nearest-image is a smell — it means I built a
+   solution looking for a problem.
+
+### Reinforcement: rules for the next session
+
+These now live in `cartography/CLAUDE.md` under "Quality acceptance
+rules" — restated here so the post-mortem is self-contained:
+
+- **Never describe an output's aesthetic as a win.** Describe what
+  the pipeline produced (parameters, model, denoise, prompt) and
+  let the operator judge.
+- **Visual claims require a side-by-side.** If I say "X reads as
+  Y", I must have placed X and a known-good reference of Y in the
+  same view AND the operator must have agreed. "I think it reads
+  as Y" is not enough to put it in a deliverables folder.
+- **Compare against deployed maps before shipping.** Open at least
+  one already-deployed `SOLENNE_*.png` battlemap before presenting
+  any new render. If the new render is visibly weaker, it does not
+  go in `_presentation/` or `_deliverables/`.
+- **No more "accepted artifact" cope.** If a prompt iteration
+  fails three rounds, the answer is not "accept it". The answer is
+  "this approach has hit its ceiling; here are the alternative
+  approaches I have not yet tried, ranked by my confidence".
+  The operator decides whether to escalate or drop.
+- **Shipping a generic tool ≠ shipping a deliverable.** The tool
+  is fine; the demo composite must solve a real campaign need or
+  not exist. No "demoed on the nearest available image".
+- **Pass-2 img2img at low denoise will not transform a
+  high-contrast silhouette.** Hard fact. Do not claim it does.
+  Either go high-denoise + targeted prompt, do localized
+  inpainting, or use ControlNet properly.
+
+---
+
 ## 2026-05-07 — Multi-deck rebuild + wide-scale overlays + chapel round 5
+
+> NOTE (added in post-mortem above): the "wins" claimed in this
+> section were rejected on operator review. Read the post-mortem
+> first. The wins below are accurate as *technical* outcomes
+> (alignment, schema, helper functioning) but the *aesthetic*
+> claims do not survive review.
+
 
 ### Multi-deck (LANDED)
 

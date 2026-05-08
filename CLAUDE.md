@@ -343,6 +343,72 @@ authority over it (e.g. `assign_groups.py` owns `group_id` only).
 
 ---
 
+## Quality acceptance rules (added after 2026-05-07 review)
+
+The operator reviewed a presentation bundle and rejected nearly all of
+it: symbology was still flat SVG with surrounding noise, decks still
+read as MS-Paint not painterly, the hab floor was bland, and the hex
+overlay was demoed on an image where it made no narrative sense. The
+common thread: I claimed aesthetic wins I had not earned and did not
+compare against the campaign's existing deployed art. These rules
+exist to prevent that recurrence. Full post-mortem in
+`docs/battlemap-workflow.md` under
+"2026-05-07 — Review post-mortem".
+
+- **The operator is the aesthetic judge, not me.** Never describe an
+  output as "reads as X", "matches campaign tone", "looks polished",
+  "integrated", "convincing", or any other subjective quality claim
+  in a status update or presentation. State what was rendered
+  (model, workflow, prompt anchor, denoise, seed) and leave the
+  judgment to the operator.
+- **Compare against deployed maps before shipping.** Before placing
+  any new render in `_presentation/`, `_deliverables/`, or any
+  operator-facing folder, open at least one already-deployed
+  `SOLENNE_*.png` battlemap or portrait and view them side-by-side.
+  If the new render is visibly weaker on style, texture, or
+  cohesion, it does NOT ship. Document the comparison in the commit
+  message.
+- **Visual claims require side-by-side proof OR they do not exist.**
+  "Chapel Aquila reads as brass relief" requires (a) a brass relief
+  reference image in the same view, AND (b) operator agreement. A
+  belief that the integration worked is not evidence the integration
+  worked. `denoise=0.45` will not repaint a high-contrast black
+  silhouette into scene material — this is a hard property of the
+  pipeline. Do not claim otherwise.
+- **No "accepted artifact" cope.** When prompt iteration plateaus,
+  the response is NOT "accept the limitation". The response is:
+  list the alternative approaches that have not yet been tried,
+  ranked by confidence (e.g. switch workflow, use proper ControlNet,
+  localized inpainting, train a LoRA, source reference art), and
+  let the operator pick. The operator decides whether to escalate
+  or drop, not me.
+- **Generic helpers need real demos, not nearest-image demos.** A
+  new tool's demo composite must answer a real campaign need
+  (district control overlay on a district map, fleet movement on a
+  sector chart at the appropriate scale). Demoing a hex grid on a
+  parsec-scale system chart because it was open in the next tab is
+  scope drift. If there is no obvious real demo, do not invent one;
+  ship the helper without a demo and ask the operator what it should
+  be applied to.
+- **Don't propose "session checkpoint" or "deliverables bundle"
+  commits without operator review of the contents.** A bundle is a
+  request for review, not a finished product. Frame it as such in
+  the commit message and in chat ("candidates for review", not
+  "deliverables").
+- **Closing a TODO requires operator confirmation when the success
+  criterion is aesthetic.** Mechanical TODOs (e.g. "verify pixel
+  alignment") can be closed by passing tests. Aesthetic TODOs
+  (e.g. "chapel trim", "floor texture punch", "symbology
+  integration") cannot be self-closed — they go to the operator.
+- **Re-read this section before writing a status summary.** "Wins
+  and fails" framing tempts overclaiming on the wins side. The
+  operator-reviewed honest version is almost always smaller than
+  the version I want to write. Default toward describing the work
+  done in mechanical terms; let the artifacts speak for the
+  aesthetic outcome.
+
+---
+
 ## Hard rules
 
 - **Never silently drop a stamp.** If extraction fails on an image,
