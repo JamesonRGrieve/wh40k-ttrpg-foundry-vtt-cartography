@@ -33,6 +33,30 @@ model doesn't have aquila/rosette/cog as concept tokens. See
   works (battlemap interiors, wide-scale archetypes, multi-deck
   geometry). Open question for the operator: API endpoint, auth,
   budget envelope.
+- [ ] **Train a 40K iconography LoRA** (medium-term, portable
+  artifact). Curated training set of isolated canonical-shape
+  references on neutral backgrounds: Imperial Aquila, Inquisitorial
+  Rosette, Mechanicus opus cog, Astra Militarum winged skull,
+  Adepta Sororitas fleur-de-lys, Adeptus Custodes lightning bolt,
+  Adeptus Ministorum sigil, Chapter heraldry, Eldar runes, Ork
+  glyphs, Tyranid hive markings, Necron dynastic glyphs, Tau caste
+  sigils, Chaos star variants. Captions describe SHAPE not style.
+  ~50-150 image-caption pairs, one-day fine-tune on the 3090.
+  Output: `wh40k_iconography.safetensors` reusable across this
+  campaign, all 7 wh40k-rpg game systems, and any future 40K
+  project. Do NOT fold campaign-specific style into this LoRA —
+  iconography is a 40K constant; style is per-campaign and stacks
+  separately at inference time.
+- [ ] **Re-architect ships as battlemaps with hull-shaped layouts.**
+  Per operator direction: the spacecraft workflow's region-color
+  prompt-budget split is the structural cause of the MS-Paint deck
+  output. Replace with `interior --style ship-{bridge,engineering,
+  barracks,cargo,...}` rendered at the hull's bounding box, then
+  alpha-masked to the hull silhouette via the existing mask-by-
+  layout / `--keep-only` infrastructure. One hull silhouette per
+  ship class shared across all decks → pixel-aligned multi-deck
+  stacking preserved. Deprecate the spacecraft mode and
+  `painterly_pass.py` as wrappers over an inferior path.
 - [ ] **Non-square canvas defaults across battlemap renders.** The
   4 new SOLENNE_*.png interiors and the 2 district overheads in
   `_presentation_v2/` were all 1024×1024 by default. Real campaign

@@ -503,14 +503,27 @@ This is the operator-instructed tooling decision, not a workaround.
 
 Untried local levers (in case Gemini becomes unavailable or the
 operator wants to re-investigate):
+- **40K iconography LoRA** — train Chroma-Flux on a curated set of
+  isolated canonical-shape references (Imperial Aquila, Inquisitorial
+  Rosette, Mechanicus opus cog, Astra Militarum winged skull,
+  Adepta Sororitas fleur-de-lys, Adeptus Custodes lightning bolt,
+  Adeptus Ministorum sigil, Chapter heraldry, Eldar runes, Ork
+  glyphs, etc.) on neutral backgrounds. Captions describe SHAPE,
+  not style ("Imperial Aquila, two-headed eagle, wings spread
+  heraldic, isolated on white"). At inference, stack with whatever
+  style anchor the render needs:
+  `<lora:wh40k_iconography:0.8>, painterly oil portrait, ...`. This
+  is the **portable artifact** that benefits this campaign AND the
+  whole `wh40k-rpg` Foundry system across all 7 game lines (BC,
+  DH1, DH2, DW, OW, RT, IM). Style is per-campaign; iconography is
+  a 40K constant. **Do not** train a campaign-specific LoRA that
+  fuses Solenne style and iconography — that locks the shape
+  vocabulary to one aesthetic.
 - IPAdapter image conditioning using the deployed Vigil Ledger /
   test_inquisitor_v2 / Corvin Edric portraits as references. We
   have CLIP-ViT-H + ip-adapter-plus_sdxl_vit-h installed and used
   for `assign_groups`; the same encoder can feed image embeddings
   as generation conditioning, not just clustering input.
-- A small LoRA trained on the deployed Solenne references (5-15
-  images) so Chroma-Flux learns this campaign's iconography
-  vocabulary.
 - Localized inpainting with a tight mask on the symbol region so
   the surrounding scene is untouched and only the symbol gets
   repainted.

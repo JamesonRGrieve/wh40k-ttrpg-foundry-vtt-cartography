@@ -109,6 +109,19 @@ that section first.
 
 ### Untried local levers (in case Gemini becomes unavailable)
 
+- **40K iconography LoRA** (the right architecture). Train on
+  isolated canonical-shape reference plates of Imperial Aquila,
+  Inquisitorial Rosette, Mechanicus opus cog, Astra Militarum
+  winged skull, Sororitas fleur-de-lys, Custodes lightning bolt,
+  Adeptus Ministorum sigil, Chapter heraldry, etc. Neutral
+  backgrounds, captions describing SHAPE not style ("Imperial
+  Aquila, two-headed eagle, wings spread heraldic, isolated on
+  white"). Stack at inference with whatever style anchor the
+  render needs. **Reusable across all 7 wh40k-rpg game systems**
+  (BC, DH1, DH2, DW, OW, RT, IM) and across any future 40K
+  campaign — iconography is a 40K constant, not Solenne-specific.
+  Do NOT train a campaign-specific LoRA that fuses style and
+  iconography; that locks the shape vocabulary to one aesthetic.
 - IPAdapter image conditioning using deployed Vigil Ledger / Corvin
   Edric / test_inquisitor_v2 as image refs. CLIP-ViT-H +
   ip-adapter-plus_sdxl_vit-h are already installed and used for
@@ -116,10 +129,8 @@ that section first.
   embeddings as generation conditioning.
 - Drop the anti-symbol negative prompt entirely on the txt2img pass.
   Let Chroma-Flux render whatever it renders, then judge — we may
-  be over-correcting for an old failure mode.
-- Train a small Solenne-style LoRA on the deployed campaign
-  references. 5-15 paired image+caption rows is the minimum useful
-  set; a one-day fine-tune on a 24GB card.
+  be over-correcting for an old failure mode that the iconography
+  LoRA would resolve at the model level.
 - Localized inpainting with a tight mask on just the symbol region
   so the surrounding scene is untouched.
 
