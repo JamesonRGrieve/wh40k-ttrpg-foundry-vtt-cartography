@@ -200,28 +200,47 @@ completion).
 
 ---
 
-## 08_multi_deck/ — multi-deck UX helper output
+## 08_multi_deck/ — programmatic ship-deck stack (REBUILT 2026-05-07 v2)
 
-Three files showing the multi-deck variant pattern: one base hull
-layout, two deck-variant copies with different architectural
-openings.
+Replaces the prior MS-Paint doodles. Four programmatic ship decks,
+each with its own deck-specific interior architecture, all sharing
+the same outer hull rectangle (1792×1024) so the decks stack
+pixel-perfect in Foundry as a multi-deck encounter location.
 
-| File | Notes |
+For each deck: a `*_layout.png` (canonical-color region map fed
+into the spacecraft regional-conditioning workflow) and a
+`*_render.png` (the actual rendered battlemap).
+
+| Deck | Architecture |
 | --- | --- |
-| `00_base_hull.png` | The original hand-painted spacecraft layout |
-| `01_deck1_ramp_south.png` | Deck variant with rear-ramp opening |
-| `02_deck2_windscreen_north.png` | Deck variant with dorsal windscreen |
+| `bridge_*` | Hull + dorsal windscreen + U-shaped console band forward (two side console banks + cross-band with center captain gap) |
+| `engineering_*` | Hull + central reactor well + east/west control-panel banks + south rear cargo ramp |
+| `barracks_*` | Hull + 16 bunk cells (two rows of 8) + center walkway, perimeter lighting only |
+| `cargo_*` | Hull + 18 container blocks (two rows of 9) + south loading ramp + center aisle |
 
-The outer hull is preserved byte-for-byte across decks; only the
-declared openings change. Multi-deck same-footprint stack via the
-existing IoU-verified pattern.
+**Renders:**
+
+- `bridge_render.png` — dark steel command deck with brass-tinged hints, console band visible at the north end with the captain's gap, perimeter lighting at corners.
+- `engineering_render.png` — heavy ferrograte deck with central reactor well, side panel banks, exposed rear cargo ramp.
+- `barracks_render.png` — utilitarian steel decking with hazard markings near openings, two rows of bunk cells flanking a center walkway.
+- `cargo_render.png` — heavy plate cargo deck with hazard stripes on the side walls, two rows of containers, rear loading ramp.
+
+**Foundry stack use:** drop `<deck>_render.png` as the scene
+background. Because every deck was generated from the SAME
+outer-hull rectangle, all four stack at pixel-perfect alignment —
+operators can swap between decks without re-positioning tokens or
+walls.
 
 **Feedback I need:**
 
-- Is the openings pattern useful? Could add `--opening
-  deck3=cargo_doors:east,west` for dual side openings, etc.
-- Are there standard deck layouts I should hard-code as presets
-  (engineering / bridge / barracks / hangar)?
+- Are these deck architectures right? Want different additional
+  presets (medical bay, mess hall, torpedo bay, hangar deck)?
+- Texture punch in the renders is acceptable but mild —
+  regional-conditioning splits guidance budget across 5 regions
+  so each one ends up subtler than a standalone txt2img. Want me
+  to push harder on the per-region prompts or accept the ceiling?
+- Does the bridge windscreen read at this rendering strength, or
+  should the band be thicker?
 
 ---
 

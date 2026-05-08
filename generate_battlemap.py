@@ -458,6 +458,32 @@ INTERIOR_STYLE_FLOOR_TEXTURES: dict[str, str] = {
         "diffuse ambient blood-red illumination across the floor, no light fixtures, no studs, "
         "deep shadows in the darker areas"
     ),
+    # Ship-deck floor textures. Each pairs with a `ship-*` floorplan
+    # preset so multi-deck stacks share footprint but render distinct
+    # interior surfaces.
+    "ship-bridge": (
+        "polished dark steel deck plating with brass inlay accents, "
+        "subtle indicator lighting reflecting off the surface, "
+        "command-deck flooring, clean and well-maintained, "
+        "muted blue-grey palette with warm brass highlights"
+    ),
+    "ship-engineering": (
+        "ferro-grate engineering deck flooring over reactor coils, "
+        "warm orange-red light glowing up through the grate slits, "
+        "scuffed industrial steel surface, oil stains and burn marks, "
+        "muted dark steel palette with hot orange undercast"
+    ),
+    "ship-barracks": (
+        "scuffed steel decking, regimental boot scuffs, painted hazard markings, "
+        "harsh white overhead light pools, "
+        "utilitarian military barracks flooring, "
+        "muted gray palette with cold white highlights"
+    ),
+    "ship-cargo": (
+        "heavy plate steel cargo deck, painted yellow loading bay markings, "
+        "scuffed by container drag, oil stains, hazard stripes near openings, "
+        "muted gray-brown palette with amber industrial accents"
+    ),
 }
 
 # Wrap fragment in this envelope to force a pure-floor render.
