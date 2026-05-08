@@ -26,6 +26,8 @@
 # characters in a dark heresy campaign — civilians of all type,
 # gender, career and rank."
 
+generator: portrait
+
 defaults:
   style: >-
     Warhammer 40000 grimdark aesthetic, oil painting style, dark palette,

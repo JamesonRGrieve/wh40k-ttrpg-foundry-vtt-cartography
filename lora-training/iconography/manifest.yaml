@@ -29,6 +29,8 @@
 # Reference image conditioning is still applied: the symbol's
 # *_isolated.png is fed to Gemini as the canonical-shape anchor.
 
+generator: iconography
+
 defaults:
   # Allow the treatment's mild scene context (the wall, coat, pauldron,
   # banner the symbol is mounted on) but keep the symbol as the

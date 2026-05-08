@@ -1,0 +1,158 @@
+# Voidship hull silhouettes — Stage 1 LoRA corpus generation manifest.
+#
+# Trigger: dh_voidship_hull. This LoRA learns canonical Imperial
+# voidship hull SILHOUETTES per ship class. Empty hulls only — no
+# interior, no rooms, no doorways. The layout LoRA (Stage 2) fills
+# the hull with rooms at inference time.
+#
+# Per-class silhouette taxonomy: two families (gothic_voidship,
+# micro_ship), each ship class assigns family + scale/ornamentation
+# modifier. See README.md for rationale.
+#
+# APPEND-ONLY filename discipline: output filenames embed sequential
+# variant indices (`<class>_<NN>_<state-slug>.png`). NEVER reorder
+# hull_states or per-category fields; ALWAYS append at the end.
+
+generator: voidship_hull
+
+defaults:
+  trigger: dh_voidship_hull
+  composition: >-
+    Top-down orthographic battlemap-grade view. The hull occupies the
+    full image with the ship's long axis horizontal — bow at the
+    LEFT, stern at the RIGHT, port at the TOP, starboard at the
+    BOTTOM. Outside the hull is flat black void. The aspect ratio of
+    the image matches the aspect ratio of the ship class — DO NOT
+    crop to a square if the ship is long
+  hull_clause: >-
+    Imperial gothic painted-metal hull plating viewed from directly
+    above, with rivets, panel seams, weathered paint, surface grime,
+    and any ornamentation specified by the silhouette (heraldry,
+    sponsons, gilt scrollwork). Painterly oil-painting treatment, dark
+    grimdark palette, visible brushwork on the plating
+  empty_interior_clause: >-
+    Solid plating from this view — NO interior rooms visible, NO
+    doorways, NO corridors, NO furniture, NO windows on the dorsal
+    surface. The hull is a CLOSED silhouette — opaque from above. The
+    layout for this hull will be supplied separately at inference time
+  exclusions: "No text, no compass, no scale, no labels, no legend"
+  caption_trailer: "top-down empty hull silhouette"
+
+# Hull-state matrix — sampled round-robin across each category's
+# variants. Append-only.
+hull_states:
+  - "pristine, freshly serviced, clean panel work"
+  - "lightly weathered, minor scuffing on the hull plating"
+  - "weathered with rust streaks and patched panels"
+  - "heavily weathered, exposed bracing in places, oil-stained"
+  - "battle-damaged, scorched panel patches, torn plating along one flank"
+  - "derelict, grime and corrosion across most of the hull, dim deck rim only"
+
+# Viewing-angle pool — round-robin alongside hull_states. All
+# top-down, but with subtle micro-variations to teach the LoRA
+# perspective invariance. Battlemap use is strictly orthographic
+# top-down so we keep this list narrow.
+angles:
+  - "strict orthographic top-down"
+  - "near-orthographic top-down, very slight forward bias"
+  - "near-orthographic top-down, very slight aft bias"
+
+# ── Silhouette taxonomy (shared with voidship-layouts) ─────────────
+
+silhouette_families:
+  gothic_voidship: >-
+    Canonical Imperial gothic voidship profile in top-down: long
+    spinal hull, pointed forward ram-prow tapering to a sharp gothic
+    point, swept-back stern dominated by a heavy engine block, port
+    and starboard sponsons protruding from the midsection. Roughly
+    3:1 to 4:1 length-to-beam aspect ratio. Heraldic ornamentation
+    along the dorsal spine and prow. Imagine a cathedral hammered
+    into a lance, viewed from above
+  micro_ship: >-
+    Short-range Imperial micro-ship profile in top-down: compact
+    boxy utilitarian hull with no gothic prow. Roughly 1.5:1 to 2:1
+    length-to-beam aspect ratio. Slab-sided plating, small angular
+    forward cockpit bubble, flat stern with a single engine cluster.
+    Working-class void vessel, not a warship — Arvus-Lighter family.
+    Stubby, blocky, purpose-built for system-internal hauls
+
+silhouettes:
+  hull-freighter-small:
+    family: micro_ship
+    modifier: >-
+      Smallest scale of the family. Roughly the footprint of an Arvus
+      Lighter. Plain civilian hull plating, no military sponsons, no
+      heraldic ornamentation
+  hull-freighter-medium:
+    family: micro_ship
+    modifier: >-
+      Larger scale than a small freighter — an enlarged civilian
+      hauler in the micro-ship family. Length increased to roughly
+      2:1 aspect, beam widened. Plain plating with light bracing
+      along the spine. No military sponsons or gothic prow
+  hull-frigate-escort:
+    family: gothic_voidship
+    modifier: >-
+      Smallest scale of the gothic voidship family. Roughly Sword-class
+      frigate proportions — relatively narrow beam, with a row of
+      LATERAL BROADSIDE GUN-BATTERY SPONSONS protruding from the port
+      and starboard flanks of the midsection (sponsons house guns
+      pointing outward to port and starboard, NOT forward). Imperial
+      Navy heraldry (winged-skull or aquila scrollwork) along the prow
+      and dorsal spine
+  hull-destroyer-light:
+    family: gothic_voidship
+    modifier: >-
+      Slightly larger and heavier than a frigate. Roughly Cobra-class
+      destroyer proportions. Broader beam, with longer rows of
+      LATERAL BROADSIDE SPONSONS along port and starboard flanks
+      (broadside guns point outward, NOT forward), aggressive angular
+      forward armor wedge over the gothic prow, larger stern engine
+      block. Heraldic Imperial Navy ornamentation
+  hull-transport-bulk:
+    family: gothic_voidship
+    modifier: >-
+      Mid-scale gothic voidship adapted for bulk cargo. Beam widened
+      relative to a warship of equivalent length. Sponsons replaced
+      by external cargo-handling rigs; no gun batteries. Civilian
+      heraldry along the prow — chartered merchant guild iconography,
+      NOT Navy
+  hull-yacht-roguetrader:
+    family: gothic_voidship
+    modifier: >-
+      Mid-scale gothic voidship configured as a luxury private vessel.
+      Length similar to a frigate but with sleeker proportions and
+      ornate heraldic flourishes — gilt scrollwork along the prow and
+      hull edges, decorative aquila or winged-skull motifs. No gun
+      sponsons; replaced by ornamental panel work
+
+# ── Per-class corpus shape ──────────────────────────────────────────
+#
+# Each class produces `variants` empty-hull renders. variants is the
+# count of (hull_state × angle) round-robin slots for the class.
+# The seq counter is global across all classes so two classes
+# back-to-back don't share the same axis tuple.
+
+categories:
+  - folder: hull-freighter-small
+    class_name: small civilian freighter (micro-ship class)
+    variants: 6
+  - folder: hull-freighter-medium
+    class_name: medium civilian freighter (micro-ship class)
+    variants: 6
+  - folder: hull-frigate-escort
+    class_name: Imperial Navy escort frigate
+    variants: 6
+  - folder: hull-destroyer-light
+    class_name: Imperial Navy light destroyer
+    variants: 6
+  - folder: hull-transport-bulk
+    class_name: civilian bulk transport
+    variants: 6
+  - folder: hull-yacht-roguetrader
+    class_name: Rogue Trader's private yacht
+    variants: 6
+
+# ── Cost projection ──────────────────────────────────────────────────
+# 6 classes × 6 variants = 36 hulls × $0.04 = $1.44.
+# Smoke-test 1 per class first (--limit 6), validate, then full run.

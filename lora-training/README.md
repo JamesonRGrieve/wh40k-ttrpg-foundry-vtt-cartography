@@ -52,21 +52,37 @@ lora-training/
     └── map-<class>/                 ← per-class layout PNG + .txt caption pairs
 ```
 
-## Generators (one level up)
+## Generator (one driver, plugin handlers)
 
-Each LoRA has a sibling `gen_<name>_corpus.py` driver that reads its
-manifest and renders into the corresponding folder. All four use the
-same Gemini 2.5 Flash Image API, the same `IMAGE_SAFETY` defensive
-parser, and the same append-only manifest pattern — output filenames
-embed sequential variant indices, so reordering a manifest re-bills
-the corpus on next run. Append at the END.
+A single `../corpus_generator.py` driver handles every LoRA. Each
+manifest declares which handler to use via a top-level
+`generator: <name>` field; the driver instantiates the matching
+handler class and runs the shared throttle / IMAGE_SAFETY / cost-cap
+loop.
 
-| Generator | Reads manifest | Writes into |
-|-----------|---------------|-------------|
-| `../gen_iconography_corpus.py`   | `iconography/manifest.yaml`     | `iconography/iconography-*/` |
-| `../gen_portrait_corpus.py`      | `portraits/manifest.yaml`       | `portraits/portrait-*/` |
-| `../gen_voidship_hull_corpus.py` | `voidship-hulls/manifest.yaml`  | `voidship-hulls/hull-*/` |
-| `../gen_voidship_corpus.py`      | `voidship-layouts/manifest.yaml`| `voidship-layouts/map-*/` |
+```bash
+uv run corpus_generator.py --lora iconography --dry-run
+uv run corpus_generator.py --lora voidship-hulls --limit 6
+uv run corpus_generator.py --lora portraits
+```
+
+Available handlers (registered in `corpus_generator.py`):
+
+| Handler name      | Manifest field        | Reads                            | Writes into |
+|-------------------|-----------------------|----------------------------------|-------------|
+| `iconography`     | `generator: iconography`     | `iconography/manifest.yaml`     | `iconography/iconography-*/` |
+| `portrait`        | `generator: portrait`        | `portraits/manifest.yaml`       | `portraits/portrait-*/` |
+| `voidship_hull`   | `generator: voidship_hull`   | `voidship-hulls/manifest.yaml`  | `voidship-hulls/hull-*/` |
+| `voidship_layout` | `generator: voidship_layout` | `voidship-layouts/manifest.yaml`| `voidship-layouts/map-*/` |
+
+Adding a new LoRA: subclass `Handler` in `corpus_generator.py`, decorate
+with `@register`, set a unique `name`, implement `build_jobs(only) →
+list[Job]`. Then create `lora-training/<new>/manifest.yaml` with
+`generator: <new_name>` at the top.
+
+All handlers share the same append-only filename discipline — output
+filenames embed sequential variant indices, so reordering a manifest
+re-bills the corpus on next run. Append at the END.
 
 ## Training environment
 
