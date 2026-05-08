@@ -1,0 +1,153 @@
+# ai-toolkit config — 40K iconography LoRA training run.
+#
+# Targets Flux.1 [dev] with multi-GPU DDP across the 3 RTX 3090s on
+# the gigabyte CT 140. Reads the corpus from /opt/lora-training/
+# iconography-*/sym_*.png + caption .txt sidecars (rsync'd in from the
+# laptop's lora-training/ folder).
+#
+# Reference docs: https://github.com/ostris/ai-toolkit/tree/main/config/examples
+#
+# Tuning notes:
+#   - rank 16 / alpha 16 — small LoRA targeting iconography vocabulary;
+#     can bump to 32 if symbol-fidelity falls short on validation.
+#   - lr 1e-4 — flux-LoRA default; ostris's examples use this.
+#   - resolution 768 with bucketing — corpus mixes 1024² (most symbols)
+#     and 1536x672 (aquila); buckets 768x768, 1024x576, 576x1024.
+#   - steps 3000, save every 250 — picks the best of ~12 checkpoints.
+#   - Caption files (.txt sidecars) read automatically; trigger tokens
+#     are namespaced (sym_aquila, sym_inq_rosette, ...).
+
+job: extension
+config:
+  name: wh40k_iconography
+  process:
+    - type: sd_trainer
+      training_folder: /opt/lora-training/outputs
+      device: cuda
+      trigger_word: null  # captions already include trigger tokens
+
+      network:
+        type: lora
+        linear: 16
+        linear_alpha: 16
+
+      save:
+        dtype: float16
+        save_every: 250
+        max_step_saves_to_keep: 12
+        push_to_hub: false
+
+      datasets:
+        - folder_path: /opt/lora-training/iconography-aquilla
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution:
+            - 512
+            - 768
+            - 1024
+        - folder_path: /opt/lora-training/iconography-rosette
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-mechanicus-cog
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-skull-winged
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-fleur-de-lys
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-ministorum-sigil
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-administratum-sigil
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-arbites-sigil
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-astropath-eye
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-navy-sigil
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/iconography-rogue-trader
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+
+      train:
+        batch_size: 1
+        steps: 3000
+        gradient_accumulation_steps: 1
+        train_unet: true
+        train_text_encoder: false
+        gradient_checkpointing: true
+        noise_scheduler: flowmatch
+        optimizer: adamw8bit
+        lr: 1e-4
+        ema_config:
+          use_ema: true
+          ema_decay: 0.99
+        dtype: bf16
+
+      model:
+        name_or_path: black-forest-labs/FLUX.1-dev
+        is_flux: true
+        quantize: true  # 8-bit quantize the base for VRAM headroom
+
+      sample:
+        sampler: flowmatch
+        sample_every: 250
+        width: 1024
+        height: 1024
+        prompts:
+          # One canonical-shape probe per trigger token. After training,
+          # these should render the canonical shape natively without
+          # reference-image conditioning.
+          - "sym_aquila, Imperial Aquila heraldic symbol, polished brass relief on dark stone wall"
+          - "sym_inq_rosette, Inquisitorial I, weathered brass on dark red enamel medallion"
+          - "sym_mech_cog, Mechanicus opus, half-cog half-skull, rusted brass on dark steel forge wall"
+          - "sym_militarum_winged_skull, Astra Militarum winged skull, brass regimental badge on dark green field"
+          - "sym_sororitas_lys, Adepta Sororitas fleur-de-lys with skull at center, polished brass on black power armor pauldron"
+          - "sym_ministorum, Adeptus Ministorum sigil, embroidered gold thread on red ecclesiarchal banner"
+          - "sym_administratum, Adeptus Administratum sigil, embossed wax seal on parchment dispatch"
+          - "sym_arbites, Adeptus Arbites sigil, polished brass on dark steel courthouse plaque"
+          - "sym_telepathica_eye, Adeptus Astra Telepathica sigil, weathered brass on the wall of an astropathic relay tower"
+          - "sym_imperial_navy, Imperial Navy sigil, stamped pewter on iron void-ship hull plate"
+          - "sym_rogue_trader, Rogue Trader insignia, gilt parchment Warrant of Trade heading"
+        neg: ""
+        seed: 42
+        walk_seed: true
+        guidance_scale: 4.0
+        sample_steps: 20
+
+meta:
+  name: wh40k_iconography
+  version: '1.0'
+  description: >-
+    40K Imperial iconography LoRA — 11 symbols (aquila + 10 Imperial
+    branches), 319 reference-conditioned training images across treatment ×
+    angle × lighting axes. Reusable across all 7 wh40k-rpg game systems.
