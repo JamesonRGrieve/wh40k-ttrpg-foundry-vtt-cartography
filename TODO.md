@@ -3,228 +3,33 @@
 Open work, in priority order. Items removed when done. Last refreshed
 2026-05-07.
 
+## Retrospective — what landed in the 2026-05-07 sessions
+
+The three TOP/HIGH PRIORITY blocks that previously lived here are
+done; full retrospective in `docs/battlemap-workflow.md`. Brief
+summary:
+
+- **Symbology rebuild**: ControlNet path failed (Flux/Chroma node
+  incompatibility). Pivoted to two-pass img2img integration. Chapel
+  Aquila now reads as brass relief; inquisitor rosette as armor
+  inlay. CLI: `--symbol-style integrated` (default for narrative
+  scenes/portraits) | `--symbol-style flat` (legacy paste-on-top
+  for diagrammatic / sidebar uses). Material hints declared via
+  `MATERIAL_HINTS` (8 canonical phrases).
+- **Multi-deck rebuild**: 4 programmatic ship-deck presets
+  (`ship-bridge`, `ship-engineering`, `ship-barracks`,
+  `ship-cargo`) sharing identical hull. All four rendered through
+  the spacecraft workflow; shipped in `_deliverables/08_multi_deck/`
+  as `<deck>_layout.png` + `<deck>_render.png` pairs. Pixel-perfect
+  alignment proven by `verify_deck_stack.py`.
+- **Asset generation pipelines**: stamps (rotation + condition),
+  character portraits (8 class profiles + 1:1 token crop), scene
+  pictures (anchor + material hints) — all wired end-to-end with
+  the integrated symbol path.
+- **Wide-scale overlays**: `make_overlay.py` with hex / zones /
+  fleet / compass subcommands.
+
 ## Open
-
-## TOP PRIORITY — Symbology rebuild (ControlNet structural guidance)
-
-The current symbol_compose pipeline pastes flat black SVG canonicals
-on top of the rendered scene. This is wrong for the spec: the
-canonical is supposed to GUIDE diffusion to render the symbol AS
-brass relief, embroidered banner, painted insignia on armor, etc.
-Operator confirmed this in session — the chapel POC has a literal
-SVG glued on, and the inquisitor portrait's rosette doesn't read as
-a seal.
-
-ComfyUI server has all required nodes installed (verified):
-`ControlNetLoader`, `CannyEdgePreprocessor`, `LineArtPreprocessor`,
-`ControlNetApplyAdvanced`, `Canny`, `InpaintModelConditioning`,
-`VAEEncodeForInpaint`, `DifferentialDiffusion`, `SetLatentNoiseMask`.
-
-Build:
-1. New workflow `workflows/ScenePictureControlNetV1.json` with the
-   Canny → ControlNetApplyAdvanced chain layered on the proven
-   txt2img template.
-2. Driver helper that emits a guide image (black canonical outline
-   on transparent canvas at the anchor's bbox position) for each
-   declared symbol.
-3. Replace `compose_symbols()` calls in
-   `generate_scene_picture.py` and `generate_character_portrait.py`
-   with the controlnet-guided render path. Keep the literal-paste
-   path available as `--symbol-style flat` for diagrammatic uses
-   (sidebar badges, journal icons); make `--symbol-style integrated`
-   the default for scenes/portraits.
-4. Per-anchor prompt augmentation: the operator declares a material
-   hint per anchor (e.g. `aquila:apse_back,large,brass-relief` or
-   `inquisition_rosette:chest_center,large,armor-inlay`); the
-   driver inserts that material hint into the prompt for the
-   symbol's region.
-5. Re-render `_deliverables/05_scene_pictures/district_4_chapel.png`
-   and `_deliverables/06_character_portraits/inquisitor_bust.png`
-   with the new pipeline so the Aquila and Rosette appear AS
-   integrated material, not as glued-on SVG.
-
-## HIGH PRIORITY — Multi-deck rebuild
-
-Current `make_deck_variants.py` design is wrong. It takes a fully-
-detailed layout PNG and adds openings; outputs are MS-Paint-quality
-because the input was already a single hand-painted deck.
-`_deliverables/08_multi_deck/` should be deleted from deliverables
-or moved to `_intermediate/`.
-
-Build:
-1. Add `ship-bridge`, `ship-engineering`, `ship-barracks`,
-   `ship-cargo` presets to `FLOORPLAN_PRESETS`. Shared outer hull
-   dimensions across all four; deck-specific interior architecture
-   (reactor well + control panels for engineering, console
-   horseshoe + windscreen for bridge, bunk rows for barracks,
-   container grid for cargo). Use clean rectangular regions in
-   canonical region colors; mirror the precision of the existing
-   `make-floorplan` presets.
-2. Add a deck-specific floor texture entry in
-   `INTERIOR_STYLE_FLOOR_TEXTURES` for each
-   (`ship-bridge` = polished black metal with brass inlays,
-   `ship-engineering` = ferro-grate over reactor coils, etc.).
-3. Render each preset through `spacecraft --style ship-<deck>`
-   to produce the actual battlemaps.
-4. Replace `_deliverables/08_multi_deck/` with the rendered
-   battlemaps, not the layout doodles.
-5. Optionally: a `strip-to-shell` mode on `make_deck_variants.py`
-   that takes ANY layout and outputs just the outer wall + bare
-   floor, so an operator's hand-painted layouts can be re-used as
-   shells for new deck variants.
-
-## HIGH PRIORITY — Asset generation pipelines
-
-Three pipelines for generating **new** assets (today the vault is purely
-classify-what-Gemini-already-drew). All three share a cross-cutting
-**symbol-preservation strategy** because diffusion models routinely mangle
-canonical 40K iconography (Aquila feathers/heads/swords drift, Inquisition
-`I` becomes generic crosses, Mechanicus cog teeth multiply). Symbol
-fidelity is non-negotiable.
-
-### Cross-cutting: symbol-preservation strategy
-
-The foundational rule: **canonical symbols are PASTED, never generated**.
-Diffusion is allowed to render style/atmosphere; it is NOT allowed to
-render the symbology. Every symbol in our library has a canonical PNG
-master with a sidecar JSON declaring its anchor / scale / lighting
-behavior; downstream pipelines composite the master onto the diffusion
-output rather than asking the model to draw it.
-
-Layered approach (ordered by strictness):
-
-1. **Library lookup.** `symbols/<name>/canonical.png` is the source of
-   truth. Variants for lighting (dim, lit, candlelit, red-emergency)
-   live as siblings (`canonical_dim.png`, `canonical_lit.png`, …).
-2. **Anchor-point compositing.** Each generation workflow declares a
-   layout/template that designates anchor points where symbols belong
-   (e.g. `chapel_apse_back_wall: aquila`). The compositor pastes the
-   right canonical at the right scale and angle.
-3. **Lighting transfer pass (optional).** When the symbol must look
-   integrated with scene lighting, compose against a shadow-map pass
-   from the diffusion render so the canonical inherits the scene's
-   ambient color/contrast without losing its silhouette.
-4. **Validation.** After compositing, run a Canny-edge similarity check
-   between the composited region and the canonical. If similarity drops
-   below a threshold the asset is flagged for operator review.
-5. **Hard prohibition.** Diffusion prompts must explicitly negate
-   symbol generation: "no Imperial Aquila in the render, no eagle
-   sigils, no Inquisition I, no Mechanicus cog — these will be
-   composited separately as canonical art". Without this, Flux will
-   try to render the symbol AND we'll paste over it, leaving artifacts.
-
-Required infrastructure (build before any pipeline):
-- `symbols/` directory with one folder per canonical symbol. Each
-  folder contains `canonical.png` (transparent PNG, master), optional
-  lighting variants, and `metadata.json` (anchor scale, allowed
-  rotations, allowed mirroring).
-- `symbol_compose.py` — utility module: `compose_symbols(image,
-  anchor_specs)` pastes canonicals at named anchors; `validate_symbol(
-  image, anchor_spec)` runs the Canny similarity check.
-- Operator-provided canonical sources for at minimum: Imperial Aquila,
-  Inquisitorial `I`, Mechanicus cog, Cult Imperialis flame, Skull-and-
-  laurel sigil. These are GW IP; operator must supply or approve
-  generated-then-locked references.
-
-### Pipeline 1 — Stamp variant generator (gap-filling + new archetypes)
-
-**Purpose.** Fill rotational and condition holes in the existing
-615-stamp vault, AND produce wholly new archetypes (vehicles, full-body
-poses, weapons) without sourcing new Gemini sheets.
-
-**Workflow file:** `workflows/StampVariantsV1.json` (to build) —
-img2img + IPAdapter encoding source-stamp style + ControlNet
-depth/normal for rotational pose control.
-
-**Driver:** `generate_stamp_variants.py` (to build) — takes a source
-stamp + a list of desired variants {north, south, east, west, intact,
-damaged, destroyed, active, inactive}, runs N renders, applies
-symbol-compose pass if the source has any registered symbols.
-
-**Acceptance for first cut:**
-- Pick 5 source stamps with obvious gaps in their group (e.g. a desk
-  that only exists top-down).
-- Generate the missing variants.
-- Run them through extract → make_sidecars → classify → assign_groups.
-- Confirm group_id assigns the new variants to the SAME group as the
-  source. If round-trip works, scale.
-
-**LoRA fallback:** if prompt + IPAdapter caps out at ~70% style
-fidelity, train a Solenne-style LoRA from operator training material
-(~6-12 GPU-hours one-time). Defer until needed.
-
-### Pipeline 2 — Character portrait generator
-
-**Purpose.** Produce bust / full-body portraits for NPCs and PCs
-matching the campaign's illustrated style. Today characters live as
-text-only Markdown in `Characters/`; portraits would populate Kanka
-sidebar images and Foundry actor portraits.
-
-**Style target.** Painterly, grimdark, illustrative — closer to FFG-
-era 40K RPG sourcebook art than the stamp-grid aesthetic. Operator may
-want different stylistic options per character class (Inquisitor vs.
-hive-ganger vs. Astropath).
-
-**Workflow file:** `workflows/CharacterPortraitV1.json` (to build) —
-Flux txt2img + ControlNet OpenPose for body composition + IPAdapter
-for face consistency across multiple portraits of the same character.
-
-**Driver:** `generate_character_portrait.py` (to build) — takes a
-character name + body slot (bust|three-quarter|full-body) + style hint
-+ optional reference IPAdapter image; outputs to
-`Characters/portraits/<name>_<slot>.png` and writes a sidecar JSON
-recording the seed/prompt for reproducibility.
-
-**Symbol concerns:** robes/uniforms often carry Aquila or Inquisition
-sigils. Compose canonical at anchor points (chest-front, collar,
-shoulder-pad) declared in the portrait template per character class.
-
-**Acceptance for first cut:**
-- Generate portraits for 3 PCs at bust scale.
-- Each portrait: zero hallucinated symbology in raw render (validated
-  via the negative-prompt rule); one canonical Aquila composited where
-  declared; symbol-validation passes.
-- Operator approves stylistic match.
-
-### Pipeline 3 — Scene picture generator
-
-**Purpose.** Establishing shots, lore illustrations, document handouts,
-investigation photos. Various aspect ratios; often heavy with multiple
-canonical symbols (Imperial banners, Mechanicus signage, Aquila reliefs
-on architecture).
-
-**Workflow file:** `workflows/ScenePictureV1.json` (to build) — Flux
-txt2img with optional ControlNet depth for spatial composition.
-
-**Driver:** `generate_scene_picture.py` (to build) — takes a scene
-spec (location wikilink, aspect ratio, mood, declared symbol anchors)
-and produces an asset at `Lore/handouts/<slug>.png` or similar.
-
-**Multi-symbol handling.** A single scene can require 5+ canonical
-symbol composites (e.g. an Imperial chapel with Aquila on apse,
-Inquisition `I` over door, skull-laurel on lectern). Symbol-compose
-pass walks all anchors in declaration order.
-
-**Acceptance for first cut:**
-- Generate 3 scene pictures: Hab District 4 establishing shot, the
-  District 4 Chapel interior (with at least 2 canonical symbols),
-  and the Astropathic Relay Station (with 1 canonical symbol).
-- All canonical symbols pixel-match their library masters after
-  composite.
-- Operator approves.
-
-### Build order
-
-1. Symbol library scaffolding + `symbol_compose.py` + canonical
-   sources (operator action required to provide / approve).
-2. Pipeline 1 (stamps) — closest to existing classify pipeline,
-   shortest validation loop via group round-trip.
-3. Pipeline 3 (scenes) — leverages stamp lessons; scenes are
-   bigger but architecturally similar (txt2img + post-composite).
-4. Pipeline 2 (portraits) — most distinct style; benefits from
-   lessons learned in 1 and 3 about IPAdapter style consistency.
-
-
 
 - [ ] **Chapel `--floor-only` thin perimeter trim (minor).** Round 4
   polish reduced the artifact: gilded mosaic now renders as a
