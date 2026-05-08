@@ -899,8 +899,27 @@ def _paint_lights_around_perimeter(
 def _make_floorplan(output: Path, *, spec: dict) -> None:
     """Paint a multi-room/corridor canonical-color layout PNG.
 
-    See module-level comment for the spec format. Output is ready to feed
-    directly to the spacecraft workflow as a layout PNG.
+    Spec keys (all optional except `canvas` and `wall_thickness`):
+      canvas: (width, height)
+      wall_thickness: int
+      rooms: [(x, y, w, h), ...]              walled rooms (lit)
+      corridors: [(x, y, w, h), ...]          walled corridors (lit, fewer)
+      extra_walls: [(x, y, w, h), ...]        walled regions WITHOUT lights
+                                              (use for raised consoles, sub-structures)
+      doors: [(x, y, w, h), ...]              floor cuts through walls
+      windscreen: {side, thickness, frac}     paints a windscreen band along
+                                              the named hull edge ('north',
+                                              'south', 'east', 'west').
+                                              `frac` is band length as a
+                                              fraction of the hull's edge.
+      ramp: {side, x_frac, width_frac}        cuts a ramp opening through the
+                                              hull's named edge, replacing
+                                              wall+floor with ramp color from
+                                              the hull edge to the canvas edge.
+      light_count_per_room: int
+      light_count_per_corridor: int
+
+    Output is ready to feed directly to the spacecraft workflow as a layout PNG.
     """
     import numpy as np
     from PIL import Image
@@ -912,6 +931,8 @@ def _make_floorplan(output: Path, *, spec: dict) -> None:
     wall = SPACECRAFT_REGION_RGB["wall"]
     floor = SPACECRAFT_REGION_RGB["floor"]
     light = SPACECRAFT_REGION_RGB["lighting"]
+    ramp_rgb = SPACECRAFT_REGION_RGB["ramp"]
+    windscreen_rgb = SPACECRAFT_REGION_RGB["windscreen"]
 
     def paint_box(x: int, y: int, w: int, h: int) -> None:
         # Wall band first, then carve interior to floor.
@@ -925,13 +946,68 @@ def _make_floorplan(output: Path, *, spec: dict) -> None:
         paint_box(*rect)
     for rect in spec.get("corridors", []):
         paint_box(*rect)
+    for rect in spec.get("extra_walls", []):
+        paint_box(*rect)
 
     # Doors: overpaint walls with floor in the door rectangle. This naturally
     # connects adjacent rooms / room-to-corridor with a clean opening.
     for x, y, w, h in spec.get("doors", []):
         arr[y : y + h, x : x + w] = floor
 
-    # Lights AFTER doorways so they don't paint over a door cut.
+    # Windscreen: paint along the named hull edge (assumes the first room is
+    # the outer hull). The band is centered along the edge with `frac` length.
+    ws = spec.get("windscreen")
+    if ws and spec.get("rooms"):
+        hull = spec["rooms"][0]
+        hx, hy, hw, hh = hull
+        side = ws["side"]
+        ws_thick = int(ws.get("thickness", wall_thickness))
+        ws_frac = float(ws.get("frac", 0.5))
+        if side in ("north", "south"):
+            band_w = int(hw * ws_frac)
+            band_x0 = hx + (hw - band_w) // 2
+            if side == "north":
+                arr[hy : hy + ws_thick, band_x0 : band_x0 + band_w] = windscreen_rgb
+            else:
+                arr[hy + hh - ws_thick : hy + hh, band_x0 : band_x0 + band_w] = windscreen_rgb
+        else:
+            band_h = int(hh * ws_frac)
+            band_y0 = hy + (hh - band_h) // 2
+            if side == "west":
+                arr[band_y0 : band_y0 + band_h, hx : hx + ws_thick] = windscreen_rgb
+            else:
+                arr[band_y0 : band_y0 + band_h, hx + hw - ws_thick : hx + hw] = windscreen_rgb
+
+    # Ramp: cut a rectangular opening through the hull's named edge from the
+    # hull boundary out to the canvas edge. Painted ramp color the whole way.
+    rp = spec.get("ramp")
+    if rp and spec.get("rooms"):
+        hull = spec["rooms"][0]
+        hx, hy, hw, hh = hull
+        side = rp["side"]
+        x_frac = float(rp.get("x_frac", 0.5))
+        width_frac = float(rp.get("width_frac", 0.25))
+        if side in ("north", "south"):
+            ramp_w = int(hw * width_frac)
+            cx = hx + int(hw * x_frac)
+            ramp_x0 = max(hx, cx - ramp_w // 2)
+            ramp_x1 = min(hx + hw, ramp_x0 + ramp_w)
+            if side == "north":
+                arr[0 : hy + wall_thickness, ramp_x0:ramp_x1] = ramp_rgb
+            else:
+                arr[hy + hh - wall_thickness : canvas_h, ramp_x0:ramp_x1] = ramp_rgb
+        else:
+            ramp_h = int(hh * width_frac)
+            cy = hy + int(hh * x_frac)
+            ramp_y0 = max(hy, cy - ramp_h // 2)
+            ramp_y1 = min(hy + hh, ramp_y0 + ramp_h)
+            if side == "west":
+                arr[ramp_y0:ramp_y1, 0 : hx + wall_thickness] = ramp_rgb
+            else:
+                arr[ramp_y0:ramp_y1, hx + hw - wall_thickness : canvas_w] = ramp_rgb
+
+    # Lights AFTER doorways/windscreen/ramp so they don't paint over openings.
+    # Skip extra_walls — those are sub-structures, not separate rooms.
     n_room_lights = int(spec.get("light_count_per_room", 4))
     n_corr_lights = int(spec.get("light_count_per_corridor", 4))
     for rect in spec.get("rooms", []):
@@ -1173,6 +1249,178 @@ def _preset_archive_stacks_grid(
     }
 
 
+# --- Spacecraft deck presets ---------------------------------------------
+#
+# Multi-deck ships need each deck to share the SAME outer hull footprint
+# while having different deck-specific interior architecture. The presets
+# below all use SHIP_HULL_W/H + SHIP_HULL_INSET so the outer hull is
+# byte-for-byte identical across decks; only the interior changes. Render
+# each deck via `spacecraft --layout <preset>.png --style ship-<deck>`
+# to get pixel-aligned multi-deck stacks for Foundry.
+
+SHIP_HULL_W = 1792
+SHIP_HULL_H = 1024
+SHIP_HULL_INSET = 96   # outer black border so the ship doesn't touch the canvas edge
+SHIP_WALL = 36         # bulkhead thickness
+SHIP_DOOR_W = 96       # standard interior door width
+
+
+def _ship_hull_rect() -> tuple[int, int, int, int]:
+    """The shared outer hull rectangle used by every ship-* preset."""
+    x = SHIP_HULL_INSET
+    y = SHIP_HULL_INSET
+    w = SHIP_HULL_W - 2 * SHIP_HULL_INSET
+    h = SHIP_HULL_H - 2 * SHIP_HULL_INSET
+    return x, y, w, h
+
+
+def _preset_ship_bridge() -> dict:
+    """Bridge deck: hull + U-shaped console array forward + windscreen north."""
+    hx, hy, hw, hh = _ship_hull_rect()
+    hull = (hx, hy, hw, hh)
+
+    # U-shaped console band along the forward (north) third of the deck.
+    # Two side console banks + one cross-band, leaving a captain's gap mid.
+    console_z = hy + SHIP_WALL + 80
+    console_h = 80
+    console_inset = SHIP_WALL + 80
+    console_left = (hx + console_inset, console_z, hw // 4, console_h)
+    console_right = (hx + hw - console_inset - hw // 4, console_z, hw // 4, console_h)
+    # Cross-band at the very front, with a center gap for the captain's view.
+    cross_y = hy + SHIP_WALL
+    cross_w = hw - 2 * console_inset
+    cross_h = 50
+    half_cross = (cross_w - SHIP_DOOR_W) // 2
+    cross_left = (hx + console_inset, cross_y, half_cross, cross_h)
+    cross_right = (hx + console_inset + half_cross + SHIP_DOOR_W, cross_y, half_cross, cross_h)
+
+    # Forward windscreen — long blue band along the north hull wall.
+    # Painted as 'walls' tagged windscreen by overpainting later.
+    return {
+        "canvas": (SHIP_HULL_W, SHIP_HULL_H),
+        "wall_thickness": SHIP_WALL,
+        "rooms": [hull],
+        "corridors": [],
+        # Treat the console banks as additional 'rooms' so they get a
+        # walled border + inner floor — reads as raised console surfaces.
+        "extra_walls": [console_left, console_right, cross_left, cross_right],
+        "doors": [],
+        "windscreen": {
+            "side": "north",
+            "thickness": 28,
+            "frac": 0.55,  # length as a fraction of hull width
+        },
+        "light_count_per_room": 6,
+    }
+
+
+def _preset_ship_engineering() -> dict:
+    """Engineering deck: hull + central reactor well + side control panels + rear ramp."""
+    hx, hy, hw, hh = _ship_hull_rect()
+    hull = (hx, hy, hw, hh)
+
+    # Reactor well — a square wall ring near the center.
+    reactor_size = min(hw, hh) // 3
+    reactor_x = hx + (hw - reactor_size) // 2
+    reactor_y = hy + (hh - reactor_size) // 2
+    reactor = (reactor_x, reactor_y, reactor_size, reactor_size)
+
+    # Side control panel banks — two long thin walled rooms hugging the
+    # east and west hull walls.
+    panel_inset = SHIP_WALL + 40
+    panel_h = hh - 2 * panel_inset
+    panel_w = 100
+    panel_west = (hx + panel_inset, hy + panel_inset, panel_w, panel_h)
+    panel_east = (hx + hw - panel_inset - panel_w, hy + panel_inset, panel_w, panel_h)
+
+    # Rear cargo ramp — extension breaking the south hull wall.
+    ramp_w = hw // 4
+    ramp_h = SHIP_HULL_INSET  # reach the canvas edge
+    ramp = {
+        "side": "south",
+        "x_frac": 0.5,  # centered
+        "width_frac": ramp_w / hw,
+    }
+    return {
+        "canvas": (SHIP_HULL_W, SHIP_HULL_H),
+        "wall_thickness": SHIP_WALL,
+        "rooms": [hull, reactor, panel_west, panel_east],
+        "corridors": [],
+        "doors": [],
+        "ramp": ramp,
+        "light_count_per_room": 6,
+    }
+
+
+def _preset_ship_barracks() -> dict:
+    """Barracks deck: hull + double rows of bunk-cell walls flanking center walkway."""
+    hx, hy, hw, hh = _ship_hull_rect()
+    hull = (hx, hy, hw, hh)
+
+    # Bunk cells: two rows of small rectangles along the long axis.
+    bunk_w = 110
+    bunk_h = 180
+    n_bunks = 8
+    cells_per_side = n_bunks
+    side_band_y_top = hy + SHIP_WALL + 60
+    side_band_y_bot = hy + hh - SHIP_WALL - 60 - bunk_h
+    spacing = (hw - 2 * (SHIP_WALL + 60) - cells_per_side * bunk_w) // max(1, cells_per_side - 1)
+    bunks_top: list[tuple[int, int, int, int]] = []
+    bunks_bot: list[tuple[int, int, int, int]] = []
+    for i in range(cells_per_side):
+        x = hx + SHIP_WALL + 60 + i * (bunk_w + spacing)
+        bunks_top.append((x, side_band_y_top, bunk_w, bunk_h))
+        bunks_bot.append((x, side_band_y_bot, bunk_w, bunk_h))
+    # Bunks are sub-structures, not full rooms — go in extra_walls so the
+    # painter doesn't decorate each bunk with its own perimeter lights.
+    return {
+        "canvas": (SHIP_HULL_W, SHIP_HULL_H),
+        "wall_thickness": SHIP_WALL,
+        "rooms": [hull],
+        "corridors": [],
+        "extra_walls": bunks_top + bunks_bot,
+        "doors": [],
+        "light_count_per_room": 8,
+    }
+
+
+def _preset_ship_cargo() -> dict:
+    """Cargo hold: hull + container grid + center aisle + rear loading ramp."""
+    hx, hy, hw, hh = _ship_hull_rect()
+    hull = (hx, hy, hw, hh)
+
+    # Container grid: rows of square wall blocks flanking a wide center aisle.
+    container = 130
+    spacing = 24
+    cols = 9
+    cargo_top_y = hy + SHIP_WALL + 60
+    cargo_bot_y = hy + hh - SHIP_WALL - 60 - container
+    side_block_w = cols * container + (cols - 1) * spacing
+    block_x_start = hx + (hw - side_block_w) // 2
+    containers: list[tuple[int, int, int, int]] = []
+    for c in range(cols):
+        x = block_x_start + c * (container + spacing)
+        containers.append((x, cargo_top_y, container, container))
+        containers.append((x, cargo_bot_y, container, container))
+    # Rear loading ramp.
+    ramp = {
+        "side": "south",
+        "x_frac": 0.5,
+        "width_frac": 0.45,
+    }
+    # Containers are sub-structures: extra_walls (no per-block lights).
+    return {
+        "canvas": (SHIP_HULL_W, SHIP_HULL_H),
+        "wall_thickness": SHIP_WALL,
+        "rooms": [hull],
+        "corridors": [],
+        "extra_walls": containers,
+        "doors": [],
+        "ramp": ramp,
+        "light_count_per_room": 8,
+    }
+
+
 FLOORPLAN_PRESETS: dict[str, "callable[[], dict]"] = {  # type: ignore[type-arg]
     "hab-2room": _preset_hab_2room,
     "hab-3room-corridor": _preset_hab_3room_corridor,
@@ -1180,6 +1428,10 @@ FLOORPLAN_PRESETS: dict[str, "callable[[], dict]"] = {  # type: ignore[type-arg]
     "chapel-nave-with-apse": _preset_chapel_nave_with_apse,
     "industrial-bay": _preset_industrial_bay,
     "archive-stacks-grid": _preset_archive_stacks_grid,
+    "ship-bridge": _preset_ship_bridge,
+    "ship-engineering": _preset_ship_engineering,
+    "ship-barracks": _preset_ship_barracks,
+    "ship-cargo": _preset_ship_cargo,
 }
 
 
