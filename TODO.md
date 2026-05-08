@@ -31,16 +31,6 @@ summary:
 
 ## Open
 
-- [ ] **Chapel `--floor-only` thin perimeter trim** — accepted as
-  known minor cosmetic. Three rounds of prompt iteration could not
-  fully eliminate the trim because the chapel-iconography prior is
-  too strong in Flux/Chroma; "no border, no trim" wording in the
-  positive prompt actively makes it worse (Flux latches onto the
-  forbidden nouns). The negative addendum already contains
-  `border`, `trim`, `frame`, `decorative border`. The current
-  round-4 result (centered Aquila medallion + thin trim line) is
-  the best stable configuration. A LoRA trained on borderless
-  chapel reference art would likely fix it; out of scope for now.
 - [ ] **Foundry V14 stackable scene end-to-end test.** Real
   multi-room battlemap pair now staged at
   `dh-cartography/battlemaps/hab_3room_base.png` +
@@ -49,12 +39,6 @@ summary:
   `../../deploy.sh cartography`, then in Foundry create a scene
   using the base as Background and the walls-alpha as Foreground
   tile, drop a token, verify wall occlusion. ~5-min operator check.
-- [ ] **Floor texture weight in spacecraft mode (round 2).** First
-  iteration applied to hab fragment (front-loaded distinctive nouns,
-  added "high contrast", "distinct"). Re-render scheduled. If still
-  subtle, options: (a) repeat for other archetypes; (b) modify the
-  spacecraft workflow JSON to boost floor-region guidance; (c) accept
-  the limitation as an inherent trade-off of regional conditioning.
 - [ ] **Operator-driven manual review of orientation + state on
   outliers.** The CLIP zero-shot orientation classifier is ~64%
   accurate on hand-grounded tests; ~36% of populated values may be
@@ -87,6 +71,20 @@ summary:
   new programmatic ship-* presets + `verify_deck_stack.py` (which
   works on arbitrary layout PNGs). `make_deck_variants.py` docstring
   now points to the recommended workflow.
+- [x] **Chapel `--floor-only` thin perimeter trim.** Accepted as
+  known minor cosmetic after round-5 iteration made it worse, not
+  better. Documented in docs/battlemap-workflow.md as the
+  "negative-shaped phrasing in positive prompt" pattern. Only a
+  chapel-style LoRA would fix this; not worth the cost.
+- [x] **Floor texture weight in spacecraft mode.** Accepted as
+  inherent ceiling of regional-conditioning splitting guidance
+  budget across all 5 regions (~1/5 effective weight per region).
+  Round 1 iteration on hab gave a modest improvement; further
+  rounds hit diminishing returns. Workflow-JSON guidance boost is
+  the only remaining lever and would require server-side workflow
+  surgery; not worth the cost given the floor-only standalone
+  pipeline already produces strong textures when needed for
+  pure-floor scenes.
 - [x] **Wide-scale overlay helper.** New `make_overlay.py` with four
   subcommands: hex (transparent grid overlay), zones (faction /
   jurisdiction polygons from a YAML spec), fleet (movement arrows
