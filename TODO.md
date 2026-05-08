@@ -51,12 +51,6 @@ summary:
   subtle, options: (a) repeat for other archetypes; (b) modify the
   spacecraft workflow JSON to boost floor-region guidance; (c) accept
   the limitation as an inherent trade-off of regional conditioning.
-- [ ] **Multi-deck IoU sanity check** in `make_deck_variants.py`:
-  print wall-IoU between deck pairs after writing, so the operator
-  knows quantitatively that hull pixels match across decks.
-  (The new `ship-*` presets in `FLOORPLAN_PRESETS` guarantee this
-  by sharing `_ship_hull_rect()`, but a check still helps when an
-  operator builds custom decks.)
 - [ ] **Operator-driven manual review of orientation + state on
   outliers.** The CLIP zero-shot orientation classifier is ~64%
   accurate on hand-grounded tests; ~36% of populated values may be
@@ -85,6 +79,10 @@ summary:
 - [x] **Multi-deck IoU sanity check.** New `verify_deck_stack.py`
   proves the four ship-deck layouts share canvas + hull bbox
   pixel-perfect (interior walls intentionally differ).
+- [x] **make_deck_variants.py IoU sanity check.** Superseded by the
+  new programmatic ship-* presets + `verify_deck_stack.py` (which
+  works on arbitrary layout PNGs). `make_deck_variants.py` docstring
+  now points to the recommended workflow.
 - [x] **Wide-scale overlay helper.** New `make_overlay.py` with four
   subcommands: hex (transparent grid overlay), zones (faction /
   jurisdiction polygons from a YAML spec), fleet (movement arrows

@@ -2,23 +2,21 @@
 # /// script
 # dependencies = ["pillow", "numpy"]
 # ///
-"""Multi-deck layout variant helper.
+"""Multi-deck layout variant helper. **Largely superseded** — use the
+programmatic ``ship-*`` presets in ``FLOORPLAN_PRESETS`` for new
+multi-deck builds, since they share the canonical hull via
+``_ship_hull_rect()`` and produce architecturally-coherent decks
+without operator paint work.
 
-Takes a base hull layout PNG (canonical-color: walls + floor + outer
-black) and emits N copies named ``<base>_deck<N>.png``. Each emitted
-copy preserves the outer hull (wall + floor band) byte-for-byte so
-multi-deck stacks share footprint at pixel-perfect alignment when
-fed through the spacecraft workflow.
+This script remains useful for the narrow case where the operator has
+a *hand-painted* base layout and wants to fork deck variants from it
+with simple canonical openings (rear ramp, dorsal windscreen). For
+that case it preserves the source hull byte-for-byte and only paints
+the requested opening.
 
-Optional canonical openings (rear ramp, dorsal windscreen) can be
-pre-painted on a deck-by-deck basis so the architectural delta
-between decks is captured at the layout layer rather than hand-edited
-in an image editor.
-
-Hand-painting room-detail per deck (interior partitions, lighting
-fixtures, etc.) is still left to the operator — this script only
-handles the structural variations that are difficult to keep aligned
-by hand.
+For ALIGNMENT VERIFICATION (whether a set of decks will stack
+pixel-perfect in Foundry), use ``verify_deck_stack.py`` — it accepts
+arbitrary layout PNGs and reports canvas + hull-bbox match.
 
 Usage:
     uv run make_deck_variants.py base_hull.png --decks 2
@@ -28,6 +26,14 @@ Usage:
 Openings spec: ``deck<N>=<role>:<side>`` where role ∈ {ramp,
 windscreen} and side ∈ {north, south, east, west}. Multiple openings
 per deck repeat the flag.
+
+Recommended workflow today:
+1. ``uv run generate_battlemap.py make-floorplan layouts/bridge.png \\
+        --preset ship-bridge`` (and similarly for engineering / barracks
+   / cargo).
+2. ``uv run verify_deck_stack.py`` to confirm pixel-perfect stack.
+3. ``uv run generate_battlemap.py spacecraft --layout <layout.png> \\
+        --style ship-<deck>`` to render each deck through Flux.
 """
 from __future__ import annotations
 
