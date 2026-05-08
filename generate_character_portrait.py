@@ -171,7 +171,7 @@ class PortraitSpec:
     output: Path
 
 
-def build_portrait_prompt(*, name: str, cls: str, slot: str) -> tuple[str, str]:
+def build_portrait_prompt(*, name: str, cls: str, slot: str, gender: str | None = None, age: str | None = None) -> tuple[str, str]:
     if cls not in CLASS_PROFILES:
         raise ValueError(f"unknown class {cls!r}; known: {list(CLASS_PROFILES)}")
     body = CLASS_PROFILES[cls]["prompt"]
@@ -180,14 +180,20 @@ def build_portrait_prompt(*, name: str, cls: str, slot: str) -> tuple[str, str]:
         "three-quarter": "three-quarter length portrait from the thighs up, neutral background, centered composition",
         "full-body": "full-body standing portrait, neutral background, centered composition",
     }[slot]
+    subject_bits: list[str] = []
+    if age:
+        subject_bits.append(age)
+    if gender:
+        subject_bits.append({"male": "man", "female": "woman", "nonbinary": "person"}.get(gender.lower(), gender))
+    subject_clause = (" ".join(subject_bits) + ", ") if subject_bits else ""
     t5 = (
         f"{composition}, "
         f"warhammer 40000 grimdark aesthetic, painterly oil-painting illustration, "
-        f"{body}, "
+        f"{subject_clause}{body}, "
         f"highly detailed character portrait, dramatic chiaroscuro lighting, "
         f"professional concept art quality, single character, plain dark background"
     )
-    clip_l = f"warhammer 40k, grimdark portrait, {cls}, painterly oil painting"
+    clip_l = f"warhammer 40k, grimdark portrait, {subject_clause}{cls}, painterly oil painting"
     return t5, clip_l
 
 
@@ -351,7 +357,7 @@ def cmd_portrait(args: argparse.Namespace) -> int:
         load_symbol(sym_spec[0])
         placements.append(resolve_portrait_anchor(sym_spec, image_w=width, image_h=height))
 
-    base_t5, base_clip_l = build_portrait_prompt(name=args.name, cls=args.cls, slot=args.slot)
+    base_t5, base_clip_l = build_portrait_prompt(name=args.name, cls=args.cls, slot=args.slot, gender=args.gender, age=args.age)
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     prefix = args.output.stem
@@ -463,6 +469,10 @@ def main() -> int:
                     "paste-on-top of black canonical SVG.")
     ap.add_argument("--integration-denoise", type=float, default=0.45,
                     help="Pass 2 img2img denoise (0.0-1.0). 0.40-0.55 is the working range.")
+    ap.add_argument("--gender", choices=["male", "female", "nonbinary"], default=None,
+                    help="Subject gender. Without this, Flux defaults to a masculine read.")
+    ap.add_argument("--age", default=None,
+                    help="Free-text age cue, e.g. 'late 50s', 'early 30s'.")
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--output", type=Path, required=True)
     ap.set_defaults(func=cmd_portrait)
