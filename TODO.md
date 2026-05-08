@@ -31,12 +31,16 @@ summary:
 
 ## Open
 
-- [ ] **Chapel `--floor-only` thin perimeter trim (minor).** Round 4
-  polish reduced the artifact: gilded mosaic now renders as a
-  centered Aquila medallion (acceptable feature) plus a thin trim
-  line along the perimeter. The chapel iconography prior is a strong
-  Flux signal that resists prompt suppression. Operators can crop or
-  accept; not blocking.
+- [ ] **Chapel `--floor-only` thin perimeter trim** — accepted as
+  known minor cosmetic. Three rounds of prompt iteration could not
+  fully eliminate the trim because the chapel-iconography prior is
+  too strong in Flux/Chroma; "no border, no trim" wording in the
+  positive prompt actively makes it worse (Flux latches onto the
+  forbidden nouns). The negative addendum already contains
+  `border`, `trim`, `frame`, `decorative border`. The current
+  round-4 result (centered Aquila medallion + thin trim line) is
+  the best stable configuration. A LoRA trained on borderless
+  chapel reference art would likely fix it; out of scope for now.
 - [ ] **Foundry V14 stackable scene end-to-end test.** Real
   multi-room battlemap pair now staged at
   `dh-cartography/battlemaps/hab_3room_base.png` +
