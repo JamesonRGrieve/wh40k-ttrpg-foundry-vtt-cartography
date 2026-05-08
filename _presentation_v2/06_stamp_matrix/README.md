@@ -13,9 +13,15 @@ This pass added 4 supplemental variants:
 | cogitator_console_north_inactive.png | (parent) | original Gemini grid extract | north | inactive |
 | cogitator_console_destroyed.png | (parent) | original Gemini grid extract | (none) | destroyed |
 | cogitator_console_north_damaged.png | _01.png | generative img2img, denoise=0.55, seed=42 | north | damaged |
-| cogitator_console_south_active.png | _01.png | geometric rotation 180° | south | active |
-| cogitator_console_west_active.png | _01.png | geometric rotation 90° | west | active |
-| cogitator_console_east_active.png | _01.png | geometric rotation 270° | east | active |
+
+**The pure 90/180/270° geometric rotation files (south/east/west) that
+this folder originally contained have been deleted** per the new
+"Hard rule" in `cartography/CLAUDE.md`: Foundry rotates tiles freely
+at runtime, so storing 4× copies of identical pixels is 4× storage
+for zero gameplay benefit. Only state changes (intact ↔ damaged ↔
+destroyed) and activation changes (active ↔ inactive) remain as
+persisted variants — those are real re-renders with different
+pixel content.
 
 All seven sidecars share the parent's group_id, so Foundry's Mass
 Edit Preset Browser groups them as a coherent variant matrix.

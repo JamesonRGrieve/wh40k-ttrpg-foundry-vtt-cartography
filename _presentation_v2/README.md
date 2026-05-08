@@ -1,11 +1,37 @@
-# Presentation v2 — candidates for review
+# Presentation v2 — REJECTED 2026-05-08
 
-Built 2026-05-07. Successor to `_presentation/`, which the operator
-rejected on 2026-05-07. The reinforcement rules in
-`cartography/CLAUDE.md` "Quality acceptance rules" govern this
-bundle: every artifact below is a **candidate for operator review**,
-not a self-declared deliverable. Aesthetic judgment is the
-operator's, not mine.
+Built 2026-05-07. Operator-reviewed and rejected on 2026-05-08
+across most goals:
+
+- Portraits read as low-fidelity thumbnails vs. deployed
+  Edric Family / Pell Osric references; aquilas not true to
+  canonical two-headed eagle shape.
+- Every battlemap defaulted to a square canvas; layouts must follow
+  actual room geometry.
+- Ship decks read as MS-Paint compared to deployed interior
+  battlemaps — flat walls, weak floor, schematic shapes.
+- District overheads read as freestanding building stamps, not as
+  hive-city density.
+- Chapel apse aquila (the closest win) had wings arched-up like a
+  generic angel statue, not the canonical aquila shape.
+- Stamp matrix demo wasted storage on pure 90/180/270° rotations
+  (Foundry rotates tiles freely at runtime).
+
+Full post-mortem in `docs/battlemap-workflow.md` under "2026-05-08
+— Second presentation rejection". The "Project end goal" and "Hard
+rules" sections in `cartography/CLAUDE.md` have been updated.
+
+**Operator-instructed tooling decision:** use Gemini Imagen 4
+("nano-banana") for iconography-critical surfaces. Local Chroma-
+Flux has a hard ceiling on canonical 40K iconography that no
+parameter sweep on the existing scripts will lift. See
+`cartography/CLAUDE.md` "Tooling decisions" section.
+
+This bundle is preserved as a record of what got rejected and why.
+The artifacts below should NOT be promoted to deployed paths
+(`Characters/portraits/`, `battlemaps/SOLENNE_*.png`, etc.) — they
+fall short of the bar. Future sessions: read the post-mortem and
+the updated rules before producing a v3 bundle.
 
 ## Folder index
 

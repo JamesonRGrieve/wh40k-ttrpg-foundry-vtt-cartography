@@ -1,22 +1,85 @@
 # Cartography TODO
 
 Open work, in priority order. Items removed when done. Last refreshed
-2026-05-07.
+2026-05-08.
 
-## 2026-05-07 review — rejected by operator
+## 2026-05-08 review — rejected by operator (second presentation)
 
-The operator reviewed `_presentation/` and rejected the symbology,
-deck aesthetic, hab floor texture, and the hex-on-system-chart demo.
-Several items I previously self-closed under "RECENTLY CLOSED" are
-not actually done. Full post-mortem in
-`docs/battlemap-workflow.md` under
-"2026-05-07 — Review post-mortem".
+The operator reviewed `_presentation_v2/` and rejected on specific
+axes: portraits low-fidelity + aquilas not true-to-shape, all maps
+defaulted to a square canvas, ship decks read as MS-Paint vs.
+deployed battlemaps, district overheads do not read as a hive city,
+chapel apse aquila has arched-up wings instead of canonical shape,
+stamp matrix wasted storage on pure rotations. Full post-mortem in
+`docs/battlemap-workflow.md` under "2026-05-08 — Second presentation
+rejection".
 
-The reinforcement rules in `cartography/CLAUDE.md` under
-"Quality acceptance rules" are mandatory reading before claiming
-anything below is finished.
+The rules in `cartography/CLAUDE.md` "Project end goal" and "Hard
+rules" have been updated. Pre-existing 2026-05-07 rules remain in
+force; this is additional, not replacement.
 
-## Open (HIGH PRIORITY — review-rejected, must redo)
+Operator-instructed tooling decision: **use Gemini Imagen 4
+("nano-banana") for iconography-critical surfaces.** Local Chroma-
+Flux has a hard ceiling on canonical 40K iconography because the
+model doesn't have aquila/rosette/cog as concept tokens. See
+`cartography/CLAUDE.md` "Tooling decisions" section.
+
+## Open (HIGH PRIORITY — 2026-05-08 review-rejected)
+
+- [ ] **Stand up a Gemini Imagen 4 generation path** for iconography-
+  critical portraits and scenes. Decision: replace the local
+  silhouette-paste-then-img2img pattern with native Imagen renders
+  for those surfaces. Keep local Chroma-Flux for surfaces where it
+  works (battlemap interiors, wide-scale archetypes, multi-deck
+  geometry). Open question for the operator: API endpoint, auth,
+  budget envelope.
+- [ ] **Non-square canvas defaults across battlemap renders.** The
+  4 new SOLENNE_*.png interiors and the 2 district overheads in
+  `_presentation_v2/` were all 1024×1024 by default. Real campaign
+  locations are not square. Add a layout-aware canvas-shape pass
+  upstream of the render call: per-archetype default aspect ratios
+  (hab apartment 3:2, chapel 4:3, sump 3:2, medicae 4:3, garrison
+  16:9, district 1:1 OK if it really is a top-down quadrant), or
+  drive the canvas shape from a `--width` × `--height` operator
+  argument.
+- [ ] **Hive-city density for the district archetype.** The district
+  prompt produces freestanding building stamps on an open canvas.
+  Hive cities are stacked vertical mega-blocks, kilometres deep,
+  sharing walls and rooftops. Either rewrite the district prompt
+  to anchor on Necromunda / Forge World hive cross-sections, or
+  switch to Gemini for district renders, or move on entirely until
+  reference images are operator-supplied.
+- [ ] **Painterly fidelity gap on ship decks.** `painterly_pass.py`
+  at d=0.75 introduces some surface detail but the source's
+  flatness dominates. Untested levers (in priority order): IPAdapter
+  conditioning using `SOLENNE_section7_maintenance_tunnels.png` as
+  reference; switch to Gemini for the surface pass; LoRA on
+  deployed Solenne battlemap references; d=0.85 + prompt anchor
+  on a specific deployed map.
+- [ ] **Portrait fidelity gap.** New 7 NPC bust portraits in
+  `_presentation_v2/01_portraits/` read as low-resolution
+  thumbnails next to the deployed Edric Family / Pell Osric refs.
+  Untested levers: drop the anti-symbol negative on the txt2img
+  pass; bump the latent-resolution to 1024×1280 minimum; IPAdapter
+  conditioning using a deployed reference; switch to Gemini for
+  iconography-bearing portraits.
+- [ ] **Aquila canonical-shape requirement.** Even when the local
+  pipeline integrates the symbol painterly-ly (chapel apse d=0.80),
+  the wings come back arched-up like a generic angel statue, not
+  the canonical two-headed eagle. Per the new hard rule in
+  `cartography/CLAUDE.md`, this is a regression regardless of
+  surface fidelity. Tied to the Gemini-tooling decision above.
+
+## Open (carried from 2026-05-07 review — still in force)
+
+The 2026-05-07 review rejected `_presentation/` for symbology,
+deck aesthetic, hab floor texture, and hex-on-system-chart demo.
+Full post-mortem in `docs/battlemap-workflow.md` under "2026-05-07
+— Review post-mortem". The reinforcement rules in
+`cartography/CLAUDE.md` "Quality acceptance rules" are mandatory
+reading.
+
+## Open (carried — review-rejected, must redo)
 
 - [ ] **Symbology integration — pass-2 denoise was wrong.** Chapel
   Aquila and inquisitor rosette are still flat black SVG with noise

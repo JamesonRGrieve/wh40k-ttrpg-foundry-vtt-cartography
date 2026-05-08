@@ -16,6 +16,126 @@ acceptance rules". Read it before claiming any aesthetic outcome.
 
 ---
 
+## 2026-05-08 — Second presentation rejection (the local pipeline has hard ceilings)
+
+After the 2026-05-07 rules were laid down, I produced
+`_presentation_v2/` across all 9 goals and presented as a junior dev.
+The operator rejected most of it on specific axes. The rejections
+were not aesthetic-judgment-call edge cases; they were structural
+problems that the 2026-05-07 rules already implied but did not name
+explicitly. The rules in `cartography/CLAUDE.md` "Project end goal"
+and "Hard rules" have been updated as a result. Capturing here so
+the next session understands what changed and why.
+
+### What got rejected and why
+
+1. **Portraits read as low-fidelity painterly thumbnails.** The
+   deployed `Characters/Edric Family/*.png` and `Pell Osric.png`
+   carry sustained fine detail across face, fabric, embroidery, and
+   environment. My 7 new bust portraits at 768×1024 did not. The
+   pipeline's two-pass (txt2img → composite silhouette → img2img
+   repaint at d=0.45) produces a canvas that's coherent but
+   under-resolved at the surface level. The class profiles' anti-
+   symbol negative prompts (`PORTRAIT_NEG_T5`) compound the problem:
+   we tell the model not to render iconography natively, then paste
+   a silhouette and try to integrate it, then crop and ship. None
+   of those steps add the painted-detail pass that the deployed
+   references have.
+
+2. **Aquila silhouettes do not survive integration.** The pipeline
+   pastes a black SVG silhouette and runs img2img to "integrate"
+   it as material. Low denoise (0.45) preserves the silhouette but
+   reads as a flat sticker. High denoise (0.80) repaints the
+   silhouette into surrounding scene material but loses the
+   canonical aquila shape — the chapel apse aquila came back with
+   wings arched up like a generic angel statue, not the canonical
+   two-headed eagle with wings spread. There is no parameter
+   setting on this pipeline that gives both surface integration AND
+   canonical shape preservation simultaneously.
+
+3. **Every battlemap was square because the script defaults to a
+   square canvas.** The 4 new SOLENNE_*.png interiors and the 2
+   district overheads were rendered at 1024×1024 because that's the
+   default. Real campaign locations are not all square. The Sump,
+   the chapel, the medicae post — none of those are square in the
+   campaign layout sense. A square render of a rectangular hab
+   apartment is wrong on its face, regardless of how good the
+   surfaces look.
+
+4. **Painterly img2img pass on ship decks read as MS-Paint
+   compared to the deployed interior battlemaps.** `painterly_pass.py`
+   at denoise=0.75 introduced rust patina and console silhouettes,
+   but the underlying spacecraft-mode source render's flat surfaces
+   dominated through. Wall textures stayed flat, floor textures
+   stayed weak, the deck features still read as schematic shapes
+   rather than painted machinery. The ship-deck surface fidelity
+   gap is unsolved.
+
+5. **District overhead renders read as freestanding building stamps
+   on an open canvas.** Hive cities are kilometres-deep stacked
+   urbanism, mega-blocks sharing walls, vertical sprawl with
+   trans-hive arteries. My district seed-7 / seed-99 candidates
+   read as a frontier town aerial photo with smoke. The district
+   archetype prompt is fundamentally underspecified for hive-city
+   density.
+
+6. **Stamp matrix demo wasted storage on pure rotations.** Foundry
+   rotates tiles freely at runtime. Storing 4× copies of the same
+   pixels for north/south/east/west is 4× the disk for zero
+   gameplay benefit. Pure geometric rotation is a Foundry runtime
+   concern, not a pipeline output. The new "Hard rules" entry
+   codifies this.
+
+### What this means for the local pipeline (operator-instructed)
+
+**Gemini Imagen 4 ("nano-banana") nails canonical 40K iconography
+on the first try.** Our local Chroma-Flux does not. The reason
+isn't a parameter sweep we haven't tried — it's that Imagen has
+"Imperial Aquila" as a known concept token and Chroma-Flux does not.
+Layering a silhouette-paste + img2img workaround on top of a model
+that doesn't know the symbol cannot produce canonical-shape output.
+
+The correct response is to use Gemini for iconography-critical
+surfaces (portraits with named symbols, scenes with hero-symbol
+focal points, ship hulls with stamped aquilas) and keep local
+Chroma-Flux for surfaces where it works — battlemap interiors with
+incidental ambient iconography (chapel floor mosaics worked
+natively), wide-scale archetypes, multi-deck layout geometry.
+
+`cartography/CLAUDE.md` "Tooling decisions" section codifies this
+boundary. Future sessions: if you find yourself reaching for the
+silhouette-paste-then-img2img integration pattern, stop and read
+that section first.
+
+### Untried local levers (in case Gemini becomes unavailable)
+
+- IPAdapter image conditioning using deployed Vigil Ledger / Corvin
+  Edric / test_inquisitor_v2 as image refs. CLIP-ViT-H +
+  ip-adapter-plus_sdxl_vit-h are already installed and used for
+  `assign_groups` clustering — the same encoder can supply image
+  embeddings as generation conditioning.
+- Drop the anti-symbol negative prompt entirely on the txt2img pass.
+  Let Chroma-Flux render whatever it renders, then judge — we may
+  be over-correcting for an old failure mode.
+- Train a small Solenne-style LoRA on the deployed campaign
+  references. 5-15 paired image+caption rows is the minimum useful
+  set; a one-day fine-tune on a 24GB card.
+- Localized inpainting with a tight mask on just the symbol region
+  so the surrounding scene is untouched.
+
+### What was kept from the bundle
+
+- The `painterly_pass.py` helper itself — useful infrastructure
+  even when the current ship-deck output is below bar.
+- The `--gender` / `--age` flags on `generate_character_portrait.py`
+  — independent of the fidelity discussion.
+- The cogitator-console damaged variant (img2img re-render, real
+  pixel changes). The four pure rotation files are deleted per the
+  new hard rule.
+- The 2026-05-07 rules + this 2026-05-08 update.
+
+---
+
 ## 2026-05-07 — Review post-mortem: shipped trash, claimed wins I didn't have
 
 Operator reviewed the `_presentation/` bundle and rejected nearly all

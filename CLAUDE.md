@@ -4,15 +4,24 @@
 
 This project produces a complete, playable Foundry V14 asset set for
 the Solenne Dark Heresy 2e campaign. The aesthetic target is the
-existing deployed `SOLENNE_*.png` maps (painterly oil, FFG-era Dark
-Heresy tone). Anything weaker than that bar is not a deliverable.
+existing deployed `SOLENNE_*.png` maps and the deployed character
+portraits in `Characters/Edric Family/` (painterly oil, FFG-era Dark
+Heresy tone, full painted detail to the surface of every plane).
+Anything weaker than that bar is not a deliverable.
 
 The full deliverable surface — every item below is in scope and
 required:
 
 1. **Battlemaps** — interior tactical maps (hab, manufactorum,
    chapel, medicae, scholam, garrison, bar, tunnel, lair, archive,
-   etc.) at painterly Solenne-grade quality.
+   etc.) at painterly Solenne-grade quality. **Layouts must be
+   driven by the actual room geometry**, not defaulted to a square
+   canvas. Rectangular halls, L-shaped suites, multi-room
+   apartments with corridors, irregular tunnel networks, lopsided
+   industrial bays — the canvas shape and aspect ratio follow the
+   layout, not the other way around. A square render of a
+   non-square location is wrong, regardless of how good the
+   surfaces look.
 2. **Battlemap overlays** — perfectly registered Foreground layers
    that stack on a base map (e.g. catwalks over a factory floor,
    walls-alpha over architecture, mezzanines, gantries). Pixel
@@ -22,22 +31,42 @@ required:
    engineering, barracks, cargo, medbay, hangar, etc.) shares an
    identical hull bbox so decks layer perfectly when the operator
    stacks them in Foundry. Aesthetic must match the rest of the
-   battlemap line, not read as schematic.
+   battlemap line. **Wall textures, floor textures, and surface
+   features (consoles, bunks, crates, machinery) all need to read
+   as painted material at the same fidelity as the deployed
+   interior battlemaps.** A deck rendered with flat fills, simple
+   shapes, or schematic blocks does not advance this goal even if
+   the deck-stack geometry is pixel-perfect — the geometry pass and
+   the surface pass both have to land.
 4. **City maps — districts** — hab district, manufactorum district,
    medicae district, scholam district, Mechanicum spire district,
    PDF/garrison district, transit, ore-processing, etc. District-
    scale top-down maps the operator can place tokens on for
-   sub-tactical encounters.
+   sub-tactical encounters. **A district must read as a hive city
+   subsection**: dense vertical urbanism, stacked mega-blocks,
+   trans-hive arteries, smog-choked spires, layered structures
+   sharing walls and roofs across kilometres. A scattering of
+   freestanding building stamps on an open canvas is not a
+   district — that reads as a frontier settlement, not a hive.
+   Reference: 40K hive city imagery, Necromunda Sector Mechanicus,
+   Forge World hive cross-sections.
 5. **Planetary maps** — full-planet views (hive locations,
    continents, terrain) for strategic-scale narrative.
 6. **Star system maps** — system-scale charts (planets, orbits,
    warp routes) for travel and sector framing.
 7. **Stamps** — extracted asset library with full **matrix
    variations** per subject:
-   - Orientation (north/south/east/west, plus top-down/isometric
-     where applicable).
-   - Damage level (intact / damaged / destroyed).
-   - Activation level (active / inactive).
+   - Orientation: only when the variant requires actual
+     re-rendering (different lighting, different visible faces,
+     different perspective). **Pure 90/180/270° rotations of a
+     top-down PNG are NOT stored as separate files** — Foundry's
+     tile layer rotates freely at runtime, so saving four copies
+     of the same pixels is 4× storage with zero gameplay benefit.
+     Geometric rotation is a Foundry runtime concern, not a
+     pipeline output.
+   - Damage level (intact / damaged / destroyed) — these are real
+     re-renders with different pixel content.
+   - Activation level (active / inactive) — same; real re-renders.
    All variants of a subject are grouped (`group_id`) so Foundry's
    Mass Edit Preset Browser can search, filter, and present them
    as a coherent variant set. Missing variants in a group are
@@ -45,15 +74,28 @@ required:
    intact + damaged but no destroyed, the pipeline generates the
    missing variant from the existing ones.
 8. **Portrait generation** — character portraits in line with the
-   existing deployed character portraits, plus automatic cropping
-   to 1:1 tokens (Foundry actor-token convention).
+   deployed `Characters/Edric Family/*.png` and `Characters/Pell
+   Osric.png` references. **Fidelity bar is the deployed portraits,
+   not the current pipeline output.** The deployed references show
+   sustained fine detail across face, fabric folds, embroidery,
+   armor seams, and background environment. A portrait that reads
+   as a low-resolution painterly thumbnail does not match. Tokens
+   are 1:1 crops centered on the face.
 9. **Scene generation with integrated iconography** — narrative
    scene art (chapels, sanctums, war rooms, audience halls, etc.)
    where Imperial / Inquisitorial iconography is rendered AS scene
    material: brass relief on stone, etchings in metal, embossings
-   on armor, embroidered banners, gilt inlay, carved wood. Flat
-   SVG-on-render compositing is NOT an acceptable terminal state
-   for these scenes.
+   on armor, embroidered banners, gilt inlay, carved wood.
+   **Iconography must be true to the canonical shape**: an
+   Imperial Aquila is a two-headed eagle with wings spread
+   horizontally (or slightly down-swept, in a heraldic stoop),
+   never with arched-up wings or substituted with a generic angel
+   silhouette. An Inquisitorial Rosette is the canonical
+   skull-and-cross design, not a generic medal. If the integration
+   pass repaints the silhouette but loses the canonical shape, it
+   is a regression — high painterly fidelity does not excuse
+   silhouette drift. Flat SVG-on-render compositing is NOT an
+   acceptable terminal state for these scenes either.
 
 These requirements are immutable. They are not subject to
 reinterpretation, scope reduction, or "diminishing returns"
@@ -412,6 +454,73 @@ authority over it (e.g. `assign_groups.py` owns `group_id` only).
 
 ---
 
+## Tooling decisions — when local Chroma-Flux is the wrong tool
+
+The local ComfyUI / Chroma-Flux pipeline has a hard ceiling on
+iconography fidelity that no parameter sweep on the existing scripts
+will lift. The 2026-05-08 review made this explicit: Gemini-Imagen
+("nano-banana") nails canonical 40K iconography on the first try
+because it has the symbol vocabulary trained in; our local Chroma-
+Flux doesn't, and the workarounds we've layered on (silhouette-paste
++ img2img integration, anti-symbol negative prompts) produce either
+flat overlays or repainted silhouettes that drift off the canonical
+shape.
+
+### Where local Chroma-Flux is appropriate
+
+- Battlemap interiors where iconography is incidental ambient detail
+  (floor mosaics, ceiling beams, wall plating). The chapel floor
+  rosette in `SOLENNE_district4_chapel.png` is an example of this
+  working natively.
+- Wide-scale archetypes (district / region / planet / system) where
+  the visual language is geography and atmosphere, not iconographic
+  precision.
+- Multi-deck ship layout geometry (the spacecraft mode workflow
+  produces correct hull bbox alignment, even when the surface pass
+  needs to come from a different tool).
+
+### Where local Chroma-Flux must NOT be the terminal tool
+
+- **Portraits with named symbols on armor / fabric / collars.** The
+  silhouette-paste-then-img2img approach loses canonical aquila
+  shape under high denoise and reads as a flat sticker under low
+  denoise.
+- **Scenes with hero-symbol focal points** (chapel apse aquila, ship
+  hull aquila, banner of the Inquisition, Mechanicus shrine cog).
+  Same root cause.
+- **Any surface where the symbol shape itself carries the meaning**
+  — heraldry, sigil-laden documents, signet rings, ceremonial
+  regalia.
+
+### What to use instead
+
+For iconography-critical surfaces, use Gemini Imagen 4
+("nano-banana") via the Google API. The same Solenne-style anchors
+work — Imagen reads "painterly oil painting, grimdark warhammer
+40000 portrait" — and the model renders Imperial Aquila /
+Inquisitorial rosette / Mechanicus cog natively in canonical form.
+This is the operator-instructed tooling decision, not a workaround.
+
+Untried local levers (in case Gemini becomes unavailable or the
+operator wants to re-investigate):
+- IPAdapter image conditioning using the deployed Vigil Ledger /
+  test_inquisitor_v2 / Corvin Edric portraits as references. We
+  have CLIP-ViT-H + ip-adapter-plus_sdxl_vit-h installed and used
+  for `assign_groups`; the same encoder can feed image embeddings
+  as generation conditioning, not just clustering input.
+- A small LoRA trained on the deployed Solenne references (5-15
+  images) so Chroma-Flux learns this campaign's iconography
+  vocabulary.
+- Localized inpainting with a tight mask on the symbol region so
+  the surrounding scene is untouched and only the symbol gets
+  repainted.
+
+These levers stay listed because some future session may re-approach
+them; they are NOT a defense for shipping the current local-only
+pipeline output as iconography deliverables.
+
+---
+
 ## Quality acceptance rules (added after 2026-05-07 review)
 
 The operator reviewed a presentation bundle and rejected nearly all of
@@ -497,4 +606,21 @@ exist to prevent that recurrence. Full post-mortem in
 - **Never edit a sidecar by hand and then re-run `classify_stamps.py
   --force`** — `--force` overwrites the script-owned fields. Use
   `--force` only when you intend to re-classify.
+- **Never store pure 90/180/270° geometric rotations as separate
+  stamp PNGs.** Foundry rotates tiles freely at runtime; saving four
+  copies of identical pixels is 4× storage with zero gameplay
+  benefit. Only persist rotation variants when the variant requires
+  actual re-rendering (different lighting, different visible faces,
+  different perspective). `generate_stamp_variants.py rotate
+  --method generative` is the conditional path; `--method geometric`
+  is for one-off scratch use, not for persisted assets.
+- **Never default a battlemap canvas to square.** Pick the canvas
+  shape from the actual room geometry. A square render of a
+  rectangular room (or vice-versa) is a regression even if the
+  surfaces look painterly.
+- **Never ship iconography candidates from local Chroma-Flux without
+  side-by-side comparison against the canonical shape.** An aquila
+  with arched-up wings is not an aquila; an inquisitorial rosette
+  rendered as a generic medal is not an inquisitorial rosette.
+  See "Tooling decisions" above for when to switch to Gemini.
 - **Never `--no-verify` past pre-commit gates** in the parent repo.
