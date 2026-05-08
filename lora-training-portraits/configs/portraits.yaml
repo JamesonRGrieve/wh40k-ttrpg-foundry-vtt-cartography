@@ -1,0 +1,179 @@
+# ai-toolkit config — DH2 character portrait LoRA training run.
+#
+# Same Flex.1-alpha base + 3-GPU DDP as the iconography LoRA, just
+# pointed at the 15 portrait folders. After iconography training
+# finishes, kick off portraits with:
+#   ssh root@198.51.100.30 \
+#     'CONFIG_PATH=/opt/lora-training/configs/portraits.yaml flux-lora train'
+# (the helper reads CONFIG_PATH from /etc/default/flux-lora; override
+#  via env when invoking).
+#
+# Tuning notes (different from iconography):
+#   - rank 32 — portraits have more variation per training image than
+#     iconography shapes, so a slightly larger rank helps the LoRA
+#     learn style + subject vocabulary without underfitting.
+#   - lr 1e-4 (same as iconography).
+#   - resolution 768 with bucketing — corpus is mixed sizes
+#     (deployed portraits vary; Gemini outputs are ~1024² or wider).
+#   - steps 3000 — same as iconography. With 105 images that's ~28
+#     epochs; usually enough for portrait LoRAs.
+#   - sample_every 250 — 12 checkpoints kept; pick the best by audit.
+#   - trigger token: dh_portrait (in every caption). At inference,
+#     stack with iconography LoRA: <lora:dh_portrait:0.8>
+#     <lora:wh40k_iconography:0.6> dh_portrait, sym_inq_rosette
+#     on chest, ...
+
+job: extension
+config:
+  name: dh_portrait
+  process:
+    - type: sd_trainer
+      training_folder: /opt/lora-training/outputs
+      device: cuda
+      trigger_word: null  # captions already include dh_portrait
+
+      network:
+        type: lora
+        linear: 32
+        linear_alpha: 32
+
+      save:
+        dtype: float16
+        save_every: 250
+        max_step_saves_to_keep: 12
+        push_to_hub: false
+
+      datasets:
+        - folder_path: /opt/lora-training/portrait-voidship-crew
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-civilian-worker
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-civilian-trader
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-hive-underclass
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-imperial-guard
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-imperial-navy
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-ecclesiarchy
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-administratum
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-mechanicum
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-arbites
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-inquisition
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-medicae
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-astropath
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-nobility
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+        - folder_path: /opt/lora-training/portrait-flagellant
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          cache_latents_to_disk: true
+          resolution: [512, 768, 1024]
+
+      train:
+        batch_size: 1
+        steps: 3000
+        gradient_accumulation_steps: 1
+        train_unet: true
+        train_text_encoder: false
+        gradient_checkpointing: true
+        noise_scheduler: flowmatch
+        optimizer: adamw8bit
+        lr: 1e-4
+        ema_config:
+          use_ema: true
+          ema_decay: 0.99
+        dtype: bf16
+
+      model:
+        name_or_path: ostris/Flex.1-alpha
+        is_flux: true
+        quantize: true
+
+      sample:
+        sampler: flowmatch
+        sample_every: 250
+        width: 768
+        height: 1024
+        prompts:
+          # One probe per category to watch how each archetype is
+          # being learned. After training, these should render the
+          # canonical 40K archetype natively without a reference.
+          - "dh_portrait, mid-30s stocky man, civilian voidship engineer in oil-stained coveralls, cramped engine compartment with pipes and flickering lumens, nervous expression, warm orange-yellow mechanical lighting"
+          - "dh_portrait, late-50s woman, civilian shopkeeper in worn leather apron, dim transit-hub provisions store, weary expression, sodium-yellow side light"
+          - "dh_portrait, early 40s man, hive-world ganger with scarred and tattooed face, stitched leather and salvage armor, defiant snarling expression, neon-stained underhive lighting"
+          - "dh_portrait, late 30s woman, Astra Militarum trooper in flak armor with regimental insignia, sandbagged trench dugout, weary thousand-yard stare, diffuse overcast"
+          - "dh_portrait, late 50s man, Ecclesiarchy preacher in robed cleric vestments with censer at the belt, dim chapel nave, devout beatific expression, candlelit warm chiaroscuro"
+          - "dh_portrait, late 40s woman, Administratum scribe with ink-stained fingers and quill in hand, candlelit scriptorium, calculating watchful expression"
+          - "dh_portrait, mid-30s person, Adeptus Mechanicus tech-priest with half-flesh half-mechanical face and red robes, mechadendrites emerging, cold steel-blue rim light"
+          - "dh_portrait, early 50s man, Adeptus Arbites enforcer in heavy black carapace with shock-maul and shield, precinct corridor, stoic dead-eyed professional expression"
+          - "dh_portrait, severe weathered man late-40s, Inquisitor of the Holy Ordos in long dark coat over gunmetal armor, dim sanctum, calculating intense gaze"
+          - "dh_portrait, gaunt early 40s woman with sealed eyes and skull-like face, sanctioned astropath in cream-white hooded robe, ethereal painterly atmosphere"
+          - "dh_portrait, late 50s man, planetary noble in heavy brocade robes with house insignia and signet ring, wood-paneled hall, calculating slight smirk"
+          - "dh_portrait, early 30s flagellant in shredded shroud with self-flagellation scars, manacled chains, fanatical intensity in the eyes, torchlit"
+        neg: ""
+        seed: 42
+        walk_seed: true
+        guidance_scale: 4.0
+        sample_steps: 20
+
+meta:
+  name: dh_portrait
+  version: '1.0'
+  description: >-
+    Dark Heresy character portrait LoRA — 105 image corpus across 15
+    archetype categories (civilian, military, religious, bureaucratic,
+    underclass, mechanicum, inquisition, etc.), reusable across all 7
+    wh40k-rpg game systems. Stacks with the wh40k_iconography LoRA
+    at inference for full canonical 40K rendering.
