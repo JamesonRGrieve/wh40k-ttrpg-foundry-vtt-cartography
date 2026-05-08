@@ -463,6 +463,102 @@ full-body. Output naming: `<name>.png` for portrait,
 
 ---
 
+## 2026-05-07 — Multi-deck rebuild + wide-scale overlays + chapel round 5
+
+### Multi-deck (LANDED)
+
+Four programmatic ship-deck presets added to `FLOORPLAN_PRESETS`:
+`ship-bridge`, `ship-engineering`, `ship-barracks`, `ship-cargo`.
+All four share an identical outer hull via `_ship_hull_rect()`
+(SHIP_HULL_W=1792, SHIP_HULL_H=1024, SHIP_HULL_INSET=96, SHIP_WALL=36).
+
+Painter (`_make_floorplan`) extended with three new spec keys:
+- `extra_walls`: walled regions WITHOUT perimeter lights (used for
+  bunks, containers, console banks — sub-structures, not full rooms).
+  Without this, every bunk got 4 corner lights making the layout
+  unreadable.
+- `windscreen`: paints the canonical windscreen color band along a
+  named hull edge with configurable thickness + length fraction.
+- `ramp`: cuts a rectangular opening through the hull's named edge
+  from the hull boundary out to the canvas edge, painted ramp color.
+
+Rendered all four through the spacecraft workflow with new
+`INTERIOR_STYLE_FLOOR_TEXTURES` entries (polished steel + brass for
+bridge, ferrograte over reactor coils for engineering, scuffed
+barracks decking with hazard markings, plate steel cargo deck).
+Outputs in `_deliverables/08_multi_deck/<deck>_render.png` (with
+matching `_layout.png` showing the canonical-color input).
+
+**Wins:**
+- Replaces the prior MS-Paint doodles with real architectural decks.
+- Decks share canvas + hull bbox pixel-perfect; verified by
+  `verify_deck_stack.py`.
+- Each deck reads clearly per its function despite the regional-
+  conditioning ceiling on texture punch.
+
+**Fails / known:**
+- First attempt put bunks/containers in `rooms` — the painter's
+  default light placement decorated EACH bunk with 4 perimeter
+  lights, making the layout look like an LED matrix. Fixed by
+  introducing `extra_walls` for sub-structures.
+- Bridge windscreen renders subtly (the dark blue band is pretty
+  close to the wall color and Flux blends it). Acceptable but
+  less obvious than I'd hoped.
+
+### Wide-scale overlay helper (LANDED)
+
+New `make_overlay.py` with four subcommands producing transparent
+PNGs at the base render's dimensions:
+- `hex`: configurable flat-top hex grid with optional axial labels.
+- `zones`: faction/jurisdiction polygons from a YAML spec, with
+  per-zone color, opacity, label position. Overlapping zones blend
+  correctly via per-zone alpha-composited layers.
+- `fleet`: arrow vectors from a YAML spec for movement diagrams.
+- `compass`: tiny N/E/S/W rose at a chosen anchor.
+
+Verified hex composite over `SOLENNE_system_chart.png` (parchment
+chart) — grid lays cleanly without obscuring planet labels.
+Verified 3-zone sample (Inquisitorial Cordon / PDF Patrol /
+Mechanicus Holdfast) renders with overlap-blended polygons + labels.
+
+### Chapel round 5 — accepted artifact (FAIL)
+
+Tried to remove the perimeter trim that survived round 4. New
+chapel floor texture: "polished stone slab floor surface,
+edge-to-edge stone slabs, no border, no trim, no decorative edging,
+no mosaic frame, no gilded edge".
+
+Result: the trim got **thicker**, not thinner. Three rounds of
+iteration plus the existing `border, trim, frame` entries in
+INTERIOR_NEG_ADDENDUM_T5 cannot suppress the chapel-iconography
+prior. Adding the negation to the positive prompt actively makes it
+worse — Flux latches onto the forbidden nouns and renders them.
+
+Reverted to round-4 wording. Accepted the artifact as known minor
+cosmetic. Only a chapel-style LoRA trained on borderless
+references would likely fix this.
+
+Round 5 evidence kept at
+`battlemaps/qa/round5_floor/qa_round5_floor_chapel_seed42_00001_.png`.
+
+### Pattern observation (cross-cutting)
+
+Negative-shaped phrasing in the POSITIVE prompt is unreliable. Three
+times this session I've watched Flux render exactly the noun I tried
+to negate ("no banners" → banners, "no border" → border, "no
+decorative borders" → decorative borders). Reliable suppression
+requires either (a) the negative prompt list, OR (b) NOT mentioning
+the concept at all. The third option — saying nothing about the
+unwanted concept — is most reliable. Mentioning it even with "no"
+in front activates the prior.
+
+This is consistent with the well-known "thinking-of-a-pink-elephant"
+behavior of large LMs and applies to text-to-image conditioning
+likewise. Update INTERIOR_STYLE_FLOOR_TEXTURES advice:
+**don't mention what you don't want; just describe what you want.**
+
+---
+
 ## 2026-05-07 — Symbology integration: ControlNet attempt failed, img2img pivot works
 
 Goal of this round: replace the literal-paste symbol-compose pipeline
