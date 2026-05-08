@@ -113,6 +113,88 @@ and the recipe for the next LoRA category.
 
 ---
 
+## 2026-05-08 — Iconography LoRA training run + step-3000 evaluation
+
+First completed LoRA. ai-toolkit on CT 140 (3× RTX 3090, DDP via
+`accelerate launch --multi_gpu --num_processes=3`), Flex.1-alpha base,
+rank 16 / alpha 16, lr 1e-4, 3000 steps, save_every 250, EMA 0.99.
+Corpus: 317 reference-conditioned PNGs across 11 trigger tokens (29
+variants each minus 2 IMAGE_SAFETY blocks). 4h 25min wall time. Final
+checkpoint: `/opt/lora-training/outputs/wh40k_iconography/wh40k_iconography.safetensors`
+(117 MB).
+
+Step-3000 samples pulled to `lora-training/eval-samples/step-3000/`
+(11 PNGs, one per trigger). Step-0 baselines in `eval-samples/step-0/`.
+
+### Wins (mechanical)
+
+- **Training completed clean.** No NaN losses, no DDP rank desync, no
+  OOM. EMA checkpoints saved every 250 steps; 13 checkpoints retained.
+- **Pictorial triggers bound canonical shape.** Six of eleven render
+  the canonical 40K shape on the trigger alone (no reference-image
+  conditioning at inference): aquila, mech_cog, militarum_winged_skull,
+  sororitas_lys, ministorum, telepathica_eye. The aquila in particular
+  shows full canonical heraldic geometry (two profile heads, chevron
+  wings, talons) — the talons survived from corpus → trained model.
+- **Watermark non-contamination.** Gemini's bottom-right 4-pointed
+  sparkle does NOT appear in any of the 11 step-3000 samples. At
+  768–1024 training resolution the ~24 px sparkle was too small
+  relative to subject mass to bind to any trigger. The
+  `strip_watermark.py` work was insurance we didn't end up needing
+  for this LoRA. (Keep the script — portrait LoRA may be different.)
+- **Style anchor stacking works as designed.** Captions excluded
+  style descriptors; the trigger binds shape only. Sample prompts
+  added "polished brass relief on dark stone" and the model produced
+  brass relief on stone, not painted-on or printed iconography.
+- **Operator review process held.** Per the 2026-05-07 acceptance
+  rules, no aesthetic claims were made before pulling samples. Ratings
+  in the post are mechanical (canonical-shape match yes/no), and the
+  final accept/reject decision is the operator's.
+
+### Fails / weak spots
+
+- **Aquila is out of proportion — too tall.** Operator-flagged on
+  step-3000 review. Canonical Imperial Aquila is wider than it is
+  tall (wings dominant, body short); training drifted toward a
+  taller silhouette, probably because some corpus references showed
+  the symbol on vertical surfaces (banners, hull plates) where the
+  Gemini render preserved the symbol shape but the surrounding
+  scene cropping skewed the apparent aspect ratio. Fix candidates
+  for v2: (a) crop corpus references tighter around the symbol so
+  aspect ratio of the symbol dominates the bbox, (b) add an
+  "aspect: wider than tall, wings horizontal" clause to the aquila's
+  per-symbol prompt at corpus generation time, (c) curate-out the
+  tallest few aquila references before re-training.
+- **Diagrammatic triggers are weak.** Four of eleven render
+  surface treatment correctly but the canonical glyph is wrong:
+  inq_rosette (renders a serif "1" instead of the canonical
+  Inquisitorial-I with three crossbars), administratum (gibberish
+  in the seal), arbites (abstract crown-and-eye instead of the
+  I-with-wreath/scales), imperial_navy (generic gear instead of
+  anchor-and-aquila). Common factor: these four glyphs are the
+  most diagrammatic / least pictorial of the eleven. Hypothesis:
+  29 reference-conditioned variants is enough to bind a pictorial
+  shape but marginal for a diagrammatic glyph where exact line
+  layout matters. Rank 16 may also be insufficient. v2 candidates:
+  rank 24 + 50 variants for the four weak triggers, OR keep rank 16
+  but raise per-symbol variant count to 60+ on those four.
+- **Rogue Trader insignia is generic.** The Warrant of Trade
+  parchment / heading style is right, but the central seal renders
+  as a generic gilt roundel, not the canonical Warrant insignia.
+  Same root cause as diagrammatic class.
+
+### Net
+
+7/11 strong, 4/11 weak. Aquila proportions are the highest-priority
+follow-up because aquila is the highest-frequency call site (every
+chapel, ship hull, regimental banner, ecclesiarchal scene). The four
+diagrammatic triggers are the second priority. Operator's call on
+whether to ship as-is and prompt-scaffold the weak triggers, or
+re-train. The full corpus survives unchanged either way (append-only
+manifest), so a v2 retrain is cheap and incremental.
+
+---
+
 ## 2026-05-08 — Second presentation rejection (the local pipeline has hard ceilings)
 
 After the 2026-05-07 rules were laid down, I produced
