@@ -67,6 +67,7 @@ def slugify(text: str, maxlen: int = 48) -> str:
 class Job:
     category_dir: Path
     class_name: str             # display class name, e.g. "small civilian freighter"
+    silhouette: str             # per-class hull silhouette descriptor
     archetype: str
     hull_state: str
     lighting: str
@@ -76,25 +77,23 @@ class Job:
     lighting_clause: str
     exclusions: str
     caption_trailer: str
-    style_reference: Path
+    style_reference: Path | None
     out_png: Path
     out_txt: Path
 
     def prompt(self) -> str:
         return (
-            f"Use the attached reference image ONLY as a style anchor "
-            f"(painterly Imperial-gothic battlemap aesthetic, hull "
-            f"rendering, lumen-strip lighting, panel/rivet detail). DO "
-            f"NOT reproduce the reference's exact ship class or layout. "
-            f"The new battlemap depicts a DIFFERENT ship described "
-            f"below.\n\n"
-            f"Top-down battlemap of a basic Warhammer 40000 voidship, "
-            f"{self.class_name}, {self.archetype}. "
-            f"{self.hull_clause}. {self.composition}.\n\n"
+            f"Top-down orthographic battlemap of a Warhammer 40000 "
+            f"Imperial voidship — a {self.class_name}.\n\n"
+            f"HULL SILHOUETTE (most important — commit to this shape "
+            f"BEFORE drawing the interior):\n{self.silhouette}.\n\n"
+            f"INTERIOR LAYOUT: {self.archetype}.\n\n"
+            f"HULL TREATMENT: {self.hull_clause}.\n\n"
+            f"COMPOSITION: {self.composition}.\n\n"
             f"Hard constraints:\n"
             f"- Exactly one egress ramp.\n"
             f"- No additional hatches, airlocks, observation ports, or "
-            f"external openings.\n"
+            f"external openings on the hull.\n"
             f"- {self.empty_floors_clause}.\n\n"
             f"Hull state: {self.hull_state}. "
             f"{self.lighting_clause}, {self.lighting}. {self.exclusions}."
@@ -124,9 +123,24 @@ CLASS_NAMES = {
 
 def build_jobs(manifest: dict, only: str | None) -> list[Job]:
     defaults = manifest["defaults"]
-    style_ref = LORA_DIR / defaults["style_reference"]
-    if not style_ref.is_file():
-        raise FileNotFoundError(f"missing style reference: {style_ref}")
+    style_ref_rel = defaults.get("style_reference")
+    if style_ref_rel:
+        style_ref = LORA_DIR / style_ref_rel
+        if not style_ref.is_file():
+            raise FileNotFoundError(f"missing style reference: {style_ref}")
+    else:
+        style_ref = None
+    silhouette_families: dict[str, str] = manifest.get("silhouette_families", {})
+    silhouette_specs: dict[str, dict] = manifest.get("silhouettes", {})
+    silhouettes: dict[str, str] = {}
+    for folder, spec in silhouette_specs.items():
+        if isinstance(spec, str):
+            silhouettes[folder] = spec
+            continue
+        family_key = spec.get("family")
+        family_clause = silhouette_families.get(family_key, "")
+        modifier = spec.get("modifier", "")
+        silhouettes[folder] = f"{family_clause}. {modifier}".strip()
     composition = defaults["composition"]
     hull_clause = defaults["hull_clause"]
     empty_floors_clause = defaults["empty_floors_clause"]
@@ -157,6 +171,7 @@ def build_jobs(manifest: dict, only: str | None) -> list[Job]:
             jobs.append(Job(
                 category_dir=cat_dir,
                 class_name=class_name,
+                silhouette=silhouettes.get(folder, ""),
                 archetype=archetype,
                 hull_state=hull_state,
                 lighting=lighting,
@@ -231,12 +246,14 @@ def main() -> int:
             time.sleep(MIN_INTERVAL_S - elapsed)
         last_call = time.monotonic()
 
-        ref_im = Image.open(job.style_reference).convert("RGB")
         prompt = job.prompt()
+        contents: list = [prompt]
+        if job.style_reference is not None:
+            contents.append(Image.open(job.style_reference).convert("RGB"))
 
         print(f"[{n}/{len(todo)}] {job.category_dir.name} -> {job.out_png.name}", file=sys.stderr)
         try:
-            resp = client.models.generate_content(model=args.model, contents=[prompt, ref_im])
+            resp = client.models.generate_content(model=args.model, contents=contents)
         except Exception as e:
             print(f"  [fail] {type(e).__name__}: {str(e)[:160]}", file=sys.stderr)
             failures.append((job, str(e)[:200]))

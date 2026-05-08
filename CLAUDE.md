@@ -697,4 +697,18 @@ exist to prevent that recurrence. Full post-mortem in
   None content, log the finish_reason, mark the job as a failure,
   continue. Without this guard the generator AttributeErrors out
   on the first blocked prompt and burns no work.
+- **Never render Imperial voidships with forward-facing pursuit guns
+  as their primary armament.** Imperial Navy ships fight broadside —
+  primary batteries run along the port and starboard flanks of the
+  midsection, firing outward. Forward-facing bow turrets are
+  characteristic of specific outliers (Corvus Blackstar etc.), NOT
+  the standard frigate/destroyer/cruiser/battleship line. Any voidship
+  render or prompt that places the primary battery at the bow is wrong.
+- **Never use a single shared style reference across visually-distinct
+  ship classes (or any other class axis we want differentiated).**
+  Gemini's reference-image conditioning locks silhouette as well as
+  style, so a shared reference collapses class differentiation. For
+  source-material LoRA corpora, prefer text-only generation with strong
+  per-class silhouette descriptors. For refinement work on a single
+  class, a per-class reference image is fine.
 - **Never `--no-verify` past pre-commit gates** in the parent repo.

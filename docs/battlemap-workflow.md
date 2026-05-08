@@ -113,6 +113,107 @@ and the recipe for the next LoRA category.
 
 ---
 
+## 2026-05-08 — Voidship corpus, two-family silhouette taxonomy, lateral broadsides
+
+### Smoke-test 1: shared style reference collapsed all classes
+
+First voidship 3-shot smoke test used the operator-validated
+`style_reference_attempt3.png` as a Gemini reference image alongside
+each prompt. Output: yacht / frigate / destroyer all rendered with
+near-identical hull silhouettes and two of the three had
+**byte-for-byte interchangeable** 12-cell interior grids. Gemini's
+reference-image conditioning was locking BOTH the painterly treatment
+AND the hull outline to the reference; the per-class archetype prompts
+became ignorable hints that produced only superficial interior
+variation.
+
+Operator's diagnosis (correct): the source material is supposed to be
+LoRA training corpus, not aesthetic-refined output. A shared style
+reference is the wrong tool — it homogenizes silhouette across a class
+axis we WANT differentiated. Switched to text-only generation.
+
+### Operator's silhouette taxonomy (correction to my first guess)
+
+I initially wrote a 6-class silhouette spec assuming each ship class
+had a distinct hull profile (yacht=sleek dagger, freighter=blocky
+brick, frigate=elongated dagger, destroyer=heavier dagger, etc.).
+
+Operator pushed back with side-profile references: most Imperial
+voidships (frigate, destroyer, freighter-medium, transport-bulk,
+yacht) share the canonical **gothic cathedral-prow profile** — long
+spinal hull, pointed gothic ram-prow, swept stern with engine block,
+lateral sponsons. They differ in **scale** and **ornamentation**, not
+silhouette. The genuinely different profile is the **micro-ship**
+class (Arvus Lighter, the campaign's Errant Vector) — short-range
+boxy utility vessels with no gothic prow.
+
+Manifest restructured around this:
+
+```yaml
+silhouette_families:
+  gothic_voidship: <canonical cathedral-prow profile clause>
+  micro_ship:      <stubby utilitarian profile clause>
+
+silhouettes:
+  map-freighter-small:   { family: micro_ship,      modifier: "smallest scale, Arvus footprint, no military sponsons, no heraldry" }
+  map-freighter-medium:  { family: micro_ship,      modifier: "larger civilian hauler, 2:1 aspect, no military sponsons" }
+  map-frigate-escort:    { family: gothic_voidship, modifier: "Sword-class proportions, lateral broadsides, Navy heraldry" }
+  map-destroyer-light:   { family: gothic_voidship, modifier: "Cobra-class proportions, longer broadsides, heavier ram-prow" }
+  map-transport-bulk:    { family: gothic_voidship, modifier: "wide beam for cargo, no sponsons, civilian merchant heraldry" }
+  map-yacht-roguetrader: { family: gothic_voidship, modifier: "ornate gilt scrollwork, no gun sponsons, luxury proportions" }
+```
+
+The generator composes `family + modifier` into the per-job
+`silhouette` clause. Append-only safe (modifiers can grow, families
+shouldn't).
+
+### Smoke-test 2: text-only with two-family silhouette taxonomy
+
+Three samples (microship freighter, gothic frigate, gothic destroyer):
+class differentiation is now unambiguous — micro-ship vs gothic and
+frigate vs destroyer scale/loadout are both readable. Operator
+validated as suitable LoRA training material. Trade-off: gothic-class
+renders shifted toward "top-down exterior" with thinner interior
+bleed-through; micro-ship retained clear interior partitions. Both
+are valid axes for the LoRA — it learns to span exterior silhouettes
+AND interior cross-sections.
+
+### Lateral broadsides, NOT forward pursuit guns
+
+Operator-flagged on the v2 frigate render: Gemini placed forward
+turrets and a centerline gun cluster at the bow. Wrong for canonical
+40K Imperial Navy ships — Imperial warships fight broadside, with
+lateral gun batteries running along the port and starboard flanks of
+the midsection. Forward-facing pursuit guns are characteristic of
+specific outliers (e.g., Corvus Blackstar), NOT the standard escort /
+destroyer / cruiser / battleship line.
+
+Manifest now hammers this in BOTH the silhouette modifier AND the
+per-archetype interior layout text:
+
+- "lateral broadside gun batteries running along the port and
+  starboard flanks of the midsection"
+- "guns point outward to port and starboard, NOT forward"
+- "the bow is a simple armored gothic prow with heraldry, NO
+  forward turrets or pursuit batteries"
+
+The redundancy is intentional — Gemini ignored the silhouette-level
+"port/starboard sponsons" clause on first pass; doubling the rule into
+the interior layout description as well is the belt-and-suspenders fix.
+
+### Hard rule — broadside-vs-pursuit guns
+
+**Imperial Navy voidships fight broadside.** Frigate, destroyer,
+cruiser, and battleship classes ALL carry their primary armament as
+lateral gun batteries running along the port and starboard flanks,
+firing outward. Forward-facing pursuit guns / bow turrets are an
+outlier (Corvus Blackstar and a handful of specialized hulls), NOT
+the canon for the standard line. Any prompt or render that places
+the primary battery at the bow as a forward array is wrong and must
+be corrected.
+
+---
+
 ## 2026-05-08 — Iconography LoRA training run + step-3000 evaluation
 
 First completed LoRA. ai-toolkit on CT 140 (3× RTX 3090, DDP via
