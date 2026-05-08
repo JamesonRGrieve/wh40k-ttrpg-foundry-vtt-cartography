@@ -96,7 +96,7 @@ class SymbolMetadata:
 
 @dataclass
 class SymbolPlacement:
-    """Where and how to paste a canonical onto a base image.
+    """Where and how to render/paste a canonical onto a base image.
 
     `name`: matches a folder under `symbols/`.
     `x`, `y`: top-left corner in base-image pixel coords.
@@ -107,6 +107,14 @@ class SymbolPlacement:
     `lighting`: optional variant suffix (e.g. "dim", "lit", "red").
         Resolves to `canonical_<lighting>.png`; falls back to
         `canonical.png` if the variant doesn't exist.
+    `material_hint`: optional canonical phrase for the ControlNet
+        rendering path (e.g. "brass-relief", "armor-inlay",
+        "embroidered-banner"). Resolved against MATERIAL_HINTS.
+        When None or unknown, falls back to MATERIAL_HINTS["default"].
+    `anchor_label`: optional human-readable name for where the
+        symbol lives in the scene/portrait (e.g. "apse back wall",
+        "chest centerpiece"). Used only in prompt construction; has
+        no effect on geometry.
     """
     name: str
     x: int
@@ -115,6 +123,32 @@ class SymbolPlacement:
     rotation: int = 0
     mirror: bool = False
     lighting: str | None = None
+    material_hint: str | None = None
+    anchor_label: str | None = None
+
+
+# Canonical material-hint phrases. Values are inserted verbatim into
+# the prompt when the driver builds a ControlNet render. Extend this
+# dict; never expose raw operator strings into prompts.
+MATERIAL_HINTS: dict[str, str] = {
+    "brass-relief": "rendered as a cast brass relief sculpture with weathered patina and candlelight catching the high points",
+    "armor-inlay": "rendered as embossed metal armor inlay in dark steel with worn highlights",
+    "embroidered-banner": "rendered as an embroidered cloth banner with visible stitching and fabric weave",
+    "carved-stone": "rendered as carved stone bas-relief, weathered with age, dust in the recesses",
+    "painted-icon": "rendered as a painted devotional icon, faded pigment on aged wood",
+    "stained-glass": "rendered as a stained-glass window, leaded panes, light glowing through colored sections",
+    "branded-leather": "rendered as a brand burned into leather, scorched edges around the silhouette",
+    "stamped-metal": "rendered as a stamped sheet-metal plate, slight raised edges, scuffed finish",
+    "default": "rendered as an integrated scene element matching the surrounding material and lighting",
+}
+
+
+def material_hint_phrase(hint: str | None) -> str:
+    """Resolve a material hint key to its canonical phrase. Falls back
+    to the default phrase when the hint is None or unknown."""
+    if hint and hint in MATERIAL_HINTS:
+        return MATERIAL_HINTS[hint]
+    return MATERIAL_HINTS["default"]
 
 
 def load_symbol(name: str) -> tuple[SymbolMetadata, Image.Image]:
@@ -173,6 +207,39 @@ def _prepare_canonical(meta: SymbolMetadata, placement: SymbolPlacement) -> Imag
         new_size = (target, target)
     im = im.resize(new_size, Image.LANCZOS)
     return im
+
+
+def build_controlnet_guide(
+    placements: list["SymbolPlacement"],
+    *,
+    canvas_size: tuple[int, int],
+) -> Image.Image:
+    """Build a single white-canvas guide image with each symbol's BLACK
+    silhouette pasted at its anchor position + size. Suitable as input
+    to a Canny / Lineart ControlNet preprocessor that locks symbol
+    silhouette during diffusion.
+
+    The diffusion model fills in material/lighting (brass relief,
+    embroidered banner, etc.) per the prompt; the ControlNet keeps the
+    silhouette pixel-aligned with the canonical so the iconography
+    topology (two heads, two wings, one sword for the Aquila) doesn't
+    drift.
+
+    Returns an RGB PIL image at canvas_size.
+    """
+    w, h = canvas_size
+    canvas = Image.new("RGB", (w, h), (255, 255, 255))
+    for p in placements:
+        meta, _ = load_symbol(p.name)
+        canon = _prepare_canonical(meta, p)  # already RGBA at the right size
+        alpha = canon.split()[-1]
+        # Black-on-white silhouette of the canonical at the prepared size.
+        sil_canvas = Image.new("RGB", canon.size, (255, 255, 255))
+        black = Image.new("RGB", canon.size, (0, 0, 0))
+        sil_canvas.paste(black, (0, 0), alpha)
+        # Composite onto the guide canvas, clipping at edges.
+        canvas.paste(sil_canvas, (int(p.x), int(p.y)))
+    return canvas
 
 
 def compose_symbols(base: Image.Image, placements: list[SymbolPlacement]) -> Image.Image:

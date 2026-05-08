@@ -463,6 +463,128 @@ full-body. Output naming: `<name>.png` for portrait,
 
 ---
 
+## 2026-05-07 — Symbology integration: ControlNet attempt failed, img2img pivot works
+
+Goal of this round: replace the literal-paste symbol-compose pipeline
+with structural guidance so canonicals appear AS scene material
+(brass relief, embroidered banner, armor inlay) rather than as flat
+black SVG glued onto the diffusion render.
+
+### Round 1: ControlNet path — FAILED
+
+Built `render_scene_with_controlnet()` that:
+1. Composites canonical silhouettes onto a white guide canvas at
+   each anchor position.
+2. Patches BattlemapInteriorV1 template with a Canny + ControlNet
+   apply chain.
+3. Submits via /prompt API.
+
+Tried `flux-canny-controlnet.safetensors` via the generic
+`ControlNetLoader` + `ControlNetApplyAdvanced`. Hung indefinitely
+on the GPU — burned ~25 min of GPU time before I cancelled. The
+prompt sat in `queue_running` with no output.
+
+Root cause: ComfyUI has Flux-specific ControlNet nodes
+(`LoadFluxControlNet`, `ApplyFluxControlNet`,
+`ApplyAdvancedFluxControlNet`) that produce a `FluxControlNet` /
+`controlnet_condition` type, NOT the generic `CONTROL_NET` /
+`CONDITIONING` types that `ControlNetApplyAdvanced` consumes.
+Worse, `LoadFluxControlNet` only declares `flux-dev`,
+`flux-dev-fp8`, `flux-schnell` as model choices — Chroma is a
+distilled-Flux variant and isn't on that list. Generic ControlNet
+apply chain on a Flux/Chroma model = silent hang.
+
+### Round 2: img2img integration — LANDED
+
+Pivoted to a two-pass img2img approach that achieves the same
+intended outcome (preserve silhouette, fill in scene material) via
+the proven img2img path that already powers stamp condition variants:
+
+1. **Pass 1**: txt2img scene render WITHOUT symbols, using the
+   anti-symbol negative prompt list. Flux paints clean scene.
+2. **Composite**: paint each canonical's BLACK silhouette (alpha
+   from canonical, RGB = pure black) onto the pass-1 render at the
+   declared anchor position and size. The composite is saved as
+   the "guide" image — a normal RGB PNG, no transparency.
+3. **Pass 2**: img2img on the composite with low denoise
+   (0.40-0.55) and the augmented prompt that names each symbol's
+   material per `MATERIAL_HINTS` (brass-relief, armor-inlay,
+   embroidered-banner, carved-stone, painted-icon, stained-glass,
+   branded-leather, stamped-metal). The diffusion repaints the
+   black silhouette regions as the requested material while leaving
+   the rest of the scene mostly intact (because most pixels are
+   already at near-final state and low denoise preserves them).
+
+### POCs verified
+
+**Chapel scene** (`Lore/handouts/district_4_chapel_v2.png`,
+seed 42, 1024×768, 0.45 denoise integration):
+- Pass 1 produced a clean chapel exterior in painterly oil style.
+- Composite painted a black Imperial Aquila silhouette top-center
+  (apse_back anchor) and a smaller black Adeptus Ministorum
+  silhouette near the doorway (lectern_front anchor).
+- Pass 2 transformed the silhouettes into integrated scene
+  iconography. The Aquila reads as part of the chapel's facade
+  decoration; the Ministorum sigil is integrated near the
+  doorway as architectural emblem. Neither reads as a glued-on
+  2D black SVG.
+- Note: composition came out as exterior, not interior. The seed
+  + slightly different prompt produced a different framing. Not
+  a regression — operator can re-roll seeds for desired
+  composition.
+
+**Inquisitor portrait** (`Characters/portraits/test_inquisitor_v2.png`,
+seed 42, 768×1024, 0.45 denoise integration):
+- Pass 1 produced a strong inquisitor bust with a high-collar
+  coat and ornate carapace.
+- Composite painted a black Inquisitorial Rosette silhouette on
+  the chest plate (size 207, large size_label).
+- Pass 2 integrated the rosette into the armor. Visible in the
+  final portrait AND in the cropped 1:1 token: the armor bears
+  Aquila-wing heraldry on the chest plate that reads as
+  embossed-metal armor inlay (per the `armor-inlay` material
+  hint). NOT a glued-on SVG.
+
+### Wins
+
+- Symbology now appears as integrated scene/armor material instead
+  of flat black SVG.
+- Reused the proven img2img workflow constructor (template-patched
+  BattlemapInteriorV1) — no new ComfyUI workflow JSON needed.
+- `MATERIAL_HINTS` dict gives the operator named recipes:
+  `brass-relief`, `armor-inlay`, `embroidered-banner`,
+  `carved-stone`, `painted-icon`, `stained-glass`,
+  `branded-leather`, `stamped-metal`. Per-class portrait
+  profiles in `CLASS_PROFILES` now declare a default material
+  per symbol (e.g. tech-priest cog → brass-relief, guardsman
+  astra-militarum → stamped-metal pauldron, preacher
+  ministorum → embroidered banner, etc.).
+- CLI: `--symbol-style integrated` (default for narrative
+  scenes/portraits) vs `--symbol-style flat` (legacy paste-on-top,
+  use for diagrammatic / sidebar-icon output).
+
+### Fails (with mitigation)
+
+- **ControlNet path is dead.** Documented above. Code removed.
+- **Validator IoU is no longer meaningful in integrated mode.**
+  Canny-IoU between the integrated render and the clean canonical
+  drops to 0.10-0.45 because the integration legitimately
+  transforms edges into scene material. The validator now logs
+  IoU informationally on the integrated path; only the flat path
+  uses IoU as a FLAG/OK gate. A proper integrated-mode validator
+  would need template-matching at multiple scales/rotations or a
+  CLIP-similarity check between the rendered region and the
+  canonical class label — deferred.
+- **Two-pass cost.** Each integrated render is now 2x compute
+  (txt2img + img2img). Acceptable on the 3090 (~3-5 min total),
+  but not free. The flat path remains as a quick option.
+- **Silhouette size sensitivity.** When the silhouette is small
+  (< ~150 px on the canvas), pass 2 sometimes "absorbs" it
+  entirely into adjacent scene material and the symbol becomes
+  invisible. The chapel ministorum at size 76 was visible but
+  faint. For now, advise operators to use `large` or `xlarge`
+  size labels when the symbol must read at distance.
+
 ## 2026-05-07 — Session checkpoint (descriptive)
 
 End-of-session state. The next operator picks up here. Wins and

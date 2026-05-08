@@ -56,7 +56,7 @@ DEFAULT_SERVER = "http://198.51.100.11:8188"
 HERE = Path(__file__).resolve().parent
 WORKFLOWS_DIR = HERE / "workflows"
 OUT_DIR = HERE / "battlemaps"
-POLL_TIMEOUT_S = 600  # Chroma at 1024² is slow on the 3090; allow plenty.
+POLL_TIMEOUT_S = 1500  # Chroma at 1024² is slow; ControlNet adds ~3-5x overhead.
 
 
 # --- ComfyUI HTTP helpers (mirrors assign_groups.py patterns) ---------------

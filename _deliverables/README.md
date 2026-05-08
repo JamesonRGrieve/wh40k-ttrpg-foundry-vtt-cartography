@@ -119,11 +119,17 @@ PIL, no GPU), one condition variant generated via Flux img2img.
 
 ---
 
-## 05_scene_pictures/ — scene picture POC
+## 05_scene_pictures/ — scene picture POC (UPDATED 2026-05-07 v2)
+
+Two-pass integrated render: txt2img scene → composite black silhouette
+of canonical at anchor → img2img repaint at low denoise so the
+silhouette becomes scene-integrated material per the declared
+material hint.
 
 | File | Notes |
 | --- | --- |
-| `district_4_chapel.png` | 1024×768 chapel interior with composed Aquila on apse + Adeptus Ministorum sigil on lectern |
+| `district_4_chapel.png` | 1024×768. Aquila as `brass-relief` at apse_back, Adeptus Ministorum as `carved-stone` at lectern_front. Both integrated into chapel architecture, not glued on. |
+| `_intermediate_guide.png` | The pass-1 + black-silhouette composite that fed pass 2. Shows what the integration started from. |
 
 **Feedback I need:**
 
@@ -138,14 +144,17 @@ PIL, no GPU), one condition variant generated via Flux img2img.
 
 ---
 
-## 06_character_portraits/ — character portrait POC
+## 06_character_portraits/ — character portrait POC (UPDATED 2026-05-07 v2)
 
-Two files for one character — the Foundry actor convention.
+Same two-pass integrated path as scene pictures. Inquisitorial
+rosette is now embossed-armor-inlay on the chest plate, integrated
+into the painting, not pasted on top.
 
 | File | Notes |
 | --- | --- |
-| `inquisitor_bust.png` | 768×1024 head/shoulders bust portrait, Inquisitorial Rosette composited on chest |
-| `inquisitor_bust_token.png` | 512×512 1:1 token cropped from upper portion of the portrait — drop into Foundry as the actor token |
+| `inquisitor_bust.png` | 768×1024 head/shoulders. Inquisitorial Rosette as `armor-inlay` on chest carapace. Rosette now reads as Aquila-wing heraldry on the armor. |
+| `inquisitor_bust_token.png` | 512×512 1:1 token cropped from upper portion. Foundry actor-token convention. |
+| `_intermediate_guide.png` | The pass-1 + composited black rosette silhouette that fed pass 2. |
 
 **Feedback I need:**
 
