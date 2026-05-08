@@ -1,112 +1,124 @@
-# 40K iconography LoRA — training data
+# LoRA training corpora — Solenne campaign
 
-Curated reference images for a 40K iconography LoRA. **Shape
-vocabulary, not style.** When trained, this LoRA gets stacked at
-inference with whatever style anchor the render needs (Solenne
-painterly, Necromunda gritty, codex-clean line art, etc.) so the
-canonical symbol shapes render correctly regardless of aesthetic.
+This directory holds the reusable LoRA training material that backs
+the wh40k-rpg cartography pipeline. Each subdirectory is one LoRA's
+corpus + ai-toolkit config + training/eval support files. Generators
+that build these corpora live one level up
+(`gen_*_corpus.py`) and read the `manifest.yaml` inside each
+subdirectory.
 
-Reusable across all 7 wh40k-rpg game systems (BC, DH1, DH2, DW, OW,
-RT, IM) and any future 40K project — iconography is a 40K constant.
-See `cartography/CLAUDE.md` "Tooling decisions" for the rationale.
+## Plan — 4 LoRAs (or 5, depending on how you count voidships)
 
-## Folder structure (one folder per canonical symbol)
+| # | LoRA                       | Trigger                | Folder                | Status      | Purpose |
+|---|----------------------------|------------------------|-----------------------|-------------|---------|
+| 1 | 40K iconography            | `sym_<name>` (11 syms) | `iconography/`        | Trained ✅  | Canonical Imperial heraldry stamped onto scenes (aquila, rosette, mech_cog, etc.). Reusable across all 7 wh40k-rpg game systems. |
+| 2 | DH2 character portraits    | `dh_portrait`          | `portraits/`          | Corpus ready | Painterly 40K portrait LoRA, 105 image corpus across 15 archetype categories. Stacks with iconography at inference. |
+| 3a | Voidship hull silhouettes | `dh_voidship_hull`     | `voidship-hulls/`     | **In progress (Stage 1)** | Empty Imperial voidship hull silhouettes per ship class. No interior. Output is a blank hull at the right proportions for the class. |
+| 3b | Architectural layouts      | `dh_layout`            | `voidship-layouts/`   | Corpus partial (Stage 2) | Top-down architectural layouts (rooms / corridors / doorways) generalized over an arbitrary boundary. Reusable for ship decks, hab apartments, manufactorums, chapels, district maps. |
 
-| Folder | Symbol | Trigger token (suggested) |
-| --- | --- | --- |
-| iconography-aquilla/ | Imperial Aquila | `sym_aquila` |
-| iconography-rosette/ | Inquisitorial I/Rosette | `sym_inq_rosette` |
-| iconography-mechanicus-cog/ | Mechanicus opus (half-cog half-skull) | `sym_mech_cog` |
-| iconography-skull-winged/ | Astra Militarum winged skull | `sym_militarum_winged_skull` |
-| iconography-fleur-de-lys/ | Adepta Sororitas fleur-de-lys | `sym_sororitas_lys` |
-| iconography-ministorum-sigil/ | Adeptus Ministorum sigil | `sym_ministorum` |
-| iconography-administratum-sigil/ | Adeptus Administratum sigil | `sym_administratum` |
-| iconography-arbites-sigil/ | Adeptus Arbites scales-and-fist on I | `sym_arbites` |
-| iconography-astropath-eye/ | Astra Telepathica / Astropath eye-on-I | `sym_telepathica_eye` |
-| iconography-navy-sigil/ | Imperial Navy winged-cog-eagle | `sym_imperial_navy` |
-| iconography-rogue-trader/ | Rogue Trader insignia | `sym_rogue_trader` |
-| iconography-pariah/ | Pariah / Untouchable cross-and-eye-and-skull | `sym_pariah` |
-| iconography-psyker/ | Psyker (Inquisitorial I + warp aura) | `sym_psyker` |
-| iconography-mutant/ | Mutant DNA-helix-with-skull | `sym_mutant` |
-| iconography-outcast/ | Outcast skull-and-broken-chains | `sym_outcast` |
-| iconography-chaos-star/ | Chaos eight-pointed star | `sym_chaos_star` |
+Voidships are split into two stacked LoRAs (hull + layout) rather
+than one fused LoRA — see `../docs/battlemap-workflow.md` (search for
+"two-LoRA architecture") for the rationale and the inference
+pipeline. Short version: the layout LoRA generalizes beyond ships
+and pays for itself across the wider battlemap surface.
 
-`iconography-aquilla` retains its original spelling because the
-operator created the folder. The trigger token uses the canonical
-spelling (`sym_aquila`).
-
-## Per-image caption convention
-
-Every `.png` should have a sibling `.txt` file with the same stem.
-Flux LoRA trainers (ai-toolkit, sd-scripts) read the `.txt` content
-as the image's caption. Format:
+## Directory layout
 
 ```
-<trigger_token>, <symbol_name>, <shape_description>, <material/state/context>
+lora-training/
+├── README.md                        ← this file
+├── iconography/                     ← LoRA 1
+│   ├── README.md                    ← manifest, training notes, trigger map
+│   ├── manifest.yaml                ← corpus generation spec
+│   ├── configs/iconography.yaml     ← ai-toolkit train config
+│   ├── eval-samples/                ← step-0 / step-3000 sample images
+│   ├── deploy_lora_to_comfyui.sh    ← deploy helper
+│   └── iconography-<symbol>/        ← per-trigger PNG + .txt caption pairs
+├── portraits/                       ← LoRA 2
+│   ├── README.md                    ← manifest, training notes
+│   ├── manifest.yaml
+│   ├── configs/portraits.yaml       ← ai-toolkit train config (rank 32)
+│   ├── strip_watermark.py           ← Gemini sparkle-watermark stripper
+│   └── portrait-<archetype>/        ← per-archetype PNG + .txt caption pairs
+├── voidship-hulls/                  ← LoRA 3a (Stage 1 of voidship pipeline)
+│   ├── README.md                    ← manifest, hull silhouette taxonomy
+│   ├── manifest.yaml                ← per-class hull descriptors, hull-state matrix
+│   └── hull-<class>/                ← per-class blank-hull PNG + .txt caption pairs
+└── voidship-layouts/                ← LoRA 3b (Stage 2 of voidship pipeline)
+    ├── README.md                    ← manifest, zone grammar, layout vocabulary
+    ├── manifest.yaml                ← zone grammar, archetype zone-maps
+    ├── _references/                 ← style references retained for legacy
+    ├── _smoke_test/                 ← incremental validation samples
+    └── map-<class>/                 ← per-class layout PNG + .txt caption pairs
 ```
 
-Examples:
-- `sym_aquila, Imperial Aquila, two-headed eagle with wings spread heraldic, brass relief on stone floor inlay`
-- `sym_inq_rosette, Inquisitorial I, two-headed eagle perched on I-bar with skull at center, weathered brass`
-- `sym_mech_cog, Mechanicus opus, half-cog half-skull, rusted brass`
+## Generators (one level up)
 
-**What to put in the caption (helps the LoRA bind shape):**
-- Trigger token (so you can summon the symbol by name at inference)
-- Symbol's canonical name
-- Shape description (what makes the silhouette recognizable)
-- Material / state when distinctive (brass relief, etched stone, embroidered, weathered)
+Each LoRA has a sibling `gen_<name>_corpus.py` driver that reads its
+manifest and renders into the corresponding folder. All four use the
+same Gemini 2.5 Flash Image API, the same `IMAGE_SAFETY` defensive
+parser, and the same append-only manifest pattern — output filenames
+embed sequential variant indices, so reordering a manifest re-bills
+the corpus on next run. Append at the END.
 
-**What NOT to put (would bind unwanted properties to the trigger):**
-- Style descriptors (painterly, oil painting, grimdark) — those
-  belong in the *style anchor* at inference time, not in the
-  iconography LoRA.
-- Scene context unless the symbol IS in a scene (chapel, barracks).
-  Pure isolated plates should be captioned without scene context.
+| Generator | Reads manifest | Writes into |
+|-----------|---------------|-------------|
+| `../gen_iconography_corpus.py`   | `iconography/manifest.yaml`     | `iconography/iconography-*/` |
+| `../gen_portrait_corpus.py`      | `portraits/manifest.yaml`       | `portraits/portrait-*/` |
+| `../gen_voidship_hull_corpus.py` | `voidship-hulls/manifest.yaml`  | `voidship-hulls/hull-*/` |
+| `../gen_voidship_corpus.py`      | `voidship-layouts/manifest.yaml`| `voidship-layouts/map-*/` |
 
-## How much training data per symbol
+## Training environment
 
-Diffusion LoRA convergence on a clean isolated symbol with neutral
-backgrounds: typically **8-15 reference images per concept token**.
-The current state of the folder (1-2 images per symbol) is
-**proof-of-concept seed**, not training-ready volume. Suggested
-expansion per symbol (in priority order):
+ai-toolkit on **CT 140** (gigabyte host, 198.51.100.30, 3× RTX 3090,
+DDP via `accelerate launch --multi_gpu --num_processes=3`) on Flex.1-
+alpha base.
 
-1. The current isolated-on-neutral plate (kept).
-2. 4-6 material variants: brass relief, etched steel, stamped
-   pewter, embroidered gold thread, carved wood, engraved silver,
-   stone inlay, gilt parchment.
-3. 2-4 state variants: clean / weathered / damaged / moss-covered.
-4. 2-3 context variants: on a banner, on a chest plate, on a
-   wall plaque (these teach scale and placement).
+Mount layout on the CT:
+- `/opt/lora-training/` — bind mount of this directory tree
+- `/opt/lora-training/outputs/` — checkpoint output dir (per-LoRA)
+- `/opt/lora-training/configs/` — staged ai-toolkit configs
 
-Total: ~10-15 images per symbol × 16 symbols = ~150-240 images for
-a fully-trained unified iconography LoRA.
+Build the CT with `~/source/ai-lab/deploy-gigabyte-flux-lora.sh`
+(invokes `install-flux-lora-trainer.sh` inside the CT). Bind mount
+configuration is in the ai-lab inventory.
 
-## Trainer recipe (sketch)
+## Inference pipeline (planned)
 
-For Flux LoRA on the 3090 (24GB):
-
-- **ai-toolkit** (`ostris/ai-toolkit`) — recommended for Flux. Run
-  on the same ComfyUI server. YAML config, single GPU, ~6-12h on
-  this dataset size.
-- Alternative: **sd-scripts** with `sdxl_train_network.py` adapted
-  for Flux (`flux_train_network.py` exists in newer forks).
-
-Base model: Chroma's Flux-derivative checkpoint already on the
-ComfyUI server.
-
-LoRA params (starter values, tune from there):
-- `rank: 16` (small enough to converge fast on small dataset)
-- `learning_rate: 1e-4`
-- `network_alpha: 16`
-- `train_batch_size: 1`
-- `num_repeats: 10` per image
-- `epochs: 10-20`
-- `resolution: 768` (matches our portrait latent)
-
-After training, drop the resulting `.safetensors` into ComfyUI's
-`models/loras/` and trigger via prompt:
 ```
-<lora:wh40k_iconography:0.8>, sym_aquila on the chapel apse,
-warhammer 40000 grimdark, painterly oil painting, ...
+class descriptor ─► hull LoRA      ─► empty hull image (one render per deck stack)
+                                        │
+zone-grammar layout ─► layout LoRA  ◄───┤
+                                        ▼
+                                    finished deck battlemap
+
++ stack iconography LoRA when scene material has named symbols
++ stack portrait LoRA when generating a character portrait
 ```
+
+Multi-deck stacking falls out for free: same hull image input, called
+once per deck description, all decks register on the same Foundry
+tile bbox.
+
+## Hard rules (LoRA training discipline)
+
+- **Append-only manifests.** Output filenames embed sequential
+  variant indices; reordering a manifest renames every downstream
+  file and re-bills the corpus on next run.
+- **No style descriptors in captions.** Style is a per-render anchor
+  at inference; LoRAs learn shape / structure / silhouette / class —
+  not a particular aesthetic. Ports of style into captions cause the
+  trigger to bind to the wrong axis.
+- **One trigger per concept, one folder per trigger.** Don't fold
+  multiple subjects into a shared trigger; the LoRA learns the
+  average of its training set.
+- **Reference images must isolate the concept.** Scene-context images
+  cause the trigger to bind to the scene rather than the concept.
+- **Do not commit `.env`** — the Gemini API key lives in `../.env`.
+
+## Status quick-look
+
+For the current state of in-progress training runs, generation
+budget, and recent eval results, see
+`../docs/battlemap-workflow.md` (search for the most recent
+`## YYYY-MM-DD` heading).

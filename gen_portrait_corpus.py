@@ -45,7 +45,7 @@ from PIL import Image
 from google import genai
 
 HERE = Path(__file__).resolve().parent
-LORA_DIR = HERE / "lora-training-portraits"
+LORA_DIR = HERE / "lora-training" / "portraits"
 MANIFEST_PATH = LORA_DIR / "manifest.yaml"
 DEFAULT_MODEL = "gemini-2.5-flash-image"
 ESTIMATED_COST_PER_IMAGE = 0.04

@@ -113,6 +113,101 @@ and the recipe for the next LoRA category.
 
 ---
 
+## 2026-05-08 — Two-LoRA voidship architecture (hull + layout)
+
+Operator pivot mid-build: rather than train a single fused LoRA on
+hull-plus-interior images, split into two stacked LoRAs. The layout
+LoRA pays for itself across the wider battlemap surface because it
+generalizes — hab interiors, manufactorum bays, chapels, archives,
+and district maps are all "boundary + room arrangement" problems
+with the same vocabulary as ship deck plans.
+
+### Architecture
+
+```
+class descriptor ─► hull LoRA (dh_voidship_hull)  ─► empty hull image
+                                                      │
+zone-grammar layout ─► layout LoRA (dh_layout)    ◄───┤
+                                                      ▼
+                                                 finished deck battlemap
+
++ stack iconography LoRA when scene material has named symbols
+```
+
+- **Hull LoRA** (`lora-training/voidship-hulls/`): class-conditional
+  silhouette. Captions describe ONLY exterior — silhouette family,
+  scale, ornamentation, sponson loadout, hull state. No interior.
+  Reusable for any 40K ship-needing scene.
+- **Layout LoRA** (`lora-training/voidship-layouts/`):
+  boundary-conditioned architectural composition. Captions use the
+  zone grammar. NOT ship-specific — at inference, any closed boundary
+  (hab outline, chapel cruciform, district mask) can be the input
+  image. Pays for itself across project goals #1, #3, #4.
+
+### Why split
+
+Single-LoRA fused training has known failure modes from this corpus:
+
+- A shared style reference collapses class differentiation (verified
+  2026-05-08 smoke test 1).
+- Per-class hull silhouette descriptors must compete with per-deck
+  layout descriptors in one prompt; whichever the model anchors on
+  first wins.
+- Layout vocabulary becomes ship-shaped, not generalizable to hab/
+  chapel/district battlemaps that need the same room-composition
+  language.
+
+Splitting decouples the learning problems and makes the layout LoRA
+the project's reusable architectural-composition tool.
+
+### Inference
+
+Multi-deck stacking falls out naturally: render the hull once, call
+the layout LoRA once per deck description, stack the resulting deck
+images on Foundry's tile layer. All decks register on identical
+bbox because the hull was the SAME image input each time.
+
+### Corpus split
+
+- Existing 20-image fused corpus (`voidship-layouts/map-*/`) becomes
+  Stage 2 supplemental data — captions still pair with the zone
+  grammar; the hull-bleed-through is acceptable noise.
+- New empty-hull corpus generated for Stage 1 (this manifest).
+- Layout LoRA gets new pairs (hull image + layout description →
+  hull with layout) generated on top of Stage 1 hulls in a future
+  pass.
+
+### Folder reorganization
+
+The flat `lora-training/`, `lora-training-portraits/`,
+`lora-training-maps-voidships/` layout was renamed to a navigable
+hierarchy under a single `lora-training/` umbrella:
+
+```
+lora-training/
+├── iconography/      (was lora-training/)
+├── portraits/        (was lora-training-portraits/)
+├── voidship-hulls/   (NEW — Stage 1)
+└── voidship-layouts/ (was lora-training-maps-voidships/)
+```
+
+Generator path constants updated to match. CT-side bind mounts on
+the gigabyte trainer (`/opt/lora-training/portrait-*` etc.) need
+re-pointing if/when the next training run is queued.
+
+### Hard rule
+
+**Captions in each LoRA's corpus describe only that LoRA's axis.**
+Hull captions describe silhouette / class / scale / ornamentation —
+no rooms. Layout captions describe zones / room contents / corridors
+— no hull silhouette descriptors. Iconography captions describe
+shape / treatment — no scene context. Portrait captions describe
+subject axes (gender × age × build × expression × lighting) — no
+named-character leakage. Mixing axes into a caption forces the LoRA
+to learn the wrong thing.
+
+---
+
 ## 2026-05-08 — Voidship corpus, two-family silhouette taxonomy, lateral broadsides
 
 ### Smoke-test 1: shared style reference collapsed all classes

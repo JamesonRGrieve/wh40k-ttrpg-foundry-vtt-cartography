@@ -1,0 +1,503 @@
+# Voidship deckmap LoRA — corpus generation manifest.
+#
+# Third LoRA in the campaign training set. Trigger word:
+# `dh_voidship_map`. Trains the model to render top-down battlemap-
+# format Imperial voidship deck plans with bare interior architecture
+# (rooms ready for stamp population in a Foundry VTT map editor).
+#
+# Anchor prompt is the operator-validated "attempt 3" style. Every
+# generation passes the matching `_references/style_reference_attempt3.png`
+# as a style anchor so the hull rendering / lighting / paneling stays
+# consistent with what the operator has already approved.
+#
+# Architecture — same matrix-sampling shape as the portrait LoRA:
+#   - categories      = ship classes (small freighter, frigate, etc.)
+#   - archetypes      = deck/layout variants WITHIN that class
+#   - hull_states     = pristine / weathered / battle-damaged / derelict
+#   - lightings       = lumen-strip / red-emergency / sodium / cold-blue
+#   - Round-robin sampling so every archetype gets a unique
+#     (hull_state, lighting) pair.
+#
+# Caption format:
+#   dh_voidship_map, top-down battlemap of {class}, {deck/layout
+#   variant}, {hull_state}, {lighting}, Imperial gothic hull plating
+#   visible, empty interior architecture, Foundry VTT compatible
+#
+# This manifest is PREPARED but the generator has NOT BEEN RUN. The
+# operator wants to validate prompts in the Gemini web chat before
+# committing API spend (currently ~$4 left of the $20 envelope).
+
+defaults:
+  # No style reference — text-only generation. We are creating LoRA
+  # training source material across visually-distinct ship classes,
+  # not refining an existing aesthetic. A single shared style anchor
+  # collapsed all classes into the same hull silhouette in the
+  # 2026-05-08 smoke test (yacht/frigate/destroyer rendered with
+  # near-identical interiors).
+  style_reference: null
+  composition: >-
+    Top-down orthographic battlemap. The hull occupies the full image
+    with the ship's long axis horizontal — bow at the LEFT, stern at
+    the RIGHT, port at the TOP, starboard at the BOTTOM. Outside the
+    hull is flat black void. The aspect ratio of the image matches
+    the aspect ratio of the ship class — DO NOT crop to a square if
+    the ship is long.
+
+# ── Zone grid (spatial grammar for archetype layouts) ──────────────
+#
+# Every interior is described as a mapping from named zones to room
+# descriptors. Zones are positioned with the hull oriented bow-LEFT,
+# stern-RIGHT, port-TOP, starboard-BOTTOM (matches the composition
+# clause).
+#
+# Grid: 5 lengthwise sections (prow → forward → mid → aft → stern)
+# × 3 lateral lanes (port / center / starboard) = 15 zone cells.
+# Plus full-width shortcuts per section: prow_full, forward_full,
+# mid_full, aft_full, stern_full (means "the entire section is one
+# room spanning port-to-starboard").
+#
+#   ┌──────────┬───────┬───────┬───────┬──────────┐
+#   │ prow_p   │ fwd_p │ mid_p │ aft_p │ stern_p  │     ← port lane
+#   │ prow_c   │ fwd_c │ mid_c │ aft_c │ stern_c  │     ← centerline
+#   │ prow_s   │ fwd_s │ mid_s │ aft_s │ stern_s  │     ← starboard lane
+#   └──────────┴───────┴───────┴───────┴──────────┘
+#     bow                                    stern
+#
+# Zones carry NO semantic role by default. The prow is not "always the
+# bridge" — on a bridge deck it might be, but on an engineering deck
+# the prow could be forward fuel handling, on a cargo deck it could be
+# secured ordnance lockers, on a barracks deck it could be the
+# officer's wardroom. Same for the stern: engines live there only on
+# the bottom (engineering) deck; on a bridge deck the stern is the
+# rear personnel airlock and a small storage room, on a cargo deck
+# it's the loading ramp + ramp-side storage, on a barracks deck it's
+# bunks and a mess hall, etc.
+#
+# Multi-deck stacking: an alternate deck for an existing ship class
+# is just another archetype entry with `deck_<n>_<role>` id, sharing
+# the same category silhouette (so every deck registers on the same
+# hull bbox in Foundry). The zone grid is the same; the room
+# descriptors per zone change per deck.
+#
+# Archetypes may leave any zone unset (it just won't appear in the
+# prompt). Zones that aren't named are absent from the rendered map.
+#
+# The `egress` field names the single external opening for that deck
+# (cargo ramp, personnel airlock, dorsal hatch, etc.) and where it
+# attaches to the hull. Per the hard prompt constraints, every
+# archetype has EXACTLY ONE external opening; no other
+# hatches/airlocks/ports/viewports.
+zone_grid:
+  prow_port: "top-leftmost cell, the port edge of the prow tip"
+  prow_center: "left-tip center, the centerline of the prow"
+  prow_starboard: "bottom-leftmost cell, the starboard edge of the prow tip"
+  forward_port: "top-left third, port flank of the forward section"
+  forward_center: "left-center, centerline of the forward section"
+  forward_starboard: "bottom-left third, starboard flank of the forward section"
+  mid_port: "top-center, port flank of the midsection"
+  mid_center: "exact center of the hull, centerline of the midsection"
+  mid_starboard: "bottom-center, starboard flank of the midsection"
+  aft_port: "top-right third, port flank of the aft section"
+  aft_center: "right-center, centerline of the aft section"
+  aft_starboard: "bottom-right third, starboard flank of the aft section"
+  stern_port: "top-rightmost cell, the port edge of the stern"
+  stern_center: "right-tip center, centerline of the stern"
+  stern_starboard: "bottom-rightmost cell, the starboard edge of the stern"
+  prow_full: "the entire prow section, spanning the full beam from port to starboard"
+  forward_full: "the entire forward section, spanning the full beam from port to starboard"
+  mid_full: "the entire midsection, spanning the full beam from port to starboard"
+  aft_full: "the entire aft section, spanning the full beam from port to starboard"
+  stern_full: "the entire stern section, spanning the full beam from port to starboard"
+  hull_clause: >-
+    Imperial gothic painted-metal hull plating viewed from directly
+    above, with rivets, panel seams, weathered paint, and surface grime.
+    Painterly oil-painting treatment, dark grimdark palette, visible
+    brushwork on the plating
+  empty_floors_clause: >-
+    Empty interior rooms — no furniture, no crates, no consoles, no
+    bunks, no equipment, no debris, no NPCs. The empty rooms will be
+    filled with stamps in a Foundry VTT map editor later. Walls,
+    doorways, and architectural fixtures only
+  lighting_clause: "Interior passively lit by unseen lumen strips"
+  exclusions: "No text, no compass, no scale, no labels, no legend"
+  caption_trailer: >-
+    top-down battlemap, Imperial voidship, empty interior architecture,
+    Foundry VTT base map
+
+# Two silhouette families. Imperial voidships overwhelmingly share the
+# canonical gothic cathedral-prow profile from frigate through
+# battleship: long spinal hull, pointed gothic forward ram-prow,
+# swept-back stern dominated by an engine block, port/starboard
+# sponsons. They differ in SCALE and ORNAMENTATION, not silhouette.
+# The genuinely distinct family is the short-range "micro-ship":
+# stubby boxy utility vessels (Arvus Lighter, the Errant Vector)
+# with no gothic prow — these are the small workhorses that ferry
+# cargo and crew within a system or to/from larger ships.
+silhouette_families:
+  gothic_voidship: >-
+    Canonical Imperial gothic voidship profile in top-down: long
+    spinal hull, pointed forward ram-prow tapering to a sharp gothic
+    point, swept-back stern dominated by a heavy engine block, port
+    and starboard sponsons protruding from the midsection. Roughly
+    3:1 to 4:1 length-to-beam aspect ratio. Heraldic ornamentation
+    along the dorsal spine and prow. Imagine a cathedral hammered
+    into a lance, viewed from above
+  micro_ship: >-
+    Short-range Imperial micro-ship profile in top-down: compact
+    boxy utilitarian hull with no gothic prow. Roughly 1.5:1 to 2:1
+    length-to-beam aspect ratio. Slab-sided plating, small angular
+    forward cockpit bubble, flat stern with a single engine cluster.
+    Working-class void vessel, not a warship — Arvus-Lighter family.
+    Stubby, blocky, purpose-built for system-internal hauls
+
+# Per-category silhouette assignment + scale/ornamentation modifier.
+# `family` selects the base silhouette; `modifier` overrides scale,
+# ornamentation, sponson detail, and visible loadout to differentiate
+# classes that share a family.
+silhouettes:
+  map-freighter-small:
+    family: micro_ship
+    modifier: >-
+      Smallest scale of the family. Roughly the footprint of an Arvus
+      Lighter. Single cockpit, one or two interior compartments, one
+      cargo bay. Plain civilian hull plating, no military sponsons,
+      no heraldic ornamentation
+  map-freighter-medium:
+    family: micro_ship
+    modifier: >-
+      Larger scale than a small freighter — an enlarged civilian
+      hauler in the micro-ship family. Length increased to roughly
+      2:1 aspect, beam widened to accommodate multiple internal
+      compartments. Plain plating with light bracing along the spine.
+      Still no military sponsons or gothic prow. Civilian merchantman
+  map-frigate-escort:
+    family: gothic_voidship
+    modifier: >-
+      Smallest scale of the gothic voidship family. Roughly Sword-class
+      frigate proportions — relatively narrow beam, with a row of
+      LATERAL BROADSIDE GUN BATTERIES running along both the port and
+      starboard flanks of the midsection. The guns point outward to
+      port and starboard (lateral broadsides), NOT forward — Imperial
+      Navy ships fight broadside-on, they do not have forward-facing
+      pursuit gun arrays. The bow is a simple armored gothic prow with
+      heraldry, NO forward turrets or pursuit batteries. Military hull
+      plating with regimental Imperial Navy heraldry along the prow
+      and dorsal spine. Lethal-looking warship profile, not a freighter
+  map-destroyer-light:
+    family: gothic_voidship
+    modifier: >-
+      Slightly larger and heavier than a frigate. Roughly Cobra-class
+      destroyer proportions. Broader beam, with an even longer row of
+      LATERAL BROADSIDE GUN BATTERIES along port and starboard flanks
+      — the broadsides are the primary armament, pointing outward to
+      port and starboard, NOT forward. The gothic prow is a heavy
+      armored ram, NO forward gun array. Larger stern engine block.
+      Visibly meaner than a frigate. Heraldic Imperial Navy ornamentation
+  map-transport-bulk:
+    family: gothic_voidship
+    modifier: >-
+      Mid-scale gothic voidship adapted for bulk cargo. Beam widened
+      relative to a warship of equivalent length to accommodate an
+      enormous central cargo volume. Sponsons replaced by external
+      cargo handling rigs; no gun batteries. Civilian heraldry along
+      the prow — chartered merchant guild iconography, NOT Navy
+  map-yacht-roguetrader:
+    family: gothic_voidship
+    modifier: >-
+      Mid-scale gothic voidship configured as a luxury private vessel.
+      Length similar to a frigate but with sleeker proportions and
+      ornate heraldic flourishes — gilt scrollwork along the prow and
+      hull edges, decorative aquila or winged-skull motifs. No gun
+      sponsons; replaced by ornamental panel work. Visibly luxurious
+      — a Rogue Trader's flagship-yacht
+
+# Hull state — sampled round-robin across each category's archetypes.
+hull_states:
+  - "pristine, freshly serviced, clean panel work"
+  - "lightly weathered, minor scuffing on the hull plating"
+  - "weathered with rust streaks and patched panels"
+  - "heavily weathered, exposed bracing in places, oil-stained"
+  - "battle-damaged, scorched panel patches, torn plating along one flank"
+  - "derelict, grime and corrosion across most of the hull, dim interior"
+
+# Lighting — sampled alongside hull state. Phrased as a SHORT modifier
+# that follows the lighting_clause from `defaults` ("Interior passively
+# lit by unseen lumen strips") so the prompt reads naturally without
+# duplication.
+lightings:
+  - "soft warm illumination, gentle floor wash"
+  - "sodium-yellow tone, harsher contrast"
+  - "single red emergency lamp glow elsewhere, mostly dark"
+  - "cool blue-white naval lighting, sterile cast"
+  - "interior mostly dark, only dim rim from pale floor stripes"
+  - "warm tungsten glow, candle-like flicker"
+
+# Per-ship-class deck archetypes. Each archetype describes ONE deck of
+# the ship — usually deck_1, the "primary" or "general-purpose" deck.
+# Operator can append additional deck archetypes (deck_2_engineering,
+# deck_3_cargo, etc.) for ship classes where multi-deck stacking is
+# in scope; they share the category silhouette so they register on
+# the same hull bbox.
+categories:
+
+  - folder: map-freighter-small
+    archetypes:
+      - id: deck_1_general
+        name: "Deck 1 — General Purpose"
+        zones:
+          prow_full: "two-pilot cockpit, paired pilot and copilot consoles side-by-side facing the prow tip, single doorway opening aft into the cargo bay"
+          mid_full: "central cargo bay, single large rectangular open space spanning the full beam, doorway forward to cockpit and aft to the crew corridor"
+          aft_port: "crew bunkroom A, small rectangular room with one empty bunk frame against the port hull"
+          aft_center: "narrow corridor running between the two bunkrooms, connecting the cargo bay forward to the rear ramp aft"
+          aft_starboard: "crew bunkroom B, small rectangular room with one empty bunk frame against the starboard hull"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+      - id: deck_1_crew_focused
+        name: "Deck 1 — Crew-Focused"
+        zones:
+          prow_full: "single-pilot cockpit, one pilot console at the centerline facing the prow tip, doorway aft"
+          forward_port: "small medbay with a single examination cot against the port hull"
+          forward_center: "short connecting vestibule between cockpit and cargo bay"
+          forward_starboard: "small head and washbasin"
+          mid_full: "central cargo bay with a recessed floor cargo-pit at its center, full-beam rectangular open space"
+          aft_full: "combined mess and bunk room — long table at the centerline, three bunk frames recessed into the port and starboard walls"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+      - id: deck_1_side_ramp
+        name: "Deck 1 — Side-Ramp Variant"
+        zones:
+          prow_full: "two-pilot cockpit, paired consoles facing the prow tip"
+          forward_port: "engine room access — narrow doorway opening to the engineering core"
+          forward_center: "central spinal corridor connecting cockpit aft"
+          forward_starboard: "crew quarter A, single bunk frame against the starboard hull"
+          mid_port: "port-side cargo egress ramp recessed into the port hull edge — the ONLY external opening on this deck"
+          mid_center: "central engineering core room, reactor and drive cores visible as recessed deck-machinery"
+          mid_starboard: "crew quarter B, single bunk frame against the starboard hull"
+          aft_full: "rear engineering bay — drive-control consoles arranged along the aft bulkhead, full-beam"
+        egress: "single port-side cargo ramp recessed into the port hull at the midsection, hinged at the bottom port edge, deploys outward to port"
+      - id: deck_1_medbay_variant
+        name: "Deck 1 — Medbay Variant"
+        zones:
+          prow_full: "single-pilot cockpit at the prow tip, one console facing forward, doorway aft"
+          forward_full: "central spinal corridor running prow-to-stern, doorways port and starboard to medbay and cargo"
+          mid_port: "small medbay examination room with a single examination cot against the port hull, doorway from corridor"
+          mid_center: "central spinal corridor continuation, doorway forward to cockpit and aft to cargo"
+          mid_starboard: "medical supply storage closet against the starboard hull"
+          aft_full: "rear cargo bay, full-beam rectangular open space, doorway forward from corridor"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+
+  - folder: map-freighter-medium
+    archetypes:
+      - id: deck_1_command
+        name: "Deck 1 — Command & Cargo"
+        zones:
+          prow_full: "compact bridge with three-station console arrangement (helm, navigation, comms) arrayed in a shallow arc facing the prow tip, captain's chair at the centerline"
+          forward_full: "central spinal corridor running prow-to-stern, doorways port and starboard"
+          mid_port: "port-side cargo bay, rectangular open space, doorway from corridor"
+          mid_center: "spinal corridor continuation, with a doorway aft into the engineering bay"
+          mid_starboard: "starboard-side crew quarters, two small bunkrooms with one bunk each, separated by a thin partition"
+          aft_full: "engineering bay, full-beam, reactor and drive-core machinery recessed into the deck plating, doorways forward from corridor and aft to ramp"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+      - id: deck_1_split_use
+        name: "Deck 1 — Split-Use (Mess + Medbay)"
+        zones:
+          prow_full: "compact bridge with three-station console arrangement at the prow tip"
+          forward_port: "small medbay with a single examination cot against the port hull"
+          forward_center: "central spinal corridor"
+          forward_starboard: "crew head and washbasin"
+          mid_port: "crew quarter A, two empty bunk frames against the port hull"
+          mid_center: "central mess hall with a long table at the centerline, benches port and starboard"
+          mid_starboard: "crew quarter B, two empty bunk frames against the starboard hull"
+          aft_full: "rear cargo bay, full-beam rectangular open space"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+      - id: deck_1_hangar
+        name: "Deck 1 — Shuttle Hangar Variant"
+        zones:
+          prow_full: "compact bridge with three-station console arrangement at the prow tip"
+          forward_full: "central spinal corridor running prow-to-stern"
+          mid_port: "port-side hangar bay, large open rectangular space sized for a single shuttle, hangar deck visible as a slightly recessed hangar floor"
+          mid_center: "spinal corridor continuation, doorway aft into engineering"
+          mid_starboard: "starboard-side combined crew quarters and mess, long table along the centerline with bunk frames recessed into the starboard hull"
+          aft_full: "engineering bay, full-beam, drive-core machinery recessed into the deck plating"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+      - id: deck_1_long_haul
+        name: "Deck 1 — Long-Haul Crew Configuration"
+        zones:
+          prow_full: "compact bridge with three-station console arrangement at the prow tip"
+          forward_port: "navigation chartroom with a central plotting table"
+          forward_center: "spinal corridor connecting bridge aft to the cargo bay"
+          forward_starboard: "officer's wardroom with a small dining table"
+          mid_full: "central cargo bay, full-beam rectangular open space, doorways forward and aft"
+          aft_port: "crew bunkroom A, four empty bunk frames stacked along the port hull"
+          aft_center: "narrow rear-corridor leading to engineering and the egress ramp"
+          aft_starboard: "crew bunkroom B, four empty bunk frames stacked along the starboard hull"
+          stern_full: "engineering bay, full-beam, drive cores recessed into the deck"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+
+  - folder: map-frigate-escort
+    archetypes:
+      - id: deck_1_command
+        name: "Deck 1 — Command Deck"
+        zones:
+          prow_port: "port-side forward sensor blister, small wedge room with a single sensor console facing port-forward"
+          prow_center: "command bridge — sunken pit with five console stations (helm, navigation, sensors, comms, weapons) arranged in a shallow arc facing the prow tip, elevated commander's chair on a raised platform at the aft end of the pit"
+          prow_starboard: "starboard-side forward sensor blister, small wedge room with a single sensor console facing starboard-forward"
+          forward_full: "central spinal corridor running prow-to-stern, doorways port and starboard to broadside batteries"
+          mid_port: "lateral broadside gun battery — three empty turret pintles aligned along the port hull edge, all pointing outward to port (NOT forward), single door from spinal corridor"
+          mid_center: "spinal corridor continuation, doorways port and starboard to the broadside batteries"
+          mid_starboard: "lateral broadside gun battery — three empty turret pintles aligned along the starboard hull edge, all pointing outward to starboard (NOT forward), single door from spinal corridor"
+          aft_port: "officer's cabin (single small rectangular room with a desk against the port hull)"
+          aft_center: "crew bunkroom, two rows of empty bunk frames stacked along the port and starboard inner walls, central aisle"
+          aft_starboard: "officer's cabin (single small rectangular room with a desk against the starboard hull)"
+          stern_full: "rear engineering bay, full-beam, reactor and plasma drive cores visible as recessed deck-machinery, single doorway forward from aft_center"
+        egress: "rear personnel airlock at the stern centerline, single small rectangular hatch flush with the stern bulkhead — the ONLY external opening"
+      - id: deck_1_torpedo_strike
+        name: "Deck 1 — Torpedo Strike Variant"
+        zones:
+          prow_port: "port-side forward sensor blister"
+          prow_center: "command bridge — sunken pit with four console stations and a commander's chair facing the prow tip"
+          prow_starboard: "starboard-side forward sensor blister"
+          forward_full: "central spinal corridor with empty ordnance lockers along the centerline"
+          mid_port: "port broadside torpedo launch tube room — long rectangular room with a single sealed launch tube oriented outward to port, closed loading hatch facing the corridor, no exposed ordnance"
+          mid_center: "central engineering bay with reactor cores visible as deck-machinery, doorways port and starboard to torpedo rooms"
+          mid_starboard: "starboard broadside torpedo launch tube room — long rectangular room with a single sealed launch tube oriented outward to starboard, closed loading hatch facing the corridor, no exposed ordnance"
+          aft_full: "fuel handling bay, full-beam, plasma capacitor banks recessed along the aft bulkhead"
+          stern_full: "small crew berthing — two rows of empty bunks along the inner walls, narrow aisle"
+        egress: "rear personnel airlock at the stern centerline, single small rectangular hatch flush with the stern bulkhead"
+      - id: deck_1_sensorium
+        name: "Deck 1 — Sensorium / Recon Variant"
+        zones:
+          prow_port: "port-side forward sensor blister"
+          prow_center: "command bridge — three-station pit with commander's chair"
+          prow_starboard: "starboard-side forward sensor blister"
+          forward_full: "central spinal corridor"
+          mid_port: "port-side small broadside gun position — single empty turret pintle pointing outward to port"
+          mid_center: "central sensorium room — single sensor console at the centerline, holographic plotting table forward of the console"
+          mid_starboard: "starboard-side small broadside gun position — single empty turret pintle pointing outward to starboard"
+          aft_port: "crew quarter A — two bunk frames"
+          aft_center: "narrow corridor connecting forward to the engineering bay"
+          aft_starboard: "crew quarter B — two bunk frames"
+          stern_full: "rear engineering bay, full-beam, reactor and plasma drive cores"
+        egress: "rear personnel airlock at the stern centerline, single small rectangular hatch flush with the stern bulkhead"
+
+  - folder: map-destroyer-light
+    archetypes:
+      - id: deck_1_command
+        name: "Deck 1 — Command Deck"
+        zones:
+          prow_port: "port-side forward armor wedge, small wedge-shaped room with a damage-control station"
+          prow_center: "command bridge — large sunken pit with seven console stations arranged in a shallow arc facing the prow tip, elevated commander's platform with a captain's chair, sensor and comms panels stacked aft of the pit"
+          prow_starboard: "starboard-side forward armor wedge, small wedge-shaped room with a damage-control station"
+          forward_port: "armoury — racks of empty weapon mounts along the port hull"
+          forward_center: "central spinal corridor running prow-to-stern, lined with empty ordnance lockers along the inner walls"
+          forward_starboard: "ordnance storage — racks of empty munitions cradles along the starboard hull"
+          mid_port: "lateral broadside gun battery — five empty turret pintles aligned along the port hull edge, all pointing outward to port (NOT forward)"
+          mid_center: "central sensorium with a holo-plotting table at the centerline, doorways port and starboard to the broadside batteries"
+          mid_starboard: "lateral broadside gun battery — five empty turret pintles aligned along the starboard hull edge, all pointing outward to starboard (NOT forward)"
+          aft_port: "officer's cabin"
+          aft_center: "crew bunkroom — three rows of stacked bunks against the port and starboard inner walls"
+          aft_starboard: "officer's cabin"
+          stern_full: "rear engineering bay, full-beam, reactor and plasma drive cores visible as recessed deck-machinery"
+        egress: "rear personnel airlock at the stern centerline, single small rectangular hatch flush with the stern bulkhead"
+      - id: deck_1_strategium
+        name: "Deck 1 — Strategium Variant"
+        zones:
+          prow_port: "port-side forward armor wedge"
+          prow_center: "command bridge — sunken five-station pit facing the prow tip"
+          prow_starboard: "starboard-side forward armor wedge"
+          forward_full: "central spinal corridor"
+          mid_port: "lateral broadside gun battery — four empty turret pintles aligned along the port hull edge, all pointing outward to port"
+          mid_center: "central strategium with a large central holo-table for tactical planning, raised viewing gallery around the table"
+          mid_starboard: "lateral broadside gun battery — four empty turret pintles aligned along the starboard hull edge, all pointing outward to starboard"
+          aft_full: "officer wardroom and conference room, full-beam, long central table with chairs along port and starboard"
+          stern_full: "rear engineering bay, full-beam, reactor and plasma drive cores"
+        egress: "rear personnel airlock at the stern centerline, single small rectangular hatch flush with the stern bulkhead"
+      - id: deck_1_torpedo_heavy
+        name: "Deck 1 — Torpedo-Heavy Variant"
+        zones:
+          prow_port: "port-side forward armor wedge"
+          prow_center: "command bridge — sunken five-station pit facing the prow tip"
+          prow_starboard: "starboard-side forward armor wedge"
+          forward_full: "central spinal corridor with empty ordnance lockers"
+          mid_port: "port broadside torpedo launch tube room — two long sealed launch tubes oriented outward to port, closed loading hatches"
+          mid_center: "central engineering bay with reactor cores visible as deck-machinery"
+          mid_starboard: "starboard broadside torpedo launch tube room — two long sealed launch tubes oriented outward to starboard, closed loading hatches"
+          aft_full: "fuel handling bay, plasma capacitor banks along the aft bulkhead"
+          stern_full: "rear engineering bay, full-beam, plasma drive cores"
+        egress: "rear personnel airlock at the stern centerline, single small rectangular hatch flush with the stern bulkhead"
+
+  - folder: map-transport-bulk
+    archetypes:
+      - id: deck_1_open_hold
+        name: "Deck 1 — Open Bulk Hold"
+        zones:
+          prow_full: "compact two-station cockpit at the prow tip, paired consoles facing forward, narrow doorway aft"
+          forward_full: "forward cargo ramp room — single large rectangular ramp recessed into the deck, hinged forward, deploys down-and-forward when lowered. Cockpit overhang is the bulkhead above this room"
+          mid_port: "narrow port-side maintenance corridor running prow-to-stern, accessing the cargo hold through small port doors"
+          mid_center: "main cargo hold — enormous open rectangular space spanning two thirds of the deck, mostly empty floor with no furniture or fixtures"
+          mid_starboard: "narrow starboard-side maintenance corridor running prow-to-stern, accessing the cargo hold through small starboard doors"
+          aft_full: "aft cargo hold continuation, full-beam, doorway aft to engineering"
+          stern_full: "rear engineering bay, full-beam, reactor and plasma drive cores"
+        egress: "forward cargo ramp at the bow centerline, recessed under the cockpit overhang, hinged forward, deploys down-and-forward when lowered"
+      - id: deck_1_passenger
+        name: "Deck 1 — Passenger Configuration"
+        zones:
+          prow_full: "compact two-station cockpit at the prow tip"
+          forward_full: "central spinal corridor with doorways port and starboard"
+          mid_port: "port-side passenger bunk room — long room with two rows of empty bunk frames recessed into the port hull and inner wall"
+          mid_center: "main cargo hold — large rectangular space with floor-mounted cargo pits recessed into the deck plating"
+          mid_starboard: "starboard-side passenger bunk room — long room with two rows of empty bunk frames recessed into the starboard hull and inner wall"
+          aft_full: "rear engineering bay, full-beam"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+      - id: deck_1_secured_pens
+        name: "Deck 1 — Secured Cargo Pens"
+        zones:
+          prow_full: "compact two-station cockpit at the prow tip"
+          forward_full: "central spinal corridor"
+          mid_port: "port-side maintenance corridor"
+          mid_center: "main cargo hold — large rectangular space subdivided into FOUR equal secured cargo pens by thick metal dividers running prow-to-stern, each pen is empty (just dividers, no contents)"
+          mid_starboard: "starboard-side maintenance corridor"
+          aft_full: "rear engineering bay, full-beam"
+        egress: "rear cargo egress ramp at the stern centerline, hinged at the bottom edge of the stern hull, deploys downward"
+
+  - folder: map-yacht-roguetrader
+    archetypes:
+      - id: deck_1_grand_bridge
+        name: "Deck 1 — Grand Bridge & Staterooms"
+        zones:
+          prow_port: "port-side observation gallery with bench seating along the inner wall (ornate timber paneling)"
+          prow_center: "ornate command bridge — sunken pit with three console stations and a raised throne-station at the aft end, ornate gilt scrollwork along the floor and bulkheads, captain's throne on a raised dais with steps"
+          prow_starboard: "starboard-side observation gallery with bench seating along the inner wall (ornate timber paneling)"
+          forward_full: "central spinal corridor with ornate carved-timber wall panels and a runner carpet down the centerline"
+          mid_port: "port-side master stateroom — large room with a four-poster bunk frame against the port hull, writing desk, and small private head"
+          mid_center: "central dining hall — long ornate dining table at the centerline, ornate chair frames along port and starboard, chandelier-mount above the table"
+          mid_starboard: "starboard-side library / office — bookshelf-lined walls, central reading desk, ornate fireplace-recess (decorative, non-functional in vacuum)"
+          aft_full: "central audience hall, full-beam, ornate paneling, an open ornamental floor for receiving guests"
+          stern_full: "rear engineering bay, full-beam, drive cores recessed into the deck (utilitarian — the only un-ornate space on this deck)"
+        egress: "rear personnel ramp at the stern centerline, ornate gilt-trimmed boarding ramp, hinged at the bottom edge of the stern hull, deploys downward"
+      - id: deck_1_dual_stateroom
+        name: "Deck 1 — Dual-Stateroom Configuration"
+        zones:
+          prow_full: "ornate command bridge spanning the full prow — sunken pit with two console stations port and starboard of an elevated throne-station at the centerline, ornate gilt scrollwork along the floor and bulkheads"
+          forward_full: "central spinal corridor with ornate carved-timber wall panels"
+          mid_port: "port-side guest stateroom — large room with a four-poster bunk frame against the port hull, writing desk"
+          mid_center: "central audience hall — open ornamental floor for receiving guests, raised receiving dais on the aft wall"
+          mid_starboard: "starboard-side master stateroom for the trader — even larger than the guest stateroom, four-poster bunk, writing desk, private head"
+          aft_full: "rear common area, full-beam, lounge seating arranged around a central table"
+          stern_full: "rear engineering bay, full-beam, drive cores recessed into the deck"
+        egress: "rear personnel ramp at the stern centerline, ornate gilt-trimmed boarding ramp, hinged at the bottom edge of the stern hull, deploys downward"
+      - id: deck_1_compact_luxury
+        name: "Deck 1 — Compact Luxury (Single Stateroom)"
+        zones:
+          prow_full: "ornate command bridge spanning the full prow with a single throne-station at the centerline and two console stations to either side"
+          forward_full: "central spinal corridor with ornate carved-timber paneling"
+          mid_port: "port-side library/office — bookshelf-lined walls and a central reading desk"
+          mid_center: "central master stateroom for the trader — large rectangular room with a four-poster bunk frame against the inner aft wall, writing desk, and ornate trim"
+          mid_starboard: "starboard-side ornate dining nook — small dining table with chairs, ornate carved-timber paneling"
+          aft_full: "rear ornate common area, full-beam, lounge seating around a central low table"
+          stern_full: "rear engineering bay, full-beam, drive cores recessed into the deck"
+        egress: "rear personnel ramp at the stern centerline, ornate gilt-trimmed boarding ramp, hinged at the bottom edge of the stern hull, deploys downward"
+
+# ── Cost projection ──────────────────────────────────────────────────
+# 6 categories × ~3-4 archetypes = 21 archetypes
+# 1 supplement per archetype (default) = 21 generations × $0.04 = $0.84
+# Comfortable within the remaining ~$4 envelope.
+# To regenerate or expand later, bump --supplements-per-archetype.
