@@ -4,3 +4,8 @@ embeddings/
 # Stamp PNGs that aren't tracked stamps yet (working scratch). The
 # actual stamp set under stamps/ is tracked via individual additions.
 __pycache__/
+
+# API keys / secrets — never commit.
+.env
+.env.*
+!.env.example

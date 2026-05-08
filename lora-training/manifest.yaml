@@ -1,0 +1,178 @@
+# 40K iconography LoRA — corpus generation manifest (v3 matrix, DRY).
+#
+# Generates each Imperial symbol across THREE independent axes —
+# treatment (material+context), angle, lighting — so the LoRA learns
+# to bind the trigger token to the canonical SHAPE, invariant to
+# viewing conditions.
+#
+# Scope: the Imperium of Man and its branches, plus the Imperial
+# Aquila itself. Out of scope (deferred): Pariah/Untouchable, Psyker,
+# Mutant, Outcast, Chaos. We can add those later as separate LoRA
+# packs if needed.
+#
+# Architecture:
+#   - common_treatments  — material+context phrases that apply
+#                          uniformly to every symbol (brass on stone,
+#                          pendant, banner, etched ferrocrete...).
+#   - extra_treatments   — symbol-specific contexts (Mechanicus on a
+#                          forge wall, Sororitas on a Rhino hatch,
+#                          rogue trader on a Warrant of Trade...).
+#   - angles, lighting   — global pools sampled round-robin so every
+#                          symbol sees the full angular and lighting
+#                          distribution.
+#
+# Generator (gen_iconography_corpus.py) reads this and for each
+# symbol produces  (common_treatments + extra_treatments) × 1 angle
+# × 1 lighting  per variant, walking through angles/lighting in
+# round-robin so coverage is even.
+#
+# Reference image conditioning is still applied: the symbol's
+# *_isolated.png is fed to Gemini as the canonical-shape anchor.
+
+defaults:
+  # Allow the treatment's mild scene context (the wall, coat, pauldron,
+  # banner the symbol is mounted on) but keep the symbol as the
+  # dominant focal subject of the frame, full silhouette readable.
+  isolation: >-
+    single symbol focal subject filling most of the frame,
+    full silhouette visible, no text, no caption
+  shape_invariance: >-
+    preserve the exact heraldic silhouette of the reference image,
+    keeping its proportions and internal structure intact
+
+# Treatments shared by every symbol — applied to all 11 entries below.
+common_treatments:
+  - "polished brass relief mounted on a dark stone wall"
+  - "weathered brass on dark steel bulkhead"
+  - "etched into a thick ferrocrete column"
+  - "stamped pewter lapel pin on a heavy black coat"
+  - "embroidered gold thread on a dark hanging banner"
+  - "engraved silver pendant on a heavy chain"
+  - "carved oak panel mounted above a doorway"
+  - "brass emblem mounted on a wall by heavy bolts"
+  - "embossed onto a leather-bound book cover"
+  - "gilt parchment letterhead at the top of a decree"
+  - "rust-pitted iron foundry casting on a heavy machinery plate"
+
+# Global angle pool — sampled round-robin across each symbol's variants.
+angles:
+  - "front-on, dead centered, perfectly square to the viewer"
+  - "slight three-quarter tilt 15 degrees to the right"
+  - "slight three-quarter tilt 15 degrees to the left"
+  - "low-angle, viewer looking up at the symbol mounted high"
+  - "high-angle, viewer looking down at the symbol on a flat surface"
+  - "oblique side angle, 30 degrees off-axis with deep perspective"
+  - "near-orthographic with slight downward tilt"
+  - "raking side view emphasizing surface relief depth"
+
+# Global lighting pool — sampled round-robin alongside angles.
+lighting:
+  - "soft top-down lumen-strip lighting, even diffuse"
+  - "candlelit warm chiaroscuro from below, deep shadows above"
+  - "sodium-yellow industrial side light, harsh oblique shadows"
+  - "cold steel-blue rim light, atmospheric fog backdrop"
+  - "diffuse overcast grey daylight, no harsh shadows"
+  - "single dim red emergency lamp, moody underlighting"
+  - "afternoon sun through stained glass, colored light shafts"
+  - "torchlit, flickering orange highlights"
+
+symbols:
+
+  - folder: iconography-aquilla
+    trigger: sym_aquila
+    shape: "Imperial Aquila heraldic two-headed eagle silhouette"
+    extra_treatments:
+      - "embossed onto the shoulder pauldron of dark steel power armor"
+      - "stamped onto an iron void-ship hull plate"
+      - "painted in bone-white enamel on a dark green vehicle hatch"
+      - "moss-covered ancient stone relief on a ruined fortress wall"
+
+  - folder: iconography-rosette
+    trigger: sym_inq_rosette
+    shape: "Inquisitorial I-bar with two-headed eagle and central skull"
+    extra_treatments:
+      - "polished brass on dark red enamel medallion held in a gloved hand"
+      - "stamped iron seal pressed into red wax on a parchment letter"
+      - "bone-and-brass signet ring on a black-gloved finger"
+      - "dark steel inlay on the cover of a heavy leather grimoire"
+
+  - folder: iconography-mechanicus-cog
+    trigger: sym_mech_cog
+    shape: "Mechanicus opus, half-cog half-skull, vertical split"
+    extra_treatments:
+      - "embossed onto the shoulder pauldron of a skitarii praetor"
+      - "etched onto a heavy industrial machinery plate"
+      - "painted in red and brass on a Mechanicum vehicle armor plate"
+      - "engraved copper plate with oxidized green patina, hung above a forge"
+
+  - folder: iconography-skull-winged
+    trigger: sym_militarum_winged_skull
+    shape: "Astra Militarum winged skull, central skull flanked by spread eagle wings"
+    extra_treatments:
+      - "embossed onto the shoulder pauldron of Cadian flak armor"
+      - "painted in white stencil on dark green tank armor"
+      - "stamped pewter pin on a Guardsman's beret on a barracks footlocker"
+      - "etched ferrocrete monument plaque to fallen Guardsmen"
+
+  - folder: iconography-fleur-de-lys
+    trigger: sym_sororitas_lys
+    shape: "Adepta Sororitas fleur-de-lys with skull at center"
+    extra_treatments:
+      - "polished brass on a black Sororitas power armor pauldron"
+      - "embossed onto a Sororitas helm"
+      - "painted in white and gold on a Rhino vehicle hatch"
+      - "carved ivory inlay on a black wooden convent door"
+
+  - folder: iconography-ministorum-sigil
+    trigger: sym_ministorum
+    shape: "Adeptus Ministorum sigil, skull within spiked sun circle on capital I-bar"
+    extra_treatments:
+      - "stained glass window light pattern in a chapel"
+      - "painted in red and gold on a chapel column"
+      - "carved obsidian pendant on a priest's chain"
+      - "stamped pewter pilgrim's badge"
+
+  - folder: iconography-administratum-sigil
+    trigger: sym_administratum
+    shape: "Adeptus Administratum sigil, capital I-bar with circular central glyph"
+    extra_treatments:
+      - "embossed wax seal pressed into red wax on a parchment requisition"
+      - "stamped pewter signet on an iron filing cabinet drawer"
+      - "painted in black ink on a parchment requisition form"
+      - "stamped iron foundry mark on an archive door hinge"
+
+  - folder: iconography-arbites-sigil
+    trigger: sym_arbites
+    shape: "Adeptus Arbites sigil, raised fist within circle flanked by scales of justice on capital I-bar"
+    extra_treatments:
+      - "embossed onto a riot shield"
+      - "painted in white stencil on a black armored Arbites ground car"
+      - "stamped pewter regimental badge on a flak-armor coat"
+      - "etched into the heavy steel door of a courthouse"
+
+  - folder: iconography-astropath-eye
+    trigger: sym_telepathica_eye
+    shape: "Adeptus Astra Telepathica sigil, single eye within capital I-bar"
+    extra_treatments:
+      - "etched silver inlay on a black ceremonial robe collar"
+      - "painted in violet and gold on a relay-station wall"
+      - "carved obsidian pendant on a chain"
+      - "engraved silver, polished, on a chalice on a sanctum altar"
+
+  - folder: iconography-navy-sigil
+    trigger: sym_imperial_navy
+    shape: "Imperial Navy sigil, winged eagle above central cog on capital I-bar"
+    extra_treatments:
+      - "stamped pewter on iron void-ship hull plate, riveted"
+      - "embossed onto a naval officer's epaulette"
+      - "painted in white stencil on a navy-blue void-ship hull"
+      - "engraved on a brass nautical compass face"
+
+  - folder: iconography-rogue-trader
+    trigger: sym_rogue_trader
+    shape: "Rogue Trader insignia, twin-headed eagle above laurel wreath enclosing skull"
+    extra_treatments:
+      - "carved ivory inlay on a black wooden chest with brass clasps"
+      - "gilt parchment Warrant of Trade heading on a heavy parchment scroll"
+      - "stamped onto a private void-ship hull plate"
+      - "painted in black and gold on a private docking gantry banner"
