@@ -1,0 +1,16 @@
+zones:
+  - name: "Inquisitorial Cordon"
+    color: "#7A1212"
+    opacity: 0.30
+    polygon: [[180, 180], [820, 180], [820, 820], [180, 820]]
+    label_pos: [400, 440]
+  - name: "PDF Patrol"
+    color: "#506830"
+    opacity: 0.22
+    polygon: [[40, 40], [560, 40], [560, 560], [40, 560]]
+    label_pos: [220, 280]
+  - name: "Mechanicus Holdfast"
+    color: "#2A4250"
+    opacity: 0.30
+    polygon: [[600, 600], [984, 600], [984, 984], [600, 984]]
+    label_pos: [720, 780]

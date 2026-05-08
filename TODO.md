@@ -252,12 +252,6 @@ pass walks all anchors in declaration order.
   (The new `ship-*` presets in `FLOORPLAN_PRESETS` guarantee this
   by sharing `_ship_hull_rect()`, but a check still helps when an
   operator builds custom decks.)
-- [ ] **Layered/stackable wide-scale maps** — faction control
-  overlays, hex grids, jurisdiction zones, fleet movement vectors.
-  All useful at the strategic scale, none implemented. Pattern
-  mirrors architectural `--walls-only`: render the base, render an
-  overlay separately, alpha-mask, composite. Worth a separate helper
-  script (e.g. `make_overlay.py hex --grid 64x64`).
 - [ ] **Operator-driven manual review of orientation + state on
   outliers.** The CLIP zero-shot orientation classifier is ~64%
   accurate on hand-grounded tests; ~36% of populated values may be
@@ -270,6 +264,27 @@ pass walks all anchors in declaration order.
 
 ## RECENTLY CLOSED
 
+- [x] **Symbology rebuild (img2img integration).** ControlNet attempt
+  failed (Flux/Chroma compatibility); pivoted to two-pass
+  txt2img → composite-silhouette → img2img-repaint. Chapel Aquila
+  reads as integrated brass relief; inquisitor rosette as armor inlay.
+  See docs/battlemap-workflow.md for the round-by-round log.
+- [x] **Programmatic ship deck layout presets.** Four ship-* presets
+  (bridge / engineering / barracks / cargo) sharing identical hull
+  via `_ship_hull_rect()`. Verified pixel-aligned via the new
+  `verify_deck_stack.py`.
+- [x] **Render multi-deck via spacecraft workflow.** All four ship
+  decks rendered with deck-specific INTERIOR_STYLE_FLOOR_TEXTURES;
+  `_deliverables/08_multi_deck/` rebuilt with
+  `<deck>_layout.png` + `<deck>_render.png` pairs.
+- [x] **Multi-deck IoU sanity check.** New `verify_deck_stack.py`
+  proves the four ship-deck layouts share canvas + hull bbox
+  pixel-perfect (interior walls intentionally differ).
+- [x] **Wide-scale overlay helper.** New `make_overlay.py` with four
+  subcommands: hex (transparent grid overlay), zones (faction /
+  jurisdiction polygons from a YAML spec), fleet (movement arrows
+  from a YAML spec), compass (cardinal-rose anchor). Verified
+  composite over `SOLENNE_system_chart.png`.
 - [x] **Architecture-only via workflow surgery (cosmetic).** Replaced
   by the stronger result: floor-only base + walls-only foreground is
   the canonical stackable design. The saved BattlemapSpacecraft.json
