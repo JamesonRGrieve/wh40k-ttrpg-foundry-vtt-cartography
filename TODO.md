@@ -246,15 +246,12 @@ pass walks all anchors in declaration order.
   subtle, options: (a) repeat for other archetypes; (b) modify the
   spacecraft workflow JSON to boost floor-region guidance; (c) accept
   the limitation as an inherent trade-off of regional conditioning.
-- [ ] **Multi-deck UX helper polish.** Initial helper writes deck
-  variants but doesn't validate that the outer hull pixels remain
-  identical across decks (modulo opening cuts). Add a sanity check
-  that prints the wall-IoU between deck1 and deck<N> after writing.
-- [ ] **Multi-deck UX helper** — operator must hand-paint two
-  layouts that share the wall band. A helper that takes one base
-  hull layout and emits N variants (engineering with rear ramp,
-  bridge with windscreen, etc.) would shave ~10 minutes per
-  multi-deck ship. Scoped to spacecraft architectural elements only.
+- [ ] **Multi-deck IoU sanity check** in `make_deck_variants.py`:
+  print wall-IoU between deck pairs after writing, so the operator
+  knows quantitatively that hull pixels match across decks.
+  (The new `ship-*` presets in `FLOORPLAN_PRESETS` guarantee this
+  by sharing `_ship_hull_rect()`, but a check still helps when an
+  operator builds custom decks.)
 - [ ] **Layered/stackable wide-scale maps** — faction control
   overlays, hex grids, jurisdiction zones, fleet movement vectors.
   All useful at the strategic scale, none implemented. Pattern
