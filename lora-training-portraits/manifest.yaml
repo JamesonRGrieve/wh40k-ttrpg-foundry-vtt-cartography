@@ -1,0 +1,230 @@
+# Dark Heresy character portrait LoRA — corpus generation manifest.
+#
+# Companion to lora-training/ (the iconography LoRA). This LoRA binds
+# `dh_portrait` as a STYLE + COMPOSITION trigger: head-and-shoulders or
+# three-quarter painterly oil portrait of a 40K civilian/military
+# human, dark palette, grimdark anchor. Stacks at inference with the
+# iconography LoRA — `<lora:dh_portrait:0.8> <lora:wh40k_iconography:0.6>
+# dh_portrait, sym_inq_rosette on chest, ...`.
+#
+# Architecture (different from the iconography manifest):
+#   - NO reference-image conditioning. Pure text-to-image — Gemini
+#     paints each character fresh from the composed prompt. Style
+#     anchor lives in the prompt itself.
+#   - Per-image prompt is a round-robin sample from:
+#     archetype × gender × age × build × expression × lighting
+#   - Categories are by faction/social class for browsability;
+#     within each category we list 6-12 specific archetypes that
+#     instantiate the (outfit, scene, props, profession-flavor)
+#     content.
+#   - Captions stay tight: trigger + subject (gender/age/build/
+#     archetype) + expression + lighting. Style-anchor clauses live
+#     in the prompt only, NOT the caption — those are constant
+#     across all images and would dilute trigger binding.
+#
+# Operator instruction (2026-05-08): "all types of potential human
+# characters in a dark heresy campaign — civilians of all type,
+# gender, career and rank."
+
+defaults:
+  style: >-
+    Warhammer 40000 grimdark aesthetic, oil painting style, dark palette,
+    painterly visible brushwork, professional concept art quality
+  composition: >-
+    head and shoulders portrait OR three-quarter portrait, single character
+    focal subject, centered, full silhouette visible, no text, no caption
+  caption_trailer: >-
+    oil painting dark palette grimdark portrait
+
+# Global axes — sampled round-robin across each category's archetypes
+# so every archetype sees a diverse spread of subjects.
+
+genders:
+  - "man"
+  - "woman"
+  - "man"            # weight: a bit more masculine reads since civilian
+  - "woman"          # 40K is roughly 50/50 in art, but our prompt set
+  - "person"         # below skews mil/clergy — re-balance with extras
+  - "woman"
+  - "man"
+
+ages:
+  - "in their early 20s"
+  - "in their late 20s"
+  - "in their mid-30s"
+  - "in their early 40s"
+  - "weary in their late 50s"
+  - "elderly in their 60s"
+  - "elderly with deeply lined face"
+  - "in their late teens"
+
+builds:
+  - "stocky and broad-shouldered"
+  - "lean and wiry"
+  - "tall and gaunt"
+  - "average build, unremarkable"
+  - "thick-set and powerful"
+  - "slight, almost frail"
+
+expressions:
+  - "nervous, eyes a little too wide, slightly too alert"
+  - "weary thousand-yard stare"
+  - "defiant, jaw set, eyes hard"
+  - "devout and beatific, eyes half-lidded in prayer"
+  - "suspicious, narrowed eyes, watchful"
+  - "calculating, slight knowing smirk"
+  - "broken, hollow-eyed, vacant"
+  - "fanatical intensity, eyes burning"
+  - "exhausted, half-lidded, dark circles"
+  - "stoic, expressionless, dead-eyed professional"
+  - "fearful but trying to hide it, jaw tight"
+  - "kindly, faint warmth at the eyes"
+
+lightings:
+  - "warm orange-yellow mechanical lighting from below, shadows on the ceiling"
+  - "cold steel-blue void-light, harsh oblique shadows"
+  - "candlelit warm chiaroscuro, deep shadows"
+  - "sodium-yellow industrial side light, harsh"
+  - "diffuse overcast through grimy hab windows"
+  - "single dim red emergency lamp, moody underlighting"
+  - "afternoon sun through stained glass, colored shafts"
+  - "torchlit, flickering orange highlights, dim corners"
+
+# ── Categories ──────────────────────────────────────────────────────
+# Each archetype is a (profession-cue, outfit, scene, props) phrase
+# that gets composed into the full prompt at generation time.
+
+categories:
+
+  - folder: portrait-voidship-crew
+    archetypes:
+      - "civilian voidship engineer in oil-stained coveralls, multi-tool belt at the waist, oil-stained fingernails, in a cramped engine compartment surrounded by pipes, conduits, junction boxes, and flickering status lumens"
+      - "voidship pilot in a faded blue uniform with frayed cuffs, sat in a worn pilot's couch on a cramped bridge"
+      - "Imperial Navy void-rating in coarse navy blues with brass buttons, on a deck of polished steel"
+      - "void-tramp boatswain in a heavy oilskin coat, knife at the belt, on a cargo deck of crates and chain-blocks"
+      - "Imperial navigator with subtle warp-touched pallor, lacquered black robes with high collar, in a sanctum lit by a chart-table"
+      - "voidship cargo handler in stitched leather harness, freight-tagger in hand, on a loading bay deck"
+      - "Astropathic relay technician in dust-grey tunic, parchment readouts spilling from a console"
+
+  - folder: portrait-civilian-worker
+    archetypes:
+      - "hive-world hab tenant in drab worker's clothing with a personal Aquila pendant, a tin recaf cup in one hand, in a cramped hab-block kitchen"
+      - "manufactorum laborer in a stitched canvas smock, leather work-gloves, on a factory floor of flickering machinery"
+      - "recyclo-plant worker in a heavy rubber apron, soot smudged across the brow, in a steam-fogged sorting hall"
+      - "underhive scrap-picker in patched layered rags, fingerless gloves, in a grime-streaked alley"
+      - "ore processor worker in a thick canvas coat, dust mask hanging at the neck, on the catwalks of an ore mill"
+      - "agriworld farmhand in mud-streaked tunic, rough straw hat, leaning on a pitchfork at a barn door"
+      - "dock loader in coarse work-shirt, sleeves rolled, freight-iron on shoulder, in a transit-hub bay"
+
+  - folder: portrait-civilian-trader
+    archetypes:
+      - "hive-world shopkeeper in worn leather apron, ledger in one hand, behind a counter of dusty wares"
+      - "transit-hub recaf smuggler in a long leather coat, hood half-up, in a shadowed alley"
+      - "voidship merchant captain in a faded velvet greatcoat with brass clasps, in a cargo hold"
+      - "underhive black-market broker in patchwork finery, gemmed earrings, in a dim tavern booth"
+      - "void-station broker in a fitted dark suit, dataslate clutched, in a polished concourse hall"
+      - "Imperial guildmaster in heavy brocade trimmed in fox-fur, signet ring, in a wood-paneled office"
+
+  - folder: portrait-hive-underclass
+    archetypes:
+      - "hive-world ganger with scarred and tattooed face, stitched leather and salvage armor, improvised stub weapon, neon-stained underhive lighting"
+      - "underhive scavenger in patched rags, makeshift goggles around the neck, in a grime-streaked tunnel"
+      - "hive-vagrant in a long shabby coat, faded scarf, holding a tin cup, on a transit-station step"
+      - "underhive prostitute in once-fine clothes now patched, makeup smudged, in a red-lit doorway"
+      - "hive cult flagellant covered in self-inflicted scars, eyes feverish, in a torchlit shrine"
+      - "underhive thief in dark hood, clever fingers, ducking through a narrow passage"
+
+  - folder: portrait-imperial-guard
+    archetypes:
+      - "Astra Militarum trooper in flak armor over fatigues, regimental insignia on shoulder, lasgun slung at the side, dirt-streaked, in a trench dugout"
+      - "Cadian veteran sergeant with battle scars and cigar, in a sandbagged command bunker"
+      - "Imperial Guard medic in flak armor with red-cross armband, medi-pack at the hip, in a field aid station"
+      - "Catachan jungle fighter in a stained sleeveless vest, knife at the thigh, jungle-canopy backdrop"
+      - "Tallarn desert raider in dust-coloured robes, rebreather mask hanging at the neck, in a sandstorm haze"
+      - "PDF trooper in lighter armor and side-arm, less-equipped than Astra Militarum, in a hab-zone street"
+      - "Death Korps of Krieg trooper in greatcoat with gas mask and lamellar armor, on a no-man's-land battlefield"
+
+  - folder: portrait-imperial-navy
+    style_reference: voske_harran_pilot.png  # cross-folder: voidship pilot is the closest deployed style anchor
+    archetypes:
+      - "Imperial Navy officer in heavy navy-blue greatcoat with gold epaulettes, peaked cap, on a polished ship bridge"
+      - "Imperial Navy enlisted in coarse navy-blues with brass buttons, mop in hand, on a cramped deck"
+      - "Imperial Navy gunnery officer in a leather flight cap and oil-stained navy uniform, by a turret servitor"
+      - "Imperial Navy chartmaster in a long blue coat, parchment chart in hand, in a navigation room"
+
+  - folder: portrait-ecclesiarchy
+    archetypes:
+      - "Ecclesiarchy preacher in robed cleric vestments, censer at the belt, holy book under one arm, candle-lit warm illumination"
+      - "Ministorum deacon in plain black cassock with white collar, prayer beads in hand, in a chapel nave"
+      - "Ecclesiarchy priest in heavy red and gold vestments, mitre in hand, in a stained-glass-lit cathedral"
+      - "Ecclesiarchy choir-singer in plain white robes, eyes shut in song, in a candlelit choir loft"
+      - "pilgrim in coarse travel cloak, walking staff, dust-stained, on a pilgrim road"
+      - "Ecclesiarchy missionary in field-worn vestments, a small Aquila relic on a chain, in a frontier village"
+      - "Sister of Battle in baroque black power armor with white tabard, fleur-de-lys insignia, helm under one arm, in a chapel"
+
+  - folder: portrait-administratum
+    archetypes:
+      - "Administratum scribe with hand-mended robes, ink-stained fingers, quill in hand, in a candlelit scriptorium"
+      - "Munitorum clerk in a grey worker's tunic with a brass armband, dataslate in hand, at a tall paperwork stack"
+      - "Administratum savant with augmetic monocle, parchments cascading, at a wood-paneled desk"
+      - "Administratum tax-collector in stiff black coat with brass insignia, ledger in hand, at a town gate"
+      - "scholam teacher in worn academic robes, pointer in hand, at a stained chalkboard"
+      - "void-station clerk in a tight grey suit, dataslate, in a polished concourse"
+
+  - folder: portrait-mechanicum
+    style_reference: ceril_edric_archivist.png  # robed-with-implements style anchor
+    archetypes:
+      - "Adeptus Mechanicus tech-priest with half-flesh half-mechanical face, robotic eye lens, mechadendrites emerging from red robes, brass and steel cybernetic augmentations"
+      - "Mechanicum enginseer in red robes with hood up, servo-arm at the back, in a forge"
+      - "skitarii ranger in heavy red carapace and rebreather mask, taser-goad held"
+      - "Mechanicum lexmechanic with augmetic implants in the temple, in a data-shrine"
+      - "forge-bondsman in coarse red coverall, soot-stained, by a glowing forge"
+      - "Mechanicum servitor handler with a cattle-prod and a vacant-eyed servitor in tow"
+
+  - folder: portrait-arbites
+    style_reference: kael_edric_pdf_commander.png  # closest dark-armor + serious-officer anchor
+    archetypes:
+      - "Adeptus Arbites enforcer in heavy black carapace, shock-maul and shield, in a precinct corridor"
+      - "Arbites judge in heavy black robes with brass scales-and-fist insignia, in a courthouse"
+      - "Arbites detective in a long black coat with brass badge, in a hab-zone alley"
+      - "Arbites riot trooper with full helm and riot shield, in a hab uprising"
+
+  - folder: portrait-inquisition
+    archetypes:
+      - "Inquisitor of the Holy Ordos with severe weathered face, long dark coat with high collar, ornate gunmetal armor under the coat, power weapon at the hip"
+      - "Inquisitorial acolyte with hard-bitten scarred face, practical fatigues, holstered laspistol, tense alert expression"
+      - "Inquisitorial interrogator in a black leather greatcoat, scarred jaw, eyes calculating"
+      - "Inquisitorial savant with augmetic monocle and stack of forbidden tomes, hooded robe"
+      - "Inquisitorial torturer in a heavy leather apron, scarred hands, in a stark chamber"
+      - "Inquisitorial assassin in close-fitting dark bodyglove, blade and silenced needler, in shadow"
+      - "Inquisitorial astropath retainer with sealed eyes and gold-and-bone-white robes, faintly glowing skin, ethereal painterly atmosphere"
+
+  - folder: portrait-medicae
+    style_reference: maret_edric_mother.png  # warm civilian style, kindly expression
+    archetypes:
+      - "Imperial medicae doctor in a stained surgical apron, scalpel in hand, in a clinical examination room"
+      - "field-medicae chirurgeon in flak armor and red-cross armband, gauze in hand, in a triage tent"
+      - "Sister Hospitaller in white-and-red habit, holy symbol on a chain, at a sick-bedside"
+      - "underhive back-alley sawbones in stained smock, blood-streaked apron, in a grime-tiled basement clinic"
+
+  - folder: portrait-astropath
+    archetypes:
+      - "Astropath with sealed blank eyes and gaunt skull-like face, gold and bone-white robes, warp-touched pallor, ethereal painterly atmosphere"
+      - "sanctioned-psyker in violet-trimmed robes with restrained inhibitor collar, in a secure sanctum"
+      - "Imperial Navigator with a third eye sealed behind a band, brocade robes, on a cramped bridge"
+
+  - folder: portrait-nobility
+    style_reference: corvin_edric_father.png  # warm respectable elder anchor; brocade + signet are prompt-driven
+    archetypes:
+      - "planetary noble in heavy brocade robes with house insignia, fox-fur trim, signet ring, in a wood-panelled hall"
+      - "rogue trader in a feathered three-cornered hat, longcoat with brass buttons, ornate flintlock-style pistol at the belt, on the deck of a void-yacht"
+      - "Imperial governor in formal gold-trimmed robes, austere expression, in a polished audience chamber"
+      - "scion of an aristocratic house in fitted velvet finery, sneering, in a grand banquet hall"
+      - "rogue trader retainer in tasteful but worn finery, dataslate in hand, in a private cabin"
+
+  - folder: portrait-flagellant
+    style_reference: denn_varo_lay_preacher.png  # extreme-religious robed anchor
+    archetypes:
+      - "Ecclesiarchy flagellant in shredded shroud, self-flagellation scars across the back, eyes feverish with zeal, manacled chains hanging"
+      - "redeemed sinner in coarse penitent's robe, brand of forgiveness across the cheek, holding a battered icon"
+      - "death-cultist with skull paint and sharpened blade, hooded shroud, in a crypt-shrine"
