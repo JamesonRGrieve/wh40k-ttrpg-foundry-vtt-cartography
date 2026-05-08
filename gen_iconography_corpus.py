@@ -103,7 +103,14 @@ def build_jobs(manifest: dict, only: str | None) -> list[Job]:
     shape_invariance = defaults.get("shape_invariance",
         "preserve the exact heraldic silhouette of the reference image, "
         "keeping proportions and internal structure intact")
+    # Treatment composition is APPEND-ONLY to keep filename indices stable
+    # across re-runs. Concatenation order:
+    #   common_treatments (01..N)
+    #   per-symbol extra_treatments (N+1..)
+    #   common_treatments_extended (then..)
+    # Anything added later must go at the END of the relevant list.
     common_treatments: list[str] = manifest.get("common_treatments", [])
+    common_extended: list[str] = manifest.get("common_treatments_extended", [])
     angles: list[str] = manifest.get("angles", ["front-on, dead centered"])
     lightings: list[str] = manifest.get("lighting", ["soft top-down lumen-strip lighting"])
 
@@ -123,7 +130,11 @@ def build_jobs(manifest: dict, only: str | None) -> list[Job]:
             continue
         trigger = sym["trigger"]
         shape = sym["shape"]
-        treatments = list(common_treatments) + list(sym.get("extra_treatments", []))
+        treatments = (
+            list(common_treatments)
+            + list(sym.get("extra_treatments", []))
+            + list(common_extended)
+        )
         for idx, treatment in enumerate(treatments, start=1):
             angle = angles[(idx - 1) % len(angles)]
             lighting = lightings[(idx - 1) % len(lightings)]
@@ -212,16 +223,33 @@ def main() -> int:
             print(f"  [fail] {type(e).__name__}: {str(e)[:160]}", file=sys.stderr)
             failures.append((job, str(e)[:200]))
             continue
+        # Defensive parsing: response may have:
+        #   - no candidates (extremely rare, prompt blocked at input)
+        #   - candidate.content == None (safety filter blocked output)
+        #   - candidate.finish_reason of SAFETY / PROHIBITED_CONTENT
+        #   - parts present but only text, no image
+        cand = (resp.candidates or [None])[0]
+        if cand is None:
+            block_reason = getattr(getattr(resp, "prompt_feedback", None), "block_reason", None)
+            print(f"  [fail] no candidates (block_reason={block_reason})", file=sys.stderr)
+            failures.append((job, f"no candidates / block_reason={block_reason}"))
+            continue
+        if getattr(cand, "content", None) is None:
+            finish = getattr(cand, "finish_reason", None)
+            print(f"  [fail] content None (finish_reason={finish})", file=sys.stderr)
+            failures.append((job, f"content None / finish_reason={finish}"))
+            continue
         png_bytes = None
-        for part in resp.candidates[0].content.parts:
+        for part in cand.content.parts or []:
             if part.inline_data and part.inline_data.data:
                 png_bytes = part.inline_data.data
                 break
             elif part.text:
                 print(f"  [text] {part.text[:160]}", file=sys.stderr)
         if not png_bytes:
-            print("  [fail] no image part in response", file=sys.stderr)
-            failures.append((job, "no image part"))
+            finish = getattr(cand, "finish_reason", None)
+            print(f"  [fail] no image part (finish_reason={finish})", file=sys.stderr)
+            failures.append((job, f"no image part / finish_reason={finish}"))
             continue
         job.out_png.write_bytes(png_bytes)
         job.out_txt.write_text(job.caption() + "\n")

@@ -41,18 +41,59 @@ defaults:
     keeping its proportions and internal structure intact
 
 # Treatments shared by every symbol — applied to all 11 entries below.
+#
+# IMPORTANT: this list is APPEND-ONLY. The generator names output
+# files by their sequential index (01, 02, ...). Reordering or
+# inserting in the middle would rename every downstream file and
+# orphan the existing 162 corpus images.
+#
+# Treatments 01-11 are the original v1 set (front-on plain renders
+# for the material axis). Treatments 12+ are the v3 expansion adding
+# the gritty-lived-in 40K vocabulary: stencils, graffiti, mosaic,
+# stained glass, friezes, spire doors, tattoos, wax seals,
+# serf-scratched ferrocrete, etc.
 common_treatments:
-  - "polished brass relief mounted on a dark stone wall"
-  - "weathered brass on dark steel bulkhead"
-  - "etched into a thick ferrocrete column"
-  - "stamped pewter lapel pin on a heavy black coat"
-  - "embroidered gold thread on a dark hanging banner"
-  - "engraved silver pendant on a heavy chain"
-  - "carved oak panel mounted above a doorway"
-  - "brass emblem mounted on a wall by heavy bolts"
-  - "embossed onto a leather-bound book cover"
-  - "gilt parchment letterhead at the top of a decree"
-  - "rust-pitted iron foundry casting on a heavy machinery plate"
+  # Original 01-11 (preserved verbatim — do not reorder)
+  - "polished brass relief mounted on a dark stone wall"          # 01
+  - "weathered brass on dark steel bulkhead"                       # 02
+  - "etched into a thick ferrocrete column"                        # 03
+  - "stamped pewter lapel pin on a heavy black coat"               # 04
+  - "embroidered gold thread on a dark hanging banner"             # 05
+  - "engraved silver pendant on a heavy chain"                     # 06
+  - "carved oak panel mounted above a doorway"                     # 07
+  - "brass emblem mounted on a wall by heavy bolts"                # 08
+  - "embossed onto a leather-bound book cover"                     # 09
+  - "gilt parchment letterhead at the top of a decree"             # 10
+  - "rust-pitted iron foundry casting on a heavy machinery plate"  # 11
+
+  # NOTE: per-symbol `extra_treatments` occupy indices 12-15 below
+  # (4 each). The v3 *common* expansion lives at indices 16+ — see
+  # `common_treatments_extended` below, which the generator
+  # concatenates after the per-symbol extras.
+
+# v3 append-only common expansion. The generator concatenates this
+# AFTER the per-symbol `extra_treatments`, so existing extras keep
+# their indices 12-15. This block lands at index 16 onward.
+common_treatments_extended:
+  # Architecture & monumental
+  - "embossed onto the heavy bronze doors of an Imperial spire, weathered green patina at the seams"
+  - "carved stone frieze running along the facade of a hive cathedral"
+  - "mosaic inlaid into a chapel floor of dark and pale stone tiles"
+  - "stained glass window in a hive cathedral, casting colored light onto the stone floor"
+  # Painted / stenciled / graffiti — the lived-in surfaces
+  - "stenciled in white paint on a heavy steel void-ship hull plate, paint runs and overspray"
+  - "graffitied in dripping red paint on a manufactorum wall, hand-painted in loyalist devotion"
+  - "spray-stenciled in olive drab on a dark green munitions crate"
+  - "scratched into ferrocrete by a serf's hand-tool, shallow rough lines"
+  # Personal / body
+  - "tattooed in black ink on weathered skin of a Guardsman's forearm"
+  - "branded into pale skin with a hot iron, raised pink scar tissue"
+  # Document and seal
+  - "wax seal pressed in red wax on a folded parchment dispatch, ribbon tail"
+  - "hand-illuminated in gold leaf on the margin of a manuscript page"
+  # Decay and time
+  - "moss-covered ancient stone relief on a ruined wall, weathered by centuries"
+  - "covered in industrial dust on an abandoned underhive bulkhead, half-obscured"
 
 # Global angle pool — sampled round-robin across each symbol's variants.
 angles:
