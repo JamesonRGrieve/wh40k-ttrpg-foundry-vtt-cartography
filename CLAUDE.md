@@ -492,17 +492,62 @@ shape.
   — heraldry, sigil-laden documents, signet rings, ceremonial
   regalia.
 
-### What to use instead
+### What to use instead — validated 2026-05-08
 
-For iconography-critical surfaces, use Gemini Imagen 4
-("nano-banana") via the Google API. The same Solenne-style anchors
-work — Imagen reads "painterly oil painting, grimdark warhammer
-40000 portrait" — and the model renders Imperial Aquila /
-Inquisitorial rosette / Mechanicus cog natively in canonical form.
-This is the operator-instructed tooling decision, not a workaround.
+For iconography-critical surfaces, use **Gemini 2.5 Flash Image**
+("nano-banana") via the AI Studio API. Free tier on the API is
+gone as of mid-2026 (paid-only); AI Studio web UI still gets ~500
+free renders/day but is not programmatic. Image gen on the API is
+billed per image (~$0.04 at gemini-2.5-flash-image rates). Confirmed
+working with the operator's API key after billing was enabled.
+
+**Reference-image conditioning is the architecture that works.** A
+canonical-shape reference image is fed to Gemini alongside the
+prompt; the prompt drives surface treatment (material, context),
+angle, and lighting. Result: the canonical silhouette is preserved
+across every variant because the reference supplies it; only
+material / context / angle / lighting vary. This decouples shape
+fidelity from prompt engineering.
+
+Validated pipeline:
+- `gen_iconography_corpus.py` — manifest-driven generator
+- `lora-training/manifest.yaml` — DRY: common_treatments shared
+  across symbols + per-symbol extra_treatments + global angle and
+  lighting pools sampled round-robin
+- Per-variant prompt template:
+  `"Preserve the exact heraldic silhouette ({shape}) from the
+  reference image. Render it as {treatment}. View: {angle}.
+  Lighting: {lighting}. Single symbol focal subject filling most of
+  the frame, full silhouette visible, no text, no caption."`
+- Reference image: each symbol's `*_isolated.png` plate
+- Output: PNG + sibling `.txt` caption (trigger + shape + treatment)
+  paired for kohya/ai-toolkit ingestion
+
+Generation discipline lessons:
+- **Manifest must be append-only.** Output filenames embed the
+  sequential treatment index. Reordering shifts indices, orphans
+  existing files, and re-bills the whole corpus on next run. New
+  treatments go at the END of `common_treatments` or in
+  `common_treatments_extended`.
+- **Handle Gemini's IMAGE_SAFETY blocks.** Some prompts return
+  `candidate.content == None` with `finish_reason=IMAGE_SAFETY`
+  (e.g., body-modification + sigil combinations). The generator
+  must check for None content and skip gracefully rather than
+  AttributeError out mid-corpus.
+- **Round-robin angle/lighting sampling.** Pure Cartesian product
+  is combinatorial; round-robin (treatment[i] × angle[i mod n] ×
+  lighting[i mod m]) gives even axis coverage with linear cost.
+- **Same canonical reference for all variants.** Don't pass scene-
+  context references — the LoRA needs to bind the trigger to the
+  shape, not to a specific scene. Use the cleanest isolated plate
+  available.
+
+Validated 2026-05-08 corpus: 11 Imperial symbols × 29 variant
+slots = 319 planned, 317 generated (2 safety-blocked), ~$12.60
+spent on the $20 budget.
 
 Untried local levers (in case Gemini becomes unavailable or the
-operator wants to re-investigate):
+operator wants an all-local pipeline):
 - **40K iconography LoRA** — train Chroma-Flux on a curated set of
   isolated canonical-shape references (Imperial Aquila, Inquisitorial
   Rosette, Mechanicus opus cog, Astra Militarum winged skull,
@@ -636,4 +681,20 @@ exist to prevent that recurrence. Full post-mortem in
   with arched-up wings is not an aquila; an inquisitorial rosette
   rendered as a generic medal is not an inquisitorial rosette.
   See "Tooling decisions" above for when to switch to Gemini.
+- **Never reorder a treatment-list manifest.** Output filenames
+  embed the sequential treatment index; reordering renames every
+  downstream file and re-bills the corpus on next run. Append new
+  entries to the END of `common_treatments` or in
+  `common_treatments_extended`. The same rule applies to per-symbol
+  `extra_treatments`.
+- **Never commit `.env`.** API keys are in `.env`; the file is
+  gitignored. `.env.example` documents the required variables. If
+  you find a key in a committed file, rotate it immediately.
+- **Never assume Gemini will return content on every call.** Image-
+  generation responses can have `candidate.content == None` with
+  `finish_reason=IMAGE_SAFETY` on prompts the safety filter blocks
+  (body modifications, blood, etc.). Defensive parsing — check for
+  None content, log the finish_reason, mark the job as a failure,
+  continue. Without this guard the generator AttributeErrors out
+  on the first blocked prompt and burns no work.
 - **Never `--no-verify` past pre-commit gates** in the parent repo.

@@ -16,6 +16,103 @@ acceptance rules". Read it before claiming any aesthetic outcome.
 
 ---
 
+## 2026-05-08 — Iconography LoRA corpus build (Gemini reference-conditioning)
+
+After the second-presentation rejection (next section below) made
+the local-pipeline ceiling explicit, the operator authorized a
+$20 spend on the AI Studio API and we built the 40K iconography
+LoRA training corpus. This entry captures what worked, what didn't,
+and the recipe for the next LoRA category.
+
+### Wins (mechanical, not aesthetic claims)
+
+- **Reference-image conditioning works on Gemini 2.5 Flash Image.**
+  Passing a clean isolated-shape PNG alongside the prompt locks
+  the canonical silhouette across every variant. The talons that
+  the operator flagged as missing in text-only attempts are
+  preserved across all 317 corpus images because the reference
+  carries them.
+- **Multi-axis matrix sampling delivers training-grade variety.**
+  Treatment × angle × lighting round-robin produced 29 distinct
+  variants per symbol that share canonical shape but differ in
+  surface treatment, viewing angle, and lighting — what the LoRA
+  needs to bind the trigger to the shape, invariant to view.
+- **Append-only manifest pattern is resumable.** When the operator
+  asked to add stencil/graffiti/spire-door treatments mid-build,
+  appending at index 16+ of `common_treatments_extended` left the
+  existing 165 files untouched on the next run. Total cost of the
+  expansion was the cost of the new variants only ($6.16), not the
+  whole corpus.
+- **Hardened generator survives Gemini IMAGE_SAFETY blocks.** A
+  guard against `candidate.content == None` with
+  `finish_reason=IMAGE_SAFETY` lets the run continue past blocked
+  prompts (skin-tattoo + administratum hit the filter; rest of the
+  corpus unaffected).
+- **Per-image .txt captions paired automatically.** The trigger
+  token, shape clause, and treatment clause go into the caption;
+  angle and lighting are deliberately excluded so the LoRA learns
+  shape-binding to the trigger and treats angle/lighting as
+  invariance training, not as part of the bound concept.
+
+### Fails / corrections
+
+- **First smoke test rendered a biologically-detailed eagle.**
+  Wrong design intent; the canonical Imperial Aquila is a stylized
+  heraldic icon (chevron wings, profile heads, no anatomical
+  feathers/eyes/beaks). Operator caught and corrected.
+- **Second smoke test missed the talons.** Text-only prompt could
+  not specify them precisely. Solved by passing a canonical
+  reference image as conditioning input.
+- **First v1 corpus generated material variants only at front-on
+  plain pose.** Operator flagged: "same image in different colors,
+  not a training set." Rebuilt with multi-axis matrix sampling.
+- **First attempt at v2 expansion reordered `common_treatments`.**
+  Output filenames embed the sequential index; reordering would
+  have re-billed all 165 existing variants. Caught before launch
+  via the operator's idempotency question, reverted to append-only.
+- **First v3 run AttributeError'd on the first prompt.** Gemini
+  returned `candidate.content = None` (IMAGE_SAFETY block on a
+  body-modification prompt). The unguarded `.parts` access killed
+  the run. Hardened the parser; second run completed.
+- **AI Studio free-tier image generation is dead.** Confirmed
+  empirically (429 RESOURCE_EXHAUSTED with limit:0 on every image
+  model) and via Google's developer forum. The 1500/day free quota
+  applies only to text models; image gen is paid-only on the API
+  as of mid-2026.
+
+### Recipe for the next LoRA category (style LoRAs, hive-city, etc.)
+
+1. Build a `lora-training/<category>/` folder with one isolated
+   reference image per concept.
+2. Write a `manifest.yaml` with:
+   - `defaults` block (isolation + shape_invariance clauses)
+   - `common_treatments` (universal material/context phrases)
+   - `angles`, `lighting` (global pools)
+   - `symbols` list with `folder`, `trigger`, `shape`,
+     `extra_treatments` per concept.
+3. Reuse `gen_iconography_corpus.py` — it's manifest-agnostic.
+4. Smoke-test ONE concept before scaling (validates prompt shape).
+5. `--dry-run` to confirm the new variant count + cost estimate.
+6. Run, audit a random sample across symbols, commit.
+7. To add new treatments to an existing manifest: append-only at
+   the end of `common_treatments_extended` or per-symbol
+   `extra_treatments`. NEVER reorder.
+
+### What to avoid in the next LoRA category
+
+- Don't use scene-context images as references — the LoRA binds
+  trigger to scene, not to the concept. Always isolate first.
+- Don't include style descriptors (painterly, oil, grimdark) in
+  the LoRA captions. Style is per-render anchor at inference,
+  stacked separately. Iconography LoRA is shape-only.
+- Don't fold multiple concepts into one trigger. Each concept gets
+  its own trigger token and its own folder.
+- Don't include images where the concept is occluded or partial
+  unless you have many clean references first; the LoRA learns
+  the average of its training set.
+
+---
+
 ## 2026-05-08 — Second presentation rejection (the local pipeline has hard ceilings)
 
 After the 2026-05-07 rules were laid down, I produced

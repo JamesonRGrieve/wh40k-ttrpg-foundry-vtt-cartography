@@ -33,20 +33,38 @@ model doesn't have aquila/rosette/cog as concept tokens. See
   works (battlemap interiors, wide-scale archetypes, multi-deck
   geometry). Open question for the operator: API endpoint, auth,
   budget envelope.
-- [ ] **Train a 40K iconography LoRA** (medium-term, portable
-  artifact). Curated training set of isolated canonical-shape
-  references on neutral backgrounds: Imperial Aquila, Inquisitorial
-  Rosette, Mechanicus opus cog, Astra Militarum winged skull,
-  Adepta Sororitas fleur-de-lys, Adeptus Custodes lightning bolt,
-  Adeptus Ministorum sigil, Chapter heraldry, Eldar runes, Ork
-  glyphs, Tyranid hive markings, Necron dynastic glyphs, Tau caste
-  sigils, Chaos star variants. Captions describe SHAPE not style.
-  ~50-150 image-caption pairs, one-day fine-tune on the 3090.
-  Output: `wh40k_iconography.safetensors` reusable across this
-  campaign, all 7 wh40k-rpg game systems, and any future 40K
-  project. Do NOT fold campaign-specific style into this LoRA —
-  iconography is a 40K constant; style is per-campaign and stacks
-  separately at inference time.
+- [x] **40K iconography LoRA training corpus generated** (2026-05-08).
+  317 images across 11 Imperial symbols (Aquila + Inquisition,
+  Mechanicus, Astra Militarum, Sororitas, Ministorum, Administratum,
+  Arbites, Astra Telepathica, Imperial Navy, Rogue Trader). 29
+  variants per symbol via Gemini 2.5 Flash Image with reference-
+  image conditioning + matrix sampling (treatment × angle ×
+  lighting). Each PNG paired with caption .txt for kohya/ai-toolkit.
+  ~$12.60 spent of $20 budget. Folder:
+  `lora-training/`. Recipe: `docs/battlemap-workflow.md` under
+  "2026-05-08 — Iconography LoRA corpus build".
+- [ ] **Train the LoRA from the corpus.** ai-toolkit on the 3090,
+  rank 16, lr 1e-4, ~10-20 epochs over the 317-image set, ~6-12h
+  wall time. Output: `wh40k_iconography.safetensors` for
+  ComfyUI's `models/loras/`. Trigger tokens namespaced as
+  `sym_aquila`, `sym_inq_rosette`, `sym_mech_cog`, etc. Stack
+  with style anchors at inference: `<lora:wh40k_iconography:0.8>,
+  sym_aquila on the chapel apse, painterly oil painting, ...`.
+- [ ] **Refill the 2 IMAGE_SAFETY gaps** if needed for training:
+  `iconography-administratum-sigil/sym_administratum_19_*` and
+  `_24_*` (stained-glass and skin-tattoo prompts blocked). Soften
+  the prompts (e.g., "tattooed in black ink on a wooden plaque"
+  instead of "on weathered skin") and resume; ~$0.08 for two
+  variants.
+- [ ] **Decide on additional LoRA categories** with the remaining
+  ~$7.40 budget:
+  - Solenne painterly portrait/battlemap style LoRA
+    (style-only, stacks with iconography LoRA at inference)
+  - Hive-city overhead LoRA (district-scale density target)
+  - Voidship hull LoRA
+  - Chaos / Xenos iconography pack (deferred from this corpus)
+  Recipe documented; reuse `gen_iconography_corpus.py` with a new
+  per-category manifest.
 - [ ] **Re-architect ships as battlemaps with hull-shaped layouts.**
   Per operator direction: the spacecraft workflow's region-color
   prompt-budget split is the structural cause of the MS-Paint deck
