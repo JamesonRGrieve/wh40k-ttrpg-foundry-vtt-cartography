@@ -1,5 +1,74 @@
 # Cartography Asset Pipeline — Working Directives
 
+## Project end goal (IMMUTABLE — read before doing anything)
+
+This project produces a complete, playable Foundry V14 asset set for
+the Solenne Dark Heresy 2e campaign. The aesthetic target is the
+existing deployed `SOLENNE_*.png` maps (painterly oil, FFG-era Dark
+Heresy tone). Anything weaker than that bar is not a deliverable.
+
+The full deliverable surface — every item below is in scope and
+required:
+
+1. **Battlemaps** — interior tactical maps (hab, manufactorum,
+   chapel, medicae, scholam, garrison, bar, tunnel, lair, archive,
+   etc.) at painterly Solenne-grade quality.
+2. **Battlemap overlays** — perfectly registered Foreground layers
+   that stack on a base map (e.g. catwalks over a factory floor,
+   walls-alpha over architecture, mezzanines, gantries). Pixel
+   alignment with the base is mandatory; misregistration is data
+   loss.
+3. **Ships** — multi-deck spacecraft maps where every deck (bridge,
+   engineering, barracks, cargo, medbay, hangar, etc.) shares an
+   identical hull bbox so decks layer perfectly when the operator
+   stacks them in Foundry. Aesthetic must match the rest of the
+   battlemap line, not read as schematic.
+4. **City maps — districts** — hab district, manufactorum district,
+   medicae district, scholam district, Mechanicum spire district,
+   PDF/garrison district, transit, ore-processing, etc. District-
+   scale top-down maps the operator can place tokens on for
+   sub-tactical encounters.
+5. **Planetary maps** — full-planet views (hive locations,
+   continents, terrain) for strategic-scale narrative.
+6. **Star system maps** — system-scale charts (planets, orbits,
+   warp routes) for travel and sector framing.
+7. **Stamps** — extracted asset library with full **matrix
+   variations** per subject:
+   - Orientation (north/south/east/west, plus top-down/isometric
+     where applicable).
+   - Damage level (intact / damaged / destroyed).
+   - Activation level (active / inactive).
+   All variants of a subject are grouped (`group_id`) so Foundry's
+   Mass Edit Preset Browser can search, filter, and present them
+   as a coherent variant set. Missing variants in a group are
+   filled by **supplemental generation** — when a group has e.g.
+   intact + damaged but no destroyed, the pipeline generates the
+   missing variant from the existing ones.
+8. **Portrait generation** — character portraits in line with the
+   existing deployed character portraits, plus automatic cropping
+   to 1:1 tokens (Foundry actor-token convention).
+9. **Scene generation with integrated iconography** — narrative
+   scene art (chapels, sanctums, war rooms, audience halls, etc.)
+   where Imperial / Inquisitorial iconography is rendered AS scene
+   material: brass relief on stone, etchings in metal, embossings
+   on armor, embroidered banners, gilt inlay, carved wood. Flat
+   SVG-on-render compositing is NOT an acceptable terminal state
+   for these scenes.
+
+These requirements are immutable. They are not subject to
+reinterpretation, scope reduction, or "diminishing returns"
+arguments. If a current pipeline cannot meet one of these bars,
+the response is to identify the missing capability and either build
+it or escalate to the operator — NOT to redefine the bar downward.
+
+When uncertain whether work-in-progress is on track, re-read this
+list. Every commit, every render, every helper exists to advance
+one of these nine items toward shippable Solenne-grade quality.
+
+---
+
+## Pipeline overview
+
 This directory turns Gemini-generated stamp-grid PNGs into a Foundry V14
 tile/asset library for the Solenne campaign.
 
