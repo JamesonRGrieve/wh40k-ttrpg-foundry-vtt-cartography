@@ -1,0 +1,114 @@
+# Voidship deckmap LoRA — corpus generation manifest.
+#
+# Third LoRA in the campaign training set. Trigger word:
+# `dh_voidship_map`. Trains the model to render top-down battlemap-
+# format Imperial voidship deck plans with bare interior architecture
+# (rooms ready for stamp population in a Foundry VTT map editor).
+#
+# Anchor prompt is the operator-validated "attempt 3" style. Every
+# generation passes the matching `_references/style_reference_attempt3.png`
+# as a style anchor so the hull rendering / lighting / paneling stays
+# consistent with what the operator has already approved.
+#
+# Architecture — same matrix-sampling shape as the portrait LoRA:
+#   - categories      = ship classes (small freighter, frigate, etc.)
+#   - archetypes      = deck/layout variants WITHIN that class
+#   - hull_states     = pristine / weathered / battle-damaged / derelict
+#   - lightings       = lumen-strip / red-emergency / sodium / cold-blue
+#   - Round-robin sampling so every archetype gets a unique
+#     (hull_state, lighting) pair.
+#
+# Caption format:
+#   dh_voidship_map, top-down battlemap of {class}, {deck/layout
+#   variant}, {hull_state}, {lighting}, Imperial gothic hull plating
+#   visible, empty interior architecture, Foundry VTT compatible
+#
+# This manifest is PREPARED but the generator has NOT BEEN RUN. The
+# operator wants to validate prompts in the Gemini web chat before
+# committing API spend (currently ~$4 left of the $20 envelope).
+
+defaults:
+  style_reference: _references/style_reference_attempt3.png
+  composition: >-
+    top-down orthographic battlemap, hull silhouette visible against a
+    flat black void background outside the hull only
+  hull_clause: >-
+    Imperial gothic hull plating visible from above with weathered
+    painted metal, rivets, panel seams, surface grime
+  empty_floors_clause: >-
+    Empty interior floors — no furniture, no crates, no consoles, no
+    bunks, no equipment, no debris. The empty rooms will be filled
+    with stamps in a Foundry VTT map editor later
+  lighting_clause: "Interior passively lit by unseen lumen strips"
+  exclusions: "No text, no compass, no scale"
+  caption_trailer: >-
+    top-down battlemap, Imperial voidship, empty interior architecture,
+    Foundry VTT base map
+
+# Hull state — sampled round-robin across each category's archetypes.
+hull_states:
+  - "pristine, freshly serviced, clean panel work"
+  - "lightly weathered, minor scuffing on the hull plating"
+  - "weathered with rust streaks and patched panels"
+  - "heavily weathered, exposed bracing in places, oil-stained"
+  - "battle-damaged, scorched panel patches, torn plating along one flank"
+  - "derelict, grime and corrosion across most of the hull, dim interior"
+
+# Lighting — sampled alongside hull state. Phrased as a SHORT modifier
+# that follows the lighting_clause from `defaults` ("Interior passively
+# lit by unseen lumen strips") so the prompt reads naturally without
+# duplication.
+lightings:
+  - "soft warm illumination, gentle floor wash"
+  - "sodium-yellow tone, harsher contrast"
+  - "single red emergency lamp glow elsewhere, mostly dark"
+  - "cool blue-white naval lighting, sterile cast"
+  - "interior mostly dark, only dim rim from pale floor stripes"
+  - "warm tungsten glow, candle-like flicker"
+
+# Per-ship-class layouts.
+categories:
+
+  - folder: map-freighter-small
+    archetypes:
+      - "single deck, cockpit at the bow with two-pilot console arrangement, central corridor, mid-ship cargo bay, crew quarters, single rear cargo egress ramp, no other external openings"
+      - "single deck, cockpit at the bow, side-corridor leg-room with two crew quarters off it, central engineering, single port-side cargo ramp, no other external openings"
+      - "single deck, cockpit at the bow with single-pilot console, mess and bunk room, mid-ship cargo bay with floor cargo-pit, single rear cargo ramp, no other external openings"
+      - "single deck, cockpit at the bow, mid-ship medbay with single examination room, central cargo bay, single rear cargo ramp, no other external openings"
+
+  - folder: map-freighter-medium
+    archetypes:
+      - "single deck, bridge at the bow with three-station console arrangement, central spinal corridor, port-side cargo bay, starboard-side crew quarters, mid-ship engineering bay, single rear cargo egress ramp, no other external openings"
+      - "two-deck cross-section presented as adjacent halves: upper deck with bridge and crew quarters, lower deck with engineering and cargo, single rear cargo ramp on the lower deck"
+      - "single deck, bridge at the bow, central spinal corridor, mid-ship mess hall, two crew quarters, port-side small medbay, starboard-side cargo bay, single rear cargo ramp"
+      - "single deck, bridge at the bow, port-side hangar bay for a single shuttle, starboard-side crew quarters and mess, mid-ship engineering, single rear cargo ramp"
+
+  - folder: map-frigate-escort
+    archetypes:
+      - "single deck, command bridge at the bow with five-station console arrangement, port-side and starboard-side gun batteries with empty turret pintles, central spinal corridor, crew bunkroom, engineering at the stern, single rear personnel airlock as the only egress"
+      - "single deck, command bridge at the bow, port-side launch tube for torpedoes (closed loading hatches, no exposed ordnance), starboard-side fuel handling area, central engineering, single rear personnel airlock"
+      - "single deck, command bridge at the bow, mid-ship sensorium with single console arrangement, port-side and starboard-side small gun positions, crew quarters, engineering at the stern, single rear personnel airlock"
+
+  - folder: map-destroyer-light
+    archetypes:
+      - "single deck, command bridge at the bow with seven-station arrangement, central spinal corridor with armoury and ordnance lockers, port-side and starboard-side gun batteries, mid-ship sensorium, engineering at the stern, single rear personnel airlock"
+      - "single deck, command bridge at the bow, mid-ship strategium with central holo-table room, port-side and starboard-side gun batteries, engineering at the stern, single rear personnel airlock"
+      - "single deck, command bridge at the bow, port-side launch tube for torpedoes, starboard-side launch tube for torpedoes, central spinal corridor, engineering at the stern, single rear personnel airlock"
+
+  - folder: map-transport-bulk
+    archetypes:
+      - "single deck, cockpit at the bow with two-station console, large central cargo hold spanning two thirds of the deck, narrow port-side and starboard-side maintenance corridors, engineering at the stern, single forward cargo ramp at the bow under the cockpit overhang"
+      - "single deck, cockpit at the bow, central cargo hold with floor-mounted cargo pits, port-side and starboard-side passenger bunk rooms (empty bunk frames only), engineering at the stern, single rear cargo ramp"
+      - "single deck, cockpit at the bow, central cargo hold subdivided into four secured cargo pens (empty pens, just dividers), engineering at the stern, single rear cargo ramp"
+
+  - folder: map-yacht-roguetrader
+    archetypes:
+      - "single deck, ornate bridge at the bow with throne-station and three console-stations, central spinal corridor, port-side stateroom, starboard-side library/office, mid-ship dining hall, engineering at the stern, single rear personnel ramp"
+      - "single deck, ornate bridge at the bow, port-side guest stateroom, starboard-side stateroom for the trader, mid-ship audience hall, engineering at the stern, single rear personnel ramp"
+      - "two-deck cross-section presented as adjacent halves: upper deck with bridge and staterooms, lower deck with cargo and crew quarters, single rear personnel ramp on the lower deck"
+
+# ── Cost projection ──────────────────────────────────────────────────
+# 6 categories × ~3-4 archetypes = 21 archetypes
+# 1 supplement per archetype (default) = 21 generations × $0.04 = $0.84
+# Comfortable within the remaining ~$4 envelope.
+# To regenerate or expand later, bump --supplements-per-archetype.
