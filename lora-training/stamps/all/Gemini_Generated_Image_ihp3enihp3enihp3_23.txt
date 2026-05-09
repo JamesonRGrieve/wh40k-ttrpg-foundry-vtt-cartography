@@ -1,0 +1,1 @@
+dh_stamp, Cylindrical Object, top-down view, intact, set, models, cylindrical, object, flat, top, bottom, placed

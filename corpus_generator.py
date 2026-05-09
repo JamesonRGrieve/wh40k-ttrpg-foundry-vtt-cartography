@@ -103,6 +103,72 @@ def register(cls: type[Handler]) -> type[Handler]:
     return cls
 
 
+# ── Stamp handler (no API spend — stages existing stamps) ───────────
+
+@register
+class StampHandler(Handler):
+    """Stage the existing curated `stamps/` library into a LoRA
+    training folder. Reads each stamp's sidecar YAML, synthesizes a
+    caption, and hardlinks the PNG + writes the .txt next to it.
+
+    NO API calls — this handler emits Jobs whose `prompt` field is
+    empty and whose output PNGs are sourced via filesystem hardlink
+    rather than Gemini. The shared run loop short-circuits when it
+    sees an empty `prompt` and a populated `source_path` field.
+    """
+    name = "stamp"
+
+    def build_jobs(self, only: str | None) -> list[Job]:
+        d = self.manifest.get("defaults", {})
+        trigger = d.get("trigger", "dh_stamp")
+        source_dir = HERE / d.get("source_dir", "stamps")
+        stage_subdir = d.get("stage_subdir", "all")
+        stage_root = self.lora_dir / stage_subdir
+        stage_root.mkdir(parents=True, exist_ok=True)
+
+        jobs: list[Job] = []
+        for sidecar in sorted(source_dir.glob("*.yaml")):
+            png = sidecar.with_suffix(".png")
+            if not png.is_file():
+                continue
+            if only and only not in png.name:
+                continue
+            try:
+                meta = yaml.safe_load(sidecar.read_text()) or {}
+            except yaml.YAMLError:
+                continue
+            name = (meta.get("name") or "").strip()
+            description = (meta.get("description") or "").strip()
+            orientation = (meta.get("orientation") or "top-down").strip()
+            state = (meta.get("state") or "intact").strip() or "intact"
+            tags = meta.get("tags") or []
+            tag_summary = ", ".join(str(t) for t in tags[:8])
+
+            # Skip stamps with no usable name (Florence-2 silent fails).
+            if not name:
+                continue
+
+            caption_parts = [trigger, name, f"{orientation} view", state]
+            if tag_summary:
+                caption_parts.append(tag_summary)
+            if description and len(description) < 240:
+                # Short descriptions add useful detail; long ones are
+                # Florence-2's purple prose and dilute the trigger.
+                caption_parts.append(description)
+            caption = ", ".join(caption_parts)
+
+            out_png = stage_root / png.name
+            out_txt = out_png.with_suffix(".txt")
+            jobs.append(Job(
+                out_png=out_png,
+                out_txt=out_txt,
+                prompt="",                  # signals: no API call
+                caption=caption,
+                reference_paths=[png],      # source_path lives here
+                label=f"stamp/{png.stem}"))
+        return jobs
+
+
 # ── Iconography handler ─────────────────────────────────────────────
 
 @register
@@ -264,6 +330,82 @@ class PortraitHandler(Handler):
                         prompt=prompt, caption=caption,
                         reference_paths=[style_ref] if style_ref else [],
                         label=f"{folder_name} #{a_idx + 1:02d}-{v_idx + 1:02d}"))
+        return jobs
+
+
+# ── Scene handler (project goal #9) ─────────────────────────────────
+
+@register
+class SceneHandler(Handler):
+    """Narrative scene art LoRA — chapels, sanctums, war rooms,
+    audience halls, etc. Iconography is NOT trained into this LoRA;
+    it stacks at inference (`<lora:dh_scene:0.7> <lora:wh40k_iconography:0.6>
+    dh_scene, chapel nave, ..., sym_aquila brass relief on apse wall`).
+
+    Matrix axes:
+      scene_type × dressing × material × lighting × angle
+    Round-robin across all axes for global variety; per-scene-type
+    `extras` may add scene-specific dressing variants.
+    """
+    name = "scene"
+
+    def build_jobs(self, only: str | None) -> list[Job]:
+        d = self.manifest["defaults"]
+        composition = d["composition"]
+        style = d["style"]
+        exclusions = d.get("exclusions", "No text, no compass, no scale")
+        caption_trailer = d.get("caption_trailer", "")
+        trigger = d.get("trigger", "dh_scene")
+        dressings = self.manifest.get("dressings", [""])
+        materials = self.manifest.get("materials", [""])
+        lightings = self.manifest.get("lightings", [""])
+        angles = self.manifest.get("angles", ["eye-level three-quarter"])
+        common = list(self.manifest.get("common_treatments", []))
+
+        seq = 0
+        jobs: list[Job] = []
+        for sc in self.manifest["scene_types"]:
+            folder_name = sc["folder"]
+            if only and only not in folder_name:
+                continue
+            folder = self.lora_dir / folder_name
+            folder.mkdir(parents=True, exist_ok=True)
+            scene_name = sc["name"]
+            scene_subject = sc["subject"]
+            extras = list(sc.get("extra_treatments", []))
+            treatments = common + extras
+
+            for idx, treatment in enumerate(treatments, start=1):
+                dressing = dressings[seq % len(dressings)]
+                material = materials[seq % len(materials)]
+                lighting = lightings[seq % len(lightings)]
+                angle = angles[seq % len(angles)]
+                seq += 1
+                slug = slugify(treatment)
+                out_png = folder / f"{folder_name.replace('scene-', '')}_{idx:02d}_{slug}.png"
+                prompt = (
+                    f"{scene_subject}.\n\n"
+                    f"DRESSING: {dressing}.\n"
+                    f"MATERIALS: {material}.\n"
+                    f"TREATMENT: {treatment}.\n\n"
+                    f"VIEW: {angle}.\nLIGHTING: {lighting}.\n\n"
+                    f"COMPOSITION: {composition}.\n"
+                    f"STYLE: {style}.\n\n"
+                    f"NO IMPERIAL ICONOGRAPHY in this image — leave "
+                    f"banners, walls, and surfaces appropriate for a "
+                    f"40K Imperial scene but DO NOT render aquilas, "
+                    f"rosettes, cogs, or other named heraldic symbols. "
+                    f"Iconography is composited at inference via the "
+                    f"iconography LoRA. {exclusions}.")
+                caption = (
+                    f"{trigger}, {scene_name}, {treatment}, {dressing}, "
+                    f"{material}, {lighting}, {angle}, {caption_trailer}"
+                ).strip(", ").strip()
+                jobs.append(Job(
+                    out_png=out_png,
+                    out_txt=out_png.with_suffix(".txt"),
+                    prompt=prompt, caption=caption,
+                    label=f"{folder_name} #{idx:02d}"))
         return jobs
 
 
@@ -488,9 +630,16 @@ def run_jobs(jobs: list[Job], args: argparse.Namespace,
              client: genai.Client | None) -> int:
     todo = [j for j in jobs if not j.out_png.exists()]
     skipped = len(jobs) - len(todo)
+
+    # Staging-mode jobs (empty prompt, sourced from filesystem) cost
+    # nothing and don't need the Gemini client. Detect and split.
+    staging_jobs = [j for j in todo if not j.prompt]
+    api_jobs = [j for j in todo if j.prompt]
+
     print(f"[plan] {len(jobs)} variant slots — "
-          f"{skipped} already exist (skipped), {len(todo)} to generate")
-    est = len(todo) * COST_PER_IMAGE_USD
+          f"{skipped} already exist (skipped), {len(todo)} to process "
+          f"({len(api_jobs)} API, {len(staging_jobs)} stage-only)")
+    est = len(api_jobs) * COST_PER_IMAGE_USD
     print(f"[plan] estimated cost @ ${COST_PER_IMAGE_USD:.2f}/image = ${est:.2f}")
     if args.limit:
         todo = todo[: args.limit]
@@ -498,10 +647,12 @@ def run_jobs(jobs: list[Job], args: argparse.Namespace,
               f"(${len(todo) * COST_PER_IMAGE_USD:.2f})")
     if args.dry_run:
         for j in todo[:30]:
-            print(f"  [{j.label}] -> {j.out_png}")
+            mode = "STAGE" if not j.prompt else "API"
+            print(f"  [{mode}] [{j.label}] -> {j.out_png}")
             if args.show_prompt:
-                for line in j.prompt.splitlines():
-                    print(f"      {line}")
+                if j.prompt:
+                    for line in j.prompt.splitlines():
+                        print(f"      {line}")
                 print(f"      caption: {j.caption}")
                 if j.reference_paths:
                     for r in j.reference_paths:
@@ -515,12 +666,32 @@ def run_jobs(jobs: list[Job], args: argparse.Namespace,
               file=sys.stderr)
         return 2
 
+    # Staging mode first (no API, no throttle).
+    stage_ok = 0
+    for job in staging_jobs:
+        src = job.reference_paths[0] if job.reference_paths else None
+        if src is None or not src.is_file():
+            print(f"  [stage-skip] {job.label}: no source")
+            continue
+        job.out_png.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            os.link(src, job.out_png)
+        except OSError:
+            # Cross-filesystem fallback: copy
+            job.out_png.write_bytes(src.read_bytes())
+        job.out_txt.write_text(job.caption + "\n")
+        stage_ok += 1
+    if staging_jobs:
+        print(f"[stage] {stage_ok}/{len(staging_jobs)} stamps staged")
+    if not api_jobs:
+        return 0
+
     assert client is not None
     last_call = 0.0
     successes = 0
     failures: list[tuple[Job, str]] = []
     spent = 0.0
-    for n, job in enumerate(todo, 1):
+    for n, job in enumerate(api_jobs, 1):
         elapsed = time.monotonic() - last_call
         if elapsed < MIN_INTERVAL_S:
             time.sleep(MIN_INTERVAL_S - elapsed)
@@ -530,7 +701,7 @@ def run_jobs(jobs: list[Job], args: argparse.Namespace,
         for ref in job.reference_paths:
             contents.append(Image.open(ref).convert("RGB"))
 
-        print(f"[{n}/{len(todo)}] {job.label} -> {job.out_png.name}",
+        print(f"[{n}/{len(api_jobs)}] {job.label} -> {job.out_png.name}",
               file=sys.stderr)
         try:
             resp = client.models.generate_content(model=args.model, contents=contents)
@@ -569,7 +740,7 @@ def run_jobs(jobs: list[Job], args: argparse.Namespace,
         print(f"  [ok] saved {len(png)} bytes (cum est ${spent:.2f})",
               file=sys.stderr)
 
-    print(f"\n[done] {successes}/{len(todo)} successes, "
+    print(f"\n[done] {successes}/{len(api_jobs)} API successes, "
           f"{len(failures)} failures, est spent ${spent:.2f}")
     if failures:
         print("[done] failures:")

@@ -1,0 +1,1 @@
+dh_stamp, Mug, north view, damaged, rendering, mug, ceramic, has, light, round, handle, right

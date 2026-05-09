@@ -7,14 +7,16 @@ that build these corpora live one level up
 (`gen_*_corpus.py`) and read the `manifest.yaml` inside each
 subdirectory.
 
-## Plan — 4 LoRAs (or 5, depending on how you count voidships)
+## Plan — 6 LoRAs
 
-| # | LoRA                       | Trigger                | Folder                | Status      | Purpose |
-|---|----------------------------|------------------------|-----------------------|-------------|---------|
-| 1 | 40K iconography            | `sym_<name>` (11 syms) | `iconography/`        | Trained ✅  | Canonical Imperial heraldry stamped onto scenes (aquila, rosette, mech_cog, etc.). Reusable across all 7 wh40k-rpg game systems. |
-| 2 | DH2 character portraits    | `dh_portrait`          | `portraits/`          | Corpus ready | Painterly 40K portrait LoRA, 105 image corpus across 15 archetype categories. Stacks with iconography at inference. |
-| 3a | Voidship hull silhouettes | `dh_voidship_hull`     | `voidship-hulls/`     | **In progress (Stage 1)** | Empty Imperial voidship hull silhouettes per ship class. No interior. Output is a blank hull at the right proportions for the class. |
-| 3b | Architectural layouts      | `dh_layout`            | `voidship-layouts/`   | Corpus partial (Stage 2) | Top-down architectural layouts (rooms / corridors / doorways) generalized over an arbitrary boundary. Reusable for ship decks, hab apartments, manufactorums, chapels, district maps. |
+| # | LoRA                       | Trigger                | Folder                | Status                 | Purpose |
+|---|----------------------------|------------------------|-----------------------|------------------------|---------|
+| 1 | 40K iconography            | `sym_<name>` (11 syms) | `iconography/`        | Trained ✅             | Canonical Imperial heraldry stamped onto scenes (aquila, rosette, mech_cog, etc.). Reusable across all 7 wh40k-rpg game systems. |
+| 2 | DH2 character portraits    | `dh_portrait`          | `portraits/`          | Corpus ready           | Painterly 40K portrait LoRA, 105 image corpus across 15 archetype categories. Stacks with iconography at inference. |
+| 3a | Voidship hull silhouettes | `dh_voidship_hull`     | `voidship-hulls/`     | Smoke validated (6/36) | Empty Imperial voidship hull silhouettes per ship class. No interior. Output is a blank hull at the right proportions for the class. Three iterations on surface_rules to eliminate forward-facing turrets. |
+| 3b | Architectural layouts      | `dh_layout`            | `voidship-layouts/`   | Corpus partial         | Top-down architectural layouts (rooms / corridors / doorways) generalized over an arbitrary boundary. Reusable for ship decks, hab apartments, manufactorums, chapels, district maps. |
+| 4 | Narrative scenes           | `dh_scene`             | `scenes/`             | Scaffolded             | Project goal #9 — chapel naves, sanctums, war rooms, audience halls, etc. Iconography composites at inference (no symbols in this LoRA's training set). 10 scene types × 6–7 treatments = ~65 images, $2.60. |
+| 5 | Stamp generator            | `dh_stamp`             | `stamps/`             | Corpus staged ✅       | Top-down 40K furniture/equipment generator. Trained on the existing 579-stamp curated library (no API spend — captions synthesized from sidecars at staging). Solves the missing-variant fill problem. |
 
 Voidships are split into two stacked LoRAs (hull + layout) rather
 than one fused LoRA — see `../docs/battlemap-workflow.md` (search for
@@ -68,12 +70,19 @@ uv run corpus_generator.py --lora portraits
 
 Available handlers (registered in `corpus_generator.py`):
 
-| Handler name      | Manifest field        | Reads                            | Writes into |
-|-------------------|-----------------------|----------------------------------|-------------|
-| `iconography`     | `generator: iconography`     | `iconography/manifest.yaml`     | `iconography/iconography-*/` |
-| `portrait`        | `generator: portrait`        | `portraits/manifest.yaml`       | `portraits/portrait-*/` |
-| `voidship_hull`   | `generator: voidship_hull`   | `voidship-hulls/manifest.yaml`  | `voidship-hulls/hull-*/` |
-| `voidship_layout` | `generator: voidship_layout` | `voidship-layouts/manifest.yaml`| `voidship-layouts/map-*/` |
+| Handler name      | Manifest field        | Reads                            | Writes into | Mode |
+|-------------------|-----------------------|----------------------------------|-------------|------|
+| `iconography`     | `generator: iconography`     | `iconography/manifest.yaml`     | `iconography/iconography-*/`  | API |
+| `portrait`        | `generator: portrait`        | `portraits/manifest.yaml`       | `portraits/portrait-*/`       | API |
+| `voidship_hull`   | `generator: voidship_hull`   | `voidship-hulls/manifest.yaml`  | `voidship-hulls/hull-*/`      | API |
+| `voidship_layout` | `generator: voidship_layout` | `voidship-layouts/manifest.yaml`| `voidship-layouts/map-*/`     | API |
+| `scene`           | `generator: scene`           | `scenes/manifest.yaml`          | `scenes/scene-*/`             | API |
+| `stamp`           | `generator: stamp`           | `stamps/manifest.yaml`          | `stamps/all/`                 | **stage-only** (no API) |
+
+Stage-only handlers source their PNGs from the filesystem (existing
+curated stamps) and synthesize captions from sidecar metadata. They
+short-circuit the run loop's API path — no Gemini calls, no cost,
+no rate-limiting.
 
 Adding a new LoRA: subclass `Handler` in `corpus_generator.py`, decorate
 with `@register`, set a unique `name`, implement `build_jobs(only) →

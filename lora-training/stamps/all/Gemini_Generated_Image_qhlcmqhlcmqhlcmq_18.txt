@@ -1,0 +1,1 @@
+dh_stamp, Chair, north view, damaged, rendering, chair, has, rectangular, frame, four, legs, seat

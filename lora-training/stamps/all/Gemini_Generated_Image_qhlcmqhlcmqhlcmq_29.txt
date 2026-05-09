@@ -1,0 +1,1 @@
+dh_stamp, Blurry, isometric view, inactive, blurry, A blurry

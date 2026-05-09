@@ -1,0 +1,199 @@
+# Scene generation LoRA — corpus manifest.
+#
+# Trigger: dh_scene. Project end-goal #9 — narrative scene art for
+# chapels, sanctums, war rooms, audience halls, scriptoria,
+# manufactorum bays, archives, refectories, etc.
+#
+# Iconography is NOT trained into this LoRA. At inference, stack
+# with the iconography LoRA so symbols come from the trained-canon
+# vocabulary:
+#   <lora:dh_scene:0.7> <lora:wh40k_iconography:0.6>
+#   dh_scene, chapel nave, dim chiaroscuro, candlelit,
+#   sym_aquila brass relief on the apse wall
+#
+# Matrix axes (round-robin):
+#   scene_type × dressing × material × lighting × angle × treatment
+#
+# APPEND-ONLY: filenames embed sequential treatment indices. NEVER
+# reorder common_treatments or per-scene extra_treatments.
+
+generator: scene
+
+defaults:
+  trigger: dh_scene
+  composition: >-
+    Wide-angle painterly architectural scene, single focal subject
+    (the named scene type), clear depth and atmosphere, painted oil
+    treatment, dark grimdark palette, visible brushwork, professional
+    concept art quality
+  style: >-
+    Warhammer 40000 grimdark, FFG-era Dark Heresy tone, painted oil
+    aesthetic with strong chiaroscuro, dark palette, painterly
+    brushwork on every surface — stone, iron, brass, fabric. Same
+    fidelity bar as the deployed SOLENNE_*.png battlemaps and
+    Characters/Edric Family/*.png portraits
+  exclusions: >-
+    No text, no labels, no watermarks. Do NOT render aquilas, rosettes,
+    cogs, or other named heraldic symbols — those come from a stacked
+    iconography LoRA at inference, not from this LoRA
+  caption_trailer: "painterly oil 40K interior scene, FFG-era Dark Heresy tone"
+
+# Round-robin axes. Append-only.
+dressings:
+  - "sparsely furnished"
+  - "lavishly appointed with heavy timber and brocade hangings"
+  - "utilitarian, machinery-dominated"
+  - "ceremonial, banner-lined"
+  - "war-torn and partially ruined"
+  - "candlelit and reverent"
+  - "smoke-stained and oily"
+  - "ornate with gilt accents"
+
+materials:
+  - "rough-hewn stone walls, wrought iron fixtures"
+  - "polished marble floors, dark wood paneling, brass trim"
+  - "ferrocrete walls, riveted steel plate, exposed cabling"
+  - "dark stained timber, leaded glass panels, candelabra"
+  - "soot-blackened brick, oil-stained metal, scattered debris"
+  - "carved sandstone, hammered bronze, wax-stained altar cloth"
+
+lightings:
+  - "warm candlelit chiaroscuro, deep shadows"
+  - "sodium-lamp overhead glow, harsh contrast"
+  - "blue-white naval lighting, cold sterile cast"
+  - "dim red emergency lamp, mostly shadow"
+  - "shafts of dusty light through high windows"
+  - "warm hearthlight from a single source, flickering"
+
+angles:
+  - "eye-level three-quarter facing the focal subject"
+  - "slightly elevated three-quarter, looking down toward the subject"
+  - "ground-level looking up at a tall focal element"
+  - "centered straight-on, symmetrical composition"
+  - "off-axis from the side, focal subject framed by foreground architecture"
+
+# Common treatments applied across every scene type.
+common_treatments:
+  - "deep one-point perspective, focal subject at the vanishing point"
+  - "atmospheric haze in the deep background"
+  - "torch / candle flame highlights catching nearby surfaces"
+  - "dust motes drifting in the lit zones"
+
+# Extension list — append here, NOT in common_treatments above.
+common_treatments_extended: []
+
+# ── Scene type catalogue ───────────────────────────────────────────
+#
+# Each scene_type has a folder (output dir), a short `name` for the
+# caption, a `subject` clause that anchors the scene's identity in
+# the prompt, and optional `extra_treatments` that are appended
+# AFTER common_treatments for that scene only. Append new scene
+# types at the END.
+
+scene_types:
+  - folder: scene-chapel-nave
+    name: "Imperial chapel nave"
+    subject: >-
+      The interior nave of a small Imperial Ecclesiarchy chapel,
+      central aisle running away from the viewer toward an apse with
+      a raised altar at the far end, columned arches along the side
+      aisles, plain banners hanging between the columns
+    extra_treatments:
+      - "single central altar, candle stands flanking, plain banner backdrop"
+      - "transept crossing visible, side chapels in deep shadow"
+      - "rose-window equivalent at the rear wall as the brightest light source"
+
+  - folder: scene-chapel-apse
+    name: "Imperial chapel apse"
+    subject: >-
+      The apse end of a small Imperial Ecclesiarchy chapel, viewed
+      from the central aisle looking toward the altar — the focal
+      subject is the altar itself, with a backdrop wall behind it
+    extra_treatments:
+      - "raised stone altar with cloth runner, candles, no idol (icon space left blank)"
+      - "kneeling rail in the foreground, altar in the mid-ground"
+
+  - folder: scene-sanctum
+    name: "Inquisitorial sanctum / private study"
+    subject: >-
+      A private Inquisitorial sanctum or study — heavy desk with
+      stacked tomes and parchments, bookcases lining the walls,
+      armchair, single reading lamp, small fire in a hearth
+    extra_treatments:
+      - "operative desk with parchments and a wax-sealed letter"
+      - "large heavy bookcase along the back wall, ladder access"
+
+  - folder: scene-audience-hall
+    name: "noble audience hall"
+    subject: >-
+      An ornate Imperial noble audience hall, raised dais with a
+      throne or seat-of-office at the far end, long approach aisle,
+      formal columns flanking
+    extra_treatments:
+      - "throne on raised dais, attendants' standing positions marked by floor inlay"
+      - "long approach aisle with red runner carpet down the centerline"
+
+  - folder: scene-war-room
+    name: "Imperial war room / strategium"
+    subject: >-
+      An Imperial Navy war room or strategium — central holographic
+      plotting table dominating the room, raised gallery seating
+      around the perimeter, command chair at one end
+    extra_treatments:
+      - "central holo-table active with a fleet plot, dim ambient glow from the table"
+      - "blast-shielded heavy door as the only entry, stationed on one wall"
+
+  - folder: scene-scriptorium
+    name: "Administratum scriptorium"
+    subject: >-
+      An Administratum scriptorium — long rows of writing desks
+      with scribes' positions marked by ink-pots and quill rests,
+      tall shelving racks of scroll-cubbies along the walls,
+      candle-lit
+    extra_treatments:
+      - "long parallel rows of identical scribe desks with stools"
+      - "tall scroll-cubby walls floor to ceiling, ladders for high access"
+
+  - folder: scene-manufactorum-bay
+    name: "Mechanicum manufactorum bay"
+    subject: >-
+      A Mechanicum manufactorum bay — heavy industrial machinery
+      dominating, conveyor systems and assembly stations, exposed
+      overhead pipework and cabling, gantry walkways above
+    extra_treatments:
+      - "central assembly stations with empty work surfaces"
+      - "overhead gantry crane on a rail running the length of the bay"
+
+  - folder: scene-archive-stacks
+    name: "Sub-Sector Archive stacks"
+    subject: >-
+      A grand Imperial archive — towering aisles of bookcases and
+      scroll-shelves disappearing into deep perspective, narrow
+      walkway floors, iron ladders rising into the high stacks
+    extra_treatments:
+      - "central walkway aisle with parallel stacks running away from the viewer"
+      - "dust haze in the deep background, only nearer stacks fully lit"
+
+  - folder: scene-refectory
+    name: "communal refectory"
+    subject: >-
+      A communal refectory or mess hall — long parallel benches and
+      tables, plain walls, serving stations along one end, plain
+      lighting
+    extra_treatments:
+      - "long bench-and-table arrangement filling the room, no occupants"
+      - "serving counter with empty trays and a closed kitchen door at the far end"
+
+  - folder: scene-dormitorium
+    name: "dormitorium / barracks"
+    subject: >-
+      A dormitorium or barracks room — rows of stacked bunk frames
+      along the walls, narrow central aisle, footlockers at the
+      foot of each bunk
+    extra_treatments:
+      - "two parallel rows of stacked bunks, central aisle, plain lighting"
+      - "single window high on the back wall as the only natural light"
+
+# ── Cost projection ────────────────────────────────────────────────
+# 10 scene types × ~6-7 treatments each = ~65 variants × $0.04 = ~$2.60
+# Smoke-test 1 per scene type first (--limit 10), validate, then full run.

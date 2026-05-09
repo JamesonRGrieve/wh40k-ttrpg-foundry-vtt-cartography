@@ -1,0 +1,1 @@
+dh_stamp, Round, Cylindrical Object With A Handle, north view, inactive, model, round, cylindrical, object, handle, side, light-colored, material

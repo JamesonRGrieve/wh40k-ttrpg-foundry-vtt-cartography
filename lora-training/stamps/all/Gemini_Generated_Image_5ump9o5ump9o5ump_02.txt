@@ -1,0 +1,1 @@
+dh_stamp, Cylindrical Object, west view, damaged, rendering, cylindrical, object, flat, top, curved, bottom, metal

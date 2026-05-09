@@ -1,0 +1,29 @@
+# Stamps LoRA — staging manifest (no API spend).
+#
+# Trigger: dh_stamp. Trains on the existing curated stamps library
+# (~600 PNGs in `../../stamps/`, each with a sibling YAML sidecar).
+# Captions are SYNTHESIZED from sidecar fields (name, description,
+# tags, orientation, state) at staging time — there's no Gemini call
+# on this LoRA.
+#
+# When trained, dh_stamp can fill missing variants in stamp groups
+# (intact + damaged → generate destroyed; etc.) and produce on-demand
+# top-down 40K furniture / equipment / fixtures consistent with the
+# extracted library aesthetic.
+#
+# Re-run idempotency: existing staged files are skipped (run_jobs'
+# default `out_png.exists()` filter applies). Hardlinks share inodes
+# with the source so re-classifying a stamp updates both copies.
+
+generator: stamp
+
+defaults:
+  trigger: dh_stamp
+  source_dir: stamps          # relative to repo root
+  stage_subdir: all           # all stamps staged into one folder
+
+# No matrix axes — stamps are 1:1 with sidecar files. Captions are
+# composed at staging time:
+#   dh_stamp, <name>, <orientation> view, <state>, <top tags>, <description>
+# The description is included only when short (<240 chars) to avoid
+# Florence-2's purple-prose dilution of the trigger.

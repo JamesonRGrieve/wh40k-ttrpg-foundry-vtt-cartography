@@ -1,0 +1,1 @@
+dh_stamp, Stool, north view, damaged, rendering, stool, has, round, seat, leather, cushion, top
