@@ -26,10 +26,23 @@ defaults:
     crop to a square if the ship is long
   hull_clause: >-
     Imperial gothic painted-metal hull plating viewed from directly
-    above, with rivets, panel seams, weathered paint, surface grime,
-    and any ornamentation specified by the silhouette (heraldry,
-    sponsons, gilt scrollwork). Painterly oil-painting treatment, dark
-    grimdark palette, visible brushwork on the plating
+    above, with rivets, panel seams, weathered paint, and surface
+    grime. Painterly oil-painting treatment, dark grimdark palette,
+    visible brushwork on the plating
+  surface_rules: |-
+    The dorsal surface (top-down view) is SMOOTH PLATING. The only
+    protrusions allowed beyond the hull outline are LATERAL gun-battery
+    sponsons attached to the PORT (top) and STARBOARD (bottom) flanks
+    — these are bumps on the long edges of the hull, NOT on the bow
+    or stern, and the gun barrels run parallel to the deck pointing
+    OUTWARD AWAY from the hull. NO forward-facing turrets at the
+    prow. NO turret clusters along the dorsal centerline. NO dorsal
+    gun mounts. NO bow gun arrays. The prow itself is a smooth
+    armored ram — a single solid wedge of plating with no
+    protrusions. Heraldry is FLAT — etched, painted, or engraved
+    INTO the plating; NOT raised 3D turret-like ornaments and NOT
+    standalone protrusions. Gilt scrollwork is a thin painted
+    surface treatment, not embossed sculpture
   empty_interior_clause: >-
     Solid plating from this view — NO interior rooms visible, NO
     doorways, NO corridors, NO furniture, NO windows on the dorsal
@@ -123,8 +136,13 @@ silhouettes:
       Mid-scale gothic voidship configured as a luxury private vessel.
       Length similar to a frigate but with sleeker proportions and
       ornate heraldic flourishes — gilt scrollwork along the prow and
-      hull edges, decorative aquila or winged-skull motifs. No gun
-      sponsons; replaced by ornamental panel work
+      hull edges, decorative aquila or winged-skull motifs. ZERO
+      WEAPONRY: NO gun sponsons, NO turrets, NO gun barrels, NO
+      broadside batteries, NO lateral protrusions of any kind. The
+      hull silhouette is a smooth ornamented dagger with NO weapon
+      protrusions. Lateral side-decorations may be small ornamental
+      buttresses (panel embellishments only, no gun barrels visible).
+      The aft engine block is the only large protrusion at the stern
 
 # ── Per-class corpus shape ──────────────────────────────────────────
 #

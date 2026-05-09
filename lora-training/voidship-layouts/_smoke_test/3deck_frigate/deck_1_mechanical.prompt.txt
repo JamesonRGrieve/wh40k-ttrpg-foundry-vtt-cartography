@@ -1,0 +1,27 @@
+Use the attached reference image as the EXACT hull silhouette. Preserve the hull outline, plating, lateral sponson positions, gothic prow shape, dorsal heraldry, and aspect ratio of the reference image PIXEL-FOR-PIXEL — the new image must be the SAME ship rendered from the SAME top-down angle, with the interior layout described below superimposed onto the hull.
+
+Composition: top-down orthographic battlemap. Bow at the LEFT, stern at the RIGHT, port at the TOP, starboard at the BOTTOM. Outside the hull is flat black void. The hull outline is identical to the reference — do not change the silhouette, do not move the sponsons, do not redraw the prow. Only the interior changes between this image and the reference.
+
+INTERIOR LAYOUT: Deck 1 — Mechanical Deck (bottom deck, engine cutouts).
+
+MECHANICAL DECK (bottom of the stack — engineering throughout. The engines are ONLY on this deck; the stern engine block visible on the reference hull is this deck's stern).
+
+Zones:
+  - prow_port: forward fuel handling room with empty     fuel-line manifolds along the port hull.
+  - prow_center: forward capacitor bank — banks of     plasma capacitors recessed into the deck plating,     arranged in two rows.
+  - prow_starboard: forward fuel handling room with     empty fuel-line manifolds along the starboard hull.
+  - forward_full: central engineering corridor lined     with reactor monitoring stations (empty consoles)     along port and starboard.
+  - mid_port: port broadside ammunition magazine for     the deck-2 broadside guns above (empty munitions     racks visible).
+  - mid_center: main reactor chamber — large central     cylindrical reactor housing recessed into the     deck, with a circular maintenance walkway around     its base.
+  - mid_starboard: starboard broadside ammunition     magazine for the deck-2 broadside guns above     (empty munitions racks visible).
+  - aft_full: plasma drive interface bay — the forward     coupling between the reactor and the main engine     cores at the stern. Visible as a network of thick     plasma conduits running aft.
+  - stern_full: rear engineering bay and main engine     cores. ENGINE CUTOUTS VISIBLE: three large     circular plasma drive cores recessed into the     deck, each one flush with the stern bulkhead.     This is where the stern engine block on the     reference hull lives.
+
+EGRESS: NONE on this deck — internal stairwell from the main deck above is the only access (drawn as a square hatch in the floor at the forward end of the central engineering corridor).
+
+Hard constraints:
+- The hull silhouette MUST match the reference image exactly. Do not change the prow, do not change the sponson positions, do not change the aspect ratio, do not change the heraldry on the dorsal spine.
+- Render rooms as empty floor plates with thin wall lines between them; do NOT render furniture, crates, consoles, bunks, equipment, or NPCs (those go on the Foundry stamp layer at the table).
+- The lateral broadside sponsons in the reference image are the ONLY hull protrusions; do NOT add forward-facing turrets, dorsal turrets, or bow gun arrays.
+- This is a battlemap, not a cutaway diagram. The interior is drawn AS A TOP-DOWN FLOOR PLAN inside the hull silhouette.
+- No text, no compass, no scale, no labels, no legend.

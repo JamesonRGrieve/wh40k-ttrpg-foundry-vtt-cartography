@@ -1,0 +1,26 @@
+Use the attached reference image as the EXACT hull silhouette. Preserve the hull outline, plating, lateral sponson positions, gothic prow shape, dorsal heraldry, and aspect ratio of the reference image PIXEL-FOR-PIXEL — the new image must be the SAME ship rendered from the SAME top-down angle, with the interior layout described below superimposed onto the hull.
+
+Composition: top-down orthographic battlemap. Bow at the LEFT, stern at the RIGHT, port at the TOP, starboard at the BOTTOM. Outside the hull is flat black void. The hull outline is identical to the reference — do not change the silhouette, do not move the sponsons, do not redraw the prow. Only the interior changes between this image and the reference.
+
+INTERIOR LAYOUT: Deck 3 — Bridge Deck (top deck, short floor plan).
+
+BRIDGE DECK (top of the stack — short floor plan, only the forward half of the hull is occupied with rooms; the aft half is solid plating from this top-down view because the deck physically does not extend that far back, the hull continues but there is no deck floor there from this deck's perspective).
+
+Zones:
+  - prow_port: port-side forward sensor blister, small     wedge room with a single sensor console facing     port-forward.
+  - prow_center: command bridge — sunken pit with five     console stations (helm, navigation, sensors, comms,     weapons) arranged in a shallow arc facing the prow     tip, elevated commander's chair on a raised platform     at the aft end of the pit.
+  - prow_starboard: starboard-side forward sensor     blister, small wedge room with a single sensor     console facing starboard-forward.
+  - forward_port: officer's wardroom with desk and     chairs (empty in this base map).
+  - forward_center: short central corridor running aft     to a single internal stairwell down to the main     deck (drawn as a small square stairwell hatch in     the floor at the aft end of this corridor).
+  - forward_starboard: navigation chartroom with a     central plotting table.
+
+MID, AFT, AND STERN ZONES ARE EMPTY — render those sections as plain hull plating with no doorways, no rooms, no corridors, no furniture (this deck does not extend that far back; the hull continues but there is no floor here from this deck's perspective). The lateral broadside sponson positions visible in the reference image remain present as part of the hull outline but are not accessible from this deck.
+
+EGRESS: NONE on this deck — internal stairwell only (drawn as a square hatch in the floor at the aft end of the bridge's central corridor).
+
+Hard constraints:
+- The hull silhouette MUST match the reference image exactly. Do not change the prow, do not change the sponson positions, do not change the aspect ratio, do not change the heraldry on the dorsal spine.
+- Render rooms as empty floor plates with thin wall lines between them; do NOT render furniture, crates, consoles, bunks, equipment, or NPCs (those go on the Foundry stamp layer at the table).
+- The lateral broadside sponsons in the reference image are the ONLY hull protrusions; do NOT add forward-facing turrets, dorsal turrets, or bow gun arrays.
+- This is a battlemap, not a cutaway diagram. The interior is drawn AS A TOP-DOWN FLOOR PLAN inside the hull silhouette.
+- No text, no compass, no scale, no labels, no legend.

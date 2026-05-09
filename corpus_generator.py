@@ -335,6 +335,7 @@ class VoidshipHullHandler(Handler):
         d = self.manifest["defaults"]
         composition = d["composition"]
         hull_clause = d["hull_clause"]
+        surface_rules = d.get("surface_rules", "")
         empty_interior_clause = d["empty_interior_clause"]
         exclusions = d["exclusions"]
         caption_trailer = d.get("caption_trailer", "")
@@ -342,24 +343,34 @@ class VoidshipHullHandler(Handler):
         hull_states = self.manifest["hull_states"]
         angles = self.manifest.get("angles", ["top-down orthographic"])
 
+        # Interleave classes (variant-first, then class) so a small
+        # --limit smoke test gets one variant per class rather than
+        # all variants of one class.
+        cats = [c for c in self.manifest["categories"]
+                if not only or only in c["folder"]]
+        max_variants = max((int(c.get("variants", len(hull_states))) for c in cats),
+                           default=0)
         seq = 0
         jobs: list[Job] = []
-        for cat in self.manifest["categories"]:
-            folder_name = cat["folder"]
-            if only and only not in folder_name:
-                continue
-            cat_dir = self.lora_dir / folder_name
-            cat_dir.mkdir(parents=True, exist_ok=True)
-            class_name = cat.get("class_name") or folder_name.replace(
-                "hull-", "").replace("-", " ")
-            silhouette = _silhouette_clause(folder_name, self.manifest)
-
-            for v_idx in range(int(cat.get("variants", len(hull_states)))):
+        for v_idx in range(max_variants):
+            for cat in cats:
+                if v_idx >= int(cat.get("variants", len(hull_states))):
+                    continue
+                folder_name = cat["folder"]
+                cat_dir = self.lora_dir / folder_name
+                cat_dir.mkdir(parents=True, exist_ok=True)
+                class_name = cat.get("class_name") or folder_name.replace(
+                    "hull-", "").replace("-", " ")
+                silhouette = _silhouette_clause(folder_name, self.manifest)
                 hull_state = hull_states[seq % len(hull_states)]
                 angle = angles[seq % len(angles)]
                 seq += 1
                 stem = f"{folder_name.replace('hull-', '')}_{v_idx + 1:02d}_{slugify(hull_state, 32)}"
                 out_png = cat_dir / f"{stem}.png"
+                surface_block = (
+                    f"SURFACE RULES (read carefully — Gemini frequently "
+                    f"violates these):\n{surface_rules}\n\n"
+                    if surface_rules else "")
                 prompt = (
                     f"Top-down orthographic battlemap-grade silhouette "
                     f"of a Warhammer 40000 Imperial voidship — "
@@ -371,6 +382,7 @@ class VoidshipHullHandler(Handler):
                     f"HULL SILHOUETTE (most important — commit to this "
                     f"shape and render it as a closed outline):\n"
                     f"{silhouette}.\n\n"
+                    f"{surface_block}"
                     f"HULL TREATMENT: {hull_clause}.\n\n"
                     f"COMPOSITION: {composition}.\n\n"
                     f"INTERIOR: {empty_interior_clause}.\n\n"
