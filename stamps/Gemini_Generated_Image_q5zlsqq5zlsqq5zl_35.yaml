@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Frames With A Transparent Background
+name: null
 description: "A set of square frames with a transparent background. The frames are arranged in a grid-like pattern, with each frame containing a different color. The colors range from light beige to dark brown, creating a subtle contrast. The frames have a smooth, glossy finish, giving them a polished look. The background is a solid, transparent material, allowing the frames to stand out. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, square, frames, transparent, background, arranged, grid-like, pattern, each, frame, containing, different]
 orientation: top-down

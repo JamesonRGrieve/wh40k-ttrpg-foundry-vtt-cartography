@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design With A Plain"
+name: null
 description: "The image is a simple, minimalist design with a plain, light grey background. The background is divided into two sections, with the top section being slightly larger than the bottom section. On the left side of the image, there are several thin, white lines that form a repeating pattern, creating a sense of depth and dimension. The lines are arranged in a symmetrical manner, with each line slightly overlapping the one below it. The overall aesthetic is minimalistic and minimalistic, with no additional details or embellishments present. The image appears to be taken from a top-down perspective, looking down on the lines."
 tags: [simple, minimalist, design, plain, light, background, divided, into, sections, top, section, slightly]
 orientation: isometric

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Seamless Pattern Of Multiple Computer Icons Arranged
+name: null
 description: "The image is a seamless pattern of multiple computer icons arranged in a grid-like manner on a plain gray background. The icons are of different shapes and sizes, with some having a rectangular shape and others having a square shape. Each icon has a simple, minimalist design with no additional details or embellishments. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple lines and shapes of the icons."
 tags: [seamless, pattern, multiple, computer, icons, arranged, grid-like, manner, plain, background, different, shapes, decor, decor-statue]
 orientation: north

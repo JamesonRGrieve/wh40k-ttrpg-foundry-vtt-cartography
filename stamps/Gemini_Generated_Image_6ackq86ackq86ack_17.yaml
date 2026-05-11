@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Seamless Pattern With A Minimalist Design
+name: null
 description: "The image is a seamless pattern with a minimalist design. It consists of two rectangular panels, each with a different color and pattern. The panels are arranged in a symmetrical manner, with the top panel being slightly larger than the bottom panel. The colors range from light beige to dark grey, creating a subtle contrast. The pattern is symmetrical, with each panel having a distinct shape and texture. The overall effect is one of sophistication and elegance. The image has a clean and polished look, perfect for any project."
 tags: [seamless, pattern, minimalist, design, consists, rectangular, panels, each, different, arranged, symmetrical, manner]
 orientation: top-down

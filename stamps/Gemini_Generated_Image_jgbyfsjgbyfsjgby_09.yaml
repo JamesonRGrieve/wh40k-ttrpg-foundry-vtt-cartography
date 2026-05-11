@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design With A Plain"
+name: null
 description: "The image is a simple, minimalist design with a plain, light brown background. It features a set of four rectangular, square-shaped objects arranged in a grid-like pattern, each with a unique design, arranged in a symmetrical manner. The objects appear to be made of a light brown material, possibly paper or fabric, and have a smooth, polished finish. Each object has a rectangular shape with a grid-like pattern on the top and bottom, resembling a book or a notebook, with a rectangular base and a rectangular top. The objects are drawn in a simple, minimalist style, with no additional details or embellishments. The overall aesthetic of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [simple, minimalist, design, plain, light, background, features, set, four, rectangular, square-shaped, objects, prop, prop-document]
 orientation: top-down

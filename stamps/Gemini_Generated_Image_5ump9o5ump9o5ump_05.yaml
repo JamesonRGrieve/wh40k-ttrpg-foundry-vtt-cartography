@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Square-Shaped Frame With A Beige Background
+name: null
 description: "The image is a square-shaped frame with a beige background. The frame is made of a light green material and has a simple, minimalist design. It has a rectangular shape with rounded edges and a flat base. The edges of the frame are slightly curved and there are two small holes on either side. The overall appearance is simple and minimalistic."
 tags: [square-shaped, frame, beige, background, light, material, has, simple, minimalist, design, rectangular, shape]
 orientation: isometric

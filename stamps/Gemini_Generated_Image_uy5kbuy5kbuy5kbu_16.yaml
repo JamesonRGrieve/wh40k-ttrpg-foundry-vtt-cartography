@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Seamless Pattern Of Small, Cylindrical Objects Arranged"
+name: null
 description: "The image is a 3D rendering of a seamless pattern of small, cylindrical objects arranged in a symmetrical manner on a plain, light grey background. The objects appear to be made of paper or cardboard and are of varying sizes and shapes, with some being taller than others. They are all identical in size and shape, with a smooth, glossy finish. The objects are arranged in an orderly fashion, with the tallest object at the top left corner and the smallest at the bottom right corner. The overall aesthetic of the image is simple and minimalistic, with a focus on the intricate details of the objects."
 tags: [rendering, seamless, pattern, cylindrical, objects, arranged, symmetrical, manner, plain, light, background, paper, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric

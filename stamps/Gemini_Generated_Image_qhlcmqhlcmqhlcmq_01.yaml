@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design With A Plain"
+name: null
 description: "The image is a 3D rendering of a simple, minimalist design with a plain, light brown background. It features four rectangular boxes arranged in a grid-like pattern, each with a distinct shape and size. The boxes appear to be made of a sturdy material, possibly wood or metal, and have a smooth, polished finish. The edges of the boxes are slightly raised, giving them a textured appearance. The overall style of the image is simple and minimalistic, with no additional details or embellishments present. The image has a clean and polished look, with a focus on the texture and design of the boxes."
 tags: [rendering, simple, minimalist, design, plain, light, background, features, four, rectangular, boxes, arranged]
 orientation: isometric

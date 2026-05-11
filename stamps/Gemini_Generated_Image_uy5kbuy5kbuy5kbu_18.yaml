@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Square-Shaped Icon With A Beige Background
+name: null
 description: "The image is a square-shaped icon with a beige background. In the center of the icon, there is a portrait of Jesus Christ. Jesus is shown with a halo above his head and a beard. He is wearing a red robe and has a serious expression on his face. The icon is mounted on a square pedestal with a square base."
 tags: [square-shaped, icon, beige, background, center, there, portrait, jesus, christ, shown, halo, above, furniture, furniture-table, decor, decor-statue]
 orientation: top-down

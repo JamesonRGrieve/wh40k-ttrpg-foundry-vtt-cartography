@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Minimalist, Hand-Drawn Calculators With A Simple"
+name: null
 description: "A set of four minimalist, hand-drawn calculators with a simple, minimalist design. The calculators are arranged in a row on a plain, light grey background. Each calculator has a rectangular shape with rounded edges and a small LCD screen in the center. The calculators appear to be made of plastic or a similar material and have a smooth, glossy finish. The image has a minimalist aesthetic with clean lines and minimal detail. The overall color scheme is neutral, with the calculators being the main focus of the image."
 tags: [set, four, minimalist, hand-drawn, calculators, simple, design, arranged, row, plain, light, background, tech, tech-screen]
 orientation: top-down

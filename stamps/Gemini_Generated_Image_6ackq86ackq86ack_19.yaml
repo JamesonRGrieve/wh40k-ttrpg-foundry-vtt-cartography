@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design"
+name: null
 description: "The image is a simple, minimalist design with a neutral color palette. It features a square-shaped frame with a grid-like pattern in the center, surrounded by smaller squares. The frame appears to be made of a light-colored material, possibly wood or metal, and has a smooth, polished finish. The squares are arranged in a symmetrical pattern, with each square having a slightly raised edge, creating a sense of depth and dimension. The overall aesthetic of the image is simple and minimalistic, with a focus on the texture and design of the frame."
 tags: [simple, minimalist, design, neutral, palette, features, square-shaped, frame, grid-like, pattern, center, surrounded]
 orientation: top-down

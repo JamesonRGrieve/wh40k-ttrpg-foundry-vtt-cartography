@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Background With A Plain"
+name: null
 description: "The image is a simple, minimalist background with a plain, light grey color. The background is composed of multiple rectangular shapes arranged in a diagonal line, creating a continuous pattern. The shapes vary in size and shape, with some overlapping each other. The overall aesthetic of the image is minimalistic and minimalistic, with a focus on the simple and clean lines of the background. The image appears to be taken from a top-down perspective, looking down on the shapes."
 tags: [simple, minimalist, background, plain, light, composed, multiple, rectangular, shapes, arranged, diagonal, line]
 orientation: north

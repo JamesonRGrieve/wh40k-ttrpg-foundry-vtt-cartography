@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Plain, Light Grey Background"
+name: null
 description: "The image is a 3D rendering of a plain, light grey background with a grid-like pattern. On the left side of the image, there are two rectangular panels with a slightly raised edge, each panel having a distinct shape and texture. The panels are arranged in a symmetrical pattern, with the top panel being slightly larger than the bottom panel. The panels appear to be made of wood or a similar material, with a smooth, polished finish. The overall appearance is simple and minimalistic, with no additional details or embellishments present."
 tags: [rendering, plain, light, background, grid-like, pattern, left, side, there, rectangular, panels, slightly]
 orientation: isometric

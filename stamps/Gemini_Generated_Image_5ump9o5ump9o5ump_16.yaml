@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Composition With A Plain"
+name: null
 description: "The image is a simple, minimalist composition with a plain, light grey background. The image is composed of multiple overlapping circles of varying sizes, creating a textured, abstract pattern. The circles are arranged in a symmetrical manner, with the largest circle in the center and the smaller ones on either side. The colors are predominantly beige, with some hints of brown and gray, giving the image a subtle, yet elegant feel. The overall effect is one of simplicity and minimalism, with a focus on the overlapping shapes and creating a sense of depth and dimensionality."
 tags: [simple, minimalist, composition, plain, light, background, composed, multiple, overlapping, circles, varying, sizes]
 orientation: null   # north | south | east | west | top-down | isometric

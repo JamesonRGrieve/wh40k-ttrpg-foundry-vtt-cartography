@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Ladders On A Plain, Light Brown Background"
+name: null
 description: "A set of four simple line drawings of ladders on a plain, light brown background. The ladders are arranged in a symmetrical pattern, with each one slightly overlapping the one below it. Each ladder has a rectangular shape with a flat top and a flat bottom, creating a simple yet elegant design. The ladders appear to be made of wood and have a smooth, polished finish. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, four, simple, line, drawings, ladders, plain, light, background, arranged, symmetrical, pattern, architecture, architecture-step]
 orientation: isometric

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Composition With A Plain"
+name: null
 description: "The image is a simple, minimalist composition with a plain, light grey background. On the left side of the image, there are several small, square-shaped objects arranged in a scattered manner, creating a sense of depth and dimension. The objects appear to be made of a light-colored material, possibly paper or fabric, and have a smooth, polished finish. They are all identical in size and shape, with some overlapping each other. The overall composition is simple and minimalistic, with no additional details or embellishments present."
 tags: [simple, minimalist, composition, plain, light, background, left, side, there, several, square-shaped, objects, prop, prop-document]
 orientation: top-down

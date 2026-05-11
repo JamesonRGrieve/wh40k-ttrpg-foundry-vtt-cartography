@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design With A Plain"
+name: null
 description: "The image is a simple, minimalist design with a plain, light grey background. On the left side of the image, there is a rectangular frame with a decorative border, while on the right side, there are identical rectangular frames with a similar decorative border. The frames are arranged in a symmetrical pattern, creating a sense of balance and symmetry. The overall aesthetic is simple and minimalistic, with a focus on the intricate details of the frames."
 tags: [simple, minimalist, design, plain, light, background, left, side, there, rectangular, frame, decorative]
 orientation: west   # north | south | east | west | top-down | isometric

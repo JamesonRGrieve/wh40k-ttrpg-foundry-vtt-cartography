@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Transparent Background With A Transparent Background
+name: null
 description: The image is a photograph of a transparent background with a transparent background is a
 tags: [photograph, transparent, background]
 orientation: top-down

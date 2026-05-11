@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Plain, Light Grey Background"
+name: null
 description: "The image is a photograph of a plain, light grey background with a subtle pattern of small, symmetrical shapes. The shapes are arranged in a symmetrical manner, creating a sense of balance and harmony. The image is taken from a top-down perspective, looking down on the plain surface. The overall aesthetic is minimalistic and minimalistic, with no other elements present in the image."
 tags: [photograph, plain, light, background, subtle, pattern, symmetrical, shapes, arranged, manner, creating, sense]
 orientation: top-down

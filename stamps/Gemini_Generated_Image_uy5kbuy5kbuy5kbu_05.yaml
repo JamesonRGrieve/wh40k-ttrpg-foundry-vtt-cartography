@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Seamless Pattern Of Wooden Crates
+name: null
 description: "The image is a digital illustration of a seamless pattern of wooden crates on a gray background. The crates are arranged in a grid-like pattern, with each crate having a rectangular shape and a handle on the top. The wood appears to be aged and weathered, with visible signs of wear and tear. The texture of the wood is rough and uneven, with some areas having a slightly raised edge. The overall style of the image is simple and minimalistic, with a focus on the textures of the wooden crates. The image has a minimalist aesthetic, with no other elements present in the background."
 tags: [digital, illustration, seamless, pattern, wooden, crates, background, arranged, grid-like, each, crate, having, container, container-crate]
 orientation: north

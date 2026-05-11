@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Stools With A Smooth"
+name: null
 description: "A set of three simple, minimalist stools with a smooth, polished finish. The stools are arranged in a symmetrical pattern, with the largest one in the center and two smaller ones on either side. The background is a plain, light grey color, providing a subtle contrast to the stools. The overall aesthetic of the image is minimalistic and contemporary, with clean lines and a minimalist design."
 tags: [set, simple, minimalist, stools, smooth, polished, finish, arranged, symmetrical, pattern, largest, center, furniture, furniture-chair]
 orientation: north

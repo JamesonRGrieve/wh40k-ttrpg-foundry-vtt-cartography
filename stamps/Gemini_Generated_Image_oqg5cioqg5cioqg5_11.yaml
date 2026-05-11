@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rendered Bottles With A Transparent Background
+name: null
 description: "A set of three 3D rendered bottles with a transparent background. The bottles are arranged in a triangular formation, with the largest bottle in the center and two smaller bottles on either side. Each bottle has a cylindrical shape with a flat top and a narrow neck, and each bottle is outlined in a light brown color. The bottles appear to be empty, with no labels or designs on them. The background is a simple, neutral color, allowing the bottles to stand out. The overall style of the image is minimalistic and modern, with clean lines and a minimalist aesthetic."
 tags: [set, rendered, bottles, transparent, background, arranged, triangular, formation, largest, bottle, center, smaller, container, container-vessel]
 orientation: north

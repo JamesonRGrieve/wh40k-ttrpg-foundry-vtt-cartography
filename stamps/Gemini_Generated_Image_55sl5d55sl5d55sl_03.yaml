@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Composition With A Plain"
+name: null
 description: "The image is a simple, minimalist composition with a plain, light grey background. The texture of the image is smooth and uneven, creating a sense of depth and dimension. On the left side of the image, there is a rectangular shape that appears to be slightly larger than the right side, giving it a more prominent appearance. The shape is outlined in a darker grey color, making it stand out against the lighter grey background. The overall effect is a clean and minimalistic design that could be used as a background or wallpaper."
 tags: [simple, minimalist, composition, plain, light, background, texture, smooth, uneven, creating, sense, depth]
 orientation: west   # north | south | east | west | top-down | isometric

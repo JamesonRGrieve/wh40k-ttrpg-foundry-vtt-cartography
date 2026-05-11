@@ -1,0 +1,119 @@
+# ai-toolkit config — DH stamp generator LoRA training run.
+#
+# Same Flex.1-alpha base + 3-GPU DDP as iconography and portraits,
+# pointed at the staged stamps/all/ folder. Kick off with:
+#   ssh root@198.51.100.30 \
+#     'CONFIG_PATH=/opt/lora-training/stamps/configs/stamps.yaml flux-lora train'
+#
+# Tuning notes (different from iconography and portraits):
+#   - rank 16 — stamps are visually simple atomic subjects on neutral
+#     backgrounds; rank 16 matches iconography's compute regime and
+#     should be sufficient.
+#   - lr 1e-4 (same as the others).
+#   - resolution buckets [512, 768] — stamps are typically smaller than
+#     portraits or hull renders; cap at 768 to avoid wasted compute.
+#   - steps 4000 — corpus is 439 trainable stamps (after the 2026-05-11
+#     name audit nullified 140 Florence-2-junk captions). 4000 steps
+#     gives ~9 views per stamp, matching iconography's view density.
+#   - sample_every 250 — 16 checkpoints kept across the run.
+#   - trigger token: dh_stamp (in every caption). Captions ALSO
+#     include the synthesized name + orientation + state + tags.
+#   - caption_dropout_rate 0.10 — stamp captions vary wildly in
+#     quality even after the audit (Florence-2 detail can still be
+#     unreliable). Slightly higher dropout teaches the LoRA to lean
+#     on the trigger + name rather than memorizing tag soup.
+#
+# Inference stacking — pair with the iconography LoRA when generating
+# stamps that need named heraldic surfaces:
+#   <lora:dh_stamp:0.8> <lora:wh40k_iconography:0.5>
+#   dh_stamp, ceremonial brass altar, top-down view, intact,
+#   sym_aquila etched into the centerpiece
+
+job: extension
+config:
+  name: dh_stamp
+  process:
+    - type: sd_trainer
+      training_folder: /opt/lora-training/outputs
+      device: cuda
+      trigger_word: null  # captions already include dh_stamp
+
+      network:
+        type: lora
+        linear: 16
+        linear_alpha: 16
+
+      save:
+        dtype: float16
+        save_every: 250
+        max_step_saves_to_keep: 16
+        push_to_hub: false
+
+      datasets:
+        - folder_path: /opt/lora-training/stamps/all
+          caption_ext: txt
+          caption_dropout_rate: 0.10
+          shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution: [512, 768]
+
+      train:
+        batch_size: 1
+        steps: 4000
+        gradient_accumulation_steps: 1
+        train_unet: true
+        train_text_encoder: false
+        gradient_checkpointing: true
+        noise_scheduler: flowmatch
+        optimizer: adamw8bit
+        lr: 1e-4
+        ema_config:
+          use_ema: true
+          ema_decay: 0.99
+        dtype: bf16
+
+      model:
+        name_or_path: ostris/Flex.1-alpha
+        is_flux: true
+        quantize: true
+
+      sample:
+        sampler: flowmatch
+        sample_every: 250
+        width: 768
+        height: 768
+        prompts:
+          # Sample prompts span the stamp library's vocabulary so the
+          # checkpoint audit can see whether the LoRA is binding to
+          # subject + state + orientation cleanly. After training,
+          # these should render the requested stamp without any
+          # reference image.
+          - "dh_stamp, wooden chair, top-down view, intact"
+          - "dh_stamp, wooden chair, top-down view, damaged"
+          - "dh_stamp, wooden chair, top-down view, destroyed"
+          - "dh_stamp, cogitator console, top-down view, intact, active"
+          - "dh_stamp, cogitator console, top-down view, intact, inactive"
+          - "dh_stamp, trash can, top-down view, intact"
+          - "dh_stamp, empty glass bottles with stoppers, top-down view, intact"
+          - "dh_stamp, wooden ladder, top-down view, intact"
+          - "dh_stamp, folding chair, top-down view, intact"
+          - "dh_stamp, ceremonial brass altar, top-down view, intact"
+          - "dh_stamp, industrial metal crate, isometric view, intact"
+          - "dh_stamp, metal locker, top-down view, damaged"
+        neg: ""
+        seed: 42
+        walk_seed: true
+        guidance_scale: 4.0
+        sample_steps: 20
+
+meta:
+  name: dh_stamp
+  version: '1.0'
+  description: >-
+    Dark Heresy stamp generator LoRA — 439 trainable stamps from the
+    extracted Gemini-grid stamps library (post 2026-05-11 name
+    audit). Generates top-down 40K furniture / equipment / fixtures
+    consistent with the deployed stamp aesthetic. Solves the
+    missing-variant fill problem: a stamp group with intact +
+    damaged but no destroyed → render via this LoRA. Stacks with the
+    iconography LoRA at inference for named-symbol surfaces.

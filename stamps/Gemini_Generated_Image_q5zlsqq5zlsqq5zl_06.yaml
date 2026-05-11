@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Rectangular Frame"
+name: null
 description: "The image is a simple, rectangular frame with a light grey background. The frame is divided into two sections, with the top section being slightly larger than the bottom section. The edges of the frame are smooth and uneven, giving it a textured appearance. The background is a solid, light grey color, providing a subtle contrast to the frame. The image has a clean and minimalistic design, with no additional details or embellishments present. The overall mood of the image is calm and peaceful."
 tags: [simple, rectangular, frame, light, background, divided, into, sections, top, section, slightly, larger]
 orientation: null   # north | south | east | west | top-down | isometric

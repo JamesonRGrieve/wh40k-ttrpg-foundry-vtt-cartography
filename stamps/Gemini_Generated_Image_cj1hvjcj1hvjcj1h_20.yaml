@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Hand-Drawn Bamboo Scrolls Arranged"
+name: null
 description: "A set of four simple, hand-drawn bamboo scrolls arranged in a horizontal line on a plain, light grey background. The scrolls appear to be made of a light-colored wood, possibly bamboo or bamboo, and have a smooth, cylindrical shape with a slightly tapered edge. Each scroll is slightly overlapping the one before it, creating a sense of depth and dimensionality. The scrolls are arranged in two rows, with the top row slightly higher than the bottom row. The overall style of the image is simple and minimalistic, with a focus on texture and detail."
 tags: [set, four, simple, hand-drawn, bamboo, scrolls, arranged, horizontal, line, plain, light, background, prop, prop-document]
 orientation: north

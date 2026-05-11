@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design With A Gray Background"
+name: null
 description: "The image is a simple, minimalist design with a gray background. It consists of three rectangular boxes arranged in a grid-like pattern, each with a unique shape and size. The boxes are evenly spaced and have a smooth, glossy finish. Each box has a small, circular indentation in the center, creating a symmetrical pattern. The overall design is simple yet elegant, with no additional details or embellishments present. The image appears to be taken from a top-down perspective, looking down on the boxes."
 tags: [simple, minimalist, design, background, consists, rectangular, boxes, arranged, grid-like, pattern, each, unique, container, container-crate]
 orientation: top-down

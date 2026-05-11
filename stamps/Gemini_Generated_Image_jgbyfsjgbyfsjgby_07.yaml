@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Composition With A Plain"
+name: null
 description: "The image is a 3D rendering of a simple, minimalist composition with a plain, light grey background. In the center of the image, there are three identical mannequin heads arranged in a row, each with a distinct shape and size. The mannequins appear to be made of a light-colored material, possibly wood or plastic, and have a smooth, polished finish. They are all facing the same direction, with their heads slightly tilted to the side, giving a sense of depth and dimensionality to the image. The figures are positioned in a symmetrical manner, with the tallest one on the left and the shortest one on the right, creating a sense of balance and symmetry. The overall aesthetic of the image is simple and minimalistic, with a focus on the individual figures and their surroundings."
 tags: [rendering, simple, minimalist, composition, plain, light, background, center, there, identical, mannequin, heads]
 orientation: top-down

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Plain, Light Grey Background With A Simple"
+name: null
 description: "The image is a photograph of a plain, light grey background with a simple, minimalist design. The image is centered in the frame and has a smooth, glossy texture. The background is a solid, light grey color with a subtle gradient effect. On the top left corner of the image, there is a small, rectangular frame with a decorative border. The frame appears to be made up of multiple overlapping rectangles, creating a symmetrical pattern. The rectangles are evenly spaced and have a slightly raised edge, giving the image a sense of depth and dimension. The overall aesthetic of the image is simple and minimalistic, with no other elements present in the image."
 tags: [photograph, plain, light, background, simple, minimalist, design, centered, frame, has, smooth, glossy]
 orientation: isometric

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: With A Minimalist Design
+name: null
 description: "The image is a digital illustration with a minimalist design. It features a plain, light brown background with two rectangular frames in the center, each containing a single bone. The frames are intricately designed with a smooth, polished finish, giving them a classic, timeless look. The bones are arranged in a symmetrical pattern, with each frame slightly overlapping the one below it. The overall aesthetic of the image is simple yet elegant, with a focus on the bones and the texture of the background."
 tags: [digital, illustration, minimalist, design, features, plain, light, background, rectangular, frames, center, each]
 orientation: null   # north | south | east | west | top-down | isometric

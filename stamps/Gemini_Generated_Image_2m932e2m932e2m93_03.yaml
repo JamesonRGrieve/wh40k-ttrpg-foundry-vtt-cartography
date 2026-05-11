@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design With A Gray Background"
+name: null
 description: "The image is a simple, minimalist design with a gray background. It consists of multiple rectangular panels arranged in a grid-like pattern, each with a slightly raised edge. The panels appear to be made of metal or plastic and have a smooth, polished finish. The edges of the panels are slightly raised, giving them a 3D effect. The overall aesthetic of the image is clean and minimalistic, with no additional details or embellishments present."
 tags: [simple, minimalist, design, background, consists, multiple, rectangular, panels, arranged, grid-like, pattern, each]
 orientation: null   # north | south | east | west | top-down | isometric

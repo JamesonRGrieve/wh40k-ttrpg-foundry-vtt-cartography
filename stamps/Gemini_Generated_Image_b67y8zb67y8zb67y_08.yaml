@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design"
+name: null
 description: "The image is a simple, minimalist design with a light brown background. In the center of the image, there are six square icons arranged in a grid-like pattern, each containing a different type of screwdriver. The screwdrivers are of different sizes and shapes, with some having a pointed tip and others having a flat tip. The icons are outlined in a thin line, giving them a clean and minimalistic look. The overall design is simple and clean, with no additional embellishments or details."
 tags: [simple, minimalist, design, light, background, center, there, six, square, icons, arranged, grid-like, decor, decor-statue]
 orientation: top-down

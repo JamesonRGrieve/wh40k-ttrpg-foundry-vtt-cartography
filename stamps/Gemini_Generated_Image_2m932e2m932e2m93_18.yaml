@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Brown Background With A Pattern"
+name: null
 description: a brown background with a pattern of squares and rectangles
 tags: [background, pattern, squares, rectangles]
 orientation: top-down

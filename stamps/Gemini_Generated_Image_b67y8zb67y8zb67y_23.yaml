@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design"
+name: null
 description: "The image is a simple, minimalist design with a neutral color palette. It features a square-shaped frame in the center, surrounded by smaller rectangular frames on either side. The frame appears to be made of a smooth, textured material, possibly paper or fabric, and has a slightly worn, aged look. The background is a solid, light grey color, which contrasts nicely with the neutral tones of the frame. The overall aesthetic of the image is clean and minimalistic, with a focus on texture and depth."
 tags: [simple, minimalist, design, neutral, palette, features, square-shaped, frame, center, surrounded, smaller, rectangular, prop, prop-document]
 orientation: top-down

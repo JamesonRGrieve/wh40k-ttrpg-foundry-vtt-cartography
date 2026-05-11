@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Lanterns On A Plain, Light Grey Background"
+name: null
 description: "A set of three vintage lanterns on a plain, light grey background. The lanterns are drawn in a sketch-like style with detailed lines and shading, giving them a classic, timeless look. Each lantern has a cylindrical shape with a handle on top and a small opening at the bottom, allowing light to pass through. The lanterns are arranged in a symmetrical pattern, with the largest lantern on the left and the smallest on the right. The overall aesthetic of the image is simple and minimalistic, with a focus on the classic design of the lanterns."
 tags: [set, vintage, lanterns, plain, light, background, drawn, sketch-like, style, detailed, lines, shading, light-fixture]
 orientation: north

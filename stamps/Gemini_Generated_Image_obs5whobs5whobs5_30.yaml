@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Lockers On A Plain, Light Brown Background"
+name: null
 description: "A line drawing of a row of metal lockers on a plain, light brown background. The lockers are arranged in a symmetrical pattern, with each one slightly overlapping the one below it. The lockers have a simple, minimalist design with clean lines and a slightly rough texture. The image has a minimalist aesthetic, with no additional details or embellishments present. The overall color scheme is neutral, with the lockers being the main focus of the image."
 tags: [line, row, metal, lockers, plain, light, background, arranged, symmetrical, pattern, each, slightly, container, container-locker]
 orientation: north

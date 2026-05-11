@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Seamless Pattern With A Rectangular Shape
+name: null
 description: "The image is a seamless pattern with a rectangular shape in the center. The pattern is made up of small, evenly spaced rectangles in a light beige color. The rectangles are arranged in a symmetrical manner, creating a sense of balance and symmetry. The background is a solid beige color, providing a subtle contrast to the overall design. The overall effect is a clean and minimalistic look, perfect for any project."
 tags: [seamless, pattern, rectangular, shape, center, evenly, spaced, rectangles, light, beige, arranged, symmetrical]
 orientation: top-down

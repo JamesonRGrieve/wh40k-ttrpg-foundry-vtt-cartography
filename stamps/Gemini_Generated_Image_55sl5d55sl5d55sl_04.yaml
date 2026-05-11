@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Composition With A Plain"
+name: null
 description: "The image is a simple, minimalist composition with a plain, light brown background. The image is composed of multiple rectangular frames arranged in a symmetrical pattern, creating a sense of depth and dimension. The frames are evenly spaced and have a smooth, glossy finish. The overall aesthetic of the image is minimalistic and clean, with a focus on the simple yet elegant design of the frames. The image appears to be taken from a top-down perspective, looking down on the frames."
 tags: [simple, minimalist, composition, plain, light, background, composed, multiple, rectangular, frames, arranged, symmetrical]
 orientation: isometric

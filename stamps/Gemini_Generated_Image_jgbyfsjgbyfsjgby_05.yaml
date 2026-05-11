@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Simple, Minimalist Design With A Plain"
+name: null
 description: "The image is a simple, minimalist design with a plain, light brown background. It consists of multiple rectangular frames arranged in a grid-like pattern, each with a different color and size. The frames are evenly spaced and have a smooth, polished finish. The colors range from light beige to dark brown, creating a subtle contrast. The overall aesthetic of the image is minimalistic and clean, with no additional embellishments or details present. The image appears to be taken from a top-down perspective, looking down on the frames."
 tags: [simple, minimalist, design, plain, light, background, consists, multiple, rectangular, frames, arranged, grid-like]
 orientation: top-down

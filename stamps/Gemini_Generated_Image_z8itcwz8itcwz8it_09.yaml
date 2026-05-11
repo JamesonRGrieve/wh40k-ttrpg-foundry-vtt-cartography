@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: With A Minimalist Design
+name: null
 description: "The image is a digital illustration with a minimalist design. It features a set of six circular, engraved designs on a plain, light grey background. The designs are symmetrical and appear to be made of metal or plastic. Each design has a unique shape and size, with intricate details and patterns. The designs are arranged in a symmetrical pattern, with the largest design in the center and the smaller ones on either side. The overall aesthetic of the image is simple and minimalistic, with a focus on the intricate details of the designs."
 tags: [digital, illustration, minimalist, design, features, set, six, circular, engraved, designs, plain, light]
 orientation: top-down

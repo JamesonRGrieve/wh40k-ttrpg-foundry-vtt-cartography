@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Seamless Pattern With A Square Shape
+name: null
 description: "A seamless pattern with a square shape in the center. The pattern is made up of small, evenly spaced rectangles in a light brown color. The rectangles are arranged in a symmetrical manner, creating a sense of balance and harmony. The background is a checkered pattern in shades of gray and beige, giving the image a classic and timeless feel. The overall effect is one of sophistication and elegance."
 tags: [seamless, pattern, square, shape, center, evenly, spaced, rectangles, light, arranged, symmetrical, manner]
 orientation: top-down

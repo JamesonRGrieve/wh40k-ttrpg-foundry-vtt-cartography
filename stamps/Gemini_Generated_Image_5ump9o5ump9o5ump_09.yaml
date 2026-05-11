@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Square-Shaped Document With A Beige Background
+name: null
 description: "The image is a square-shaped document with a beige background. The document appears to be made of paper or cardboard and has multiple horizontal lines running horizontally across it. The lines are evenly spaced and appear to be slightly slanted, creating a textured appearance. The edges of the document are slightly curled, giving it a 3D effect. The overall appearance is simple and minimalistic."
 tags: [square-shaped, document, beige, background, paper, cardboard, has, multiple, horizontal, lines, running, horizontally, prop, prop-document]
 orientation: north

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Square-Shaped Icon With A Beige Background
+name: null
 description: "The image is a square-shaped icon with a beige background. In the center of the icon, there is a vertical line that appears to be a ladder or a ladder. The ladder is made up of two horizontal bars that are connected by a horizontal bar at the top. The bars are evenly spaced and appear to be made of a textured material. The overall design is simple and minimalistic."
 tags: [square-shaped, icon, beige, background, center, there, vertical, line, ladder, horizontal, bars, connected, architecture, architecture-step, decor, decor-statue]
 orientation: top-down
