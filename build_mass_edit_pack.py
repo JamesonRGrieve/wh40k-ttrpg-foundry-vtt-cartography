@@ -25,6 +25,7 @@ Output (default): mass-edit-presets.json next to this script.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import sys
@@ -136,9 +137,10 @@ def derive_tags(sc: Sidecar) -> list[str]:
 
 
 def preset_id_for(stamp_path: Path) -> str:
-    # Stable short id derived from filename, lowercase, alnum-only.
-    base = re.sub(r"[^A-Za-z0-9]+", "", stamp_path.stem).lower()
-    return base[-32:] if len(base) > 32 else base
+    # Foundry V13+ requires _id to be exactly 16 alphanumeric chars. Take the
+    # first 16 chars of the stem's md5 (deterministic + collision-resistant).
+    digest = hashlib.md5(stamp_path.stem.encode("utf-8")).hexdigest()
+    return digest[:16]
 
 
 def build_preset(stamp_path: Path, sc: Sidecar, asset_prefix: str) -> dict:
@@ -192,6 +194,12 @@ def main(argv: list[str]) -> int:
         default=None,
         help="Filter: include only PNG stems starting with this string",
     )
+    p.add_argument(
+        "--pack-src",
+        type=Path,
+        default=HERE / "dh-cartography" / "packs-src" / "dh-presets-journals",
+        help="Directory to emit per-document JSON for the Mass Edit pack (default: %(default)s)",
+    )
     args = p.parse_args(argv)
 
     stamps_dir: Path = args.stamps_dir
@@ -215,6 +223,68 @@ def main(argv: list[str]) -> int:
     print(f"Wrote {len(presets)} presets → {args.out}")
     if missing_sidecars:
         print(f"  (missing sidecars: {missing_sidecars})")
+
+    # Also emit a JournalEntry document tree under packs-src/dh-presets-journals/
+    # so a Foundry compendium pack can be compiled. Mass Edit's Preset Browser
+    # auto-indexes any JournalEntry pack containing a metadata document with
+    # _id="MassEditMetaData" — same convention used by Baileywiki's prefab
+    # packs, no manual import step required.
+    pack_src = args.pack_src
+    if pack_src.exists():
+        for f in pack_src.iterdir():
+            if f.is_file():
+                f.unlink()
+    pack_src.mkdir(parents=True, exist_ok=True)
+
+    META_INDEX_ID = "MassEditMetaData"
+    MODULE_ID = "multi-token-edit"
+
+    index_entries: dict[str, dict] = {}
+    for preset in presets:
+        pid = preset["id"]
+        # Per-preset JournalEntry doc. The actual preset payload lives in
+        # flags.multi-token-edit.preset; the document name/img/sort are
+        # what shows in the Preset Browser tree.
+        doc = {
+            "_id": pid,
+            "name": preset["name"],
+            "sort": 0,
+            "folder": None,
+            "ownership": {"default": 0},
+            "flags": {
+                MODULE_ID: {
+                    "preset": {
+                        "id": pid,
+                        "name": preset["name"],
+                        "documentName": preset["documentName"],
+                        "img": preset["img"],
+                        "tags": preset["tags"],
+                        "gridSize": preset["gridSize"],
+                        "data": preset["data"],
+                    },
+                },
+            },
+        }
+        (pack_src / f"{pid}.json").write_text(json.dumps(doc, indent=2) + "\n")
+        index_entries[pid] = {
+            "img": preset["img"],
+            "documentName": preset["documentName"],
+            "tags": preset["tags"],
+        }
+
+    metadata_doc = {
+        "_id": META_INDEX_ID,
+        "name": "!!! METADATA: DO NOT DELETE !!!",
+        "sort": 0,
+        "folder": None,
+        "ownership": {"default": 0},
+        "flags": {MODULE_ID: {"index": index_entries}},
+    }
+    (pack_src / f"{META_INDEX_ID}.json").write_text(
+        json.dumps(metadata_doc, indent=2) + "\n",
+    )
+    print(f"Wrote {len(presets) + 1} pack source docs → {pack_src}")
+
     return 0
 
 

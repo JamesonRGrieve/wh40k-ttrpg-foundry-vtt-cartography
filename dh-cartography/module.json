@@ -30,5 +30,16 @@
   "esmodules": [],
   "styles": [],
   "languages": [],
-  "packs": []
+  "packs": [
+    {
+      "name": "dh-presets-journals",
+      "label": "DH Cartography — Stamps",
+      "path": "packs/dh-presets-journals",
+      "type": "JournalEntry",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OBSERVER"
+      }
+    }
+  ]
 }
