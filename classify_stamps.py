@@ -510,7 +510,55 @@ def derive_name_from_caption(caption: str) -> str | None:
         phrase = phrase.title()
     else:
         phrase = phrase[:1].upper() + phrase[1:]
+    # Final garbage filter: even after preamble stripping, Florence-2
+    # frequently emits style descriptors / background descriptions /
+    # generic single-words / preamble mashes that survive the
+    # noun-phrase regex but carry no subject information. Reject these
+    # at the source so they don't leak into sidecars that the stamp
+    # LoRA would then have to skip downstream.
+    # Patterns mirrored in `audit_stamps.py` — keep both in sync if
+    # extended; that script's job is to clean up sidecars written
+    # BEFORE this filter existed.
+    if _is_garbage_name(phrase):
+        return None
     return phrase
+
+
+# Patterns that mirror `audit_stamps.py`. When both files extend, add
+# the new pattern to BOTH places (small enough duplication that a
+# shared module would be over-engineering).
+_GARBAGE_NAME_PATTERNS = [
+    re.compile(r"\bthe image\b", re.I),         # preamble leak
+    re.compile(r"^\s*(3D|3)(The|the)\b"),       # alphanumeric mash
+    re.compile(r"\bbackground\b", re.I),        # describes BG not subject
+    re.compile(r"^\s*with\s+a?\s+", re.I),      # partial-phrase fragment
+    re.compile(r"^\s*simple\s*,", re.I),        # style descriptor leak
+    re.compile(r"^\s*plain\s*,", re.I),
+    re.compile(r"^\s*minimalist\b", re.I),
+    re.compile(r"^\s*seamless\s+pattern", re.I),
+]
+_GARBAGE_EXACT = {
+    "image", "pattern", "object", "square", "circle", "rectangle",
+    "cylindrical object", "rectangular object", "circular object",
+    "square object", "set", "group", "row", "grid",
+    "abstract design", "geometric pattern",
+}
+
+
+def _is_garbage_name(name: str) -> bool:
+    """True if the derived name is a style descriptor, background
+    description, preamble fragment, or generic single-word — anything
+    that carries no useful subject information for stamp training.
+    """
+    if not name:
+        return True
+    nl = name.lower().strip(' "')
+    if nl in _GARBAGE_EXACT:
+        return True
+    for pat in _GARBAGE_NAME_PATTERNS:
+        if pat.search(name):
+            return True
+    return False
 
 
 def derive_orientation(caption: str) -> str | None:
