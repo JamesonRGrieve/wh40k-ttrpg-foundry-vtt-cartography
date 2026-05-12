@@ -19,7 +19,9 @@ generator: stamp
 
 defaults:
   trigger: dh_stamp
-  source_dir: stamps          # relative to repo root
+  # source_dir is no longer needed — the StampHandler reads source
+  # PNGs + sidecars from artifact_dir (.ai-gen/cartography/stamps/)
+  # via the LORA_ARTIFACT_DIRS mapping in corpus_generator.py.
   train_subdir: train         # top-down stamps staged here, sorted by category
   excluded_subdir: _excluded  # non-top-down stamps quarantined here
   allow_orientations:         # only orientations that may enter the training set

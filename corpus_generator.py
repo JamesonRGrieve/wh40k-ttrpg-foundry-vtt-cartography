@@ -54,8 +54,29 @@ from dotenv import load_dotenv
 from PIL import Image
 from google import genai
 
-HERE = Path(__file__).resolve().parent
-LORA_ROOT = HERE / "lora-training"
+HERE = Path(__file__).resolve().parent             # .foundry/cartography/
+CAMPAIGN_ROOT = HERE.parent.parent                  # dh-campaign/
+LORA_ROOT = HERE / "lora-training"                  # submodule control plane: manifests, configs, READMEs
+AI_GEN_ROOT = CAMPAIGN_ROOT / ".ai-gen"             # PNG / YAML artifacts (gitignored)
+
+# Per-LoRA artifact directory mapping. The manifest's directory holds
+# the control plane (manifest.yaml + configs/ + README.md); the
+# artifact directory holds the generated PNG + .txt pairs (and any
+# reference images the handler reads at generation time).
+LORA_ARTIFACT_DIRS = {
+    "iconography":      AI_GEN_ROOT / "iconography",
+    "portraits":        AI_GEN_ROOT / "portraits",
+    "voidship-hulls":   AI_GEN_ROOT / "cartography" / "voidship-hulls",
+    "voidship-layouts": AI_GEN_ROOT / "cartography" / "voidship-layouts",
+    "scenes":           AI_GEN_ROOT / "scenes",
+    # stamps is special: SOURCE (.ai-gen/cartography/stamps) is what
+    # the StampHandler reads PNGs and sidecars from; OUTPUT (staged
+    # corpus) writes into the submodule under
+    # lora-training/stamps/train/<category>/ (build artifact,
+    # gitignored). The mapping below is the SOURCE.
+    "stamps":           AI_GEN_ROOT / "cartography" / "stamps",
+}
+
 DEFAULT_MODEL = "gemini-2.5-flash-image"
 COST_PER_IMAGE_USD = 0.04
 MIN_INTERVAL_S = 4.0
@@ -82,12 +103,19 @@ class Job:
 # ── Handler base + registry ─────────────────────────────────────────
 
 class Handler:
-    """Per-LoRA build logic. Subclass and register in `HANDLERS`."""
+    """Per-LoRA build logic. Subclass and register in `HANDLERS`.
+
+    The handler is constructed with:
+      - `manifest`     parsed YAML dict from `lora-training/<name>/manifest.yaml`
+      - `lora_dir`     control-plane directory (where manifest.yaml lives)
+      - `artifact_dir` artifact directory under `.ai-gen/` where PNGs go
+    """
     name: ClassVar[str] = ""
 
-    def __init__(self, manifest: dict, lora_dir: Path):
+    def __init__(self, manifest: dict, lora_dir: Path, artifact_dir: Path):
         self.manifest = manifest
         self.lora_dir = lora_dir
+        self.artifact_dir = artifact_dir
 
     def build_jobs(self, only: str | None) -> list[Job]:
         raise NotImplementedError
@@ -204,7 +232,12 @@ class StampHandler(Handler):
     def build_jobs(self, only: str | None) -> list[Job]:
         d = self.manifest.get("defaults", {})
         trigger = d.get("trigger", "dh_stamp")
-        source_dir = HERE / d.get("source_dir", "stamps")
+        # Source PNGs + sidecars live in .ai-gen/cartography/stamps/
+        # (= self.artifact_dir per the LORA_ARTIFACT_DIRS mapping).
+        # Staged training output writes into the submodule under
+        # lora-training/stamps/{train,_excluded}/ as a gitignored
+        # build artifact.
+        source_dir = self.artifact_dir
         train_root = self.lora_dir / d.get("train_subdir", "train")
         excluded_root = self.lora_dir / d.get("excluded_subdir",
                                               "_excluded")
@@ -303,7 +336,7 @@ class IconographyHandler(Handler):
             folder_name = sym["folder"]
             if only and only not in folder_name:
                 continue
-            folder = self.lora_dir / folder_name
+            folder = self.artifact_dir / folder_name
             if not folder.is_dir():
                 print(f"[skip] folder missing: {folder}", file=sys.stderr)
                 continue
@@ -346,7 +379,7 @@ class PortraitHandler(Handler):
 
     @staticmethod
     def _find_style_reference(folder: Path, hint: str | None,
-                              lora_dir: Path) -> Path | None:
+                              artifact_dir: Path) -> Path | None:
         if hint:
             cand = folder / hint
             if cand.is_file():
@@ -354,10 +387,10 @@ class PortraitHandler(Handler):
             matches = sorted(p for p in folder.glob("*.png") if hint in p.name)
             if matches:
                 return matches[0]
-            cross = sorted(lora_dir.glob(f"*/{hint}"))
+            cross = sorted(artifact_dir.glob(f"*/{hint}"))
             if cross:
                 return cross[0]
-            cross = sorted(p for p in lora_dir.rglob("*.png") if hint in p.name)
+            cross = sorted(p for p in artifact_dir.rglob("*.png") if hint in p.name)
             if cross:
                 return cross[0]
         pngs = sorted(folder.glob("*.png"))
@@ -381,12 +414,12 @@ class PortraitHandler(Handler):
             folder_name = cat["folder"]
             if only and only not in folder_name:
                 continue
-            folder = self.lora_dir / folder_name
+            folder = self.artifact_dir / folder_name
             if not folder.is_dir():
                 print(f"[skip] folder missing: {folder}", file=sys.stderr)
                 continue
             style_ref = self._find_style_reference(
-                folder, cat.get("style_reference"), self.lora_dir)
+                folder, cat.get("style_reference"), self.artifact_dir)
             for a_idx, archetype in enumerate(cat["archetypes"]):
                 for v_idx in range(sup_per):
                     g = genders[seq % len(genders)]
@@ -462,7 +495,7 @@ class SceneHandler(Handler):
             folder_name = sc["folder"]
             if only and only not in folder_name:
                 continue
-            folder = self.lora_dir / folder_name
+            folder = self.artifact_dir / folder_name
             folder.mkdir(parents=True, exist_ok=True)
             scene_name = sc["name"]
             scene_subject = sc["subject"]
@@ -593,7 +626,7 @@ class VoidshipHullHandler(Handler):
                 if v_idx >= int(cat.get("variants", len(hull_states))):
                     continue
                 folder_name = cat["folder"]
-                cat_dir = self.lora_dir / folder_name
+                cat_dir = self.artifact_dir / folder_name
                 cat_dir.mkdir(parents=True, exist_ok=True)
                 class_name = cat.get("class_name") or folder_name.replace(
                     "hull-", "").replace("-", " ")
@@ -659,7 +692,7 @@ class VoidshipLayoutHandler(Handler):
             folder_name = cat["folder"]
             if only and only not in folder_name:
                 continue
-            cat_dir = self.lora_dir / folder_name
+            cat_dir = self.artifact_dir / folder_name
             cat_dir.mkdir(parents=True, exist_ok=True)
             class_name = cat.get("class_name") or folder_name.replace(
                 "map-", "").replace("-", " ")
@@ -845,18 +878,43 @@ def run_jobs(jobs: list[Job], args: argparse.Namespace,
 
 # ── Manifest resolution ─────────────────────────────────────────────
 
-def resolve_manifest(args: argparse.Namespace) -> tuple[Path, Path]:
-    """Return (manifest_path, lora_dir)."""
+def resolve_manifest(args: argparse.Namespace) -> tuple[Path, Path, Path]:
+    """Return (manifest_path, lora_dir, artifact_dir).
+    - lora_dir is the manifest's containing directory (control plane:
+      manifest.yaml, configs/, README.md).
+    - artifact_dir is the .ai-gen/ subdirectory where PNGs live for
+      this LoRA (per the LORA_ARTIFACT_DIRS mapping; can be
+      overridden by a manifest-level `artifact_dir:` key as either an
+      absolute path or a path relative to AI_GEN_ROOT).
+    """
     if args.manifest:
         mp = args.manifest.resolve()
-        return mp, mp.parent
-    if args.lora:
+        lora_dir = mp.parent
+        # Try to infer the lora-name from the manifest's parent dir
+        # name (so the mapping table still applies for --manifest).
+        lora_name = lora_dir.name
+    elif args.lora:
         lora_dir = LORA_ROOT / args.lora
         mp = lora_dir / "manifest.yaml"
         if not mp.is_file():
             raise FileNotFoundError(f"no manifest at {mp}")
-        return mp, lora_dir
-    raise SystemExit("specify --lora <name> or --manifest <path>")
+        lora_name = args.lora
+    else:
+        raise SystemExit("specify --lora <name> or --manifest <path>")
+
+    # Manifest can override the artifact_dir; otherwise fall back to
+    # the LORA_ARTIFACT_DIRS table or to AI_GEN_ROOT/<lora_name>.
+    manifest = yaml.safe_load(mp.read_text())
+    override = manifest.get("artifact_dir")
+    if override:
+        override_path = Path(override)
+        if not override_path.is_absolute():
+            override_path = (AI_GEN_ROOT / override_path).resolve()
+        artifact_dir = override_path
+    else:
+        artifact_dir = LORA_ARTIFACT_DIRS.get(
+            lora_name, AI_GEN_ROOT / lora_name)
+    return mp, lora_dir, artifact_dir
 
 
 # ── Main ────────────────────────────────────────────────────────────
@@ -881,7 +939,7 @@ def main() -> int:
     args = ap.parse_args()
 
     load_dotenv(HERE / ".env")
-    manifest_path, lora_dir = resolve_manifest(args)
+    manifest_path, lora_dir, artifact_dir = resolve_manifest(args)
     manifest = yaml.safe_load(manifest_path.read_text())
 
     handler_name = manifest.get("generator")
@@ -892,10 +950,11 @@ def main() -> int:
     if handler_name not in HANDLERS:
         raise SystemExit(f"unknown generator {handler_name!r}; "
                          f"registered: {sorted(HANDLERS)}")
-    handler = HANDLERS[handler_name](manifest, lora_dir)
+    handler = HANDLERS[handler_name](manifest, lora_dir, artifact_dir)
 
     print(f"[gen] handler={handler_name} manifest={manifest_path}")
-    print(f"[gen] lora_dir={lora_dir}")
+    print(f"[gen] lora_dir (control plane) = {lora_dir}")
+    print(f"[gen] artifact_dir (.ai-gen)   = {artifact_dir}")
 
     jobs = handler.build_jobs(only=args.only)
 

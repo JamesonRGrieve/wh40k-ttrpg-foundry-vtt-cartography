@@ -32,7 +32,8 @@ import re
 import sys
 from pathlib import Path
 
-STAMPS_DIR = Path(__file__).resolve().parent / "stamps"
+_HERE = Path(__file__).resolve().parent
+STAMPS_DIR = _HERE.parent.parent / ".ai-gen" / "cartography" / "stamps"
 
 # Foundation YAML written for a fresh stamp. We hand-write the YAML rather
 # than using PyYAML so the file ordering and comments are stable for diffs.

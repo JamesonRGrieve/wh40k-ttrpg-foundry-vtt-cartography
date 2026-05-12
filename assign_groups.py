@@ -81,7 +81,9 @@ def square_png_bytes(png_path: Path) -> bytes:
 
 DEFAULT_SERVER = "http://198.51.100.11:8188"
 HERE = Path(__file__).resolve().parent
-STAMPS_DIR = HERE / "stamps"
+CAMPAIGN_ROOT = HERE.parent.parent
+AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 EMBED_CACHE = HERE / "embeddings"
 
 CLIP_VISION_MODEL = "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"

@@ -1,9 +1,34 @@
 # Derived caches; regenerated on demand.
 embeddings/
-
-# Stamp PNGs that aren't tracked stamps yet (working scratch). The
-# actual stamp set under stamps/ is tracked via individual additions.
 __pycache__/
+
+# AI-generated artifacts moved out to ../../.ai-gen/ as of 2026-05-12.
+# Inside this submodule, the legacy dirs are gone — these globs catch
+# any accidental re-creation in the wrong place.
+stamps/
+battlemaps/
+layouts/
+Gemini_Generated_Image_*.png
+dh-cartography/
+
+# Staged stamp training corpus — build artifact, NOT version-controlled.
+# Recreated by `uv run corpus_generator.py --lora stamps`.
+lora-training/stamps/train/
+lora-training/stamps/_excluded/
+
+# LoRA artifact PNGs/TXTs — generation output lives in ../../.ai-gen/
+# (the per-LoRA artifact_dir per LORA_ARTIFACT_DIRS in
+# corpus_generator.py). Control plane stays here: manifest.yaml,
+# configs/, README.md.
+lora-training/iconography/iconography-*/
+lora-training/iconography/eval-samples/
+lora-training/portraits/portrait-*/
+lora-training/scenes/scene-*/
+lora-training/voidship-hulls/hull-*/
+lora-training/voidship-hulls/_smoke_test/
+lora-training/voidship-layouts/map-*/
+lora-training/voidship-layouts/_smoke_test/
+lora-training/voidship-layouts/_references/
 
 # API keys / secrets — never commit.
 .env

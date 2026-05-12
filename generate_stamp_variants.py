@@ -50,7 +50,9 @@ import requests
 from PIL import Image
 
 HERE = Path(__file__).resolve().parent
-STAMPS_DIR = HERE / "stamps"
+CAMPAIGN_ROOT = HERE.parent.parent
+AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 
 # --- Geometric rotation ----------------------------------------------------
 

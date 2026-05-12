@@ -339,12 +339,14 @@ def process_image(path: Path, out_dir: Path) -> int:
 
 def main(argv: list[str]) -> int:
     here = Path(__file__).resolve().parent
-    out_dir = here / "stamps"
+    campaign_root = here.parent.parent
+    source_grids = campaign_root / ".ai-gen" / "cartography" / "source-grids"
+    out_dir = campaign_root / ".ai-gen" / "cartography" / "stamps"
 
     if argv:
         targets = [Path(a) for a in argv]
     else:
-        targets = sorted(p for p in here.glob("*.png") if out_dir not in p.parents)
+        targets = sorted(source_grids.glob("*.png"))
 
     total = 0
     for p in targets:

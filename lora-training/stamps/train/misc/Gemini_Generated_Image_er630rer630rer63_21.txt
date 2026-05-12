@@ -1,1 +1,0 @@
-dh_stamp, Screenshot, top-down view, inactive, screenshot, A screenshot

@@ -42,7 +42,10 @@ except ImportError:
     HAVE_PIL = False
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_STAMPS_DIR = HERE / "stamps"
+CAMPAIGN_ROOT = HERE.parent.parent
+AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+FOUNDRY_MODULE = CAMPAIGN_ROOT / ".foundry-cartography"
+DEFAULT_STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 
 DEFAULT_ASSET_PREFIX = "modules/dh-cartography/stamps"
 DEFAULT_GRID_SIZE = 100
@@ -186,7 +189,7 @@ def main(argv: list[str]) -> int:
         # produce the same artifact deploy.sh deploys. Override with
         # `--out mass-edit-presets.json` to write to the repo root for
         # inspection without affecting the staged module.
-        default=HERE / "dh-cartography" / "mass-edit-presets.json",
+        default=FOUNDRY_MODULE / "mass-edit-presets.json",
         help="Output JSON path (default: %(default)s)",
     )
     p.add_argument(
@@ -197,7 +200,7 @@ def main(argv: list[str]) -> int:
     p.add_argument(
         "--pack-src",
         type=Path,
-        default=HERE / "dh-cartography" / "packs-src" / "dh-presets-journals",
+        default=FOUNDRY_MODULE / "packs-src" / "dh-presets-journals",
         help="Directory to emit per-document JSON for the Mass Edit pack (default: %(default)s)",
     )
     args = p.parse_args(argv)

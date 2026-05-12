@@ -35,7 +35,9 @@ from pathlib import Path
 import yaml
 
 HERE = Path(__file__).resolve().parent
-STAMPS_DIR = HERE / "stamps"
+CAMPAIGN_ROOT = HERE.parent.parent
+AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 
 # Words to ignore when comparing captions: function words, formatting
 # nouns, generic adjectives that match across many subjects. Keeps the

@@ -30,10 +30,13 @@ from pathlib import Path
 import yaml
 
 HERE = Path(__file__).resolve().parent
-SOURCES_DIR = HERE  # source PNG sheets live alongside the scripts
-STAMPS_DIR = HERE / "stamps"
-STAGED_DIR = HERE / "dh-cartography" / "stamps"
-PRESET_PACK = HERE / "dh-cartography" / "mass-edit-presets.json"
+CAMPAIGN_ROOT = HERE.parent.parent
+AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+FOUNDRY_MODULE = CAMPAIGN_ROOT / ".foundry-cartography"
+SOURCES_DIR = AI_GEN / "cartography" / "source-grids"
+STAMPS_DIR = AI_GEN / "cartography" / "stamps"
+STAGED_DIR = FOUNDRY_MODULE / "stamps"
+PRESET_PACK = FOUNDRY_MODULE / "mass-edit-presets.json"
 
 
 @dataclass

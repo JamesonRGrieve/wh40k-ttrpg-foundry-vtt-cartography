@@ -1,1 +1,0 @@
-dh_voidship_hull, small civilian freighter (micro-ship class), hull state: pristine, freshly serviced, clean panel work, strict orthographic top-down, top-down empty hull silhouette

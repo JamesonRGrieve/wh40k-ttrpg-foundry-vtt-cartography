@@ -58,7 +58,9 @@ from PIL import Image
 from transformers import AutoModel, AutoProcessor
 
 HERE = Path(__file__).resolve().parent
-STAMPS_DIR = HERE / "stamps"
+CAMPAIGN_ROOT = HERE.parent.parent
+AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 MODEL_NAME = "openai/clip-vit-large-patch14"
 
 # The state field in the schema accepts these values (per CLAUDE.md /

@@ -1,0 +1,30 @@
+Canvas sizes (all must match for stack):
+  bridge         : 1792x1024
+  engineering    : 1792x1024
+  barracks       : 1792x1024
+  cargo          : 1792x1024
+  → OK: canvases identical
+
+Outer-hull bounding box (XY range of non-black pixels):
+  bridge         : x=96..1697  y=96..929  (w=1601, h=833)
+  engineering    : x=96..1697  y=96..1024  (w=1601, h=928)
+  barracks       : x=96..1697  y=96..929  (w=1601, h=833)
+  cargo          : x=96..1697  y=96..1024  (w=1601, h=928)
+
+Hull-only bbox (excluding ramp protrusions; should be identical):
+  expected (canvas 1792x1024, inset=96): x=96..1696  y=96..928
+  OK    bridge         : x=96..1696  y=96..928
+  OK    engineering    : x=96..1696  y=96..928
+  OK    barracks       : x=96..1696  y=96..928
+  OK    cargo          : x=96..1696  y=96..928
+
+Interior-wall IoU diagnostic (informational; expected to differ per deck):
+  bridge         ↔ engineering    : 0.3317
+  bridge         ↔ barracks       : 0.3154
+  bridge         ↔ cargo          : 0.2937
+  engineering    ↔ barracks       : 0.3199
+  engineering    ↔ cargo          : 0.2919
+  barracks       ↔ cargo          : 0.4713
+
+✓ Decks stack pixel-perfect: identical canvas, identical hull bbox.
+  Per-deck openings (windscreen / ramp) modify rim pixels intentionally.

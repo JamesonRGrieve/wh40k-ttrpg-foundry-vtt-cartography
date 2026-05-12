@@ -29,7 +29,8 @@ import yaml
 
 CARDINAL = {"north", "south", "east", "west"}
 HERE = Path(__file__).resolve().parent
-STAMPS = HERE / "stamps"
+CAMPAIGN_ROOT = HERE.parent.parent
+STAMPS = CAMPAIGN_ROOT / ".ai-gen" / "cartography" / "stamps"
 
 
 def main() -> int:

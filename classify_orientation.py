@@ -55,7 +55,9 @@ from PIL import Image
 from transformers import AutoModel, AutoProcessor
 
 HERE = Path(__file__).resolve().parent
-STAMPS_DIR = HERE / "stamps"
+CAMPAIGN_ROOT = HERE.parent.parent
+AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 # CLIP-ViT-L-14: tested better than SigLIP-so400m on this stamp set
 # despite SigLIP's stronger general accuracy. The contrastive softmax
 # at temperature 100 maps well to the binary "top-down vs isometric"
