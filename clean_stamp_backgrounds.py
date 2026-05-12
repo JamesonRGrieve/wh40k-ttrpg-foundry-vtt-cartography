@@ -85,9 +85,11 @@ def find_background_mask(arr: np.ndarray, white_thresh: int,
     2. Interior pure-white blob detection (pure_white_thresh,
        min_interior_blob). Catches isolated holes inside the stamp
        body — gutter color that was bounded by the subject and
-       wasn't reachable from the edge. Threshold is strict (default
-       250) and minimum size is 3×3 (9 px); legitimate near-white
-       features that happen to fall below 250 stay opaque.
+       wasn't reachable from the edge. Default threshold is exact
+       #FFF (255 on all channels) per the 2026-05-11 operator
+       directive — anything less strict risks clearing legitimate
+       cream / eggshell / off-white highlights. Minimum size is
+       3×3 (9 px).
 
     Returns a boolean mask of pixels to clear (set alpha = 0).
     """
@@ -183,8 +185,12 @@ def main() -> int:
     ap.add_argument("target", type=Path, help="folder of PNGs (or a single PNG)")
     ap.add_argument("--white-threshold", type=int, default=235,
                     help="edge-flood near-white threshold (Pass 1)")
-    ap.add_argument("--pure-white-threshold", type=int, default=250,
-                    help="interior pure-white blob threshold (Pass 2)")
+    ap.add_argument("--pure-white-threshold", type=int, default=255,
+                    help="interior pure-white blob threshold (Pass 2). "
+                         "Default 255 = exact #FFF only, per operator "
+                         "directive. Raise above 255 to disable Pass 2; "
+                         "lower at your own risk (can clear legitimate "
+                         "cream/eggshell highlights).")
     ap.add_argument("--min-interior-blob", type=int, default=9,
                     help="minimum interior pure-white blob size to clear "
                          "(default 9 = 3x3 px, per operator heuristic)")
