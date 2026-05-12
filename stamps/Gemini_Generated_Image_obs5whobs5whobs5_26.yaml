@@ -5,7 +5,7 @@
 name: Desk With Various Electronic Devices
 description: "A line drawing of a desk with various electronic devices, including a computer, a keyboard, and a mouse. The desk is drawn in a simple, minimalist style with a light brown background. On the left side of the desk, there is a small potted plant, adding a touch of greenery to the otherwise monochromatic scene. The computer is placed in the center of the image, with the keyboard and mouse placed on either side. The monitor is placed on top of the monitor, while the keyboard and mouse are placed on the right side of the desk. The overall aesthetic of the image is clean and minimalistic, with a focus on the computer and its components."
 tags: [line, desk, various, electronic, devices, including, computer, keyboard, mouse, drawn, simple, minimalist, furniture, furniture-table, tech, tech-screen]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: intact
 group_id: 48f95584-39d5-5b21-ad5d-c3c99e04dcf3      # UUID linking orientation/state variants of one object
 

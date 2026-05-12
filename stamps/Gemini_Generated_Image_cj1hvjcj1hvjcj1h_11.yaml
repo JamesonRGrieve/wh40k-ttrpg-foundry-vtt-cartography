@@ -2,10 +2,10 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: MinimalistA minimalist
+name: null
 description: A minimalistA minimalist
 tags: [minimalista, minimalist]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: fe00412d-db05-5e58-b521-67601ed611f6      # UUID linking orientation/state variants of one object
 

@@ -5,7 +5,7 @@
 name: Wooden Stools Arranged
 description: "A set of three simple wooden stools arranged in a row against a plain grey background. The stools have a simple, minimalist design with a smooth, polished finish. Each stool has a round seat and four legs, with a slightly curved backrest for added stability. The overall aesthetic of the image is minimalistic and contemporary, with a focus on the natural beauty of the stools."
 tags: [set, simple, wooden, stools, arranged, row, against, plain, background, have, minimalist, design, furniture, furniture-chair]
-orientation: north
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

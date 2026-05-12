@@ -5,7 +5,7 @@
 name: Piece Of Paper With Horizontal Lines
 description: "The image is a 3D rendering of a piece of paper with horizontal lines on it. The paper appears to be slightly crumpled and has a textured surface. The lines are evenly spaced and run horizontally across the paper. The background is a light beige color. The image is in a simple, minimalist style."
 tags: [rendering, piece, paper, horizontal, lines, slightly, crumpled, has, textured, surface, evenly, spaced, prop, prop-document]
-orientation: west
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: null
 

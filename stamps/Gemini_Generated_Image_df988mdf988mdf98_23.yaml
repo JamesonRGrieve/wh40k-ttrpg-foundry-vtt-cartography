@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Futuristic Robot With A Simple
+name: null
 description: "A set of four line drawings of a futuristic robot with a simple, minimalist design. The robots are arranged in a symmetrical pattern, with each robot having a distinct shape and size. The background is a plain, light grey color, providing a subtle contrast to the robots. The robots have a metallic sheen, giving them a sleek and sophisticated look. The overall style of the image is reminiscent of modern technology, with clean lines and minimalistic elements."
 tags: [set, four, line, drawings, futuristic, robot, simple, minimalist, design, robots, arranged, symmetrical]
 orientation: top-down

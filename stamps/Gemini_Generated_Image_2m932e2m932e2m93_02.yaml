@@ -5,7 +5,7 @@
 name: "Beige Metal Locker Pair"
 description: "Two-door beige metal storage lockers with ventilation slots at the top of each door, riveted frame. Intact variant."
 tags: [rendering, set, four, identical, beige-colored, metal, lockers, arranged, grid-like, pattern, plain, background, container, container-locker, door]
-orientation: north
+orientation: top-down
 state: intact
 group_id: null
 

@@ -5,7 +5,7 @@
 name: Office Chair
 description: "The image is a 3D rendering of an office chair. The chair is shown in a light grey color and has a high backrest and armrests. It has a swivel base with four wheels, allowing it to be moved around easily. The seat is upholstered in a dark grey fabric and appears to be made of a soft, comfortable material. The backrest is slightly curved and the arms are adjustable, allowing the user to adjust the height of the chair to their desired position. The overall design is modern and ergonomic."
 tags: [rendering, office, chair, shown, light, has, high, backrest, armrests, swivel, base, four, furniture, furniture-chair]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: 02e70a68-ddba-5abb-ba7d-1d7a5d700144      # UUID linking orientation/state variants of one object
 

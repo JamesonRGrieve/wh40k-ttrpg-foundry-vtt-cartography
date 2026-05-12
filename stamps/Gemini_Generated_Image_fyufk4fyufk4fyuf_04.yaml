@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Beer Mugs Arranged In A Symmetrical Pattern
+name: null
 description: "A 3D rendering of a row of empty beer mugs arranged in a symmetrical pattern on a plain gray background. The mugs are of varying sizes and shapes, with some being larger than others, and they are all facing the same direction. The mugs appear to be made of a light-colored material, possibly ceramic or porcelain, and have a smooth, polished finish. The image has a simple, minimalist design with clean lines and a minimalistic aesthetic."
 tags: [rendering, row, empty, beer, mugs, arranged, symmetrical, pattern, plain, background, varying, sizes, container, container-tableware]
 orientation: isometric

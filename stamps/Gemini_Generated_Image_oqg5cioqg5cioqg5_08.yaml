@@ -5,7 +5,7 @@
 name: Empty Glass Bottles With Stoppers
 description: "A line drawing of three empty glass bottles with stoppers. The bottles are arranged in a row, with the largest bottle on the left and the smallest on the right. Each bottle has a unique design, with a small opening at the top and a label on the front. The bottles are drawn in a sketch-like style, with thin lines and shading to give them a realistic look. The background is a plain, light grey color, providing a subtle contrast to the bottles. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [line, empty, glass, bottles, stoppers, arranged, row, largest, bottle, left, smallest, right, container, container-vessel]
-orientation: north
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: a5323235-88f5-5781-895f-f1f9d3d83d15
 

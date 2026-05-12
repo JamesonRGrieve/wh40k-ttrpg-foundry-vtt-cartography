@@ -5,7 +5,7 @@
 name: Identical Metal Lockers
 description: "A set of three identical metal lockers on a plain grey background. The lockers are arranged in a symmetrical pattern, with each one slightly overlapping the one below it. The doors are closed, and the lockers appear to be made of a light-colored metal, possibly steel or aluminum, with a smooth finish. The image has a minimalist design, with no other objects or decorations in sight. The overall mood of the image is simple and clean, with a focus on the lockers."
 tags: [set, identical, metal, lockers, plain, background, arranged, symmetrical, pattern, each, slightly, overlapping, container, container-locker, door]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: 6e373f9e-a91d-5316-87fd-b6e0d9f72bcd      # UUID linking orientation/state variants of one object
 

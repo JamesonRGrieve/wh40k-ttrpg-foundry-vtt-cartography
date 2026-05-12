@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Frames With A Beige
+name: null
 description: "A set of four rectangular frames with a beige, textured surface. The frames are arranged in a symmetrical pattern, with each frame slightly overlapping the one below it. The background is a solid, light brown color, providing a subtle contrast to the neutral tones of the frames. The texture of the surface appears to be rough and uneven, with visible cracks and crevices throughout. The overall style of the image is simple and minimalistic, with a focus on the textures and patterns of the frames.
 
 The frames are empty, with no text or images on them, giving a sense of depth and dimension to the overall composition. The overall effect is one of sophistication and elegance.

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Circular Icons Arranged In A Grid-Like Pattern
+name: null
 description: "The image is a set of six circular icons arranged in a grid-like pattern on a plain grey background. Each icon has a unique design, with a distinct shape and texture. The icons are evenly spaced and appear to be made of a light-colored material, possibly paper or fabric. The shapes vary in size and shape, with some being larger than others. The overall appearance of the image is simple and minimalistic, with no additional embellishments or details."
 tags: [set, six, circular, icons, arranged, grid-like, pattern, plain, background, each, icon, has, prop, prop-document, decor, decor-statue]
 orientation: top-down

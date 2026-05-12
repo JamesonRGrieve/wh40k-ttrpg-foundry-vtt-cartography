@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Ornate, Vintage-Looking Frames With A Simple"
+name: null
 description: "A set of three ornate, vintage-looking frames with a simple, elegant design. The frames are arranged in a horizontal line, with the top frame being the largest and the bottom two being the smallest. Each frame has a unique, ornate design with intricate details and a warm, golden hue. The background is a simple, neutral color, allowing the frames to stand out. The overall aesthetic of the image is timeless and elegant, with a focus on the classic, timeless design of the frames."
 tags: [set, ornate, vintage-looking, frames, simple, elegant, design, arranged, horizontal, line, top, frame]
 orientation: null   # north | south | east | west | top-down | isometric

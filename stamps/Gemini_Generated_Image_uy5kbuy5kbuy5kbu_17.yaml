@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Ornate Bookends With A Simple
+name: null
 description: "A set of four ornate bookends with a simple, minimalist design. The bookends are arranged in a symmetrical pattern, with each one slightly overlapping the one below it. Each bookend has a unique, ornate design with intricate details and patterns. The background is a neutral gray color, providing a subtle contrast to the ornate bookends. The overall aesthetic of the image is elegant and sophisticated, evoking a sense of timelessness and sophistication."
 tags: [set, four, ornate, bookends, simple, minimalist, design, arranged, symmetrical, pattern, each, slightly]
 orientation: isometric

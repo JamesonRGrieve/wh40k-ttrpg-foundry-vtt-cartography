@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Room Divider With A Simple
+name: null
 description: "A hand-drawn illustration of a room divider with a simple, minimalist design. The divider is divided into four sections, each with a different pattern and color. The panels are drawn in a sketch-like style, with thin lines and shading to give them a realistic look. The background is a plain, light grey color, providing a subtle contrast to the divider. The overall style of the image is simple and minimalistic, with no additional details or embellishments present.
 
 The image is a stock photo with a resolution of 1024x1024 pixels, featuring a simple, minimalist design with a focus on the dividers. The dividers are arranged in a way that creates a sense of depth and dimensionality, with each panel having its own unique pattern and color. The panels are separated by thin lines, creating a visually pleasing composition. the overall effect is one of sophistication and elegance, making the image a timeless piece of art.

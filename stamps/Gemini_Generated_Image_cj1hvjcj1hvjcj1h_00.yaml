@@ -5,7 +5,7 @@
 name: Mug
 description: "The image is a 3D rendering of a mug. The mug is made of a light-colored material, possibly ceramic or porcelain, and has a handle on the right side. It appears to be empty and is standing upright on a plain background. The top of the mug has a small indentation in the center, which could be a lid or a handle. The overall design is simple and minimalistic."
 tags: [rendering, mug, light-colored, material, possibly, ceramic, porcelain, has, handle, right, side, empty, container, container-tableware]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: cb4a4925-b642-5fe2-885d-6b33da93b29d      # UUID linking orientation/state variants of one object
 

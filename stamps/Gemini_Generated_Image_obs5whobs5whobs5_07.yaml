@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Objects Arranged In A Grid-Like Pattern
+name: null
 description: "A set of four rectangular objects arranged in a grid-like pattern on a plain grey background. The objects appear to be made of a light-colored material, possibly linen or cotton, and have a smooth, textured surface. Each object has a rectangular shape with a slightly raised edge, creating a sense of depth and dimension. The overall appearance of the objects is simple and minimalistic, with no additional details or embellishments present."
 tags: [set, four, rectangular, objects, arranged, grid-like, pattern, plain, background, light-colored, material, possibly]
 orientation: top-down

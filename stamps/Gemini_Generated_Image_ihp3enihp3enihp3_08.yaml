@@ -5,7 +5,7 @@
 name: null
 description: "The image is a simple, minimalist illustration with a plain, light grey background. On the left side of the image, there are three identical, cylindrical objects arranged in a symmetrical pattern, each with a distinct shape and texture. The objects appear to be made of wood or a similar material, with a smooth, polished finish. The topmost object is slightly larger than the other two, and they are all facing the same direction. The objects have a simple, yet elegant design, with rounded edges and smooth lines. The overall aesthetic is minimalistic and minimalistic, with a focus on the geometric shapes and textures of the objects."
 tags: [simple, minimalist, illustration, plain, light, background, left, side, there, identical, cylindrical, objects]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 7f510dd9-d9ba-5935-a66f-e9d7b753e35c
 

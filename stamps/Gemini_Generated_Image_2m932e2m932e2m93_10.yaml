@@ -5,7 +5,7 @@
 name: null
 description: "The image is a seamless pattern of rectangular, beige-colored objects arranged in a grid-like pattern on a gray background. The objects appear to be made of plastic or a similar material and have a smooth, glossy finish. They are arranged in two rows, with the top row slightly overlapping the bottom row. Each object has a rectangular shape with a flat top and a flat bottom, resembling a door or a window. The objects have a simple, minimalist design with no additional details or embellishments. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple and clean lines of the objects."
 tags: [seamless, pattern, rectangular, beige-colored, objects, arranged, grid-like, background, plastic, similar, material, have, door, architecture, architecture-window]
-orientation: west
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: f3885fea-b8ec-523c-b17d-42d699a6b0be
 

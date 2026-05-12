@@ -5,7 +5,7 @@
 name: null
 description: "The image is a digital illustration of a simple, minimalist design with a light brown color scheme. It features three rectangular frames arranged in a symmetrical pattern, each with a different size and shape. The frames are outlined in a darker brown color and have a smooth, polished finish. The background is a solid, light brown color, providing a subtle contrast to the overall design. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple yet elegant design of the frames."
 tags: [digital, illustration, simple, minimalist, design, light, scheme, features, rectangular, frames, arranged, symmetrical]
-orientation: north
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 692aafc8-eb7d-562f-91d6-b36d418d0be1      # UUID linking orientation/state variants of one object
 

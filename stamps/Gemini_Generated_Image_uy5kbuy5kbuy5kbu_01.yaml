@@ -5,7 +5,7 @@
 name: null
 description: The image is a
 tags: []
-orientation: north
+orientation: top-down
 state: intact
 group_id: null
 

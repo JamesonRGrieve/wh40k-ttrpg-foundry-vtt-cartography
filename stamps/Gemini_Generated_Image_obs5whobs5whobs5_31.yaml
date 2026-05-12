@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Small, Rectangular Objects Arranged"
+name: null
 description: "The image is a simple illustration of a collection of small, rectangular objects arranged in a grid-like pattern on a plain, light grey background. The objects appear to be made of a light-colored material, possibly paper or fabric, and are of varying sizes and shapes. They are arranged in an irregularly arranged manner, with some overlapping each other, creating a sense of depth and dimension. Some of the objects have a smooth texture, while others have a more rounded shape. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [simple, illustration, collection, rectangular, objects, arranged, grid-like, pattern, plain, light, background, light-colored, prop, prop-document]
 orientation: top-down

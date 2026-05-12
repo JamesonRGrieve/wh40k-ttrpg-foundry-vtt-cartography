@@ -7,7 +7,7 @@ description: "The image is a seamless pattern with a minimalist design. It featu
 
 The image has a high resolution, making it suitable for use as a background or wallpaper. The image also has a watermark in the bottom right corner, adding a subtle touch to the overall design. Overall, the image has a clean and modern look, perfect for any project."
 tags: [seamless, pattern, minimalist, design, features, plain, light, background, subtle, texture, left, side]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: damaged
 group_id: c84d3746-55e2-58d4-9570-dd66b9051e86
 

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Design With A Minimalist Aesthetic
+name: null
 description: "The image is a graphic design with a minimalist aesthetic. It features six rectangular frames arranged in a grid-like pattern on a plain, light grey background. Each frame contains a different type of document or document, with text written in a neat, cursive font. The documents appear to be of different sizes and shapes, with some having a larger font size than others. The text is centered in the frame and is surrounded by a thin, black border. The overall design is simple and minimalistic, with a focus on the text and the background."
 tags: [graphic, design, minimalist, aesthetic, features, six, rectangular, frames, arranged, grid-like, pattern, plain, prop, prop-document]
 orientation: null   # north | south | east | west | top-down | isometric

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Square-Shaped Objects Arranged In A Grid-Like Pattern
+name: null
 description: "A set of four square-shaped objects arranged in a grid-like pattern on a plain, light brown background. Each object appears to be made of a similar material and has a smooth, glossy finish. The objects are arranged in two rows, with the top row slightly higher than the bottom row, creating a sense of depth and dimension. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall color scheme is neutral, with no other elements present in the image."
 tags: [set, four, square-shaped, objects, arranged, grid-like, pattern, plain, light, background, each, object]
 orientation: isometric

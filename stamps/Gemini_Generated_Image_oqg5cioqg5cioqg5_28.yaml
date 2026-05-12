@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Objects Arranged In A Grid-Like Pattern
+name: null
 description: "The image is a simple line drawing of various objects arranged in a grid-like pattern on a plain, light grey background. The objects appear to be made of paper or cardboard and are of different sizes and shapes. Some of the objects are rectangular in shape, while others are square in shape. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall color scheme is neutral, with no other elements present in the image."
 tags: [simple, line, various, objects, arranged, grid-like, pattern, plain, light, background, paper, cardboard, prop, prop-document]
 orientation: top-down

@@ -76,6 +76,24 @@ POLL_TIMEOUT_S = 300
 
 # --- Vocabulary post-processing -------------------------------------------------
 
+# Orientation values are limited to the views that genuinely require
+# different pixels at training time.
+#
+#   top-down  — orthographic, looking straight down. NO cardinal
+#               facing direction — the stamp has no intrinsic
+#               "which way is north" because Foundry rotates tiles
+#               freely at runtime. A chair pointing "up" in the
+#               image is just a chair; the GM rotates it to face
+#               the table at placement time.
+#   isometric — three-quarter / iso projection. A genuinely
+#               different view than top-down and not interchangeable
+#               by Foundry rotation.
+#
+# Cardinal directions (north/south/east/west) and "facing left/right"
+# language captured by Florence-2 are NOT meaningful axes for
+# orthographic stamps — they describe an artifact of how the source
+# image was framed, not an intrinsic property of the subject.
+# Mapping them to "top-down" collapses the noise.
 ORIENTATION_KEYWORDS: dict[str, str] = {
     "top down": "top-down",
     "top-down": "top-down",
@@ -84,18 +102,21 @@ ORIENTATION_KEYWORDS: dict[str, str] = {
     "from above": "top-down",
     "isometric": "isometric",
     "three-quarter": "isometric",
-    "facing left": "west",
-    "from the left": "west",
-    "left side": "west",
-    "facing right": "east",
-    "from the right": "east",
-    "right side": "east",
-    "facing forward": "south",
-    "front view": "south",
-    "from the front": "south",
-    "facing backward": "north",
-    "back view": "north",
-    "from behind": "north",
+    # Cardinal / facing-direction phrases collapse to "top-down" —
+    # the stamp is still orthographic; the facing is a Foundry
+    # runtime concern.
+    "facing left": "top-down",
+    "from the left": "top-down",
+    "left side": "top-down",
+    "facing right": "top-down",
+    "from the right": "top-down",
+    "right side": "top-down",
+    "facing forward": "top-down",
+    "front view": "top-down",
+    "from the front": "top-down",
+    "facing backward": "top-down",
+    "back view": "top-down",
+    "from behind": "top-down",
 }
 
 STATE_KEYWORDS: dict[str, str] = {
@@ -528,14 +549,26 @@ def derive_name_from_caption(caption: str) -> str | None:
 # the new pattern to BOTH places (small enough duplication that a
 # shared module would be over-engineering).
 _GARBAGE_NAME_PATTERNS = [
-    re.compile(r"\bthe image\b", re.I),         # preamble leak
-    re.compile(r"^\s*(3D|3)(The|the)\b"),       # alphanumeric mash
-    re.compile(r"\bbackground\b", re.I),        # describes BG not subject
-    re.compile(r"^\s*with\s+a?\s+", re.I),      # partial-phrase fragment
-    re.compile(r"^\s*simple\s*,", re.I),        # style descriptor leak
+    re.compile(r"\bthe image\b", re.I),                   # preamble leak
+    re.compile(r"^[A-Za-z0-9]+(The|A)\b\s"),              # word+The/A mash
+    re.compile(r"^\s*(3D|3)(The|the)\b"),                 # alphanumeric mash
+    re.compile(r"\bbackground\b", re.I),                  # describes BG
+    re.compile(r"^\s*with\s+a?\s+", re.I),                # partial fragment
+    re.compile(r"^\s*simple\s*,", re.I),                  # style leak
     re.compile(r"^\s*plain\s*,", re.I),
     re.compile(r"^\s*minimalist\b", re.I),
     re.compile(r"^\s*seamless\s+pattern", re.I),
+    # Aggregate-arrangement descriptions
+    re.compile(r"\b(objects?|frames?|items?|shapes?)\s+arranged\b", re.I),
+    re.compile(r"\b(grid-?like|symmetrical|repeating)\s+pattern\b", re.I),
+    # Style-noun heads
+    re.compile(r"^\s*\w+\s+design\b", re.I),
+    re.compile(r"\baesthetic\b", re.I),
+    re.compile(r"^\s*\w+\s+composition\b", re.I),
+    re.compile(r"^\s*\w+\s+illustration\b", re.I),
+    # Trailing fragments where the noun was eaten
+    re.compile(r"\bwith\s+a\s+(simple|plain|minimalist|gray|grey|"
+               r"beige|brown|light|dark)\s*$", re.I),
 ]
 _GARBAGE_EXACT = {
     "image", "pattern", "object", "square", "circle", "rectangle",

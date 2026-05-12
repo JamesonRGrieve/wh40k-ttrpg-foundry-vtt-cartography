@@ -5,7 +5,7 @@
 name: null
 description: "The image is a simple, minimalist design with a plain, light brown background. The image has a minimalist aesthetic with clean lines and a minimalistic design. On the left side of the image, there are several rectangular shapes that appear to be overlapping each other, creating a sense of depth and dimension. The shapes are arranged in a symmetrical pattern, with the largest one in the center and the smaller ones on either side. The overall color scheme is neutral, with no other elements present in the image. The overall effect is one of minimalism and sophistication."
 tags: [simple, minimalist, design, plain, light, background, has, aesthetic, clean, lines, minimalistic, left]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: a88888ca-ed2f-59c7-8f80-69d14e239b88
 

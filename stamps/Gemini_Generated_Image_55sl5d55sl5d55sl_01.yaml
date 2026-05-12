@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: SetThe image is a setThe image
+name: null
 description: "The image is a setThe image is a setThe image is a simple, minimalist design with multiple circular shapes arranged in a grid-like pattern on a dark grey background with a simple, rectangular shape. The shapes are arranged horizontally and vertically spaced evenly spaced, creating a grid-like pattern. The shapes are circular in shape and appear to be empty, with no other objects in the image. The shapes are arranged in a symmetrical pattern, with each shape resembling a different size and shape, creating a simple, minimalist design. The background is a solid, solid gray color, and the overall composition is simple and minimalistic, with no other elements present in the image. The image has a clean and clean look, with no other elements present in the image. The overall aesthetic is simple and minimalistic, with a minimalist design, with a focus on the different sizes and shapes that make up the entire frame of the image. The shapes are arranged in a grid-like pattern, with no other elements present in the image. The image is a simple, minimalist style, with no other objects in the image."
 tags: [setthe, simple, minimalist, design, multiple, circular, shapes, arranged, grid-like, pattern, dark, background]
 orientation: top-down

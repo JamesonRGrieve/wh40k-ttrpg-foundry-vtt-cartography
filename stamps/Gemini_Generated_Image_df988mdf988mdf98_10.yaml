@@ -2,10 +2,10 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Doors With A Simple
+name: null
 description: "A set of four rectangular doors with a simple, minimalist design. The doors are painted in a light beige color and have a smooth, polished finish. Each door has a rectangular shape with a small window in the center, allowing natural light to enter the space. The doors are arranged in a symmetrical pattern, creating a sense of balance and harmony. The overall aesthetic of the image is minimalistic and contemporary, with a focus on the simple yet elegant design of the doors."
 tags: [set, four, rectangular, doors, simple, minimalist, design, painted, light, beige, have, smooth, door, architecture, architecture-window]
-orientation: north
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 4adb8af2-451b-5000-9c81-a13bb965d9bb
 

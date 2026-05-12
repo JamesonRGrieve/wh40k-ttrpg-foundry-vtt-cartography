@@ -5,7 +5,7 @@
 name: Curved Object
 description: "The image is a 3D rendering of a curved object. It appears to be made of a light-colored material, possibly plastic or metal. The object has a rectangular shape with rounded edges and a flat base. The edges of the object are slightly curved, giving it a textured appearance. The background is a plain beige color."
 tags: [rendering, curved, object, light-colored, material, possibly, plastic, metal, has, rectangular, shape, rounded]
-orientation: west
+orientation: top-down
 state: inactive
 group_id: null
 

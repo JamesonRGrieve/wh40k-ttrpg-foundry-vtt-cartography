@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Object With A Grid-Like Pattern
+name: null
 description: "The image is a 3D rendering of a rectangular object with a grid-like pattern. The object appears to be made of a light-colored material, possibly paper or fabric, and has a rectangular shape with rounded edges. The lines on the object are evenly spaced and run horizontally across the surface. The background is a plain beige color. The image is slightly blurred, giving it a soft and dreamy quality."
 tags: [rendering, rectangular, object, grid-like, pattern, light-colored, material, possibly, paper, fabric, has, shape, prop, prop-document]
 orientation: isometric

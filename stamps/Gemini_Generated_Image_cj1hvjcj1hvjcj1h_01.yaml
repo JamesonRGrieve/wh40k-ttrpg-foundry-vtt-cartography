@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Empty Glass Bottles With A Simple
+name: null
 description: "A set of three empty glass bottles with a simple, minimalist design. The bottles are arranged in a row, with the first bottle on the left, the second bottle in the middle, and the third bottle on the right. Each bottle has a label with the name \"AMASEC\" written in a cursive font. The bottles have a cylindrical shape with a narrow neck and a flat base. The background is a plain, light grey color. The image has a soft, smooth texture, giving it a clean and polished look."
 tags: [set, empty, glass, bottles, simple, minimalist, design, arranged, row, first, bottle, left, container, container-vessel]
 orientation: isometric

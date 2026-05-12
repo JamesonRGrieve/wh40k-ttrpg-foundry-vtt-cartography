@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Frames Arranged In A Grid-Like Pattern
+name: null
 description: "A set of four rectangular frames arranged in a grid-like pattern on a plain, light brown background. Each frame contains a small, rectangular object with a flat top and a flat bottom, creating a symmetrical composition. The objects appear to be made of a light-colored material, possibly wood or metal, and have a smooth, polished finish. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [set, four, rectangular, frames, arranged, grid-like, pattern, plain, light, background, each, frame]
 orientation: top-down

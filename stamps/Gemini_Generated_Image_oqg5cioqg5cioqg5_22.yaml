@@ -5,7 +5,7 @@
 name: Rectangular Frames With A Minimalist Design
 description: "A set of four rectangular frames with a minimalist design, set against a plain grey background. The frames are arranged in a symmetrical pattern, with each frame having a unique shape and texture. The first frame has a rectangular shape with rounded edges, while the second frame has a rectangular shape with rounded edges. The third frame has a rectangular shape with rounded edges. The fourth frame has a rectangular shape with rounded edges. All the frames have a simple, minimalist design with clean lines and no embellishments. The overall aesthetic of the image is clean and minimalistic."
 tags: [set, four, rectangular, frames, minimalist, design, against, plain, background, arranged, symmetrical, pattern]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: 79d95af1-a7fd-5039-b6d9-8081999db3ad      # UUID linking orientation/state variants of one object
 

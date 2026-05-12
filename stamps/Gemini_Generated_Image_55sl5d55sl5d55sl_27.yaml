@@ -5,7 +5,7 @@
 name: Square-Shaped Object With A Flat Base
 description: "The image is a square-shaped object with a flat base. It appears to be made of a light-colored material, possibly plastic or metal. The object has a rectangular shape with rounded edges and a small indentation in the center. The edges of the object are slightly curved, giving it a 3D appearance. The background is a plain beige color."
 tags: [square-shaped, object, flat, base, light-colored, material, possibly, plastic, metal, has, rectangular, shape]
-orientation: west
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 013f41f3-bc20-553d-af39-db2a4d69344e
 

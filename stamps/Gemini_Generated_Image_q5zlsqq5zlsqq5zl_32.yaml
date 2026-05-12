@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Cylindrical Objects Arranged In A Row
+name: null
 description: "The image is a simple illustration of three cylindrical objects arranged in a row on a plain, light grey background. The objects appear to be made of metal and have a smooth, polished finish. Each object has a unique shape and size, with a pointed end and a flat base. The objects are arranged in a symmetrical pattern, with the largest object in the center and two smaller ones on either side. The background is a solid, light grey color, providing a subtle contrast to the objects. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [simple, illustration, cylindrical, objects, arranged, row, plain, light, background, metal, have, smooth]
 orientation: top-down

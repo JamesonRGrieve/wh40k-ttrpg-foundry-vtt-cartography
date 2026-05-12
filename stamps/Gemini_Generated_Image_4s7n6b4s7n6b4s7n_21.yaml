@@ -2,10 +2,10 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: ImageA setA setA setA setThe image
+name: null
 description: The imageA setA setA setA setThe image is a
 tags: [imagea, seta, setthe]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: null
 

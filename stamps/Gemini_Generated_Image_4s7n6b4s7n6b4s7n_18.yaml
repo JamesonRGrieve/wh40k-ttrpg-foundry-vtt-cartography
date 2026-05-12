@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Vector Illustration Of A Stack Of Documents
+name: null
 description: "A vector illustration of a stack of documents tied together with twine, stacked on top ofA stack of documents in a stack on a plain beige background. The image is a simple, minimalist illustration of a stack of documents in a monochromatic gray background with a simple, minimalist design. The documents are neatly arranged in a neat stack, with the topmost document being the main focus of the image, which appears to be a stack of documents neatly arranged in a neat and organized manner. The documents are neatly stacked on top of each other, with the topmost document in the center of the stack, creating a neat and tidy appearance. The documents appear to be blank, with a few pages of paper neatly arranged in a neat and orderly fashion, with no visible documents neatly stacked on top of each other, creating a neat and organized manner. The documents are brown in color and have a simple, minimalist style, with a few lines of text on the pages, giving the impression of a stack of documents neatly arranged in a neat and organized manner."
 tags: [vector, illustration, stack, documents, tied, together, twine, stacked, top, ofa, plain, beige, prop, prop-document]
 orientation: isometric

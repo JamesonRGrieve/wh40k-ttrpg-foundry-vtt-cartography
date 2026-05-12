@@ -5,7 +5,7 @@
 name: null
 description: "The image is a simple, minimalist design with a plain, light brown background. On the left side of the image, there are six identical rectangular frames arranged in a grid-like pattern, each with a unique shape and design. The frames are drawn in a simple, hand-drawn style with thin lines and shading, giving them a clean and minimalistic look. The frames are symmetrical and appear to be identical in size and shape, with no additional details or embellishments present. The overall aesthetic is simple and minimalistic, with a focus on the simple lines and shapes that create a sense of depth and dimensionality."
 tags: [simple, minimalist, design, plain, light, background, left, side, there, six, identical, rectangular]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: a88888ca-ed2f-59c7-8f80-69d14e239b88
 

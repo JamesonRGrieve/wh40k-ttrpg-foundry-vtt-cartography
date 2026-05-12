@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Frames With A Simple
+name: null
 description: "A set of four rectangular frames with a simple, minimalist design. The frames are drawn in a light beige color and have a smooth, textured surface. Each frame has a rectangular shape with a flat top and a flat bottom, creating a symmetrical composition. The frames are arranged in a horizontal line, with the top frame slightly higher than the bottom frame. The background is a simple, neutral gray color, allowing the frames to stand out. The overall style of the image is simple and minimalistic, with a focus on the textures and details of the frames."
 tags: [set, four, rectangular, frames, simple, minimalist, design, drawn, light, beige, have, smooth]
 orientation: top-down

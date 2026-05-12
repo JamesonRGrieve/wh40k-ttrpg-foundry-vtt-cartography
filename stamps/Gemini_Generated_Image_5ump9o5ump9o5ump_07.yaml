@@ -5,7 +5,7 @@
 name: null
 description: "The image is a square-shaped document with a beige background. The document appears to be made of paper or cardboard and has multiple horizontal lines running horizontally across it. The lines are evenly spaced and appear to be slightly slanted, creating a grid-like pattern. The edges of the document are slightly curled, giving it a textured appearance. The overall design is simple and minimalistic."
 tags: [square-shaped, document, beige, background, paper, cardboard, has, multiple, horizontal, lines, running, horizontally, prop, prop-document]
-orientation: north
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: b4103363-3168-50b9-88b8-9277b94f4d40      # UUID linking orientation/state variants of one object
 

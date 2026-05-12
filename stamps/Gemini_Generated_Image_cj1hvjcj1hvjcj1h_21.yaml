@@ -5,7 +5,7 @@
 name: null
 description: "A set of three vintage lanterns on a plain, light grey background. The lanterns are drawn in a sketch-like style with detailed lines and shading, giving them a classic, timeless look. Each lantern has a cylindrical shape with a handle on top and a small opening at the bottom, allowing light to pass through. The lanterns are arranged in a symmetrical pattern, with the largest lantern on the left and the smallest on the right. The overall aesthetic of the image is simple and minimalistic, with a focus on the classic design of the lanterns."
 tags: [set, vintage, lanterns, plain, light, background, drawn, sketch-like, style, detailed, lines, shading, light-fixture]
-orientation: north
+orientation: top-down
 state: intact
 group_id: 2f2298f9-f546-5e1b-83fa-7ad951b4189c      # UUID linking orientation/state variants of one object
 

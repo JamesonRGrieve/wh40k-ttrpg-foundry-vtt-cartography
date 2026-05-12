@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Circular Icons With A Simple
+name: null
 description: "A set of four circular icons with a simple, minimalist design. The icons are arranged in a grid-like pattern, with each icon having a distinct shape and size. The background is a plain, light grey color, providing a subtle contrast to the icons. The icons appear to be made of a smooth, glossy material, giving them a polished and polished appearance. The overall style of the image is simple and minimalistic, with no additional embellishments or details."
 tags: [set, four, circular, icons, simple, minimalist, design, arranged, grid-like, pattern, each, icon, decor, decor-statue]
 orientation: top-down

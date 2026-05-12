@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Menu Design With A Minimalist Aesthetic
+name: null
 description: "The image is a digital illustration of a menu design with a minimalist aesthetic. The background is a light grey color with a subtle gradient effect. On the left side of the image, there is a rectangular frame with a textured surface, giving it a vintage look. The text is written in a neat, cursive font and is centered in the frame. The frame is divided into two sections, with the top section containing a list of items and the bottom section containing a description of each item. The items are arranged in a neat and orderly manner, with each item having its own space for the user to write their own information. The overall design is simple yet elegant, with a focus on the text and the background."
 tags: [digital, illustration, menu, design, minimalist, aesthetic, background, light, subtle, gradient, effect, left]
 orientation: top-down

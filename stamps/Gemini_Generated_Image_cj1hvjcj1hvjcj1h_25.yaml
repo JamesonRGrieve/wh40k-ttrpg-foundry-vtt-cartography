@@ -5,7 +5,7 @@
 name: Empty Glass Bottles With Stoppers
 description: "A set of three empty glass bottles with stoppers. The bottles are arranged in a triangular formation, with the largest bottle on the left and the smallest on the right. Each bottle has a label with the word \"MASSA\" written in a cursive font. The background is a plain, light grey color. The bottles appear to be made of glass and have a simple, minimalist design. The image has a clean and polished look, with no visible imperfections or imperfections. The overall aesthetic is minimalistic and minimalistic."
 tags: [set, empty, glass, bottles, stoppers, arranged, triangular, formation, largest, bottle, left, smallest, container, container-vessel]
-orientation: north
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: a5323235-88f5-5781-895f-f1f9d3d83d15
 

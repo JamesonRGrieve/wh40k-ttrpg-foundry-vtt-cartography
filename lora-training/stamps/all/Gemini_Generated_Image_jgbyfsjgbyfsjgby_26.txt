@@ -1,1 +1,0 @@
-dh_stamp, Humanoid Figure Standing On A Pedestal, top-down view, damaged, set, models, humanoid, figure, standing, pedestal, figures, rendered

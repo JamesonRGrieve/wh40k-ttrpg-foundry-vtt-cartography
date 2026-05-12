@@ -5,7 +5,7 @@
 name: null
 description: "A set of three realistic desk lamps on a transparent background. The lamps are arranged in a triangular formation, with the first lamp on the left, the second lamp in the middle, and the third lamp on the right. All three lamps have a sleek, modern design with a smooth, polished finish. The lamps have adjustable arms and a round base, giving them a classic, industrial look. The background is a solid, neutral gray color, providing a subtle contrast to the lamps. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, realistic, desk, lamps, transparent, background, arranged, triangular, formation, first, lamp, left, furniture, furniture-table, light, light-fixture]
-orientation: north
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

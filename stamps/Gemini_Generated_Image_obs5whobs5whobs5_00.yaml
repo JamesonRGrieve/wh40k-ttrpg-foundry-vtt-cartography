@@ -2,10 +2,10 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Film Strip With A Simple
+name: null
 description: "A 3D rendering of a film strip with a simple, minimalist design. The film strip is outlined in a light grey color and has a smooth, textured surface. On the left side of the film strip, there is a rectangular frame with a flat top and a flat bottom, while on the right side, there are two rectangular frames with a flat top and a flat bottom. The frames are arranged in a symmetrical pattern, with the top frame slightly higher than the bottom frame. The background is a plain, light grey color. The overall aesthetic of the image is minimalistic and minimalistic."
 tags: [rendering, film, strip, simple, minimalist, design, outlined, light, has, smooth, textured, surface]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: inactive
 group_id: null
 

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Frames With A Simple
+name: null
 description: "A set of four rectangular frames with a simple, minimalist design. The frames are arranged in a grid-like pattern, with each frame having a distinct shape and size. The background is a plain, light grey color, providing a neutral backdrop for the frames. The frames appear to be made of wood or metal, with a smooth, polished finish. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [set, four, rectangular, frames, simple, minimalist, design, arranged, grid-like, pattern, each, frame]
 orientation: top-down

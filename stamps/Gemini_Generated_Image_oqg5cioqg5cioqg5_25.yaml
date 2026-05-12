@@ -5,7 +5,7 @@
 name: Rectangular Desk
 description: "A line drawing of a rectangular desk with two drawers and a flat top surface. The desk appears to be made of wood and has a smooth, polished finish. On the top of the desk, there is a piece of paper with some text written on it. The paper is slightly crumpled, suggesting that it has been handled multiple times. The drawers are slightly open, revealing the contents inside. The overall style of the image is simple and minimalistic, with a focus on the desk and its contents."
 tags: [line, rectangular, desk, drawers, flat, top, surface, wood, has, smooth, polished, finish, furniture, furniture-table, prop, prop-document]
-orientation: north
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 9133d094-fb93-5760-ae25-d4dba27ad41b      # UUID linking orientation/state variants of one object
 

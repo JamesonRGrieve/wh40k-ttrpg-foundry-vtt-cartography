@@ -5,7 +5,7 @@
 name: Table With A Cracked Surface
 description: "A line drawing of a table with a cracked surface, set against a plain grey background. The table appears to be made of a light-colored material, possibly stone or concrete, with a rectangular shape and four legs. The surface has a rough, uneven texture, with visible cracks and crevices throughout. The overall style of the image is simple and minimalistic, with a focus on the texture and design of the table."
 tags: [line, table, cracked, surface, set, against, plain, background, light-colored, material, possibly, stone, furniture, furniture-table]
-orientation: north
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: 088f9432-a0f7-5a14-a16b-f46969191690      # UUID linking orientation/state variants of one object
 

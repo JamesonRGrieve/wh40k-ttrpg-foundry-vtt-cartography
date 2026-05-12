@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "SimpleThe image is a simpleThe image"
+name: null
 description: The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a 3The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simple illustration of four rectangular
 tags: [simplethe, simple, illustration, four, rectangular]
 orientation: isometric

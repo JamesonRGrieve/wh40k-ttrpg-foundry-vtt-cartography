@@ -5,7 +5,7 @@
 name: "Grid Of Small, Rectangular Boxes Arranged"
 description: "The image is a 3D rendering of a grid of small, rectangular boxes arranged in a symmetrical pattern on a plain, light grey background. The boxes are evenly spaced and appear to be made of a light-colored material, possibly cardboard or plastic. Each box has a rectangular shape with a flat top and a flat bottom, and they are stacked on top of each other in a neat and orderly manner. The image has a minimalist design with clean lines and a minimalistic aesthetic. The overall color scheme is neutral, with no other elements present in the image."
 tags: [rendering, grid, rectangular, boxes, arranged, symmetrical, pattern, plain, light, background, evenly, spaced, container, container-crate]
-orientation: north
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: a80c1ba4-44f2-55f9-a345-b8686b559220      # UUID linking orientation/state variants of one object
 

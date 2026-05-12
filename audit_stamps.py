@@ -46,9 +46,15 @@ import yaml
 HERE = Path(__file__).resolve().parent
 STAMPS = HERE / "stamps"
 
-# Bad-name patterns. Each is a (label, predicate) pair.
+# Bad-name patterns. Each is a (label, predicate) pair. KEEP IN SYNC
+# with the matching list in classify_stamps.py (search for
+# `_GARBAGE_NAME_PATTERNS`).
 BAD_PATTERNS: list[tuple[str, "re.Pattern[str]"]] = [
     ("preamble_leak",      re.compile(r"\bthe image\b", re.I)),
+    # Any word fused to "The" or "A" without a space — Florence-2
+    # occasionally emits "SimpleThe", "SetThe", "3DThe", "MinimalA",
+    # "DigitalA", etc. when concatenating chunks from PromptGen.
+    ("preamble_word_mash", re.compile(r"^[A-Za-z0-9]+(The|A)\b\s")),
     ("preamble_3d_mash",   re.compile(r"^\s*(3D|3)(The|the)\b")),
     ("background_desc",    re.compile(r"\bbackground\b", re.I)),
     ("fragment_with",      re.compile(r"^\s*with\s+a?\s+", re.I)),
@@ -56,6 +62,29 @@ BAD_PATTERNS: list[tuple[str, "re.Pattern[str]"]] = [
     ("style_plain",        re.compile(r"^\s*plain\s*,", re.I)),
     ("style_minimalist",   re.compile(r"^\s*minimalist\b", re.I)),
     ("seamless_pattern",   re.compile(r"^\s*seamless\s+pattern", re.I)),
+    # Aggregate / pattern descriptions: Florence-2 captions
+    # tiled-arrangement images as "objects arranged in a pattern"
+    # which doesn't give the LoRA a learnable single-subject anchor.
+    ("aggregate_arrangement",
+        re.compile(r"\b(objects?|frames?|items?|shapes?)\s+arranged\b", re.I)),
+    ("aggregate_pattern",
+        re.compile(r"\b(grid-?like|symmetrical|repeating)\s+pattern\b", re.I)),
+    # Style-noun heads: "Menu Design", "Composition", "Aesthetic",
+    # "Illustration" — these are presentation descriptors, not
+    # subject nouns.
+    ("style_noun_design",
+        re.compile(r"^\s*\w+\s+design\b", re.I)),
+    ("style_noun_aesthetic",
+        re.compile(r"\baesthetic\b", re.I)),
+    ("style_noun_composition",
+        re.compile(r"^\s*\w+\s+composition\b", re.I)),
+    ("style_noun_illustration",
+        re.compile(r"^\s*\w+\s+illustration\b", re.I)),
+    # Trailing fragments where the noun was eaten ("Frames With A Simple",
+    # "Composition With A Plain"): name ends mid-modifier.
+    ("trailing_with_a_adj",
+        re.compile(r"\bwith\s+a\s+(simple|plain|minimalist|gray|grey|"
+                   r"beige|brown|light|dark)\s*$", re.I)),
 ]
 
 # Exact-match generic single/double-word names that carry no subject info.

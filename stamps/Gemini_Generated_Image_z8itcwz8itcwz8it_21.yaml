@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Wooden Ladders Arranged In A Grid-Like Pattern
+name: null
 description: "A set of four wooden ladders arranged in a grid-like pattern on a gray background. The ladders are of different sizes and shapes, with the largest one in the center and the smallest one on the left. Each ladder has a simple, minimalist design with a straight line running along the top and bottom of the frame. The ladders appear to be made of wood and have a smooth, polished finish. The overall aesthetic of the image is simple and minimalistic, with a focus on the natural beauty of the ladders."
 tags: [set, four, wooden, ladders, arranged, grid-like, pattern, background, different, sizes, shapes, largest, architecture, architecture-step]
 orientation: top-down

@@ -7,7 +7,7 @@ description: "A line drawing of a set of four industrial-looking spotlights moun
 
 The image is a simple, minimalist design, with no other elements present in the image. The focal point of the image is the spotlights, which are positioned on the left side of the frame, creating a sense of depth and dimensionality. The spotlights have a classic, industrial look with clean lines and sharp edges, adding to the overall aesthetic of the image. Overall, the image conveys a sense of sophistication and sophistication, perfect for any industrial setting."
 tags: [line, set, four, industrial-looking, spotlights, mounted, background, arranged, triangular, formation, largest, center]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 16ea92f3-0f2a-57d4-b7b3-ff9f119e66cc      # UUID linking orientation/state variants of one object
 

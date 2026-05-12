@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Boxes With A Simple
+name: null
 description: "The image is a digital illustration of a set of three rectangular boxes with a simple, minimalist design. The boxes are arranged in a grid-like pattern, with each box having a unique shape and texture. The first box has a rectangular shape with rounded edges, while the second box has a rectangular shape with rounded edges. All three boxes have a simple, minimalist design with clean lines and a neutral color palette. The background is a solid gray color, providing a subtle contrast to the boxes. The overall aesthetic of the image is clean and minimalistic, with a focus on the simple shapes and textures of the boxes."
 tags: [digital, illustration, set, rectangular, boxes, simple, minimalist, design, arranged, grid-like, pattern, each, container, container-crate]
 orientation: top-down

@@ -5,7 +5,7 @@
 name: null
 description: The image is a
 tags: []
-orientation: north
+orientation: top-down
 state: damaged
 group_id: null
 

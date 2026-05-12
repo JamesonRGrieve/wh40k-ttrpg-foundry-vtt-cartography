@@ -5,7 +5,7 @@
 name: null
 description: "The image is a simple, minimalist design with a neutral color palette. The background is a light beige color with a subtle pattern of small squares and rectangles. On the left side of the image, there is a rectangular shape that appears to be empty, while on the right side, there are two identical rectangular shapes that are identical in size and shape. The shapes are arranged in a symmetrical pattern, creating a sense of balance and harmony. The overall design is simple yet elegant, with clean lines and a minimalistic aesthetic."
 tags: [simple, minimalist, design, neutral, palette, background, light, beige, subtle, pattern, squares, rectangles]
-orientation: west   # north | south | east | west | top-down | isometric
+orientation: top-down   # north | south | east | west | top-down | isometric
 state: damaged
 group_id: 9ccb4a18-ea8a-5eeb-a06e-f2bb044fc993
 

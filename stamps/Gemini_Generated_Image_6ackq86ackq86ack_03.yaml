@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Round, Beige-Colored Objects Arranged"
+name: null
 description: "A set of four round, beige-colored objects arranged in a symmetrical pattern on a plain, light grey background. The objects appear to be made of metal or plastic and have a smooth, polished finish. Each object has a unique design, with a rectangular shape and a flat surface. The overall appearance is simple and minimalistic, with no additional details or embellishments. The image is taken from a top-down perspective, looking down on the objects.
 
 The objects are arranged in two rows, with the top row slightly higher than the bottom row. The top row has a rectangular shape with a flat surface and a flat surface, while the bottom row has a flat surface with a flat surface and a flat surface. The bottom row has a flat surface with a flat surface and a flat surface. The top row has a rectangular shape with a flat surface and a flat surface, while the bottom row has a flat surface with a flat surface and a flat surface. The bottom row has a flat surface with a flat surface and a flat surface, and the bottom row has a flat surface with a flat surface and a flat surface.

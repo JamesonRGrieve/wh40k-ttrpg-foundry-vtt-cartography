@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Square Frames Arranged In A Grid-Like Pattern
+name: null
 description: "A set of four square frames arranged in a grid-like pattern on a gray background. Each frame has a different color and texture, ranging from light to dark shades. The frames are evenly spaced and have a smooth, glossy finish. The overall aesthetic of the image is simple and minimalistic, with a focus on the textures and patterns of the frames. The image appears to be taken from a top-down perspective, looking down on the frames."
 tags: [set, four, square, frames, arranged, grid-like, pattern, background, each, frame, has, different]
 orientation: top-down   # north | south | east | west | top-down | isometric

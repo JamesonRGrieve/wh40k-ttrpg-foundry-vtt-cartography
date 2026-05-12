@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Rectangular, Beige-Colored Objects Arranged"
+name: null
 description: "The image is a set of four rectangular, beige-colored objects arranged in a symmetrical pattern on a plain, light grey background. Each object has a unique design, with a rectangular shape and a flat surface. The objects appear to be made of metal or plastic and have a smooth, polished finish. They are arranged in two rows, with the top row slightly higher than the bottom row. The top row has a grid-like pattern, while the bottom row has a straight line pattern. The overall design is simple and minimalistic, with no additional details or embellishments present."
 tags: [set, four, rectangular, beige-colored, objects, arranged, symmetrical, pattern, plain, light, background, each]
 orientation: top-down

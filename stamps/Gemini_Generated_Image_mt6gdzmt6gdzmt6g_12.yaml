@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Tools Arranged In A Grid-Like Pattern
+name: null
 description: "The image is a simple line drawing of various tools arranged in a grid-like pattern on a plain, light brown background. The tools are outlined in black and are arranged in two rows and three columns, with each row containing a different type of tool. The tools include a wrench, a screwdriver, a pliers, a saw, a drill, a wrench wrench, and a pair of pliers. Each tool is accompanied by a brief description of its purpose, such as its size, weight, and other specifications. The overall style of the image is minimalistic and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [simple, line, various, tools, arranged, grid-like, pattern, plain, light, background, outlined, rows, tool]
 orientation: top-down

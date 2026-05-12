@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Chairs Arranged In A Symmetrical Pattern
+name: null
 description: "The image is a simple line drawing of a group of empty chairs arranged in a symmetrical pattern on a plain, light grey background. The chairs are drawn in a simple, minimalist style with clean lines and minimalistic details. Each chair has a rectangular shape with a flat top and four legs, creating a balanced and symmetrical composition. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [simple, line, group, empty, chairs, arranged, symmetrical, pattern, plain, light, background, drawn, furniture, furniture-chair]
 orientation: isometric

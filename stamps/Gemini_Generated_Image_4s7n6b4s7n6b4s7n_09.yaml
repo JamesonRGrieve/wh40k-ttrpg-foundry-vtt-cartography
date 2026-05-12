@@ -5,7 +5,7 @@
 name: Tablet
 description: "The image is a digital illustration of a tablet. The tablet is rectangular in shape and has a beige background. On the screen of the tablet, there are two tabs - one for the user interface and the other for the settings. The user interface has a rectangular shape with rounded edges and a small button at the bottom. The settings are rectangular with a white background and black text. There is also a small rectangular button on the top right corner of the screen. The overall design of the image is simple and minimalistic."
 tags: [digital, illustration, tablet, rectangular, shape, has, beige, background, screen, there, tabs, user, tech, tech-screen, tech-device]
-orientation: north
+orientation: top-down
 state: active
 group_id: fbcc118a-c729-5220-a6ec-e3fde4bb599c      # UUID linking orientation/state variants of one object
 

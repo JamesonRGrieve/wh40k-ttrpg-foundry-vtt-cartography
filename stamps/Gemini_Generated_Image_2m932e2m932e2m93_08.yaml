@@ -5,7 +5,7 @@
 name: "Cogitator Console"
 description: "A cogitator/auspex console terminal, screen powered off (gray, blank). Same hardware as the active variant — same keypad, same chassis. Variant for off-state stamping."
 tags: [digital, illustration, handheld, devices, arranged, grid-like, pattern, transparent, background, rectangular, shape, have, tech, tech-screen, tech-device]
-orientation: north
+orientation: top-down
 state: inactive
 group_id: 4325bfec-db34-5426-afd6-54e30220b3ad      # UUID linking orientation/state variants of one object
 

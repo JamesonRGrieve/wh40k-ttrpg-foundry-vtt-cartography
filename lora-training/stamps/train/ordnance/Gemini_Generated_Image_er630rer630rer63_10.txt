@@ -1,0 +1,1 @@
+dh_stamp, Round, Cylindrical Object With A Handle, top-down view, inactive, model, round, cylindrical, object, handle, side, light-colored, material

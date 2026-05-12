@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Rectangular Tables With A Simple
+name: null
 description: "A set of four rectangular tables with a simple, minimalist design. The tables are arranged in a triangular formation, with the largest table in the center and two smaller tables on either side. Each table has a rectangular shape with a flat top and four legs. The tables appear to be made of a light-colored material, possibly stone or concrete, and have a smooth, polished finish. The background is a simple, neutral gray color, which contrasts nicely with the tables. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, four, rectangular, tables, simple, minimalist, design, arranged, triangular, formation, largest, table, furniture, furniture-table]
 orientation: top-down

@@ -5,7 +5,7 @@
 name: null
 description: A 3D
 tags: []
-orientation: west
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 0e7d8c54-c55c-58a2-9659-86cadec79f3c      # UUID linking orientation/state variants of one object
 

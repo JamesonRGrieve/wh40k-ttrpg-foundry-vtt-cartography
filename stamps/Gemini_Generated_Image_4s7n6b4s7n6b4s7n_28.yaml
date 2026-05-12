@@ -5,7 +5,7 @@
 name: Identical Desk Lamps On A Plain
 description: "A set of three identical desk lamps on a plain, light grey background. The lamps are arranged in a triangular formation, with the first lamp on the left, the second lamp in the middle, and the third lamp on the right. All three lamps have a simple, minimalist design with a smooth, polished finish. The lamps have a classic, industrial look with clean lines and a simple, yet elegant design. The overall aesthetic of the image is minimalistic and contemporary."
 tags: [set, identical, desk, lamps, plain, light, background, arranged, triangular, formation, first, lamp, furniture, furniture-table, light-fixture]
-orientation: north
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: null
 

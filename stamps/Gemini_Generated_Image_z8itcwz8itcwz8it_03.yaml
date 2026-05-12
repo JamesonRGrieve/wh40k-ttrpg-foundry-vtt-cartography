@@ -5,7 +5,7 @@
 name: null
 description: "A line drawing of a set of doors and ladders on a gray background. The doors are rectangular in shape and have a simple, minimalist design. The ladders are arranged in a symmetrical pattern, with each door slightly overlapping the one below it. The doors appear to be made of metal and have a smooth, polished finish. The background is a solid gray color, providing a subtle contrast to the white lines of the doors. The overall style of the image is simple and minimalistic, with clean lines and a minimalist aesthetic."
 tags: [line, set, doors, ladders, background, rectangular, shape, have, simple, minimalist, design, arranged, door, architecture, architecture-step]
-orientation: north
+orientation: top-down
 state: intact         # intact | damaged | destroyed | active | inactive
 group_id: 1244f504-b4c8-5ae2-b8d7-1aeec4ddaa03      # UUID linking orientation/state variants of one object
 

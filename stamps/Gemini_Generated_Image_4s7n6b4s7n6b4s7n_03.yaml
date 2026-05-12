@@ -2,10 +2,10 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: StackA stackA stackA stackA stackA stackA
+name: null
 description: "A stackA stackA stackA stackA stackA stackA stackA stackA stack of papers stacked on top ofA stack of paper documents in a stack of papers, with a stack of papers in a stack of papers on top of each other, with a simple gray background. The papers are neatly stacked on top ofA stack of papers with thin lines, stacked neatly stacked on top of each other, creating a stack of papers, with a light brown paper with horizontal lines on a plain beige background. The image is an isometric illustration of a stack of documents, with a simple, minimalist, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome, monochrome style, with a simple gray background with a simple gray background."
 tags: [stacka, stack, papers, stacked, top, ofa, paper, documents, each, other, simple, background, prop, prop-document]
-orientation: north
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: 38837862-b9c8-5359-b86e-a465447b6782      # UUID linking orientation/state variants of one object
 

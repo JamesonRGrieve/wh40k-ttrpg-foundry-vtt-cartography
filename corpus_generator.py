@@ -105,16 +105,99 @@ def register(cls: type[Handler]) -> type[Handler]:
 
 # ── Stamp handler (no API spend — stages existing stamps) ───────────
 
+# Tag-keyword → category map for stamp sorting. Categories chosen to
+# match the kinds of objects players want to drop on a battlemap.
+# A stamp's category is the FIRST category whose keyword set
+# intersects the stamp's tags (deterministic — categories listed
+# above match before categories below).
+STAMP_CATEGORIES: list[tuple[str, set[str]]] = [
+    ("furniture", {
+        "chair", "chairs", "stool", "stools", "bench", "benches",
+        "table", "tables", "desk", "desks", "bed", "beds", "bunk",
+        "bunks", "cot", "cots", "couch", "couches", "sofa",
+        "ladder", "ladders", "shelf", "shelves", "shelving",
+        "bookcase", "bookcases", "cabinet", "cabinets", "wardrobe",
+        "locker", "lockers", "armoire", "armchair", "throne"}),
+    ("containers", {
+        "crate", "crates", "box", "boxes", "barrel", "barrels",
+        "drum", "drums", "bottle", "bottles", "jar", "jars",
+        "jug", "jugs", "canister", "canisters", "container",
+        "containers", "chest", "chests", "trunk", "trunks",
+        "sack", "sacks", "basket", "baskets"}),
+    ("machinery", {
+        "console", "consoles", "terminal", "terminals", "cogitator",
+        "cogitators", "engine", "engines", "machine", "machines",
+        "machinery", "reactor", "reactors", "generator", "generators",
+        "motor", "motors", "turbine", "turbines", "pump", "pumps",
+        "gear", "gears", "panel", "panels", "control", "controls",
+        "instrument", "instruments", "device", "devices"}),
+    ("ordnance", {
+        "gun", "guns", "rifle", "rifles", "pistol", "pistols",
+        "weapon", "weapons", "weaponry", "ammo", "ammunition",
+        "torpedo", "torpedoes", "missile", "missiles", "bomb",
+        "bombs", "grenade", "grenades", "round", "rounds",
+        "shell", "shells", "casing", "casings", "magazine",
+        "magazines", "ordnance"}),
+    ("documents", {
+        "book", "books", "tome", "tomes", "scroll", "scrolls",
+        "parchment", "parchments", "paper", "papers", "document",
+        "documents", "letter", "letters", "manuscript",
+        "manuscripts", "codex", "codices", "ledger", "ledgers"}),
+    ("fixtures", {
+        "door", "doors", "doorway", "doorways", "hatch", "hatches",
+        "stair", "stairs", "stairway", "stairs", "ramp", "ramps",
+        "pipe", "pipes", "pipework", "valve", "valves", "vent",
+        "vents", "grating", "grate", "grates", "floor",
+        "floors", "wall", "walls"}),
+    ("ornaments", {
+        "banner", "banners", "candle", "candles", "candelabra",
+        "candelabrum", "censer", "censers", "altar", "altars",
+        "statue", "statues", "bust", "busts", "ornament",
+        "ornaments", "decoration", "decorations", "icon", "icons",
+        "relic", "relics", "torch", "torches", "brazier",
+        "braziers"}),
+    ("vessels", {
+        "vehicle", "vehicles", "ship", "ships", "boat", "boats",
+        "shuttle", "shuttles", "lander", "landers", "transport",
+        "transports", "tank", "tanks"}),
+]
+
+
+def _stamp_category(tags: list[str], name: str) -> str:
+    """Pick the most specific category that matches the stamp's tag
+    set (or its name as a fallback). First-match wins to keep the
+    sort deterministic across re-runs.
+    """
+    tag_set = {str(t).lower() for t in tags}
+    if name:
+        tag_set.update(name.lower().split())
+    for cat, keywords in STAMP_CATEGORIES:
+        if tag_set & keywords:
+            return cat
+    return "misc"
+
+
 @register
 class StampHandler(Handler):
     """Stage the existing curated `stamps/` library into a LoRA
-    training folder. Reads each stamp's sidecar YAML, synthesizes a
-    caption, and hardlinks the PNG + writes the .txt next to it.
+    training folder, sorted by orientation + category.
 
     NO API calls — this handler emits Jobs whose `prompt` field is
     empty and whose output PNGs are sourced via filesystem hardlink
-    rather than Gemini. The shared run loop short-circuits when it
-    sees an empty `prompt` and a populated `source_path` field.
+    rather than Gemini.
+
+    Filtering / sorting:
+      - Stamps with `name: null` are skipped (Florence-2 garbage,
+        either from silent failures or audited-bad classifications).
+      - Stamps with non-top-down orientation are routed into a
+        separate `_isometric_or_unknown/` subtree by default so the
+        training set stays consistent. Override with
+        `defaults.allow_orientations: [top-down, isometric, ...]`.
+      - Top-down stamps are sorted into per-category subfolders
+        (furniture, containers, machinery, ordnance, documents,
+        fixtures, ornaments, vessels, misc) for navigability and so
+        the training config can include / exclude specific
+        categories per training run.
     """
     name = "stamp"
 
@@ -122,9 +205,13 @@ class StampHandler(Handler):
         d = self.manifest.get("defaults", {})
         trigger = d.get("trigger", "dh_stamp")
         source_dir = HERE / d.get("source_dir", "stamps")
-        stage_subdir = d.get("stage_subdir", "all")
-        stage_root = self.lora_dir / stage_subdir
-        stage_root.mkdir(parents=True, exist_ok=True)
+        train_root = self.lora_dir / d.get("train_subdir", "train")
+        excluded_root = self.lora_dir / d.get("excluded_subdir",
+                                              "_excluded")
+        allow_orientations = set(
+            d.get("allow_orientations", ["top-down"]))
+        train_root.mkdir(parents=True, exist_ok=True)
+        excluded_root.mkdir(parents=True, exist_ok=True)
 
         jobs: list[Job] = []
         for sidecar in sorted(source_dir.glob("*.yaml")):
@@ -139,33 +226,40 @@ class StampHandler(Handler):
                 continue
             name = (meta.get("name") or "").strip()
             description = (meta.get("description") or "").strip()
-            orientation = (meta.get("orientation") or "top-down").strip()
+            orientation = (meta.get("orientation") or "").strip() or "unknown"
             state = (meta.get("state") or "intact").strip() or "intact"
             tags = meta.get("tags") or []
             tag_summary = ", ".join(str(t) for t in tags[:8])
 
-            # Skip stamps with no usable name (Florence-2 silent fails).
+            # Skip stamps with no usable name (audited-bad sidecars or
+            # Florence-2 silent fails).
             if not name:
                 continue
+
+            # Route by orientation. Top-down → train_root/<category>/.
+            # Other orientations → excluded_root/<orientation>/<category>/.
+            category = _stamp_category(tags, name)
+            if orientation in allow_orientations:
+                folder = train_root / category
+            else:
+                folder = excluded_root / orientation / category
 
             caption_parts = [trigger, name, f"{orientation} view", state]
             if tag_summary:
                 caption_parts.append(tag_summary)
             if description and len(description) < 240:
-                # Short descriptions add useful detail; long ones are
-                # Florence-2's purple prose and dilute the trigger.
                 caption_parts.append(description)
             caption = ", ".join(caption_parts)
 
-            out_png = stage_root / png.name
+            out_png = folder / png.name
             out_txt = out_png.with_suffix(".txt")
             jobs.append(Job(
                 out_png=out_png,
                 out_txt=out_txt,
                 prompt="",                  # signals: no API call
                 caption=caption,
-                reference_paths=[png],      # source_path lives here
-                label=f"stamp/{png.stem}"))
+                reference_paths=[png],
+                label=f"stamp/{orientation}/{category}/{png.stem}"))
         return jobs
 
 

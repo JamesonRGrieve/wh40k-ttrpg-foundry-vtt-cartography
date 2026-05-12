@@ -1,0 +1,1 @@
+dh_stamp, Open Laptop, unknown view, active, line, open, laptop, rectangular, shape, has, handle, top

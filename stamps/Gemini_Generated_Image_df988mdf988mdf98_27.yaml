@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Geometric Shapes Arranged In A Symmetrical Pattern
+name: null
 description: "A set of four geometric shapes arranged in a symmetrical pattern on a plain, light brown background. Each shape has a unique design, with intricate details and a minimalist aesthetic. The shapes vary in size and shape, with some being larger than others, while others are smaller and more compact. The overall effect is one of sophistication and elegance, with a focus on the intricate patterns and textures of the shapes."
 tags: [set, four, geometric, shapes, arranged, symmetrical, pattern, plain, light, background, each, shape]
 orientation: null   # north | south | east | west | top-down | isometric

@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Identical Perfume Bottles With A Simple
+name: null
 description: "A set of three identical perfume bottles with a simple, elegant design. The bottles are arranged in a row on a plain, light grey background. Each bottle has a cylindrical shape with a flat base and a narrow neck, decorated with intricate patterns and designs. The bottles appear to be made of glass or porcelain and have a smooth, polished finish. The overall aesthetic of the image is minimalistic and sophisticated."
 tags: [set, identical, perfume, bottles, simple, elegant, design, arranged, row, plain, light, background, container, container-vessel]
 orientation: top-down

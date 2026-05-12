@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Circular Frames Arranged In A Symmetrical Pattern
+name: null
 description: "The image shows a set of six circular frames arranged in a symmetrical pattern on a plain, light grey background. Each frame is made of a thin, beige material and has a smooth, polished finish. The frames are evenly spaced and have a simple, minimalist design. The edges of each frame are slightly curved, giving them a sense of depth and dimension. The overall aesthetic of the image is simple and minimalistic, with no additional embellishments or details present."
 tags: [set, six, circular, frames, arranged, symmetrical, pattern, plain, light, background, each, frame]
 orientation: top-down

@@ -20,10 +20,25 @@ generator: stamp
 defaults:
   trigger: dh_stamp
   source_dir: stamps          # relative to repo root
-  stage_subdir: all           # all stamps staged into one folder
+  train_subdir: train         # top-down stamps staged here, sorted by category
+  excluded_subdir: _excluded  # non-top-down stamps quarantined here
+  allow_orientations:         # only orientations that may enter the training set
+    - top-down
 
-# No matrix axes — stamps are 1:1 with sidecar files. Captions are
-# composed at staging time:
+# Stamps are 1:1 with sidecar files. Captions are composed at
+# staging time:
 #   dh_stamp, <name>, <orientation> view, <state>, <top tags>, <description>
 # The description is included only when short (<240 chars) to avoid
 # Florence-2's purple-prose dilution of the trigger.
+#
+# Staging output layout:
+#   train/<category>/<stem>.png + .txt    ← top-down only, per-category
+#   _excluded/<orientation>/<category>/   ← isometric / unknown / other
+#
+# Categories (deterministic first-match): furniture, containers,
+# machinery, ordnance, documents, fixtures, ornaments, vessels, misc.
+# See `_stamp_category()` in corpus_generator.py.
+#
+# Training currently consumes ONLY the train/ subtree; the excluded
+# subtree keeps non-conforming stamps available for re-orientation
+# or future inclusion when the LoRA's view convention expands.

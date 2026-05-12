@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Symmetrical Snowflakes Arranged In A Grid-Like Pattern
+name: null
 description: "A set of six symmetrical snowflakes arranged in a grid-like pattern on a plain gray background. Each snowflake has a unique design, with intricate details and a smooth texture. The snowflakes are symmetrical, with each one slightly overlapping the one below it, creating a sense of depth and dimensionality. The overall effect is one of sophistication and elegance, with a focus on the intricate details of each snowflake."
 tags: [set, six, symmetrical, snowflakes, arranged, grid-like, pattern, plain, background, each, snowflake, has]
 orientation: top-down

@@ -5,7 +5,7 @@
 name: Trash Can
 description: The image is a 3D rendering of a trash can. The trash can is round and cylindrical in shape with a lid on top. The lid has a handle on the top for easy carrying. The body of the trash can has a ribbed texture and appears to be made of a light-colored material. The background is a plain beige color.
 tags: [rendering, trash, can, round, cylindrical, shape, lid, top, has, handle, easy, carrying]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: null
 

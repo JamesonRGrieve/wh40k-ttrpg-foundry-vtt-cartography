@@ -2,10 +2,10 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: SimpleThe image is a simpleThe image
+name: null
 description: "The image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a simpleThe image is a digitalThe image is a simpleThe image is a digitalThe image is a digitalThe image is a simple, minimalist illustration of a setThe image is a digital illustration of a setThe image is a digital illustration of a setThe image is a digital illustration of a simple, minimalist design with a plain plain grey background with a simple, minimalist, minimalist design with a simple, minimalist style, featuring a simple, minimalist illustration of three rectangular boxes arranged in a grid-like pattern of rectangular boxes arranged in a grid-like pattern of light grey background with a simple, minimalist design with a simple, minimalist style, featuring a simple, minimalist design with a simple, minimalist background with a plain, plain grey background. The boxes are arranged in a grid-like pattern of light grey color scheme with a simple, minimalist design, featuring a simple, minimalist, minimalist style with a simple, minimalist background with a simple, minimalist background with a simple, minimalist design, featuring a simple, clean and clean lines and minimalistic representation of a set of six rectangular boxes arranged in a grid-like pattern, featuring a simple, minimalist background with a plain, rectangular box-like texture and minimalistic representation of a set of six rectangular boxes arranged in a grid-like pattern. The boxes are arranged in a grid-like pattern. The boxes are arranged in a grid-like pattern. Each box is drawn in a grid-like pattern, with no other objects arranged in a grid-like design, with no other objects arranged in a grid-like pattern, creating a simple, clean and clean lines and minimalistic representation of a grid-like design, with a simple, minimalist, image is"
 tags: [simplethe, digitalthe, simple, minimalist, illustration, setthe, digital, design, plain, background, style, featuring, container, container-crate]
-orientation: west
+orientation: top-down
 state: intact
 group_id: null
 

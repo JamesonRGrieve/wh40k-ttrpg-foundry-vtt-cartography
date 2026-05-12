@@ -5,7 +5,7 @@
 name: Sketch-Style Jugs With Chains Attached To Them
 description: "A set of three sketch-style jugs with chains attached to them, set against a transparent background. The jugs are cylindrical in shape with a flat top and a narrow neck, and each one has a chain attached to it, giving it a sturdy and secure appearance. The image has a minimalist design with clean lines and shading, making the jugs stand out against the plain background. The overall aesthetic is simple and minimalistic, with a focus on the textures and details of the jugs."
 tags: [set, sketch-style, jugs, chains, attached, against, transparent, background, cylindrical, shape, flat, top, container, container-vessel]
-orientation: north
+orientation: top-down
 state: null         # intact | damaged | destroyed | active | inactive
 group_id: fc43926a-0996-56dd-ad36-fdd945f1a5cd      # UUID linking orientation/state variants of one object
 

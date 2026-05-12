@@ -2,10 +2,10 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: "Identical Identical Lockers, Each With A Simple"
+name: null
 description: "The image is a line drawing of three identical identical lockers, each with a simple, minimalist design. The lockers are drawn in a light beige color and have a rectangular shape with a flat top and a flat bottom. They are arranged in a symmetrical pattern, with the top lockers slightly overlapping the bottom one. The doors are slightly open, revealing the interior of the lockers. The background is a solid gray color, which contrasts nicely with the lighter tones of the lockers. The image has a minimalist aesthetic, with clean lines and minimal detail."
 tags: [line, identical, lockers, each, simple, minimalist, design, drawn, light, beige, have, rectangular, container, container-locker, door]
-orientation: north
+orientation: top-down
 state: intact
 group_id: 431c7cd0-a9e1-5391-bb4f-f1b4e854e0a9      # UUID linking orientation/state variants of one object
 

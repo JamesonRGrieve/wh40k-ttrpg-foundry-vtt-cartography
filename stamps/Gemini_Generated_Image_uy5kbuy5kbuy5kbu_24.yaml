@@ -2,10 +2,10 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Wooden Boxes With A Simple
+name: null
 description: "A set of three wooden boxes with a simple, minimalist design. The boxes are arranged in a symmetrical pattern, with each box slightly overlapping the one below it. The background is a plain, light grey color, providing a subtle contrast to the warm tones of the boxes. Each box has a unique shape and texture, with a lid that can be opened to reveal the contents inside. The overall aesthetic of the image is simple and minimalistic, with a focus on the natural beauty of the wooden boxes."
 tags: [set, wooden, boxes, simple, minimalist, design, arranged, symmetrical, pattern, each, box, slightly, container, container-crate]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: 439c9c49-90cf-5313-a2d7-f70ab49a7364      # UUID linking orientation/state variants of one object
 

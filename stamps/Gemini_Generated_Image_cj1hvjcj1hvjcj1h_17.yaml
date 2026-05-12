@@ -5,7 +5,7 @@
 name: Mug
 description: The image is a 3D rendering of a mug. The mug is made of ceramic and has a light brown color. It has a round handle on the right side and a slightly curved spout on the left side. The body of the mug is slightly tapered and appears to be empty. The background is a plain beige color.
 tags: [rendering, mug, ceramic, has, light, round, handle, right, side, slightly, curved, spout, container, container-tableware]
-orientation: north
+orientation: top-down
 state: damaged
 group_id: cb4a4925-b642-5fe2-885d-6b33da93b29d      # UUID linking orientation/state variants of one object
 

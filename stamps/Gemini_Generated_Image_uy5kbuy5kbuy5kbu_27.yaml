@@ -5,7 +5,7 @@
 name: Archway
 description: "The image is a digital illustration of an archway. The archway is made of stone and has a pointed top. It is supported by two columns on either side. The walls of the archway are made of brick and there is a small window in the center. Through the window, we can see a large rock or stone with a rough texture. The rock appears to be old and weathered, with some cracks and chips visible. The overall color scheme of the image is beige and gray."
 tags: [digital, illustration, archway, stone, has, pointed, top, supported, columns, either, side, walls, architecture, architecture-window, architecture-wall]
-orientation: north
+orientation: top-down
 state: damaged         # intact | damaged | destroyed | active | inactive
 group_id: 1d3e8612-4f6c-515d-a5bc-074d11af716e      # UUID linking orientation/state variants of one object
 

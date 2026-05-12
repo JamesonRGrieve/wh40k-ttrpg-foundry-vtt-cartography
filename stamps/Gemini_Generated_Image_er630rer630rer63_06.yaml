@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: Grid-Like Structure Composed Of Various Objects Arranged
+name: null
 description: "A 3D rendering of a grid-like structure composed of various objects arranged in a symmetrical pattern. The objects appear to be made of a light-colored material, possibly paper or fabric, and have a smooth, textured surface. The background is a plain, neutral gray color, providing a subtle contrast to the objects. The image has a minimalist design, with no other elements present in the overall composition. The overall effect is a visually pleasing and detailed representation of a complex network of interconnected structures."
 tags: [rendering, grid-like, structure, composed, various, objects, arranged, symmetrical, pattern, light-colored, material, possibly, prop, prop-document]
 orientation: top-down

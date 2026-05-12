@@ -2,7 +2,7 @@
 # Manually-editable fields (name, description, tags) are preserved across
 # make_sidecars.py re-runs unless --force is passed.
 
-name: MinimalistA minimalist
+name: null
 description: A minimalistA minimalist
 tags: [minimalista, minimalist]
 orientation: null   # north | south | east | west | top-down | isometric
