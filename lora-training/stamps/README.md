@@ -58,13 +58,58 @@ for the LoRA to bind on subject + state + orientation.
 To be written. The training run for this LoRA is not yet queued —
 operator-paused at the same point as portraits.
 
+## Filtering and sorting (2026-05-11)
+
+The StampHandler routes every staged stamp by orientation +
+category:
+
+- **Top-down** stamps go into `train/<category>/`. Categories are
+  derived from tags + name via a deterministic first-match map in
+  `corpus_generator.py:STAMP_CATEGORIES`:
+  furniture, containers, machinery, ordnance, documents, fixtures,
+  ornaments, vessels, misc. Stamps that match none land in `misc`.
+- **Non-top-down** stamps (isometric, unknown) are quarantined in
+  `_excluded/<orientation>/<category>/` and excluded from training
+  by default. They remain available for future re-orientation or
+  inclusion when the LoRA's view convention expands.
+- **Null-name** stamps (audited Florence-2 garbage or silent fails)
+  are skipped entirely — their PNGs stay in `../../stamps/` for
+  possible re-classification later.
+
+Cardinal orientations (north/south/east/west) are NOT a meaningful
+axis for orthographic stamps — Foundry rotates tiles freely at
+runtime, so "which way is the chair facing" is a placement
+concern, not a training property. The classifier (post-2026-05-11)
+collapses cardinal-direction captures to `top-down` at write time.
+
+## Future regen — 20° forward-tilted view
+
+Operator's preferred view convention is **top-down with a slight
+20° tilt toward the front** (similar to the Errant Vector and
+deployed Solenne battlemap aesthetic). The current corpus is pure
+orthographic top-down. A future Gemini regeneration targeting that
+specific view will produce stamps in the operator's preferred
+convention; until then, training on pure-orthographic is the
+honest baseline and a stylistic tilt can be applied at inference.
+
 ## Files
 
 ```
 stamps/
-├── README.md              ← this file
-├── manifest.yaml          ← generator config (no axes — 1:1 with sidecars)
-└── all/                   ← staged corpus (populated by --lora stamps)
-    ├── <stem>.png         ← hardlink to ../../stamps/<stem>.png
-    └── <stem>.txt         ← synthesized caption
+├── README.md                       ← this file
+├── manifest.yaml                   ← staging config
+├── configs/stamps.yaml             ← ai-toolkit training config
+├── train/                          ← top-down stamps, per-category
+│   ├── containers/                 ← crates, boxes, barrels, bottles
+│   ├── documents/                  ← books, scrolls, parchments
+│   ├── fixtures/                   ← doors, hatches, stairs, pipes
+│   ├── furniture/                  ← chairs, tables, beds, lockers
+│   ├── machinery/                  ← consoles, cogitators, engines
+│   ├── misc/                       ← uncategorized top-down
+│   ├── ordnance/                   ← weapons, ammo, torpedoes
+│   ├── ornaments/                  ← banners, candle stands, censers
+│   └── vessels/                    ← (none yet)
+└── _excluded/                      ← non-top-down quarantine
+    ├── isometric/                  ← isometric / three-quarter
+    └── unknown/                    ← no orientation keyword in caption
 ```

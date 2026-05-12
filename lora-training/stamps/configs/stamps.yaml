@@ -12,9 +12,13 @@
 #   - lr 1e-4 (same as the others).
 #   - resolution buckets [512, 768] — stamps are typically smaller than
 #     portraits or hull renders; cap at 768 to avoid wasted compute.
-#   - steps 4000 — corpus is 439 trainable stamps (after the 2026-05-11
-#     name audit nullified 140 Florence-2-junk captions). 4000 steps
-#     gives ~9 views per stamp, matching iconography's view density.
+#   - steps 4000 — corpus is 227 trainable top-down stamps (after the
+#     2026-05-11 name audit nullified 285 Florence-2-junk captions
+#     across two passes, orientation collapse moved cardinal-direction
+#     stamps to top-down, and category sort routed isometric/unknown
+#     to the _excluded/ subtree). 4000 steps gives ~17 views per
+#     stamp, a touch higher density than iconography (~9.5) to match
+#     stamps' broader subject vocabulary.
 #   - sample_every 250 — 16 checkpoints kept across the run.
 #   - trigger token: dh_stamp (in every caption). Captions ALSO
 #     include the synthesized name + orientation + state + tags.
@@ -50,10 +54,49 @@ config:
         push_to_hub: false
 
       datasets:
-        - folder_path: /opt/lora-training/stamps/all
+        # One dataset entry per category subfolder. ai-toolkit treats
+        # multiple datasets as one combined training set; the split
+        # lets us include / exclude categories per training run by
+        # commenting individual entries.
+        - folder_path: /opt/lora-training/stamps/train/containers
           caption_ext: txt
           caption_dropout_rate: 0.10
           shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution: [512, 768]
+        - folder_path: /opt/lora-training/stamps/train/furniture
+          caption_ext: txt
+          caption_dropout_rate: 0.10
+          cache_latents_to_disk: true
+          resolution: [512, 768]
+        - folder_path: /opt/lora-training/stamps/train/machinery
+          caption_ext: txt
+          caption_dropout_rate: 0.10
+          cache_latents_to_disk: true
+          resolution: [512, 768]
+        - folder_path: /opt/lora-training/stamps/train/ordnance
+          caption_ext: txt
+          caption_dropout_rate: 0.10
+          cache_latents_to_disk: true
+          resolution: [512, 768]
+        - folder_path: /opt/lora-training/stamps/train/documents
+          caption_ext: txt
+          caption_dropout_rate: 0.10
+          cache_latents_to_disk: true
+          resolution: [512, 768]
+        - folder_path: /opt/lora-training/stamps/train/fixtures
+          caption_ext: txt
+          caption_dropout_rate: 0.10
+          cache_latents_to_disk: true
+          resolution: [512, 768]
+        - folder_path: /opt/lora-training/stamps/train/ornaments
+          caption_ext: txt
+          caption_dropout_rate: 0.10
+          cache_latents_to_disk: true
+          resolution: [512, 768]
+        - folder_path: /opt/lora-training/stamps/train/misc
+          caption_ext: txt
+          caption_dropout_rate: 0.10
           cache_latents_to_disk: true
           resolution: [512, 768]
 
