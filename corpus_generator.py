@@ -327,6 +327,11 @@ class IconographyHandler(Handler):
             "image, keeping proportions and internal structure intact")
         common = list(self.manifest.get("common_treatments", []))
         common_extended = list(self.manifest.get("common_treatments_extended", []))
+        # v2_extra_treatments: per-symbol map appended AFTER everything
+        # else. Lets us add post-eval corrections (e.g. aquila aspect
+        # ratio, weak diagrammatic triggers) without shifting v1
+        # filename indices. Keyed by folder name.
+        v2_per_symbol = self.manifest.get("v2_extra_treatments", {}) or {}
         angles = self.manifest.get("angles", ["front-on, dead centered"])
         lightings = self.manifest.get(
             "lighting", ["soft top-down lumen-strip lighting"])
@@ -346,22 +351,32 @@ class IconographyHandler(Handler):
                 print(f"[skip] {folder_name}: {exc}", file=sys.stderr)
                 continue
             trigger = sym["trigger"]
+            # Per-symbol shape can be overridden by v2_shape (e.g. to
+            # add aspect-ratio guidance for aquila). v1 captions are
+            # immutable since the PNGs already exist on disk; only the
+            # NEW v2 jobs use the v2 shape.
             shape = sym["shape"]
-            treatments = (
+            v2_shape = sym.get("v2_shape") or shape
+            v1_treatments = (
                 common
                 + list(sym.get("extra_treatments", []))
                 + common_extended)
+            v2_treatments = list(v2_per_symbol.get(folder_name, []))
+            treatments = v1_treatments + v2_treatments
+            v1_count = len(v1_treatments)
             for idx, treatment in enumerate(treatments, start=1):
+                is_v2 = idx > v1_count
+                cur_shape = v2_shape if is_v2 else shape
                 angle = angles[(idx - 1) % len(angles)]
                 lighting = lightings[(idx - 1) % len(lightings)]
                 slug = slugify(treatment)
                 out_png = folder / f"{trigger}_{idx:02d}_{slug}.png"
                 prompt = (
-                    f"{shape_invariance} ({shape}). "
+                    f"{shape_invariance} ({cur_shape}). "
                     f"Render it as {treatment}. "
                     f"View: {angle}. Lighting: {lighting}. "
                     f"{isolation}.")
-                caption = f"{trigger}, {shape}, {treatment}, {isolation}"
+                caption = f"{trigger}, {cur_shape}, {treatment}, {isolation}"
                 jobs.append(Job(
                     out_png=out_png,
                     out_txt=out_png.with_suffix(".txt"),

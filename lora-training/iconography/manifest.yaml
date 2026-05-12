@@ -124,6 +124,20 @@ symbols:
   - folder: iconography-aquilla
     trigger: sym_aquila
     shape: "Imperial Aquila heraldic two-headed eagle silhouette"
+    # v2_shape applies ONLY to v2_extra_treatments below. The
+    # step-3000 eval flagged the trained aquila as out-of-proportion
+    # (too tall). This shape variant explicitly anchors the
+    # canonical WIDE horizontal silhouette so v2 renders bias the
+    # learned latent toward correct aspect.
+    v2_shape: >-
+      Imperial Aquila heraldic two-headed eagle silhouette, WIDE
+      horizontal heraldic profile — wingspan is approximately 2.2x
+      the body height, wings spread fully horizontal at shoulder
+      height OR slightly down-swept in a heraldic stoop, NEVER
+      arched up. Two profile heads face outward to port and
+      starboard; central body short and broad with talons gripping
+      a sunburst at the base. Canonical 40K aquila aspect ratio:
+      visibly wider than tall
     extra_treatments:
       - "embossed onto the shoulder pauldron of dark steel power armor"
       - "stamped onto an iron void-ship hull plate"
@@ -219,3 +233,87 @@ symbols:
       - "gilt parchment Warrant of Trade heading on a heavy parchment scroll"
       - "stamped onto a private void-ship hull plate"
       - "painted in black and gold on a private docking gantry banner"
+
+# ── v2 extension — operator-eval follow-ups ─────────────────────────
+#
+# Appended AFTER every v1 treatment block so existing PNG filenames
+# stay stable on re-run. Indices for v2 entries start at the slot
+# immediately after the last v1 treatment for each symbol (varies by
+# symbol since per-symbol extra_treatments length varies; treatment
+# index 1 is the first common_treatments entry, and v2 lands after
+# the last common_treatments_extended entry).
+#
+# Targets the four diagrammatic triggers (inq_rosette, administratum,
+# arbites, imperial_navy) that the 2026-05-08 step-3000 eval marked
+# as binding surface treatment correctly but the wrong glyph shape.
+# Plus aquila aspect-ratio fixes via the per-symbol `v2_shape:` field
+# above.
+#
+# Cost projection: 6 aquila + 8 each for the four diagrammatic
+# triggers = 6 + 32 = 38 new variants × $0.04 = $1.52. Wait for API
+# top-up to run.
+
+v2_extra_treatments:
+
+  iconography-aquilla:
+    # 6 variants emphasizing wide horizontal posture (operator-flagged
+    # "too tall" on step-3000 eval). Treatment text also reinforces
+    # the wide spread.
+    - "polished brass relief on dark stone, wings spread FULLY HORIZONTAL across the relief field, wingspan dominating the composition"
+    - "gold leaf on a wide red ecclesiarchal banner, low-aspect silhouette filling the banner width"
+    - "carved sandstone frieze running along a wide horizontal facade, aquila spread along the entire visible width"
+    - "stenciled in white paint on a long horizontal void-ship hull plate, wings spread the full length of the plate"
+    - "embroidered gold thread on a wide cassock chest panel, wings spread shoulder-to-shoulder"
+    - "raised brass relief on a wide chapel altar frontal, wings spread the full width of the altar"
+
+  iconography-rosette:
+    # The canonical Inquisitorial rosette is an I-bar with three
+    # crossbars. Step-3000 eval rendered a "1"-shaped numeral.
+    # Treatments lean on explicit I-bar / crossbar language.
+    - "polished brass three-crossbar I-bar with skull-and-eagle medallion at center, on dark red enamel — pure heraldic glyph, not a numeral"
+    - "iron-cast Inquisitorial I-bar with three horizontal crossbars and central skull medallion, mounted on a sanctum door"
+    - "stamped pewter rosette on a black leather coat — clearly readable as a CAPITAL I with THREE crossbars (top, middle, bottom), each crossbar of equal length"
+    - "wax-sealed parchment dispatch with the Inquisitorial rosette pressed in red wax — three-bar I-glyph, not numeral 1"
+    - "gold leaf on a black grimoire cover — three-crossbar I-bar with central skull, the bars all equal length"
+    - "carved obsidian Inquisitorial rosette pendant — capital I with three horizontal bars, central skull"
+    - "white stencil on a dark armored vehicle hatch — three-bar Inquisitorial I rosette"
+    - "embossed brass plaque on a holding-cell door — three-crossbar Inquisitorial I-bar with skull center"
+
+  iconography-administratum-sigil:
+    # Canonical Administratum sigil is an I-bar with a circular
+    # central glyph. Step-3000 eval rendered gibberish text.
+    # Treatments emphasize the I-bar + circle structure.
+    - "embossed brass on a parchment requisition seal — capital I-bar with a single circular central glyph, no surrounding text"
+    - "stamped iron filing-cabinet badge — Administratum I-bar with circular glyph, clean canonical shape, no decorative noise"
+    - "painted in black on a Munitorum form letterhead — single I-bar with central circle, nothing else"
+    - "carved oak panel above a clerk's desk — Administratum I-bar with central circular glyph"
+    - "engraved silver pendant on a chain — Administratum I-bar with central circle, polished, no text"
+    - "embossed wax seal on a parchment dispatch — Administratum I-bar with circular center, NO Latin text or runes around it"
+    - "stamped pewter pin on a scribe's robe — clean Administratum I-bar with circle"
+    - "etched aluminum filing-cabinet tag — single Administratum I-bar with circular center glyph"
+
+  iconography-arbites-sigil:
+    # Canonical Arbites sigil is an I-bar with a raised fist in
+    # a circle flanked by scales of justice. Step-3000 eval
+    # rendered an abstract crown-and-eye-like glyph.
+    - "embossed brass on a riot shield — Arbites I-bar with a clenched raised fist in a circle at center, scales of justice flanking left and right"
+    - "white stencil on a black armored ground car — Arbites I-bar with raised-fist-in-circle medallion and twin scales-of-justice flanking"
+    - "stamped pewter regimental badge on a flak coat — Arbites I-bar, central fist-in-circle, twin scales"
+    - "etched on a courthouse heavy steel door — Arbites I-bar with central raised fist in a circle, balanced scales of justice on either side"
+    - "carved into a precinct stone lintel — clean Arbites I-bar with raised fist and twin scales, deep relief"
+    - "polished brass relief on a courtroom wall plaque — Arbites I-bar, raised fist in central medallion, twin scales of justice flanking"
+    - "embossed onto an Arbites cap badge — central fist-in-circle, twin scales, capital I-bar"
+    - "stamped on a flak-armor chest plate — Arbites canonical sigil: I-bar + central raised fist + flanking scales"
+
+  iconography-navy-sigil:
+    # Canonical Imperial Navy sigil is a winged eagle above a
+    # central cog/anchor on an I-bar. Step-3000 eval rendered a
+    # generic gear/medallion.
+    - "embossed brass on a naval officer's epaulette — Imperial Navy I-bar with a SPREAD-WING EAGLE above a central anchor/cog, clean canonical shape"
+    - "stamped pewter on iron void-ship hull plating — Navy I-bar, winged eagle above central anchor, riveted around the perimeter"
+    - "painted in white stencil on a navy-blue void-ship hull — Navy I-bar with winged eagle above anchor, clean canonical glyph"
+    - "engraved on a brass nautical compass face — Imperial Navy sigil: I-bar + winged eagle + anchor below the eagle, NOT a plain gear"
+    - "embossed onto a Navy cap badge — winged eagle above anchor on I-bar"
+    - "carved into a void-ship bridge bulkhead — Imperial Navy I-bar with winged eagle and central anchor"
+    - "stamped onto a docking-bay floor plate — Navy I-bar with winged eagle above central anchor (not a generic medallion or gear)"
+    - "polished brass plaque on an admiralty office wall — Imperial Navy canonical sigil: I-bar with winged eagle and central anchor"
