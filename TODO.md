@@ -56,12 +56,40 @@ model doesn't have aquila/rosette/cog as concept tokens. See
   the prompts (e.g., "tattooed in black ink on a wooden plaque"
   instead of "on weathered skin") and resume; ~$0.08 for two
   variants.
+- [ ] **Seamless 1×1 tile LoRA for 40K room building.** Train a
+  LoRA whose outputs are 1024×1024 (or 512×512) top-down room
+  tiles that are *mutually edge-tileable* — any tile can sit
+  adjacent to any other tile in the set without visible seams in
+  floor texture, lighting, or material continuity. Goal: drop the
+  tiles into Foundry as a modular room-building toolkit (place
+  N×M of them on the tile layer to compose arbitrary rooms of any
+  archetype). Acceptance: a 4×4 grid of randomly-selected tiles
+  from the same archetype reads as a single continuous floor at
+  scene-zoom; no two tiles meet with a visible edge discontinuity.
+  Per-archetype variants (hab, tunnel, chapel, industrial, ...)
+  with the same tileable constraint within each archetype.
+  Recipe sketch:
+  - Corpus: seamless-PBR-tile references + Gemini-generated
+    archetype-specific tile variants. Validate seamless via
+    self-tile test (paste 2×2, look for seams) before adding to
+    corpus.
+  - Caption: per-archetype trigger token (`tile_hab_floor`,
+    `tile_tunnel_floor`, ...) + "seamlessly tileable" clause.
+    Exclude orientation (rotation is invariance).
+  - Train at the target output resolution; no random crop (crop
+    destroys edge alignment). Heavy seam-augmentation: torus-
+    wrap each training image, random-shift, re-crop at full size.
+  - Inference: pair with the existing battlemap pipeline as an
+    alternative to the spacecraft/interior render path — emit
+    individual tiles, place via Mass Edit preset pack.
 - [ ] **Decide on additional LoRA categories** with the remaining
   ~$7.40 budget:
   - Solenne painterly portrait/battlemap style LoRA
     (style-only, stacks with iconography LoRA at inference)
   - Hive-city overhead LoRA (district-scale density target)
   - Voidship hull LoRA
+  - Seamless 1×1 tile LoRA (see above — likely needs its own
+    budget envelope; tile corpus is larger than 29 variants/concept)
   - Chaos / Xenos iconography pack (deferred from this corpus)
   Recipe documented; reuse `gen_iconography_corpus.py` with a new
   per-category manifest.
