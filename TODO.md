@@ -58,49 +58,6 @@ stamp, cluster by cosine similarity above a tunable threshold, assign a
 UUID per cluster. Manual override remains possible by editing sidecars
 (the writer skips already-set fields).
 
-## 2. LoRA training corpus (see ADR-002)
-
-Closes the Gemini-only loop: train style-locked LoRAs on the extracted
-corpus so the generation-configured ComfyUI server can expand the library
-locally. Decision record and rationale in `ADR-002-lora-training-corpus.md`.
-
-**Hard dependency: §1 must run first** — captions are built from the
-classified sidecars (`description`, `tags`, `orientation`, `state`,
-`group_id`); no separate labelling pass.
-
-### Step 2a — corpus builder `build_lora_corpus.py`
-
-For a named LoRA, query sidecars for its slice (category / orientation /
-state / group_id per ADR-002), reuse §1d CLIPVision embeddings to drop
-near-duplicate stamps, and emit
-`lora-corpus/<lora-name>/{images,captions}` + `manifest.json` with
-stamp→caption→source provenance. Idempotent; logs every excluded stamp
-with a reason (no silent drops). Never writes into Foundry paths.
-
-### Step 2b — gap report
-
-Same tool, `--report` mode: list target slices with < ~60 unique images.
-Each thin slice becomes a new TODO item + a Gemini prompt-recipe entry so
-grids can be authored to fill it and re-enter the normal extract→classify
-flow.
-
-### Step 2c — pick & install a trainer node on the ComfyUI host
-
-SDXL LoRA is the default (fits 24 GB comfortably, well-tooled). Confirm a
-training custom node loads on ComfyUI 0.18.1 without disturbing the
-generation/Florence-2 config. Flux-dev LoRA is a later quality bump.
-
-### Step 2d — train tiers in order
-
-Tier 0 `dhcarto-style` first (prerequisite; evaluate before proceeding),
-then Tier 1 projection LoRAs, then Tier 2 `dhcarto-state` (unblocks the
-ADR-001 variant-generation gap), then Tier 3 domain LoRAs as corpus depth
-allows.
-
-Acceptance: a held-out prompt through `dhcarto-style` produces an asset a
-reviewer cannot distinguish from a hand-picked corpus stamp; it survives
-`extract_stamps.py` cleanly and browses in Mass Edit.
-
 ## 3. Deploy stamps as a Foundry module
 
 `build_mass_edit_pack.py` emits `mass-edit-presets.json` referencing
