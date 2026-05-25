@@ -1,0 +1,1 @@
+terrain_rock, Rounded Bare Rock Boulder Trio, top-down view, intact, grey weathered stone, seamless-candidate

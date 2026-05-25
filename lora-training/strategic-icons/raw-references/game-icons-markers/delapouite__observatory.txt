@@ -1,0 +1,1 @@
+icon_strategic, Domed Observatory With Telescope, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, sensor-site

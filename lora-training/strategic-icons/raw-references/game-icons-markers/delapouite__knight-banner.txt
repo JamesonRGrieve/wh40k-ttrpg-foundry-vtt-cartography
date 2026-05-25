@@ -1,0 +1,1 @@
+icon_strategic, Knight Banner With Cross Pattee, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, pennant, allegiance

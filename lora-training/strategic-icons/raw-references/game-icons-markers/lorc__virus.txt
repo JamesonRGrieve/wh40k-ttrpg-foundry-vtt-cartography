@@ -1,0 +1,1 @@
+icon_strategic, Bacteriophage Virus, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, contagion, plague

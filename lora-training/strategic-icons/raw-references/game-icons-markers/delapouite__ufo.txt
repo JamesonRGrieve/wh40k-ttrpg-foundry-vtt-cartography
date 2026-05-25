@@ -1,0 +1,1 @@
+icon_strategic, Flying Saucer With Beam, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, xenos-craft, anomaly

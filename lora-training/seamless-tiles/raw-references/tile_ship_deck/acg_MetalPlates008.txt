@@ -1,0 +1,1 @@
+dh_tile, tile_ship_deck, Irregular Metal Floor Plates, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, brushed-steel, metal-plating, panel-seams, deck-panels

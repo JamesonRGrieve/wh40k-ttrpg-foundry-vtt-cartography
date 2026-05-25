@@ -1,0 +1,181 @@
+# Seamless tile corpus manifest — STAGE 1 (floor half).
+#
+# Part of the 3-stage modular room pipeline (see ../README.md and
+# ../tile-structure/manifest.yaml for the full model): Stage 1 =
+# tileable tiles for hand-building (this dir = floors;
+# ../tile-structure/ = walls/corners/doors); Stage 2 = room builder
+# (../voidship-layouts/, dh_layout); Stage 3 = stamp placer
+# (../stamps/, dh_stamp). One umbrella trigger across Stage 1:
+# dh_tile.
+#
+# Goal #7-adjacent / TODO.md "Seamless 1x1 tile LoRA for 40K room
+# building". This LoRA's outputs are top-down, mutually
+# edge-tileable 40K floor/surface tiles the operator drops onto
+# Foundry's tile layer (place N×M to compose arbitrary rooms of any
+# archetype). The LoRA must bind each archetype trigger to a
+# *seamless surface material concept*, invariant to rotation,
+# lighting, and crop offset.
+#
+# This file documents the RAW-REFERENCE acquisition stage: real
+# CC0 seamless PBR color maps gathered from ambientCG + Poly Haven,
+# binned by 40K archetype, each with a hand-written caption sidecar
+# describing what is actually in the pixels. These references are
+# both (a) direct trainable examples and (b) Gemini reference seeds
+# for archetype variants that no real CC0 texture covers.
+#
+# There is NO API generator handler for this LoRA yet — corpus is
+# ACQUIRED, not generated. `generator:` is reserved; a future
+# `seamless_tile` handler in corpus_generator.py would supplement
+# missing archetype/state variants from these seeds.
+
+generator: seamless_tile   # NOT YET IMPLEMENTED — acquisition-only stage
+
+defaults:
+  trigger: dh_tile
+  # Why "square AND hex": Foundry V14 grids (square / hex-rows /
+  # hex-cols, pointy or flat top) are a SCENE OVERLAY — a tile image
+  # is grid-agnostic and any edge-seamless texture composes correctly
+  # under either grid. So the corpus needs two distinct things:
+  #   1. square-tileable — generic 4-edge-seamless surfaces (the
+  #      bulk: rockcrete, deck plate, rock, marble). These tile on a
+  #      square lattice and read correctly under a hex grid too.
+  #   2. hex-pattern — textures whose MOTIF is hexagonal/honeycomb
+  #      (Mechanicus / Necromunda industrial hex floor plating, hex
+  #      grating). 40K-iconic AND reinforces a hex aesthetic on
+  #      hex-grid scenes. Captured as its own archetype so the LoRA
+  #      can emit hex-patterned floors on demand.
+  tiling_clause: >-
+    a seamlessly tileable top-down surface texture whose edges wrap
+    continuously, so any number of copies abut with no visible seam
+    in material, grain, or lighting
+  invariance: >-
+    bind the trigger to the surface material and tiling structure
+    only — NOT to rotation, lighting, crop offset, or palette accent
+
+# Archetype trigger map. Each token = one 40K floor/surface concept,
+# grounded in the Solenne campaign's actual locations (see
+# ../../CLAUDE.md location hierarchy + docs/campaign-locations.md).
+# Acquisition sources are CC0 categories that visually match; the
+# binning verdict is made by READING each downloaded image, never
+# by source category alone (CORPUS_AUDIT.md cardinal rule).
+archetypes:
+  tile_hab_floor:
+    use: Lower-hive / Hab District residential & corridor floors
+    look: worn rockcrete, grimy poured concrete, scuffed utility tile
+    sources: { ambientcg: [Concrete], polyhaven: [concrete, plaster-concrete] }
+  tile_industrial_floor:
+    use: Manufactorum / Ore Processing District / Mechanicus outpost
+    look: rusted steel, oil-stained metal, riveted plate, scarred ferrocrete
+    sources: { ambientcg: [Metal, MetalPlates], polyhaven: [metal] }
+  tile_ship_deck:
+    use: Voidship decks (Vigil Ledger, Errant Vector) — matches the multi-deck battlemap line
+    look: painted metal deck plating, panel seams, hull rivets
+    sources: { ambientcg: [MetalPlates], polyhaven: [metal] }
+  tile_chapel_floor:
+    use: District 4 Chapel / Ministorum naves — ecclesiastical stone
+    look: marble flagstone, inlaid stone, mosaic, polished slab
+    sources: { ambientcg: [Marble, PavingStones, Tiles], polyhaven: [tiles] }
+  tile_medicae_floor:
+    use: Hab District 4 Medicae Post — sterile institutional
+    look: clean ceramic / vinyl tile, pale grouted slab, low grime
+    sources: { ambientcg: [Tiles], polyhaven: [tiles, clean] }
+  tile_tunnel_floor:
+    use: Section 7 Maintenance Tunnels / The Lair — raw rock & rubble
+    look: bare rock, hewn stone, rubble scatter, damp cave floor
+    sources: { ambientcg: [Rock, Rocks], polyhaven: [rock] }
+  tile_sump_floor:
+    use: The Sump / lower-hive runoff — wet grime, mud, sludge
+    look: mud, wet dirt, organic sludge, stained runoff
+    sources: { ambientcg: [Ground], polyhaven: [dirty] }
+  tile_garrison_floor:
+    use: PDF Garrison / Space Port apron — military hardstanding
+    look: rough rockcrete apron, asphalt hardstand, paved drill yard
+    sources: { ambientcg: [Asphalt, PavingStones], polyhaven: [asphalt, road] }
+  tile_hex_plating:
+    use: Mechanicus / industrial hexagonal floor plating (the hex axis)
+    look: honeycomb metal plate, hex tread plate, hexagonal industrial floor
+    sources: { ambientcg: [MetalPlates, Metal], polyhaven: [metal] }
+    note: >-
+      ambientCG hex coverage is THIN (free-text q= returned 0).
+      Acquire by reading MetalPlates/Metal candidates and keeping
+      only genuinely hexagonal-motif tiles; if under-filled, this
+      archetype is the primary supplemental-generation target.
+  tile_metal_grating:
+    use: Catwalks / gantries / mezzanines — see-through industrial grating
+    look: bar grating, perforated mesh, expanded-metal walkway, diamond tread
+    sources: { ambientcg: [Metal, MetalPlates], polyhaven: [metal] }
+
+# Caption sidecar spec — follows the established convention used by
+# stamps/train/<cat>/*.txt and iconography/raw-references/*.txt.
+# Single line, comma-delimited. Written from the IMAGE, not the
+# filename, in the same atomic op as the bin decision.
+#
+#   dh_tile, <archetype_trigger>, <Title Case Subject>, top-down view,
+#   seamlessly tileable, <square-tileable|hex-pattern>, <state>,
+#   <material>, <surface-tag>, <surface-tag>, ...
+#
+# Rules (CORPUS_AUDIT.md acceptance + LoRA caption discipline):
+#  - EXCLUDE angle, lighting, time, weather (invariance axes).
+#  - EXCLUDE orientation/rotation (Foundry rotates tiles freely).
+#  - state from the image: intact | damaged | destroyed (most are
+#    intact; cracked/rusted-through = damaged; rubble = destroyed).
+#  - tiling type tag is mandatory: square-tileable OR hex-pattern.
+#  - art-style tag is photo-texture (these are CC0 PBR photo maps);
+#    Gemini-generated supplements will carry painterly|3d-render etc.
+#  - 3-8 material/surface tags (lowercase, hyphenated): the
+#    conditioning the LoRA should learn (rockcrete, riveted,
+#    rusted, marble-veining, hex-mesh, wet, rubble-scatter, ...).
+
+acceptance:
+  # In addition to CORPUS_AUDIT.md general criteria:
+  - "Strict top-down orthographic surface — no perspective, no horizon, no objects casting long shadows."
+  - "Edge-seamless: the texture must read as tiling (ambientCG/PolyHaven materials are designed seamless; still VISUALLY confirm — reject photogrammetry tiles with an obvious non-wrapping feature)."
+  - "No baked grid, no measurement scale, no watermark, no source attribution text burned into the pixels."
+  - ">=1024px on the long edge (1k download tier; both sources deliver >=1024)."
+  - "Single coherent material — reject collage/multi-material reference sheets."
+
+# Acquisition state (update on each acquire/review pass).
+acquired:
+  2026-05-16:
+    by: Claude Opus 4.7
+    downloaded: 82            # CC0 color maps, ambientCG + Poly Haven
+    unique_kept_after_review: 55
+    rejected: 20              # _rejected/off-archetype (17) + multi-material (3)
+    deduped: 7                # same Poly Haven asset binned to 2 archetypes;
+                              # resolved to single best-fit, downloader patched
+                              # with a global seen_asset_id guard so it can't recur
+    per_archetype_kept:
+      tile_hab_floor: 10
+      tile_garrison_floor: 10
+      tile_chapel_floor: 8
+      tile_ship_deck: 7
+      tile_industrial_floor: 6
+      tile_medicae_floor: 6
+      tile_tunnel_floor: 4
+      tile_sump_floor: 3
+      tile_metal_grating: 1
+      tile_hex_plating: 0
+    supplemental_targets:
+      # Real CC0 photo-texture sources do NOT carry hexagonal floor
+      # plating or bar grating as seamless tiles (scanned 240
+      # ambientCG metal assets + all Poly Haven metal — 0 hex, 2
+      # grate). These are NOT acquisition gaps to pad with
+      # off-archetype metal (that would break one-trigger-one-concept)
+      # — they are the primary Gemini-conditioned supplemental
+      # generation targets, seeded from the kept ship_deck/industrial
+      # plate references. tile_tunnel_floor (4) and tile_sump_floor
+      # (3) are thin (most rock/ground CC0 is vegetated outdoor
+      # terrain) — secondary supplemental targets.
+      - tile_hex_plating       # 0 — highest priority
+      - tile_metal_grating     # 1 — high priority
+      - tile_tunnel_floor      # 4 — secondary
+      - tile_sump_floor        # 3 — secondary
+
+provenance:
+  # Durable license/attribution record. Both sources are CC0 1.0
+  # (public domain) — no attribution legally required, but the
+  # downloader writes SOURCES.json (file -> {source, assetId, url,
+  # license}) so the chain is auditable and supplemental generation
+  # knows its seeds. Do NOT delete SOURCES.json.
+  ambientcg:  { license: "CC0 1.0", api: "https://ambientcg.com/api/v2/full_json", download: "https://ambientcg.com/get?file=<ID>_1K-JPG.zip (extract *_Color.jpg)" }
+  polyhaven:  { license: "CC0 1.0", api: "https://api.polyhaven.com/files/<id>", map: "Diffuse 1k jpg" }

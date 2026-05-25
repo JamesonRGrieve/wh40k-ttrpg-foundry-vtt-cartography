@@ -1,0 +1,1 @@
+icon_strategic, Airfield Control Tower And Hangar, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, airfield

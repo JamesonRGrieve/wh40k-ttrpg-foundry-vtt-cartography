@@ -1,0 +1,1 @@
+icon_strategic, Pipe Valve With Fluid, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, machinery, infrastructure

@@ -1,0 +1,1 @@
+terrain_vegetation, Ork Mushroom Cluster, top-down view, intact, scattered fungal flora, organic biome-tags, seamless-candidate

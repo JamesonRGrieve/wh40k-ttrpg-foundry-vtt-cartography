@@ -1,0 +1,1 @@
+icon_strategic, Minefield Warning Sign, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, mines, denial-zone

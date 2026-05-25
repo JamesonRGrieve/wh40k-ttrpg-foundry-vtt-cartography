@@ -1,0 +1,1 @@
+terrain_sand, Bare Dirt Ground Patch, top-down view, intact, dark-brown soil scattered-debris

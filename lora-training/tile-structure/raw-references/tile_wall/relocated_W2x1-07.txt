@@ -1,0 +1,1 @@
+dh_tile, tile_wall, Riveted Metal Wall Beam, top-down view, edge-tileable wall run, intact, hand-painted, industrial, riveted-metal, straight-segment, bolted-panels, rusted

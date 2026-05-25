@@ -1,0 +1,1 @@
+icon_strategic, Naval Cruiser, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, naval, warship

@@ -1,0 +1,1 @@
+icon_strategic, Radiation Emitter Waves, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, emission, contamination

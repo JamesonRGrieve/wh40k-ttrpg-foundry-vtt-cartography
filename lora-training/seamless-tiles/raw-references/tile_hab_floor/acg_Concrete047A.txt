@@ -1,0 +1,1 @@
+dh_tile, tile_hab_floor, Grimy Weathered Concrete Floor, top-down view, seamlessly tileable, square-tileable, damaged, photo-texture, rockcrete, fine-aggregate, grime, mottled, green-gray-staining, scuffed

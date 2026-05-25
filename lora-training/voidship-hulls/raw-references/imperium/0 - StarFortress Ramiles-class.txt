@@ -1,0 +1,1 @@
+ship_ramiles_starfortress, Imperial Ramiles-Class Star Fortress, top-down view, dh_voidship_hull, imperial-navy, star-fortress, space-station, cathedral-spires, central-cross-platform, painterly-monochrome

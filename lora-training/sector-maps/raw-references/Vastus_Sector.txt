@@ -1,0 +1,1 @@
+sector_chart, The Vastus Sector Chart, sector cartography, system-nodes, navigable-warp-lanes, planet-portrait insets, named regions (Korvus Nebula, Proxis Ultima, The Parabis Abyssal), light-year scale bar, colourful deep-space nebula starfield cartographic plate

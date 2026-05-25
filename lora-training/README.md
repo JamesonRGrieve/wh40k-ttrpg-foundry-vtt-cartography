@@ -7,7 +7,24 @@ that build these corpora live one level up
 (`gen_*_corpus.py`) and read the `manifest.yaml` inside each
 subdirectory.
 
-## Plan — 6 LoRAs
+## Modular room pipeline — THREE stages
+
+Hand-building a room from tiles is a three-stage pipeline, not one
+LoRA. Keep these distinct:
+
+| Stage | What it does | Corpus / trigger |
+|---|---|---|
+| **1 — tile generator** | new *tileable tiles* for hand-building: floors **and** wall/corner/door/endcap structure | `seamless-tiles/` (floors) **+** `tile-structure/` (structure) — both `dh_tile` |
+| **2 — room builder** | place & connect Stage-1 tiles into rooms; link rooms (corridors, doorways) | `voidship-layouts/` — `dh_layout` |
+| **3 — stamp placer** | drop furniture/props onto built rooms | `stamps/` — `dh_stamp` |
+
+Stage 1 is split across two dirs (floors vs structure) but is **one
+stage, one umbrella trigger** (`dh_tile`). A wall/corner/door is
+Stage-1 tile vocabulary — **not** a Stage-3 stamp; pieces mis-binned
+into `stamps/train/fixtures/` were relocated to `tile-structure/` on
+2026-05-16 (see `../CORPUS_AUDIT.md`).
+
+## Plan — 8 LoRAs
 
 | # | LoRA                       | Trigger                | Folder                | Status                 | Purpose |
 |---|----------------------------|------------------------|-----------------------|------------------------|---------|
@@ -16,7 +33,9 @@ subdirectory.
 | 3a | Voidship hull silhouettes | `dh_voidship_hull`     | `voidship-hulls/`     | Smoke validated (6/36) — 30 remaining ($1.20) | Empty Imperial voidship hull silhouettes per ship class. No interior. Three iterations on surface_rules to eliminate forward-facing turrets. |
 | 3b | Architectural layouts      | `dh_layout`            | `voidship-layouts/`   | v1 fused corpus retained as supplemental; v2 zone-grammar pending ($0.80) | Top-down architectural layouts (rooms / corridors / doorways) generalized over an arbitrary boundary. Reusable for ship decks, hab apartments, manufactorums, chapels, district maps. |
 | 4 | Narrative scenes           | `dh_scene`             | `scenes/`             | Scaffolded — full corpus pending ($2.44, 61 images) | Project goal #9 — chapel naves, sanctums, war rooms, audience halls, etc. Iconography composites at inference (no symbols in this LoRA's training set). |
-| 5 | Stamp generator            | `dh_stamp`             | `stamps/`             | 227 trainable top-down staged ✅ (after 2026-05-12 audit + orientation collapse + category sort) — training queueable, no API needed | Top-down 40K furniture/equipment generator. Solves the missing-variant fill problem. |
+| 5 | Stamp generator            | `dh_stamp`             | `stamps/`             | 227 trainable staged 2026-05-12 — ⚠ stale: 66 wall/door pieces relocated to Stage-1 `tile-structure/` on 2026-05-16 (fixtures 160→~94); trainable count needs re-derivation, see `../CORPUS_AUDIT.md` | Stage-3 top-down 40K furniture/equipment generator. Solves the missing-variant fill problem. |
+| 6 | Seamless tiles (Stage-1 floors) | `dh_tile` + `tile_<archetype>_floor` | `seamless-tiles/` | Raw corpus acquired 2026-05-16 — 55 CC0 refs across 8 archetypes captioned; hex_plating/metal_grating pending supplemental gen | Stage-1 floor half. Edge-tileable top-down 40K floor/surface tiles. CC0 (ambientCG + Poly Haven), provenance in `SOURCES.json`. |
+| 7 | Tile-structure (Stage-1 structure) | `dh_tile` + `tile_wall/corner/door/endcap` | `tile-structure/` | Harvested 2026-05-16 — 87 tiles captioned (40 on-disk DaSIG + 47 relocated from mis-binned `stamps/fixtures`, deduped); no Gemini per operator | Stage-1 structure half. Walls, corners, doors, endcaps for hand-building rooms. On-disk DaSIG + Stage-3 relocation, provenance in `SOURCES.json`. |
 
 Voidships are split into two stacked LoRAs (hull + layout) rather
 than one fused LoRA — see `../docs/battlemap-workflow.md` (search for

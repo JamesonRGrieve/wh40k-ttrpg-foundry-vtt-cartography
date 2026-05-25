@@ -1,0 +1,1 @@
+ship_dauntless_class, Imperial Dauntless-Class Light Cruiser, top-down view, dh_voidship_hull, imperial-navy, light-cruiser, line-art, long-spinal-hull, lateral-batteries, swept-stern-launch-ramp

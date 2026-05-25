@@ -1,0 +1,1 @@
+dh_tile, tile_garrison_floor, Asphalt Drill Yard, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, asphalt, fine-grain, hardstand, aggregate, worn

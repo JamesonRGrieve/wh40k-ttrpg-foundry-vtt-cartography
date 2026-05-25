@@ -8,8 +8,8 @@
   "t5xxl": "establishing-shot illustration of District 4 Chapel, warhammer 40000 grimdark aesthetic, oil-painting style, candlelit, somber, brass aquila relief catching candlelight, painterly atmosphere, dramatic lighting, highly detailed, professional concept art quality, with a Imperial Aquila on the apse back wall, rendered as a cast brass relief sculpture with weathered patina and candlelight catching the high points",
   "clip_l": "warhammer 40k, grimdark, District 4 Chapel, candlelit, somber, brass aquila relief catching candlelight",
   "symbol_style": "integrated",
-  "raw_render": "/home/jameson/Documents/dh-campaign/.foundry/cartography/battlemaps/_p2_chapel_scene_d080_00001_.png",
-  "guide_image": "/home/jameson/Documents/dh-campaign/.foundry/cartography/battlemaps/_guide_chapel_scene_d080.png",
+  "raw_render": "/home/jameson/Documents/dh-campaign/.lora-training-output/cartography/battlemaps/_p2_chapel_scene_d080_00001_.png",
+  "guide_image": "/home/jameson/Documents/dh-campaign/.lora-training-output/cartography/battlemaps/_guide_chapel_scene_d080.png",
   "symbols": [
     {
       "name": "aquila",

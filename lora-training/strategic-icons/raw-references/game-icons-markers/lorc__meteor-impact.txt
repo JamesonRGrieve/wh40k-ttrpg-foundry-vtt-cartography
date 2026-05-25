@@ -1,0 +1,1 @@
+icon_strategic, Meteor Impact, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, orbital-strike, bombardment

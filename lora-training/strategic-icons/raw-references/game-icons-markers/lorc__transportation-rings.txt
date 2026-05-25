@@ -1,0 +1,1 @@
+icon_strategic, Transport Rings, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, deploy, insertion

@@ -1,0 +1,113 @@
+# Chaos iconography LoRA — corpus generation manifest (STARTER).
+#
+# Status: deferred-goal bin, seeded 2026-05-17 from the corpus audit
+# (CORPUS_AUDIT.md Phase 3 — chaos-iconography DEFERRED BIN). This is
+# a STARTER manifest documenting the trigger namespace +
+# shape-invariance clauses; expand the treatment/angle/lighting
+# matrices (model on ../iconography/manifest.yaml) when a
+# Gemini-conditioned generation pass is actually stood up.
+#
+# Goal: teach the model the canonical heraldic silhouettes of the
+# Ruinous Powers and the renegade/traitor war-host — the eight-pointed
+# Chaos Star, the four God-marks (Khorne skull-rune, Nurgle three-lobed
+# rot, Tzeentch nine-armed flame-bird, Slaanesh barbed crescent), and
+# the per-legion traitor badges (Black Legion, Iron Warriors, Death
+# Guard, World Eaters, Emperor's Children, Thousand Sons, Night Lords,
+# Alpha Legion, Word Bearers, Sons of Horus / Luna Wolves). NOT
+# fan-drift redraws, VTT unit tokens, or pure wordmarks — those are
+# the documented failure modes this LoRA must avoid.
+#
+# Reference-image conditioning: the curated audit-approved heraldic
+# vectors/rasters under raw-references/ are the canonical-shape
+# anchors fed to Gemini alongside the prompt (same architecture as
+# the iconography pipeline).
+
+generator: chaos_iconography
+
+defaults:
+  # Each symbol is a single heraldic device. Keep the device the
+  # dominant focal subject, full silhouette readable, isolated on a
+  # clean ground.
+  isolation: >-
+    single chaos heraldic device as focal subject filling most of the
+    frame, full silhouette visible, isolated on clean ground, no text,
+    no caption, no unit miniature
+  # Chaos heraldry is silhouette-defined. The invariant the LoRA must
+  # bind is the canonical device geometry — true to the established
+  # GW silhouette, NOT fan-drift restyling — invariant to palette,
+  # material, and surface treatment.
+  shape_invariance: >-
+    preserve canonical Chaos faction heraldry true to its established
+    silhouette — the eight-pointed Chaos Star arms, the exact God-mark
+    geometry, the per-legion badge structure and proportions — never
+    fan-drift restyling that alters the device geometry
+  exclusions: "no UI, no labels, no unit token, no miniature, no measurement grid, no watermark, no text"
+
+# Trigger namespace. Each token binds one canonical Chaos device.
+# Per-legion tokens are added under sym_legion_<name> as legion
+# badges are approved into raw-references/.
+trigger_namespace:
+  sym_chaos_star: >-
+    the eight-pointed Star of Chaos / Chaos Undivided rune — eight
+    arrow-headed arms radiating from a central point, equal length,
+    radially symmetric
+  sym_khorne: >-
+    the Mark of Khorne — the brazen skull-and-rune device of the
+    Blood God, angular and martial
+  sym_nurgle: >-
+    the Mark of Nurgle — the three-lobed circular rot device of the
+    Plague God, trefoil arrangement of fly-blown circles
+  sym_tzeentch: >-
+    the Mark of Tzeentch — the nine-flamed bird/flame device of the
+    Changer of Ways, radiating curved tongues
+  sym_slaanesh: >-
+    the Mark of Slaanesh — the barbed crescent / split-circle device
+    of the Dark Prince
+  sym_renegade: >-
+    a renegade-host badge — defaced Imperial or improvised heraldry
+    of warbands and renegades-and-heretics forces
+  sym_traitor: >-
+    a Traitor Legion / traitor-Titan / Questor Traitoris badge —
+    Heresy-era loyalist device corrupted, the heretic-astartes mark
+  sym_daemon: >-
+    a daemonic glyph — daemon-prince / possessed / warp-entity device,
+    not an Imperial form
+  # Per-legion tokens (added as legion badges are approved):
+  sym_legion_black_legion: >-
+    Black Legion badge — the eight-pointed star within an arrowed/
+    laurel surround, Abaddon's host
+  sym_legion_iron_warriors: >-
+    Iron Warriors badge — hazard-striped skull / circular saw motif
+  sym_legion_death_guard: >-
+    Death Guard badge — the three-lobed Nurgle rot device, plague host
+  sym_legion_world_eaters: >-
+    World Eaters badge — the toothed-circle / chained-jaw Khorne device
+  sym_legion_emperors_children: >-
+    Emperor's Children badge — the Slaaneshi barbed crescent on the
+    Palatine device
+  sym_legion_thousand_sons: >-
+    Thousand Sons badge — the Tzeentchian serpent/star device
+  sym_legion_night_lords: >-
+    Night Lords badge — the winged skull / bat-and-lightning device
+  sym_legion_alpha_legion: >-
+    Alpha Legion badge — the hydra device
+  sym_legion_word_bearers: >-
+    Word Bearers badge — the open-book / daemon-script device
+  sym_legion_sons_of_horus: >-
+    Sons of Horus / Luna Wolves badge — the Eye of Horus / wolf-head
+    device
+
+# Acceptance (mirrors the chaos-iconography DEFERRED BIN criteria):
+#   - on-canon Chaos faction heraldry (Chaos Star, the four God-marks,
+#     renegade/traitor legion badges, daemon glyphs)
+#   - canonical heraldic geometry, NOT fan-drift restyling
+#   - reject pure wordmarks / letterforms with no device
+#   - isolated, clean bg, full silhouette
+#   - raster >=512px long edge (SVG exempt — vector); no large watermark
+#   - VTT unit tokens are NOT heraldry — relocated, not trained
+#
+# Matrix axes (treatment x angle x lighting) — TO BE EXPANDED when
+# the generation pass is stood up; model on ../iconography/manifest.yaml.
+common_treatments: []   # starter — append when generation is built
+angles: []
+lighting: []

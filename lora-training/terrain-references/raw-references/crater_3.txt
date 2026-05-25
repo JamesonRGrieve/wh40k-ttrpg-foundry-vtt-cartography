@@ -1,0 +1,1 @@
+terrain_crater, Deep Impact Crater With Ash Ring, top-down view, damaged, scorched-basin grey-ash-ejecta

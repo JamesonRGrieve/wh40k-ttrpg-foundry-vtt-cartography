@@ -1,0 +1,1 @@
+icon_strategic, Locked Fortress Tower, strategic map symbology, fortification-marker, monochrome-glyph, flat-vector, secured, keyhole

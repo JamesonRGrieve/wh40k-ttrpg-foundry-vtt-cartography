@@ -8,8 +8,8 @@
   "t5xxl": "establishing-shot illustration of Vigil Ledger, warhammer 40000 grimdark aesthetic, oil-painting style, rain-slick deck, sodium-yellow port lights, hull aquila as deep-stamped metal, painterly atmosphere, dramatic lighting, highly detailed, professional concept art quality, with a Imperial Aquila on the ship hull marking, rendered as a stamped sheet-metal plate, slight raised edges, scuffed finish",
   "clip_l": "warhammer 40k, grimdark, Vigil Ledger, rain-slick deck, sodium-yellow port lights, hull aquila as deep-stamped metal",
   "symbol_style": "integrated",
-  "raw_render": "/home/jameson/Documents/dh-campaign/.foundry/cartography/battlemaps/_p2_vigil_ledger_aquila_hull_d080_00001_.png",
-  "guide_image": "/home/jameson/Documents/dh-campaign/.foundry/cartography/battlemaps/_guide_vigil_ledger_aquila_hull_d080.png",
+  "raw_render": "/home/jameson/Documents/dh-campaign/.lora-training-output/cartography/battlemaps/_p2_vigil_ledger_aquila_hull_d080_00001_.png",
+  "guide_image": "/home/jameson/Documents/dh-campaign/.lora-training-output/cartography/battlemaps/_guide_vigil_ledger_aquila_hull_d080.png",
   "symbols": [
     {
       "name": "aquila",

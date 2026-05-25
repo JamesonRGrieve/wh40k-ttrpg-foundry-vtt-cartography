@@ -1,0 +1,1 @@
+icon_strategic, Broadhead Arrow, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, attack-vector, projectile

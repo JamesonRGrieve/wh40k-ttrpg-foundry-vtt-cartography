@@ -54,10 +54,10 @@ from dotenv import load_dotenv
 from PIL import Image
 from google import genai
 
-HERE = Path(__file__).resolve().parent             # .foundry/cartography/
-CAMPAIGN_ROOT = HERE.parent.parent                  # dh-campaign/
+HERE = Path(__file__).resolve().parent             # dh-campaign/.lora-training/
+CAMPAIGN_ROOT = HERE.parent                          # dh-campaign/
 LORA_ROOT = HERE / "lora-training"                  # submodule control plane: manifests, configs, READMEs
-AI_GEN_ROOT = CAMPAIGN_ROOT / ".ai-gen"             # PNG / YAML artifacts (gitignored)
+AI_GEN_ROOT = CAMPAIGN_ROOT / ".lora-training-output"             # PNG / YAML artifacts (gitignored)
 
 # Per-LoRA artifact directory mapping. The manifest's directory holds
 # the control plane (manifest.yaml + configs/ + README.md); the
@@ -69,7 +69,7 @@ LORA_ARTIFACT_DIRS = {
     "voidship-hulls":   AI_GEN_ROOT / "cartography" / "voidship-hulls",
     "voidship-layouts": AI_GEN_ROOT / "cartography" / "voidship-layouts",
     "scenes":           AI_GEN_ROOT / "scenes",
-    # stamps is special: SOURCE (.ai-gen/cartography/stamps) is what
+    # stamps is special: SOURCE (.lora-training-output/cartography/stamps) is what
     # the StampHandler reads PNGs and sidecars from; OUTPUT (staged
     # corpus) writes into the submodule under
     # lora-training/stamps/train/<category>/ (build artifact,
@@ -108,7 +108,7 @@ class Handler:
     The handler is constructed with:
       - `manifest`     parsed YAML dict from `lora-training/<name>/manifest.yaml`
       - `lora_dir`     control-plane directory (where manifest.yaml lives)
-      - `artifact_dir` artifact directory under `.ai-gen/` where PNGs go
+      - `artifact_dir` artifact directory under `.lora-training-output/` where PNGs go
     """
     name: ClassVar[str] = ""
 
@@ -232,7 +232,7 @@ class StampHandler(Handler):
     def build_jobs(self, only: str | None) -> list[Job]:
         d = self.manifest.get("defaults", {})
         trigger = d.get("trigger", "dh_stamp")
-        # Source PNGs + sidecars live in .ai-gen/cartography/stamps/
+        # Source PNGs + sidecars live in .lora-training-output/cartography/stamps/
         # (= self.artifact_dir per the LORA_ARTIFACT_DIRS mapping).
         # Staged training output writes into the submodule under
         # lora-training/stamps/{train,_excluded}/ as a gitignored
@@ -897,7 +897,7 @@ def resolve_manifest(args: argparse.Namespace) -> tuple[Path, Path, Path]:
     """Return (manifest_path, lora_dir, artifact_dir).
     - lora_dir is the manifest's containing directory (control plane:
       manifest.yaml, configs/, README.md).
-    - artifact_dir is the .ai-gen/ subdirectory where PNGs live for
+    - artifact_dir is the .lora-training-output/ subdirectory where PNGs live for
       this LoRA (per the LORA_ARTIFACT_DIRS mapping; can be
       overridden by a manifest-level `artifact_dir:` key as either an
       absolute path or a path relative to AI_GEN_ROOT).
@@ -969,7 +969,7 @@ def main() -> int:
 
     print(f"[gen] handler={handler_name} manifest={manifest_path}")
     print(f"[gen] lora_dir (control plane) = {lora_dir}")
-    print(f"[gen] artifact_dir (.ai-gen)   = {artifact_dir}")
+    print(f"[gen] artifact_dir (.lora-training-output)   = {artifact_dir}")
 
     jobs = handler.build_jobs(only=args.only)
 

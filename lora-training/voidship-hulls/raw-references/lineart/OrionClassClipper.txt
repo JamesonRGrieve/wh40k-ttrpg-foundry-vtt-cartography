@@ -1,0 +1,1 @@
+ship_orion_class, Imperial Orion-Class Clipper, top-down view, dh_voidship_hull, imperial-navy, clipper, line-art, segmented-spine, repeated-engine-pods, simple-stern, transport

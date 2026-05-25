@@ -1,0 +1,1 @@
+icon_strategic, Solar-Panel Satellite, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, orbital, relay

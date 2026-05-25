@@ -1,0 +1,1 @@
+dh_tile, tile_chapel_floor, Black Marble Slab, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, marble, veined, polished, slab, mottled

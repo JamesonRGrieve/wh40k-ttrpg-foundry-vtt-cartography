@@ -1,0 +1,52 @@
+# Canonical full-disc Solar-System bodies (NASA/ESA/USGS PD or CC-BY).
+# Class is decided by visual Read in Phase C, not by this list.
+# Gas giants
+Jupiter_and_its_shrunken_Great_Red_Spot.jpg
+Jupiter_New_Horizons.jpg
+Jupiter_by_Cassini-Huygens.jpg
+Saturn_during_Equinox.jpg
+Saturn_(planet)_large_rotated.jpg
+Uranus2.jpg
+Neptune_Full.jpg
+Neptune_-_Voyager_2_(29347980845)_flatten_crop.jpg
+# Rocky / barren
+Mercury_in_color_-_Prockter07-edit1.jpg
+Mercury_in_color_-_Prockter07_centered.jpg
+Venus_globe.jpg
+Venus_2_Approach_Image.jpg
+OSIRIS_Mars_true_color.jpg
+Mars_Valles_Marineris_EDIT.jpg
+Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png
+# Ice
+Europa-moon.jpg
+Europa_in_natural_colours_(cropped).jpg
+Enceladus_from_Voyager.jpg
+PIA17202_-_Approaching_Enceladus.jpg
+Pluto_in_True_Color_-_High-Res.jpg
+Charon_in_True_Color_-_High-Res.jpg
+Triton_moon_mosaic_Voyager_2_(large).jpg
+# Lava / volcanic
+Io_highest_resolution_true_color.jpg
+PIA01667-Io's_Volcanic_Plumes.jpg
+Io_-_Tvashtar_Plume.jpg
+# Moons
+FullMoon2010.jpg
+Full_Moon_Luc_Viatour.jpg
+Moon_nearside.jpg
+Phobos_colour_2008.jpg
+Titan_in_true_color.jpg
+Mimas_Cassini.jpg
+Iapetus_706_1419_1.jpg
+# Asteroids
+Vesta_in_natural_color.jpg
+(4)_Vesta.jpg
+Ceres_-_RC3_-_Haulani_Crater_(22381131691)_(cropped).jpg
+243_ida.jpg
+951_Gaspra.jpg
+Eros_-_PIA02923.jpg
+Bennu_mosaic_OSIRIS-REx_(square).png
+# Oceanic / Earth (oceanic, agri-stand-in, hive-night)
+The_Earth_seen_from_Apollo_17.jpg
+The_Blue_Marble_(remastered).jpg
+Earth's_City_Lights_by_DMSP,_1994-1995_(large).jpg
+BlackMarble_2016_3km.jpg

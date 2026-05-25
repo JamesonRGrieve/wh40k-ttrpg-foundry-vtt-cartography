@@ -1,0 +1,1 @@
+terrain_heightmap, Desert Hill Landform, top-down view, intact, tan-yellow arid sand-grass elevation mound

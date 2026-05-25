@@ -1,0 +1,1 @@
+dh_tile, tile_corner, Tall Gothic Wall Corner With Vent Fan, top-down view, wall corner, outside-corner, intact, hand-painted, gothic, brick, l-shaped, corner-pillar, vent-fan, gothic-arcade, skull-relief

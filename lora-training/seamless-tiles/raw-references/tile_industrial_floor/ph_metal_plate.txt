@@ -1,0 +1,1 @@
+dh_tile, tile_industrial_floor, Diamond Tread Plate, top-down view, seamlessly tileable, square-tileable, damaged, photo-texture, diamond-plate, rusted-steel, riveted-tread, paint-residue, grime

@@ -1,0 +1,1 @@
+dh_tile, tile_hab_floor, Gravel-Aggregate Embedded Concrete Floor, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, aggregate-concrete, gray, fine-gravel, speckled, even-grain, exposed-aggregate

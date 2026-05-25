@@ -1,0 +1,1 @@
+icon_strategic, Bundle Of Upright Spears, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, massed-infantry, muster

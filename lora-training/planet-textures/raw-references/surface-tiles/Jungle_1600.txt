@@ -1,0 +1,1 @@
+planet_jungle, Jungle World Surface, surface texture, dense dark foliage canopy, fine organic mottling, deep forest green palette

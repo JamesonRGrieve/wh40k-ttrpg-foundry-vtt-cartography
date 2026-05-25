@@ -1,0 +1,69 @@
+# Sector-maps LoRA — corpus generation manifest (STARTER).
+#
+# Status: deferred-goal bin, seeded 2026-05-17 from the corpus audit
+# (CORPUS_AUDIT.md, "DEFERRED BIN — sector-maps"). This is a STARTER
+# manifest documenting the trigger namespace + shape-invariance
+# clauses; expand the treatment/angle/projection matrices (model on
+# ../iconography/manifest.yaml) when a Gemini-conditioned generation
+# pass is actually stood up.
+#
+# Goal: teach the model Imperial sector-scale starfield cartography
+# — the clean star-chart register, NOT a single planet globe and NOT
+# a tabletop battlemap. The artifact is a flat sector / sub-sector /
+# star-system chart: star-system nodes, warp/transit routes, sector
+# and sub-sector boundary regions, nebulae and warp-storm fields,
+# named regions. Labels on a chart are inherent to the artifact and
+# are on-target; a heavy game-UI HUD or large watermark is not.
+#
+# Reference-image conditioning: the curated audit-approved sector
+# charts under raw-references/ are the canonical-shape anchors fed
+# to Gemini alongside the prompt (same architecture as the
+# iconography pipeline).
+
+generator: sector_maps
+
+defaults:
+  # Sector-map is a PROJECTION/REGISTER concept, not a single
+  # silhouette. The invariant the LoRA must bind is "Imperial
+  # sector-scale starfield cartography" — a clean chart of systems
+  # and routes — invariant to palette and projection (top-down
+  # plane chart, isometric volume, 2D schematic).
+  shape_invariance: >-
+    preserve Imperial sector-scale starfield cartography — discrete
+    star-system nodes connected by warp/transit routes, sector and
+    sub-sector boundary regions, nebulae and warp-storm fields,
+    named regions on a clean chart; palette- and projection-
+    invariant; never a single planet/moon globe, never a tabletop
+    battlemap, never a game-UI screenshot
+  exclusions: "no game-UI HUD chrome, no large watermark; chart-inherent system/region labels are permitted"
+
+# Trigger namespace. Each binds a distinct cartographic register of
+# the same sector-scale starfield concept:
+trigger_namespace:
+  sector_chart: >-
+    a full Imperial sector / sub-sector starfield chart — system
+    nodes, warp routes, sub-sector boundaries and named regions on
+    a clean cartographic plate
+  sector_warproutes: >-
+    a sector chart emphasising warp-route topology — transit lanes
+    between system nodes, warp-storm and nebula hazard fields
+  sector_segmentum: >-
+    a wide segmentum / multi-sector overview chart — clustered
+    sectors, salients and expanses across a galactic region
+
+# Acceptance (mirrors the sector-maps audit criteria):
+#   - a clean Imperial sector / sub-sector / star-system starfield
+#     CHART (system nodes, orbital/warp routes, named regions)
+#   - usable as cartography reference; coherent map
+#   - >=1024px long edge
+#   - NOT a single planet/moon, NOT a battlemap, NOT a photo, NOT
+#     non-cartography art, NOT a game-UI screenshot
+#   - chart-inherent sector/system labels are on-target; heavy
+#     game-UI HUD chrome or large watermark is not
+#
+# Matrix axes (treatment x projection x palette) — TO BE EXPANDED
+# when the generation pass is stood up; model on
+# ../iconography/manifest.yaml.
+common_treatments: []   # starter — append when generation is built
+projections: []
+palettes: []

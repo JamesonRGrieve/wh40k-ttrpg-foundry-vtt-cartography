@@ -1,0 +1,1 @@
+dh_tile, tile_industrial_floor, Charcoal Steel Plate, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, blackened-steel, scuffed, mottled, soot-stained, grime

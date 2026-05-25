@@ -1,0 +1,1 @@
+terrain_rock, Jagged Stone Outcrop On Grass, top-down view, intact, angular-rock-shelf scattered-debris grass-biome-base

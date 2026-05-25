@@ -1,0 +1,1 @@
+dh_tile, tile_hab_floor, Pale Form-Marked Concrete Floor, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, poured-concrete, off-white, vertical-streak-staining, form-board-marks, grime, faint-aggregate

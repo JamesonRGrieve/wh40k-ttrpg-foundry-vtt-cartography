@@ -1,0 +1,1 @@
+terrain_water, Small Pond With Muddy Rim, top-down view, intact, still-dark-water muddy-shoreline

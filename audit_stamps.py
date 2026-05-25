@@ -44,8 +44,8 @@ from pathlib import Path
 import yaml
 
 HERE = Path(__file__).resolve().parent
-CAMPAIGN_ROOT = HERE.parent.parent
-STAMPS = CAMPAIGN_ROOT / ".ai-gen" / "cartography" / "stamps"
+CAMPAIGN_ROOT = HERE.parent
+STAMPS = CAMPAIGN_ROOT / ".lora-training-output" / "cartography" / "stamps"
 
 # Bad-name patterns. Each is a (label, predicate) pair. KEEP IN SYNC
 # with the matching list in classify_stamps.py (search for

@@ -1,0 +1,86 @@
+# Planet-textures LoRA — corpus generation manifest (STARTER).
+#
+# Status: deferred-goal bin, seeded 2026-05-17 from the corpus audit
+# (CORPUS_AUDIT.md Phase 3 — planet-textures bin). This is a STARTER
+# manifest documenting the trigger namespace + shape-invariance
+# clauses; expand the treatment/angle/lighting matrices (model on
+# ../iconography/manifest.yaml) when a Gemini-conditioned generation
+# pass is actually stood up.
+#
+# Goal: teach the model clean orbital celestial bodies (full-disc
+# planets / moons / gas giants / asteroids against space or a
+# transparent background) AND flat seamless planet-surface texture
+# tiles, classed by world archetype. NOT system charts, UI icons,
+# spacecraft, photos of physical models, or cropped game screenshots
+# (the documented failure modes this LoRA must avoid).
+#
+# Reference-image conditioning: the curated audit-approved planet
+# discs / surface tiles under raw-references/ are the canonical-shape
+# anchors fed to Gemini alongside the prompt (same architecture as
+# the iconography pipeline).
+
+generator: planet_textures
+
+defaults:
+  # Planet-textures is a SHAPE/CLASS concept. The invariant the LoRA
+  # must bind is "clean full-disc orbital body OR flat seamless
+  # planet-surface texture", invariant to palette and lighting.
+  shape_invariance: >-
+    preserve either a clean full-disc orbital celestial body (whole
+    sphere, space or transparent background, no chrome) OR a flat
+    seamless planet-surface texture tile; palette- and
+    lighting-invariant; never a system chart, UI icon, spacecraft,
+    photo of a physical model, or cropped game screenshot
+  exclusions: "no UI, no labels, no measurement grid, no system-chart annotations, no spacecraft, no text, no watermark"
+
+# Trigger namespace. Each binds a distinct world archetype of the
+# same orbital-body / surface-texture concept. Map from source
+# subdir + observed content:
+trigger_namespace:
+  planet_agri: >-
+    agri-world — verdant cultivated continents, large managed
+    farmland tracts, modest cloud cover
+  planet_hive: >-
+    hive world — light-pocked night side / grey-brown industrial
+    continents, heavy haze, urban sprawl visible from orbit
+  planet_death: >-
+    death world — hostile biosphere or blasted surface, harsh
+    storm bands, dark or lurid palette
+  planet_ice: >-
+    ice world — frozen white/blue surface, polar dominance,
+    fractured ice sheets, thin atmosphere
+  planet_rocky: >-
+    rocky/barren world — cratered grey-brown airless or thin-air
+    surface, no oceans, terrestrial relief
+  planet_oceanic: >-
+    ocean world — near-total water coverage, swirling weather
+    systems, sparse or no landmass
+  planet_lava: >-
+    lava/volcanic world — molten fissure networks, glowing magma
+    seas, ash-black crust
+  planet_gas_giant: >-
+    gas giant — banded turbulent atmosphere, storm ovals, optional
+    ring system, no solid surface
+  planet_moon: >-
+    moon — small cratered or icy satellite body, full disc,
+    airless or thin-atmosphere
+  planet_asteroid: >-
+    asteroid — single coherent irregular rocky body OR a coherent
+    belt/field texture, space or transparent background
+
+# Acceptance (mirrors CORPUS_AUDIT.md planet-textures criteria):
+#   - a CLEAN orbital planet/moon/gas-giant/asteroid disc (full
+#     body, space or transparent bg) OR a clean flat planet-surface
+#     texture tile, matching its subdir class
+#   - >=512px long edge
+#   - no UI / labels / grid / system-chart annotations / spacecraft
+#     / text / watermark
+#   - not a photo of a physical model, not a cropped game screenshot
+#   - scatter/asteroid clutter rejected only if not a coherent body
+#     or coherent belt texture
+#
+# Matrix axes (treatment x angle x lighting) — TO BE EXPANDED when
+# the generation pass is stood up; model on ../iconography/manifest.yaml.
+common_treatments: []   # starter — append when generation is built
+angles: []
+lighting: []

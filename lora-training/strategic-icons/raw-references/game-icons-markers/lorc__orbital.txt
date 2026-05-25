@@ -1,0 +1,1 @@
+icon_strategic, Orbital Rings Diagram, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, orbital, station

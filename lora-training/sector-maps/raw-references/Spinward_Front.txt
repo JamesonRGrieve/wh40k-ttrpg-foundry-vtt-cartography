@@ -1,0 +1,1 @@
+sector_chart, The Spinward Front Chart, sector cartography, system-nodes, named regions (The Severan Dominate, The Stygies Deeps, The Periphery), world-type legend panel, dark nebula starfield, Imperial gothic chart frame

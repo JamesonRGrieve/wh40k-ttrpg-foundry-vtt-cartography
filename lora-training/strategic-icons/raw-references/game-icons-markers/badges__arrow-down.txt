@@ -1,0 +1,1 @@
+icon_strategic, Down Arrow Ring Badge, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, directional, descend

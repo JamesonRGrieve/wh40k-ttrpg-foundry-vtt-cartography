@@ -1,0 +1,1 @@
+sector_chart, The Scyrian Expanse Star Chart, sector cartography, system-nodes, galactic-plane-elevation legend, star-type legend, directional bounds (Spinward/Coreward/Rimward/Trailing), minimalist dark teal-green starfield star-system chart

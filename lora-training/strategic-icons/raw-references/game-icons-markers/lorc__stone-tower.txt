@@ -1,0 +1,1 @@
+icon_strategic, Scaffolded Stone Tower, strategic map symbology, fortification-marker, monochrome-glyph, flat-vector, tower, construction

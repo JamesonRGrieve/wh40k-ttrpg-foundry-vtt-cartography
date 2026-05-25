@@ -1,0 +1,1 @@
+terrain_hill, Urban Hill Landform, top-down view, intact, soft-shaded dirt mound, rounded contour, seamless-candidate

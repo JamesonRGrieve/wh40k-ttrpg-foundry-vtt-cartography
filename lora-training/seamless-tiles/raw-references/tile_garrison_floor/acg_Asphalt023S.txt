@@ -1,0 +1,1 @@
+dh_tile, tile_garrison_floor, Asphalt Hardstand, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, asphalt, aggregate, fine-grain, hardstand, worn

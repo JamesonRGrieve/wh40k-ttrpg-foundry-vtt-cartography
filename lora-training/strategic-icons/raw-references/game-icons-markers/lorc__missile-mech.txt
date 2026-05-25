@@ -1,0 +1,1 @@
+icon_strategic, Missile Walker Mech, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, walker, bipedal

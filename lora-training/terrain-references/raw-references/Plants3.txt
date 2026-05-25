@@ -1,0 +1,1 @@
+terrain_vegetation, Flowering Plant Foliage Cluster, top-down view, intact, leafy-plants ground-flora, isolated-element

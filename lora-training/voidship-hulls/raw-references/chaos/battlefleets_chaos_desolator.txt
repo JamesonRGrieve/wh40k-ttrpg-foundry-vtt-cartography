@@ -1,0 +1,1 @@
+ship_desolator_class, Chaos Desolator-Class Battleship, top-down view, dh_voidship_hull, chaos, battleship, segmented-spine, red-armor-plates, dorsal-spires, painterly

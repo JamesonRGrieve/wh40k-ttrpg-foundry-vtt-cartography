@@ -1,0 +1,1 @@
+dh_tile, tile_door, Wide Armored Door Ajar, top-down view, wall doorway, door-open, intact, hand-painted, gothic, single-door, blast-door, hazard-chevrons, skull-motif, riveted-frame

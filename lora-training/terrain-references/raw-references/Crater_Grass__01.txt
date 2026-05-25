@@ -1,0 +1,1 @@
+terrain_crater, Blast Crater In Grassland With Ejecta Spray, top-down view, damaged, charred-soil grass-biome radial-ejecta

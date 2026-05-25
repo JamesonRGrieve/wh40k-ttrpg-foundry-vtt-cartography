@@ -1,0 +1,1 @@
+ship_despoiler_class, Chaos Despoiler-Class Battleship, top-down view, dh_voidship_hull, chaos, battleship, red-and-gold-armor, twin-pointed-spires, layered-armor-blocks, ornate-stern

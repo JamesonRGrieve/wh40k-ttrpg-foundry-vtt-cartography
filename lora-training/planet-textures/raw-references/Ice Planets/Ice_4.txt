@@ -1,0 +1,1 @@
+planet_ice, Dim Polar World, orbital view, frozen-shadow scattered-lights, dark-violet umber

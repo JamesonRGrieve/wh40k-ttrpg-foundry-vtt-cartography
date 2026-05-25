@@ -1,0 +1,1 @@
+dh_tile, tile_door, Armored Door Between Skull Bollards, top-down view, wall doorway, door-closed, intact, hand-painted, garrison, single-door, blast-door, riveted-frame, skull-motif, flanking-posts

@@ -1,0 +1,1 @@
+terrain_crater, Impact Crater Cluster, top-down view, damaged, scorched dirt and debris ejecta, seamless-candidate

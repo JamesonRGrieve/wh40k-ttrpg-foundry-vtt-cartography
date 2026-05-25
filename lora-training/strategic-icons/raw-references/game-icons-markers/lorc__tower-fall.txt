@@ -1,0 +1,1 @@
+icon_strategic, Collapsing Tower, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, breach, ruined

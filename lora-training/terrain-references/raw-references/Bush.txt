@@ -1,0 +1,1 @@
+terrain_vegetation, Single Shrub Bush, top-down view, intact, green-foliage scrub plant, isolated-element

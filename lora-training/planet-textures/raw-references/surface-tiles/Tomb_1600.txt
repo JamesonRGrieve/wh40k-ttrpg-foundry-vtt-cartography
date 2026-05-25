@@ -1,0 +1,1 @@
+planet_tomb, Tomb World Surface, surface texture, dark machined necron substrate with geometric conduit patterning, near-black gunmetal palette

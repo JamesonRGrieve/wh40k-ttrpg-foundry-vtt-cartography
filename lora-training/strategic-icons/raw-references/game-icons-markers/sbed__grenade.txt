@@ -1,0 +1,1 @@
+icon_strategic, Grenade Capsule, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, ordnance, munition

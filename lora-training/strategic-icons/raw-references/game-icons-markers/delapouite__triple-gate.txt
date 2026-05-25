@@ -1,0 +1,1 @@
+icon_strategic, Triple-Arch Gatehouse, strategic map symbology, fortification-marker, monochrome-glyph, flat-vector, gate, entrance

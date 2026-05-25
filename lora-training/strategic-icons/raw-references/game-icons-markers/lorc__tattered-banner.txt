@@ -1,0 +1,1 @@
+icon_strategic, Tattered Banner On Pole, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, routed, ruined

@@ -1,0 +1,1 @@
+dh_tile, tile_corner, Stone Wall Corner With Conduit Stubs, top-down view, wall corner, outside-corner, damaged, hand-painted, industrial, stone-wall, l-shaped, pipe-stub, crenellation

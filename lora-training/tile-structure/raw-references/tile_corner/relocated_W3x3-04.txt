@@ -1,0 +1,1 @@
+dh_tile, tile_corner, Gothic Wall Corner With Lit Arcade, top-down view, wall corner, outside-corner, intact, hand-painted, gothic, brick, l-shaped, gothic-arcade, vent-fan, skull-relief

@@ -1,0 +1,1 @@
+terrain_water, Circular Pond With Earthen Rim, top-down view, intact, still-dark-water earthen-shoreline

@@ -1,0 +1,1 @@
+icon_strategic, Hospital Building, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, medicae, medical

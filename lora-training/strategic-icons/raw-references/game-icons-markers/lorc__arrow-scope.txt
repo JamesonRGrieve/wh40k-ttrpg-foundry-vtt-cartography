@@ -1,0 +1,1 @@
+icon_strategic, Arrow Striking Scope, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, target, hit

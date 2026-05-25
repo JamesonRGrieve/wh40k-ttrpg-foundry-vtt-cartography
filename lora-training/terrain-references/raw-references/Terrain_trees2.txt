@@ -1,0 +1,1 @@
+terrain_forest, Cluster of Three Tree Canopies, top-down view, intact, dark green deciduous woodland, seamless-candidate

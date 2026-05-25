@@ -1,0 +1,1 @@
+terrain_crater, Blast Crater With Scorched Ejecta, top-down view, damaged, charred-soil dark-ejecta-fan

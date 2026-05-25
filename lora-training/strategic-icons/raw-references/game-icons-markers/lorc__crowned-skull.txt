@@ -1,0 +1,1 @@
+icon_strategic, Crowned Skull, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, warlord, death

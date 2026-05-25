@@ -1,0 +1,1 @@
+sector_chart, The Rimward Bounds Sector Chart, sector cartography, system-nodes, named regions (Jakhosta's Wedge, The Verdigris Waste, The Tidal Stars, The Rektephus Reach, Rifts of Heolton), world-type legend panel, dark red-tinted starfield, Imperial gothic chart frame

@@ -1,0 +1,1 @@
+planet_rocky, Rust Barrens, surface texture, oxidized weathered crust, rust-brown copper

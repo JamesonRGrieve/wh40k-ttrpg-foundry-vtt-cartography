@@ -1,0 +1,1 @@
+planet_lava, Volcanic World Surface, surface texture, radial magma fissure network with cinder cones and glowing vents, charcoal grey molten orange palette

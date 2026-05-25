@@ -29,8 +29,8 @@ import yaml
 
 CARDINAL = {"north", "south", "east", "west"}
 HERE = Path(__file__).resolve().parent
-CAMPAIGN_ROOT = HERE.parent.parent
-STAMPS = CAMPAIGN_ROOT / ".ai-gen" / "cartography" / "stamps"
+CAMPAIGN_ROOT = HERE.parent
+STAMPS = CAMPAIGN_ROOT / ".lora-training-output" / "cartography" / "stamps"
 
 
 def main() -> int:

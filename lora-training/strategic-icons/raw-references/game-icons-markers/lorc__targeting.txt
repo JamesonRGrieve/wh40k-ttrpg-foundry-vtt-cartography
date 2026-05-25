@@ -1,0 +1,1 @@
+icon_strategic, Targeting Array, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, target, lock

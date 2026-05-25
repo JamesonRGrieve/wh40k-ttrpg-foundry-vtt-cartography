@@ -1,0 +1,1 @@
+icon_strategic, Dragon Skull Head, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, beast, allegiance

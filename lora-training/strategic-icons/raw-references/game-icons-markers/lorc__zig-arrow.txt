@@ -1,0 +1,1 @@
+icon_strategic, Segmented Zigzag Arrow, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, directional, route

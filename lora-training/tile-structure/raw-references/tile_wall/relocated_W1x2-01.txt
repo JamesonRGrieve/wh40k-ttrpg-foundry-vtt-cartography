@@ -1,0 +1,1 @@
+dh_tile, tile_wall, Tall Brick Wall Run With Skull Reliefs, top-down view, edge-tileable wall run, intact, hand-painted, gothic, brick, straight-segment, skull-relief, dark-tone

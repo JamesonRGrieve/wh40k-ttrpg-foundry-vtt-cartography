@@ -1,0 +1,1 @@
+icon_strategic, Spread-Winged Eagle Emblem, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, heraldic-bird, allegiance

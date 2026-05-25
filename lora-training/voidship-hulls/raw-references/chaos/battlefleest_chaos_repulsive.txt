@@ -1,0 +1,1 @@
+ship_repulsive_class, Chaos Repulsive-Class Grand Cruiser, top-down view, dh_voidship_hull, chaos, grand-cruiser, ornate-prow, red-and-gold-trim, lateral-batteries, painterly

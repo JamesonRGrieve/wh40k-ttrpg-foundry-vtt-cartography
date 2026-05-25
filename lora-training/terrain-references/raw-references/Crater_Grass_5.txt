@@ -1,0 +1,1 @@
+terrain_crater, Small Crater In Grassland, top-down view, damaged, charred-basin grass-rim earthen-ejecta

@@ -1,0 +1,1 @@
+sector_chart, Jericho Reach Chart, sector cartography, system-nodes, salient-bounds, warp-routes, named regions (The Hadex Anomaly, Sunhar Drift Star Cluster, The Black Reef, Orpheus Salient), world-type legend, dark red-and-black starfield, Imperial gothic chart frame

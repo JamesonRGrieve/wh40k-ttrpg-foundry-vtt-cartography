@@ -1,0 +1,1 @@
+icon_strategic, Wheeled Armoured Personnel Carrier, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, armour, transport

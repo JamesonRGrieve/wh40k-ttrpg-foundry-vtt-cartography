@@ -1,0 +1,1 @@
+planet_plague, Plague World Biomass Surface, surface texture, dense cellular vein lattice with fluid nodules, deep emerald green palette

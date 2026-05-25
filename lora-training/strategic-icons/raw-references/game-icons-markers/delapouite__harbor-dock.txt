@@ -1,0 +1,1 @@
+icon_strategic, Harbor Dock With Ship Prow, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, port

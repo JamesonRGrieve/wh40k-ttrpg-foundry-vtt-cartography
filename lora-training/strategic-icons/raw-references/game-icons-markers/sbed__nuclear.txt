@@ -1,0 +1,1 @@
+icon_strategic, Trefoil Radiation Fan, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, radiation

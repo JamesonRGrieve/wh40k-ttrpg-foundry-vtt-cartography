@@ -1,0 +1,1 @@
+dh_tile, tile_hab_floor, Board-Formed Layered Concrete Floor, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, poured-concrete, gray, horizontal-lift-lines, wood-grain-imprint, mottled, faint-cracks

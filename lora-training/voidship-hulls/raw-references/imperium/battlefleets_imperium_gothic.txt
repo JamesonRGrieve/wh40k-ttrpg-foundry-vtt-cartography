@@ -1,0 +1,1 @@
+ship_gothic_class, Imperial Gothic-Class Cruiser, top-down view, dh_voidship_hull, imperial-navy, cruiser, twin-side-batteries, red-prow-cap, gunmetal-hull, stepped-armor

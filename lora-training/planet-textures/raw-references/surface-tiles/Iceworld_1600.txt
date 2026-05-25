@@ -1,0 +1,1 @@
+planet_ice, Ice World Surface, surface texture, vast snowfield with fractured ice ridges and pressure cracks, white pale-blue palette

@@ -1,0 +1,1 @@
+icon_strategic, Flagged Barracks Hut, strategic map symbology, fortification-marker, monochrome-glyph, flat-vector, encampment

@@ -1,0 +1,1 @@
+icon_strategic, Flag Over Arrow Objective, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, capture-point

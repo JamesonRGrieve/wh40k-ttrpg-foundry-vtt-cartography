@@ -1,0 +1,1 @@
+dh_tile, tile_garrison_floor, Rockcrete Drill Yard, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, rockcrete, hardstand, smooth, fine-grain, worn

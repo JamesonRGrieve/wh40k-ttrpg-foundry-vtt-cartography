@@ -1,0 +1,1 @@
+dh_tile, tile_medicae_floor, Turquoise Glazed Ceramic Tile, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, ceramic-tile, glazed, grouted, clinical, smooth

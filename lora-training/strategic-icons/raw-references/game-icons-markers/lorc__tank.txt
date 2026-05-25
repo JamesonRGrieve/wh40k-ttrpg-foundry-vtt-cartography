@@ -1,0 +1,1 @@
+icon_strategic, Battle Tank, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, armour, tracked

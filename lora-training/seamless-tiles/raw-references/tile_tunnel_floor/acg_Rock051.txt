@@ -1,0 +1,1 @@
+dh_tile, tile_tunnel_floor, Stratified Rock Floor, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, bare-rock, hewn-stone, layered-strata, jagged, lichen-stained

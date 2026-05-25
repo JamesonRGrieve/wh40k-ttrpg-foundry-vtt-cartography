@@ -1,0 +1,1 @@
+dh_tile, tile_hab_floor, Cracked Spalled Rockcrete Surface, top-down view, seamlessly tileable, square-tileable, damaged, photo-texture, rockcrete, cream, hairline-cracks, spalling, dark-staining, rust-bleed, mottled

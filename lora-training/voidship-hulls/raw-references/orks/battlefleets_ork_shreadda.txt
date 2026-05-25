@@ -1,0 +1,1 @@
+ship_roks_class, Ork Shreadda Roks-Class Crude Vessel, top-down view, dh_voidship_hull, orks, kroozer, ramshackle-armor, asymmetric-bolted-plates, mixed-paint-panels

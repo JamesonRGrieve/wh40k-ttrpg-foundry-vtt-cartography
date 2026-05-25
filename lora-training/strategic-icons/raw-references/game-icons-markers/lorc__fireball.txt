@@ -1,0 +1,1 @@
+icon_strategic, Swirling Fireball, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, fire, blast

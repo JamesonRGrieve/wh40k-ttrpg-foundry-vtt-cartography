@@ -1,0 +1,1 @@
+icon_strategic, Snarling Wolf Head, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, beast, allegiance

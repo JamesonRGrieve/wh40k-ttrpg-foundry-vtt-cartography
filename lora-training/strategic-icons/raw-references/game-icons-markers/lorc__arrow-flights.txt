@@ -1,0 +1,1 @@
+icon_strategic, Arrow Flights Volley, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, volley, ranged

@@ -1,0 +1,1 @@
+dh_stamp, Gated Stone Staircase, top-down view, intact, fixture, dungeon-stairs, iron-gate, 2x1-grid

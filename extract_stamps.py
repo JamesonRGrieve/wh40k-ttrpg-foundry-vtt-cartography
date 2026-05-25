@@ -339,9 +339,9 @@ def process_image(path: Path, out_dir: Path) -> int:
 
 def main(argv: list[str]) -> int:
     here = Path(__file__).resolve().parent
-    campaign_root = here.parent.parent
-    source_grids = campaign_root / ".ai-gen" / "cartography" / "source-grids"
-    out_dir = campaign_root / ".ai-gen" / "cartography" / "stamps"
+    campaign_root = here.parent
+    source_grids = campaign_root / ".lora-training-output" / "cartography" / "source-grids"
+    out_dir = campaign_root / ".lora-training-output" / "cartography" / "stamps"
 
     if argv:
         targets = [Path(a) for a in argv]

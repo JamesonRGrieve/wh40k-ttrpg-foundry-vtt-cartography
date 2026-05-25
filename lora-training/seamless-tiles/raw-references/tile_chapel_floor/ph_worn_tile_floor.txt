@@ -1,0 +1,1 @@
+dh_tile, tile_chapel_floor, Worn Distressed Stone Tiles, top-down view, seamlessly tileable, square-tileable, damaged, photo-texture, stone, grouted, slab, chipped, mottled, weathered

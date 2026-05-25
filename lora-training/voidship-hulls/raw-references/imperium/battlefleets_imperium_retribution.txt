@@ -1,0 +1,1 @@
+ship_retribution_class, Imperial Retribution-Class Battleship, top-down view, dh_voidship_hull, imperial-navy, battleship, long-spine, multiple-lateral-sponsons, gothic-prow, painterly-monochrome

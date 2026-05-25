@@ -1,0 +1,1 @@
+icon_strategic, Round Banded Shield, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, defence, heraldic

@@ -1,0 +1,1 @@
+dh_tile, tile_wall, Collapsing Brick Wall Run With Rubble, top-down view, edge-tileable wall run, damaged, hand-painted, gothic, brick, straight-segment, skull-relief, rubble-base

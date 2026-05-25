@@ -1,0 +1,1 @@
+icon_strategic, Bound Arrow Cluster, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, massed-advance, vector

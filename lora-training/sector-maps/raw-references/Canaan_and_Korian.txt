@@ -1,0 +1,1 @@
+sector_chart, Canaan And Korian Sector Charts Composite, sector cartography, system-nodes, sub-sector-bounds, warp-routes, named regions (The Fringe, Sil's Soliloquy, Burning Front, Korus Sector), multi-panel composite of sector charts with system-detail insets, dark starfield

@@ -1,0 +1,1 @@
+icon_strategic, Crown In Laurel Wreath, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, honour, command

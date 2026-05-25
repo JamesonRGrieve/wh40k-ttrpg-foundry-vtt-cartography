@@ -1,0 +1,1 @@
+icon_strategic, Eagle Head Profile, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, heraldic-bird, allegiance

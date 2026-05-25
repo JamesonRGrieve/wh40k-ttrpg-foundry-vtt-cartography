@@ -1,0 +1,1 @@
+dh_tile, tile_endcap, Buttressed Wall T-Junction With Shrine, top-down view, wall endcap, t-junction, intact, hand-painted, gothic, stone-wall, buttress, shrine-node, skull-cluster-endcap

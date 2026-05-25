@@ -1,0 +1,1 @@
+terrain_rock, Boulder Cluster On Grass, top-down view, intact, large-granite-boulder scree-pebbles grass-biome-base

@@ -1,0 +1,1 @@
+icon_strategic, Target Dummy Figure, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, practice-target

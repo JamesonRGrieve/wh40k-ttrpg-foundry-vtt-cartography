@@ -1,0 +1,1 @@
+terrain_rock, Large Bare Rock Boulder with Rubble Scatter, top-down view, intact, grey weathered stone, seamless-candidate

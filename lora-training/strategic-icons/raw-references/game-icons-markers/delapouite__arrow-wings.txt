@@ -1,0 +1,1 @@
+icon_strategic, Winged Pick Arrow, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, attack-vector, strike

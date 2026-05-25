@@ -1,0 +1,1 @@
+sector_chart, Canaan Sector Chart, sector cartography, system-nodes, sub-sector-bounds, named regions (Sil's Soliloquy, Martyr's Grave, Subsector Tristitia, Argent Passage, The Fringe), world-type legend, dark blue starfield, Imperial gothic chart frame

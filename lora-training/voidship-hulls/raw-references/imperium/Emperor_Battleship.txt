@@ -1,0 +1,1 @@
+ship_emperor_class, Imperial Emperor-Class Battleship, top-down view, dh_voidship_hull, imperial-navy, battleship, dark-gothic-hull, central-spine, dorsal-cathedral-spires, lateral-batteries, painterly-dark

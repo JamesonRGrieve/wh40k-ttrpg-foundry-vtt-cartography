@@ -1,0 +1,1 @@
+dh_tile, tile_wall, Short Stone Wall Block, top-down view, edge-tileable wall run, intact, hand-painted, gothic, stone-wall, short-segment, pitted

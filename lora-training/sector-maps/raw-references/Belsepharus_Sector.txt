@@ -1,0 +1,1 @@
+sector_chart, Belsepharus Sector Segmentum Ultima Chart, sector cartography, system-nodes, sub-sector-bounds, warp-routes, named regions (Mandrak Salient, Red Void Sea, Maelstrom Influence Zone), world-type legend, deep red nebula starfield, Imperial gothic chart

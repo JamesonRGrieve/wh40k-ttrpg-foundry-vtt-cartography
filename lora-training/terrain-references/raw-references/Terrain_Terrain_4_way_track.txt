@@ -1,0 +1,1 @@
+terrain_rock, Mossy Bare Rock Outcrop Patch, top-down view, intact, rocky-ground gray-stone moss-lichen, seamless-candidate

@@ -1,0 +1,491 @@
+{
+  "raw-references/tile_corner/dasig_WALL-CORNER-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-CORNER-01.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_corner/dasig_WALL-CORNER-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-CORNER-02.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_corner/dasig_WALL-CORNER-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-CORNER-03.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_corner/dasig_WALL-CORNER-04.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-CORNER-04.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_corner/dasig_WALL-CORNER-05.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-CORNER-05.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_corner/dasig_WALL-CORNER-06.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-CORNER-06.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_corner/relocated_W2x2-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Wall Corner With Pillar",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x2-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_corner/relocated_W2x2-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Ruined Stone Wall Corner With Fan",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x2-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_corner/relocated_W2x2-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Crumbling Stone Wall Corner",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x2-03.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_corner/relocated_W3x3-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Large L-Shaped Stone Wall Corner",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x3-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_corner/relocated_W3x3-04.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Corner Stone Wall With Gem Arcade",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x3-04.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_corner/relocated_W3x3-05.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Corner Wall With Quatrefoil Pillar",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x3-05.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_corner/relocated_W3x3-07.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Corner Stone Wall With Foliate Pillar",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x3-07.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_corner/relocated_W3x4-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Tall Corner Stone Wall With Vent Fan",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x4-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/dasig_WALL-DOOR-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-DOOR-01.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_door/dasig_WALL-DOOR-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-DOOR-02.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_door/relocated_Armamentorum.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Gothic Stone Doorway With Green Status Indicators",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/Armamentorum.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_DOOR_1x1-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Armored Bulkhead Door",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/DOOR 1x1-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_DOOR_1x1-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Sealed Hatch Door",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/DOOR 1x1-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_DOOR_2x1-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Wide Blast Door",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/DOOR 2x1-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_DOOR_2x1-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Wide Riveted Gate",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/DOOR 2x1-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_DOOR_2x2-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Gothic Stone Door With Central Pipe And Hazard Chevrons",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/DOOR_2x2-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_Gemini_Generated_Image_df988mdf988mdf98_03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Rectangular Doors In A Plain",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/Gemini_Generated_Image_df988mdf988mdf98_03.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_Gemini_Generated_Image_qhlcmqhlcmqhlcmq_05.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Rectangular Metal Door With A Rectangular Shape",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/Gemini_Generated_Image_qhlcmqhlcmqhlcmq_05.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_UH-DOOR-1x2-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Underhive Gothic Hazard Door With Yellow Chevrons",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/UH-DOOR-1x2-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_door/relocated_W2x1-09.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Reinforced Metal Bulkhead Section",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-09.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W1x1-06.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Narrow Stone Wall Pillar",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W1x1-06.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W2x1-08.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Hive Gothic Stone Wall With Skull Endcaps",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-08.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W3x3-06.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "T-Junction Stone Wall With Pillar",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x3-06.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W3x3-09.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "lora-training/stamps/train/fixtures (re-binned from _rejected)",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W3x4-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Tall T-Junction Stone Wall With Fan",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x4-03.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W3x4-04.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Tall T-Junction Gothic Stone Wall",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x4-04.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W4x1-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Long Stone Wall With Pillars",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x1-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W4x3-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Wide T-Junction Stone Wall",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x3-03.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W4x3-04.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Wide T-Junction Wall With Shrine Pillar",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x3-04.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W4x4-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Cross-Junction Stone Wall",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x4-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_endcap/relocated_W4x4-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Cross-Junction Wall With Center Pillar",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x4-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/dasig_111936-DaSIG_Wall_Dark_2x1.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/111936-DaSIG Wall Dark 2x1.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-01.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-02.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-03.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-04.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-04.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-05.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-05.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-06.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-06.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-07.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-07.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-08.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-08.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-09.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-09.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-10.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-10.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-11.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-11.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-12.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-12.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-13.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-13.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-14.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-14.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-15.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-15.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-16.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-16.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-17.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-17.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-18.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-18.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-19.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-19.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-20.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-20.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-STAIRS-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-STAIRS-01.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/dasig_WALL-STAIRS-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/.corpus/uncertain/pending-visual-review/stamps/props/WALL-STAIRS-02.png",
+    "source": "dasig-on-disk"
+  },
+  "raw-references/tile_wall/relocated_Terrain_wall_SW.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Damaged Dark Stone Wall Segment",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/Terrain_wall_SW.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W1x1-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Armored Bunker Wall Block",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W1x1-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W1x1-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Wall With Vent Fan",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W1x1-03.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W1x1-04.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Block Wall Section",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W1x1-04.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W1x1-05.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Dark Brick Wall Segment",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W1x1-05.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W1x1-08.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Hive Gothic Domed Brick Wall Section",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W1x1-08.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W1x1-09.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "origin": "lora-training/stamps/train/fixtures (re-binned from _rejected)",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W1x2-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Tall Stone Wall With Skull Reliefs",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W1x2-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W2x1-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Wall With Skull Hooks",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W2x1-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Wall With Aquila Frieze",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W2x1-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Wall With Scalloped Trim",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-03.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W2x1-04.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Wall With Red Gem Arcade",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-04.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W2x1-05.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Wall With Arched Hearth",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-05.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W2x1-07.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Riveted Metal Wall Beam",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-07.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W2x1-10.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Broken Stone Wall End",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-10.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W2x1-11.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Layered Brick Wall Segment",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W2x1-11.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W3x1-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Stone Wall With Buttressed Ends",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x1-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W3x1-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Collapsing Stone Wall With Rubble",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x1-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W3x3-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "L-Shaped Stone Wall With Vent Fan",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x3-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W3x3-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "L-Shaped Stone Wall With Red Gems",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x3-03.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W3x3-08.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Long L-Shaped Gothic Wall With Fan",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x3-08.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W3x4-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Tall L-Shaped Stone Wall With Fan",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W3x4-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W4x1-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Long Stone Wall With Red Gem Arcade",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x1-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W4x1-03.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Long Stone Wall With Quatrefoil Ends",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x1-03.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W4x3-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Large L-Shaped Stone Wall With Fan",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x3-01.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W4x3-02.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Large L-Shaped Stone Wall Run",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W4x3-02.png",
+    "source": "stage3-relocation"
+  },
+  "raw-references/tile_wall/relocated_W6x1-01.png": {
+    "license": "vendored DaSIG map-asset pack (.corpus)",
+    "old_stamp_caption_subject": "Very Long Stone Wall With Arcades",
+    "origin": "/home/jameson/Documents/dh-campaign/.lora-training/lora-training/stamps/train/fixtures/W6x1-01.png",
+    "source": "stage3-relocation"
+  }
+}

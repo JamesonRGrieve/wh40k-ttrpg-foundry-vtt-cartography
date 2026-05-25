@@ -1,0 +1,1 @@
+terrain_rock, Bare Rock Boulder Pair, top-down view, intact, grey weathered stone, seamless-candidate

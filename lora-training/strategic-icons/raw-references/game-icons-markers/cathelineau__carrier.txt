@@ -1,0 +1,1 @@
+icon_strategic, Aircraft Carrier, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, naval, carrier

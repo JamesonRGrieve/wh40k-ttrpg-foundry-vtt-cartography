@@ -1,0 +1,1 @@
+planet_death, Daemon World Surface, surface texture, warp-corrupted-mottling, ice-blue-violet, blue-purple-cyan

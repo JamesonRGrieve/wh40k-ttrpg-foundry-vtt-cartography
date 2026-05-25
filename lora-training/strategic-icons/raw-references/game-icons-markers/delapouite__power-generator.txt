@@ -1,0 +1,1 @@
+icon_strategic, Power Generator Plant, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, power, infrastructure

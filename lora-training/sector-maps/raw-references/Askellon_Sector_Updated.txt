@@ -1,0 +1,1 @@
+sector_chart, Askellon Sector Chart, sector cartography, system-nodes, sub-sector-bounds, named regions (Thule/Aspis Drift/Cyclopia/Roboute Sub-Sectors), planet-type legend panel, dark green-purple starfield, ornate Imperial gothic chart frame

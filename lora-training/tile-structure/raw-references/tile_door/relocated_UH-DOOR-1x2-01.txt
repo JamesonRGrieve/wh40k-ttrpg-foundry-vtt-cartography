@@ -1,0 +1,1 @@
+dh_tile, tile_door, Twin Underhive Hazard Doors, top-down view, wall doorway, door-closed, intact, hand-painted, underhive, double-door, blast-door, hazard-chevrons, central-pipe, riveted-frame, vertical-run

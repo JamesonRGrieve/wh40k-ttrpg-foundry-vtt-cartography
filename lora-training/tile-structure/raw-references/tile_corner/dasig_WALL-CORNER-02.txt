@@ -1,0 +1,1 @@
+dh_tile, tile_corner, Bunkered Stone Wall Corner, top-down view, wall corner, outside-corner, damaged, hand-painted, garrison, stone-wall, l-shaped, firing-slit, crenellation, breach

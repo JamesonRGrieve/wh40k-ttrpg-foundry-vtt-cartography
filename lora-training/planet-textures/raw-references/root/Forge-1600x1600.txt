@@ -1,0 +1,1 @@
+planet_hive, Urban Sprawl Mapped, surface texture, dense-block grid infrared, cream rust black

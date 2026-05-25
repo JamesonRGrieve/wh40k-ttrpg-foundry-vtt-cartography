@@ -1,0 +1,932 @@
+{
+  "raw-references/tile_chapel_floor/acg_Marble006.jpg": {
+    "asset_id": "Marble006",
+    "category": "Marble",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "6",
+      "black",
+      "dark",
+      "gray",
+      "grey",
+      "marble",
+      "stone"
+    ],
+    "url": "https://ambientcg.com/a/Marble006"
+  },
+  "raw-references/tile_chapel_floor/acg_Marble012.jpg": {
+    "asset_id": "Marble012",
+    "category": "Marble",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "012",
+      "12",
+      "bathroom",
+      "elegant",
+      "glossy",
+      "gray",
+      "grey",
+      "kitchen",
+      "light",
+      "marble",
+      "modern",
+      "natural",
+      "polished",
+      "smooth",
+      "stone",
+      "veined",
+      "white"
+    ],
+    "url": "https://ambientcg.com/a/Marble012"
+  },
+  "raw-references/tile_chapel_floor/acg_Marble014.jpg": {
+    "asset_id": "Marble014",
+    "category": "Marble",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "14",
+      "beige",
+      "light",
+      "marble",
+      "smooth",
+      "stone"
+    ],
+    "url": "https://ambientcg.com/a/Marble014"
+  },
+  "raw-references/tile_chapel_floor/acg_Marble016.jpg": {
+    "asset_id": "Marble016",
+    "category": "Marble",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "16",
+      "black",
+      "marble",
+      "reflective",
+      "shiny"
+    ],
+    "url": "https://ambientcg.com/a/Marble016"
+  },
+  "raw-references/tile_chapel_floor/acg_Marble021.jpg": {
+    "asset_id": "Marble021",
+    "category": "Marble",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "21",
+      "bright",
+      "marble",
+      "reflective",
+      "shiny",
+      "white"
+    ],
+    "url": "https://ambientcg.com/a/Marble021"
+  },
+  "raw-references/tile_chapel_floor/ph_checkered_pavement_tiles.jpg": {
+    "asset_id": "checkered_pavement_tiles",
+    "category": "tiles",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "rough",
+      "outdoor",
+      "outdoor flooring",
+      "concrete",
+      "tiled",
+      "pavement",
+      "urban",
+      "sidewalk",
+      "rough  ",
+      "checkerboard",
+      "sidewalk texture",
+      "pavement patterned",
+      "pavers",
+      "square pattern"
+    ],
+    "url": "https://polyhaven.com/a/checkered_pavement_tiles"
+  },
+  "raw-references/tile_chapel_floor/ph_stone_embedded_tiles.jpg": {
+    "asset_id": "stone_embedded_tiles",
+    "category": "tiles",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "tiles",
+      "outdoor",
+      "embedded pebble",
+      "stone embedded",
+      "mixed stone",
+      "speckled ",
+      "speckled tiles ",
+      "square tiles"
+    ],
+    "url": "https://polyhaven.com/a/stone_embedded_tiles"
+  },
+  "raw-references/tile_chapel_floor/ph_worn_tile_floor.jpg": {
+    "asset_id": "worn_tile_floor",
+    "category": "tiles",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "old",
+      "weathered",
+      "worn",
+      "rough",
+      "tiles",
+      "tiled",
+      "distressed",
+      "discolored",
+      "damaged",
+      "floor",
+      "deteriorated",
+      "peeling"
+    ],
+    "url": "https://polyhaven.com/a/worn_tile_floor"
+  },
+  "raw-references/tile_garrison_floor/acg_Asphalt023S.jpg": {
+    "asset_id": "Asphalt023S",
+    "category": "Asphalt",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "23",
+      "asphalt",
+      "grey",
+      "road",
+      "smooth"
+    ],
+    "url": "https://ambientcg.com/a/Asphalt023S"
+  },
+  "raw-references/tile_garrison_floor/acg_Asphalt025C.jpg": {
+    "asset_id": "Asphalt025C",
+    "category": "Asphalt",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "25",
+      "asphalt",
+      "dark",
+      "rain",
+      "wet"
+    ],
+    "url": "https://ambientcg.com/a/Asphalt025C"
+  },
+  "raw-references/tile_garrison_floor/acg_Asphalt026C.jpg": {
+    "asset_id": "Asphalt026C",
+    "category": "Asphalt",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "26",
+      "asphalt",
+      "cracked",
+      "damaged",
+      "rough"
+    ],
+    "url": "https://ambientcg.com/a/Asphalt026C"
+  },
+  "raw-references/tile_garrison_floor/acg_Asphalt031.jpg": {
+    "asset_id": "Asphalt031",
+    "category": "Asphalt",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "31",
+      "asphalt",
+      "floor",
+      "grey",
+      "light",
+      "stone",
+      "street"
+    ],
+    "url": "https://ambientcg.com/a/Asphalt031"
+  },
+  "raw-references/tile_garrison_floor/acg_Asphalt032.jpg": {
+    "asset_id": "Asphalt032",
+    "category": "Asphalt",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "32",
+      "asphalt",
+      "grey",
+      "smooth"
+    ],
+    "url": "https://ambientcg.com/a/Asphalt032"
+  },
+  "raw-references/tile_garrison_floor/ph_aerial_asphalt_01.jpg": {
+    "asset_id": "aerial_asphalt_01",
+    "category": "asphalt",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "road",
+      "flat",
+      "cracked"
+    ],
+    "url": "https://polyhaven.com/a/aerial_asphalt_01"
+  },
+  "raw-references/tile_garrison_floor/ph_asphalt_01.jpg": {
+    "asset_id": "asphalt_01",
+    "category": "asphalt",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "rough",
+      "dirty",
+      "asphalt",
+      "road",
+      "worn"
+    ],
+    "url": "https://polyhaven.com/a/asphalt_01"
+  },
+  "raw-references/tile_garrison_floor/ph_asphalt_06.jpg": {
+    "asset_id": "asphalt_06",
+    "category": "asphalt",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "rough",
+      "dirty",
+      "scuffed",
+      "driveway texture",
+      "sidewalk",
+      "hard surface",
+      "handmade",
+      "raw"
+    ],
+    "url": "https://polyhaven.com/a/asphalt_06"
+  },
+  "raw-references/tile_garrison_floor/ph_asphalt_pit_lane.jpg": {
+    "asset_id": "asphalt_pit_lane",
+    "category": "asphalt",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "asphalt",
+      "asphalt road",
+      "road",
+      "roadway",
+      "tarmac road",
+      "race track",
+      "pit lane"
+    ],
+    "url": "https://polyhaven.com/a/asphalt_pit_lane"
+  },
+  "raw-references/tile_garrison_floor/ph_asphalt_track.jpg": {
+    "asset_id": "asphalt_track",
+    "category": "asphalt",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "track",
+      "asphalt",
+      "racing",
+      "road",
+      "speedway",
+      "asphalt road",
+      "race track",
+      "tarmac road"
+    ],
+    "url": "https://polyhaven.com/a/asphalt_track"
+  },
+  "raw-references/tile_hab_floor/acg_Concrete034.jpg": {
+    "asset_id": "Concrete034",
+    "category": "Concrete",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "34",
+      "concrete",
+      "grey",
+      "light",
+      "plaster",
+      "smooth"
+    ],
+    "url": "https://ambientcg.com/a/Concrete034"
+  },
+  "raw-references/tile_hab_floor/acg_Concrete042A.jpg": {
+    "asset_id": "Concrete042A",
+    "category": "Concrete",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "42",
+      "concrete",
+      "smooth"
+    ],
+    "url": "https://ambientcg.com/a/Concrete042A"
+  },
+  "raw-references/tile_hab_floor/acg_Concrete046.jpg": {
+    "asset_id": "Concrete046",
+    "category": "Concrete",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "46",
+      "concrete",
+      "gray",
+      "grey",
+      "plain",
+      "smooth",
+      "wall",
+      "white"
+    ],
+    "url": "https://ambientcg.com/a/Concrete046"
+  },
+  "raw-references/tile_hab_floor/acg_Concrete047A.jpg": {
+    "asset_id": "Concrete047A",
+    "category": "Concrete",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "047",
+      "47",
+      "beige",
+      "clean",
+      "concrete",
+      "construction",
+      "durable",
+      "floor",
+      "grey",
+      "industrial",
+      "layered",
+      "minimalist",
+      "modern",
+      "neutral",
+      "outdoor",
+      "pavement",
+      "rough",
+      "solid",
+      "stone",
+      "urban"
+    ],
+    "url": "https://ambientcg.com/a/Concrete047A"
+  },
+  "raw-references/tile_hab_floor/acg_Concrete048.jpg": {
+    "asset_id": "Concrete048",
+    "category": "Concrete",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "048",
+      "48",
+      "beige",
+      "clean",
+      "concrete",
+      "floor",
+      "grey",
+      "hard",
+      "indoor",
+      "industrial",
+      "layered",
+      "minimalist",
+      "modern",
+      "outdoor",
+      "smooth",
+      "stone",
+      "subtle",
+      "uniform",
+      "urban"
+    ],
+    "url": "https://ambientcg.com/a/Concrete048"
+  },
+  "raw-references/tile_hab_floor/ph_concrete_floor_02.jpg": {
+    "asset_id": "concrete_floor_02",
+    "category": "concrete",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "rough",
+      "moss",
+      "plain"
+    ],
+    "url": "https://polyhaven.com/a/concrete_floor_02"
+  },
+  "raw-references/tile_hab_floor/ph_concrete_floor_worn_001.jpg": {
+    "asset_id": "concrete_floor_worn_001",
+    "category": "concrete",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "worn",
+      "old",
+      "plain",
+      "grey",
+      "weathered",
+      "bare",
+      "discolored"
+    ],
+    "url": "https://polyhaven.com/a/concrete_floor_worn_001"
+  },
+  "raw-references/tile_hab_floor/ph_concrete_layers_02.jpg": {
+    "asset_id": "concrete_layers_02",
+    "category": "concrete",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "worn",
+      "chipped",
+      "rough",
+      "weathered",
+      "cracked",
+      "damaged",
+      "wall",
+      "discolored",
+      "dirty",
+      "dry",
+      "concrete",
+      "grey",
+      "plastered",
+      "plaster"
+    ],
+    "url": "https://polyhaven.com/a/concrete_layers_02"
+  },
+  "raw-references/tile_hab_floor/ph_concrete_wall_003.jpg": {
+    "asset_id": "concrete_wall_003",
+    "category": "concrete",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "worn",
+      "painted",
+      "discolored",
+      "dirty",
+      "yellow",
+      "white",
+      "weathered",
+      "cracked",
+      "scratched",
+      "chipped",
+      "rough"
+    ],
+    "url": "https://polyhaven.com/a/concrete_wall_003"
+  },
+  "raw-references/tile_hab_floor/ph_gravel_embedded_concrete.jpg": {
+    "asset_id": "gravel_embedded_concrete",
+    "category": "concrete",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "pavement",
+      "rough",
+      "concrete",
+      "cement",
+      "gravel",
+      "coarse",
+      "stony",
+      "gravelly",
+      "cemented floor",
+      "floor",
+      "gravelly ground",
+      "gritty"
+    ],
+    "url": "https://polyhaven.com/a/gravel_embedded_concrete"
+  },
+  "raw-references/tile_industrial_floor/acg_Metal046B.jpg": {
+    "asset_id": "Metal046B",
+    "category": "Metal",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "46",
+      "black",
+      "dark",
+      "dirty",
+      "metal"
+    ],
+    "url": "https://ambientcg.com/a/Metal046B"
+  },
+  "raw-references/tile_industrial_floor/acg_Metal055A.jpg": {
+    "asset_id": "Metal055A",
+    "category": "Metal",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "55",
+      "iron",
+      "metal"
+    ],
+    "url": "https://ambientcg.com/a/Metal055A"
+  },
+  "raw-references/tile_industrial_floor/acg_Metal063.jpg": {
+    "asset_id": "Metal063",
+    "category": "Metal",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "063",
+      "63",
+      "aged",
+      "black",
+      "brown",
+      "dark",
+      "fine",
+      "glossy",
+      "industrial",
+      "metal",
+      "oxidized",
+      "polished",
+      "rust",
+      "rusty",
+      "smooth",
+      "steel"
+    ],
+    "url": "https://ambientcg.com/a/Metal063"
+  },
+  "raw-references/tile_industrial_floor/ph_factory_wall.jpg": {
+    "asset_id": "factory_wall",
+    "category": "metal",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "wall",
+      "fence",
+      "industrial",
+      "corrugated"
+    ],
+    "url": "https://polyhaven.com/a/factory_wall"
+  },
+  "raw-references/tile_industrial_floor/ph_metal_plate.jpg": {
+    "asset_id": "metal_plate",
+    "category": "metal",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "bare",
+      "painted",
+      "rusty",
+      "pattern",
+      "iron",
+      "factory",
+      "industrial",
+      "steel"
+    ],
+    "url": "https://polyhaven.com/a/metal_plate"
+  },
+  "raw-references/tile_industrial_floor/ph_rust_coarse_01.jpg": {
+    "asset_id": "rust_coarse_01",
+    "category": "metal",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "coarse",
+      "rusty",
+      "rust",
+      "red",
+      "stained",
+      "grunge",
+      "old",
+      "weathered",
+      "iron",
+      "metal",
+      "steel",
+      "rough"
+    ],
+    "url": "https://polyhaven.com/a/rust_coarse_01"
+  },
+  "raw-references/tile_medicae_floor/acg_Tiles040.jpg": {
+    "asset_id": "Tiles040",
+    "category": "Tiles",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "40",
+      "clean",
+      "smooth",
+      "terrazzo",
+      "tiles",
+      "white"
+    ],
+    "url": "https://ambientcg.com/a/Tiles040"
+  },
+  "raw-references/tile_medicae_floor/acg_Tiles107.jpg": {
+    "asset_id": "Tiles107",
+    "category": "Tiles",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "107",
+      "tiles",
+      "white"
+    ],
+    "url": "https://ambientcg.com/a/Tiles107"
+  },
+  "raw-references/tile_medicae_floor/acg_Tiles132A.jpg": {
+    "asset_id": "Tiles132A",
+    "category": "Tiles",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "132",
+      "bathroom",
+      "blue",
+      "clean",
+      "pool",
+      "tiles"
+    ],
+    "url": "https://ambientcg.com/a/Tiles132A"
+  },
+  "raw-references/tile_medicae_floor/acg_Tiles133A.jpg": {
+    "asset_id": "Tiles133A",
+    "category": "Tiles",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "133",
+      "bathroom",
+      "clean",
+      "kitchen",
+      "modern",
+      "new",
+      "tiles",
+      "white"
+    ],
+    "url": "https://ambientcg.com/a/Tiles133A"
+  },
+  "raw-references/tile_medicae_floor/ph_concrete_tiles_02.jpg": {
+    "asset_id": "concrete_tiles_02",
+    "category": "tiles",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "concrete",
+      "rough concrete",
+      "outdoor",
+      "pavement",
+      "walkway",
+      "sidewalk texture",
+      "sidewalk",
+      "urban",
+      "outdoor flooring",
+      "pavers",
+      "outdoor walkway"
+    ],
+    "url": "https://polyhaven.com/a/concrete_tiles_02"
+  },
+  "raw-references/tile_medicae_floor/ph_interior_tiles.jpg": {
+    "asset_id": "interior_tiles",
+    "category": "tiles",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "tiles",
+      "tiled",
+      "floor",
+      "indoor flooring",
+      "grout lines",
+      "square tiles",
+      "ceramic",
+      "ceramic tiles",
+      "beige",
+      "squares",
+      "speckle"
+    ],
+    "url": "https://polyhaven.com/a/interior_tiles"
+  },
+  "raw-references/tile_metal_grating/ph_metal_grate_rusty.jpg": {
+    "asset_id": "metal_grate_rusty",
+    "category": "metal",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "rusty",
+      "rust",
+      "metallic",
+      "grate",
+      "weathered",
+      "worn",
+      "old",
+      "manhole",
+      "pattern",
+      "pavement",
+      "iron",
+      "urban",
+      "city",
+      "steel",
+      "metal",
+      "rough",
+      "industrial"
+    ],
+    "url": "https://polyhaven.com/a/metal_grate_rusty"
+  },
+  "raw-references/tile_ship_deck/acg_MetalPlates004.jpg": {
+    "asset_id": "MetalPlates004",
+    "category": "MetalPlates",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "4",
+      "decoration",
+      "design",
+      "metal",
+      "plates"
+    ],
+    "url": "https://ambientcg.com/a/MetalPlates004"
+  },
+  "raw-references/tile_ship_deck/acg_MetalPlates006.jpg": {
+    "asset_id": "MetalPlates006",
+    "category": "MetalPlates",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "6",
+      "decoration",
+      "design",
+      "metal",
+      "plates"
+    ],
+    "url": "https://ambientcg.com/a/MetalPlates006"
+  },
+  "raw-references/tile_ship_deck/acg_MetalPlates008.jpg": {
+    "asset_id": "MetalPlates008",
+    "category": "MetalPlates",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "8",
+      "decoration",
+      "design",
+      "metal",
+      "plates"
+    ],
+    "url": "https://ambientcg.com/a/MetalPlates008"
+  },
+  "raw-references/tile_ship_deck/acg_MetalPlates013.jpg": {
+    "asset_id": "MetalPlates013",
+    "category": "MetalPlates",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "13",
+      "metal",
+      "plates",
+      "rust",
+      "rusted"
+    ],
+    "url": "https://ambientcg.com/a/MetalPlates013"
+  },
+  "raw-references/tile_ship_deck/acg_MetalPlates014.jpg": {
+    "asset_id": "MetalPlates014",
+    "category": "MetalPlates",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "14",
+      "metal",
+      "plates"
+    ],
+    "url": "https://ambientcg.com/a/MetalPlates014"
+  },
+  "raw-references/tile_ship_deck/ph_green_metal_rust.jpg": {
+    "asset_id": "green_metal_rust",
+    "category": "metal",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "painted",
+      "ship",
+      "tank",
+      "industrial",
+      "canister"
+    ],
+    "url": "https://polyhaven.com/a/green_metal_rust"
+  },
+  "raw-references/tile_ship_deck/ph_rusty_metal_02.jpg": {
+    "asset_id": "rusty_metal_02",
+    "category": "metal",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "rust",
+      "old",
+      "weathered",
+      "painted"
+    ],
+    "url": "https://polyhaven.com/a/rusty_metal_02"
+  },
+  "raw-references/tile_sump_floor/acg_Ground054.jpg": {
+    "asset_id": "Ground054",
+    "category": "Ground",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "54",
+      "beach",
+      "dirt",
+      "ground",
+      "mud",
+      "sand"
+    ],
+    "url": "https://ambientcg.com/a/Ground054"
+  },
+  "raw-references/tile_sump_floor/acg_Ground103.jpg": {
+    "asset_id": "Ground103",
+    "category": "Ground",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "103",
+      "brown",
+      "dirt",
+      "earth",
+      "ground",
+      "natural",
+      "old",
+      "outdoor",
+      "rough",
+      "soil",
+      "uneven"
+    ],
+    "url": "https://ambientcg.com/a/Ground103"
+  },
+  "raw-references/tile_sump_floor/acg_Ground104.jpg": {
+    "asset_id": "Ground104",
+    "category": "Ground",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "104",
+      "beige",
+      "brown",
+      "crumbly",
+      "dirt",
+      "earth",
+      "granular",
+      "ground",
+      "natural",
+      "old",
+      "rough",
+      "soil",
+      "uneven"
+    ],
+    "url": "https://ambientcg.com/a/Ground104"
+  },
+  "raw-references/tile_tunnel_floor/acg_Rock051.jpg": {
+    "asset_id": "Rock051",
+    "category": "Rock",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "51",
+      "cliff",
+      "mountain",
+      "rock",
+      "stone",
+      "wall"
+    ],
+    "url": "https://ambientcg.com/a/Rock051"
+  },
+  "raw-references/tile_tunnel_floor/acg_Rock058.jpg": {
+    "asset_id": "Rock058",
+    "category": "Rock",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "58",
+      "cliff",
+      "grey",
+      "rock"
+    ],
+    "url": "https://ambientcg.com/a/Rock058"
+  },
+  "raw-references/tile_tunnel_floor/acg_Rock060.jpg": {
+    "asset_id": "Rock060",
+    "category": "Rock",
+    "license": "CC0 1.0",
+    "source": "ambientcg",
+    "tags": [
+      "60",
+      "cliff",
+      "rock",
+      "rough"
+    ],
+    "url": "https://ambientcg.com/a/Rock060"
+  },
+  "raw-references/tile_tunnel_floor/ph_rock_face_03.jpg": {
+    "asset_id": "rock_face_03",
+    "category": "rock",
+    "license": "CC0 1.0",
+    "source": "polyhaven",
+    "tags": [
+      "rough",
+      "rock",
+      "cliff",
+      "uneven",
+      "weathered",
+      "wall",
+      "cracked",
+      "stone",
+      "rock face",
+      "rugged",
+      "chipped",
+      "eroded",
+      "cracks",
+      "rocks"
+    ],
+    "url": "https://polyhaven.com/a/rock_face_03"
+  }
+}

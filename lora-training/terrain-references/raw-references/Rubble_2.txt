@@ -1,0 +1,1 @@
+terrain_ruins, Collapsed Debris Rubble Pile, top-down view, damaged, broken-masonry scattered-wreckage urban-ruin, isolated-element

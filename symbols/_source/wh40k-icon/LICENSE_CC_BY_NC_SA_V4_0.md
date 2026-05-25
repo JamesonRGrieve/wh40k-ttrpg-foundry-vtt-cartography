@@ -382,7 +382,7 @@ Section 6 -- Term and Termination.
      License.
 
 
-Section 7 -- Other Terms and Conditions.
+the Scholam Undertunnels -- Other Terms and Conditions.
 
   a. The Licensor shall not be bound by any additional or different
      terms or conditions communicated by You unless expressly agreed.

@@ -1,0 +1,59 @@
+# Hive-city LoRA — corpus generation manifest (STARTER).
+#
+# Status: deferred-goal bin, seeded 2026-05-17 from the corpus audit
+# (CORPUS_AUDIT.md Phase 3). This is a STARTER manifest documenting
+# the trigger namespace + shape-invariance clauses; expand the
+# treatment/angle/lighting matrices (model on
+# ../iconography/manifest.yaml) when a Gemini-conditioned generation
+# pass is actually stood up.
+#
+# Goal (TODO.md "Hive-city density for the district archetype"):
+# teach the model true 40K hive-city scale — dense stacked vertical
+# mega-blocks, kilometre-deep trans-hive arteries, smog-choked
+# spires, layered structures sharing walls/roofs across kilometres.
+# NOT a scattering of freestanding building stamps on open ground
+# (that reads as a frontier town, which is the documented failure
+# mode this LoRA must avoid).
+#
+# Reference-image conditioning: the curated audit-approved hive
+# maps under raw-references/ are the canonical-shape anchors fed to
+# Gemini alongside the prompt (same architecture as the iconography
+# pipeline).
+
+generator: hive_city
+
+defaults:
+  # Hive-city is a SCALE/DENSITY concept, not a single silhouette.
+  # The invariant the LoRA must bind is "stacked vertical urban
+  # megastructure density", invariant to palette, smog level, and
+  # time of day.
+  shape_invariance: >-
+    preserve dense stacked vertical mega-block urbanism — layered
+    structures sharing walls and roofs across kilometres, trans-hive
+    arteries, spires rising from a continuous built mass; never a
+    scatter of freestanding buildings on open ground
+  exclusions: "no UI, no labels, no measurement grid, no watermark, no text"
+
+# Trigger namespace (per CORPUS_AUDIT.md bin table). Each binds a
+# distinct viewing register of the same hive-density concept:
+trigger_namespace:
+  hive_overhead: >-
+    top-down orbital/aerial view of a hive city — continuous dense
+    roofscape, block seams, arterial canyons, spire footprints
+  hive_cross_section: >-
+    vertical cut-away through a hive — stacked habs, sump at base,
+    spire at crown, internal strata and load structure visible
+  hive_spire: >-
+    a hive spire / upper-hive massif rising from the lower-hive
+    sprawl, smog-shrouded, ornamented Imperial-gothic megastructure
+
+# Acceptance (mirrors CORPUS_AUDIT.md hive-city criteria):
+#   - recognizable hive-city density (stacked vertical mega-blocks)
+#   - reject flat town/frontier renders even if labeled "hive"
+#   - >=1024px; clean (no UI/grid/labels/watermark)
+#
+# Matrix axes (treatment x angle x lighting) — TO BE EXPANDED when
+# the generation pass is stood up; model on ../iconography/manifest.yaml.
+common_treatments: []   # starter — append when generation is built
+angles: []
+lighting: []

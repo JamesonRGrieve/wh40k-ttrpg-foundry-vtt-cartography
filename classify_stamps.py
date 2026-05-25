@@ -69,8 +69,8 @@ MODEL_NAME = "MiaoshouAI/Florence-2-large-PromptGen-v2.0"
 FALLBACK_MODEL_NAME = "microsoft/Florence-2-large"
 SUBFOLDER = "dh_classify"  # subdirectory under ComfyUI's input/ for our uploads
 HERE = Path(__file__).resolve().parent
-CAMPAIGN_ROOT = HERE.parent.parent
-STAMPS_DIR = CAMPAIGN_ROOT / ".ai-gen" / "cartography" / "stamps"
+CAMPAIGN_ROOT = HERE.parent
+STAMPS_DIR = CAMPAIGN_ROOT / ".lora-training-output" / "cartography" / "stamps"
 
 POLL_INTERVAL_S = 1.2
 POLL_TIMEOUT_S = 300

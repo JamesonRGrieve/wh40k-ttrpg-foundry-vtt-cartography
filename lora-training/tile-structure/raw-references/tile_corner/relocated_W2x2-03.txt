@@ -1,0 +1,1 @@
+dh_tile, tile_corner, Gothic Wall Corner With Relief Trim, top-down view, wall corner, outside-corner, damaged, hand-painted, gothic, brick, l-shaped, relief-trim, rubble, skull-relief

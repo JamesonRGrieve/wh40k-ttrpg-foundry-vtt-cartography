@@ -1,0 +1,1 @@
+terrain_vegetation, Deciduous Forest Cluster, top-down view, intact, dense green broadleaf tree canopy woodland

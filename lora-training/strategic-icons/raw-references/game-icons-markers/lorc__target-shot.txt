@@ -1,0 +1,1 @@
+icon_strategic, Speared Target Disc, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, struck, hit

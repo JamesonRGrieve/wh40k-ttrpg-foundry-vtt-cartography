@@ -1,0 +1,52 @@
+# ai-toolkit config (STUB, auto-generated 2026-05-17T17:57Z) — voidship-hulls LoRA.
+# Target model: ostris/Flex.1-alpha (per CORPUS_AUDIT.md canonical stack).
+#   NOTE: pre-existing iconography.yaml/stamps.yaml/portraits.yaml target
+#   "Flux.1 [dev]" — operator must reconcile dev vs Flex.1-alpha before run.
+# Corpus: 45 images, long-edge min/med/max = 564/742/2000px.
+# train-ready
+# Captions: <stem>.txt sidecars, trigger-namespaced (verified 0 non-conformant).
+job: extension
+config:
+  name: wh40k_voidship_hulls
+  process:
+    - type: sd_trainer
+      training_folder: /opt/lora-training/outputs
+      device: cuda
+      trigger_word: null            # captions already carry trigger tokens
+      network:
+        type: lora
+        linear: 16
+        linear_alpha: 16
+      save:
+        dtype: float16
+        save_every: 250
+        max_step_saves_to_keep: 12
+        push_to_hub: false
+      datasets:
+        - folder_path: /opt/lora-training/voidship-hulls/raw-references
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution: [768, 768]   # bucketing on; see min/med/max above
+      train:
+        batch_size: 1
+        steps: 1500
+        gradient_accumulation_steps: 4
+        train_unet: true
+        train_text_encoder: false
+        gradient_checkpointing: true
+        noise_scheduler: flowmatch
+        optimizer: adamw8bit
+        lr: 1e-4
+        dtype: bf16
+      model:
+        name_or_path: ostris/Flex.1-alpha
+        is_flux: true
+        quantize: true
+      sample:
+        sampler: flowmatch
+        sample_every: 250
+        width: 768
+        height: 768
+        prompts: []                  # operator: add trigger-token probes

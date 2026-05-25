@@ -1,0 +1,1 @@
+ship_nemesis_class, Imperial Nemesis-Class Capital Ship, top-down view, dh_voidship_hull, imperial-navy, capital-ship, tall-spinal-tower, gothic-spire, yellow-prow-trim, gunmetal-hull

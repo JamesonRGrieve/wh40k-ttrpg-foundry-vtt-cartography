@@ -1,0 +1,1 @@
+dh_stamp, Dark Metal Door Slab, top-down view, intact, fixture, door, dark-metal, narrow-rectangular, 1x2-grid

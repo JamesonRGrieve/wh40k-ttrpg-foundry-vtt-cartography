@@ -1,0 +1,57 @@
+# Strategic-icons LoRA — corpus generation manifest (STARTER).
+#
+# Status: deferred-goal bin, seeded 2026-05-17 from the corpus audit
+# (CORPUS_AUDIT.md Phase 3). This is a STARTER manifest documenting
+# the trigger namespace + shape-invariance clauses; expand the
+# treatment/angle/lighting matrices (model on
+# ../iconography/manifest.yaml) when a Gemini-conditioned generation
+# pass is actually stood up.
+#
+# Goal: teach the model clean strategic / operational map symbology —
+# unit markers, objective markers, movement arrows, and template
+# sheets — rendered as flat, readable iconography legible at small
+# scale on a strategic or operational map. NOT illustrative art,
+# photos, or UI screenshots.
+#
+# Reference-image conditioning: the curated audit-approved icon
+# sheets / symbols under raw-references/ are the canonical-shape
+# anchors fed to Gemini alongside the prompt (same architecture as
+# the iconography pipeline).
+
+generator: strategic_icons
+
+defaults:
+  # Strategic-icons is a SYMBOLOGY concept, not a single silhouette.
+  # The invariant the LoRA must bind is "clean flat readable
+  # strategic/operational map symbology", invariant to palette and
+  # specific glyph subject.
+  shape_invariance: >-
+    preserve clean strategic / operational map symbology — flat,
+    readable unit / objective / movement markers and icon templates
+    legible at small scale on a map; never illustrative art, photos,
+    or UI chrome
+  exclusions: "no UI, no labels, no measurement grid, no watermark, no text"
+
+# Trigger namespace. Each binds a distinct register of the same
+# strategic-symbology concept:
+trigger_namespace:
+  icon_strategic: >-
+    a clean flat strategic / operational map symbol — unit, objective,
+    or movement marker, readable at small scale, suitable as map
+    symbology
+  icon_strategic_sheet: >-
+    a coherent icon template sheet — a grid of related strategic map
+    symbols sharing one flat readable style, usable as a symbology
+    reference set
+
+# Acceptance (mirrors CORPUS_AUDIT.md strategic-icons criteria):
+#   - clean strategic/operational map symbol OR coherent icon
+#     template sheet usable as strategic-map symbology reference
+#   - readable; not random art / photo / UI-screenshot
+#   - no large watermark
+#
+# Matrix axes (treatment x angle x lighting) — TO BE EXPANDED when
+# the generation pass is stood up; model on ../iconography/manifest.yaml.
+common_treatments: []   # starter — append when generation is built
+angles: []
+lighting: []

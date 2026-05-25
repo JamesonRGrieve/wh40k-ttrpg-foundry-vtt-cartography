@@ -1,0 +1,1 @@
+dh_tile, tile_wall, Very Long Brick Wall Run With Arcades, top-down view, edge-tileable wall run, intact, hand-painted, gothic, brick, straight-segment, arcade, skull-relief, buttressed

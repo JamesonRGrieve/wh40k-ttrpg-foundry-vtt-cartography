@@ -1,0 +1,1 @@
+icon_strategic, Up Arrow Ring Badge, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, directional, advance

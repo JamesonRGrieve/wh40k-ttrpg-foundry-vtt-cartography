@@ -1,0 +1,1 @@
+dh_tile, tile_sump_floor, Compacted Gravel Earth Ground, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, gravel-mud, packed-earth, gritty, stained, churned

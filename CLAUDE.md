@@ -96,6 +96,59 @@ required:
    is a regression — high painterly fidelity does not excuse
    silhouette drift. Flat SVG-on-render compositing is NOT an
    acceptable terminal state for these scenes either.
+10. **External layout ingestion via ControlNet** — a render path
+    that takes a *finished* orthographic layout exported from an
+    external tool (Dungeon Scrawl, Dungeondraft, hand-drawn floor
+    plans, etc.) and renders it to Solenne-grade painterly quality
+    while **honoring the source geometry structurally**. The source
+    line art / wall strokes / room edges drive a ControlNet
+    (lineart / canny / depth) img2img pass — the renderer follows
+    the actual walls and openings of the export, not just a
+    color-region mask. This is distinct from the current
+    `spacecraft` mode, which is regional `ConditioningSetMask`
+    prompting over a canonical-color mask we paint ourselves: that
+    path honors *where* regions are but discards the source's
+    drawn structure. No ControlNet node exists in either saved
+    workflow today — building this is in scope and required. A
+    pipeline that can only consume masks we hand-paint, with no way
+    to ingest an external layout-tool export as structural
+    guidance, does not satisfy this goal.
+
+    **Chosen ingestion route (decided 2026-05-25).** Prefer a
+    *semantic* path over a blind edge-tracing one. A raw canny /
+    lineart ControlNet has zero semantics — it reproduces lines but
+    does not know a gap is a door or a glyph is stairs, so doors and
+    stairs render unreliably. Instead:
+    - **Source: Dungeondraft → Universal VTT (`.dd2vtt`)**, not a
+      flat PNG. The UVTT export is JSON carrying walls
+      (`line_of_sight`), portals (doors + windows, with bounds /
+      rotation / open-closed), and lights as explicit vector
+      geometry — i.e. the semantics are labelled by the source tool,
+      not guessed by a model.
+    - **Converter (built): `dd2vtt_to_layout.py`.** `.dd2vtt` →
+      canonical region-color PNG + `<stem>.placements.json` (door +
+      light pixel coordinates for tile-layer auto-placement). Walls /
+      lights map onto canonical colors; doors are carved as floor
+      openings by default (`--door-as`) since the door leaf is an
+      interactive tile, not base-map architecture. Output is aliased
+      and palette-checked (no AA fall-through, gotcha #11). **Stairs
+      are not a first-class UVTT type** — tag them as a Dungeondraft
+      object layer mapped to a region color, or hand-paint after
+      conversion. `uv run dd2vtt_to_layout.py --self-test` verifies
+      the path with no real export needed.
+    - **Render: feed the region map to the existing `spacecraft`
+      regional-conditioning mode** (`BattlemapSpacecraft.json`) — it
+      already assigns each color region its own prompt, which is
+      exactly per-class treatment — or to a segmentation ControlNet
+      on Flux.1-dev / Qwen-Image. Both are zero-training (see
+      "Tooling decisions"). Canny/lineart on Flux/Qwen is the dumb
+      fallback only when the source is raster-only (e.g. a flat
+      Dungeon Scrawl PNG with no vector layer).
+    - **Points are NOT a ControlNet input.** "Drop a point, put a
+      toilet here" is a separate placement step (generate-and-place
+      a stamp on the tile layer, or SAM2-point → inpaint into the
+      base). The click feeds the placement/inpaint step as a
+      coordinate; it never touches the base ControlNet/region map.
 
 These requirements are immutable. They are not subject to
 reinterpretation, scope reduction, or "diminishing returns"
@@ -105,7 +158,7 @@ it or escalate to the operator — NOT to redefine the bar downward.
 
 When uncertain whether work-in-progress is on track, re-read this
 list. Every commit, every render, every helper exists to advance
-one of these nine items toward shippable Solenne-grade quality.
+one of these ten items toward shippable Solenne-grade quality.
 
 ---
 
@@ -135,6 +188,7 @@ Battlemap rendering pipeline (orthogonal to stamps):
 
 ```
 make-room / make-corridor / hand-paint  ─►  layouts/<slug>.png  (canonical region colors)
+dd2vtt_to_layout.py <export>.dd2vtt    ─►  layouts/<slug>.png + .placements.json  (Dungeondraft UVTT ingest)
 quantize-layout (optional)              ─►  snaps hand-painted colors to canonical palette
 generate_battlemap.py interior --style  ─►  txt2img map for an empty interior at any scale
 generate_battlemap.py spacecraft        ─►  img2img map driven by region-colored layout
@@ -146,14 +200,27 @@ generate_battlemap.py compose           ─►  preview the layered stack before
 Every script has an inline `# /// script` block declaring its uv
 dependencies; run with `uv run <script>.py`.
 
-**Architecture-only by default.** The driver renders **only**
-walls / floor / ramps / viewports / lighting in the base map. Chairs,
-lockers, consoles, beds, tables, and other furniture belong on
-Foundry's stamp/tile layer (placed via Mass Edit), NOT on the base
-map. The saved `BattlemapSpacecraft.json` includes furniture region
-nodes for backward compat, but the driver auto-neutralizes them
-(prompt rewritten to "empty deck plating") unless the operator opts
-in with `--render-furniture chair|locker|console`.
+**Architecture-only by default — but not as dogma.** The driver
+renders **only** walls / floor / ramps / viewports / lighting in the
+base map by default. The real distinction (operator-confirmed
+2026-05-25) is *what the object does at the table*, not stamps-vs-
+baked:
+- **Tile layer:** interactive props (a crate the players search, a
+  door, a chair that gets knocked over) and anything needing
+  **variant cycling** (intact → damaged → destroyed via Active
+  Tiles). Flattening these into the base destroys their purpose.
+- **Bake into the base is fine — often more organic:** fixed set-
+  dressing that never moves and benefits from sitting *in* the
+  lighting (built-in fixtures, wall grime, rubble, ambient clutter).
+  Painted in by the same model in the same light avoids the pasted-
+  sticker look a composited stamp can have. This is the operator's
+  call, not a rule violation.
+The saved `BattlemapSpacecraft.json` includes furniture region
+nodes; the driver auto-neutralizes them (prompt rewritten to "empty
+deck plating") unless the operator opts in with
+`--render-furniture chair|locker|console`. Point-grounded inpaint
+(SAM2-point → inpaint, ComfyUI-Angelo, Qwen-Image-Edit) is the other
+supported bake-in path.
 
 ---
 
@@ -656,11 +723,14 @@ exist to prevent that recurrence. Full post-mortem in
   `../../deploy.sh cartography`. The deploy script is authoritative.
 - **Never run two GPU jobs concurrently.** Classify, assign, and any
   battlemap render all share the 3090's ComfyUI queue. Serialize.
-- **Never render furniture into a base battlemap by default.** The
-  driver enforces architecture-only output; opt in via
-  `--render-furniture` only when you intentionally want the base to
-  include those features (rare — Foundry's tile layer is the right
-  place for furniture).
+- **Default furniture to the tile layer when the object is
+  interactive or needs variant cycling** (searched crate, door,
+  knocked-over chair, intact/damaged/destroyed sets). Fixed set-
+  dressing (built-in fixtures, grime, rubble, ambient clutter) MAY
+  be baked into the base when that reads more organically — the
+  operator's call, not a violation. `--render-furniture` and
+  point-grounded inpaint are the supported bake-in paths. Do NOT
+  lecture the operator that architecture-only is absolute; it isn't.
 - **Never edit a sidecar by hand and then re-run `classify_stamps.py
   --force`** — `--force` overwrites the script-owned fields. Use
   `--force` only when you intend to re-classify.

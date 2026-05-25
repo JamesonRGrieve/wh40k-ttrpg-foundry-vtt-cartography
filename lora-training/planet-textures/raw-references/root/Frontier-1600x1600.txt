@@ -1,0 +1,1 @@
+planet_rocky, Arid Scrubland, surface texture, sparse-scrub dust-plain, grey-tan olive

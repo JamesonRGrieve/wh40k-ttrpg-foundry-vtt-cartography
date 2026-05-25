@@ -17,7 +17,7 @@ from PIL import Image
 from google import genai
 
 HERE = Path(__file__).resolve().parent
-PROJECT = Path("/home/jameson/Documents/dh-campaign/.foundry/cartography")
+PROJECT = HERE  # dh-campaign/.lora-training (pipeline root; holds .env)
 load_dotenv(PROJECT / ".env")
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 

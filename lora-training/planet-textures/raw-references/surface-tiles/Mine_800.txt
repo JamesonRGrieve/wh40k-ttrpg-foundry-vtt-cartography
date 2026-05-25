@@ -1,0 +1,1 @@
+planet_mining, Mining World Surface, surface texture, terraced open-pit strata with excavation benches and tailing ridges, pale grey ochre rock palette

@@ -52,7 +52,7 @@ layer in between.
 | Location | Archetype | Notes |
 | --- | --- | --- |
 | Hab District 9 Scholam | `hab` (modified) | Add "rows of empty desks" via prompt or render bare and stamp desks. |
-| Section 7 Maintenance Tunnels | `tunnel` | Long aspect ratio recommended (1024x512 or 2048x768). |
+| Scholam Undertunnels | `tunnel` | Long aspect ratio recommended (1024x512 or 2048x768). |
 
 ### Ore Processing District
 

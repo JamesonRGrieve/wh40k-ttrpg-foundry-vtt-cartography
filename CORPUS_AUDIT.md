@@ -1,7 +1,11 @@
 # Corpus audit — visual inspection protocol
 
 This document defines how to triage the 5,012 candidate images currently
-staged at `.foundry-cartography/.corpus/uncertain/pending-visual-review/`
+staged at `.corpus/uncertain/pending-visual-review/` (the corpus tree
+is `.corpus/`, relative to the cartography pipeline root — the
+top-level `.lora-training/` submodule of the dh-campaign vault — NOT
+inside the `.foundry-cartography/` deploy module, which is pure JSON +
+images per the repo-reorg split)
 into the project's LoRA training corpora. It exists because a prior
 session triaged 19 GB of donated assets using filename + folder heuristics
 *without opening a single image* and falsely labeled the output as
@@ -109,11 +113,109 @@ inspection, it meets *all* of:
    - Hive-city → recognizable hive-city density (stacked vertical
      mega-blocks); reject flat town renders even if labeled "hive."
 5. **Not a duplicate** of something already in the corpus dir.
+6. **No large watermark.** Diagonal body-crossing watermarks, repeated
+   tiling watermarks, and prominent artist/source attribution washes
+   across the image body are immediate-disqualifying — **route to
+   `.corpus/garbage/<bin>-large-watermark/`, NOT to `needs-text-removal/`.**
+   Watermarks are designed to be hard to remove cleanly; even when an
+   inpainting pass succeeds, residual artifacts will teach the LoRA to
+   reproduce them, and the operator/budget cost of cleaning a single
+   watermarked image rarely justifies the inclusion when a clean
+   variant of the same image is almost always available in the donor
+   archive (e.g. `*_0.png` next to `*WM_0.png`). Filename suffixes
+   `WM`, `wm`, `Wm`, `watermarked` are a strong indicator — check for
+   the non-WM sibling and prefer it. Small corner attribution, room
+   labels, scale bars, and class-designation overlays are NOT
+   watermarks in this sense; route those to `needs-text-removal/`.
 
 If an image is high-quality but for a *different* bin than the one it
 was staged in, move it to the right bin. (Example: many files staged
 under `chaos-iconography/Chaos/` are actually Imperial vehicles that
 happened to live in a "Chaos" folder in the donor archive.)
+
+### Bin routing — Stage 1 vs Stage 2 for voidships
+
+When auditing voidship material, distinguish the two LoRA stages
+explicitly:
+
+- **Stage 1 — voidship-hulls (`lora-training/voidship-hulls/`).**
+  Empty top-down hull silhouettes. NO interior visible, NO room
+  labels, NO floor plans, NO km-scale annotations. The hull is a
+  closed/opaque silhouette from above with only exterior surface
+  features (gothic dorsal spires, gun batteries, prow shape, lateral
+  sponsons, engine block). Captions stay compact: trigger + view +
+  hull-feature tags.
+- **Stage 2 — voidship-layouts (`lora-training/voidship-layouts/`).**
+  Top-down cutaway diagrams showing interior rooms, room
+  enumeration, and connectivity. Annotated class-stat cards with
+  numbered room legends, cutaways with km-scale bars and labeled
+  compartments, and any image where the *interior organization* is
+  visible. **Captions must be exhaustive** per the layout-caption
+  rule: enumerate every room type, describe its contents, use
+  positional/relational verbiage (amidships, aft of bridge,
+  starboard of spinal artery, dorsal cluster), and count/locate
+  doors and corridors. Bin-routing destination is
+  `lora-training/voidship-layouts/raw-references/needs-text-removal/`
+  when the image carries overlay text that needs inpainting-out
+  before training.
+
+A "voidship has overlay text" image is NOT a reject — it's a Stage-2
+candidate. Only large watermarks (criterion #6 above) qualify as
+immediate garbage. The original voidship Step-2 criterion #4
+("Voidships → single vessel in top-down view, clean dark background,
+no overlay text/labels") applies specifically to the Stage-1 hull
+corpus and does NOT disqualify Stage-2 layout material.
+
+### Stamps — mandatory acceptance + caption rules (operator-set 2026-05-16)
+
+A stamp is corpus-eligible ONLY if all hold (in addition to the
+general acceptance criteria):
+
+1. **Orthographic only.** Strict top-down orthographic projection,
+   no perspective foreshortening, no isometric skew. Isometric /
+   3-4-perspective / oblique props render wrong on a flat Foundry
+   tile layer. Non-orthographic →
+   `.corpus/uncertain/stamps-rejected-non-orthographic/` (do not
+   approve, do not "close-enough" them in).
+2. **Transparent background required for `train/`.** Subject must
+   be alpha-cut with real transparency to enter `train/`. BUT an
+   opaque-background stamp that is otherwise on-target
+   (orthographic, on-canon, clean subject) is NOT a reject — it is
+   salvageable by background removal, exactly analogous to the
+   voidship `needs-text-removal/` holding pattern. Route it to
+   `lora-training/stamps/needs-background-removal/<category>/` and
+   **write its caption sidecar there** (it has been Read; caption
+   at move-time). It re-enters `train/<category>/` after the
+   background is alpha-cut. Only send to
+   `.corpus/uncertain/stamps-rejected-*` or `.corpus/garbage/` if
+   it fails a different criterion (non-orthographic, off-canon,
+   low-res, watermark, duplicate). Alpha channel present is
+   necessary but NOT sufficient — alpha-present-but-visually-opaque
+   also goes to `needs-background-removal/`. JPGs (no alpha) with a
+   good subject also go to `needs-background-removal/`, not reject.
+3. **Art-style tag mandatory.** Every caption carries one explicit
+   style descriptor: `painterly | hand-painted | 3d-render |
+   flat-vector | line-art | pixel-art | cel-shaded` (lowercase
+   hyphenated; extend as needed). Describe the style you SEE.
+4. **State tag verified from the image**, not defaulted:
+   `intact | damaged | destroyed | active | inactive`. Lit/powered
+   → `active`; broken/burned → `damaged`/`destroyed`; no state axis
+   → `intact`.
+
+Updated stamp caption format:
+`dh_stamp, <Title Case Subject>, top-down view, <art-style>, <state>, <category-tag>, <descriptive-tag>…, <NxM-grid if visible>`
+
+These rules postdate the bulk subagent pass that approved ~456
+stamps WITHOUT enforcing rules 1–3. Remediation: 47 opaque-bg
+pairs (with their captions) relocated to
+`lora-training/stamps/needs-background-removal/<category>/` as a
+post-processing holding area (NOT discarded — they re-enter
+`train/` after alpha-cutting). The remaining ~409 trained
+non-Gemini stamps still need a per-file Read remediation pass to
+reject non-orthographic, move alpha-present-but-opaque to
+`needs-background-removal/`, add the art-style tag, and verify
+state. Pre-existing Gemini-generated trained stamps are out of
+audit scope unless a full-corpus recheck is requested.
 
 ## Inspection protocol
 
@@ -246,6 +348,40 @@ per-file Read pass for the captions, you cannot afford to approve
 the bin — leave it in `pending-visual-review/` and document the
 partial work.
 
+## Reject analysis sidecars — write at move-time too (no exceptions)
+
+The same discipline applies to **rejects**, for the same reason. A
+rejected image moved into `_rejected/<reason>/` with no sidecar is a
+landmine: a future audit cannot tell what it is, why it was cut, or
+whether it should be re-binned / used as a supplemental seed /
+garbaged — without re-opening and re-Reading every image, which is
+the exact cost this audit exists to avoid paying twice.
+
+So: **every rejected image gets a `.txt` analysis sidecar written in
+the same atomic op as the reject+move decision, from the pixels in
+context, never from the filename.** No "rejects don't need notes"
+exemption. If you cannot afford the per-file Read to write the
+reject sidecar, you cannot afford to reject the file — leave it in
+place and document the partial work.
+
+Reject sidecar format (`<same-basename>.txt` beside the image inside
+`_rejected/<reason>/`), labeled lines (NOT the single-line caption
+CSV — rejects need disposition, not a training caption), greppable:
+
+```
+verdict: reject
+reason: <slug — matches the _rejected/<slug>/ bin dir>
+subject: <Title Case — what the image ACTUALLY shows, from pixels>
+why: <one sentence — the specific disqualifying property>
+disposition: <rebin:<corpus/bin> | supplemental-seed:<archetype> | garbage | hold-operator>
+reviewed: <model>, <date>
+```
+
+`disposition` is the audit payload: it tells the next pass the
+recommended action so the reject can be actioned by `grep` without a
+re-Read (e.g. `grep -rl '^disposition: rebin' _rejected/`). Use
+`hold-operator` when the call is genuinely the operator's.
+
 ## Caption format
 
 Caption sidecars are `.txt` files with the same basename as the
@@ -373,6 +509,108 @@ who decided what.
 
 ## Audit log
 
+### Voidship-layouts Stage-2 corpus seeded — 2026-05-14 — Claude Opus 4.7
+
+- Discovered mid-session that the 23 voidship images previously routed to `.corpus/uncertain/voidship-annotated-{class-cards,cutaways}/` as Stage-1 rejects are actually **Stage-2 voidship-layout LoRA training data**. Stage 2 learns interior room organization; annotated cutaways and class-card schematics with room labels are precisely that data, not garbage. Misrouting was caused by applying the Stage-1 "no overlay text" criterion to Stage-2 candidates.
+- Created `lora-training/voidship-layouts/raw-references/needs-text-removal/` and relocated 23 files into it:
+  - 3 high-resolution annotated cutaways: Cobracut.png (Cobra-class Destroyer, 1.5km), Gladius.png (Gladius-class Strike Frigate, 1.4km, crew 25,000), Siluria Class.jpg (Siluria-class Cruiser, 5km, crew 65,000). Each has full room enumeration, km scale bar, and dorsal/ventral/fore/aft directional indicators.
+  - 20 starfield-background ship class cards with numbered room legends.
+- Re-Read all 23 (paying the 2× multimodal cost intentionally per operator approval) and wrote **exhaustive Stage-2 layout captions** following the `feedback_voidship_layout_caption_detail.md` memory: each caption enumerates room types (bridge, captain's quarters, plasma generators, geller field, magazine, hangar, etc.), describes contents where visible, uses positional/relational verbiage (amidships, aft of, dorsal cluster, spinal artery, port-and-starboard), and notes connectivity topology and door/hatch locations. Trigger namespace: `ship_<class>_layout` (e.g. `ship_cobra_class_layout`, `ship_gladius_class_layout`) plus umbrella `dh_voidship_layout`.
+- **Subdir name `needs-text-removal/` signals required pre-processing**: every image carries overlay text (ship name, class designation, room labels, km scale bars). Text must be inpainted-out before these are used as direct training input. The hull silhouettes and room-divider lines themselves are the training content.
+
+### Watermark correction (same day) — 9 WM-suffix variants moved to garbage
+
+Operator clarified after the initial Stage-2 seeding: **large watermarks are immediate-garbage, NOT "needs-text-removal" candidates**. Watermarks resist clean removal and contaminate training even after inpainting attempts. Most donor archives ship clean and watermarked variants in parallel (e.g. `Foo_0.png` + `FooWM_0.png`); always prefer the clean sibling.
+
+Moved 18 files (9 image + 9 paired caption sidecar) from `voidship-layouts/raw-references/needs-text-removal/` to `.corpus/garbage/voidship-layout-large-watermark/`:
+- AvengerofGiantWM, blessedEndeavourWM_2, DemiurgeBastionnwm, Freighterwm_0, inhatredcladwm_0, longnightofregretWM_0, poweroverprivilegewm_0, sanguisbladewm_1, spiritofsaintelnaWM_0.
+
+Each had a non-WM clean sibling already retained (AvengerofGiant, blessedEndeavour-equivalent via inhatredclad pair, DemiurgeStronghold, etc.) so no class coverage was lost.
+
+Acceptance criterion #6 added to this document codifying the rule for future passes. Memory `feedback_watermarks_are_garbage.md` saved.
+
+**Final voidship-layouts corpus state: 14 captioned references in `needs-text-removal/` pending text-inpainting pre-processing** (Cobracut, Gladius, Siluria Class, 9sfWc8F, Ambulon_0, AvengerofGiant, blessedEndeavourWM_2 — wait, this was garbaged — actually 14 minus 1 garbaged = let me re-verify: 23 staged − 9 watermarked-garbaged = 14 remaining: 9sfWc8F, Ambulon_0, AvengerofGiant, Cobracut, colonyship_0, DemiurgeStronghold, Gladius, heartofkurnous_1, inhatredclad_0, OSLavinia_0, poweroverprivilege_1, ScintillaClypeum_0, Siluria Class, spiritofsaintelna).
+
+### Bulk filename normalization — 2026-05-14 — Claude Opus 4.7
+
+- Surveyed both `pending-visual-review/stamps/` and `lora-training/stamps/train/` for non-ASCII filenames used as grid-size separators.
+- Two non-Latin proxies for `x` were in widespread use: **Cyrillic `х` (U+0445)** in 206 filenames and **Greek `σ` (U+03C3)** in 281 filenames, mostly in DaSIG MAPASSETS-HIVEGOTH and Underhive Map Assets subdirs respectively. Different donor archives, both using non-Latin lookalikes.
+- Renamed all 487 to Latin `x` with `sed 's/х/x/g; s/σ/x/g'` in a single null-safe pass. 0 collisions. Caption sidecar pairings preserved (renamed .png and .txt together).
+- **Latin `s` separator normalized later in same session** at operator request. Used a regex-targeted rename `[0-9]s[0-9] → [0-9]x[0-9]` so only grid-size-pattern `s` letters were touched (other `s` letters like `Stair`, scrolls etc. were untouched). 274 files renamed across both trees; 0 collisions (confirming `s`-named and `x`-named files were separate content sets, except for the one already-known duplicate `UH-DOOR-1s2-01` which had been moved to the duplicates bin earlier in the session). All caption sidecars renamed in parallel; 0 orphaned sidecars; all 82 captioned non-Gemini stamps remain paired.
+
+### voidship-hulls/ — 2026-05-14 (pass 2) — Claude Opus 4.7 — PARTIAL (100/251 cumulative)
+
+- Files Read this pass: **50** across same 7 sub-bins (imperium 25, schematics 10, chaos 5, orks 4, lineart 3, dup-lineart 2, silhouettes 1) using null-safe deterministic even-spaced sampling.
+- Approved this pass (visual evidence + caption sidecars in `raw-references/`): **14**
+  - `raw-references/imperium/` (+6): StarFortress Ramiles-class (798×418 painterly top-down star fortress), battlefleets_imperium_apocalypse (Apocalypse-class), battlefleets_imperium_dictator (Dictator-class), battlefleets_imperium_gothic (Gothic-class), battlefleets_imperium_nemesis (Nemesis-class, 408×988), battlefleets_imperium_vanquisher (Vanquisher-class).
+  - `raw-references/chaos/` (+2): battlefleets_chaos_brimstone (Brimstone-class), battlefleets_chaos_despoiler (Despoiler-class battleship).
+  - `raw-references/orks/` (+1, new subdir): battlefleets_ork_shreadda (Ork Shreadda Roks-class, 446×682). First ork on-target hull.
+  - `raw-references/lineart/` (+4): DauntlessLC (Dauntless light cruiser), HeavyCargoTransport, RogueTraderCruiser, OrionClassClipper (relocated from dup-lineart/ subdir which contains non-duplicate items).
+  - `raw-references/silhouettes/` (+1): Outline2 (Imperial cruiser silhouette variant, 2000×705).
+- Rejected this pass:
+  - Side-view profile (13): all 10 imperium battle/cruiser/frigate/destroyer named-class files + Conveyor Universe-Class + EscortCarrier + chaos Grand Cruiser Repulsive-Class.
+  - Annotated class cards (10 schematics): Ambulon Rudderlow Class, Avenger of Giant Voidbreaker Class, Goblelth's Star Berthing Class, Old Ironhide Stronghold Class, Lingering Heart of Kurnous, In Hatred Clad Endeavour, OS Lavinia Mercadon Station, Power Over Privilege Iconoclast, CSSO Scintilla Clypeum Emperor, Spirit of Saint Elnor John Bathmeyer.
+  - Annotated cutaway (1): Siluria Class.jpg from imperium/ (Siluria-Class Cruiser annotated diagram, 2000×1000 — separate .png and .psd siblings remain in pending and need their own Read pass).
+  - Low-resolution top-down (11): 6 BFG-token imperium small (endurance, light_fuel_transport, starhawkbomber, Gothic_Cruiser, Mars_Battle_Cruiser, Sword_Frigate) + 2 small chaos (hellblade, lightning) + 3 small ork (basha_light, eavybommer, megarok).
+  - Duplicate (1): dup-lineart/DauntlessLC.png (byte-identical to lineart/DauntlessLC.png approved this pass).
+- **Cumulative bin status:** 100/251 files Read; **26 approved** with captions in `raw-references/{imperium,chaos,lineart,orks,silhouettes}/`; remaining 151 in pending.
+- Pattern reinforcement: imperium/ side-view dominance confirmed across two passes (24/50 imperium files were side-view book art = 48%). `schematics/` continues to be 100% annotated class cards (20/20 sampled).
+
+### stamps/ — 2026-05-14 (pass 2) — Claude Opus 4.7 — PARTIAL (91/1898 cumulative)
+
+- Files Read this pass: **50** across 30+ sub-bins, null-safe sampling. All 50 staged cleanly this pass (vs 41/50 in pass 1 — fix from the prior shell-parse failures).
+- Approved this pass (visual evidence + caption sidecars in `lora-training/stamps/train/<category>/`): **44**
+  - `containers/` (+6): 111909-DaSIG Cargo 1 (bronze 1x1), 111933-DaSIG Cargo Dark 8 (2x3 stack), UH-BARRELS-2x2-01 (hazmat barrel stack), UH-BOX-3x3-07 (military crate pile), UH-CONTAINERS-3x3-14 (gold ornate container), UH-TANKS-2x2-03 (hazmat tank).
+  - `fixtures/` (+16): 4 consoles (Console_10, Console_20 medicae, Console_3_Dig-3, Console_5_Dig-8), 112010-DaSIG Door 1 (light wooden 1x2), DC1x1-01 (mausoleum), DOOR 2x2-01 (gothic hazard door, with the dasig naming overlap renamed at-move), DC-Podium1x1, DC-Statue-1x1-15 (horned bull), F6x6-08 (1200×1200 rose-window gothic floor — large), FRN1x1-37 (votive candles), W1x1-08 (domed gothic wall), Armamentorum (gothic doorway with green indicators), UH-DOOR-1x2-01 (underhive hazard door), UH-FENCE-Node-1x1-12 and -11 (fence nodes — round disc + cross).
+  - `documents/` (+1): FRN1x1-17 (wrapped scroll bundle).
+  - `furniture/` (+8): UH-FURNITURE-{1x1-04,1x1-24,1x1-44,2x1-02,1x1-03,1x1-23,1x1-43,2x1-01} — control cabinet, bench, comms box, padded couch, vending machine, footstool, footlocker, stone bench. The `1s1`/`1s2` files were renamed to `1x1`/`1x2` at-move (with collision-renumbering: UH-FURNITURE-1s1-03 → UH-FURNITURE-1x1-03 etc., disambiguated from 1x1-04/24/44 originals — operator may want to audit for content-distinctness vs. duplication on next pass).
+  - `ordnance/` (+3): aegis_defence_line_full (640×320 full segment), KNIGHT1x1-01 (small Knight Sentinel walker), defenceline_small (green defense line).
+  - `misc/` (+10): 32F_scifi_floor_7_ae and Metal_Floor_01_kpl_PB (floor-tiles, seamless-candidate), Aera_terrain10 (grass patch), pool (dark liquid), Smoke (atmospheric cloud), Terrain_Building1damaged (pixel-art ruin), Trench1_PB and 226_Trench5_PB (trench network pieces), rubble_05 (small stone rubble), UH-Ruin-2x2-01 (larger underhive rubble pile).
+- Rejected this pass:
+  - Duplicates (4): dasig-props/Elevators/gundampit.png (matches props/Elevators/ from pass 1), dasig-props/Hive Transport/SubwayCar.png (matches props/Hive Transport/), dasig-props/Stairs/41D_floor_1_steps2_ae.png, UH-DOOR-1s2-01.png (matches UH-DOOR-1x2-01.png — confirms `s` vs `x` as a duplicate-naming variant in some subdirs).
+  - Low-resolution (2): cob1.png (70×70 dark cobble tile, too coarse for seamless use), Terrain_cpreksta_BarrelB.png (69×69 single barrel).
+- **Cumulative bin status:** 91/1898 files Read across 2 passes; **82 approved** with captions in `train/{containers,documents,fixtures,furniture,machinery,misc,ordnance}/`; remaining ~1815 in pending.
+- Cyrillic/Greek-x normalization (487 files) completed across both stamps trees before this pass — see "Bulk filename normalization" entry above.
+
+### voidship-hulls/ — 2026-05-14 — Claude Opus 4.7 — PARTIAL (50/251 files classified)
+
+- Files Read: **50** sampled across all 7 sub-bins (imperium 25, schematics 10, chaos 5, orks 4, lineart 3, dup-lineart 2, silhouettes 1) using deterministic even-spacing pick. All Reads + caption sidecars + moves done in batched same-turn operations per the move-time caption rule.
+- Approved (visual evidence + caption sidecars in `lora-training/voidship-hulls/raw-references/`): **12**
+  - `raw-references/imperium/` (5): battlefleets_imperium_mercury.png (Mercury-class battlecruiser), battlefleets_imperium_retribution.png (Retribution-class), battlefleets_imperium_universe.png (Universe-class mass transport), Emperor_Battleship.png, Retribution_Battleship.png. All top-down on-canon BFG-style or painterly hull views, long edge ≥512px.
+  - `raw-references/chaos/` (2): battlefleest_chaos_repulsive.png (Repulsive-class grand cruiser), battlefleets_chaos_desolator.png (Desolator-class battleship). Both painterly top-down red-and-gold Chaos hulls.
+  - `raw-references/lineart/` (4): ArkMechanicus.png (Ark Mechanicus), HavocRaider.png (Chaos Havoc raider), OverlordBC.png (Overlord-class battlecruiser, 1068px long edge — meets battlemap ≥1024 threshold), KillShip.png (Chaos Hellbringer-type).
+  - `raw-references/silhouettes/` (1): Outline1.png (Imperial cruiser pure-silhouette, 2000×1000, the manifest's silhouette-family ideal).
+- Rejected — wrong view (side-profile illustrations, not top-down): **13 → `voidship-side-profile-references/`** (12 imperium book-art battleships/cruisers/frigates/sloop + 1 chaos Grand Cruiser Exorcist). Painterly side views; useful operator reference for class identification but off-target for the hull-LoRA's strict top-down corpus.
+- Rejected — annotated overlay (overlay text/labels disqualify per criterion #4): **12 → `voidship-annotated-class-cards/` + `voidship-annotated-cutaways/`** (10 starfield-background "ship card" stat sheets with name + class + designation overlays from `schematics/`; 2 cutaway diagrams Cobracut.png + Gladius.png from `imperium/` with internal room labels and km-scale bars). All would need text-region inpainting/cropping before use.
+- Rejected — multi-subject (criterion #4: single vessel): **1 → `voidship-multi-subject/`** (Orbital defences.png shows 3 orbital fortresses).
+- Rejected — low-resolution top-down (on-canon top-down but long edge <512): **11 → `voidship-rejected-low-resolution/`** (5 BFG-token imperium small vessels: defiant, endeavour, fury interceptor, light cargo transport, Lunar_Cruiser; 2 Chaos small: harbinger, infidel; 4 Ork small: basha_heavy, dakkajet, megabommer, scrapa). Some operator-useful as Gemini-conditioning seeds at native res; not training-quality.
+- Rejected — duplicate: **1 → `voidship-duplicates/`** (dup-lineart/ArkMechanicus.png is byte-identical to lineart/ArkMechanicus.png which was approved).
+- Outstanding: **201 files** remain in `pending-visual-review/voidship-hulls/` for future passes. Subdirs reduced: imperium 127 → 102, schematics 51 → 41, chaos 20 → 15, orks 18 → 14, lineart 16 → 13, dup-lineart 16 → 15, silhouettes 3 → 2.
+- Notes:
+  - **Dominant Imperium-subdir pattern is SIDE VIEW painterly book art**, NOT the top-down silhouettes the manifest specifies. Expect ~70% of imperium/ to relocate to side-profile-references on a full pass. The on-target top-down content concentrates in the `battlefleets_imperium_*` naming pattern (BFG token-style) which are mostly sub-resolution.
+  - **Schematics subdir is 100% annotated class cards** (verified across 10/51 sample). Bulk-relocate is justified by sample coherence under the new discipline only IF each remaining file is Read at move-time to confirm the pattern holds and to write its caption. The first 10 confirmed.
+  - **Caption format used**: `ship_<class>, <Title Case Subject>, top-down view, dh_voidship_hull, <faction>, <hull-type>, <feature-tags>` — `dh_voidship_hull` placed as tag (umbrella trigger from manifest) and `ship_<class>` as primary trigger (per CORPUS_AUDIT.md namespace table).
+
+### stamps/ — 2026-05-14 — Claude Opus 4.7 — PARTIAL (41/1898 files classified)
+
+- Files Read: **41** of 50 staged (9 sample paths failed shell parsing due to Cyrillic-х characters, spaces in nested subdir names, and one corrupt subdir name; redo in next pass with safer iteration).
+- Approved + caption sidecars in `lora-training/stamps/train/<category>/`: **38** across categories already established by the existing trained corpus.
+  - `containers/` (5): cargo crates (DaSIG Dark 2, Dark 3 1x1), Underhive storage vehicles (3x4, 2x2), boxes pile, heavy ornate container with hex valves.
+  - `fixtures/` (19): consoles (5 — Console_5_Dig-1, Console_15, Console_3_Dig-1, Console_3_Dig-2, Console_1_Dig-3), doors (Door Dark 1, Door 2), service pit (gundampit), subway car, stair-tread panel, perforated metal grating (Stair_1-a), hivegoth window frame (FRN1x1), sleeping-lion statue (DC-Statue), fence node (UH-FENCE-Node), damaged stone wall, gothic walls (W2x1, W3x3).
+  - `ordnance/` (4): tank trap with razor wire, aegis defense segment, Imperial Knight Titan (KNIGHT 4x4 — large painterly), tracked military vehicle with cannon arm.
+  - `machinery/` (1): brass-pipe-and-valve cluster (UH-TUBE).
+  - `misc/` (9): floor tiles flagged as seamless-LoRA candidates (rough stone cobble 600px, riveted metal panel, hex floor, long steel-bordered panel), ruins (Hab-Block, underhive industrial ruin, UH-Ruin-3x3 rubble), terrain (trench3, trench4 rocky-wall, vehicle craters, water puddle).
+- Rejected — duplicates (byte-identical to files already approved): **2 → `.corpus/uncertain/stamps-duplicates/`** (dasig-props/Trench Network/Trench3_PB.png matches props/Trench Network/ version; dasig-props/Walls/TankTrap2.png matches props/Walls/ version). The `dasig-props/` and `props/` subdirs appear to overlap heavily; expect more duplicate findings in subsequent passes.
+- Rejected — text overlay (criterion #4): **1 → `.corpus/uncertain/stamps-rejected-text-overlay/`** (Achtung Minen warning sign with red Cyrillic-style block text on white-blue panel; filename `made_at_www_txt2pic_com` indicates web-clipart origin).
+- Outstanding from this sample: **9** sample slots failed staging (paths with embedded Cyrillic `х`, spaces in `dasig-props/Trench Warfare/`, empty-subdir double-slash artifacts). To be re-sampled in next pass with `find -print0 | xargs -0` to handle special characters.
+- Caption format used: `dh_stamp, <Title Case Subject>, top-down view, <state>, <category-tag>, <descriptive-tag>, <descriptive-tag>, ...` — matches existing `stamps/train/<cat>/*.txt` convention. State defaulted to `intact` for new entries (no obvious damaged/destroyed variants in the sample; one exception: `Terrain_wall_SW.png` showed clear damage and is tagged `damaged`).
+- Outstanding bin total: **~1857 files** remain in `pending-visual-review/stamps/`.
+- Notes:
+  - **DaSIG/MAPASSETS naming follows a consistent grid-size pattern** (`<class><W>x<H>-<NN>.png`) — confirms the audit doc's "systematically labeled by grid size" prediction. Grid size is captured as a tag (e.g. `2x2-grid`) in caption sidecars per the existing convention.
+  - **Floor tiles are common and flagged for the seamless 1×1 tile LoRA** (TODO.md item). Tagged `seamless-candidate, tileable` in their captions so they can be filtered later for seamless-LoRA corpus.
+  - **Cyrillic x in filenames**: many DaSIG files use Cyrillic `х` (U+0445) instead of Latin `x` in grid-size labels (e.g. `KNIGHT4х4-01.png` not `KNIGHT4x4-01.png`). Source-file moves preserve the original Cyrillic to keep paths stable; destination filenames retain Cyrillic where the move was direct, or were normalized to Latin-x where I wrote a sidecar with a renamed basename. Inconsistency flagged for cleanup.
+  - **Some destinations were renamed during move** to normalize Cyrillic→Latin (`UH-Ruin-3х3-01.png` → `UH-Ruin-3x3-01.png`, `W2х1-08.png` → `W2x1-08.png`, etc.). Sidecars use the destination's normalized name.
+
 ### iconography/ — 2026-05-14 — Claude Opus 4.7 — PARTIAL (43/732 files closed; 659 rolled back)
 
 **Session correction:** The first pass of this audit violated the cardinal "open every file before moving" rule. I sampled 22 SVGs from Imperium/ and bulk-moved the remaining 366 un-inspected SVGs into `raw-references/`, then bulk-moved 245 un-inspected files into reject/relocate bins on filename-pattern coherence. Operator caught it. All un-Read moves were reversed; only the 43 files I actually opened with Read remain in their destinations. The "Caption discipline" and Step 2 sections of this document were rewritten as a result. This log block reflects post-rollback state.
@@ -405,12 +643,367 @@ who decided what.
   - 210 Faction-Icons/Space Marine Badges PNGs
   - 32 Faction-Icons/Deathwatch PNGs
   - 34 Faction-Icons/Imperial Guard PNGs
-- **Outstanding debt** (must be addressed before the iconography bin can be marked closed):
+- **Outstanding work** (must be addressed before the iconography bin can be marked closed):
   - 659 files in pending-visual-review/iconography/ still need per-file Read+decision+caption (no shortcut).
-  - The 21 approved files in `raw-references/` are sitting without caption .txt sidecars. Per the (now-explicit) "Caption discipline" rule, captions should have been written at move-time while images were in context. They weren't, and the operator's direction was that captions must not be written by re-Read'ing later (2× multimodal cost). These 21 files are therefore in a half-approved state: visually verified, but caption-debt outstanding. Resolution paths: (a) accept the 2× cost and re-Read+caption the 21 files in a focused pass; (b) leave un-captioned until they are promoted to training input (raw-references is reference-anchor material, but per operator caption-at-move-time is the rule regardless of subdirectory). Operator decision required.
+- **Caption debt: CLOSED** (2026-05-14). Per operator direction, the 2× re-Read cost was accepted to close the gap. All 21 approved files were Read again in a single batched turn and given hand-written caption .txt sidecars. Sidecars use trigger tokens from the iconography manifest where defined; for canonical Imperial symbols not yet enumerated in the manifest, the namespace was extended consistently and the new triggers are listed under "Proposed new trigger tokens" below. The manifest extension itself was NOT modified in this session — that is a separate operator-reviewed change.
+- **Proposed new trigger tokens** (used in this session's 21 captions; extend `lora-training/iconography/manifest.yaml` as needed):
+  - `sym_astartes` — generic Adeptus Astartes winged skull with dagger
+  - `sym_custodes` — Adeptus Custodes lightning bolts and eagle head on I-pillar
+  - `sym_sisters_of_silence` — Sisters of Silence helm-and-skull with laurels
+  - `sym_officio_assassinorum` — generic Officio Assassinorum sigil (skull + sword + four daggers)
+  - `sym_temple_callidus` — Officio Assassinorum Temple Callidus rune (further temples: vindicare, eversor, culexus, vanus will follow same pattern)
+  - `sym_questor_imperialis` — Imperial Knights / Questor Household heraldry
+  - `sym_chapter_<name>` — pattern for individual Astartes chapter heraldry (e.g. `sym_chapter_absolvers`, `sym_chapter_blood_angels`)
+  - `sym_regiment_<name>` — pattern for individual Astra Militarum / Solar Auxilia regimental heraldry (e.g. `sym_regiment_lambdan_lions`, `sym_regiment_agathon_lord_marshals`)
+  - `sym_legio_<name>` — pattern for Mechanicum Titan Legios (e.g. `sym_legio_autokrator`)
 - Notes:
   - **SVG inspection requires rasterization.** Read returns SVG as XML text, not pixels. Pipeline used in this session: `inkscape <f> --export-type=png --export-filename=/tmp/... --export-width=512`, then Read the temp PNG. Works reliably for the heraldic SVGs sampled.
   - **PSD inspection requires flattening.** Read cannot render layered PSD content. ImageMagick `convert <psd> <png>` or GIMP CLI can flatten; deferred this session.
   - **Donor folder names are misleading and confirm CORPUS_AUDIT.md's warning.** "Faction-Icons/Deathwatch" sounded like Deathwatch heraldry but contained Deathwatch *vehicle and infantry tokens*. Filenames consistently described vehicles (Razorback, Land Raider, Thunderhawk) — but I had to Read to confirm; the audit doc is explicit that filenames are hints not verdicts.
 
+### seamless-tiles/ — 2026-05-16 — Claude Opus 4.7 — NEW CORPUS ACQUIRED
 
+New goal corpus created for TODO.md "Seamless 1×1 tile LoRA" + the
+operator's *square-and-hex tileable cartography tiles* objective.
+Not a `pending-visual-review/` triage — this is fresh online
+acquisition of CC0 references, then the standard Read-before-bin +
+move-time-caption discipline.
+
+- **Sources:** ambientCG + Poly Haven, both **CC0 1.0** (public
+  domain — clean for LoRA training, no attribution legally required).
+  JSON APIs; per-file provenance in
+  `lora-training/seamless-tiles/SOURCES.json` (do not delete).
+  Acquired via the new `download_tiles.py` (color/diffuse map only;
+  ambientCG zip's other PBR maps discarded).
+- **Acquired:** 82 color maps, auto-binned into 10 archetype dirs
+  under `lora-training/seamless-tiles/raw-references/`.
+- **Visual review:** every one of the 82 Read with the Read tool
+  (cardinal rule) by 9 parallel per-archetype review agents;
+  caption `.txt` written at move-time from pixels, not filenames,
+  to the spec in `manifest.yaml`
+  (`dh_tile, <tile_archetype>, <subject>, top-down view, seamlessly
+  tileable, <square-tileable|hex-pattern>, <state>, photo-texture,
+  <material>, <tags>`).
+- **Approved:** 55 unique kept + captioned. Per archetype: hab 10,
+  garrison 10, chapel 8, ship_deck 7, industrial 6, medicae 6,
+  tunnel 4, sump 3, metal_grating 1, hex_plating 0.
+- **Rejected:** 20 → `raw-references/_rejected/` — `off-archetype`
+  (17: vegetated outdoor terrain mis-served by Rock/Ground queries;
+  grimy/dark tiles failing the medicae sterility filter; a
+  corrugated wall vs. deck) + `multi-material` (3: aerial
+  rock-and-grass crags).
+- **Deduped:** 7 — the shared Poly Haven `metal`/`tiles` category
+  queries seeded the same asset into two archetype dirs, and the
+  independent agents kept both, so a single texture was captioned
+  under two triggers. Resolved each to its single best-fit
+  archetype, deleted the weaker copy + caption, pruned the stale
+  `SOURCES.json` path entries (82→55). `download_tiles.py` patched
+  with a global `seen_asset_id` guard (first archetype in PLAN
+  order wins) so re-runs and top-ups cannot reintroduce this.
+- **Supplemental-generation targets (not acquisition gaps):**
+  `tile_hex_plating` (0) and `tile_metal_grating` (1) — scanned 240
+  ambientCG metal assets + all Poly Haven metal; real CC0
+  photo-texture sources simply do not carry hexagonal floor plating
+  or bar grating as seamless tiles. Padding these with off-archetype
+  metal would violate one-trigger-one-concept; instead they are the
+  primary Gemini-conditioned supplemental targets, seeded from the
+  kept ship_deck/industrial plate refs. `tile_tunnel_floor` (4) and
+  `tile_sump_floor` (3) are thin (most rock/ground CC0 is vegetated
+  outdoor terrain) — secondary supplemental targets.
+- **Notes / patterns:**
+  - ambientCG free-text `q=` is unreliable (returned 0 for "hexagon
+    metal"); the working approach is `category=` + client-side tag
+    filtering, then a visual Read pass.
+  - "square and hex" resolved concretely: Foundry V14 grids are a
+    scene overlay, so any edge-seamless texture composes under
+    square OR hex grids; the hex axis is captured as explicit
+    hexagonal-motif archetypes (`tile_hex_plating`,
+    `tile_metal_grating`) with a mandatory `square-tileable |
+    hex-pattern` caption tag, NOT as a separate copy of every tile.
+  - Generous archetype judgement (real-world CC0 texture as a 40K
+    surface stand-in) was applied deliberately and is recorded in
+    `manifest.yaml` so it isn't re-litigated as drift.
+
+### tile-structure/ — 2026-05-16 — Claude Opus 4.7 — NEW STAGE-1 SUB-CORPUS
+
+Operator clarified the modular-room work is a **three-stage
+pipeline**, not one LoRA: Stage 1 = tileable tiles for hand-building
+(floors `seamless-tiles/` **+** structure `tile-structure/`, both
+`dh_tile`); Stage 2 = room builder (`voidship-layouts/` `dh_layout`);
+Stage 3 = stamp placer (`stamps/` `dh_stamp`). Walls/corners/doors
+are Stage-1 tile vocabulary, NOT Stage-3 stamps. Operator directives:
+separate Stage-1 sub-corpus for structure; relocate the mis-binned
+fixtures pieces; **no Gemini supplemental generation yet**.
+
+- **Created** `lora-training/tile-structure/` (manifest documents the
+  3-stage model + piece-role triggers + caption spec; README;
+  `harvest_structure.py`; `SOURCES.json`).
+- **Harvested 99**, then visually Read EVERY PNG (cardinal rule) via
+  4 parallel per-piece review agents writing tile-spec captions from
+  pixels (overwriting the stale `dh_stamp` captions the relocated
+  files carried):
+  - **On-disk DaSIG** (vendored in `.corpus`,
+    `props/` tree only — `dasig-props/` is byte-identical): 40
+    copied (`WALL-NN`, `WALL-CORNER-NN`, `WALL-DOOR-NN`, DaSIG-named).
+  - **Stage-3 relocation**: 66 wall/door pieces MOVED out of
+    `stamps/train/fixtures/` (furniture false-positives like
+    "two-door locker" filtered out by keyword before the move).
+  - 7 byte-duplicates collapsed (DaSIG-named provenance wins).
+- **Final: 87 kept + captioned** — `tile_wall` 50, `tile_corner` 14,
+  `tile_door` 12, `tile_endcap` 11. `SOURCES.json` = 87 (reconciled;
+  rejected/missing pruned).
+- **Rejected: 12** → `raw-references/_rejected/`:
+  - `perspective/` (8): the entire DaSIG `112xxx` "Door_*_1x2/2x2"
+    family is oblique 3-quarter render with a cast shadow — not
+    strict top-down. Disqualified despite being literal doors.
+  - `wrong-piece-type/` (4): two `WALL-CORNER` files that are flat
+    square slabs (no 90° turn), a standalone staircase, a round
+    floor-hatch plate. (2 more initially mis-rejected here —
+    `W1x1-09` straight segment, `W3x3-09` cross-junction — were
+    Read and **re-binned** to `tile_wall` / `tile_endcap`.)
+- **Side effects (intentional, operator-approved):**
+  - `stamps/train/fixtures/` dropped 160 → 94 files (66 relocated to
+    Stage 1). This is the Stage-3→Stage-1 correction, NOT data loss
+    — the stamp-corpus "trainable" count must be updated accordingly.
+  - **2 pre-existing Gemini-generated bulkhead-door images**
+    (`relocated_Gemini_Generated_Image_*`) rode along in the
+    relocation and were KEPT in `tile_door` (operator-approved:
+    "keep if they check out" — both are clean top-down 3d-render
+    ship bulkhead hatches). The no-Gemini directive is about not
+    GENERATING new ones; it does not retroactively purge
+    already-existing relocated assets.
+- **Patterns / notes:**
+  - DaSIG `props/` and `dasig-props/` trees are byte-identical
+    duplicates — always harvest from one only.
+  - Relocated stamp `.txt` captions used the `dh_stamp,…,NxM-grid`
+    schema; fully replaced with the `dh_tile, tile_<piece>,…`
+    spec written from pixels.
+  - Stairs are out of scope for the walls/corners/doors ask;
+    `WALL-STAIRS` pieces are captioned as `tile_wall` with an
+    `integrated-stairs` tag, standalone `Stairs/` not harvested.
+  - Kenney/OpenGameArt CC0 online supplement was de-prioritized:
+    Kenney is uniformly CC0 but JS-gated (no clean programmatic
+    pull) and stylistically non-40K; the on-disk DaSIG set is a
+    coherent 40K modular kit and fully satisfies "harvest on-disk".
+    No sketchy-provenance files were introduced.
+
+
+
+---
+
+## Phase-4 consolidated audit log — 2026-05-17 — Claude Opus 4.7
+
+The bulk visual audit of the five in-scope active-goal bins is
+complete. Per-wave granular verdicts (35 files) remain in
+`.corpus/audit-verdicts/` as the detailed backing record; this block
+is the consolidated roll-up. Deferred-goal bins
+(chaos-iconography, xenos-iconography, planet-textures, sector-maps,
+terrain-references, strategic-icons) were left UNTOUCHED per operator
+scope ("active-goal bins only").
+
+### Final corpus state (approved, non-Gemini)
+
+| Corpus | Location | Count |
+|---|---|---|
+| Iconography | `lora-training/iconography/raw-references/` | 384 |
+| Voidship hulls (Stage 1) | `lora-training/voidship-hulls/raw-references/` | 45 |
+| Voidship layouts (Stage 2) | `lora-training/voidship-layouts/raw-references/needs-text-removal/` | 33 (text-inpaint pending) |
+| Stamps (train) | `lora-training/stamps/train/<category>/` | 965 |
+| Stamps (salvage) | `lora-training/stamps/needs-background-removal/<category>/` | 161 (alpha-cut pending) |
+| Scenes | `lora-training/scenes/scene-<archetype>/` | 229 |
+| Hive-city | `lora-training/hive-city/raw-references/` | 1 (+ starter manifest; 9 in `hive-city-needs-overlay-removal`) |
+
+### Per-bin disposition (roll-up of the 35 verdicts)
+
+- **voidship-hulls** (151): 45 Stage-1 hulls + 33 Stage-2 layouts approved; rest side-profile/low-res/multi-subject/duplicate/watermark. 38 trigger tokens normalized to `ship_<class>_class[_layout]`. Bin drained 0.
+- **scenes** (794): 229 approved across scene archetypes (+3 new: cargo-hold, hangar-bay, sump-cistern); large off-target clusters (underhive tileset, Props, Premade Segments, darktide aerials) per-file Read & rejected per the absolute rule. Bin drained 0.
+- **stamps** (1807): processed via single-agent then 3-way disjoint partition; 965 train + 161 salvage; heavy props/↔dasig-props/ byte-duplication caught by per-agent md5 + a global cross-partition dedup sweep (7 residual dups removed); 761 filenames normalized (Cyrillic х / Greek σ / latin-s → x). Bin drained 0 (final stragglers: 2 tiny GIF ruins → low-res, 1 sealed VTTAssets.zip → stamps-archives).
+- **iconography** (732 original; 240 in the Phase-2 resume): 384 canonical Imperial heraldry approved (Imperium SVGs rasterized then Read); off-canon wordmark/letterform traps caught by visual inspection (filename triage would have false-approved); ~300 Space Marine Badges per-file Read & low-res-rejected per operator's absolute directive. Bin drained 0.
+- **hive-city** (16): whole bin was one hive cross-section in many production stages — 1 clean approval (HivePlain.png), 9 salvage→needs-overlay-removal, 3 psd-source, 1 grunge-obliterated off-target, 2 sealed archives. Bin drained 0. Starter `manifest.yaml` created (trigger ns `hive_overhead`/`hive_cross_section`/`hive_spire`).
+
+### Integrity
+
+- All 5 in-scope `pending-visual-review/` bins drained to **0 files**; 58 emptied source subdirs swept.
+- Convention-aware final reconcile: **1815 caption/analysis sidecars across all corpora, 0 true orphans** (accounts for both `<stem>.txt` and `<fullname.ext>.txt` — the latter required where a bin holds same-stem png+psd pairs).
+- Reject/relocation analysis sidecars present from the rule-introduction wave onward. Pre-rule-wave rejects are batch-documented in the 35 `audit-verdicts/` files only; **operator will manually re-audit the reject bins at the end** (deliberately NOT auto-backfilled).
+- Salvage tiers awaiting deterministic post-processing before training: voidship-layouts `needs-text-removal` (33), stamps `needs-background-removal` (161), hive-city `needs-overlay-removal` (9). Tracked as remediation work, not losses.
+
+### Outstanding (post-audit)
+
+- Stamps remediation pass (orthographic/transparent/style/state re-verify of the ~409 pre-rule approvals) — deferred, tracked.
+- Phase 5 garbage re-pass (sidecar + reclassify every `.corpus/garbage/` file, ~504) — next, in-loop.
+- Operator manual re-audit of all reject bins — operator-owned.
+
+---
+
+## Phase-5 online-sourcing log — 2026-05-17 onward — Claude Opus 4.7
+
+New mission layer: expand corpora with NEW online-sourced material
+(Phase A clean-license sourcing + mandatory `_sourcing/provenance.tsv`
+rows, Phase B md5+perceptual novelty gate vs the 12,510-file
+`/tmp/corpus_known_md5.txt` baseline, Phase C Read-every-file visual
+audit + move-time sidecars, ≤100 Reads/wave, per-wave verdict files in
+`.corpus/audit-verdicts/<goal>-online-<unixts>.md`). Infra:
+`cartography/_sourcing/{incoming/<goal>,rejected-duplicate,near-dup}`,
+`provenance.tsv`, helper scripts. 6h resilience cron registered for
+usage/outage auto-resume (self-deletes when `incoming/` drained).
+
+**Operator steering (mid-mission):** prioritize VTT assets
+(stamps/scenes/strategic-icons/voidship/hive), NOT planet/terrain/
+sector (lowest-priority deferred goals). Recorded as durable feedback.
+
+### VTT Wave A — strategic-icons — 2026-05-17
+- Source: `github.com/game-icons/icons` (CC-BY 3.0). 66 curated
+  map-symbology SVGs staged; 66 provenance rows.
+- Phase B: 0 md5 dups, 0 perceptual near-dups.
+- Phase C: all 66 rasterized + Read (cardinal rule), 4 batches.
+- **Approved 66 → `lora-training/strategic-icons/raw-references/game-icons-markers/`**
+  with move-time captions. 0 reject/relocate/dup. Bin drained 0.
+- strategic-icons corpus 2 → 68. Verdict:
+  `audit-verdicts/strategic-icons-online-1779038803.md`.
+- Detour residue: 4 NASA-PD planet-textures files staged pre-steering
+  (provenance'd, deferred — not wasted).
+
+### VTT Wave B — stamps — 2026-05-17
+- Source: OpenGameArt CC0 (advanced search + 2 best candidate packs).
+  2 sourced + provenance'd; Phase B 0 dups; Phase C Read.
+- **Approved 0.** Sci-fi Defense PSD → `garbage/stamps-online-large-watermark/`
+  (body-crossing watermark on only obtainable composite; underlying =
+  token sprites). Kenney Sokoban zip →
+  `uncertain/stamps-online-rejected-off-canon/` (generic non-40K flat
+  art, 128px, hold-operator). Bin drained 0. Verdict:
+  `audit-verdicts/stamps-online-1779039161.md`.
+- **Strategic finding:** {clean license} ∩ {40K-on-canon} ∩
+  {orthographic} ∩ {adequate-res} is ~empty on CC0 game-art (40K = GW
+  IP). Wave A worked because flat *symbology* is clean AND on-target;
+  stamps/scenes have no comparable clean vein. Do NOT force generic
+  CC0 into 40K corpora. Highest-value remaining online veins =
+  structured-vector symbology (game-icons R2, Wikimedia PD heraldic
+  devices) + operator-owned packs.
+
+### Detour drain — planet-textures (gas giants) — 2026-05-17
+- The 4 NASA-PD files staged in the pre-steering detour, drained:
+  Phase B md5-novel, Phase C all 4 Read, **approved as
+  `planet_gas_giant`** → `planet-textures/raw-references/Gas Giants/`
+  with move-time captions. 0 near-dups, 0 orphans (Gas Giants now 8
+  clean image+caption pairs). Verdict folded into Wave-A verdict notes.
+
+### VTT Wave C — strategic-icons (game-icons Round 2) — 2026-05-17
+- Source: game-icons CC-BY 3.0. Pool of 211 strategic-relevant icons
+  (regex over real filenames, R1 stems excluded) curated to 88.
+- 88 staged + provenance'd; Phase B 0 md5 dups, 0 perceptual near-dups
+  (vs R1's 66 and within-88).
+- Phase C: all 88 rasterized + Read (cardinal rule), 5 batches.
+- **Approved 88 → `strategic-icons/raw-references/game-icons-markers/`**
+  with move-time captions. 0 reject/relocate/dup. Bin drained 0.
+- Final global within-bin sweep of all 154 markers: 0 md5 dups, 0
+  perceptual near-dups (ham≤5), 0 orphans, 0 non-`<stem>.txt`.
+- strategic-icons corpus 2 → **156**. Verdict:
+  `audit-verdicts/strategic-icons-online-1779044525.md`.
+
+### Phase-5 consolidated roll-up — 2026-05-17
+
+| Metric | Value |
+|---|---|
+| Goals expanded | strategic-icons (2→156), planet-textures (+4 gas giants) |
+| Files sourced (provenance rows) | **160** — 154 CC-BY-3.0, 4 PD (NASA), 2 CC0 |
+| Approved into corpora | **158** (154 strategic-icons SVG + 4 planet JPG) |
+| Rejected (analysis-sidecar'd) | 2 — 1 garbage (watermark), 1 uncertain (off-canon) |
+| md5 dups / perceptual dups | 0 / 0 |
+| `_sourcing/incoming/` | **0 (fully drained)** |
+| Orphan / non-standard sidecars (touched bins) | **0 / 0** |
+
+- **Provenance discipline held**: one `_sourcing/provenance.tsv` row
+  per sourced file (sha256 / dest / source-URL / license / UTC).
+  Clean-license-only — no scraping, no watermarked/portfolio/stock.
+- **Cardinal rule held**: every surviving candidate Read before
+  routing; captions/analysis sidecars written at move-time from
+  pixels, never filenames. (242 image Reads across waves; bounded
+  per-wave.)
+- **Key finding (load-bearing for future runs):** the 40K aesthetic
+  is GW IP, so for stamps/scenes/voidship/hive there is no clean
+  online vein that also clears the on-canon+resolution+orthographic
+  bar. Online sourcing pays off ONLY for structured-vector
+  *symbology* (game-icons → strategic-icons; game-icons remaining
+  inventory + Wikimedia PD heraldic devices are the next viable
+  rounds) and unambiguous-PD reference imagery (NASA → planet/
+  terrain/sector). Generic CC0 game-art must NOT be forced into the
+  40K corpora.
+- Resilience cron deleted on clean drain+reconcile (this block).
+- Operator owns the final reject re-audit
+  (`garbage/stamps-online-large-watermark/`,
+  `uncertain/stamps-online-rejected-off-canon/` — both analysis-
+  sidecar'd; Sokoban marked `hold-operator`).
+
+---
+
+## Post-audit batch roll-up — 2026-05-17 — Claude Opus 4.7
+
+Task #25 (stamps remediation) + all 6 deferred-goal bins complete. New
+goal dirs + starter manifests created for chaos-iconography,
+xenos-iconography, planet-textures, sector-maps, terrain-references,
+strategic-icons.
+
+### Final approved/staged corpus (non-Gemini, this+prior batches)
+
+| Corpus | Count |
+|---|---|
+| iconography raw-references | 384 |
+| chaos-iconography raw-references | 89 |
+| xenos-iconography raw-references | 258 |
+| voidship-hulls raw-references | 45 |
+| voidship-layouts needs-text-removal | 36 |
+| stamps train + needs-background-removal | 1034 |
+| scenes scene-archetypes | 229 |
+| hive-city raw-references | 1 (+9 needs-overlay-removal) |
+| planet-textures raw-references | 60 |
+| sector-maps raw-references | 50 |
+| strategic-icons raw-references | 2 |
+| terrain-references raw-references | 218 |
+
+### Task #25 — stamps remediation (4 waves, ~336 pre-rule stamps)
+
+Caught substantial pre-rule quality debt: non-orthographic content
+mislabeled "top-down" (UH-* oblique pack, Console_*_Dig oblique subset,
+FRN1x2 / FLOOR-* elevation traps) moved to
+stamps-rejected-non-orthographic; opaque tiles moved to
+needs-background-removal; empty/malformed captions filled; out-of-vocab
+states normalized. Selector (captions lacking an art-style tag) = 0.
+
+### Deferred bins
+
+- chaos-iconography: 89 canonical heraldry approved (full canon — 4
+  God-marks, Chaos Star variants, all 10 Traitor Legions), 52
+  Faction-Icons VTT tokens relocated, 7 low-res, 2 off-canon.
+- xenos-iconography: ~258 approved (Eldar/Drukhari/Harlequin/Tau/Necron
+  dynasty + name-glyphs/Genestealer-cult/Ork glyphs), Faction-Icons
+  unit-sprite tokens relocated, T'au numerals rejected as letterforms.
+- planet-textures: ~60 approved (clean orbital discs + surface tiles);
+  class subdirs 100% clean; Planets/ was a UI-icon folder (off-target);
+  Asteroids/ a sub-512 resolution trap; heavy size-variant dedup.
+- sector-maps: 50/53 approved (94% — near-pure sector cartography).
+- terrain-references: ~218 approved (heightmaps + hill landforms +
+  forest/dirt/water tiles); `Terrain_*` prefix proven ~94% unreliable
+  (mostly built props → stamp-candidates); earlier-wave bare-rock
+  misroutes corrected.
+- strategic-icons: 2 approved (WH40K map-icon legend SVG + PNG).
+
+### Recurring defect remediated vault-wide
+
+Sidecar-naming drift (`.caption` / `.png.caption` / `.caption.txt`)
+recurred across chaos/planet/terrain/xenos earlier waves; ~720+ sidecars
+renamed to the canonical `<image-stem>.txt`. Loop prompt hardened with a
+mandatory post-wave naming-normalization step. Final vault state
+(scoped to the 12 audited corpora): 0 orphan sidecars, 0 non-standard
+sidecars, 0 in-scope images missing a sidecar. (Excluded, correctly:
+the separate seamless-tiles / tile-structure workstream, and pre-audit
+voidship-layouts/attempt*.png generation scratch.)
+
+### Resilience
+
+Ran under a 6h CronCreate loop (4afc0d67) with create-before-delete
+swaps, ≤5 disjoint-partition concurrency, per-agent md5 dedup + global
+cross-partition sweeps, timeouts on convert/inkscape/identify, and
+stop-clean-no-blind-route on image-API outage / usage-limit. Loop
+deleted on completion. Operator owns the final reject re-audit and
+confirming `<bin>-rescued-from-garbage/` review-bin items.

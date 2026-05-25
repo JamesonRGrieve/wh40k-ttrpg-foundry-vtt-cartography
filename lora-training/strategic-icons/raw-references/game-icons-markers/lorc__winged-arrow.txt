@@ -1,0 +1,1 @@
+icon_strategic, Winged Arrow Burst, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, attack-vector, strike

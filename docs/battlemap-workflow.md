@@ -16,6 +16,129 @@ acceptance rules". Read it before claiming any aesthetic outcome.
 
 ---
 
+## 2026-05-25 — Layout-ingestion (goal #10) + point-placement research
+
+Research-only session. No renders, no training run. Scope: how to turn
+a finished external orthographic layout (Dungeon Scrawl / Dungeondraft
+export) into a Solenne-grade rendered map, and how to drop a point and
+say "put a toilet/desk/pile-of-poo here" without bounding boxes.
+
+### Finding 1 — ControlNet rarely needs training, but our base does
+- Canny/depth/lineart ControlNet is a **pretrained, download-and-wire**
+  capability for mainstream Flux and Qwen bases. Normally zero training.
+- Our battlemap base is **Chroma** (`chroma-unlocked-v35`, a dedistilled
+  Flux.1-schnell derivative). Community-confirmed: **no dedicated Chroma
+  ControlNet exists**; ControlNet/Inpaint/IPAdapter all require models
+  trained specifically for Chroma, which nobody has shipped.
+- Borrowing the **Flux ControlNet Union** on Chroma "breaks above 0.4
+  strength" — far too weak to enforce wall geometry (we want 0.6–0.9).
+
+### Finding 2 — three implementation paths for goal #10
+- **Path A (no training):** run the structural pass on **Flux.1-dev**
+  with Shakker-Labs **ControlNet-Union-Pro 2.0** (six modes; depth+canny
+  strongest). Runs on the 3090's 24 GB. Cost: a 2nd base model + style
+  reconciliation back to Solenne grade (LoRA or Chroma img2img refine).
+- **Path B (no training):** run it on **Qwen-Image**, which gained
+  native ComfyUI ControlNet since our last look (InstantX Union:
+  canny/softedge/depth/pose; DiffSynth patches; Union LoRA adds
+  lineart). Heavier (~20B) but GGUF/Nunchaku quants fit 24 GB. Same
+  style-reconcile caveat.
+- **Path C (the ONLY training path):** train a Chroma ControlNet
+  ourselves. Original R&D — nobody has done it. Disproportionate for one
+  deliverable. See corpus gap below.
+- **Decision lean:** A or B. Days, not weeks; zero ControlNet training.
+
+### Finding 3 — point-to-place decor needs NO training either
+- **Architecturally-correct path:** the click is a *coordinate*, the
+  prompt is an *asset*. Click → describe → generate transparent stamp
+  via the existing `extract→sidecar→classify→assign_groups` flow →
+  auto-place on Foundry's tile layer. Grows the stamp library (#7).
+- **Bake-into-base path** (operator: "sometimes integrating decor is
+  easier and more organic"): pretrained, click-grounded, no corpus —
+  **SAM2 point-prompt → Flux inpaint**, **ComfyUI-Angelo** (FLUX.2
+  Klein, click/paint/drag + location-guided edits), **Qwen-Image-Edit**
+  (msrope coordinate grounding), **Flux Kontext Dev**.
+
+### Decision — "architecture-only" refined (WRITTEN to CLAUDE.md 2026-05-25)
+Operator overrode the absolutism of the "never bake furniture" rule.
+The real distinction is *what the object does at the table*, not
+stamps-vs-baked:
+- **Tile layer:** interactive props (searched crate, door, knocked-over
+  chair) and anything needing **variant cycling** (intact→damaged→
+  destroyed via Active Tiles).
+- **Bake into base (fine, often more organic):** fixed set-dressing —
+  built-in fixtures, wall grime, rubble, ambient clutter, the pile of
+  poo. Painted in by the same model in the same light = no pasted-sticker
+  look.
+- Applied to CLAUDE.md: the "architecture-only by default" overview note
+  and the furniture hard rule now carry this interactive-vs-set-dressing
+  distinction instead of the absolute prohibition.
+
+### Decision — layout ingestion is SEMANTIC, not blind edge-tracing
+How "is it smart enough to ID walls vs doors vs stairs?" actually
+resolves:
+- **Canny / lineart ControlNet has zero semantics.** It reproduces
+  lines but does not know a gap is a door or a parallel-line glyph is
+  stairs. Stairs render right only when the base model recognizes the
+  glyph + the prompt says "stairs"; doors are the classic failure (a
+  gap is just a gap — model may wall it back up). Semantic control needs
+  a **segmentation** map (each color = a class), which something has to
+  label.
+- **Don't make the model guess — Dungeondraft already labels it.** The
+  **Universal VTT (`.dd2vtt`)** export is JSON with walls
+  (`line_of_sight`), portals (doors + windows: bounds / rotation /
+  open-closed), and lights as explicit vector geometry. Dungeon Scrawl
+  is raster-first; prefer Dungeondraft when semantics matter.
+- **Chosen route:** `.dd2vtt` → (converter TO BUILD) → canonical
+  region-color PNG → existing `spacecraft` regional-conditioning mode
+  (per-color prompt = per-class treatment) OR a seg ControlNet on
+  Flux/Qwen. Walls/doors/lights come labelled for free; **stairs are not
+  a first-class UVTT type** — tag as a Dungeondraft object layer → region
+  color, or hand-paint after conversion. Canny is the dumb fallback for
+  raster-only sources.
+- **Points ≠ ControlNet input.** ControlNet takes a whole-frame control
+  *image*, not points. "Put a toilet here" is a separate placement step
+  (generate+place a stamp, or SAM2-point → inpaint); the click is a
+  coordinate fed to that step, never to the base ControlNet/region map.
+- **Build item — DONE:** `dd2vtt_to_layout.py` (2026-05-25). `.dd2vtt` →
+  canonical region-color PNG + `<stem>.placements.json` (door + light
+  pixel coords for tile-layer auto-placement). Walls/lights → canonical
+  colors; doors carved as floor openings by default (`--door-as
+  wall-gap|ramp|door`) because the door leaf is an interactive tile, not
+  base architecture. Aliased + palette-conformance-checked (guards
+  gotcha #11). `--self-test` verifies the path with no real export.
+  Feeds `generate_battlemap.py spacecraft --layout <stem>.png`.
+
+### New releases relevant to other goals (since ~early-2026 look)
+- **Qwen-Image / Qwen-Image-2512** — strongest open text-rendering +
+  full ControlNet/Edit. Candidate **all-local alternative to the Gemini
+  iconography dependency** (#9) — needs a bake-off vs Gemini before
+  assuming Gemini is permanent.
+- **Flux.2** — up to 10 reference images, strong identity/style
+  preservation. Successor to the untried IPAdapter lever for portraits
+  (#8) and the iconography reference-conditioning architecture (#9).
+- **Chroma-1 Radiance** — native in ComfyUI 0.3.60, Apache-2.0. Still no
+  ControlNet; license-clean upgrade for from-scratch renders only.
+- **FIBO** — structured control (camera/lighting/depth from structured
+  input). On the radar, less ComfyUI-proven than Qwen/Flux.
+
+### Corpus we'd need but DON'T have (for the lab) — see chat summary
+- **Chroma ControlNet (Path C only):** paired triplets `(ground-truth
+  map, conditioning map [canny/depth/lineart], caption)`. We have **0**
+  conditioning pairs and only 11 deployed maps. Toy POC wants ~50k
+  pairs, production ~millions. This is *why* Path C is disproportionate.
+- **Solenne battlemap style-LoRA:** the 11 `SOLENNE_*.png` + style
+  captions, assembled as a training set. Not currently assembled; 11 is
+  thin even for a style LoRA.
+- **Portrait LoRA (#8):** `lora-training/portraits/` is **empty (0/0)**.
+  Only ~5–6 deployed portrait references exist — insufficient.
+- **Iconography image sets:** captions written but images missing/
+  unconsolidated — chaos-iconography 7img/88cap, xenos 2/258,
+  strategic-icons 1/156, and Imperial corpus images not in the train
+  dir (6img/384cap). Generation/consolidation task, not a concept gap.
+
+---
+
 ## 2026-05-08 — Iconography LoRA corpus build (Gemini reference-conditioning)
 
 After the second-presentation rejection (next section below) made
@@ -156,18 +279,23 @@ and the recipe for the next LoRA category.
   / IMAGE_SAFETY / cost-cap / stage-vs-API loop.
 - **Repository reorganization.** Major split between control plane
   and artifacts:
-  - `.foundry/` → `.foundry-system/` (rename); pipeline tooling
-    lives at `.foundry-system/cartography/`.
+  - `.foundry/` → `.foundry-system/` (rename). The cartography
+    pipeline tooling later moved again (2026-05-18) out of the
+    Foundry system tree to the top-level `.lora-training/`
+    submodule of the dh-campaign vault — that is its canonical
+    location now (own remote `wh40k-ttrpg-foundry-vtt-cartography`,
+    `CAMPAIGN_ROOT = HERE.parent`). The deploy-module split below
+    still holds.
   - `.foundry/cartography/dh-cartography/` → top-level
     `.foundry-cartography/` (Foundry deploy module — pure JSON +
     images, no code).
   - All generated PNG / TXT / YAML artifacts moved to top-level
-    `.ai-gen/{cartography,iconography,portraits,scenes}/` —
+    `.lora-training-output/{cartography,iconography,portraits,scenes}/` —
     gitignored.
   - `.kanka-sync` → `.foundry-kanka` (consistent naming).
   Path constants updated across every script via CAMPAIGN_ROOT +
   AI_GEN_ROOT pattern. `LORA_ARTIFACT_DIRS` map declares each
-  LoRA's `.ai-gen` subdir; `resolve_manifest` returns both lora_dir
+  LoRA's `.lora-training-output` subdir; `resolve_manifest` returns both lora_dir
   (control plane) and artifact_dir (storage).
 
 ### Fails
@@ -1357,6 +1485,7 @@ intentional.
 | Path | Purpose |
 | --- | --- |
 | `generate_battlemap.py` | Battlemap pipeline (floor-only, multi-room, spacecraft regional). |
+| `dd2vtt_to_layout.py` | Dungeondraft UVTT (`.dd2vtt`) → canonical region-color layout PNG + door/light placements sidecar. Feeds `spacecraft --layout`. |
 | `generate_scene_picture.py` | Pipeline 3 — uses literal paste. Rebuild's symbol step. |
 | `generate_character_portrait.py` | Pipeline 2 — uses literal paste. Rebuild's symbol step. |
 | `generate_stamp_variants.py` | Pipeline 1. Rotation + condition variants both working. |

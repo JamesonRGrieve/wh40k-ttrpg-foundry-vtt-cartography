@@ -1,0 +1,1 @@
+icon_strategic, Submarine Side Profile, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, naval, submersible

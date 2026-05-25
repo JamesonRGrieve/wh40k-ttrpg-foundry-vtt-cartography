@@ -1,0 +1,86 @@
+# Curated strategic/operational map-symbology icons from game-icons (CC-BY 3.0).
+# On-canon class decided by visual Read in Phase C, not this list.
+# --- unit markers ---
+lorc/tank.svg
+skoll/tank-tread.svg
+delapouite/helicopter.svg
+cathelineau/iron-hulled-warship.svg
+delapouite/submarine.svg
+lord-berandas/bomber.svg
+sbed/rifle.svg
+delapouite/flamethrower-soldier.svg
+lorc/missile-mech.svg
+lorc/cannon.svg
+pierre-leducq/anti-aircraft-gun.svg
+quoting/artillery-shell.svg
+lorc/rocket.svg
+delapouite/mini-submarine.svg
+lorc/missile-pod.svg
+delapouite/jet-fighter.svg
+lorc/spartan-helmet.svg
+delapouite/cavalry.svg
+delapouite/marching-rifles.svg
+lorc/double-team.svg
+# --- fortification / structure markers ---
+lorc/locked-fortress.svg
+delapouite/castle.svg
+quoting/bunker.svg
+delapouite/watchtower.svg
+lorc/stone-tower.svg
+delapouite/barracks.svg
+heavenly-dog/defensive-wall.svg
+delapouite/triple-gate.svg
+delapouite/ancient-ruins.svg
+delapouite/factory.svg
+delapouite/observatory.svg
+delapouite/control-tower.svg
+delapouite/power-generator.svg
+delapouite/oil-rig.svg
+lorc/tower-fall.svg
+# --- objective / target markers ---
+delapouite/flag-objective.svg
+delapouite/crosshair.svg
+badges/crosshair.svg
+sbed/targeted.svg
+lorc/crossed-swords.svg
+lorc/crossed-axes.svg
+delapouite/triangle-target.svg
+lorc/target-shot.svg
+delapouite/capture.svg
+lorc/laurels.svg
+# --- movement / direction markers ---
+badges/arrow-up.svg
+badges/arrow-down.svg
+lorc/compass.svg
+lorc/tron-arrow.svg
+lorc/winged-arrow.svg
+delapouite/convergence-target.svg
+lorc/zig-arrow.svg
+lorc/broadhead-arrow.svg
+# --- faction / affiliation markers ---
+sbed/death-skull.svg
+lorc/triple-skulls.svg
+willdabeast/round-shield.svg
+lorc/tattered-banner.svg
+delapouite/knight-banner.svg
+lorc/eagle-emblem.svg
+lorc/spread-eagle.svg
+lorc/double-headed-eagle.svg
+lorc/imperial-crown.svg
+lorc/laurel-crown.svg
+sbed/skull-crossed-bones.svg
+lorc/cog.svg
+delapouite/gears.svg
+# --- hazard / anomaly markers ---
+lorc/biohazard.svg
+delapouite/radiations.svg
+skoll/nuclear-bomb.svg
+skoll/minefield.svg
+lorc/spiky-explosion.svg
+badges/fire.svg
+skoll/carpet-bombing.svg
+lorc/radioactive.svg
+delapouite/chemical-bolt.svg
+lorc/falling-bomb.svg
+lorc/mine-explosion.svg
+sbed/explosion-rays.svg

@@ -1,0 +1,1 @@
+icon_strategic, Satellite Comms Link, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, comms, relay

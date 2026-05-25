@@ -1,0 +1,1 @@
+terrain_heightmap, Grassland Hill Landform, top-down view, intact, dark-green grass elevation mound

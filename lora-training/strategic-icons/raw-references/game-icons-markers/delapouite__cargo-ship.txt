@@ -1,0 +1,1 @@
+icon_strategic, Container Cargo Ship, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, naval, logistics

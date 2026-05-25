@@ -1,0 +1,92 @@
+# Xenos-iconography LoRA — corpus generation manifest (STARTER).
+#
+# Status: deferred-goal bin, seeded 2026-05-17 from the corpus audit
+# (CORPUS_AUDIT.md Phase 3, DEFERRED BIN xenos-iconography). This is a
+# STARTER manifest documenting the trigger namespace +
+# shape-invariance clause; expand the treatment/angle/lighting
+# matrices (model on ../iconography/manifest.yaml) when a
+# Gemini-conditioned generation pass is actually stood up.
+#
+# Goal: teach the model the canonical heraldic devices of the major
+# xenos factions of the 41st millennium — Tyranid hive-fleet
+# glyphs, Genestealer Cult cult-marks, Craftworld Eldar runes,
+# Harlequin masque devices, Drukhari kabal/cult/coven badges, T'au
+# sept and caste markings, Necron dynasty cartouches, Ork klan
+# glyphs, and Leagues of Votann league marks — each bound to its
+# trigger token by SILHOUETTE, invariant to palette and surface.
+#
+# NOT a fan-art drift of these symbols (the documented failure mode
+# this LoRA must avoid): canonical Games-Workshop heraldic geometry
+# only, true to the published device.
+#
+# Reference-image conditioning: the curated audit-approved xenos
+# heraldry under raw-references/ are the canonical-shape anchors fed
+# to Gemini alongside the prompt (same architecture as the
+# iconography pipeline).
+#
+# CAMPAIGN-SENSITIVITY NOTE: "genestealer" is a campaign-sensitive
+# word in player-facing Solenne docs (see CLAUDE.md Setting Fidelity).
+# This is a TRAINING-CORPUS manifest, not a player document — the
+# sym_genestealer trigger token and Genestealer Cult captions are
+# fine here and never surface in the vault.
+
+generator: xenos_iconography
+
+defaults:
+  # Allow the treatment's mild scene context (the hull plate, banner,
+  # carapace, or standard the device is mounted on) but keep the
+  # symbol as the dominant focal subject of the frame, full
+  # silhouette readable.
+  isolation: >-
+    single xenos heraldic device as the focal subject filling most
+    of the frame, full silhouette visible, no text, no caption
+  shape_invariance: >-
+    preserve the exact canonical xenos faction heraldry true to its
+    published silhouette — keep proportions and internal structure
+    intact; never fan-drift, simplify, or restyle the device
+  exclusions: "no UI, no labels, no measurement grid, no watermark, no wordmark text"
+
+# Trigger namespace (per DEFERRED BIN spec). Each token binds the
+# canonical heraldic device family of one xenos faction:
+trigger_namespace:
+  sym_tyranid: >-
+    Tyranid / Hive Fleet glyph — the chitinous claw-and-maw hive
+    sigil, organic asymmetric carapace heraldry
+  sym_genestealer: >-
+    Genestealer Cult cult-mark — clawed industrial sigils, the
+    four-armed device, bladed-cog / hivecult / twisted-helix marks
+  sym_eldar: >-
+    Craftworld (Asuryani) Eldar rune — flowing wraithbone-curve
+    craftworld and aspect runes, Khaine / Ynnead devices
+  sym_harlequin: >-
+    Harlequin masque device — diamond-harlequinade and laughing-god
+    masque heraldry
+  sym_drukhari: >-
+    Drukhari kabal / wych-cult / haemonculus-coven badge — barbed
+    asymmetric dark-eldar heraldry
+  sym_tau: >-
+    T'au Empire sept and caste marking — clean geometric sept
+    cartouche, fire/earth/air/water/ethereal caste glyphs
+  sym_necron: >-
+    Necron dynasty cartouche / lord glyph — angular hieroglyphic
+    dynasty heraldry and rank glyph rows
+  sym_ork: >-
+    Ork klan glyph — crude bold klan icons (Goffs, Bad Moons, Evil
+    Sunz, Deathskulls, Snakebites, Blood Axes) and Ork/Gretchin marks
+  sym_votann: >-
+    Leagues of Votann league mark — angular ancestral-core league
+    heraldry
+
+# Acceptance (mirrors DEFERRED BIN xenos-iconography criteria):
+#   - on-canon xenos faction heraldry (true GW published device)
+#   - canonical geometry, NOT fan-drift / restyle
+#   - reject wordmarks/letterforms with no device
+#   - isolated clean background, full silhouette
+#   - raster >=512px (SVG exempt — vector is resolution-free)
+#   - no large watermark
+#
+# Matrix axes (treatment x angle x lighting) — TO BE EXPANDED when
+# the generation pass is stood up; model on ../iconography/manifest.yaml.
+common_treatments: []   # starter — append when generation is built
+angles: []
+lighting: []

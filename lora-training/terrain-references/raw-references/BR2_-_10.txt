@@ -1,0 +1,1 @@
+terrain_heightmap, Grayscale Mountain Range Elevation Relief, top-down view, intact, monochrome-heightmap displacement-map procedural-terrain ridgeline, seamless-candidate

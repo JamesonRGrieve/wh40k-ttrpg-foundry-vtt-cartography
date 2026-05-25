@@ -1,0 +1,1 @@
+icon_strategic, Barbed Wire Coil, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, obstacle, denial-zone

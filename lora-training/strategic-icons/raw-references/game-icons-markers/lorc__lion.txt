@@ -1,0 +1,1 @@
+icon_strategic, Lion Head Profile, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, beast, allegiance

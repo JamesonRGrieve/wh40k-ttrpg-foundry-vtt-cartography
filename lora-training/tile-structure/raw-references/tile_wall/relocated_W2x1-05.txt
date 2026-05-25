@@ -1,0 +1,1 @@
+dh_tile, tile_wall, Brick Wall Run With Arched Recess, top-down view, edge-tileable wall run, intact, hand-painted, gothic, brick, straight-segment, archway, skull-relief

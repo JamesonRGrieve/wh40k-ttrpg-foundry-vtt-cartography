@@ -1,0 +1,1 @@
+icon_strategic, Skull Heraldic Shield, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, allegiance, death

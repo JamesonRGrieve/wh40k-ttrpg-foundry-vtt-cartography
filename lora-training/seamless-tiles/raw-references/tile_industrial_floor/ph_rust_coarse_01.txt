@@ -1,0 +1,1 @@
+dh_tile, tile_industrial_floor, Corroded Steel Plate, top-down view, seamlessly tileable, square-tileable, damaged, photo-texture, rusted-steel, corroded, panel-seams, oil-stained, grime

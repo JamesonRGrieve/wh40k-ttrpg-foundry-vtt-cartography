@@ -1,0 +1,1 @@
+ship_kill_class, Chaos Hellbringer-Type Kill Ship, top-down view, dh_voidship_hull, chaos, raider, line-art, scalloped-armor-fins, dorsal-spires, tapered-prow

@@ -139,7 +139,7 @@ material hint.
 - Is the symbol composition placement working — Aquila position,
   size, integration with the lighting?
 - Other Solenne locations to render: Hab District 4 establishing
-  shot, Section 7 Maintenance Tunnels close-up, Astropathic Relay
+  shot, Scholam Undertunnels close-up, Astropathic Relay
   Station interior?
 
 ---

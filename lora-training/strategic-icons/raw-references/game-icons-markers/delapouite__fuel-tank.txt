@@ -1,0 +1,1 @@
+icon_strategic, Fuel Storage Tank, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, logistics, depot

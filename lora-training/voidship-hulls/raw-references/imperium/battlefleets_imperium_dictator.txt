@@ -1,0 +1,1 @@
+ship_dictator_class, Imperial Dictator-Class Cruiser, top-down view, dh_voidship_hull, imperial-navy, cruiser, dark-grey-hull, twin-engine-sponsons, gold-prow-cap

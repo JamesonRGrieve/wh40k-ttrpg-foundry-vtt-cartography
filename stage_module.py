@@ -27,8 +27,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-CAMPAIGN_ROOT = HERE.parent.parent
-AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+CAMPAIGN_ROOT = HERE.parent
+AI_GEN = CAMPAIGN_ROOT / ".lora-training-output"
 FOUNDRY_MODULE = CAMPAIGN_ROOT / ".foundry-cartography"
 SRC = AI_GEN / "cartography" / "stamps"
 DST = FOUNDRY_MODULE / "stamps"

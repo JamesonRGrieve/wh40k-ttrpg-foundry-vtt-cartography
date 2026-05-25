@@ -1,0 +1,1 @@
+dh_tile, tile_door, Armored Bulkhead Door With Viewport, top-down view, wall doorway, door-closed, intact, 3d-render, ship, single-door, bulkhead, blast-door, viewport, riveted-frame

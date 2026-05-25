@@ -1,0 +1,1 @@
+planet_rocky, Pale Dust Desert, surface texture, fine-dust faint-channels, cream tan

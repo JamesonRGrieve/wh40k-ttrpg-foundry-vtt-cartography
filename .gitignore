@@ -2,7 +2,15 @@
 embeddings/
 __pycache__/
 
-# AI-generated artifacts moved out to ../../.ai-gen/ as of 2026-05-12.
+# Corpus triage/staging tree (~18 GB) — build/staging artifact, NOT
+# version-controlled. Canonical location is `.corpus/` at this
+# cartography pipeline root (relocated here from the .foundry-cartography
+# deploy module on 2026-05-18; that module is pure JSON + images only).
+# audit-verdicts/ are the backing record, summarized into the tracked
+# CORPUS_AUDIT.md.
+.corpus/
+
+# AI-generated artifacts moved out to ../../.lora-training-output/ as of 2026-05-12.
 # Inside this submodule, the legacy dirs are gone — these globs catch
 # any accidental re-creation in the wrong place.
 stamps/
@@ -16,7 +24,7 @@ dh-cartography/
 lora-training/stamps/train/
 lora-training/stamps/_excluded/
 
-# LoRA artifact PNGs/TXTs — generation output lives in ../../.ai-gen/
+# LoRA artifact PNGs/TXTs — generation output lives in ../../.lora-training-output/
 # (the per-LoRA artifact_dir per LORA_ARTIFACT_DIRS in
 # corpus_generator.py). Control plane stays here: manifest.yaml,
 # configs/, README.md.

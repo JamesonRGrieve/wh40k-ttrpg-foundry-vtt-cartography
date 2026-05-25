@@ -1,0 +1,1 @@
+ship_heavy_cargo_transport, Imperial Heavy Cargo Transport, top-down view, dh_voidship_hull, imperial-navy, cargo-transport, line-art, repeated-engine-pods, square-cargo-bays, simple-prow

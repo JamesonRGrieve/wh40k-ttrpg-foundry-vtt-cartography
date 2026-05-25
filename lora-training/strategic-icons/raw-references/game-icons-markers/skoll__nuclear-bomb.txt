@@ -1,0 +1,1 @@
+icon_strategic, Falling Nuclear Bomb, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, ordnance, atomic

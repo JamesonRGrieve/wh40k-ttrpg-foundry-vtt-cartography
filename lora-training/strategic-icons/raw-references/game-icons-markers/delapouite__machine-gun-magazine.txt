@@ -1,0 +1,1 @@
+icon_strategic, Machine-Gun Magazine And Rounds, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, ordnance, ammunition

@@ -1,0 +1,1 @@
+icon_strategic, Flame Ring Badge, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, fire

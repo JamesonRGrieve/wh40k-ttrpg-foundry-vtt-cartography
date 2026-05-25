@@ -1,0 +1,1 @@
+dh_tile, tile_ship_deck, Riveted Metal Deck Panels, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, painted-metal, metal-plating, panel-seams, rivets, bolt-pattern

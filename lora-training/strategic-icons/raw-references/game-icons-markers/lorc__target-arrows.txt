@@ -1,0 +1,1 @@
+icon_strategic, Crossed Arrows On Target, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, target, focus-fire

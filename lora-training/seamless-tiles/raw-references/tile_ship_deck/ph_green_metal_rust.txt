@@ -1,0 +1,1 @@
+dh_tile, tile_ship_deck, Painted Green Metal Sheet, top-down view, seamlessly tileable, square-tileable, damaged, photo-texture, painted-metal, corrosion-spots, scratched, weathered

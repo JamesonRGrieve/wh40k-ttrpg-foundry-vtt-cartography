@@ -1,0 +1,108 @@
+# Tile-structure LoRA — corpus manifest (Stage-1 sub-corpus).
+#
+# ──────────────────────────────────────────────────────────────────
+# THE THREE-STAGE MODULAR ROOM PIPELINE (read this first)
+# ──────────────────────────────────────────────────────────────────
+# The modular room-building system is THREE stages, not one LoRA:
+#
+#   Stage 1 — TILE GENERATOR: generates new *tileable tiles* for
+#     hand-building. The tile vocabulary is BOTH floor surfaces AND
+#     wall / corner / door structure pieces — every edge-matching
+#     building block an operator hand-places.
+#       · floors    → lora-training/seamless-tiles/   (dh_tile, tile_<archetype>_floor)
+#       · structure → lora-training/tile-structure/    (THIS dir; dh_tile, tile_wall/corner/door/endcap)
+#     Two dirs, ONE stage, ONE umbrella trigger (dh_tile).
+#
+#   Stage 2 — ROOM BUILDER: places & connects Stage-1 tiles into
+#     rooms and links rooms (corridors, doorways). This is the
+#     existing architectural-layout concern:
+#       lora-training/voidship-layouts/  (dh_layout — rooms/corridors/
+#       doorways generalized over an arbitrary boundary).
+#
+#   Stage 3 — STAMP PLACER: drops furniture/props onto built rooms.
+#       lora-training/stamps/  (dh_stamp — top-down prop vocabulary).
+#
+# A wall/corner/door is Stage-1 tile vocabulary, NOT a Stage-3 stamp.
+# (Historic mis-bin: ~dozens of wall/door pieces were captioned into
+# stamps/train/fixtures/ before the 3-stage model was explicit; the
+# 2026-05-16 relocation pass corrects them — see CORPUS_AUDIT.md.)
+#
+# There is NO API generator for this corpus — it is HARVESTED
+# (on-disk DaSIG + CC0 online), not generated. Operator directive
+# 2026-05-16: no Gemini supplemental generation yet.
+
+generator: tile_structure   # NOT IMPLEMENTED — harvest-only stage
+
+defaults:
+  trigger: dh_tile
+  # Structure pieces are "tileable" in the run/adjacency sense: a
+  # straight wall edge-tiles end-to-end along a run; corners turn a
+  # run 90°; door pieces are a run section with an opening; endcaps
+  # terminate or junction a run. The LoRA binds the piece-role
+  # trigger to that connective SHAPE, invariant to rotation,
+  # lighting, and which material/archetype dresses it.
+  connectivity_invariance: >-
+    bind the trigger to the structural piece role and how it
+    connects to adjacent tiles — NOT to rotation, lighting, or the
+    material/archetype skin
+
+# Piece-role triggers (umbrella dh_tile). Archetype/material is
+# carried as a TAG (so Stage 2 can pair e.g. a gothic wall with a
+# gothic-chapel floor), never folded into the trigger.
+pieces:
+  tile_wall:
+    role: straight wall segment that edge-tiles end-to-end along a run
+    connectivity_clause: "edge-tileable wall run"
+  tile_corner:
+    role: wall corner turning a run 90° (inside or outside)
+    connectivity_clause: "wall corner"   # + inside-corner|outside-corner tag
+  tile_door:
+    role: wall-run section containing a doorway / door
+    connectivity_clause: "wall doorway"  # + door-closed|door-open tag
+  tile_endcap:
+    role: wall terminus, pillar, or T-/cross-junction of runs
+    connectivity_clause: "wall endcap"   # + end|t-junction|cross-junction|pillar tag
+
+# Scope note: WALL-STAIRS pieces are captioned as tile_wall with an
+# `integrated-stairs` tag (stairs are not a separate piece trigger
+# in this ask). Standalone Stairs/ subdir content is OUT of scope.
+
+# Caption sidecar spec — mirrors seamless-tiles + stamps convention.
+# Single line, comma-delimited, written from the IMAGE not filename,
+# at move-time (cardinal rule).
+#
+#   dh_tile, <piece_trigger>, <Title Case Subject>, top-down view,
+#   <connectivity_clause>, <state>, <art-style>, <archetype/material>,
+#   <structural-tag>, <descriptive-tag>...
+#
+# Rules:
+#  - EXCLUDE angle, lighting, time, weather, rotation (invariance).
+#  - state from the image: intact | damaged | destroyed.
+#  - connectivity clause is mandatory and identifies the piece role
+#    (edge-tileable wall run | wall corner + inside/outside |
+#    wall doorway + door-closed/open | wall endcap + end/t/cross/pillar).
+#  - art-style tag mandatory, described from what you SEE
+#    (painterly | hand-painted | 3d-render | flat-vector | line-art).
+#  - archetype/material tag pairs the piece to a floor archetype
+#    (hab | industrial | ship | chapel | gothic | underhive |
+#    medicae | tunnel | garrison) so Stage 2 can match skins.
+#  - 3-7 structural/descriptive tags (lowercase, hyphenated).
+
+acceptance:
+  - "Strict top-down orthographic — no perspective/oblique, no horizon."
+  - "Is genuinely a structural piece (wall/corner/door/endcap), NOT furniture/console/locker that merely matched a filename."
+  - "Transparent or cleanly-separable background (these are placeable tiles, not full-bleed textures)."
+  - "No watermark, no burned-in label/scale/grid."
+  - "Not a byte-duplicate of another kept piece (props/ vs dasig-props/ are byte-identical — keep one)."
+  - "Non-structural matches (e.g. 'Beige Metal Locker Pair' caught by a 'door' substring) are REJECTED back toward Stage-3 fixtures, not kept here."
+
+provenance:
+  # SOURCES.json (file -> {source, origin_path|asset_id, license}).
+  # On-disk DaSIG: the donor archive already vendored into
+  # the .corpus tree — retained under its original
+  # distribution terms (DaSIG/“Forgotten Adventures”-style map-asset
+  # packs vendored for this campaign's Foundry use). Online CC0:
+  # CC0 1.0 only, source recorded per file.
+  dasig_on_disk: { source: "vendored .corpus DaSIG props/", note: "props/ tree only — dasig-props/ is byte-identical, skipped" }
+  relocated_from_stage3: { source: "lora-training/stamps/train/fixtures (mis-binned)", note: "re-captioned to tile spec, deduped vs DaSIG" }
+  online_cc0: { license: "CC0 1.0", note: "Kenney/OpenGameArt CC0 only; provenance per file; none with unclear license" }

@@ -1,0 +1,1 @@
+dh_tile, tile_metal_grating, Rusted Steel Tread Plate, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, steel, diamond-tread, raised-bar, basketweave, rusted, walkway

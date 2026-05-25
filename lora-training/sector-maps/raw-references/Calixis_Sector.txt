@@ -1,0 +1,1 @@
+sector_chart, Calixis Sector Chart, sector cartography, system-nodes, sub-sector-bounds, named regions (Malfian Sub-Sector, Golgenna Reach, Drusus Marches, Adrantis, Josian Reach), world-type legend, dark teal nebula starfield, Imperial gothic chart frame

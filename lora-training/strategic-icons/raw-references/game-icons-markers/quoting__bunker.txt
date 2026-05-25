@@ -1,0 +1,1 @@
+icon_strategic, Bunker With Firing Slits, strategic map symbology, fortification-marker, monochrome-glyph, flat-vector, emplacement

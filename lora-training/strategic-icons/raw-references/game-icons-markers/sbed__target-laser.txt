@@ -1,0 +1,1 @@
+icon_strategic, Target Laser Designator, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, target, designation

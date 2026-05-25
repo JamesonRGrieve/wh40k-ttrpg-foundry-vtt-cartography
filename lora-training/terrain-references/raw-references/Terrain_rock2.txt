@@ -1,0 +1,1 @@
+terrain_rock, Shattered Bare Rock Formation with Debris, top-down view, damaged, grey weathered stone, seamless-candidate

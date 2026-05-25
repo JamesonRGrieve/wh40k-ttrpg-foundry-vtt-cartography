@@ -1,0 +1,1 @@
+terrain_rock, Bare Rock Boulder and Flat Slab, top-down view, intact, grey weathered stone, seamless-candidate

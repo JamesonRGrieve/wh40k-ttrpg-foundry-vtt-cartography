@@ -1,0 +1,1 @@
+icon_strategic, Radar Dish On Stand, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, sensor, comms

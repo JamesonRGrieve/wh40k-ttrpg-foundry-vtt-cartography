@@ -1,0 +1,1 @@
+icon_strategic, Frost-Fire Swirl, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, elemental, anomaly

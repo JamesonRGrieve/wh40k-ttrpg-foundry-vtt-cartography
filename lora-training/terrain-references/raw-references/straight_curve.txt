@@ -1,0 +1,1 @@
+terrain_water, River Curve Segment, top-down view, intact, freshwater channel with muddy vegetated banks, seamless-candidate

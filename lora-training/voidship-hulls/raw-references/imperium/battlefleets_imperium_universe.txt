@@ -1,0 +1,1 @@
+ship_universe_class, Imperial Universe-Class Mass Transport, top-down view, dh_voidship_hull, imperial-navy, mass-transport, ribbed-cylindrical-hull, uniform-segmented-spine, painterly-monochrome

@@ -1,0 +1,1 @@
+dh_tile, tile_ship_deck, Overlapping Metal Shingle Plates, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, painted-metal, metal-plating, overlapping-plates, panel-seams, brushed-steel

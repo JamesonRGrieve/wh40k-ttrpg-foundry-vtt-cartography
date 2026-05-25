@@ -1,0 +1,1 @@
+planet_toxic, Toxic World Surface, surface texture, dense roiling chemical cloud cover, indigo white bruised palette

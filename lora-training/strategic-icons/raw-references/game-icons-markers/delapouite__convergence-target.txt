@@ -1,0 +1,1 @@
+icon_strategic, Four-Way Converging Chevrons, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, rally, convergence

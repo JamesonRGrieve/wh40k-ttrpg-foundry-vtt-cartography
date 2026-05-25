@@ -42,8 +42,8 @@ except ImportError:
     HAVE_PIL = False
 
 HERE = Path(__file__).resolve().parent
-CAMPAIGN_ROOT = HERE.parent.parent
-AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+CAMPAIGN_ROOT = HERE.parent
+AI_GEN = CAMPAIGN_ROOT / ".lora-training-output"
 FOUNDRY_MODULE = CAMPAIGN_ROOT / ".foundry-cartography"
 DEFAULT_STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 

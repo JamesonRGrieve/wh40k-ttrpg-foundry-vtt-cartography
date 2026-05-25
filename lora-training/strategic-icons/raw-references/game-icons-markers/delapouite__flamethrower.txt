@@ -1,0 +1,1 @@
+icon_strategic, Flamethrower With Fuel Pack, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, ordnance, incendiary

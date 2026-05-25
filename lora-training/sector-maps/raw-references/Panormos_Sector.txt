@@ -1,0 +1,1 @@
+sector_chart, Panormos Sector Chart, sector cartography, system-nodes, sub-sector-bounds, warp-routes, named regions (Tarponis Reach, Tician Sub-Sector, Kasreladin Way, Willsworth Sub-Sector), world-type legend, dark teal-green starfield, Imperial gothic chart frame

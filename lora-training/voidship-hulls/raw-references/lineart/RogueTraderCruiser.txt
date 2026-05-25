@@ -1,0 +1,1 @@
+ship_rogue_trader_cruiser, Rogue Trader Cruiser, top-down view, dh_voidship_hull, rogue-trader, cruiser, line-art, lateral-batteries, ornate-prow, fleur-de-lys-stern-banner

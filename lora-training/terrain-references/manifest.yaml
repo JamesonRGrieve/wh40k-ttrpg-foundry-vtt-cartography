@@ -1,0 +1,86 @@
+# Terrain-references LoRA — corpus generation manifest (STARTER).
+#
+# Status: deferred-goal bin, seeded 2026-05-17 from the corpus audit
+# (CORPUS_AUDIT.md Phase 3). This is a STARTER manifest documenting
+# the trigger namespace + shape-invariance clauses; expand the
+# treatment/angle/lighting matrices (model on
+# ../iconography/manifest.yaml) when a Gemini-conditioned generation
+# pass is actually stood up.
+#
+# Goal: teach the model clean top-down natural terrain features
+# usable as battlemap composition assets — rock/boulder fields,
+# water bodies, forest canopy/vegetation, ruins, statuary, impact
+# craters, sand/dune, ice sheets, lava flows, and bare heightmap
+# relief. NOT built props/structures (those belong in the stamps
+# LoRA), NOT perspective/isometric scenery, NOT character or
+# creature art.
+#
+# Reference-image conditioning: the curated audit-approved terrain
+# plates under raw-references/ are the canonical-shape anchors fed
+# to Gemini alongside the prompt (same architecture as the
+# iconography pipeline).
+
+generator: terrain_references
+
+defaults:
+  # Terrain-references is a NATURAL-FEATURE / TOP-DOWN-LEGIBILITY
+  # concept. The invariant the LoRA must bind is "clean orthographic
+  # top-down natural terrain feature", invariant to palette, biome
+  # tint, and time of day.
+  shape_invariance: >-
+    clean top-down natural terrain feature usable for battlemap
+    composition — orthographic plan view of rock, water, vegetation,
+    ruins, statuary, crater, sand, ice, lava, or heightmap relief;
+    never perspective/isometric scenery, never a built prop, never
+    character or creature art
+  exclusions: "no UI, no labels, no measurement grid, no watermark, no text"
+
+# Trigger namespace (per the terrain-references bin spec). Each
+# binds a distinct natural-feature register of the same top-down
+# terrain concept:
+trigger_namespace:
+  terrain_heightmap: >-
+    grayscale or relief heightmap of natural terrain — elevation
+    field, contour relief, displacement-style top-down landform
+  terrain_rock: >-
+    top-down rock / boulder / stone outcrop on natural ground —
+    individual rocks, scree, rocky shelf
+  terrain_water: >-
+    top-down water body — pool, pond, river bend, lake, coastal
+    shallows, with natural shoreline
+  terrain_vegetation: >-
+    top-down vegetation — forest canopy, scrub, grass, foliage
+    clusters seen from directly above
+  terrain_ruins: >-
+    top-down natural-terrain ruins — collapsed/overgrown stone
+    remnants integrated into the ground, not a clean built prop
+  terrain_statue: >-
+    top-down statuary / monolith / standing stone set on natural
+    terrain, weathered into the landscape
+  terrain_crater: >-
+    top-down impact or blast crater — rim, ejecta, scorched basin
+    in natural ground
+  terrain_sand: >-
+    top-down sand / dune / desert surface — ripple fields, dune
+    crests, sandy flats
+  terrain_ice: >-
+    top-down ice / snow / frozen surface — ice sheet, crevasse
+    field, snow drift, frozen water
+  terrain_lava: >-
+    top-down lava / molten / volcanic surface — flows, crust,
+    fissures, cooling rock
+
+# Acceptance (mirrors the terrain-references bin criteria):
+#   - clean top-down natural terrain feature suitable as a
+#     battlemap composition asset
+#   - orthographic top-down (reject perspective/iso/side-elevation)
+#   - adequate resolution for its scale (tiny <70px subject = low-res)
+#   - clean (no UI/grid/labels/watermark)
+#   - on-natural-terrain (reject built props -> stamps,
+#     character/creature art, UI chrome)
+#
+# Matrix axes (treatment x angle x lighting) — TO BE EXPANDED when
+# the generation pass is stood up; model on ../iconography/manifest.yaml.
+common_treatments: []   # starter — append when generation is built
+angles: []
+lighting: []

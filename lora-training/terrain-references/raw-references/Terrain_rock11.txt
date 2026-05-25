@@ -1,0 +1,1 @@
+terrain_rock, Bare Rock Boulder Cluster, top-down view, intact, grey weathered stone, seamless-candidate

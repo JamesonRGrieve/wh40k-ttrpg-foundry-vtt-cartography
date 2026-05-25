@@ -1,0 +1,96 @@
+# game-icons Round 2 — strategic/operational map symbology, distinct from R1's 66.
+# Class confirmed by visual Read in Phase C.
+# --- unit markers: naval / air / ground / ordnance ---
+cathelineau/battleship.svg
+cathelineau/carrier.svg
+cathelineau/cruiser.svg
+delapouite/cargo-ship.svg
+delapouite/spaceship.svg
+delapouite/ufo.svg
+delapouite/truck.svg
+skoll/apc.svg
+skoll/machine-gun.svg
+delapouite/missile-launcher.svg
+delapouite/mortar.svg
+delapouite/flamethrower.svg
+sbed/turret.svg
+sbed/blaster.svg
+sbed/flamer.svg
+delapouite/defense-satellite.svg
+lorc/satellite.svg
+lorc/missile-swarm.svg
+delapouite/rocket-thruster.svg
+sbed/grenade.svg
+delapouite/machine-gun-magazine.svg
+sbed/ammo-box.svg
+# --- structure / installation markers ---
+delapouite/warehouse.svg
+delapouite/harbor-dock.svg
+delapouite/hospital.svg
+delapouite/nuclear-plant.svg
+delapouite/refinery.svg
+delapouite/fuel-tank.svg
+lorc/castle.svg
+delapouite/tower-bridge.svg
+lorc/cargo-crane.svg
+delapouite/satellite-communication.svg
+lorc/radar-dish.svg
+lorc/radar-sweep.svg
+delapouite/radar-cross-section.svg
+sbed/reactor.svg
+delapouite/valve.svg
+lorc/bridge.svg
+# --- objective / target / control markers ---
+delapouite/all-seeing-eye.svg
+lorc/crosshair-arrow.svg
+lorc/arrow-scope.svg
+sbed/target-laser.svg
+lorc/targeting.svg
+lorc/target-arrows.svg
+lorc/target-dummy.svg
+delapouite/target-poster.svg
+sbed/spawn-node.svg
+lorc/rally-the-troops.svg
+lorc/portal.svg
+lorc/teleport.svg
+# --- movement / vector markers ---
+delapouite/arrow-cursor.svg
+delapouite/arrow-wings.svg
+lorc/arrow-cluster.svg
+lorc/arrowhead.svg
+lorc/arrow-flights.svg
+lorc/transportation-rings.svg
+lorc/orbital.svg
+# --- faction / affiliation markers ---
+badges/crown.svg
+badges/shield.svg
+badges/cog.svg
+lorc/crown.svg
+lorc/crowned-skull.svg
+lorc/skull-shield.svg
+lorc/skull-signet.svg
+lorc/hawk-emblem.svg
+lorc/raven.svg
+lorc/wolf-head.svg
+lorc/lion.svg
+faithtoken/dragon-head.svg
+lorc/swords-emblem.svg
+lorc/crossed-sabres.svg
+lorc/crossed-pistols.svg
+lorc/battle-axe.svg
+lorc/fist.svg
+delapouite/gauntlet.svg
+lorc/gears.svg
+delapouite/eagle-head.svg
+lorc/spears.svg
+# --- hazard / anomaly markers ---
+sbed/nuclear.svg
+delapouite/nuclear-waste.svg
+lorc/gas-mask.svg
+lorc/virus.svg
+lorc/meteor-impact.svg
+sbed/blast.svg
+lorc/fireball.svg
+lorc/barbed-wire.svg
+lorc/alien-skull.svg
+lorc/frostfire.svg

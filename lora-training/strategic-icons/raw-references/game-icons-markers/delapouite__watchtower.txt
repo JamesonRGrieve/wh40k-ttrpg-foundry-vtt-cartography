@@ -1,0 +1,1 @@
+icon_strategic, Lattice Watchtower, strategic map symbology, fortification-marker, monochrome-glyph, flat-vector, observation-post

@@ -1,0 +1,1 @@
+icon_strategic, Derrick Oil Rig Gushing, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, resource-site

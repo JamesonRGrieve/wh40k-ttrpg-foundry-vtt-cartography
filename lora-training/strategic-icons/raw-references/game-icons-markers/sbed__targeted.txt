@@ -1,0 +1,1 @@
+icon_strategic, Ringed Target Reticle, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, target, lock

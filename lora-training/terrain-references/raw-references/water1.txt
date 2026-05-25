@@ -1,0 +1,1 @@
+terrain_water, Narrow River Channel With Sandy Banks, top-down view, intact, dark-water sandy-shoreline

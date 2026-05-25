@@ -1,0 +1,1 @@
+icon_strategic, Radioactive Trefoil Disc, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, radiation

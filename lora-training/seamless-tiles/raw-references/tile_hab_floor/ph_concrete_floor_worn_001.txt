@@ -1,0 +1,1 @@
+dh_tile, tile_hab_floor, Worn Scuffed Concrete Corridor Floor, top-down view, seamlessly tileable, square-tileable, damaged, photo-texture, poured-concrete, mid-gray, scratched, scuffed, traffic-wear, scattered-debris

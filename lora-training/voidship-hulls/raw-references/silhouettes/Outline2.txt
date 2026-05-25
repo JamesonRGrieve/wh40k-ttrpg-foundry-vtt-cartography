@@ -1,0 +1,1 @@
+ship_silhouette_imperial, Imperial Cruiser Silhouette Variant, top-down view, dh_voidship_hull, imperial-navy, silhouette-only, solid-black, no-interior-detail, gothic-spires-dorsal, tapered-stern

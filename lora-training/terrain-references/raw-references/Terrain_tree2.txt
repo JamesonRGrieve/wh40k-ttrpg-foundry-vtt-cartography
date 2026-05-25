@@ -1,0 +1,1 @@
+terrain_tree, Single Tree Canopy, top-down view, intact, dense green deciduous foliage, seamless-candidate

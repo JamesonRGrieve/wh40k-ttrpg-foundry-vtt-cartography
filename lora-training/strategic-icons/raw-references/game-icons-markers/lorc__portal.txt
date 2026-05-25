@@ -1,0 +1,1 @@
+icon_strategic, Swirling Portal Ring, strategic map symbology, movement-marker, monochrome-glyph, flat-vector, teleport, warp

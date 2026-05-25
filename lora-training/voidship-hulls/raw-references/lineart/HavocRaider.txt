@@ -1,0 +1,1 @@
+ship_havoc_class, Chaos Havoc-Class Raider, top-down view, dh_voidship_hull, chaos, raider, line-art, short-spinal-hull, dorsal-protrusions, port-and-starboard-sponsons

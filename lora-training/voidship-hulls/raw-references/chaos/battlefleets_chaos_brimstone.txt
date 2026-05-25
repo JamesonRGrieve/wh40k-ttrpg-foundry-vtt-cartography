@@ -1,0 +1,1 @@
+ship_brimstone_class, Chaos Brimstone-Class Vessel, top-down view, dh_voidship_hull, chaos, raider, red-and-gold-armor, tall-spinal-spire, segmented-hull, ornate-trim

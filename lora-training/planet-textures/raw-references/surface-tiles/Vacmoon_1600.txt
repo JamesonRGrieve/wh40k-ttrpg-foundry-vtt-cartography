@@ -1,0 +1,1 @@
+planet_barren, Vacuum Moon Surface, surface texture, grey boulder-strewn regolith, cratered rubble field, monochrome grey palette

@@ -1,0 +1,1 @@
+sector_chart, The Tyranid Incursions Galaxy Chart, sector cartography, segmentum-bounds, system-nodes, hive-fleet warp-routes, named regions (Segmentum Obscurus/Solar/Pacificus/Tempestus, Cicatrix Maledictum, Halo Stars), tendril-and-starfield two-page galactic cartographic plate

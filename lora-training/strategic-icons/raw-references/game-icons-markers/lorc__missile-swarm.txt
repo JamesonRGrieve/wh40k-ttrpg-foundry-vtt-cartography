@@ -1,0 +1,1 @@
+icon_strategic, Missile Swarm, strategic map symbology, hazard-marker, monochrome-glyph, flat-vector, saturation-strike, ordnance

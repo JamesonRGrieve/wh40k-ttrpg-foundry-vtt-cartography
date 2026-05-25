@@ -1,0 +1,1 @@
+terrain_forest, Dense Tree Thicket, top-down view, intact, mixed green and autumn deciduous woodland, seamless-candidate

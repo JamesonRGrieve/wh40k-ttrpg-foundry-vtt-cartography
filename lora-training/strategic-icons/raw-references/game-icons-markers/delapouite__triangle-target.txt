@@ -1,0 +1,1 @@
+icon_strategic, Hollow Triangle Waypoint, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, waypoint

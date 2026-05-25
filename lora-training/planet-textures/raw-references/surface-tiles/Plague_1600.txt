@@ -1,0 +1,1 @@
+planet_plague, Plague World Surface, surface texture, diseased pustular crust with spore nodules and necrotic filaments, sickly green bone-grey palette

@@ -1,0 +1,1 @@
+icon_strategic, Field Cannon, strategic map symbology, unit-marker, monochrome-glyph, flat-vector, artillery, ordnance

@@ -1,0 +1,1 @@
+sector_chart, Scarus Sector Chart (Detailed), sector cartography, system-nodes, sub-sector-bounds (Helican/Angelus/Antimar/Kerak/Ophidian Subsectors), named regions (Halo Stars, Hungerg Worlds, Grand Banks), world-type legend, dark green starfield, Imperial gothic chart frame

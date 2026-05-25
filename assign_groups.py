@@ -81,8 +81,8 @@ def square_png_bytes(png_path: Path) -> bytes:
 
 DEFAULT_SERVER = "http://198.51.100.11:8188"
 HERE = Path(__file__).resolve().parent
-CAMPAIGN_ROOT = HERE.parent.parent
-AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+CAMPAIGN_ROOT = HERE.parent
+AI_GEN = CAMPAIGN_ROOT / ".lora-training-output"
 STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 EMBED_CACHE = HERE / "embeddings"
 
@@ -155,6 +155,11 @@ STOPWORDS = {
     "west", "left", "right", "front", "back", "side", "top", "down",
     "topdown", "topdown-view", "isometric", "oblique", "the", "a", "an",
     "of", "with", "and",
+    # damage/activation-state adjectives that describe a variant, not the
+    # object identity — strip so e.g. "Overturned Metal Stool" canonicalizes
+    # to the same key as its upright twin "Metal Stool".
+    "overturned", "corroded", "bloodstained", "weathered", "stained",
+    "burnt", "scorched", "smashed", "dented", "toppled", "spilled",
 }
 
 ARTICLE_RE = re.compile(r"^(an?\s+|the\s+|some\s+|several\s+)", re.IGNORECASE)

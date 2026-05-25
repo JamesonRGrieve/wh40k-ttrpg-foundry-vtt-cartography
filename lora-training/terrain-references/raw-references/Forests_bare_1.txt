@@ -1,0 +1,1 @@
+terrain_vegetation, Bare Dead Forest Tree Cluster, top-down view, intact, leafless-trees dirt-ground woodland biome-blob, isolated-element

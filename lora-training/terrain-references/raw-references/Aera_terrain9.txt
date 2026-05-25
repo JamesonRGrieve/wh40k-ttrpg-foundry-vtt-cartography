@@ -1,0 +1,1 @@
+terrain_vegetation, Grass Ground Cover Area Patch, top-down view, intact, green-grassland soft-edged biome-blob, seamless-candidate

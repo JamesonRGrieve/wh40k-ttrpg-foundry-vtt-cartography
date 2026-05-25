@@ -1,0 +1,1 @@
+dh_tile, tile_door, Gothic Stone Archway Passage, top-down view, wall doorway, door-open, intact, painterly, gothic, gothic-arch, stone, open-passage, status-indicators

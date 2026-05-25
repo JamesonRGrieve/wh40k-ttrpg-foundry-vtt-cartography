@@ -1,0 +1,1 @@
+planet_industrial, Industrial World Surface, surface texture, marbled grey rock, mineral veining mottled stone, slate grey palette

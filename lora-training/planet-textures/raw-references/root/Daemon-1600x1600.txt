@@ -1,0 +1,1 @@
+planet_death, Warp-Corrupted Wastes, surface texture, daemonic-bloom mottling, magenta lime grey

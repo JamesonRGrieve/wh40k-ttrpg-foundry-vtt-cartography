@@ -1,0 +1,1 @@
+icon_strategic, Twin-Tower Bridge, strategic map symbology, structure-marker, monochrome-glyph, flat-vector, crossing, chokepoint

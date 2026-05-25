@@ -1,0 +1,1 @@
+ship_ark_mechanicus, Imperial Ark Mechanicus, top-down view, dh_voidship_hull, imperial-navy, mechanicus, ark-mechanicus, line-art, long-spinal-hull, dorsal-cathedral, lateral-gun-arrays

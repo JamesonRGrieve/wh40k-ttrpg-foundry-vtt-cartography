@@ -1,0 +1,1 @@
+dh_tile, tile_ship_deck, Weathered Scratched Steel Deck, top-down view, seamlessly tileable, square-tileable, damaged, photo-texture, weathered, metal-plating, scratched, rust-staining, panel-seams

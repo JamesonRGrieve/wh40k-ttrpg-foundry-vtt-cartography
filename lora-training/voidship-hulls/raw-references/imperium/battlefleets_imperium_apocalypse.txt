@@ -1,0 +1,1 @@
+ship_apocalypse_class, Imperial Apocalypse-Class Battleship, top-down view, dh_voidship_hull, imperial-navy, battleship, tall-narrow-hull, layered-armor-blocks, gold-prow-cap, lateral-batteries

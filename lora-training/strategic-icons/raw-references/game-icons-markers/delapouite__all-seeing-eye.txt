@@ -1,0 +1,1 @@
+icon_strategic, All-Seeing Eye Pyramid, strategic map symbology, faction-marker, monochrome-glyph, flat-vector, surveillance, watch

@@ -1,0 +1,1 @@
+icon_strategic, Spawn Node Stack, strategic map symbology, objective-marker, monochrome-glyph, flat-vector, deploy-point, beacon

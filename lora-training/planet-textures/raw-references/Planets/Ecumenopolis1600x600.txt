@@ -1,0 +1,1 @@
+planet_hive, Ecumenopolis Crust Surface, surface texture, pitted-ferrocrete, urban-sprawl-grime, monochrome-grey

@@ -1,0 +1,1 @@
+ship_overlord_class, Imperial Overlord-Class Battlecruiser, top-down view, dh_voidship_hull, imperial-navy, battlecruiser, line-art, long-spinal-hull, multiple-lateral-batteries, gothic-prow, ornate-stern

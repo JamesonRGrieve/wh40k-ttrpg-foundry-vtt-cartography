@@ -1,0 +1,1 @@
+dh_tile, tile_hab_floor, Smooth Poured Concrete Floor, top-down view, seamlessly tileable, square-tileable, intact, photo-texture, poured-concrete, mottled, light-gray, faint-staining, smooth-trowel, subtle-pitting

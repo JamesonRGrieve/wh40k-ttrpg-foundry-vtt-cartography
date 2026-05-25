@@ -54,8 +54,8 @@ from typing import Any
 
 DEFAULT_SERVER = "http://198.51.100.11:8188"
 HERE = Path(__file__).resolve().parent
-CAMPAIGN_ROOT = HERE.parent.parent
-AI_GEN = CAMPAIGN_ROOT / ".ai-gen"
+CAMPAIGN_ROOT = HERE.parent
+AI_GEN = CAMPAIGN_ROOT / ".lora-training-output"
 WORKFLOWS_DIR = HERE / "workflows"
 OUT_DIR = AI_GEN / "cartography" / "battlemaps"
 POLL_TIMEOUT_S = 1500  # Chroma at 1024² is slow; ControlNet adds ~3-5x overhead.

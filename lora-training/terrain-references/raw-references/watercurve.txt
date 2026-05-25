@@ -1,0 +1,1 @@
+terrain_water, Curving River Bend With Sandy Banks, top-down view, intact, dark-water sandy-shoreline

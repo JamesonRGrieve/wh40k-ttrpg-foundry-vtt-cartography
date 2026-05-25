@@ -1,0 +1,1 @@
+dh_tile, tile_door, Sealed Metal Door In Wall, top-down view, wall doorway, door-closed, intact, hand-painted, industrial, single-door, blast-door, hazard-chevrons, riveted-frame

@@ -1,0 +1,1 @@
+sector_chart, Dread Mandragora Sector Chart, sector cartography, system-nodes, sub-sector-bounds, warp-routes, named regions (Sea of Shadows, The Drift Worlds, Cathayan Sarcophagus, The Dunokay Mires), world-type legend, dark green-tinted starfield, Imperial gothic chart frame

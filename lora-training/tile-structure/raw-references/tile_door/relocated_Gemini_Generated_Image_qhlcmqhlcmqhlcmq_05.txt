@@ -1,0 +1,1 @@
+dh_tile, tile_door, Sealed Ship Bulkhead Hatch, top-down view, wall doorway, door-closed, intact, 3d-render, ship, single-door, bulkhead, riveted-frame, hatch-handles
