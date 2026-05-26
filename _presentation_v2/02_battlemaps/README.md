@@ -6,7 +6,7 @@ through BattlemapInteriorV1 with anti-frame negative). 1024×1024.
 | File | Style | Seed | Tied NPC | Tied location |
 | --- | --- | --- | --- | --- |
 | SOLENNE_the_sump.png | bar | 42 | Tasker (`01_portraits/Tasker_bust.png`) | `[[The Sump]]` |
-| SOLENNE_district4_chapel.png | chapel | 13 | Denn Varo (`01_portraits/Denn_Varo_bust.png`) | `[[District 4 Chapel]]` |
+| SOLENNE_district4_chapel.png | chapel | 13 | Garrick Varo (`01_portraits/Garrick_Varo_bust.png`) | `[[District 4 Chapel]]` |
 | SOLENNE_hab4_medicae_post.png | medicae | 7 | — | `[[Hab District 4 Medicae Post]]` |
 | SOLENNE_pdf_garrison.png | garrison | 19 | Kael Edric | `[[PDF Garrison]]` |
 

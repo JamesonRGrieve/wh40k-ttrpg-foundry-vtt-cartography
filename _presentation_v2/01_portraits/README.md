@@ -11,7 +11,7 @@ Token = 512×512 1:1 crop centered on per-slot face fraction
 
 | File | Subject | Class | Symbol target | Seed | Notes |
 | --- | --- | --- | --- | --- | --- |
-| Denn_Varo_bust.png | Lay preacher (M, late 50s) | preacher | adeptus_ministorum on robe | 42 | Ministorum sigil rendered as embroidered detail |
+| Garrick_Varo_bust.png | Lay preacher (M, late 50s) | preacher | adeptus_ministorum on robe | 42 | Ministorum sigil rendered as embroidered detail |
 | Keller_bust.png | Shopkeeper (M, late 50s) | civilian | aquila collar pendant | 42 | Pendant rendered small (medium symbol scale) |
 | The_Handler_bust.png | Lord Inquisitor | inquisitor | inquisition_rosette on chest | 7 | Rosette rendered as embossed armor inlay |
 | Veyra_Sildt_bust.png | Astropath (F, early 40s) | astropath | none | 42 | Skull-faced sealed-eyes astropath |

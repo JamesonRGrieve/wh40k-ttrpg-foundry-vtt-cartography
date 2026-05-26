@@ -45,7 +45,7 @@ layer in between.
 | Block 9 Unit 14 (Edric residence) | `hab` | Slightly nicer than transit lodge — faded carpet stamp, more decor. |
 | Administratum District Office | `garrison` | Closer to imperial bureaucracy — substitute regimental banners with Administratum seals via prompt override. |
 | Hab District 4 Medicae Post | `medicae` | Sterile white-tile examination room. |
-| District 4 Chapel (Denn Varo's chapel) | `chapel` | Default chapel archetype is sized for hive ministorum chapels. |
+| District 4 Chapel (Garrick Varo's chapel) | `chapel` | Default chapel archetype is sized for hive ministorum chapels. |
 
 ### Hab District 9 (anomaly cluster)
 
