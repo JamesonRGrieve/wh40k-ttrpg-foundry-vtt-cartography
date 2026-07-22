@@ -13,14 +13,27 @@
  *     node compile_preset_pack.mjs SRC DST       # explicit src/dst
  */
 
-// classic-level is provided by the sibling wh40k-rpg system's node_modules;
-// no separate install needed for the cartography subdir.
+// classic-level is provided by the sibling wh40k-rpg system's node_modules
+// (`.foundry-system/node_modules`); no separate install is needed for the
+// cartography subdir. This script lives in `.lora-training/` (post-reorg), a
+// sibling of `.foundry-system/` under the vault root, so resolve into the
+// system's node_modules explicitly. The legacy vault-root `node_modules` path
+// is kept as a fallback for the pre-reorg layout.
 import { readdirSync, readFileSync, rmSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const { ClassicLevel } = await import(resolve(HERE, '..', 'node_modules', 'classic-level', 'index.js'));
+const classicLevelCandidates = [
+    resolve(HERE, '..', '.foundry-system', 'node_modules', 'classic-level', 'index.js'),
+    resolve(HERE, '..', 'node_modules', 'classic-level', 'index.js'),
+];
+const classicLevelEntry = classicLevelCandidates.find(existsSync);
+if (classicLevelEntry === undefined) {
+    console.error(`classic-level not found; looked in:\n  ${classicLevelCandidates.join('\n  ')}`);
+    process.exit(1);
+}
+const { ClassicLevel } = await import(classicLevelEntry);
 
 const srcDir = resolve(process.argv[2] ?? join(HERE, 'dh-cartography', 'packs-src', 'dh-presets-journals'));
 const dstDir = resolve(process.argv[3] ?? join(HERE, 'dh-cartography', 'packs', 'dh-presets-journals'));
