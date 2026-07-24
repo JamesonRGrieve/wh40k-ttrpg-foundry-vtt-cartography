@@ -1,7 +1,47 @@
 # Cartography TODO
 
 Open work, in priority order. Items removed when done. Last refreshed
-2026-05-08.
+2026-07-24.
+
+## 2026-07-24 — current state & next up
+
+Where the project actually stands (the dated sections below are the
+historical record; read them for *why*, this section for *what next*):
+
+- **Corpus triage is complete.** `.corpus/uncertain/pending-visual-review/`
+  is empty; the ~14 GB remaining under `.corpus/uncertain/` is sorted
+  reject / duplicate / psd-source / watermark byproduct, retained as a
+  reuse pool (operator: keep, do not prune). The backing record is the
+  65 files in `.corpus/audit-verdicts/`, rolled up in `CORPUS_AUDIT.md`.
+- **15 LoRA bins are scaffolded** under `lora-training/<bin>/` (manifests
+  present). Corpus-ready (populated `raw-references/`, approx counts):
+  terrain-references 218, tile-structure 99, seamless-tiles 75,
+  planet-textures 68, sector-maps 50, voidship-hulls 45,
+  voidship-layouts 33; `stamps/train/` 1092 staged; `iconography`
+  686 generated (in `../../.lora-training-output/`). Thin / seed-only:
+  chaos-iconography 7, xenos-iconography 2, strategic-icons 1,
+  hive-city 1, portraits/scenes 0 raw. Goal↔bin map: see `CLAUDE.md`
+  "Goals ↔ LoRA-bin crosswalk".
+- **No LoRA has been trained yet** — zero `.safetensors` on disk. The
+  generation pipeline is mature; training itself is unstarted. This is
+  the critical-path gap.
+
+### Priority next steps
+
+1. **Train the first LoRA from a corpus-ready bin.** ai-toolkit on the
+   3× RTX 3090 host (CT 140), against `ostris/Flex.1-alpha` per
+   `CORPUS_AUDIT.md`. Start with a bin that has the strongest corpus
+   and clearest acceptance test (candidate: `iconography` — 686 imgs,
+   canonical-shape acceptance is unambiguous; or `terrain-references`
+   218). Output `.safetensors` → ComfyUI `models/loras/`. This unblocks
+   both the batch pipeline and Krita (T1) at inference.
+2. **Stand up Krita generative-editing integration (goal T1).** Install
+   `krita-ai-diffusion`, point it at the ComfyUI backend
+   (`http://198.51.100.11:8188`), and prove one masked round-trip on a
+   deployed `SOLENNE_*.png` (acceptance in `CLAUDE.md` "Tooling &
+   workflow goals"). Notebook: `docs/krita-workflow.md`. Open question
+   for the operator: whether trained campaign LoRAs are selectable
+   in-plugin before #1 lands, or T1 is proven first on stock Chroma-Flux.
 
 ## 2026-05-08 review — rejected by operator (second presentation)
 

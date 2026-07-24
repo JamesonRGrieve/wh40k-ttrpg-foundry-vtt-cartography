@@ -162,6 +162,77 @@ one of these ten items toward shippable Solenne-grade quality.
 
 ---
 
+## Tooling & workflow goals
+
+The ten items above are the *deliverable* goals — the asset **types**
+the project must ship. This section records *tooling* goals: the
+production **capabilities** that serve those deliverables. Tooling
+goals are a separate axis (a *how*, not a *what*); they do **not**
+renumber, replace, or dilute the immutable ten.
+
+T1. **Krita generative-editing integration.** A first-class,
+    interactive round-trip between Krita and the lab ComfyUI backend
+    (`http://198.51.100.11:8188`) via the `krita-ai-diffusion` plugin,
+    so any deployed asset — battlemap, portrait, scene, stamp — can be
+    inpainted / outpainted / refined / live-painted **in-canvas**
+    against the same Chroma-Flux + IPAdapter (and, once trained, the
+    campaign LoRAs) that the batch pipeline uses. This is the
+    interactive complement to the scripted `generate_battlemap.py` /
+    `generate_character_portrait.py` paths and to the SAM2-point →
+    inpaint and localized-inpainting levers already named throughout
+    this doc: the fidelity fixes those bullets describe (canonical
+    Aquila repaint, portrait fine detail, damage-state stamp variants)
+    become hand-guided operator moves instead of blind batch reruns.
+    - **File convention (decided 2026-07-24).** Working masters are
+      `.kra` files kept **beside their exported PNG deliverable** —
+      `Maps/FinalChapel.kra` ↔ `Maps/FinalChapel.png`,
+      `Characters/<Name>.kra` ↔ `Characters/<Name>.png`. The **PNG
+      export is the tracked, deployed asset**; the `.kra` is a
+      **gitignored, local-only** layer-stack master (`*.kra` in the
+      vault `.gitignore`). Autosaves and editor backups
+      (`*-autosave.kra`, `*~`) are never tracked.
+    - **Acceptance.** A round-trip is proven when an operator opens a
+      deployed `SOLENNE_*.png` in Krita, runs a masked inpaint through
+      the ComfyUI backend, and exports a PNG that matches the
+      Solenne-grade bar with the edit integrated as painted material
+      (not a pasted overlay). Notebook: `docs/krita-workflow.md`.
+
+Related tooling already recorded elsewhere, cross-referenced here so
+the tooling axis is legible in one place:
+- **ControlNet layout ingestion** — deliverable goal **#10** is itself
+  tooling-flavoured (a render *path*), but stays numbered in the
+  deliverable list because it directly gates a deliverable
+  (external-layout export → Solenne-grade map). See its own entry and
+  "Tooling decisions".
+- **Gemini Imagen ("nano-banana") path** for iconography-critical
+  surfaces — see "Tooling decisions" and `TODO.md`. Chosen because
+  local Chroma-Flux lacks aquila / rosette / cog as concept tokens.
+
+---
+
+## Goals ↔ LoRA-bin crosswalk
+
+The 15 LoRA training bins under `lora-training/<bin>/` are *means*;
+each serves one or more deliverable goals above. This table keeps the
+two lists reconciled (bins with a populated `raw-references/` or
+`train/` are corpus-ready; see `pipeline_status.py` for live counts).
+
+| Deliverable goal | Serving LoRA bin(s) |
+| --- | --- |
+| #1 Battlemaps (interiors) | `scenes`, `seamless-tiles`, `tile-structure`, `stamps`, `terrain-references` |
+| #2 Battlemap overlays | *(pipeline: walls-alpha / `--keep-only`; no dedicated bin)* |
+| #3 Ships (multi-deck) | `voidship-hulls`, `voidship-layouts` |
+| #4 City / district maps | `hive-city`, `terrain-references` |
+| #5 Planetary maps | `planet-textures` |
+| #6 Star-system maps | `sector-maps`, `strategic-icons` |
+| #7 Stamps | `stamps` |
+| #8 Portraits | `portraits`, `iconography` (worn heraldry) |
+| #9 Scenes w/ integrated iconography | `scenes`, `iconography`, `chaos-iconography`, `xenos-iconography` |
+| #10 ControlNet layout ingestion | *(tooling render-path; no bin)* |
+| T1 Krita generative editing | *(consumes every trained bin at inference; no bin of its own)* |
+
+---
+
 ## Pipeline overview
 
 This directory turns Gemini-generated stamp-grid PNGs into a Foundry V14
