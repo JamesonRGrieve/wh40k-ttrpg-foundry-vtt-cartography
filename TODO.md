@@ -22,9 +22,21 @@ historical record; read them for *why*, this section for *what next*):
   chaos-iconography 7, xenos-iconography 2, strategic-icons 1,
   hive-city 1, portraits/scenes 0 raw. Goal↔bin map: see `CLAUDE.md`
   "Goals ↔ LoRA-bin crosswalk".
-- **No LoRA has been trained yet** — zero `.safetensors` on disk. The
-  generation pipeline is mature; training itself is unstarted. This is
-  the critical-path gap.
+- **The iconography LoRA is trained but undeployed.** First completed
+  LoRA (2026-05-08, see `docs/battlemap-workflow.md`): Flex.1-alpha
+  base, rank 16, 3000 steps on CT 140; 6/11 triggers bind canonical
+  shape (aquila included). Checkpoint at CT 140
+  `/opt/lora-training/outputs/wh40k_iconography/wh40k_iconography.safetensors`
+  (117 MB) — **NOT promoted to the ComfyUI model store**
+  (`/zpool/models/comfyui/loras/`, i.e. `/mnt/models/comfyui/loras/`),
+  so ComfyUI/Krita cannot see it (verified: absent from the store and
+  from ComfyUI's live LoRA list). Promote via `deploy_lora_to_comfyui.sh`.
+  It is a **Flex/Flux-architecture LoRA** — it will NOT stack on the
+  SDXL battlemap styles; pair it with Flux/chroma workflows only. The
+  v2 canonical-shape corpus fixes (4 diagrammatic glyphs + aquila
+  aspect ratio) were queued to address step-3000 weak spots.
+- **The other 14 LoRA bins are untrained** — that, plus the
+  iconography deploy/v2 decision, is the remaining training gap.
 
 ### Priority next steps
 
