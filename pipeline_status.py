@@ -32,7 +32,7 @@ import yaml
 HERE = Path(__file__).resolve().parent
 CAMPAIGN_ROOT = HERE.parent
 AI_GEN = CAMPAIGN_ROOT / ".lora-training-output"
-FOUNDRY_MODULE = CAMPAIGN_ROOT / ".foundry-cartography"
+FOUNDRY_MODULE = CAMPAIGN_ROOT / ".foundry-cartography-assets"
 SOURCES_DIR = AI_GEN / "cartography" / "source-grids"
 STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 STAGED_DIR = FOUNDRY_MODULE / "stamps"

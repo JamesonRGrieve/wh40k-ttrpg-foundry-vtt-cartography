@@ -44,7 +44,7 @@ except ImportError:
 HERE = Path(__file__).resolve().parent
 CAMPAIGN_ROOT = HERE.parent
 AI_GEN = CAMPAIGN_ROOT / ".lora-training-output"
-FOUNDRY_MODULE = CAMPAIGN_ROOT / ".foundry-cartography"
+FOUNDRY_MODULE = CAMPAIGN_ROOT / ".foundry-cartography-assets"
 DEFAULT_STAMPS_DIR = AI_GEN / "cartography" / "stamps"
 
 DEFAULT_ASSET_PREFIX = "modules/dh-cartography/stamps"
