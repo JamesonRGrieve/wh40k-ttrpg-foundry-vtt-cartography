@@ -1,0 +1,73 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# ai-toolkit config — dh_stamp LoRA: single stamps, style + view + state.
+#
+# Corpus: staged by ../../../stage_single_stamps.py from the public stamp pack
+# (never the private GW pack): one cut-out per variant, centred on white, with a
+# caption built only from the pack's data (view = the variant's perspective, name,
+# state, category, tags, setting, lit/unlit). Rsynced to the CT at
+# /opt/lora-training/stamps-single. 4301 images, 522 stamps; views
+# orthographic 1449 / isometric 1567 / front 1263 / central 22.
+#
+# - resolution 512 only: the sheet cells are small (long side 96-300 px), so a
+#   larger bucket only upscales further and teaches blur.
+# - rank 32: many subjects and four views share one trigger.
+# - steps 6000 with 3-GPU DDP (effective batch 3) is ~4 epochs of the corpus.
+# - latents are cached first by dh-stamp-single.cache.flex1.yaml on one GPU:
+#   caching on rank 0 under DDP outlasted NCCL's 10-minute collective timeout
+#   on this CT (2026-09-29 journal). With the cache on disk every rank loads it.
+job: extension
+config:
+  name: dh_stamp
+  process:
+    - type: sd_trainer
+      training_folder: /opt/lora-training/outputs
+      device: cuda
+      trigger_word: null            # every caption starts with dh_stamp
+      network:
+        type: lora
+        linear: 32
+        linear_alpha: 32
+      save:
+        dtype: float16
+        save_every: 500
+        max_step_saves_to_keep: 12
+        push_to_hub: false
+      datasets:
+        - folder_path: /opt/lora-training/stamps-single
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution: [512]
+      train:
+        batch_size: 1
+        steps: 6000
+        gradient_accumulation_steps: 1
+        train_unet: true
+        train_text_encoder: false
+        gradient_checkpointing: true
+        noise_scheduler: flowmatch
+        optimizer: adamw8bit
+        lr: 1e-4
+        dtype: bf16
+      model:
+        name_or_path: ostris/Flex.1-alpha
+        is_flux: true
+        quantize: true
+      sample:
+        sampler: flowmatch
+        sample_every: 500
+        width: 512
+        height: 512
+        guidance_scale: 4
+        sample_steps: 20
+        neg: ""                      # ai-toolkit defaults neg to False, which the Flux prompt encoder rejects
+        seed: 42
+        walk_seed: false
+        prompts:
+          - "dh_stamp, top-down orthographic view seen from directly above, no perspective, a single metal chair, intact variant, furniture, grimdark setting, hand-painted battle map stamp, isolated on a plain white background"
+          - "dh_stamp, top-down orthographic view seen from directly above, no perspective, a single cogitator console, damaged variant, tech, grimdark setting, hand-painted battle map stamp, isolated on a plain white background"
+          - "dh_stamp, isometric three-quarter view from above at an angle, a single supply crates, destroyed variant, storage, grimdark setting, hand-painted battle map stamp, isolated on a plain white background"
+          - "dh_stamp, front elevation view seen straight from the side, a single bunk bed, unmade variant, furniture, grimdark setting, hand-painted battle map stamp, isolated on a plain white background"
+          - "dh_stamp, top-down orthographic view seen from directly above, no perspective, a single brazier, lit, glowing, lighting, grimdark setting, hand-painted battle map stamp, isolated on a plain white background"
+          - "top-down view of a wooden table on a white background"

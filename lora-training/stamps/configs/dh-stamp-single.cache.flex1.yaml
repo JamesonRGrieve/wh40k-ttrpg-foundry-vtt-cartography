@@ -1,0 +1,47 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# ai-toolkit config — latent-cache pass for dh-stamp-single.flex1.yaml, run on ONE GPU
+# (NUM_GPUS=1) before the 3-GPU training run. It trains a single throwaway step
+# under its own name, so the real run neither resumes from nor overwrites it; its
+# only product is the latent cache written beside the images, which the DDP run
+# then loads instead of caching on rank 0 past NCCL's collective timeout.
+# Dataset block must match dh-stamp-single.flex1.yaml exactly (same cache keys).
+job: extension
+config:
+  name: dh_stamp_latent_cache
+  process:
+    - type: sd_trainer
+      training_folder: /opt/lora-training/outputs
+      device: cuda
+      trigger_word: null
+      network:
+        type: lora
+        linear: 32
+        linear_alpha: 32
+      save:
+        dtype: float16
+        save_every: 1000
+        max_step_saves_to_keep: 1
+        push_to_hub: false
+      datasets:
+        - folder_path: /opt/lora-training/stamps-single
+          caption_ext: txt
+          caption_dropout_rate: 0.05
+          shuffle_tokens: false
+          cache_latents_to_disk: true
+          resolution: [512]
+      train:
+        batch_size: 1
+        steps: 1
+        gradient_accumulation_steps: 1
+        train_unet: true
+        train_text_encoder: false
+        gradient_checkpointing: true
+        noise_scheduler: flowmatch
+        optimizer: adamw8bit
+        lr: 1e-4
+        dtype: bf16
+        disable_sampling: true
+      model:
+        name_or_path: ostris/Flex.1-alpha
+        is_flux: true
+        quantize: true
