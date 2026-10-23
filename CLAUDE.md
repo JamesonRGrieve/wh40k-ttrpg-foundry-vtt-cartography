@@ -852,4 +852,4 @@ exist to prevent that recurrence. Full post-mortem in
   source-material LoRA corpora, prefer text-only generation with strong
   per-class silhouette descriptors. For refinement work on a single
   class, a per-class reference image is fine.
-- **Never `--no-verify` past pre-commit gates** in the parent repo.
+- **`--no-verify` only under the batch-work rule** (SOP → *Git and Commits*) in the parent repo.
