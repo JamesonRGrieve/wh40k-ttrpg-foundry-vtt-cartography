@@ -50,7 +50,8 @@ from pathlib import Path
 from typing import ClassVar
 
 import yaml
-from dotenv import load_dotenv
+sys.path.insert(0, '/home/jameson/Source/dh-campaign/new-stamp-prompts/tools')
+from gemini_key import gemini_key  # noqa: E402
 from PIL import Image
 from google import genai
 
@@ -953,7 +954,6 @@ def main() -> int:
                     help="abort if estimated total exceeds this many USD")
     args = ap.parse_args()
 
-    load_dotenv(HERE / ".env")
     manifest_path, lora_dir, artifact_dir = resolve_manifest(args)
     manifest = yaml.safe_load(manifest_path.read_text())
 
@@ -975,10 +975,7 @@ def main() -> int:
 
     client: genai.Client | None = None
     if not args.dry_run:
-        if "GEMINI_API_KEY" not in os.environ:
-            print("missing GEMINI_API_KEY", file=sys.stderr)
-            return 1
-        client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        client = genai.Client(api_key=gemini_key())  # OpenBao AppRole stamp-pipeline (2026-11-21), never the environment
 
     return run_jobs(jobs, args, client)
 

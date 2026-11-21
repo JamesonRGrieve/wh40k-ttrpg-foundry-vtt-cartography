@@ -12,14 +12,15 @@ hit the safety filter.
 """
 import os, sys, time
 from pathlib import Path
-from dotenv import load_dotenv
+import sys
+sys.path.insert(0, '/home/jameson/Source/dh-campaign/new-stamp-prompts/tools')
+from gemini_key import gemini_key  # noqa: E402
 from PIL import Image
 from google import genai
 
 HERE = Path(__file__).resolve().parent
 PROJECT = HERE  # dh-campaign/.lora-training (pipeline root; holds .env)
-load_dotenv(PROJECT / ".env")
-client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+client = genai.Client(api_key=gemini_key())  # OpenBao AppRole stamp-pipeline (2026-11-21)
 
 ISOLATION = ("single symbol focal subject filling most of the frame, "
              "full silhouette visible, no text, no caption.")
