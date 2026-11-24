@@ -120,9 +120,11 @@ def main() -> int:
             if v["image"] in exclude:
                 skipped["excluded"] += 1
                 continue
-            # Imported CC0 sets (cc0/stamps/*: Kenney's 3D furniture kit, Mark Gosbell's symbol, flat and isometric
-            # sets, Comigo's icons, planets) are kept for map builders, but none is in the house painted style.
-            if v["image"].startswith("cc0/"):
+            # Imported open-asset sets (cc0/stamps/*: Kenney's 3D furniture kit, Mark Gosbell's symbol, flat and
+            # isometric sets, Comigo's icons, planets; cc-by-sa-4.0/stamps/*: Codespree's pixel-art set) are kept for
+            # map builders, but none is in the house painted style: only the pack's own art (ai/) trains. The by-eye
+            # audit (2026-11-24) found the pixel-art set's pieces on solid squares and flat house icons.
+            if not v["image"].startswith("ai/"):
                 skipped["icon"] = skipped.get("icon", 0) + 1
                 continue
             if v.get("resolution") in LOW_TIERS:
