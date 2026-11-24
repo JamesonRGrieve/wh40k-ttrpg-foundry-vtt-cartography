@@ -120,8 +120,9 @@ def main() -> int:
             if v["image"] in exclude:
                 skipped["excluded"] += 1
                 continue
-            # Legacy CC0 symbol sets (cc0/stamps/*-symbols/) are flat line glyphs, not painted art.
-            if v["image"].startswith("cc0/") and "symbols/" in v["image"]:
+            # Imported CC0 sets (cc0/stamps/*: Kenney's 3D furniture kit, Mark Gosbell's symbol, flat and isometric
+            # sets, Comigo's icons, planets) are kept for map builders, but none is in the house painted style.
+            if v["image"].startswith("cc0/"):
                 skipped["icon"] = skipped.get("icon", 0) + 1
                 continue
             if v.get("resolution") in LOW_TIERS:
