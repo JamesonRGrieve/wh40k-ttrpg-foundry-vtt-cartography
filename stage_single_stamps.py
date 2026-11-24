@@ -49,6 +49,17 @@ MIN_SHORT_SIDE = 48    # px
 MARGIN = 0.08          # fraction of the square left white around the stamp
 SCALES = ("interior", "exterior")
 TRIGGER = "dh_stamp"
+# The pack's resolution tier of each variant's source art. Tiers below 256 are 32-128 px cuts from early sheets;
+# upscaled 4-16x to the 512 bucket they teach the trigger blur (LoRA audit, 2026-11-24: 6,978 such variants).
+LOW_TIERS = {"32", "64", "128"}
+# Line-icon glyphs (black and blue diagram symbols), not painted stamps: kept in the pack for map builders, never
+# trained on (LoRA audit, 2026-11-24).
+ICON_STAMPS = {"Door", "Glass Door", "Iris Valve Door", "Wall Window", "Window"}
+# A stamp split by view carries it in its name ("Market Stall (Side View)"); the caption states the view itself.
+VIEW_SUFFIX = re.compile(r"\s*\((?:Side|Three-Quarter|Central) View\)$")
+# State words that select a picture rather than describe it: a take number ("plain 2", "square front 003") and the
+# ground-free twin's suffix (every training image is isolated on white anyway).
+STATE_NOISE = re.compile(r"(?:,\s*no ground)?(?:\s+\d+)?(?:,\s*no ground)?$")
 
 
 # Each image's view as the pack records it (a variant's own `perspective`, else its
@@ -67,14 +78,14 @@ def caption(stamp: dict, variant: dict, view: str) -> str:
     subject, the variant's state (condition, damage, material), category, tags the name
     does not already say, setting, and lit/unlit for light sources. Constant style and
     background phrases close it; no machine captioning, no reviewer guesses."""
-    name = stamp["name"].lower()
-    state = variant["state"]
+    name = VIEW_SUFFIX.sub("", stamp["name"]).lower()
+    state = STATE_NOISE.sub("", variant["state"]).strip()
     name_words = set(re.findall(r"[a-z0-9]+", name)) | {stamp["category"].lower()}
     settings = [t.removeprefix("setting-") for t in stamp["tags"] if t.startswith("setting-")]
     extra = [t.replace("-", " ") for t in stamp["tags"]
              if not t.startswith("setting-") and t not in name_words]
     parts = [TRIGGER, VIEWS[view], f"a single {name}"]
-    if state and not re.fullmatch(r"variant \d+", state) and state.lower() != name:
+    if state and state.lower() not in ("variant", name):
         parts.append(f"{state} variant")
     parts.append(f"{stamp['category'].lower()}")
     parts += extra
@@ -99,15 +110,18 @@ def main() -> int:
     ap.add_argument("--exclude", type=Path, help="file of pack-relative image paths to leave out")
     args = ap.parse_args()
     exclude = set(args.exclude.read_text().split()) if args.exclude else set()
-    pack = json.loads((PACK / "zephyrex-pack.json").read_text())
+    pack = json.loads((PACK / "zephyr-pack.json").read_text())
     args.out.mkdir(parents=True, exist_ok=True)
-    manifest, skipped = [], {"small": 0, "excluded": 0}
+    manifest, skipped = [], {"small": 0, "excluded": 0, "low-res": 0}
     for stamp in pack["stamps"]:
-        if stamp["scale"] not in SCALES:
+        if stamp["scale"] not in SCALES or stamp["name"] in ICON_STAMPS:
             continue
         for n, v in enumerate(stamp["variants"], 1):
             if v["image"] in exclude:
                 skipped["excluded"] += 1
+                continue
+            if v.get("resolution") in LOW_TIERS:
+                skipped["low-res"] += 1
                 continue
             img = Image.open(PACK / v["image"])
             if max(img.size) < MIN_LONG_SIDE or min(img.size) < MIN_SHORT_SIDE:
